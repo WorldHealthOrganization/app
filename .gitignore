@@ -1,0 +1,51 @@
+# Temp files
+*~
+.gradle
+
+# Don't save away IntelliJ config, except code-style which all commits must follow.
+.idea/*
+!.idea/codeStyleSettings.xml
+
+local.properties
+
+
+## Build generated
+build
+DerivedData
+
+
+# Android Studio
+# Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
+# Note: Android Studio is a modified version of IntelliJ
+*.iml
+*.iws
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/datasources.xml
+**/.idea/dataSources.ids
+**/.idea/libraries/
+**/.idea/misc.xml
+**/.idea/runConfigurations.xml
+
+
+# COCOAPODS
+Pods
+
+# Xcode
+# https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
