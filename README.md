@@ -5,11 +5,11 @@ This is the official World Health Organization MyHealth app. The initial focus i
 
 
 ## Key Goals:
-* Containment & Mitigation: WHO best practices for protecting communities 
-* Diagnosis & Triage: self-assessment, self-care & directing to local health resources
-* Contact Tracing: using location history, self-reported contact & notification of others
-* Data Reporting: public data for WHO and local authorities to utilize
-* Launch Within a Week: focus on fast iteration and gradual improvement
+* **Containment & Mitigation:** WHO best practices for protecting communities 
+* **Diagnosis & Triage:** self-assessment, self-care & directing to local health resources
+* **Contact Tracing:** using location history, self-reported contact & notification of others
+* **Data Reporting:** public data for WHO and local authorities to utilize
+* **Launch Within a Week:** focus on fast iteration and gradual improvement
 
 
 ## Community
