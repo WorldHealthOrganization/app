@@ -24,7 +24,7 @@ Google Group: https://groups.google.com/forum/#!forum/who-app
 These documents are still works in progress and may not be complete or up to date. This will be a rapidly evolving situation:
 
 Design Doc:
-https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs/edit?ts=5e6d20f4
+https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs/edit
 
 App Mockups:
 https://brunobowden.proto.io/player/index.cfm?id=0b416785-8d8a-4521-8d03-e29885d848e7
