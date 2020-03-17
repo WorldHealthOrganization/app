@@ -1,4 +1,4 @@
-# World Health Organization - MyHealth App
+# World Health Organization - Covid Navigator
 
 
 This is the official World Health Organization MyHealth app. The initial focus is on the COVID-19 containment and mitigation. The long term goal is support of the World Health Organization's mission for global public health.
