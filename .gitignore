@@ -8,17 +8,15 @@
 
 local.properties
 
-cache/
 
 ## Build generated
 build
 DerivedData
-
+cache/
 
 # Android Studio
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
 # Note: Android Studio is a modified version of IntelliJ
-*.iml
 *.iws
 **/.idea/workspace.xml
 **/.idea/tasks.xml
@@ -58,7 +56,6 @@ xcuserdata
 
 # Xcode
 #
-build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -78,7 +75,6 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
