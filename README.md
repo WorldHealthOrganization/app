@@ -26,7 +26,7 @@ We want to get this out and working so we can move on to more significant functi
 
 ## Key Goals for Next Release
 
-We are assessing the feauture roadmap (contact tracing and more) for the next and subsequent releases.
+We are assessing the feature roadmap (contact tracing and more) for the next and subsequent releases.
 
 ## Community
 
