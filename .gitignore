@@ -1,6 +1,5 @@
 # Temp files
 *~
-.gradle
 
 # Don't save away IntelliJ config, except code-style which all commits must follow.
 .idea/*
@@ -18,13 +17,6 @@ cache/
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
 # Note: Android Studio is a modified version of IntelliJ
 *.iws
-**/.idea/workspace.xml
-**/.idea/tasks.xml
-**/.idea/datasources.xml
-**/.idea/dataSources.ids
-**/.idea/libraries/
-**/.idea/misc.xml
-**/.idea/runConfigurations.xml
 
 
 # COCOAPODS
@@ -77,7 +69,6 @@ project.xcworkspace
 #
 .idea
 .gradle
-local.properties
 *.iml
 
 # node.js
