@@ -1,16 +1,28 @@
-# World Health Organization - MyHealth App
+# World Health Organization App
 
+This is the official World Health Organization app. 
 
-This is the official World Health Organization MyHealth app. The initial focus is on the COVID-19 containment and mitigation. The long term goal is support of the World Health Organization's mission for global public health.
+**Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
+The initial focus is on delivering a v0.1:
+* an app for individuals (non-healthcare providers, non-public health people) 
+* for Android and iOS 
+* across the six WHO languages: English, French, Chinese, Spanish, Arabic, and Russian
+* that delivers WHO-approved information and advice for the public
+* and offers WHO-approved guidance in response to "What should I do based on my symptoms?"
 
-## Key Goals:
-* **Containment & Mitigation:** WHO best practices for protecting communities 
-* **Diagnosis & Triage:** self-assessment, self-care & directing to local health resources
-* **Contact Tracing:** using location history, self-reported contact & notification of others
-* **Data Reporting:** public data for WHO and local authorities to utilize
-* **Launch Within a Week:** focus on fast iteration and gradual improvement
+and exiting this phase with a functioning team and infrastructure to rapidly iterate the app into something far more useful for the current pandemic. 
 
+The long term goal is support of the World Health Organization's mission for global public health. 
+
+## Key Goals for v0.1:
+* **Containment & Mitigation:** WHO best practices for protecting communities. Also, demonstrate the ability to update content on the server side and have it reflected in the app. 
+* **Diagnosis & Triage:** self-assessment, self-care & references to guidance from local health resources. 
+* **Live ASAP:** so that we can iterate quickly and improve. 
+* **Fundamentals:** privacy, security, accessibility equivalen to WHO website. 
+* **Basic Feedback System** to inform that rapid iteration and improvement. 
+
+We want to get this out and working so we can move on to more signifcant functionality that will help the public as well as public health authorities. The design document (link below) is a good directional guide. 
 
 ## Community
 
