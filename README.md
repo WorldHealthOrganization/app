@@ -19,10 +19,10 @@ The long term goal is support of the World Health Organization's mission for glo
 * **Containment & Mitigation:** WHO best practices for protecting communities. Also, demonstrate the ability to update content on the server side and have it reflected in the app. 
 * **Diagnosis & Triage:** self-assessment, self-care & references to guidance from local health resources. 
 * **Live ASAP:** so that we can iterate quickly and improve. 
-* **Fundamentals:** privacy, security, accessibility equivalen to WHO website. 
+* **Fundamentals:** privacy, security, accessibility equivalent to WHO website. 
 * **Basic Feedback System** to inform that rapid iteration and improvement. 
 
-We want to get this out and working so we can move on to more signifcant functionality that will help the public as well as public health authorities. The design document (link below) is a good directional guide. 
+We want to get this out and working so we can move on to more significant functionality that will help the public as well as public health authorities. The design document (link below) is a good directional guide. 
 
 ## Community
 
