@@ -24,6 +24,10 @@ The long term goal is support of the World Health Organization's mission for glo
 
 We want to get this out and working so we can move on to more significant functionality that will help the public as well as public health authorities. The design document (link below) is a good directional guide. 
 
+## Key Goals for Next Release
+
+We are assessing the feauture roadmap (contact tracing and more) for the next and subsequent releases.
+
 ## Community
 
 GitHub Repo: https://github.com/WorldHealthOrganization/app
