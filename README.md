@@ -2,6 +2,8 @@
 
 This is the official World Health Organization app. 
 
+**This repository is a work in progress and has not yet been medically reviewed.  Until the app is ready, the general public should consult the [WHO's COVID-19 website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019).**
+
 **Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
 The initial focus is on delivering a v0.1:
