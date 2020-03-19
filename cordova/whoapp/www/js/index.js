@@ -40,6 +40,34 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    render: function (tmpl_name, tmpl_data) {
+        if (!this.render.tmpl_cache) {
+            this.render.tmpl_cache = {};
+        }
+
+        if (!this.render.tmpl_cache[tmpl_name]) {
+            var tmpl_dir = 'templates';
+
+            var tmpl_url = tmpl_dir + '/' + tmpl_name + '.html';
+
+            var tmpl_string;
+
+            $.ajax({
+                url: tmpl_url,
+                method: 'GET',
+                dataType: 'html',
+                async: false,
+                success: function(data) {
+                    tmpl_string = data;
+                }
+            });
+
+            this.render.tmpl_cache[tmpl_name] = _.template(tmpl_string);
+        }
+
+        return this.render.tmpl_cache[tmpl_name](tmpl_data);
     }
 };
 
