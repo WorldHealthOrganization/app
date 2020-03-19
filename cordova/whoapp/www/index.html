@@ -35,20 +35,128 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap/bootstrap.min.css">
         <title>Hello World</title>
+
+        <style>
+
+        html {
+          position: relative;
+          min-height: 100%;
+        }
+
+        body {
+          /* Margin bottom by footer height */
+          margin-bottom: 60px;
+        }
+
+        main {
+          margin-top: 60px;
+        }
+
+        .footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          /* Set the fixed height of the footer here */
+          height: 60px;
+          line-height: 60px; /* Vertically center the text there */
+          background-color: #f5f5f5;
+        }
+        ol.carousel-indicators li {
+          background-color: #f5f5f5;
+        }
+        ol.carousel-indicators li.active {
+          background-color: rgb(0, 123, 255);
+        }
+
+        .carousel-item{
+    text-align: center;
+    min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+        </style>
     </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+    <body id="home">
+
+        <header>
+          <!-- Fixed navbar -->
+          <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="#home">WHO COVID 19</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+        </header>
+
+        <!-- Begin page content -->
+        <main role="main" class="container">
+          <section id="about">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <h1>World Health Organization</h1>
+                        <p>Official WHO APP for COVID 19</p>
+                        <p>Learn how to protect yourself and your community.  Find medical resources to help.</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>How it Spreads</h1>
+                        <p>COVID-19 also referred to as "Coronavirus" mainly spreads from person-to-person between people who are in close contact with one another (within about 6 feet or two meters)  through respiratory droplets produced when an infected person coughs or sneezes</p>
+
+                      </div>
+                      <div class="carousel-item">
+                        <h1>Clean Your Hands</h1>
+                        <p><b>Wash your hands often</b> with soad and water for at least 20 sconds, especially after you have been in a public place, or after blowing your nose, coughing or sneezing.</p>
+                        <p><b>Avoid touching your eyes, nose, and mouth</b> with unwashed hands</p>
+                      </div>
+                      <div class="carousel-item">
+                        <h1>Avoid Close Contact</h1>
+                        <p><b>Avoid close contact</b> with people who are sick.</p>
+                        <p><b> Maintain distance between yourself and other people</b> if COVID-19 is spreading in you community.  This is especially important for people who are at higher risk of getting very sick including the elderly</p>
+                      </div>
+                    </div>
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+                    </ol>
+                    <button class="carousel-control-prev btn btn-default" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </button>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
             </div>
-        </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8 mx-auto">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <div class="container">
+            <span class="text-center text-muted">Copyright &copy; WHO 2020</span>
+          </div>
+        </footer>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/vendor/underscore-1.9.2-min.js"></script>
-	<script type="text/javascript" src="js/vendor/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="js/vendor/bootstrap/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-
     </body>
 </html>
