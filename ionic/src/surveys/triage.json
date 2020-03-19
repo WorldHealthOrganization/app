@@ -1,0 +1,49 @@
+{
+  "title": "Health check",
+  "completedHtml": "Thanks for using this survey. Your data has NOT been transmitted and is only kept locally.",
+  "completedHtmlOnCondition": [
+    {
+      "expression": "16 > 14",
+      "html": "Given that your symptoms started more than 2 weeks ago and you are not experiencing shortness of breath it is unlikely that you COVID-19.\n\nFeel free to repeat this survey in case your symptoms change."
+    }
+  ],
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "symptoms",
+          "title": "Which of these symptoms do you have?",
+          "choices": [
+            {
+              "value": "fever",
+              "text": "Fever"
+            },
+            {
+              "value": "cough",
+              "text": "Cough"
+            },
+            {
+              "value": "breath",
+              "text": "Shortness of breath"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "days",
+          "visibleIf": "{symptoms} notempty",
+          "title": "Approximately how long ago did you first notice symptoms?",
+          "description": "Please enter the number of days",
+          "inputType": "number"
+        },
+        {
+          "type": "text",
+          "name": "question1",
+          "visibleIf": "{days} > 14"
+        }
+      ]
+    }
+  ]
+}

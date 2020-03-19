@@ -1,0 +1,4 @@
+:host ion-header  ion-toolbar {
+  --background: translucent;
+  --background: red;
+}
