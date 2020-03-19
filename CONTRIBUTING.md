@@ -8,7 +8,7 @@ While we're working quickly, please abide by a few rules to keep us safe and san
   * GitHub Email address needs to match your git author email address
 * For committers:
   * 2 person rule - the merger/approver must be distinct from the author (including admin)
-  * Use squash and merge
+  * Use squash and merge if intermediate commit history is not of submittabl quality.
 
 ## Building and Running
 
