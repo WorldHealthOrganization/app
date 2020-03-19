@@ -20,6 +20,12 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        var el = $('#main');
+        el.empty();
+
+        var html = app.render("intro",{});
+        el.append(html)
+
     },
 
     // deviceready Event Handler
