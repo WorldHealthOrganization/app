@@ -27,3 +27,4 @@ jobs:
         node-version: '10.x'
     - run: npm install -g yarn
     - run: yarn --cwd whoapp
+    - run: yarn --cwd whoapp test
