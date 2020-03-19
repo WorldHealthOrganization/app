@@ -35,8 +35,8 @@ export default class HomeScreen extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.heading}>COVID App</Text>
-          <Text style={styles.text}>[This is a prototype. Use at your own risk.]</Text>
+          <Text style={styles.heading}>World Health Organisation</Text>
+          <Text style={styles.text}> Learn how to protect yourself and your community. Find medical resources to help</Text>
         </View>
         <View style={styles.slideContent}>
           <Text style={styles.heading}>How It Spreads</Text>

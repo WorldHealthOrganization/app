@@ -30,6 +30,18 @@ We want to get this out and working so we can move on to more significant functi
 
 We are assessing the feature roadmap (contact tracing and more) for the next and subsequent releases.
 
+## Contribution Guide
+
+Wiki - coming soon
+
+### Launching React Native
+
+run `npm install`
+
+navigate to `ios` folder and run `pod install`
+
+in `whoapp` folder, run `npx react-native run-ios` to launch the ios emulator, and `npx react.native run-android` to run android. 
+
 ## Community
 
 GitHub: https://github.com/WorldHealthOrganization/app
