@@ -72,3 +72,11 @@ var app = {
 };
 
 app.initialize();
+
+$(document).on("click","#learn_more",function(event){
+  var el = $('#main');
+  el.empty();
+
+  var html = app.render("about",{});
+  el.append(html)
+})
