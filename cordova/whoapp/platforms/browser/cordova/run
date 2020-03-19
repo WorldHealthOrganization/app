@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+/*
+       Licensed to the Apache Software Foundation (ASF) under one
+       or more contributor license agreements.  See the NOTICE file
+       distributed with this work for additional information
+       regarding copyright ownership.  The ASF licenses this file
+       to you under the Apache License, Version 2.0 (the
+       "License"); you may not use this file except in compliance
+       with the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing,
+       software distributed under the License is distributed on an
+       "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+       KIND, either express or implied.  See the License for the
+       specific language governing permissions and limitations
+       under the License.
+*/
+
+var fs = require('fs'),
+    path = require('path'),
+    nopt  = require('nopt'),
+    url = require('url'),
+    runForrest = require('./lib/run'),
+    cordovaServe = require('cordova-serve');
+
+var args = process.argv;
+
+start(args);
+
+function start(argv) {
+    var args  = nopt({'help': Boolean, 'target': String, 'port': Number}, {'help': ['/?', '-h', 'help', '-help', '/help']}, argv);
+    if(args.help) {
+        help();
+    }
+    else {
+        return runForrest.run(args);
+    }
+}
+
+function help() {
+    console.log("\nUsage: run [ --target=<browser> ] [ --port=<number> ]");
+    console.log("    --target=<browser> : Launches the specified browser. Chrome is default.");
+    console.log("    --port=<number>    : Http server uses specified port number.");
+    console.log("Examples:");
+    console.log("    run");
+    console.log("    run -- --target=ie");
+    console.log("    run -- --target=chrome --port=8000");
+    console.log("");
+    process.exit(0);
+}

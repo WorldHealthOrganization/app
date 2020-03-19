@@ -1,0 +1,157 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-whitelist@1",
+      "/opt/who/app-who/cordova/whoapp"
+    ]
+  ],
+  "_from": "cordova-plugin-whitelist@>=1.0.0 <2.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "cordova-plugin-whitelist@1.3.4",
+  "_inCache": true,
+  "_installable": true,
+  "_integrity": "",
+  "_location": "/cordova-plugin-whitelist",
+  "_nodeVersion": "12.3.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-whitelist_1.3.4_1562091039708_0.11095101391343509"
+  },
+  "_npmUser": {
+    "email": "piotrowski+npmjs.com@gmail.com",
+    "name": "sujan12"
+  },
+  "_npmVersion": "6.9.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-whitelist",
+    "raw": "cordova-plugin-whitelist@1",
+    "rawSpec": "1",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-whitelist/-/cordova-plugin-whitelist-1.3.4.tgz",
+  "_shasum": "31938545c7c3e7de35c20ab08c2c3afa06e8a3f9",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-whitelist@1",
+  "_where": "/opt/who/app-who/cordova/whoapp",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-whitelist/issues"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Whitelist Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 15,
+    "integrity": "sha512-EYC5eQFVkoYXq39l7tYKE6lEjHJ04mvTmKXxGL7quHLdFPfJMNzru/UYpn92AOfpl3PQaZmou78C7EgmFOwFQQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdG54gCRA9TVsSAnZWagAAkqMQAIOqD0NZD80xGmjaP2Jo\nkqzd4gANk0zNqjnbSufTFECzrk/p0BYLZSM/YCoyUdoy/qkdSTO2eJAEQkdR\nq9cfzGBnCi99wgLNO/M4VA15Z7f+gOG9Lqvg8G48q49fAjwX87bURr/OeShd\nUp+zFyRwlVl8oKn/u7wd5gt8PUVwt7KvWHIEmzA++aXbBLvWGnKjLyQudZJ5\nhlCy9UrKKDTFMmAAN0zwMobTlR1hMlcrAC92xSrZdfej8hyRPayXObvZH49D\n/6LB6nF/ForCx+1Qy9jeQ5om1FFt9VfleKjDLz3l1EE4x9vc8en18xkMbqri\nJ8M9UHYYkzG1UegwKT8kMa2DFG5Sei+ojKJgKT6wL2VjbFLSF0IJWKGReDdV\naoqg5vfM/JJBsMO8V/aMFzzx4sJZbZRwHjmq3PeM9ZLyQXUnw945ZJG4K0bd\nyZ/UV3LV3TfpVsMhdXUQaiZ+IlyEe6o6ADURw9WOkhD4kzNTc6l8bLPfDh20\nBVTRFe+EwgHqJIf3m40Jf+ltCRdM3bPVZJN4uwHEz3OFXfga3yJd3L0jf0Ma\n2PXptNIj8dE5vl9mTUi4vRnOyMqa2iuIWg52iPZU4tqfXNTJU93xR+rd3m52\n7r5Zp0Nw93PPOSYGoJcuf+UO0Zaj3faDF09Cgc7F/uIelZ8eqyO/Myur3BwF\nrf6Y\r\n=bYY9\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "31938545c7c3e7de35c20ab08c2c3afa06e8a3f9",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-whitelist/-/cordova-plugin-whitelist-1.3.4.tgz",
+    "unpackedSize": 56726
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "0.0.0": {
+        "cordova-android": ">=4.0.0"
+      },
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-whitelist#readme",
+  "keywords": [
+    "cordova",
+    "cordova-android",
+    "ecosystem:cordova",
+    "whitelist"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "filmaj",
+      "email": "maj.fil@gmail.com"
+    },
+    {
+      "name": "anis",
+      "email": "anis.kadri@gmail.com"
+    },
+    {
+      "name": "brodybits",
+      "email": "chris@brody.consulting"
+    },
+    {
+      "name": "cordovaowner",
+      "email": "apachecordovabot@gmail.com"
+    },
+    {
+      "name": "csantanapr",
+      "email": "csantana23@gmail.com"
+    },
+    {
+      "name": "dpogue",
+      "email": "darryl@dpogue.ca"
+    },
+    {
+      "name": "erisu",
+      "email": "erisu.dev@outlook.jp"
+    },
+    {
+      "name": "bowserj",
+      "email": "bowserj@apache.org"
+    },
+    {
+      "name": "jcesarmobile",
+      "email": "jcesarmobile@gmail.com"
+    },
+    {
+      "name": "macdonst",
+      "email": "simon.macdonald@gmail.com"
+    },
+    {
+      "name": "purplecabbage",
+      "email": "purplecabbage@gmail.com"
+    },
+    {
+      "name": "shazron",
+      "email": "shazron@gmail.com"
+    },
+    {
+      "name": "stevegill",
+      "email": "stevengill97@gmail.com"
+    },
+    {
+      "name": "sujan12",
+      "email": "piotrowski+npmjs.com@gmail.com"
+    },
+    {
+      "name": "surajpindoria",
+      "email": "suraj.pindoria@yahoo.com"
+    }
+  ],
+  "name": "cordova-plugin-whitelist",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-whitelist.git"
+  },
+  "scripts": {
+    "test": "echo \"no tests implemented for this plugin\""
+  },
+  "version": "1.3.4"
+}
