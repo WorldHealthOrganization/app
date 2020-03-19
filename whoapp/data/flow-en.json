@@ -1,0 +1,39 @@
+{
+  "flow": [
+    {
+      "stepId": "home",
+      "imgAbove": "logo.png",
+      "title": "COVID App",
+      "content": [
+        "[This is a prototype. Use at your own risk.]"
+      ]
+    },
+    {
+      "stepId": "intro1",
+      "title": "How It Spreads",
+      "content": [
+        "COVID-19, also referred to as \"Coronavirus\" mainly spreads between people who are in close contact with one another (within about 6 feet or two meters) through respiratory droplets produced when an infected person coughs or sneezes."
+      ],
+      "imgBelow": "cough.png"
+    },
+    {
+      "stepId": "intro2",
+      "title": "Avoid Close Contact",
+      "content": [
+        "Avoid close contact with people who are sick.",
+        "Put distance between yourself and other people if COVID-19 is spreading in your community. This is especially important for people who are at higher risk of getting very sick, including the elderly."
+      ],
+      "imgBelow": "contact.png"
+    },
+    {
+      "stepId": "menu",
+      "imgAbove": "logoSmall.png",
+      "menuItems": [
+        {"label": "I Might Be Sick", "stepId": "sick"},
+        {"label": "Learn to Protect Yourself", "stepId": "protect"},
+        {"label": "Health Map", "stepId": "map"},
+        {"label": "Local Info", "stepId": "local"}
+      ]
+    }
+  ]
+}

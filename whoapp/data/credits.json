@@ -1,0 +1,20 @@
+{
+  "team": [
+    "Peter Singer",
+    "Ray Chambers",
+    "Sameer Pujari",
+    "Daniel Kraft",
+    "Bruno Bowden",
+    "Dean Hachamovitch",
+    "Leerom Segal",
+    "Ramesh Raskar",
+    "Dan Drexler",
+    "Ari Schaefer",
+    "Lori Grant",
+    "Gautam Gulati",
+    "Alfred Whitehead",
+    "Advay Mengle"
+  ],
+  "_comment": "Add your name to the bottom of the team list above when you submit. FIXME: Pre-ship: review above list for missing team members who do not commit to repo (product, UX, etc.)",
+  "supporters": ["TBD"]
+}

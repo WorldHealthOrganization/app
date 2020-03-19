@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { StyleSheet, View, Button } from 'react-native'
+
+import FlowStep from './FlowStep';
 
 import Swiper from 'react-native-swiper';
 
 const styles = StyleSheet.create({
-  wrapper: {},
-  slide1: {
+  carousel: {},
+  slideWrapper: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -30,24 +32,22 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class HomeScreen extends Component {
-  render() {
-    return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
-        <View style={styles.slide1}>
-          <Text style={styles.heading}>COVID App</Text>
-          <Text style={styles.text}>[This is a prototype. Use at your own risk.]</Text>
-        </View>
-        <View style={styles.slideContent}>
-          <Text style={styles.heading}>How It Spreads</Text>
-          <Text style={styles.text}>COVID-19, also referred to as "Coronavirus" mainly spreads between people who are in close contact with one another (within about 6 feet or two meters) through respiratory droplets produced when an infected person coughs or sneezes.</Text>
-        </View>
-        <View style={styles.slideContent}>
-          <Text style={styles.heading}>Avoid Close Contact</Text>
-          <Text style={styles.text}>Avoid close contact with people who are sick.</Text>
-          <Text style={styles.text}>Put distance between yourself and other people if COVID-19 is spreading in your community.  This is especially important for people who are at higher risk of getting very sick, including the elderly.</Text>
-        </View>
-      </Swiper>
-    )
-  }
+export default function HomeScreen({ navigation }) {
+  // TODO: Load from the web, fallback to file.
+  // TODO: Choose URI based on locale.
+  // TODO: Convert to YAML.
+  const steps = require('../data/flow-en.json').flow;
+
+  return (
+    <Swiper style={styles.carousel} showsButtons={true}>
+      {steps.map((step, idx) =>
+        (
+          <View style={styles.slideWrapper} key={step.stepId}>
+            <FlowStep {...step} style={styles.slideContent} />
+            {idx === 0 && <Button onPress={() => navigation.navigate('Credits')} title="Credits &amp; License" />}
+          </View>
+        )
+      )}
+    </Swiper>
+  );
 }
