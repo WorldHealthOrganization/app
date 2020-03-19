@@ -8,11 +8,11 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'whoapp/**'
+      - 'client/reactnative-proto/**'
   pull_request:
     branches: [ master ]
     paths:
-      - 'whoapp/**'
+      - 'client/reactnative-proto/**'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -28,5 +28,5 @@ jobs:
         with:
           node-version: '10.x'
       - run: npm install -g yarn
-      - run: yarn --cwd whoapp
-      - run: yarn --cwd whoapp test
+      - run: yarn --cwd client/reactnative-proto
+      - run: yarn --cwd client/reactnative-proto test
