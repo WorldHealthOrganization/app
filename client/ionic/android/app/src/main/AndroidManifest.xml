@@ -42,6 +42,7 @@
         </provider>
     </application>
 
+    <!-- TODO: Review requires permissions: https://github.com/WorldHealthOrganization/app/issues/56 -->
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
