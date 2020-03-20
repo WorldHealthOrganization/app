@@ -50,7 +50,9 @@ jobs:
       - run: npm install -g ionic
       - run: npm install
         working-directory: ./client/ionic
+      - run: ionic build
+        working-directory: ./client/ionic
       - run: ionic cap sync
-        working-directory: ./client/ionic/android
+        working-directory: ./client/ionic
       - run: ./gradlew test
       - run: ./gradlew build
