@@ -1,26 +1,22 @@
 import React, { useState } from "react";
 import { IonContent, IonButton } from "@ionic/react";
-import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { SocialSharing } from "@ionic-native/social-sharing";
 
 interface ShareConfig {
-    shareSTR: string;
+  shareStr: string;
+}
+
+const ShareButton: React.FC<ShareConfig> = ({ shareStr }) => {
+  function share() {
+    SocialSharing.share(shareStr);
   }
+  return (
+    <IonContent>
+      <IonButton onClick={share} expand="block">
+        Share
+      </IonButton>
+    </IonContent>
+  );
+};
 
-const ShareButton: React.FC<ShareConfig> = ({ shareSTR }) => {
-    function share(){
-        SocialSharing.share(shareSTR)
-    }
-    return (
-        <IonContent>
-             <IonButton
-              onClick={share}
-              expand="block"
-            >
-              Share
-            </IonButton>
-          </IonContent>
-    );
-  };
-
-  export default ShareButton;
+export default ShareButton;

@@ -18,7 +18,7 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ShareButton shareSTR="Checkout the new WHO App"/>
+        <ShareButton shareStr="Checkout the new WHO App"/>
         <ExploreContainer name="Tab 1 page" />
       </IonContent>
     </IonPage>
