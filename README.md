@@ -32,9 +32,9 @@ We are assessing the feature roadmap (contact tracing and more) for the next and
 
 ## Community
 
-GitHub Repo: https://github.com/WorldHealthOrganization/app
+GitHub: https://github.com/WorldHealthOrganization/app
 
-Google Group: https://groups.google.com/forum/#!forum/who-app
+Slack: https://who-app.slack.com/
 
 
 ## References
