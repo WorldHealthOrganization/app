@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IonContent, IonButton } from "@ionic/react";
-import { SocialSharing } from "@ionic-native/social-sharing/";
+import {SocialSharing} from "@ionic-native/social-sharing/index";
 
 interface ShareConfig {
   shareStr: string;
