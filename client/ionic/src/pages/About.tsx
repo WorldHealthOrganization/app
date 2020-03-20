@@ -11,7 +11,7 @@ const About: React.FC = () => {
             <IonCard>
               <IonCardContent>
                <p>Get the latest information</p>
-               <IonButton href="/Tab1" shape="round">Learn More</IonButton>
+               <IonButton href="/Menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -19,7 +19,7 @@ const About: React.FC = () => {
             <IonCard>
               <IonCardContent>
                <p>Learn how to protect yourself</p>
-               <IonButton href="/Tab1" shape="round">Learn More</IonButton>
+               <IonButton href="/Menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -27,7 +27,7 @@ const About: React.FC = () => {
             <IonCard>
               <IonCardContent>
                <p>Report sickness</p>
-               <IonButton href="/Tab1" shape="round">Learn More</IonButton>
+               <IonButton href="/Menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
