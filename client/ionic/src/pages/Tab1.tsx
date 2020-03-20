@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
+import ShareButton from '../components/ShareButton';
 import styles from './Tab1.module.css';
 
 const Tab1: React.FC = () => {
@@ -17,6 +18,7 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <ShareButton shareSTR="Checkout the new WHO App"/>
         <ExploreContainer name="Tab 1 page" />
       </IonContent>
     </IonPage>
