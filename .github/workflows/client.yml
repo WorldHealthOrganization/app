@@ -55,4 +55,6 @@ jobs:
       - run: ionic cap sync
         working-directory: ./client/ionic
       - run: ./gradlew test
+        working-directory: ./client/ionic/android
       - run: ./gradlew build
+        working-directory: ./client/ionic/android
