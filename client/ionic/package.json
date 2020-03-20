@@ -29,7 +29,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "check": "gts check",
+    "cleanbuild": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,7 +54,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "1.5.1"
+    "@capacitor/cli": "1.5.1",
+    "gts": "^1.1.2"
   },
   "description": "An Ionic project"
 }
