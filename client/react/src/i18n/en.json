@@ -1,0 +1,10 @@
+{
+  "worldHealthOrganization": "World Health Organization",
+
+  "plurals": "Hello, {name}, you have {itemCount, plural, =0 {no items} one {# item} other {# items} }",
+
+  "letsGetStarted": "Let’s get started!",
+  "@letsGetStarted": {
+    "description": "This annotation can hold explanatory text to assist the translators."
+  }
+}
