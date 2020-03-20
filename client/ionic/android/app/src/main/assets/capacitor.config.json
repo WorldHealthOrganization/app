@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "int.who.app",
   "appName": "whoapp",
   "bundledWebRuntime": false,
   "npmClient": "npm",
