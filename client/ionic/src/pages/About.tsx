@@ -1,22 +1,22 @@
 import React from 'react';
-import { IonContent, IonPage, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonContent, IonPage, IonSlides, IonSlide } from '@ionic/react';
 import styles from './About.module.css';
 
 const About: React.FC = () => {
   return (
     <IonPage className={styles.page}>
       <IonContent>
-        <IonList>
-          <IonItem>
-            <IonLabel>Get the latest information</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Learn how to protect yourself</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Report sickness</IonLabel>
-          </IonItem>
-        </IonList>
+        <IonSlides pager={true}>
+          <IonSlide>
+           <p>Get the latest information</p>
+          </IonSlide>
+          <IonSlide>
+           <p>Learn how to protect yourself</p>
+          </IonSlide>
+          <IonSlide>
+           <p>Report sickness</p>
+          </IonSlide>
+        </IonSlides>
       </IonContent>
     </IonPage>
   );
