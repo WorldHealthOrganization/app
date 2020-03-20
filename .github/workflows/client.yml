@@ -34,3 +34,20 @@ jobs:
       - run: cd client/ionic && npm install
       - run: cd client/ionic && npm audit --audit-level=moderate
       - run: cd client/ionic && CI=true npm test
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: npm install -g @ionic/cli
+      - run: npm install
+        working-directory: ./client/ionic
+      - run: ionic build
+        working-directory: ./client/ionic
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: webapp
+          path: client/ionic/build
