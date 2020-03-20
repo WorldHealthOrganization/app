@@ -30,4 +30,5 @@ jobs:
         with:
           node-version: '10.x'
       - run: cd client/ionic && npm install
+      - run: cd client/ionic && npm audit --audit-level=moderate
       - run: cd client/ionic && CI=true npm test
