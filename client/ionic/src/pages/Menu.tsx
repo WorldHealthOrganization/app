@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonPage, IonSlides, IonSlide, IonCard, IonCardContent, IonButton, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel } from '@ionic/react';
+import { IonContent, IonPage, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel } from '@ionic/react';
 import styles from './Menu.module.css';
 
 const Menu: React.FC = () => {
@@ -7,7 +7,9 @@ const Menu: React.FC = () => {
     <IonPage className={styles.page}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>WHO</IonTitle>
+          <IonTitle>
+            <IonItem href="/Menu" color="primary">WHO</IonItem>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
