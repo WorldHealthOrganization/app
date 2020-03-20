@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "check": "gts check",
-    "clean": "gts clean",
+    "cleanbuild": "gts clean",
     "compile": "tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",
