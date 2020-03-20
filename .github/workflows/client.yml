@@ -49,5 +49,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ GITHUB_REF }}
+          name: ${{ env.GITHUB_REF }}
           path: client/ionic/build
