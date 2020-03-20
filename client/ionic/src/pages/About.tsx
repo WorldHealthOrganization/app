@@ -1,10 +1,9 @@
 import React from 'react';
 import { IonContent, IonPage, IonSlides, IonSlide, IonCard, IonCardContent, IonButton } from '@ionic/react';
-import styles from './Tab1.module.css'
 
 const About: React.FC = () => {
   return (
-    <IonPage className={styles.page}>
+    <IonPage>
       <IonContent>
         <IonSlides pager={true}>
           <IonSlide>

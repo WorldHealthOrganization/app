@@ -1,10 +1,9 @@
 import React from 'react';
 import { IonContent, IonPage, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel } from '@ionic/react';
-import styles from './Tab1.module.css';
 
 const Menu: React.FC = () => {
   return (
-    <IonPage className={styles.page}>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>
