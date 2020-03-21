@@ -2,23 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import {createIntl, createIntlCache, IntlProvider} from "react-intl";
-import messages_en from './i18n/en.json';
-import messages_zh from './i18n/zh.json';
-
-// tslint:disable-next-line:no-any
-const messages: any = {
-  'en': messages_en,
-  'zh': messages_zh,
-};
-
-const language = navigator.language.split(/[-_]/)[0];
-const cache = createIntlCache();
-export const intl = createIntl({
-  locale: language,
-  messages: messages[language]
-}, cache);
+import {IntlProvider} from "react-intl";
+import {language, messages} from "./i18n/i18n";
 
 ReactDOM.render(
   <IntlProvider locale={language} messages={messages[language]}>

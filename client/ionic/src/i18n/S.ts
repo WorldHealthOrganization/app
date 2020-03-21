@@ -1,7 +1,7 @@
 ///
 /// GENERATED CODE: Do not modify!
 ///
-import {intl} from "../index";
+import {intl} from "./i18n";
 
 export class S {
   static get worldHealthOrganization() { return intl.formatMessage({id: 'worldHealthOrganization',

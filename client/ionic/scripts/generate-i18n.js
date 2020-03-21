@@ -8,7 +8,7 @@ const fs = require('fs');
 let json = JSON.parse(fs.readFileSync(baseFile));
 
 let out = "///\n/// GENERATED CODE: Do not modify!\n///\n";
-out += 'import {intl} from "../index";\n\n';
+out += 'import {intl} from "./i18n";\n\n';
 out += "export class S {\n";
 out += Object.keys(json).map(key=> {
     if (key.startsWith("@")) { return ""; }
