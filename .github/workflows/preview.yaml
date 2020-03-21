@@ -31,7 +31,7 @@ jobs:
     - run: ionic build
       working-directory: ./client/ionic
     # Runs a single command using the runners shell
-    - name: Check if we have sshpass
+    - name: Upload files via SFTP
       env:
         SSHPASS: ${{ secrets.PREVIEW_SECRET }}
         TARGET: ${{ secrets.PREVIEW_TARGET }}
