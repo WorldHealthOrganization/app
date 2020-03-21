@@ -19,7 +19,7 @@ import {
   handLeftOutline,
   peopleOutline,
 } from 'ionicons/icons';
-import {S} from "../i18n/S";
+import { S } from '../i18n/S';
 
 const About: React.FC = () => {
   return (
