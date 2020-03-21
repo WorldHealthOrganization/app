@@ -1,5 +1,12 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+} from '@ionic/react';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
@@ -23,7 +30,9 @@ class Triage extends React.Component<{}, TriageState> {
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonItem href="/menu" color="primary">WHO</IonItem>
+            <IonItem href="/menu" color="primary">
+              WHO
+            </IonItem>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -34,4 +43,3 @@ class Triage extends React.Component<{}, TriageState> {
   }
 }
 export default Triage;
-

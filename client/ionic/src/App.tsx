@@ -30,12 +30,12 @@ import './theme/variables.css';
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path="/about" component={About} exact={true} />
-          <Route path="/menu" component={Menu} exact={true} />
-          <Route path="/triage" component={Triage} />
-          <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
-        </IonRouterOutlet>
+      <IonRouterOutlet>
+        <Route path="/about" component={About} exact={true} />
+        <Route path="/menu" component={Menu} exact={true} />
+        <Route path="/triage" component={Triage} />
+        <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
+      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );

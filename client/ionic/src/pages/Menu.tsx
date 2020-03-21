@@ -1,5 +1,13 @@
 import React from 'react';
-import { IonContent, IonPage, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel } from '@ionic/react';
+import {
+  IonContent,
+  IonPage,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonLabel,
+} from '@ionic/react';
 
 const Menu: React.FC = () => {
   return (
@@ -7,7 +15,9 @@ const Menu: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            <IonItem href="/menu" color="primary">WHO</IonItem>
+            <IonItem href="/menu" color="primary">
+              WHO
+            </IonItem>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
