@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package who;
+
+message Void {}
+
+// Example service
+service EchoService {
+  rpc echo(EchoMessage) returns (EchoMessage);
+}
+
+message EchoMessage {
+  uint32 value = 1;
+}

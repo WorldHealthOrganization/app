@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <welcome-file-list>
+    <welcome-file>placeholder.html</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/index.html</location>
+  </error-page>
+
+  <listener>
+    <listener-class>who.WhoGuiceServletConfig</listener-class>
+  </listener>
+
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Had to configure this here because there's a bug with request dispatchers in Guice. -->
+  <servlet>
+    <servlet-name>wellKnown</servlet-name>
+    <servlet-class>present.engine.WellKnownServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>wellKnown</servlet-name>
+    <url-pattern>/.well-known/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Redirect to HTTPS. -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>everything</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+</web-app>

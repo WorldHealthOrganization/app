@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <runtime>java8</runtime>
+  <version>v1</version>
+  <threadsafe>true</threadsafe>
+  <instance-class>F4_1G</instance-class>
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+  </system-properties>
+  <sessions-enabled>false</sessions-enabled>
+</appengine-web-app>
