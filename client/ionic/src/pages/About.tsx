@@ -38,12 +38,10 @@ const About: React.FC = () => {
                     Official WHO App for COVID-19
                   </IonCardTitle>
                 </IonCardHeader>
-
                 <IonCardContent className="tl">
                   Learn how to protect yourself and your community. Find medical
                   resources to help.
                 </IonCardContent>
-
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
