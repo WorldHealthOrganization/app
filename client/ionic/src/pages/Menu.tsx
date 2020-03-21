@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  IonContent,
-  IonPage,
-  IonItem,
-  IonLabel,
-  IonImg,
-} from '@ionic/react';
+import { IonContent, IonPage, IonItem, IonLabel, IonImg } from '@ionic/react';
 import 'tachyons';
 
 const Menu: React.FC = () => {

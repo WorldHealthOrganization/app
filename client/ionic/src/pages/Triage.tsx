@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  IonContent,
-  IonPage,
-  IonImg,
-} from '@ionic/react';
+import { IonContent, IonPage, IonImg } from '@ionic/react';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
