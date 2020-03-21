@@ -16,7 +16,7 @@ const About: React.FC = () => {
                  <IonCardSubtitle>Learn how to protect yourself and your community.</IonCardSubtitle>
                  <IonCardSubtitle>Find medical resources to help.</IonCardSubtitle>
                </IonCardHeader>
-               <IonButton href="/Menu" shape="round">Learn More</IonButton>
+               <IonButton href="/menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -30,7 +30,7 @@ const About: React.FC = () => {
                <IonIcon size="large" icon={personAddOutline}></IonIcon>
               </IonCardContent>
               <IonCardContent>
-               <IonButton href="/Menu" shape="round">Learn More</IonButton>
+               <IonButton href="/menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -50,7 +50,7 @@ const About: React.FC = () => {
                <IonIcon size="large" icon={handRightOutline}></IonIcon>
               </IonCardContent>
               <IonCardContent>
-               <IonButton href="/Menu" shape="round">Learn More</IonButton>
+               <IonButton href="/menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -69,7 +69,7 @@ const About: React.FC = () => {
                <IonIcon size="large" icon={peopleOutline}></IonIcon>
               </IonCardContent>
               <IonCardContent>
-               <IonButton href="/Menu" shape="round">Learn More</IonButton>
+               <IonButton href="/menu" shape="round">Learn More</IonButton>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -80,4 +80,3 @@ const About: React.FC = () => {
 };
 
 export default About;
-

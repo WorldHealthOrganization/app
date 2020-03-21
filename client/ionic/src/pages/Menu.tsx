@@ -7,21 +7,21 @@ const Menu: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            <IonItem href="/Menu" color="primary">WHO</IonItem>
+            <IonItem href="/menu" color="primary">WHO</IonItem>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonItem href="/ProtectYourself">
+        <IonItem href="/protect_yourself">
           <IonLabel>Protect Yourself</IonLabel>
         </IonItem>
-        <IonItem href="/Triage">
+        <IonItem href="/triage">
           <IonLabel>Check Your Health</IonLabel>
         </IonItem>
-        <IonItem href="/LocalMaps">
+        <IonItem href="/local_maps">
           <IonLabel>Local Maps</IonLabel>
         </IonItem>
-        <IonItem href="/Share">
+        <IonItem href="/share">
           <IonLabel>Share the App</IonLabel>
         </IonItem>
       </IonContent>
