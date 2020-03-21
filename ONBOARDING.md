@@ -60,14 +60,12 @@ To run on iOS, from the `client/ionic` directory run:
 ```
 ionic build
 ionic capacitor copy ios
-ionic capacitor run ios -l --external
+ionic capacitor run ios
 ```
 
-The above commands run your app using Capacitor with the benefit of live reload. If you'd rather run your iOS app from Xcode with a little bit more control over configuration, you can replace the last line with:
+### Troubleshooting
 
-```
-ionic capacitor open ios
-```
+If you are getting an `unable to open file (in target "App" in project "App")` error message when attempting to build the iOS app in Xcode, this may be related to an issue with needing to install pods from CocoaPods that we are currently investigating. Ensure that your ruby and CocoaPods are up to date, then run `pod install` from the `client/ionic/ios/App` directory. If that install succeeds, you should be able to build your iOS app without issue.
 
 ## Server
 
