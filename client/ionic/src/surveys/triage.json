@@ -1,49 +1,108 @@
 {
-  "title": "Health check",
-  "completedHtml": "Thanks for using this survey. Your data has NOT been transmitted and is only kept locally.",
-  "completedHtmlOnCondition": [
+ "title": "Health Survey",
+ "completedHtmlOnCondition": [
+  {
+   "expression": "{question1} anyof ['item1', 'item2', 'item3']",
+   "html": "Please isolate yourself from others, and call your local healthline <br> read the <a href=/self-isolation> TODO self isolation guide here </a>"
+  },
+  {
+   "expression": "{question2} notempty",
+   "html": "It is advised to stay isolated from others, and if you develop symptoms of fever, difficulty breathing, or a dry cough then please contact your local healthline <br> read the <a href=/self-isolation> TODO self isolation guide here </a>"
+  }
+ ],
+ "pages": [
+  {
+   "name": "page1",
+   "elements": [
     {
-      "expression": "16 > 14",
-      "html": "Given that your symptoms started more than 2 weeks ago and you are not experiencing shortness of breath it is unlikely that you COVID-19.\n\nFeel free to repeat this survey in case your symptoms change."
-    }
-  ],
-  "pages": [
+     "type": "checkbox",
+     "name": "question1",
+     "title": "Are you experiencing any of the following symptoms?",
+     "isRequired": true,
+     "choices": [
+      {
+       "value": "item1",
+       "text": "Fever"
+      },
+      {
+       "value": "item2",
+       "text": "Cough"
+      },
+      {
+       "value": "item3",
+       "text": "Difficulty Breathing"
+      },
+      {
+       "value": "item5",
+       "text": "Other"
+      }
+     ]
+    },
     {
-      "name": "page1",
-      "elements": [
-        {
-          "type": "checkbox",
-          "name": "symptoms",
-          "title": "Which of these symptoms do you have?",
-          "choices": [
-            {
-              "value": "fever",
-              "text": "Fever"
-            },
-            {
-              "value": "cough",
-              "text": "Cough"
-            },
-            {
-              "value": "breath",
-              "text": "Shortness of breath"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "name": "days",
-          "visibleIf": "{symptoms} notempty",
-          "title": "Approximately how long ago did you first notice symptoms?",
-          "description": "Please enter the number of days",
-          "inputType": "number"
-        },
-        {
-          "type": "text",
-          "name": "question1",
-          "visibleIf": "{days} > 14"
-        }
-      ]
+     "type": "checkbox",
+     "name": "question2",
+     "visibleIf": "{question1} contains 'item5'",
+     "title": "Are you experiencing any of the following symptoms?",
+     "choices": [
+      {
+       "value": "item1",
+       "text": "Muscle Pain"
+      },
+      {
+       "value": "item2",
+       "text": "Nasal Congestion"
+      },
+      {
+       "value": "item3",
+       "text": "Sore Throat"
+      },
+      {
+       "value": "item4",
+       "text": "Headache"
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "name": "question3",
+     "visibleIf": "{question1} notempty or {question2} notempty",
+     "title": "When did these symptoms start",
+     "inputType": "date"
+    },
+    {
+     "type": "text",
+     "name": "question5",
+     "visibleIf": "{question1} notempty",
+     "title": "Your Age",
+     "validators": [
+      {
+       "type": "numeric",
+       "text": "must be a number"
+      }
+     ],
+     "inputType": "number"
+    },
+    {
+     "type": "dropdown",
+     "name": "question6",
+     "title": "Your Country",
+     "choices": [
+      "item1",
+      "item2",
+      "item3"
+     ]
     }
-  ]
+   ]
+  }
+ ],
+ "triggers": [
+  {
+   "type": "complete"
+  },
+  {
+   "type": "complete"
+  }
+ ],
+ "showPageTitles": false,
+ "showQuestionNumbers": "off"
 }
