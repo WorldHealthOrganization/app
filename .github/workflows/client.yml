@@ -12,7 +12,7 @@ on:
       - '.github/workflows/**'
       - 'client/ionic/**'
 jobs:
-  test:
+  test-and-build:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
@@ -38,6 +38,7 @@ jobs:
           name: build
           path: ./client/ionic/build
   build-android-debug:
+    needs: test-and-build
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest]
