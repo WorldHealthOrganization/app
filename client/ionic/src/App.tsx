@@ -7,6 +7,8 @@ import { ellipse, square, triangle, camera, medkit } from 'ionicons/icons';
 import About from './pages/About';
 import Menu from './pages/Menu';
 import Triage from './pages/Triage';
+import Protect_Yourself from './pages/Protect_Yourself'
+import Local_Maps from './pages/Local_Maps'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,8 +35,10 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
+        <Route path="/protect_yourself" component={Protect_Yourself} exact={true} />
         <Route path="/triage" component={Triage} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
+        <Route path="/local_maps" component={Local_Maps} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
