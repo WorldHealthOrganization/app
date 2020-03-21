@@ -24,7 +24,7 @@ const About: React.FC = () => {
             <IonCard>
               <IonCardHeader>
                 <IonCardTitle>How it Spreads</IonCardTitle>
-                <IonCardSubtitle>COVID-19 also referred to as "Coronavirus" mainly spreads from person-to-person between people who are in close contact with one another (within about 6 feet or two meters)  through respiratory droplets produced when an infected person coughs or sneezes.</IonCardSubtitle>
+                <IonCardSubtitle>COVID-19, also referred to as "Coronavirus", mainly spreads from person-to-person between people who are in close contact with one another (within about 6 feet or two meters) through respiratory droplets produced when an infected person coughs or sneezes.</IonCardSubtitle>
               </IonCardHeader>
               <IonCardContent>
                <IonIcon size="large" icon={personAddOutline}></IonIcon>
@@ -62,7 +62,7 @@ const About: React.FC = () => {
                  <b>Avoid close contact</b> with people who are sick.
                 </IonCardSubtitle>
                 <IonCardSubtitle>
-                 <b>Maintain distance between yourself and other people</b> if COVID-19 is spreading in you community.  This is especially important for people who are at higher risk of getting very sick including the elderly.
+                 <b>Maintain distance between yourself and other people</b> if COVID-19 is spreading in your community.  This is especially important for people who are at a higher risk of getting very sick, including the elderly.
                 </IonCardSubtitle>
               </IonCardHeader>
               <IonCardContent>
