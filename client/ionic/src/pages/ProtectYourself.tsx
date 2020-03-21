@@ -9,13 +9,12 @@ import {
   IonSlides,
   IonSlide,
   IonCard,
-  IonCardContent
+  IonCardContent,
 } from '@ionic/react';
 import 'tachyons';
 
 const ProtectYourself: React.FC = () => {
   return (
-
     <IonPage className="pa3">
       <IonHeader>
         <IonToolbar>
@@ -36,7 +35,8 @@ const ProtectYourself: React.FC = () => {
                   className="w-80 center"
                   src="assets/img/protect_yourself/wash_hands.png"
                 />
-                <b>Wash your hands</b> often with soap and running water frequently
+                <b>Wash your hands</b> often with soap and running water
+                frequently
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -47,7 +47,8 @@ const ProtectYourself: React.FC = () => {
                   className="w-80 center"
                   src="assets/img/protect_yourself/cover.png"
                 />
-                <b>When coughing and squeezing cover mouth and nose</b> with flexed elbow or tissue
+                <b>When coughing and squeezing cover mouth and nose</b> with
+                flexed elbow or tissue
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -60,38 +61,39 @@ const ProtectYourself: React.FC = () => {
                 />
                 Throw tissue into <b>closed bin</b> immediately after use
               </IonCardContent>
-            </IonCard> 
+            </IonCard>
           </IonSlide>
           <IonSlide>
             <IonCard>
-              <IonCardContent className="pb3 tc ph5">              
+              <IonCardContent className="pb3 tc ph5">
                 <IonImg
                   className="w-80 center"
                   src="assets/img/protect_yourself/wash_hands_often.png"
                 />
                 Wash your hands <b>frequently</b>
               </IonCardContent>
-            </IonCard> 
+            </IonCard>
           </IonSlide>
           <IonSlide>
             <IonCard>
-              <IonCardContent className="pb3 tc ph5">              
+              <IonCardContent className="pb3 tc ph5">
                 <IonImg
                   className="w-80 center"
                   src="assets/img/protect_yourself/avoid_close_contact.png"
                 />
-                <b>Avoid close contact</b> and keep the physical distancing                
+                <b>Avoid close contact</b> and keep the physical distancing
               </IonCardContent>
             </IonCard>
           </IonSlide>
           <IonSlide>
             <IonCard>
-              <IonCardContent className="pb3 tc ph5">              
+              <IonCardContent className="pb3 tc ph5">
                 <IonImg
                   className="w-80 center"
                   src="assets/img/protect_yourself/seek_medical_care.png"
                 />
-                <b>Seek medical care early</b> if you have fever, cough, and difficulty breathing
+                <b>Seek medical care early</b> if you have fever, cough, and
+                difficulty breathing
               </IonCardContent>
             </IonCard>
           </IonSlide>

@@ -33,7 +33,11 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
-        <Route path="/protect_yourself" component={ProtectYourself} exact={true} />
+        <Route
+          path="/protect_yourself"
+          component={ProtectYourself}
+          exact={true}
+        />
         <Route path="/triage" component={Triage} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
       </IonRouterOutlet>
