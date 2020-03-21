@@ -62,7 +62,7 @@ const About: React.FC = () => {
               </IonCardContent>
               <IonCardContent>
                 <IonButton href="/menu" shape="round">
-                  Learn More
+                  {S.learnMore}
                 </IonButton>
               </IonCardContent>
             </IonCard>
@@ -87,7 +87,7 @@ const About: React.FC = () => {
               </IonCardContent>
               <IonCardContent>
                 <IonButton href="/menu" shape="round">
-                  Learn More
+                  {S.learnMore}
                 </IonButton>
               </IonCardContent>
             </IonCard>
@@ -111,7 +111,7 @@ const About: React.FC = () => {
               </IonCardContent>
               <IonCardContent>
                 <IonButton href="/menu" shape="round">
-                  Learn More
+                  {S.learnMore}
                 </IonButton>
               </IonCardContent>
             </IonCard>
