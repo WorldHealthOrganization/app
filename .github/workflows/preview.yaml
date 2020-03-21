@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: '10.x'
     - run: npm install -g @ionic/cli
-    - run: npm install
+    - run: npm ci
       working-directory: ./client/ionic
     - run: ionic build
       working-directory: ./client/ionic
