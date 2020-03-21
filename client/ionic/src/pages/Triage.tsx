@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonItem,
-} from '@ionic/react';
+import { IonContent, IonPage, IonImg } from '@ionic/react';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
+import 'tachyons';
 
 interface TriageState {
   survey: Survey.ReactSurveyModel;
@@ -27,15 +21,12 @@ class Triage extends React.Component<{}, TriageState> {
 
   render() {
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonItem href="/menu" color="primary">
-              WHO
-            </IonItem>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="pa3">
         <IonContent>
+          <IonImg
+            className="w-80 center pb5"
+            src="assets/identity/who-logo-rgb.png"
+          />
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>
