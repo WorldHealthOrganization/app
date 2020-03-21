@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle, camera, medkit } from 'ionicons/icons';
 
 import About from './pages/About';
 import Menu from './pages/Menu';

@@ -56,7 +56,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "1.5.1",
-    "gts": "^1.1.2"
+    "gts": "^1.1.2",
+    "tachyons": "^4.10.0"
   },
   "description": "An Ionic project"
 }
