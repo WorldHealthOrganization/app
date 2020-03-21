@@ -1,11 +1,7 @@
 import React from 'react';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
-  IonItem,
   IonImg,
 } from '@ionic/react';
 import * as Survey from 'survey-react';
