@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+
+   dependencies {
+        classpath 'co.present.rpc:compiler:0.2-SNAPSHOT'
+   }
+}
+
+plugins {
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    maven {
+        url 'https://dl.bintray.com/palantir/releases/'
+    }
+}
+
+apply plugin: 'co.present.rpc.compiler'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+configurations.all {
+    // This is pulled in via appengine-gcs-client. :-(
+    exclude group: 'com.google.guava', module: 'guava-jdk5'
+}
+
+dependencies {
+    compile 'com.google.appengine:appengine-api-1.0-sdk:+' // Latest App Engine Api's
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+
+    implementation deps.slf4j.jdk14
+
+    // Force newer version
+    implementation 'com.google.http-client:google-http-client:1.29.0'
+
+    implementation deps.guava
+    implementation 'co.present.rpc:server:0.2-SNAPSHOT'
+    implementation 'co.present.rpc:client:0.2-SNAPSHOT'
+    implementation 'com.opencsv:opencsv:4.0'
+
+    implementation 'com.google.inject:guice:4.2.2:no_aop'
+    implementation 'com.google.inject.extensions:guice-servlet:4.2.2'
+
+    implementation 'com.googlecode.objectify:objectify:5.1.22'
+
+    // Force older version of okio
+    implementation 'com.squareup.okio:okio:1.13.0'
+
+    implementation deps.gson
+    implementation deps.wire.gson
+    implementation deps.present.engine
+    implementation deps.okhttp;
+
+    // Not sure why this didn't come in with present-engine...
+    implementation 'com.google.appengine:appengine-remote-api:+'
+    implementation 'com.google.appengine:appengine-remote-api:+'
+
+    // Roboslack Dependencies
+    implementation 'com.palantir.roboslack:roboslack-webhook:1.3.0'
+    implementation 'com.palantir.roboslack:roboslack-api:1.3.0'
+    implementation 'com.palantir.roboslack:roboslack-webhook-api:1.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.google.appengine:appengine-testing:+'
+    testCompile 'com.google.appengine:appengine-api-stubs:+'
+    testCompile 'com.google.appengine:appengine-tools-sdk:+'
+}
+
+// Builds an exploded war
+task explodedWar(type: Sync) {
+    into "$buildDir/war"
+    with war
+}
+war.dependsOn explodedWar
+
+// TODO: Copy web app from Ionic build.
+//war {
+//    from "../react/build"
+//}

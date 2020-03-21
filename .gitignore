@@ -12,6 +12,7 @@ local.properties
 build
 DerivedData
 cache/
+out/
 
 # Android Studio
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
