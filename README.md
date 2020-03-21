@@ -30,6 +30,10 @@ We want to get this out and working so we can move on to more significant functi
 
 We are assessing the feature roadmap (contact tracing and more) for the next and subsequent releases.
 
+## Getting Started
+
+See [ONBOARDING](https://github.com/WorldHealthOrganization/app/blob/master/ONBOARDING.md)
+
 ## Community
 
 GitHub: https://github.com/WorldHealthOrganization/app
