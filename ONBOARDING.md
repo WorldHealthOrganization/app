@@ -55,11 +55,17 @@ ionic capacitor copy android
 ionic capacitor run android -l --host=YOUR_IP_ADDRESS
 ```
 
-To run on an iPhone Simulator using Xcode, from the `client/ionic` directory run:
+To run on iOS, from the `client/ionic` directory run:
 
 ```
 ionic build
 ionic capacitor copy ios
+ionic capacitor run ios -l --external
+```
+
+The above commands run your app using Capacitor with the benefit of live reload. If you'd rather run your iOS app from Xcode with a little bit more control over configuration, you can replace the last line with:
+
+```
 ionic capacitor open ios
 ```
 
