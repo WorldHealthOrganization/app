@@ -8,32 +8,34 @@ First thing's first - in order to keep track of everyone working on the project,
 
 Next - introduce yourself in the #intros channel on [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw)!
 
+If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
+
 ## Resources
 
 Where to find answers to your questions:
 
-* Github Issues: https://github.com/WorldHealthOrganization/app/issues
+* GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
 * Slack: https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw
 * Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
 * Most up-to-date view of app designs: TBD
 * Most up-to-date preview of app in development: TBD
 
-Most discussion will be taking place in a combination of Slack and Github issues, so those are your best places to start.
+Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
 
 ## Point People
 
 This is very much a committee effort, and we are moving quickly enough that we have to self-organize as much as we can. You're encouraged to step up and find places to contribute rather than relying on anyone to tell you what to do. Even in just the first couple days of the project, there has been incredible effort from a lot of contributors. With that said, there are a couple people helping play point around different areas that are trying to keep a pulse of everything going on in those areas:
 
 * Karen Wong - all things Product
-* Vivian Cromwell - all things Design
-* Hunter Spinks - all things Engineering
+* Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
+* Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
 
 # Getting Started
 
 Please review the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/CONTRIBUTING.md) before making any contributions to the code. Note that you'll need to add yourself to the [LICENSE](LICENSE) contributor list on your first commit.
 
-This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory.
+This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
 
 ## Client
 
