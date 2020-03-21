@@ -33,6 +33,7 @@ jobs:
         env:
           CI: true
       - run: ionic build
+        working-directory: ./client/ionic
       - uses: actions/upload-artifact@v1
         with:
           name: build
