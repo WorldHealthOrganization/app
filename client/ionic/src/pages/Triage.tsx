@@ -30,10 +30,10 @@ class Triage extends React.Component<{}, TriageState> {
     return (
       <IonPage className="pa3">
         <IonContent>
-        <IonImg
-          className="w-80 center pb5"
-          src="assets/identity/who-logo-rgb.png"
-        />
+          <IonImg
+            className="w-80 center pb5"
+            src="assets/identity/who-logo-rgb.png"
+          />
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>
