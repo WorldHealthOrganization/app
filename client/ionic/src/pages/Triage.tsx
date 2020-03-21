@@ -5,10 +5,10 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonItem,
 } from '@ionic/react';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
-import styles from './Triage.module.css';
 import triage from '../surveys/triage.json';
 
 interface TriageState {
@@ -27,18 +27,15 @@ class Triage extends React.Component<{}, TriageState> {
 
   render() {
     return (
-      <IonPage className={styles.page}>
+      <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Tab 3</IonTitle>
+            <IonItem href="/menu" color="primary">
+              WHO
+            </IonItem>
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">Tab 3</IonTitle>
-            </IonToolbar>
-          </IonHeader>
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>
