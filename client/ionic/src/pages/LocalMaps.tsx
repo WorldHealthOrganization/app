@@ -8,19 +8,19 @@ import {
   IonItem,
 } from '@ionic/react';
 
-class Local_Maps extends React.Component<{}> {
+class LocalMaps extends React.Component<{}> {
   constructor(args: Readonly<{}>) {
-  super(args);
-  this.state = {}
-}
+    super(args);
+    this.state = {};
+  }
 
   render() {
     return (
       <IonPage>
-      <IonHeader>
+        <IonHeader>
           <IonToolbar>
             <IonItem href="/menu" color="primary">
-            WHO
+              WHO
             </IonItem>
           </IonToolbar>
         </IonHeader>
@@ -28,6 +28,4 @@ class Local_Maps extends React.Component<{}> {
     );
   }
 }
-
-export default Local_Maps;
-
+export default LocalMaps;

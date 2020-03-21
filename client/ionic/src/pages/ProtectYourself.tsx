@@ -8,19 +8,19 @@ import {
   IonItem,
 } from '@ionic/react';
 
-class Protect_Yourself extends React.Component<{}> {
+class ProtectYourself extends React.Component<{}> {
   constructor(args: Readonly<{}>) {
-  super(args);
-  this.state = {}
-}
+    super(args);
+    this.state = {};
+  }
 
   render() {
     return (
       <IonPage>
-      <IonHeader>
+        <IonHeader>
           <IonToolbar>
             <IonItem href="/menu" color="primary">
-            WHO
+              WHO
             </IonItem>
           </IonToolbar>
         </IonHeader>
@@ -28,5 +28,4 @@ class Protect_Yourself extends React.Component<{}> {
     );
   }
 }
-
-export default Protect_Yourself;
+export default ProtectYourself;
