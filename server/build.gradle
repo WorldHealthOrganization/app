@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+
+    ext.versions = [
+        'okhttp': '3.9.1',
+        'slf4j': '1.7.25',
+        'wire': '2.2.0',
+    ]
+
+    ext.deps = [
+        'okhttp': "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+        'slf4j': [
+            'api': "org.slf4j:slf4j-api:${versions.slf4j}",
+            'jdk14': "org.slf4j:slf4j-jdk14:${versions.slf4j}",
+        ],
+        'guava': "com.google.guava:guava:27.0.1-jre",
+        'gson': "com.google.code.gson:gson:2.8.5",
+        'servlet': "javax.servlet:javax.servlet-api:3.1.0",
+        'junit': "junit:junit:4.12",
+        'wire': [
+            'compiler': "com.squareup.wire:wire-compiler:${versions.wire}",
+            'gson': "com.squareup.wire:wire-gson-support:${versions.wire}",
+            'runtime': "com.squareup.wire:wire-runtime:${versions.wire}",
+            'schema': "com.squareup.wire:wire-schema:${versions.wire}",
+        ],
+        'present': [
+            'engine': "co.present:engine:0.1-SNAPSHOT",
+        ],
+    ]
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+}
+
+subprojects {
+    version = '1.0'
+}
