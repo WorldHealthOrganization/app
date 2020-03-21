@@ -30,9 +30,9 @@ jobs:
         working-directory: ./client/ionic
       - run: npm test
         working-directory: ./client/ionic
-      - run: ionic build
         env:
           CI: true
+      - run: ionic build
       - uses: actions/upload-artifact@v1
         with:
           name: build
