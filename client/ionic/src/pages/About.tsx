@@ -19,6 +19,7 @@ import {
   handLeftOutline,
   peopleOutline,
 } from 'ionicons/icons';
+import {S} from "../i18n/S";
 
 const About: React.FC = () => {
   return (
@@ -39,7 +40,7 @@ const About: React.FC = () => {
                   </IonCardSubtitle>
                 </IonCardHeader>
                 <IonButton href="/menu" shape="round">
-                  Learn More
+                  {S.learnMore}
                 </IonButton>
               </IonCardContent>
             </IonCard>
