@@ -11,6 +11,7 @@ import {
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
+import 'tachyons'
 
 interface TriageState {
   survey: Survey.ReactSurveyModel;

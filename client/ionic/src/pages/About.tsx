@@ -19,6 +19,7 @@ import {
   handLeftOutline,
   peopleOutline,
 } from 'ionicons/icons';
+import 'tachyons';
 
 const About: React.FC = () => {
   return (

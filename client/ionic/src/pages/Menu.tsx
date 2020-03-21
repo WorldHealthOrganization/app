@@ -9,6 +9,7 @@ import {
   IonLabel,
   IonImg,
 } from '@ionic/react';
+import 'tachyons';
 
 const Menu: React.FC = () => {
   return (
