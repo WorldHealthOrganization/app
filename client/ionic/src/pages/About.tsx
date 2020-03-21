@@ -24,26 +24,26 @@ const About: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <IonSlides pager={true}>
-          <IonSlide>
-            <IonCard>
-              <IonCardContent>
-                <IonImg src="assets/identity/who-logo-rgb.png" />
-                <IonCardHeader>
-                  <IonCardTitle>Official WHO App for COVID-19</IonCardTitle>
-                  <IonCardSubtitle>
-                    Learn how to protect yourself and your community.
-                  </IonCardSubtitle>
-                  <IonCardSubtitle>
-                    Find medical resources to help.
-                  </IonCardSubtitle>
-                </IonCardHeader>
-                <IonButton href="/menu" shape="round">
-                  Learn More
-                </IonButton>
-              </IonCardContent>
-            </IonCard>
-          </IonSlide>
+        <IonImg class="w-80 center" src="assets/identity/who-logo-rgb.png" />
+          <IonSlides pager={true}>
+            <IonSlide>
+              <IonCard>
+                <IonCardContent>
+                  <IonCardHeader>
+                    <IonCardTitle>Official WHO App for COVID-19</IonCardTitle>
+                    <IonCardSubtitle>
+                      Learn how to protect yourself and your community.
+                    </IonCardSubtitle>
+                    <IonCardSubtitle>
+                      Find medical resources to help.
+                    </IonCardSubtitle>
+                  </IonCardHeader>
+                  <IonButton href="/menu" shape="round">
+                    Learn More
+                  </IonButton>
+                </IonCardContent>
+              </IonCard>
+            </IonSlide>
           <IonSlide>
             <IonCard>
               <IonCardHeader>
