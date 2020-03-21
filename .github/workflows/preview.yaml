@@ -26,6 +26,12 @@ jobs:
       with:
         node-version: '10.x'
     - run: npm install -g @ionic/cli
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm ci
       working-directory: ./client/ionic
     - run: ionic build
