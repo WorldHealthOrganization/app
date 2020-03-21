@@ -21,6 +21,7 @@
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
     "survey-react": "^1.5.16",
     "typescript": "3.7.4"
   },
@@ -54,8 +55,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "1.5.1",
-    "gts": "^1.1.2",
-    "react-scripts": "3.4.0"
+    "gts": "^1.1.2"
   },
   "description": "An Ionic project"
 }

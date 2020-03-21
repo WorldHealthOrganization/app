@@ -19,7 +19,7 @@ const Menu: React.FC = () => {
           src="assets/identity/who-logo-rgb.png"
         />
         <IonItem href="/protect_yourself" color="primary" className = "pb3 tc ph5" >
-          <IonLabel>Protect Yourself</IonLabel>
+          <IonLabel >Protect Yourself</IonLabel>
         </IonItem>
         <IonItem href="/triage" color="primary" className = "pb3 tc ph5" >
           <IonLabel>Check Your Health</IonLabel>
