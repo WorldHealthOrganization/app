@@ -6,6 +6,7 @@ import {
   IonTitle,
   IonToolbar,
   IonItem,
+  IonImg,
 } from '@ionic/react';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
@@ -27,15 +28,12 @@ class Triage extends React.Component<{}, TriageState> {
 
   render() {
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonItem href="/menu" color="primary">
-              WHO
-            </IonItem>
-          </IonToolbar>
-        </IonHeader>
+      <IonPage className="pa3">
         <IonContent>
+        <IonImg
+          className="w-80 center pb5"
+          src="assets/identity/who-logo-rgb.png"
+        />
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>

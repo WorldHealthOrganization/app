@@ -32,8 +32,8 @@ const About: React.FC = () => {
           <IonSlide>
             <IonCard className="h-100">
               <IonCardContent>
-                <IonCardHeader>
-                  <IonCardTitle>Official WHO App for COVID-19</IonCardTitle>
+                <IonCardHeader >
+                  <IonCardTitle className = "near-black">Official WHO App for COVID-19</IonCardTitle>
                 </IonCardHeader>
 
                 <IonCardContent className="tl">
@@ -50,7 +50,7 @@ const About: React.FC = () => {
           <IonSlide>
             <IonCard>
               <IonCardHeader>
-                <IonCardTitle>How it Spreads</IonCardTitle>
+                <IonCardTitle className = "near-black">How it Spreads</IonCardTitle>
                 <IonCardSubtitle></IonCardSubtitle>
               </IonCardHeader>
               <IonIcon size="large" icon={personAddOutline}></IonIcon>
@@ -71,7 +71,7 @@ const About: React.FC = () => {
           <IonSlide>
             <IonCard>
               <IonCardHeader>
-                <IonCardTitle>Clean Your Hands</IonCardTitle>
+                <IonCardTitle className = "near-black">Clean Your Hands</IonCardTitle>
                 <IonCardSubtitle></IonCardSubtitle>
               </IonCardHeader>
               <IonCardSubtitle></IonCardSubtitle>
@@ -94,7 +94,7 @@ const About: React.FC = () => {
           <IonSlide>
             <IonCard>
               <IonCardHeader>
-                <IonCardTitle>Avoid Close Contact</IonCardTitle>
+                <IonCardTitle className = "near-black">Avoid Close Contact</IonCardTitle>
                 <IonCardSubtitle></IonCardSubtitle>
               </IonCardHeader>
               <IonIcon size="large" icon={peopleOutline}></IonIcon>
