@@ -1,5 +1,5 @@
 {
-  "appId": "int.who.app",
+  "appId": "test.who.app",
   "appName": "whoapp",
   "bundledWebRuntime": false,
   "npmClient": "npm",
