@@ -42,7 +42,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
-                <ShareButton message="Check out the official WHO App"/>
+                <ShareButton message="Check out the official WHO App" />
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -65,7 +65,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
-                <ShareButton message="Check out the official WHO App"/>
+                <ShareButton message="Check out the official WHO App" />
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
-                <ShareButton message="Check out the official WHO App"/>
+                <ShareButton message="Check out the official WHO App" />
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -116,7 +116,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
-                <ShareButton message="Check out the official WHO App"/>
+                <ShareButton message="Check out the official WHO App" />
               </IonCardContent>
             </IonCard>
           </IonSlide>

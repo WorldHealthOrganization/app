@@ -8,7 +8,7 @@ import {
   IonItem,
   IonLabel,
 } from '@ionic/react';
-import {shareMessage} from '../components/ShareButton';
+import { shareMessage } from '../components/ShareButton';
 const Menu: React.FC = () => {
   return (
     <IonPage>
@@ -31,7 +31,7 @@ const Menu: React.FC = () => {
         <IonItem href="/local_maps">
           <IonLabel>Local Maps</IonLabel>
         </IonItem>
-        <IonItem onClick={()=>shareMessage("Check the WHO App out")}>
+        <IonItem onClick={() => shareMessage('Check the WHO App out')}>
           <IonLabel>Share the App</IonLabel>
         </IonItem>
       </IonContent>

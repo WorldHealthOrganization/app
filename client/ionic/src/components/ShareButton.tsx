@@ -6,18 +6,16 @@ interface ShareConfig {
   message: string;
 }
 
-
-
 const ShareButton: React.FC<ShareConfig> = ({ message }) => {
   return (
-    <IonButton shape="round" onClick={()=>shareMessage(message)}>
+    <IonButton shape="round" onClick={() => shareMessage(message)}>
       Share
     </IonButton>
   );
 };
 
-function shareMessage(message: string){
-  SocialSharing.share(message)
+function shareMessage(message: string) {
+  SocialSharing.share(message);
 }
 export default ShareButton;
-export {shareMessage};
+export { shareMessage };
