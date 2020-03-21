@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@capacitor/android": "^1.5.1",
+    "@capacitor/android": "1.5.1",
     "@capacitor/core": "1.5.1",
+    "@capacitor/ios": "1.5.1",
     "@ionic/react": "^5.0.0",
     "@ionic/react-router": "^5.0.0",
     "@testing-library/jest-dom": "^4.2.4",
