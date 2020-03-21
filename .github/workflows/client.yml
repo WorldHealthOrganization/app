@@ -66,6 +66,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
       - run: npm install -g @ionic/cli
       - run: npm install
         working-directory: ./client/ionic
@@ -73,5 +76,8 @@ jobs:
         working-directory: ./client/ionic
       - run: ionic capacitor copy ios
         working-directory: ./client/ionic
+      - run: gem install cocoapods
+      - run: pod install
+        working-directory: ./client/ionic/ios/App
       - run: xcodebuild -scheme App build -workspace ios/App/App.xcworkspace CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
         working-directory: ./client/ionic
