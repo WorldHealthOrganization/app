@@ -22,7 +22,18 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: npm install -g @ionic/cli
+    - run: npm install
+      working-directory: ./client/ionic
+    - run: ionic build
+      working-directory: ./client/ionic
     # Runs a single command using the runners shell
     - name: Check if we have sshpass
-      run: sshpass
-
+      env:
+        SSHPASS: ${{ secrets.PREVIEW_SECRET }}
+        TARGET: ${{ secrets.PREVIEW_TARGET }}
+      run: echo 'put -r build/* subdomains/preview' | sshpass -e sftp -oStrictHostKeyChecking=no $TARGET
+      working-directory: ./client/ionic
