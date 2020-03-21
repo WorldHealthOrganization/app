@@ -19,6 +19,7 @@ import {
   handLeftOutline,
   peopleOutline,
 } from 'ionicons/icons';
+import ShareButton from '../components/ShareButton';
 
 const About: React.FC = () => {
   return (
@@ -41,6 +42,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
+                <ShareButton message="Check out the official WHO App"/>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -63,6 +65,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
+                <ShareButton message="Check out the official WHO App"/>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -88,6 +91,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
+                <ShareButton message="Check out the official WHO App"/>
               </IonCardContent>
             </IonCard>
           </IonSlide>
@@ -112,6 +116,7 @@ const About: React.FC = () => {
                 <IonButton href="/menu" shape="round">
                   Learn More
                 </IonButton>
+                <ShareButton message="Check out the official WHO App"/>
               </IonCardContent>
             </IonCard>
           </IonSlide>

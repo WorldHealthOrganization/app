@@ -5,6 +5,8 @@
   "dependencies": {
     "@capacitor/android": "^1.5.1",
     "@capacitor/core": "1.5.1",
+    "@ionic-native/core": "^5.22.0",
+    "@ionic-native/social-sharing": "^5.22.0",
     "@ionic/react": "^5.0.0",
     "@ionic/react-router": "^5.0.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -56,6 +58,14 @@
   "devDependencies": {
     "@capacitor/cli": "1.5.1",
     "gts": "^1.1.2"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|@ionic-native|@ionic)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   },
   "description": "An Ionic project"
 }
