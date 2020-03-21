@@ -1,0 +1,7 @@
+{
+  "name": "whoapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
