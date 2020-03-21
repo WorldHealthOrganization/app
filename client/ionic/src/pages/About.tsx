@@ -78,8 +78,8 @@ const About: React.FC = () => {
               <IonIcon size="large" icon={handLeftOutline}></IonIcon>
               <IonIcon size="large" icon={handRightOutline}></IonIcon>
               <IonCardContent>
-                <b>Wash your hands often</b> with soad and water for at least 20
-                sconds, especially after you have been in a public place, or
+                <b>Wash your hands often</b> with soap and water for at least 20
+                seconds, especially after you have been in a public place, or
                 after blowing your nose, coughing or sneezing.
                 <b>Avoid touching your eyes, nose, and mouth</b> with unwashed
                 hands.
