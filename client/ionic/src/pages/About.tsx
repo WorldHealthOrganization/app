@@ -58,7 +58,7 @@ const About: React.FC = () => {
                         <IonCardContent>
                           <IonButton
                             className="center"
-                            href="/menu"
+                            routerLink="/menu"
                             shape="round"
                           >
                             {S.learnMore}
