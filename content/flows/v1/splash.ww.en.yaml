@@ -1,0 +1,39 @@
+type: LinearCarousel
+screens:
+  - type: TextImage
+    headingText: Official WHO App for COVID-19
+    bodyTexts:
+      - >
+        Learn how to protect yourself and your community.
+        Find medical resources to help.
+  - type: TextImage
+    headingText: How it Spreads
+    bodyTexts:
+      - >
+        COVID-19, also referred to as "Coronavirus", mainly spreads
+        from person-to-person between people who are in close contact
+        with one another (within about 6 feet or two meters) through
+        respiratory droplets produced when an infected person coughs
+        or sneezes.
+    bottomImageUri: placeholder/protect/cough.png
+  - type: TextImage
+    headingText: Clean Your Hands
+    bodyTexts:
+      - >
+        Wash your hands often with soap and water for at least
+        20 seconds, especially after you have been in a public place,
+        or after blowing your nose, coughing or sneezing.
+      - >
+        Avoid touching your eyes, nose, and mouth with unwashed
+        hands.
+    bottomImageUri: placeholder/protect/washHands.png
+  - type: TextImage
+    headingText: Avoid Close Contact
+    bodyTexts:
+      - Avoid close contact with people who are sick.
+      - >
+        Maintain distance between yourself and other people if
+        COVID-19 is spreading in your community. This is especially
+        important for people who are at a higher risk of getting very
+        sick, including the elderly.
+    bottomImageUri: placeholder/protect/distance.png

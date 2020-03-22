@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -6,27 +7,21 @@ import {
   IonSlide,
   IonCard,
   IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonButton,
   IonImg,
 } from '@ionic/react';
+import TopNav from '../components/TopNav';
 import 'tachyons';
+import { getUserContext } from '../content/userContext';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 
-// TODO: Rename to Splash, after other PRs to avoid conflicts.
-const About: React.FC = () => {
+const CopingParents: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('splash');
+  const flow = useDynamicFlow('copingParents');
   return (
     <IonPage className="pa3">
+      <TopNav />
       <IonContent>
-        <IonImg
-          className="w-80 center"
-          src="assets/identity/who-logo-rgb.png"
-        />
         {flow.content && flow.content.screens && (
           <IonSlides pager={true}>
             {flow.content.screens.map(screen => {
@@ -35,34 +30,19 @@ const About: React.FC = () => {
                   return (
                     <IonSlide>
                       <IonCard>
-                        <IonCardHeader>
-                          <IonCardTitle className="near-black">
-                            {screen.headingText}
-                          </IonCardTitle>
-                          <IonCardSubtitle></IonCardSubtitle>
-                        </IonCardHeader>
-                        <IonCardContent className="tl">
-                          {screen.bodyTexts &&
-                            screen.bodyTexts.map(txt => <p>{txt}</p>)}
+                        <IonCardContent className="pb3 tc ph5">
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
                             <IonImg
-                              className="center"
+                              className="w-80 center"
                               style={{
-                                width: 100,
+                                width: 260,
                               }}
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
-                        </IonCardContent>
-                        <IonCardContent>
-                          <IonButton
-                            className="center"
-                            href="/menu"
-                            shape="round"
-                          >
-                            Learn More
-                          </IonButton>
+                          {screen.bodyTexts &&
+                            screen.bodyTexts.map(txt => <p>{txt}</p>)}
                         </IonCardContent>
                       </IonCard>
                     </IonSlide>
@@ -78,4 +58,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default CopingParents;

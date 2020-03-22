@@ -4,7 +4,11 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 import About from './pages/About';
+import CopingEveryone from './pages/CopingEveryone';
+import CopingParents from './pages/CopingParents';
 import Menu from './pages/Menu';
+import MenuDistress from './pages/MenuDistress';
+import ProtectYourself from './pages/ProtectYourself';
 import Triage from './pages/Triage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -31,7 +35,19 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
+        <Route
+          path="/coping-everyone"
+          component={CopingEveryone}
+          exact={true}
+        />
+        <Route path="/coping-parents" component={CopingParents} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
+        <Route path="/menu-distress" component={MenuDistress} exact={true} />
+        <Route
+          path="/protect-yourself"
+          component={ProtectYourself}
+          exact={true}
+        />
         <Route path="/triage" component={Triage} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
       </IonRouterOutlet>
