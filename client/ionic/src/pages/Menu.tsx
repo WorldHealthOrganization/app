@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNav from '../components/TopNav';
-import { IonContent, IonPage, IonItem, IonLabel} from '@ionic/react';
+import { IonContent, IonPage, IonItem, IonLabel } from '@ionic/react';
 import 'tachyons';
 
 const Menu: React.FC = () => {
