@@ -12,7 +12,7 @@ If you need access to issues & tasks on GitHub, please add your GitHub username 
 
 ## Daily Standup
 
-We have a regular, daily all-hands over Zoom at 11am PST. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
+We have a regular, daily all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
 
 ## Resources
 
@@ -27,11 +27,23 @@ Where to find answers to your questions:
 
 Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
 
+### Key Slack Channels
+
+For key conversations related to each major area, please see the following Slack channels:
+
+* `#eng` - Engineering
+* `#design` - Design
+* `#product` - Product
+* `#intros` - the place every new member should introduce themselves
+* `#standup` - communication around our daily standup (including details how to join)
+* `#techtointegrate` - sharing other projects or libraries that could have synergies with our goals
+* `futureideas` - sharing ideas for downstream features
+
 ## Point People
 
 This is very much a committee effort, and we are moving quickly enough that we have to self-organize as much as we can. You're encouraged to step up and find places to contribute rather than relying on anyone to tell you what to do. Even in just the first couple days of the project, there has been incredible effort from a lot of contributors. With that said, there are a couple people helping play point around different areas that are trying to keep a pulse of everything going on in those areas:
 
-* Karen Wong ([asianfoodlab](https://github.com/viviancromwell)) - all things Product
+* Karen Wong ([asianfoodlab](https://github.com/asianfoodlab)) - all things Product
 * Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
 * Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
 
