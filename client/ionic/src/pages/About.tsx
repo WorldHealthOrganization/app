@@ -14,6 +14,7 @@ import {
 } from '@ionic/react';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
+import { S } from '../i18n/S';
 
 // TODO: Rename to Splash, after other PRs to avoid conflicts.
 const About: React.FC = () => {
@@ -61,7 +62,7 @@ const About: React.FC = () => {
                             href="/menu"
                             shape="round"
                           >
-                            Learn More
+                            {S.learnMore}
                           </IonButton>
                         </IonCardContent>
                       </IonCard>
