@@ -3,11 +3,15 @@
  "completedHtmlOnCondition": [
   {
    "expression": "{question1} anyof ['item1', 'item2', 'item3']",
-   "html": "You may not necessarily have CORVID-19, but please follow the following steps: <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: call your doctor"
+   "html": "For your symptoms please follow these steps: <br> <br> Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: call your doctor"
   },
   {
-   "expression": "{question2} notempty",
-   "html": "There is a low probability that these symptoms relate to CORVID-19, but please follow the following steps to protect yourself and others: <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: call your doctor"
+   "expression": "{question2} anyof ['item1', 'item2', 'item3', 'item4']",
+   "html": "There is a low probability that these symptoms relate to CORVID-19, but please follow the following steps to protect yourself and others: <br> <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor, do not visit in person"
+  },
+  {
+   "expression": "{question7} anyof ['item1', 'item2', 'item3'] or {question5} >= 60",
+   "html": "You do not contain any of the symptoms of CORVID-19, however you are at higher risk. <br> <br> <ul><li>Take everyday precautions to keep space between yourself and others.</li><li>When you go out in public, keep away from others who are sick, limit close contact and wash your hands often.</li><li>During a COVID-19 outbreak in your community, stay home as much as possible to further reduce your risk of being exposed.</li><li>Have enough household items, groceries and necessary medications on hand so that you will be prepared to stay at home for a period of time.</li><li>Keep the number of your local doctor or healthline handy in the event that you develop symptoms</li></ul> "
   }
  ],
  "pages": [
@@ -60,12 +64,14 @@
        "value": "item4",
        "text": "Headache"
       }
-     ]
+     ],
+     "hasNone": true,
+     "noneText": "None of the above"
     },
     {
      "type": "text",
      "name": "question3",
-     "visibleIf": "{question1} notempty or {question2} notempty",
+     "visibleIf": "{question1} anyof ['item1', 'item2', 'item3'] or {question2} anyof ['item1', 'item2', 'item3', 'item4']",
      "title": "When did these symptoms start",
      "inputType": "date"
     },
@@ -122,6 +128,7 @@
    "type": "complete"
   }
  ],
+ "showTitle": false,
  "showPageTitles": false,
  "showQuestionNumbers": "off"
 }
