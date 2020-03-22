@@ -11,7 +11,7 @@ const Menu: React.FC = () => {
           src="assets/identity/who-logo-rgb.png"
         />
         <IonItem
-          href="/protect_yourself"
+          href="/protect-yourself"
           color="primary"
           className="pb3 tc ph5"
         >
