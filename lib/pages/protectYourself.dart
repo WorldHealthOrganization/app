@@ -8,38 +8,34 @@ class ProtectYourself extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-      PageView(
-        controller: pageController,
-        children: <Widget>[
-          slide("assets/washHands.png",
-              AppLocalizations.of(context).translate("washHands"), context, 0),
-          slide(
-              "assets/cough.png",
-              AppLocalizations.of(context).translate("cougningAndSneezing"),
-              context, 1),
-          slide(
-              "assets/cough.png",
-              AppLocalizations.of(context).translate("throwAwayTissue"),
-              context,2),
-          slide(
-              "assets/washHands.png",
-              AppLocalizations.of(context).translate("washHandsFrequently"),
-              context,3),
-          slide(
-              "assets/distance.png",
-              AppLocalizations.of(context).translate("socialDistancing"),
-              context,4),
-          slide(
-              "assets/distance.png",
-              AppLocalizations.of(context).translate("seekMedicalCare"),
-              context,5),
-        ],
-      ),
-    );
+    return CarouselView([
+      CarouselSlide("assets/washHands.png",
+          AppLocalizations.of(context).translate("washHands"), context),
+      CarouselSlide(
+          "assets/cough.png",
+          AppLocalizations.of(context).translate("cougningAndSneezing"),
+          context),
+      CarouselSlide("assets/cough.png",
+          AppLocalizations.of(context).translate("throwAwayTissue"), context),
+      CarouselSlide(
+          "assets/washHands.png",
+          AppLocalizations.of(context).translate("washHandsFrequently"),
+          context),
+      CarouselSlide("assets/distance.png",
+          AppLocalizations.of(context).translate("socialDistancing"), context),
+      CarouselSlide("assets/distance.png",
+          AppLocalizations.of(context).translate("seekMedicalCare"), context),
+    ]);
   }
+}
 
-  Widget slide(String imgSrc, String message, BuildContext context, int index) {
+class CarouselSlide extends StatelessWidget {
+  CarouselSlide(this.imgSrc, this.message, this.context);
+  final String imgSrc;
+  final String message;
+  final BuildContext context;
+  @override
+  Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * 9 / 10;
 
     return Container(
@@ -55,19 +51,21 @@ class ProtectYourself extends StatelessWidget {
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),
-            Expanded(
-          child: Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: LinearProgressIndicator(
-                backgroundColor: Colors.transparent,
-                valueColor: new AlwaysStoppedAnimation<Color>(Constants.primaryColor),
-                value: (index+1)/6,
-              ),
-            ),),)
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CarouselView extends StatelessWidget {
+  List<CarouselSlide> items = [];
+  CarouselView(this.items);
+  @override
+  Widget build(BuildContext context) {
+    return PageScaffold(
+         PageView(
+        children: this.items,
       ),
     );
   }
