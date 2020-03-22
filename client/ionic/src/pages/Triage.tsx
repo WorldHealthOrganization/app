@@ -20,8 +20,8 @@ class Triage extends React.Component<{}, TriageState> {
 
     const survey = new Survey.ReactSurveyModel(triage);
     // Update CSS classes
-    survey.onUpdateQuestionCssClasses.add(function(survey, options) {
-      var classes = options.cssClasses;
+    survey.onUpdateQuestionCssClasses.add((survey, options) => {
+      const classes = options.cssClasses;
       classes.mainRoot += ' f4';
       classes.root = 'sq-root';
       classes.title += '';

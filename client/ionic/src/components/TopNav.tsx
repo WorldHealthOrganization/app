@@ -5,12 +5,12 @@ const TopNav: React.FC = () => {
   return (
     <IonHeader>
       <IonToolbar>
-        <IonItem href="/menu" >
+        <IonItem href="/menu">
           <IonImg
             className="w-80 h3 center pb3"
             src="assets/identity/who-logo-rgb.png"
           />
-        </IonItem >
+        </IonItem>
       </IonToolbar>
     </IonHeader>
   );
