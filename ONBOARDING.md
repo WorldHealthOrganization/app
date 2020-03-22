@@ -6,9 +6,13 @@ The goal of this document is to give you a starting point for where to find the 
 
 First thing's first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://docs.google.com/spreadsheets/d/1jt4xrXWUnsh8DmtawNV4XGBj8RAdgn-d7ckgL2qEXPM/edit#gid=0
 
-Next - introduce yourself in the #intros channel on [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw)!
+Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw) introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
 
 If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
+
+## Daily Standup
+
+We have a regular, daily all-hands over Zoom at 11am PST. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
 
 ## Resources
 
@@ -18,8 +22,8 @@ Where to find answers to your questions:
 * Slack: https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw
 * Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
-* Most up-to-date view of app designs: TBD
-* Most up-to-date preview of app in development: TBD
+* Most up-to-date app design spec: https://github.com/WorldHealthOrganization/app/issues/129
+* Most up-to-date preview of app in development: https://preview.whoapp.org/about
 
 Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
 
@@ -31,7 +35,7 @@ This is very much a committee effort, and we are moving quickly enough that we h
 * Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
 * Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
 
-# Getting Started
+# Building and Running
 
 Please review the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/CONTRIBUTING.md) before making any contributions to the code. Note that you'll need to add yourself to the [LICENSE](LICENSE) contributor list on your first commit.
 
