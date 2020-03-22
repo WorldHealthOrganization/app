@@ -1,5 +1,6 @@
 import React from 'react';
-import { IonContent, IonPage, IonImg } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
+import TopNav from '../components/TopNav';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
@@ -22,11 +23,8 @@ class Triage extends React.Component<{}, TriageState> {
   render() {
     return (
       <IonPage className="pa3">
+        <TopNav />
         <IonContent>
-          <IonImg
-            className="w-80 center pb5"
-            src="assets/identity/who-logo-rgb.png"
-          />
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>

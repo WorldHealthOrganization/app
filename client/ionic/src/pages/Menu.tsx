@@ -1,19 +1,17 @@
 import React from 'react';
-import { IonContent, IonPage, IonItem, IonLabel, IonImg } from '@ionic/react';
+import TopNav from '../components/TopNav';
+import { IonContent, IonPage, IonItem, IonLabel } from '@ionic/react';
 import 'tachyons';
 
 const Menu: React.FC = () => {
   return (
     <IonPage className="pa3">
+      <TopNav />
       <IonContent>
-        <IonImg
-          className="w-80 center pb5"
-          src="assets/identity/who-logo-rgb.png"
-        />
         <IonItem
-          href="/protect_yourself"
+          href="/protect-yourself"
           color="primary"
-          className="pb3 tc ph5"
+          className="pb3 tc ph5 pt5"
         >
           <IonLabel>Protect Yourself</IonLabel>
         </IonItem>
