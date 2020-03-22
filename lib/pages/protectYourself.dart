@@ -2,10 +2,9 @@ import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:page_view_indicator/page_view_indicator.dart';
 
 class ProtectYourself extends StatelessWidget {
-  PageController pageController = new PageController();
-
   @override
   Widget build(BuildContext context) {
     return CarouselView([
@@ -61,11 +60,46 @@ class CarouselSlide extends StatelessWidget {
 class CarouselView extends StatelessWidget {
   List<CarouselSlide> items = [];
   CarouselView(this.items);
+
+  final pageIndexNotifier = ValueNotifier<int>(0);
+
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-         PageView(
-        children: this.items,
+      Stack(
+        children: <Widget>[
+          PageView(
+            onPageChanged: (i)=>pageIndexNotifier.value = i,
+            children: this.items,
+          ),
+          Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: Container(
+                padding: EdgeInsets.only(bottom: 20),
+                child: pageViewIndicator()),
+          )
+        ],
+      ),
+    );
+  }
+
+  PageViewIndicator pageViewIndicator() {
+    return PageViewIndicator(
+      pageIndexNotifier: pageIndexNotifier,
+      length: 6,
+      normalBuilder: (animationController, index) => Circle(
+        size: 8.0,
+        color: Colors.grey,
+      ),
+      highlightedBuilder: (animationController, index) => ScaleTransition(
+        scale: CurvedAnimation(
+          parent: animationController,
+          curve: Curves.ease,
+        ),
+        child: Circle(
+          size: 10.0,
+          color: Constants.primaryColor,
+        ),
       ),
     );
   }
