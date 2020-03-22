@@ -4,9 +4,8 @@ import TopNav from '../components/TopNav';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
-import countries from '../surveys/countries.json';
 import 'tachyons';
-import '../theme/custom.css';
+import '../theme/triage.css';
 
 interface TriageState {
   survey: Survey.ReactSurveyModel;
@@ -19,7 +18,7 @@ class Triage extends React.Component<{}, TriageState> {
     Survey.StylesManager.applyTheme('stone');
 
     const survey = new Survey.ReactSurveyModel(triage);
-    // Update CSS classes
+    // Update CSS classes. TODO: either get this working nicer or delete
     survey.onUpdateQuestionCssClasses.add((survey, options) => {
       const classes = options.cssClasses;
       classes.mainRoot += ' f4';
