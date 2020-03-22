@@ -80,20 +80,6 @@ class ProtectYourself extends StatelessWidget {
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),
-            // Expanded(
-            //   child: Align(
-            //     alignment: FractionalOffset.bottomCenter,
-            //     child: Padding(
-            //       padding: const EdgeInsets.all(8.0),
-            //       child: LinearProgressIndicator(
-            //         backgroundColor: Colors.transparent,
-            //         valueColor: new AlwaysStoppedAnimation<Color>(
-            //             Constants.primaryColor),
-            //         value: (index + 1) / 6,
-            //       ),
-            //     ),
-            //   ),
-            // )
           ],
         ),
       ),
