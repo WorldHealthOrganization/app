@@ -12,7 +12,7 @@ dependencies:
     
   share: ^0.6.3+6
   url_launcher: ^5.4.2
-
+  page_view_indicator: ^2.0.4
   intl: ^0.16.0
 
 dev_dependencies:
