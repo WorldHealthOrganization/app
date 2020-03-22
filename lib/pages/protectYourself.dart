@@ -69,7 +69,7 @@ class CarouselView extends StatelessWidget {
       Stack(
         children: <Widget>[
           PageView(
-            onPageChanged: (i)=>pageIndexNotifier.value = i,
+            onPageChanged: (i) => pageIndexNotifier.value = i,
             children: this.items,
           ),
           Align(
