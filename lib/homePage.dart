@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:share/share.dart';
