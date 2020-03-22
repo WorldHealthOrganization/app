@@ -17,23 +17,28 @@ class ProtectYourself extends StatelessWidget {
           slide(
               "assets/cough.png",
               AppLocalizations.of(context).translate("cougningAndSneezing"),
-              context, 1),
+              context,
+              1),
           slide(
               "assets/cough.png",
               AppLocalizations.of(context).translate("throwAwayTissue"),
-              context,2),
+              context,
+              2),
           slide(
               "assets/washHands.png",
               AppLocalizations.of(context).translate("washHandsFrequently"),
-              context,3),
+              context,
+              3),
           slide(
               "assets/distance.png",
               AppLocalizations.of(context).translate("socialDistancing"),
-              context,4),
+              context,
+              4),
           slide(
               "assets/distance.png",
               AppLocalizations.of(context).translate("seekMedicalCare"),
-              context,5),
+              context,
+              5),
         ],
       ),
     );
@@ -56,16 +61,19 @@ class ProtectYourself extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Expanded(
-          child: Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: LinearProgressIndicator(
-                backgroundColor: Colors.transparent,
-                valueColor: new AlwaysStoppedAnimation<Color>(Constants.primaryColor),
-                value: (index+1)/6,
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: LinearProgressIndicator(
+                    backgroundColor: Colors.transparent,
+                    valueColor: new AlwaysStoppedAnimation<Color>(
+                        Constants.primaryColor),
+                    value: (index + 1) / 6,
+                  ),
+                ),
               ),
-            ),),)
+            )
           ],
         ),
       ),
