@@ -27,7 +27,7 @@ Most discussion will be taking place in a combination of Slack and GitHub issues
 
 This is very much a committee effort, and we are moving quickly enough that we have to self-organize as much as we can. You're encouraged to step up and find places to contribute rather than relying on anyone to tell you what to do. Even in just the first couple days of the project, there has been incredible effort from a lot of contributors. With that said, there are a couple people helping play point around different areas that are trying to keep a pulse of everything going on in those areas:
 
-* Karen Wong - all things Product
+* Karen Wong ([asianfoodlab](https://github.com/viviancromwell)) - all things Product
 * Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
 * Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
 
