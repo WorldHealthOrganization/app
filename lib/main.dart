@@ -8,6 +8,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      supportedLocales: [
+        const Locale('en', 'US'), // English, must be first
+        const Locale('fr'), // French
+        const Locale('ar'), // Arabic
+        const Locale('zh'), // Chinese
+        const Locale('ru'), // Russian
+        const Locale('es'), //Spanish
+      ],
       theme: ThemeData(
         primaryColor: Constants.primaryColor,
       ),
