@@ -37,51 +37,7 @@ class HomePage extends StatelessWidget {
             AppLocalizations.of(context).translate("checkYourHealth"), () {}),
         pageButton(AppLocalizations.of(context).translate("feelingDistressed"),
             () {
-          List actions = [
-            {
-              "message": "Information for Parents",
-              "onPressed": () {
-                //Go to parents page
-              }
-            },
-            {
-              "message": "Information for Everyone",
-              "onPressed": () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (c) => ProtectYourself(),
-                  ))
-            },
-          ];
-
-          Platform.isIOS
-              ? showCupertinoModalPopup(
-                  context: context,
-                  builder: (c) => CupertinoActionSheet(
-                        cancelButton: CupertinoActionSheetAction(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text("Cancel")),
-                        actions: List<CupertinoActionSheetAction>.generate(
-                            actions.length,
-                            (index) => CupertinoActionSheetAction(
-                                onPressed: actions[index]["onPressed"],
-                                child: Text(actions[index]["message"]))),
-                      ))
-              : showModalBottomSheet(
-                  context: context,
-                  builder: (c) => BottomSheet(
-                        onClosing: null,
-                        builder: (c) => Column(
-                          children: List<Widget>.generate(
-                              actions.length,
-                              (index) => ListTile(
-                                    title: Text(actions[index]["message"]),
-                                    onTap: actions[index]["onPressed"],
-                                  )),
-                        ),
-                      ));
         }),
-        /*
-        pageButton(AppLocalizations.of(context).translate("localMaps"), () {}),
-        */
         pageButton(
           AppLocalizations.of(context).translate("shareTheApp"),
           () => Share.share(
