@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -11,7 +10,6 @@ import {
 } from '@ionic/react';
 import TopNav from '../components/TopNav';
 import 'tachyons';
-import { getUserContext } from '../content/userContext';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 
 const CopingParents: React.FC = () => {
@@ -48,7 +46,8 @@ const CopingParents: React.FC = () => {
                     </IonSlide>
                   );
                 default:
-                /** TODO: Handle errors of unsupported screen types correctly. */
+                  /** TODO: Handle errors of unsupported screen types correctly. */
+                  return null;
               }
             })}
           </IonSlides>
