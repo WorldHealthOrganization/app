@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         accentColor: Constants.textColor,
         buttonTheme: ButtonThemeData(buttonColor: Constants.primaryColor, textTheme: ButtonTextTheme.accent),
       ),
-      home: ProtectYourself(),
+      home: HomePage(),
     );
   }
 }

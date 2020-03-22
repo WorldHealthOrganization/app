@@ -1,5 +1,7 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
+import 'package:WHOFlutter/pages/healthCheck/healthCheck.dart';
+import 'package:WHOFlutter/protectYourself.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:share/share.dart';
@@ -13,8 +15,7 @@ class HomePage extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: FlatButton(
           padding: EdgeInsets.all(30),
-          onPressed: () => Share.share(
-              'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),
+          onPressed: onPressed,
           color: Constants.primaryColor,
           child: Text(
             title,
@@ -23,66 +24,26 @@ class HomePage extends StatelessWidget {
         ),
       );
     }
+
     return PageScaffold(Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 15),
-          width: MediaQuery.of(context).size.width,
-          child: FlatButton(
-            padding: EdgeInsets.all(30),
-            onPressed: () {},
-            color: Constants.primaryColor,
-            child: Text(
-              AppLocalizations.of(context).translate("protectYourself"),
-              textScaleFactor: 2,
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 15),
-          width: MediaQuery.of(context).size.width,
-          child: FlatButton(
-            padding: EdgeInsets.all(30),
-            onPressed: () {},
-            color: Constants.primaryColor,
-            child: Text(
-              AppLocalizations.of(context).translate("checkYourHealth"),
-              textScaleFactor: 2,
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 15),
-          width: MediaQuery.of(context).size.width,
-          child: FlatButton(
-            padding: EdgeInsets.all(30),
-            onPressed: () {},
-            color: Constants.primaryColor,
-            child: Text(
-              AppLocalizations.of(context).translate("localMaps"),
-              textScaleFactor: 2,
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 15),
-          width: MediaQuery.of(context).size.width,
-          child: FlatButton(
-            padding: EdgeInsets.all(30),
-            onPressed: () => Share.share(
-                'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),
-            color: Constants.primaryColor,
-            child: Text(
-              AppLocalizations.of(context).translate("shareTheApp"),
-              textScaleFactor: 2,
-            ),
-          ),
-        ),
-        pageButton(AppLocalizations.of(context).translate("shareTheApp"), ()=>Share.share(
-                'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),)
+        
+        pageButton(
+            AppLocalizations.of(context).translate("protectYourself"), ()=>Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (c)=>ProtectYourself()
+              )
+            )),
+        pageButton(
+            AppLocalizations.of(context).translate("checkYourHealth"), () {}),
+        pageButton(AppLocalizations.of(context).translate("localMaps"), () {}),
+        pageButton(
+          AppLocalizations.of(context).translate("shareTheApp"),
+          () => Share.share(
+              'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),
+        )
       ],
     ));
-    
   }
 }
