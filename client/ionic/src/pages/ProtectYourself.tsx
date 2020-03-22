@@ -2,17 +2,14 @@ import React from 'react';
 import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
-  IonHeader,
-  IonItem,
   IonPage,
   IonSlides,
   IonSlide,
-  IonToolbar,
   IonCard,
   IonCardContent,
-  IonCardHeader,
   IonImg,
 } from '@ionic/react';
+import TopNav from '../components/TopNav';
 import 'tachyons';
 import { getUserContext } from '../content/userContext';
 
@@ -36,16 +33,7 @@ const ProtectYourself: React.FC = () => {
   const flow = useDynamicFlow('protect');
   return (
     <IonPage className="pa3">
-      <IonHeader>
-        <IonToolbar>
-          <IonItem href="/menu">
-            <IonImg
-              className="w-80 center h3"
-              src="assets/identity/who-logo-rgb.png"
-            />
-          </IonItem>
-        </IonToolbar>
-      </IonHeader>
+      <TopNav />
       <IonContent>
         {flow.content && flow.content.screens && (
           <IonSlides pager={true}>
