@@ -73,9 +73,6 @@ const About: React.FC = () => {
             })}
           </IonSlides>
         )}
-        <IonButton className="pt2" href="/menu" shape="round">
-          Learn More
-        </IonButton>
       </IonContent>
     </IonPage>
   );
