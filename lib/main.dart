@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 import './constants.dart';
@@ -16,6 +17,11 @@ class MyApp extends StatelessWidget {
         const Locale('zh'), // Chinese
         const Locale('ru'), // Russian
         const Locale('es'), //Spanish
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
       ],
       theme: ThemeData(
         backgroundColor: Constants.backgroundColor,
