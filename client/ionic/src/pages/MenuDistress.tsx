@@ -15,7 +15,11 @@ const MenuDistress: React.FC = () => {
         >
           <IonLabel>Information for Everyone</IonLabel>
         </IonItem>
-        <IonItem routerLink="/coping-parents" color="primary" className="pb3 tc ph4">
+        <IonItem
+          routerLink="/coping-parents"
+          color="primary"
+          className="pb3 tc ph4"
+        >
           <IonLabel>Information for Parents</IonLabel>
         </IonItem>
       </IonContent>
