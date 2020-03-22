@@ -1,0 +1,11 @@
+{
+  "worldHealthOrganization": "World Health Organization",
+  "learnMore": "Learn More",
+
+  "annotatedExample": "Hello",
+  "@annotatedExample": {
+    "description": "This is an annotation that can hold explanatory text to assist the translators."
+  },
+
+  "pluralsExample": "Hello, {name}, you have {itemCount, plural, =0 {no items} one {# item} other {# items} }"
+}

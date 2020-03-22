@@ -11,28 +11,20 @@ const Menu: React.FC = () => {
         <IonItem
           routerLink="/protect-yourself"
           color="primary"
-          className="pb3 tc ph5 pt5"
+          className="pb3 tc ph4 pt2"
         >
           <IonLabel>Protect Yourself</IonLabel>
         </IonItem>
-        <IonItem routerLink="/triage" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/triage" color="primary" className="pb3 tc ph4">
           <IonLabel>Check Your Health</IonLabel>
         </IonItem>
-        <IonItem
-          routerLink="/menu-distress"
-          color="primary"
-          className="pb3 tc ph5"
-        >
+        <IonItem routerLink="/menu-distress" color="primary" className="pb3 tc ph4">
           <IonLabel>Feeling Distressed?</IonLabel>
         </IonItem>
-        <IonItem
-          routerLink="/local_maps"
-          color="primary"
-          className="pb3 tc ph5"
-        >
+        <IonItem routerLink="/local_maps" color="primary" className="pb3 tc ph4">
           <IonLabel>Local Maps</IonLabel>
         </IonItem>
-        <IonItem routerLink="/share" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/share" color="primary" className="pb3 tc ph4">
           <IonLabel>Share the App</IonLabel>
         </IonItem>
       </IonContent>
