@@ -71,7 +71,7 @@
   },
   "lint-staged": {
     "*.{json,css,ts,tsx}": [
-      "gts fix"
+      "gts check"
     ]
   }
 }
