@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -8,19 +9,19 @@ class ProtectYourself extends StatelessWidget {
           Container(
             child: PageView(
       children: <Widget>[
-            Slide("assets/washHands.png", "Wash your hand often with soap and running water frequently", context),
-            Slide("assets/cough.png", "When coughing and sneezing cover mouth and nose with flexed elbow or tissue", context),
-            Slide("assets/cough.png", "Throw tissue into closed bin immediately after use", context),
-            Slide("assets/washHands.png", "Wash your hands frequently", context),
-            Slide("assets/distance.png", "Avoid close contact and keep the physical distancing", context),
-            Slide("assets/distance.png", "Seek medical care early if you have fever, cough, and difficulty breathing", context),
+            slide("assets/washHands.png",AppLocalizations.of(context).translate("washHands"), context),
+            slide("assets/cough.png", AppLocalizations.of(context).translate("cougningAndSneezing"), context),
+            slide("assets/cough.png", AppLocalizations.of(context).translate("throwAwayTissue"), context),
+            slide("assets/washHands.png", AppLocalizations.of(context).translate("washHandsFrequently"), context),
+            slide("assets/distance.png", AppLocalizations.of(context).translate("socialDistancing"), context),
+            slide("assets/distance.png", AppLocalizations.of(context).translate("seekMedicalCare"), context),
       ],
         ),
           ));
   }
 }
 
-Widget Slide(String imgSrc, String message, BuildContext context) {
+Widget slide(String imgSrc, String message, BuildContext context) {
   double width = MediaQuery.of(context).size.width * 9/10;
   double height = MediaQuery.of(context).size.height/2;
 
