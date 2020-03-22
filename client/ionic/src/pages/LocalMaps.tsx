@@ -20,5 +20,5 @@ const LocalMaps: React.FC = () => {
       </IonHeader>
     </IonPage>
   );
-}
+};
 export default LocalMaps;

@@ -20,5 +20,5 @@ const Distress: React.FC = () => {
       </IonHeader>
     </IonPage>
   );
-}
+};
 export default Distress;

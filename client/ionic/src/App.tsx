@@ -8,7 +8,7 @@ import Menu from './pages/Menu';
 import Triage from './pages/Triage';
 import ProtectYourself from './pages/ProtectYourself';
 import LocalMaps from './pages/LocalMaps';
-import Distress from './pages/Distress'
+import Distress from './pages/Distress';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,7 +35,11 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
-        <Route path="/protect_yourself" component={ProtectYourself} exact={true} />
+        <Route
+          path="/protect_yourself"
+          component={ProtectYourself}
+          exact={true}
+        />
         <Route path="/triage" component={Triage} />
         <Route path="/distress" component={Distress} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />

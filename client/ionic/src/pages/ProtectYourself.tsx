@@ -20,5 +20,5 @@ const ProtectYourself: React.FC = () => {
       </IonHeader>
     </IonPage>
   );
-}
+};
 export default ProtectYourself;
