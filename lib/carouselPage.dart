@@ -63,7 +63,7 @@ class CarouselView extends StatelessWidget {
   PageViewIndicator pageViewIndicator() {
     return PageViewIndicator(
       pageIndexNotifier: pageIndexNotifier,
-      length: 6,
+      length: this.items.length,
       normalBuilder: (animationController, index) => Circle(
         size: 8.0,
         color: Colors.grey,
