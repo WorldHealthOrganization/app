@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:share/share.dart';
+import './pages/feelingDistressed.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,8 +21,9 @@ class HomePage extends StatelessWidget {
         pageButton(
             AppLocalizations.of(context).translate("checkYourHealth"), () {}),
         pageButton(AppLocalizations.of(context).translate("feelingDistressed"),
-            () {
-        }),
+            () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => FeelingDistressedPage()))
+        ),
         pageButton(
           AppLocalizations.of(context).translate("shareTheApp"),
           () => Share.share(
