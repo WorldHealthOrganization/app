@@ -37,7 +37,7 @@ For key conversations related to each major area, please see the following Slack
 * `#intros` - the place every new member should introduce themselves
 * `#standup` - communication around our daily standup (including details how to join)
 * `#techtointegrate` - sharing other projects or libraries that could have synergies with our goals
-* `futureideas` - sharing ideas for downstream features
+* `#futureideas` - sharing ideas for downstream features
 
 ## Point People
 
