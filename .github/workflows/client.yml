@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - run: cd client/ionic && npm install
+      - run: cd client/ionic && npm ci
       - run: cd client/ionic && npm audit --audit-level=moderate
       - run: cd client/ionic && CI=true npm test
   # This builds the android APK
@@ -48,7 +48,7 @@ jobs:
         with:
           node-version: '10.x'
       - run: npm install -g @ionic/cli
-      - run: npm install
+      - run: npm ci
         working-directory: ./client/ionic
       - run: ionic build
         working-directory: ./client/ionic
@@ -70,7 +70,7 @@ jobs:
         with:
           ruby-version: '2.7'
       - run: npm install -g @ionic/cli
-      - run: npm install
+      - run: npm ci
         working-directory: ./client/ionic
       - run: ionic build
         working-directory: ./client/ionic
