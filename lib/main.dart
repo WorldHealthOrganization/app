@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         DefaultWidgetsLocalizations.delegate,
       ],
       theme: ThemeData(
-        backgroundColor: Constants.backgroundColor,
+        scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
         buttonTheme: ButtonThemeData(buttonColor: Constants.primaryColor, textTheme: ButtonTextTheme.accent),
