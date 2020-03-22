@@ -1,134 +1,327 @@
 {
- "title": "Health Survey",
- "completedHtmlOnCondition": [
-  {
-   "expression": "{question1} anyof ['item1', 'item2', 'item3']",
-   "html": "For your symptoms please follow these steps: <br> <br> Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: call your doctor"
-  },
-  {
-   "expression": "{question2} anyof ['item1', 'item2', 'item3', 'item4']",
-   "html": "There is a low probability that these symptoms relate to CORVID-19, but please follow the following steps to protect yourself and others: <br> <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor, do not visit in person"
-  },
-  {
-   "expression": "{question7} anyof ['item1', 'item2', 'item3'] or {question5} >= 60",
-   "html": "You do not contain any of the symptoms of CORVID-19, however you are at higher risk. <br> <br> <ul><li>Take everyday precautions to keep space between yourself and others.</li><li>When you go out in public, keep away from others who are sick, limit close contact and wash your hands often.</li><li>During a COVID-19 outbreak in your community, stay home as much as possible to further reduce your risk of being exposed.</li><li>Have enough household items, groceries and necessary medications on hand so that you will be prepared to stay at home for a period of time.</li><li>Keep the number of your local doctor or healthline handy in the event that you develop symptoms</li></ul> "
-  }
- ],
- "pages": [
-  {
-   "name": "page1",
-   "elements": [
+  "title": "Health Survey",
+  "completedHtmlOnCondition": [
     {
-     "type": "checkbox",
-     "name": "question1",
-     "title": "Are you experiencing any of the following symptoms?",
-     "isRequired": true,
-     "choices": [
-      {
-       "value": "item1",
-       "text": "Fever"
-      },
-      {
-       "value": "item2",
-       "text": "Cough"
-      },
-      {
-       "value": "item3",
-       "text": "Difficulty Breathing"
-      },
-      {
-       "value": "item5",
-       "text": "Other"
-      }
-     ]
+      "expression": "{question1} anyof ['item1', 'item2', 'item3']",
+      "html": "For your symptoms please follow these steps: <br> <br> Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor or your local healthline"
     },
     {
-     "type": "checkbox",
-     "name": "question2",
-     "visibleIf": "{question1} contains 'item5'",
-     "title": "Are you experiencing any of the following symptoms?",
-     "choices": [
-      {
-       "value": "item1",
-       "text": "Muscle Pain"
-      },
-      {
-       "value": "item2",
-       "text": "Nasal Congestion"
-      },
-      {
-       "value": "item3",
-       "text": "Sore Throat"
-      },
-      {
-       "value": "item4",
-       "text": "Headache"
-      }
-     ],
-     "hasNone": true,
-     "noneText": "None of the above"
+      "expression": "{question2} anyof ['item1', 'item2', 'item3', 'item4']",
+      "html": "There is a low probability that these symptoms relate to CORVID-19, but please follow the following steps to protect yourself and others: <br> <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor, please do not visit in person"
     },
     {
-     "type": "text",
-     "name": "question3",
-     "visibleIf": "{question1} anyof ['item1', 'item2', 'item3'] or {question2} anyof ['item1', 'item2', 'item3', 'item4']",
-     "title": "When did these symptoms start",
-     "inputType": "date"
-    },
-    {
-     "type": "checkbox",
-     "name": "question7",
-     "title": "Do you have the following pre-existing medical conditions",
-     "choices": [
-      {
-       "value": "item1",
-       "text": "Heart Disease"
-      },
-      {
-       "value": "item2",
-       "text": "Diabetes"
-      },
-      {
-       "value": "item3",
-       "text": "Lung Disease"
-      }
-     ]
-    },
-    {
-     "type": "text",
-     "name": "question5",
-     "visibleIf": "{question1} notempty",
-     "title": "Your Age",
-     "validators": [
-      {
-       "type": "numeric",
-       "text": "must be a number"
-      }
-     ],
-     "inputType": "number"
-    },
-    {
-     "type": "dropdown",
-     "name": "question6",
-     "title": "Your Country",
-     "choices": [
-      "item1",
-      "item2",
-      "item3"
-     ]
+      "expression": "{question7} anyof ['item1', 'item2', 'item3'] or {question5} >= 60",
+      "html": "You do not contain any of the symptoms of CORVID-19, however you are at higher risk. <br> <br> <ul><li>Take everyday precautions to keep space between yourself and others.</li><li>When you go out in public, keep away from others who are sick, limit close contact and wash your hands often.</li><li>During a COVID-19 outbreak in your community, stay home as much as possible to further reduce your risk of being exposed.</li><li>Have enough household items, groceries and necessary medications on hand so that you will be prepared to stay at home for a period of time.</li><li>Keep the number of your local doctor or healthline handy in the event that you develop symptoms</li></ul> "
     }
-   ]
-  }
- ],
- "triggers": [
-  {
-   "type": "complete"
-  },
-  {
-   "type": "complete"
-  }
- ],
- "showTitle": false,
- "showPageTitles": false,
- "showQuestionNumbers": "off"
+  ],
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "question1",
+          "title": "Are you experiencing any of the following symptoms?",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "item1",
+              "text": "Fever"
+            },
+            {
+              "value": "item2",
+              "text": "Cough"
+            },
+            {
+              "value": "item3",
+              "text": "Difficulty Breathing"
+            },
+            {
+              "value": "item5",
+              "text": "Other"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "name": "question2",
+          "visibleIf": "{question1} contains 'item5'",
+          "title": "Are you experiencing any of the following symptoms?",
+          "choices": [
+            {
+              "value": "item1",
+              "text": "Muscle Pain"
+            },
+            {
+              "value": "item2",
+              "text": "Nasal Congestion"
+            },
+            {
+              "value": "item3",
+              "text": "Sore Throat"
+            },
+            {
+              "value": "item4",
+              "text": "Headache"
+            }
+          ],
+          "hasNone": true,
+          "noneText": "None of the above"
+        },
+        {
+          "type": "text",
+          "name": "question3",
+          "visibleIf": "{question1} anyof ['item1', 'item2', 'item3'] or {question2} anyof ['item1', 'item2', 'item3', 'item4']",
+          "title": "When did these symptoms start",
+          "inputType": "date"
+        },
+        {
+          "type": "checkbox",
+          "name": "question7",
+          "title": "Do you have the following pre-existing medical conditions",
+          "choices": [
+            {
+              "value": "item1",
+              "text": "Heart Disease"
+            },
+            {
+              "value": "item2",
+              "text": "Diabetes"
+            },
+            {
+              "value": "item3",
+              "text": "Lung Disease"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "question5",
+          "visibleIf": "{question1} notempty",
+          "title": "Your Age",
+          "validators": [
+            {
+              "type": "numeric",
+              "text": "must be a number"
+            }
+          ],
+          "inputType": "number"
+        },
+        {
+          "type": "dropdown",
+          "name": "question6",
+          "title": "Your Country",
+          "choices": [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "The Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Cape Verde",
+            "Central African Republic",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo, Republic of the",
+            "Congo, Democratic Republic of the",
+            "Costa Rica",
+            "Cote d'Ivoire",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "East Timor (Timor-Leste)",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "The Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea, North",
+            "Korea, South",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia, Federated States of",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar (Burma)",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "Saint Kitts and Nevis",
+            "Saint Lucia",
+            "Saint Vincent and the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome and Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "South Sudan",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Togo",
+            "Tonga",
+            "Trinidad and Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States of America",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City (Holy See)",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
+            "Zimbabwe"
+          ]
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "type": "complete"
+    },
+    {
+      "type": "complete"
+    }
+  ],
+  "showTitle": false,
+  "showPageTitles": false,
+  "showQuestionNumbers": "off"
 }

@@ -4,12 +4,9 @@ import TopNav from '../components/TopNav';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
 import triage from '../surveys/triage.json';
+import countries from '../surveys/countries.json';
 import 'tachyons';
-import '../theme/custom.css'
-
-Survey
-    .StylesManager
-    .applyTheme("stone");
+import '../theme/custom.css';
 
 interface TriageState {
   survey: Survey.ReactSurveyModel;
@@ -18,22 +15,20 @@ interface TriageState {
 class Triage extends React.Component<{}, TriageState> {
   constructor(args: Readonly<{}>) {
     super(args);
+
+    Survey.StylesManager.applyTheme('stone');
+
     const survey = new Survey.ReactSurveyModel(triage);
     // Update CSS classes
-    survey
-    .onUpdateQuestionCssClasses
-    .add(function (survey, options) {
-        var classes = options.cssClasses
-        console.log(classes)
-
-        classes.mainRoot += " f3";
-        classes.root = "sq-root";
-        classes.title += ""
-        classes.item += " f3";
-        classes.label += " sq-label";
-        classes.header += " f3"
-        classes.body += " f3"
-
+    survey.onUpdateQuestionCssClasses.add(function(survey, options) {
+      var classes = options.cssClasses;
+      classes.mainRoot += ' f4';
+      classes.root = 'sq-root';
+      classes.title += '';
+      classes.item += ' f3';
+      classes.label += '';
+      classes.header += ' f3';
+      classes.body += ' f3';
     });
     //use this to do something with the survey data like an api call
     survey.onComplete.add(survey => console.log(survey.data));
@@ -45,8 +40,8 @@ class Triage extends React.Component<{}, TriageState> {
   render() {
     return (
       <IonPage className="pa3">
-        <TopNav/>
-        <IonContent className = "mt3">
+        <TopNav />
+        <IonContent>
           <Survey.Survey model={this.state.survey} />
         </IonContent>
       </IonPage>
