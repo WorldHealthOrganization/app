@@ -5,7 +5,7 @@ const TopNav: React.FC = () => {
   return (
     <IonHeader>
       <IonToolbar>
-        <IonItem href="/menu">
+        <IonItem routerLink="/menu">
           <IonImg
             className="w-80 center h3"
             src="assets/identity/who-logo-rgb.png"

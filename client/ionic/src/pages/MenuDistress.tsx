@@ -9,13 +9,13 @@ const MenuDistress: React.FC = () => {
       <TopNav />
       <IonContent>
         <IonItem
-          href="/coping-everyone"
+          routerLink="/coping-everyone"
           color="primary"
           className="pb3 tc ph5 pt5"
         >
           <IonLabel>Information for Everyone</IonLabel>
         </IonItem>
-        <IonItem href="/coping-parents" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/coping-parents" color="primary" className="pb3 tc ph5">
           <IonLabel>Information for Parents</IonLabel>
         </IonItem>
       </IonContent>

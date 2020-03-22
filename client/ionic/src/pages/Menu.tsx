@@ -9,22 +9,22 @@ const Menu: React.FC = () => {
       <TopNav />
       <IonContent>
         <IonItem
-          href="/protect-yourself"
+          routerLink="/protect-yourself"
           color="primary"
           className="pb3 tc ph5 pt5"
         >
           <IonLabel>Protect Yourself</IonLabel>
         </IonItem>
-        <IonItem href="/triage" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/triage" color="primary" className="pb3 tc ph5">
           <IonLabel>Check Your Health</IonLabel>
         </IonItem>
-        <IonItem href="/menu-distress" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/menu-distress" color="primary" className="pb3 tc ph5">
           <IonLabel>Feeling Distressed?</IonLabel>
         </IonItem>
-        <IonItem href="/local_maps" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/local_maps" color="primary" className="pb3 tc ph5">
           <IonLabel>Local Maps</IonLabel>
         </IonItem>
-        <IonItem href="/share" color="primary" className="pb3 tc ph5">
+        <IonItem routerLink="/share" color="primary" className="pb3 tc ph5">
           <IonLabel>Share the App</IonLabel>
         </IonItem>
       </IonContent>
