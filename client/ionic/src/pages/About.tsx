@@ -34,7 +34,7 @@ function useDynamicFlow(id: string) {
 const About: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('protect');
+  const flow = useDynamicFlow('splash');
   return (
     <IonPage className="pa3">
       <IonContent>
