@@ -2,6 +2,7 @@ import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
+import 'package:share/share.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -52,7 +53,9 @@ class HomePage extends StatelessWidget {
           height: 130,
           width: MediaQuery.of(context).size.width,
           child: FlatButton(
-            onPressed: () {},
+            onPressed: () {
+                Share.share('Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu');
+              },
             color: Constants.primaryColor,
             child: Text(
               'Share the App',
