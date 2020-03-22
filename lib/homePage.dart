@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
     Container pageButton(String title, Function onPressed) {
       return Container(
         padding: EdgeInsets.symmetric(vertical: 10),
-        width: MediaQuery.of(context).size.width,
         child: FlatButton(
           padding: EdgeInsets.all(30),
           onPressed: onPressed,
