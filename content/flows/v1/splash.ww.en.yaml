@@ -1,7 +1,6 @@
 type: LinearCarousel
 screens:
   - type: TextImage
-    # TODO: This should not be part of Protect your Health and might be hardcoded in the app.
     headingText: Official WHO App for COVID-19
     bodyTexts:
       - >
