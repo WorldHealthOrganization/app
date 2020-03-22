@@ -29,6 +29,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { GettingStarted } from './pages/GettingStarted';
 
 const App: React.FC = () => (
   <IonApp>
@@ -48,6 +49,7 @@ const App: React.FC = () => (
           component={ProtectYourself}
           exact={true}
         />
+        <Route path="/getting-started" component={GettingStarted} />
         <Route path="/triage" component={Triage} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
       </IonRouterOutlet>
