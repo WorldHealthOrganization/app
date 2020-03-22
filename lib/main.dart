@@ -2,7 +2,6 @@ import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 import './constants.dart';
-import './protectYourself.dart';
 
 void main() => runApp(MyApp());
 

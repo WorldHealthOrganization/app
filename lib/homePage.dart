@@ -1,6 +1,6 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
-import 'package:WHOFlutter/protectYourself.dart';
+import 'package:WHOFlutter/pages/protectYourself.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:share/share.dart';
