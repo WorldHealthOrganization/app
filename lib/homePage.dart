@@ -1,6 +1,5 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
-import 'package:WHOFlutter/pages/healthCheck/healthCheck.dart';
 import 'package:WHOFlutter/protectYourself.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
@@ -28,16 +27,13 @@ class HomePage extends StatelessWidget {
     return PageScaffold(Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        
         pageButton(
-            AppLocalizations.of(context).translate("protectYourself"), ()=>Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (c)=>ProtectYourself()
-              )
-            )),
+            AppLocalizations.of(context).translate("protectYourself"),
+            () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
         pageButton(
             AppLocalizations.of(context).translate("checkYourHealth"), () {}),
-        pageButton(AppLocalizations.of(context).translate("localMaps"), () {}),
+        pageButton(AppLocalizations.of(context).translate("localMaps"), null),
         pageButton(
           AppLocalizations.of(context).translate("shareTheApp"),
           () => Share.share(
