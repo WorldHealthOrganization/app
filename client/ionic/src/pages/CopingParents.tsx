@@ -1,4 +1,5 @@
 import React from 'react';
+import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -10,12 +11,13 @@ import {
 } from '@ionic/react';
 import TopNav from '../components/TopNav';
 import 'tachyons';
+import { getUserContext } from '../content/userContext';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 
-const ProtectYourself: React.FC = () => {
+const CopingParents: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('protect');
+  const flow = useDynamicFlow('copingParents');
   return (
     <IonPage className="pa3">
       <TopNav />
@@ -28,11 +30,14 @@ const ProtectYourself: React.FC = () => {
                   return (
                     <IonSlide>
                       <IonCard>
-                        <IonCardContent className="pb3 tl ph5">
+                        <IonCardContent className="pb3 tc ph5">
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
                             <IonImg
-                              className="h4 center pb3"
+                              className="w-80 center"
+                              style={{
+                                width: 260,
+                              }}
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
@@ -53,4 +58,4 @@ const ProtectYourself: React.FC = () => {
   );
 };
 
-export default ProtectYourself;
+export default CopingParents;

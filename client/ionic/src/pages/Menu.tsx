@@ -18,7 +18,7 @@ const Menu: React.FC = () => {
         <IonItem href="/triage" color="primary" className="pb3 tc ph4">
           <IonLabel>Check Your Health</IonLabel>
         </IonItem>
-        <IonItem href="/distress" color="primary" className="pb3 tc ph4">
+        <IonItem href="/menu-distress" color="primary" className="pb3 tc ph4">
           <IonLabel>Feeling Distressed?</IonLabel>
         </IonItem>
         <IonItem href="/local_maps" color="primary" className="pb3 tc ph4">
