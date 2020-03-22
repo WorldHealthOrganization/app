@@ -52,6 +52,8 @@ jobs:
         working-directory: ./client/ionic
       - run: ionic build
         working-directory: ./client/ionic
+        env:
+          CI: true
       - run: ionic cap sync
         working-directory: ./client/ionic
       - run: ./gradlew test
@@ -74,6 +76,8 @@ jobs:
         working-directory: ./client/ionic
       - run: ionic build
         working-directory: ./client/ionic
+        env:
+          CI: true
       - run: ionic capacitor copy ios
         working-directory: ./client/ionic
       - run: gem install cocoapods
