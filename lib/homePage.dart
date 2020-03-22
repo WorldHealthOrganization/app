@@ -37,6 +37,7 @@ class HomePage extends StatelessWidget {
             )),
         pageButton(
             AppLocalizations.of(context).translate("checkYourHealth"), () {}),
+        // pageButton(AppLocalizations.of(context).translate("feelingDistressed"), () {}),
         pageButton(AppLocalizations.of(context).translate("localMaps"), () {}),
         pageButton(
           AppLocalizations.of(context).translate("shareTheApp"),

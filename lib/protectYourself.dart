@@ -6,6 +6,7 @@ class ProtectYourself extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
           Container(
+            padding: EdgeInsets.only(top: 50, bottom: 50),
             child: PageView(
       children: <Widget>[
             Slide("assets/washHands.png", "Wash your hand often with soap and running water frequently", context),
