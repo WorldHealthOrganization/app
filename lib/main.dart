@@ -2,6 +2,7 @@ import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
 import './homePage.dart';
 import './constants.dart';
+import './protectYourself.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         accentColor: Constants.textColor,
         buttonTheme: ButtonThemeData(buttonColor: Constants.primaryColor, textTheme: ButtonTextTheme.accent),
       ),
-      home: HomePage(),
+      home: ProtectYourself(),
     );
   }
 }
