@@ -8,7 +8,7 @@ import {
   IonItem,
 } from '@ionic/react';
 
-const LocalMaps: React.FC = () => {
+const Distress: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -21,4 +21,4 @@ const LocalMaps: React.FC = () => {
     </IonPage>
   );
 }
-export default LocalMaps;
+export default Distress;

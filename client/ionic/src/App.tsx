@@ -6,8 +6,9 @@ import { IonReactRouter } from '@ionic/react-router';
 import About from './pages/About';
 import Menu from './pages/Menu';
 import Triage from './pages/Triage';
-import Protect_Yourself from './pages/ProtectYourself';
-import Local_Maps from './pages/LocalMaps';
+import ProtectYourself from './pages/ProtectYourself';
+import LocalMaps from './pages/LocalMaps';
+import Distress from './pages/Distress'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -34,14 +35,11 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
-        <Route
-          path="/protect_yourself"
-          component={Protect_Yourself}
-          exact={true}
-        />
+        <Route path="/protect_yourself" component={ProtectYourself} exact={true} />
         <Route path="/triage" component={Triage} />
+        <Route path="/distress" component={Distress} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
-        <Route path="/local_maps" component={Local_Maps} exact={true} />
+        <Route path="/local_maps" component={LocalMaps} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

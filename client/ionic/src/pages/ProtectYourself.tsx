@@ -8,24 +8,17 @@ import {
   IonItem,
 } from '@ionic/react';
 
-class ProtectYourself extends React.Component<{}> {
-  constructor(args: Readonly<{}>) {
-    super(args);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonItem href="/menu" color="primary">
-              WHO
-            </IonItem>
-          </IonToolbar>
-        </IonHeader>
-      </IonPage>
-    );
-  }
+const ProtectYourself: React.FC = () => {
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonItem href="/menu" color="primary">
+            WHO
+          </IonItem>
+        </IonToolbar>
+      </IonHeader>
+    </IonPage>
+  );
 }
 export default ProtectYourself;
