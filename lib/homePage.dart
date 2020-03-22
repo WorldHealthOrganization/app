@@ -11,21 +11,6 @@ import 'package:share/share.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Container pageButton(String title, Function onPressed) {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: FlatButton(
-          padding: EdgeInsets.all(30),
-          onPressed: onPressed,
-          color: Constants.primaryColor,
-          child: Text(
-            title,
-            textScaleFactor: 2,
-          ),
-        ),
-      );
-    }
-
     return PageScaffold(ListView(
       children: <Widget>[
         pageButton(
@@ -89,4 +74,19 @@ class HomePage extends StatelessWidget {
       ],
     ));
   }
+}
+
+Container pageButton(String title, Function onPressed) {
+  return Container(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: FlatButton(
+      padding: EdgeInsets.all(30),
+      onPressed: onPressed,
+      color: Constants.primaryColor,
+      child: Text(
+        title,
+        textScaleFactor: 2,
+      ),
+    ),
+  );
 }
