@@ -1,7 +1,11 @@
 {
-    "config": {
-      "name": "English",
-      "englishName": "English",
-      "direction": "ltr"
-    }
-} 
+  "config": {
+    "name": "English",
+    "englishName": "English",
+    "direction": "ltr"
+  },
+  "translations": {
+    "worldHealthOrganization": "World Health Organization",
+    "learnMore": "Learn More"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "config": {
+      "name": "中文",
+      "englishName": "Chinese",
+      "direction": "ltr"
+    },
+    "translations": {
+        "worldHealthOrganization": "世界卫生组织",
+        "learnMore": "更多信息"
+      }
+  }
+  
