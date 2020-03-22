@@ -22,13 +22,13 @@ class Triage extends React.Component<{}, TriageState> {
     // Update CSS classes
     survey.onUpdateQuestionCssClasses.add((survey, options) => {
       const classes = options.cssClasses;
-      classes.mainRoot += ' f4';
+      classes.mainRoot += ' f6';
       classes.root = 'sq-root';
       classes.title += '';
-      classes.item += ' f3';
+      classes.item += ' f4';
       classes.label += '';
-      classes.header += ' f3';
-      classes.body += ' f3';
+      classes.header += ' f4';
+      classes.body += ' f4';
     });
     //use this to do something with the survey data like an api call
     survey.onComplete.add(survey => console.log(survey.data));
