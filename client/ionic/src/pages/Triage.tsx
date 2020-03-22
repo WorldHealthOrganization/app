@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonPage, IonImg } from '@ionic/react';
+import { IonContent, IonPage} from '@ionic/react';
 import TopNav from '../components/TopNav';
 import * as Survey from 'survey-react';
 import 'survey-react/survey.css';
