@@ -11,9 +11,6 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonButton,
   IonImg,
 } from '@ionic/react';
 import 'tachyons';

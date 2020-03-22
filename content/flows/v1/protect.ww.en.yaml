@@ -1,32 +1,32 @@
 type: LinearCarousel
 screens:
   - type: TextImage
-    bottomImageUri: protect_yourself/wash_hands.png
+    bottomImageUri: protect-yourself/wash-hands.png
     bodyTexts:
       - >
         Wash your hands often with soap and running water frequently
   - type: TextImage
-    bottomImageUri: protect_yourself/cover.png
+    bottomImageUri: protect-yourself/cover.png
     bodyTexts:
       - >
         When coughing and squeezing cover mouth and nose with flexed elbow or tissue
   - type: TextImage
-    bottomImageUri: protect_yourself/closed_bin.png
+    bottomImageUri: protect-yourself/closed-bin.png
     bodyTexts:
       - >
         Throw tissue into closed bin immediately after use
   - type: TextImage
-    bottomImageUri: protect_yourself/wash_hands_often.png
+    bottomImageUri: protect-yourself/wash-hands-often.png
     bodyTexts:
       - >
         Wash your hands frequently
   - type: TextImage
-    bottomImageUri: protect_yourself/avoid_close_contact.png
+    bottomImageUri: protect-yourself/avoid-close-contact.png
     bodyTexts:
       - >
         Avoid close contact and keep the physical distancing
   - type: TextImage
-    bottomImageUri: protect_yourself/seek_medical_care.png
+    bottomImageUri: protect-yourself/seek-medical-care.png
     bodyTexts:
       - >
         Seek medical care early if you have fever, cough, and difficulty breathing
