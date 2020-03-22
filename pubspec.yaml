@@ -21,3 +21,5 @@ flutter:
 
   assets:
     - assets/
+    - lang/
+    

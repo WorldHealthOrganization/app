@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {},
                 color: Constants.primaryColor,
-                child: Text('Protect Yourself', textScaleFactor: 2,),
+                child: Text(AppLocalizations.of(context).translate("protectYourself"), textScaleFactor: 2,),
               ),
             ),
             Container(
