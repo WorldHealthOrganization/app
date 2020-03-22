@@ -55,18 +55,17 @@ class ProtectYourself extends StatelessWidget {
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),
-            Divider(
-              height: 10,
-            ),
-            Center(child: Text("Progress: "+(((index+1)/6)*100).toStringAsFixed(0)+"%", textScaleFactor: 1.5,)),
-            Padding(
+            Expanded(
+          child: Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: LinearProgressIndicator(
                 backgroundColor: Colors.transparent,
                 valueColor: new AlwaysStoppedAnimation<Color>(Constants.primaryColor),
                 value: (index+1)/6,
               ),
-            )
+            ),),)
           ],
         ),
       ),
