@@ -14,6 +14,19 @@ class Triage extends React.Component<{}, TriageState> {
   constructor(args: Readonly<{}>) {
     super(args);
     const survey = new Survey.ReactSurveyModel(triage);
+
+    // Update CSS classes
+    survey.onUpdateQuestionCssClasses.add((survey, options) => {
+      const classes = options.cssClasses;
+      classes.mainRoot += ' f6';
+      classes.root = 'sq-root';
+      classes.title += '';
+      classes.item += ' f4';
+      classes.label += '';
+      classes.header += ' f4';
+      classes.body += ' f4';
+    });
+    //use this to do something with the survey data like an api call
     survey.onComplete.add(survey => console.log(survey.data));
     this.state = {
       survey,
