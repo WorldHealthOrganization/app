@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -11,23 +10,7 @@ import {
 } from '@ionic/react';
 import TopNav from '../components/TopNav';
 import 'tachyons';
-import { getUserContext } from '../content/userContext';
-
-// TODO: Abstract this, DRY.
-
-function useDynamicFlow(id: string) {
-  const [flow, setFlow] = React.useState({} as LoadedFlow);
-
-  React.useEffect(() => {
-    async function fetchFlow() {
-      const f = await FlowLoader.loadFlow(id, getUserContext());
-      setFlow(f);
-    }
-    fetchFlow();
-  }, [id]);
-
-  return flow;
-}
+import useDynamicFlow from '../hooks/useDynamicFlow';
 
 const ProtectYourself: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
