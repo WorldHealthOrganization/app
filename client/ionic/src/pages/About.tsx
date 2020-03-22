@@ -14,6 +14,8 @@ import {
 } from '@ionic/react';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
+import TopNav from '../components/TopNav';
+
 import { S } from '../i18n/S';
 
 // TODO: Rename to Splash, after other PRs to avoid conflicts.
@@ -23,11 +25,8 @@ const About: React.FC = () => {
   const flow = useDynamicFlow('splash');
   return (
     <IonPage className="pa3">
+      <TopNav />
       <IonContent className="center tc">
-        <IonImg
-          className="w-80 center"
-          src="assets/identity/who-logo-rgb.png"
-        />
         {flow.content && flow.content.screens && (
           <IonSlides pager={true} className="h-auto">
             {flow.content.screens.map((screen, key) => {
@@ -55,15 +54,6 @@ const About: React.FC = () => {
                             />
                           )}
                         </IonCardContent>
-                        <IonCardContent>
-                          <IonButton
-                            className="center"
-                            href="/menu"
-                            shape="round"
-                          >
-                            {S.learnMore}
-                          </IonButton>
-                        </IonCardContent>
                       </IonCard>
                     </IonSlide>
                   );
@@ -73,9 +63,6 @@ const About: React.FC = () => {
             })}
           </IonSlides>
         )}
-        <IonButton className="pt2" href="/menu" shape="round">
-          Learn More
-        </IonButton>
       </IonContent>
     </IonPage>
   );
