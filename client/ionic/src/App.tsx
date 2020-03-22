@@ -35,7 +35,11 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
-        <Route path="/coping-everyone" component={CopingEveryone} exact={true} />
+        <Route
+          path="/coping-everyone"
+          component={CopingEveryone}
+          exact={true}
+        />
         <Route path="/coping-parents" component={CopingParents} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
         <Route path="/menu-distress" component={MenuDistress} exact={true} />
