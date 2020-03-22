@@ -3,7 +3,6 @@
   publish = "build"
   command = "npx ionic build"
   environment = { NODE_VERSION = "10.19.0" }
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
