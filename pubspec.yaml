@@ -9,7 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
   share: ^0.6.3+6
+  url_launcher: ^5.4.2
 
   intl: ^0.16.0
 

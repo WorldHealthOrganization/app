@@ -9,8 +9,11 @@ class PageScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+        
             padding: EdgeInsets.all(15),
-            child: Column(children: <Widget>[
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
               GestureDetector(
                 child: Image(
                     image: AssetImage('assets/WHO.jpg'),
@@ -21,7 +24,7 @@ class PageScaffold extends StatelessWidget {
                       )
                     ),
               ),
-              this.body
+              Expanded(child: this.body)
             ])));
   }
 }
