@@ -53,9 +53,8 @@ class HomePage extends StatelessWidget {
           height: 130,
           width: MediaQuery.of(context).size.width,
           child: FlatButton(
-            onPressed: () {
-                Share.share('Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu');
-              },
+            onPressed: () => Share.share(
+                'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),
             color: Constants.primaryColor,
             child: Text(
               'Share the App',
