@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './homePage.dart';
 import './constants.dart';
 
 void main() => runApp(MyApp());
@@ -17,9 +18,12 @@ class MyApp extends StatelessWidget {
         const Locale('es'), //Spanish
       ],
       theme: ThemeData(
+        backgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
+        accentColor: Constants.textColor,
+        buttonTheme: ButtonThemeData(buttonColor: Constants.primaryColor, textTheme: ButtonTextTheme.accent),
       ),
-      home: null,
+      home: HomePage(),
     );
   }
 }
