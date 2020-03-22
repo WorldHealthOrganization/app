@@ -69,6 +69,7 @@ const About: React.FC = () => {
                   );
                 default:
                 /** TODO: Handle errors of unsupported screen types correctly. */
+                  return null;
               }
             })}
           </IonSlides>
