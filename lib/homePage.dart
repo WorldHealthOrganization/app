@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Container pageButton(String title, Function onPressed) {
       return Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
+        padding: EdgeInsets.symmetric(vertical: 10),
         width: MediaQuery.of(context).size.width,
         child: FlatButton(
           padding: EdgeInsets.all(30),
@@ -24,8 +24,7 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    return PageScaffold(Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return PageScaffold(ListView(
       children: <Widget>[
         pageButton(
             AppLocalizations.of(context).translate("protectYourself"),
