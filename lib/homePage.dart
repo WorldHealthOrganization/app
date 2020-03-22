@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                 .push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
         pageButton(
             AppLocalizations.of(context).translate("checkYourHealth"), () {}),
-        // pageButton(AppLocalizations.of(context).translate("feelingDistressed"), () {}),
+        pageButton(AppLocalizations.of(context).translate("feelingDistressed"), () {}),
         pageButton(AppLocalizations.of(context).translate("localMaps"), () {}),
         pageButton(
           AppLocalizations.of(context).translate("shareTheApp"),
