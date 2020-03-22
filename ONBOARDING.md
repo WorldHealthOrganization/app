@@ -6,7 +6,7 @@ The goal of this document is to give you a starting point for where to find the 
 
 First thing's first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://docs.google.com/spreadsheets/d/1jt4xrXWUnsh8DmtawNV4XGBj8RAdgn-d7ckgL2qEXPM/edit#gid=0
 
-Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw) introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
+Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
 
 If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
 
@@ -37,7 +37,7 @@ This is very much a committee effort, and we are moving quickly enough that we h
 
 # Building and Running
 
-Please review the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/CONTRIBUTING.md) before making any contributions to the code. Note that you'll need to add yourself to the [LICENSE](LICENSE) contributor list on your first commit.
+Please review the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/CONTRIBUTING.md) before making any contributions to the code.
 
 This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
 
