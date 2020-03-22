@@ -36,14 +36,14 @@ const App: React.FC = () => (
         <Route path="/about" component={About} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
         <Route
-          path="/protect_yourself"
+          path="/protect-yourself"
           component={ProtectYourself}
           exact={true}
         />
         <Route path="/triage" component={Triage} />
         <Route path="/distress" component={Distress} />
         <Route path="/" render={() => <Redirect to="/about" />} exact={true} />
-        <Route path="/local_maps" component={LocalMaps} exact={true} />
+        <Route path="/local-maps" component={LocalMaps} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
