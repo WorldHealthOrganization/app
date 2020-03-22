@@ -1,0 +1,38 @@
+# content from: https://www.who.int/docs/default-source/coronaviruse/coping-with-stress.pdf?sfvrsn=9845bc3a_8
+type: LinearCarousel
+screens:
+  - type: TextImage
+    bottomImageUri: placeholder/protect/washHands.png
+    bodyTexts:
+      - >
+        It is normal to feel sad, stressed, confused, scared or angry during a crisis.
+      - >
+        Talking to people you trust can help. Contact your friends and family
+  - type: TextImage
+    bottomImageUri: placeholder/protect/cough.png
+    bodyTexts:
+      - >
+        If you must stay at home, maintain a healthy lifestyle - including proper diet, sleep, exercise and social contacts with loved ones at home and by email and phone with other family and friends.
+  - type: TextImage
+    bottomImageUri: placeholder/protect/cough.png
+    bodyTexts:
+      - >
+        Don’t use smoking, alcohol or other drugs to deal with your emotions.
+      - >
+        If you feel overwhelmed, talk to a health worker or counsellor. Have a plan, where to go to and how to seek help for physical and mental health needs if required.
+  - type: TextImage
+    bottomImageUri: placeholder/protect/washHands.png
+    bodyTexts:
+      - >
+        Get the facts. Gather information that will help you accurately determine your risk so that you can take reasonable precautions. Find a credible source you can trust such as WHO website or, a local or state public health agency
+  - type: TextImage
+    bottomImageUri: placeholder/protect/distance.png
+    bodyTexts:
+      - >
+        Limit worry and agitation by lessening the time you and your family spend watching or listening to media coverage that you perceive as upsetting.
+  - type: TextImage
+    bottomImageUri: placeholder/protect/distance.png
+    bodyTexts:
+      - >
+        Draw on skills you have used in the past that have helped you to manage previous life’s adversities and use those skills to help you manage your emotions during the challenging time of this outbreak.
+
