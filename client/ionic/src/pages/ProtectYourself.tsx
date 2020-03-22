@@ -48,7 +48,7 @@ const ProtectYourself: React.FC = () => {
             />
           </IonItem>
         </IonToolbar>
-       </IonHeader>
+      </IonHeader>
       <IonContent>
         {flow.content && flow.content.screens && (
           <IonSlides pager={true}>
@@ -65,7 +65,7 @@ const ProtectYourself: React.FC = () => {
                               className="w-80 center"
                               style={{
                                 width: 260,
-                              }}                              
+                              }}
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
