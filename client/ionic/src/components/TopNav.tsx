@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonHeader, IonItem, IonImg, IonToolbar } from '@ionic/react';
+import { IonButtons, IonMenuButton, IonBackButton } from '@ionic/react';
 
 const TopNav: React.FC = () => {
   return (
@@ -7,10 +8,13 @@ const TopNav: React.FC = () => {
       <IonToolbar>
         <IonItem lines="none" href="/menu">
           <IonImg
-            className="w-80 center h3"
+            className="left h3"
             src="assets/identity/who-logo-rgb.png"
           />
         </IonItem>
+        <IonButtons slot="end">
+          <IonBackButton defaultHref="/menu" icon="close"/>
+        </IonButtons>
       </IonToolbar>
     </IonHeader>
   );

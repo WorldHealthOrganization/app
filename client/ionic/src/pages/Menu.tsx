@@ -18,14 +18,14 @@ const Menu: React.FC = () => {
         <IonItem href="/triage" color="primary" className="pb3 tc ph4">
           <IonLabel>Check Your Health</IonLabel>
         </IonItem>
-        <IonItem href="/menu-distress" color="primary" className="pb3 tc ph4">
-          <IonLabel>Feeling Distressed?</IonLabel>
-        </IonItem>
-        <IonItem href="/local_maps" color="primary" className="pb3 tc ph4">
-          <IonLabel>Local Maps</IonLabel>
-        </IonItem>
         <IonItem href="/share" color="primary" className="pb3 tc ph4">
           <IonLabel>Share the App</IonLabel>
+        </IonItem>
+        <IonItem href="/menu-distress" color="primary" className="pb3 tc ph4">
+          <IonLabel>Send Feedback</IonLabel>
+        </IonItem>
+        <IonItem href="/local_maps" color="primary" className="pb3 tc ph4">
+          <IonLabel>About the App</IonLabel>
         </IonItem>
       </IonContent>
     </IonPage>
