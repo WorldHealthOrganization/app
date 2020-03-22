@@ -4,6 +4,12 @@ This is the official World Health Organization app.
 
 **This repository is a work in progress and has not yet been medically reviewed.  Until the app is ready, the general public should consult the [WHO's COVID-19 website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019).**
 
+## Getting Started
+
+If you're interested in joining in the effort, please see the [ONBOARDING](https://github.com/WorldHealthOrganization/app/blob/master/ONBOARDING.md) docs.
+
+## Summary
+
 **Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
 The initial focus is on delivering a v0.1:
@@ -15,7 +21,7 @@ The initial focus is on delivering a v0.1:
 
 and exiting this phase with a functioning team and infrastructure to rapidly iterate the app into something far more useful for the current pandemic. 
 
-The long term goal is support of the World Health Organization's mission for global public health. 
+The long term goal is support of the World Health Organization's mission for global public health.
 
 ## Key Goals for v0.1:
 * **Containment & Mitigation:** WHO best practices for protecting communities. Also, demonstrate the ability to update content on the server side and have it reflected in the app. 
@@ -29,10 +35,6 @@ We want to get this out and working so we can move on to more significant functi
 ## Key Goals for Next Release
 
 We are assessing the feature roadmap (contact tracing and more) for the next and subsequent releases.
-
-## Getting Started
-
-See [ONBOARDING](https://github.com/WorldHealthOrganization/app/blob/master/ONBOARDING.md)
 
 ## Community
 
