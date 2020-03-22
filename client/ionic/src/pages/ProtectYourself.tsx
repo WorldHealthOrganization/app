@@ -46,7 +46,7 @@ const ProtectYourself: React.FC = () => {
                     </IonSlide>
                   );
                 default:
-                /** TODO: Handle errors of unsupported screen types correctly. */
+                  /** TODO: Handle errors of unsupported screen types correctly. */
                   return null;
               }
             })}
