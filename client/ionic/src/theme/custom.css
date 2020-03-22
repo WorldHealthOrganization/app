@@ -1,0 +1,5 @@
+/*Custom CSS for the triage form*/
+.sv_main .sv_container .sv_body.sv_completed_page {
+	text-align: left;
+    font-size: 20px;
+}

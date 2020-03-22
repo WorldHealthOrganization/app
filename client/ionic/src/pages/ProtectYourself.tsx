@@ -28,14 +28,11 @@ const ProtectYourself: React.FC = () => {
                   return (
                     <IonSlide>
                       <IonCard>
-                        <IonCardContent className="pb3 tc ph5">
+                        <IonCardContent className="pb3 tl ph5">
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
                             <IonImg
-                              className="w-80 center"
-                              style={{
-                                width: 260,
-                              }}
+                              className="h4 center pb3"
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
