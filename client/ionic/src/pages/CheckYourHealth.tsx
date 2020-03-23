@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -11,13 +10,12 @@ import {
 } from '@ionic/react';
 import TopNav from '../components/TopNav';
 import 'tachyons';
-import { getUserContext } from '../content/userContext';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 
-const CopingEveryone: React.FC = () => {
+const CheckYourHealth: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('copingEveryone');
+  const flow = useDynamicFlow('check-your-health');
   return (
     <IonPage className="pa3">
       <TopNav />
@@ -30,14 +28,11 @@ const CopingEveryone: React.FC = () => {
                   return (
                     <IonSlide>
                       <IonCard>
-                        <IonCardContent className="pb3 tc ph5">
+                        <IonCardContent className="pb3 tl ph5">
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
                             <IonImg
-                              className="w-80 center"
-                              style={{
-                                width: 260,
-                              }}
+                              className="h4 center pb3"
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
@@ -58,4 +53,4 @@ const CopingEveryone: React.FC = () => {
   );
 };
 
-export default CopingEveryone;
+export default CheckYourHealth;

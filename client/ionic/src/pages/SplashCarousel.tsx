@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlowLoader, Flow, LoadedFlow } from '../content/flow';
 import {
   IonContent,
   IonPage,
@@ -7,42 +6,49 @@ import {
   IonSlide,
   IonCard,
   IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
   IonImg,
 } from '@ionic/react';
-import TopNav from '../components/TopNav';
 import 'tachyons';
-import { getUserContext } from '../content/userContext';
 import useDynamicFlow from '../hooks/useDynamicFlow';
+import TopNav from '../components/TopNav';
 
-const CopingParents: React.FC = () => {
+const SplashCarousel: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('copingParents');
+  const flow = useDynamicFlow('splash-carousel');
   return (
     <IonPage className="pa3">
       <TopNav />
-      <IonContent>
+      <IonContent className="center tc">
         {flow.content && flow.content.screens && (
-          <IonSlides pager={true}>
-            {flow.content.screens.map(screen => {
+          <IonSlides pager={true} className="h-auto">
+            {flow.content.screens.map((screen, key) => {
               switch (screen.type) {
                 case 'TextImage':
                   return (
-                    <IonSlide>
+                    <IonSlide key={key}>
                       <IonCard>
-                        <IonCardContent className="pb3 tc ph5">
+                        <IonCardHeader>
+                          <IonCardTitle className="near-black">
+                            {screen.headingText}
+                          </IonCardTitle>
+                          <IonCardSubtitle></IonCardSubtitle>
+                        </IonCardHeader>
+                        <IonCardContent className="tl">
+                          {screen.bodyTexts &&
+                            screen.bodyTexts.map((txt, key) => (
+                              <p key={key}>{txt}</p>
+                            ))}
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
                             <IonImg
-                              className="w-80 center"
-                              style={{
-                                width: 260,
-                              }}
+                              className="center pt3 h4"
                               src={flow.imgPrefix + '/' + screen.bottomImageUri}
                             />
                           )}
-                          {screen.bodyTexts &&
-                            screen.bodyTexts.map(txt => <p>{txt}</p>)}
                         </IonCardContent>
                       </IonCard>
                     </IonSlide>
@@ -58,4 +64,4 @@ const CopingParents: React.FC = () => {
   );
 };
 
-export default CopingParents;
+export default SplashCarousel;

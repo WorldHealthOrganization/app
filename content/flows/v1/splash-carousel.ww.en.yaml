@@ -1,12 +1,6 @@
 type: LinearCarousel
 screens:
   - type: TextImage
-    headingText: Official WHO App for COVID-19
-    bodyTexts:
-      - >
-        Learn how to protect yourself and your community.
-        Find medical resources to help.
-  - type: TextImage
     headingText: How it Spreads
     bodyTexts:
       - >

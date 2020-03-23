@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNav from '../components/TopNav';
-import { IonContent, IonPage, IonItem, IonLabel } from '@ionic/react';
+import { IonButton, IonContent, IonPage } from '@ionic/react';
 import 'tachyons';
 
 const Menu: React.FC = () => {
@@ -8,33 +8,44 @@ const Menu: React.FC = () => {
     <IonPage className="pa3">
       <TopNav />
       <IonContent>
-        <IonItem
+        <IonButton
+          expand="block"
           routerLink="/protect-yourself"
-          color="primary"
-          className="pb3 tc ph4 pt2"
+          className="mb3 mh4 tc mt4"
         >
-          <IonLabel>Protect Yourself</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/triage" color="primary" className="pb3 tc ph4">
-          <IonLabel>Check Your Health</IonLabel>
-        </IonItem>
-        <IonItem
-          routerLink="/menu-distress"
-          color="primary"
-          className="pb3 tc ph4"
+          Protect Yourself
+        </IonButton>
+        <IonButton
+          expand="block"
+          routerLink="/check-your-health"
+          className="mb3 mh4 tc"
         >
-          <IonLabel>Feeling Distressed?</IonLabel>
-        </IonItem>
-        <IonItem
-          routerLink="/local_maps"
-          color="primary"
-          className="pb3 tc ph4"
+          Check your Health
+        </IonButton>
+        <IonButton
+          expand="block"
+          fill="outline"
+          routerLink="/about"
+          className="mb3 mh4 tc"
         >
-          <IonLabel>Local Maps</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/share" color="primary" className="pb3 tc ph4">
-          <IonLabel>Share the App</IonLabel>
-        </IonItem>
+          Share the App
+        </IonButton>
+        <IonButton
+          expand="block"
+          fill="outline"
+          routerLink="/about"
+          className="mb3 mh4 tc"
+        >
+          Send Feedback
+        </IonButton>
+        <IonButton
+          expand="block"
+          fill="outline"
+          routerLink="/about"
+          className="mh4 tc"
+        >
+          About the App
+        </IonButton>
       </IonContent>
     </IonPage>
   );

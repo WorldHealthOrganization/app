@@ -15,7 +15,7 @@ import useDynamicFlow from '../hooks/useDynamicFlow';
 const ProtectYourself: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('protect');
+  const flow = useDynamicFlow('protect-yourself');
   return (
     <IonPage className="pa3">
       <TopNav />
