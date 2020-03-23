@@ -23,17 +23,15 @@ const TextImage = ({
   return (
     <IonSlide>
       <div className="flex flex-column justify-around h-100 pa4">
-        <div className="mt3 tl" style={{ fontSize: '1.5em' }}>
-          <IonCardTitle className="near-black">
-            {screen.headingText}
-          </IonCardTitle>
-          <IonCardSubtitle></IonCardSubtitle>
-          {screen.bodyTexts &&
-            screen.bodyTexts.map((txt, key) => <p key={key}>{txt}</p>)}
+        <div className="mt3 tl">
+          <div style={{ fontSize: '1.5em' }}>{screen.headingText}</div>
+          <div style={{ fontSize: screen.headingText ? '1em' : '1.5em' }}>
+            {screen.bodyTexts &&
+              screen.bodyTexts.map((txt, key) => <p key={key}>{txt}</p>)}
+          </div>
         </div>
         <div>
           {screen.bottomImageUri && (
-            /* TODO: actual css */
             <IonImg
               className="center pt3 h4"
               src={flow.imgPrefix + '/' + screen.bottomImageUri}
