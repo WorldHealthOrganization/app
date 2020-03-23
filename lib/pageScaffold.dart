@@ -6,7 +6,7 @@ class PageScaffold extends StatelessWidget {
   final EdgeInsetsGeometry bodyPadding;
 
   PageScaffold(
-      {this.body,
+      {@required this.body,
       this.bodyPadding = const EdgeInsets.symmetric(horizontal: 24)});
 
   @override
