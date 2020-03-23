@@ -5,7 +5,9 @@ import { IonReactRouter } from '@ionic/react-router';
 
 import About from'./pages/About';
 import CheckYourHealth from './pages/CheckYourHealth';
-import Splash from './pages/Splash';
+import SplashTitle from './pages/SplashTitle';
+import SplashInfo from './pages/SplashInfo';
+import SplashCarousel from './pages/SplashCarousel';
 import Menu from './pages/Menu';
 import ProtectYourself from './pages/ProtectYourself';
 
@@ -36,7 +38,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/about" component={About} exact={true} />
-        <Route path="/splash" component={Splash} exact={true} />
+        <Route path="/splash-title" component={SplashTitle} exact={true} />
+        <Route path="/splash-info" component={SplashInfo} exact={true} />
+        <Route path="/splash-carousel" component={SplashCarousel} exact={true} />
         <Route path="/check-your-health" component={CheckYourHealth} exact={true} />
         <Route path="/menu" component={Menu} exact={true} />
         <Route
@@ -44,7 +48,7 @@ const App: React.FC = () => (
           component={ProtectYourself}
           exact={true}
         />
-        <Route path="/" render={() => <Redirect to="/splash" />} exact={true} />
+        <Route path="/" render={() => <Redirect to="/splash-title" />} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
