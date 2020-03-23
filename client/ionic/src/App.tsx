@@ -10,6 +10,7 @@ import SplashInfo from './pages/SplashInfo';
 import SplashCarousel from './pages/SplashCarousel';
 import Menu from './pages/Menu';
 import ProtectYourself from './pages/ProtectYourself';
+import Triage from './pages/Triage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -61,6 +62,7 @@ const App: React.FC = () => (
           render={() => <Redirect to="/splash-title" />}
           exact={true}
         />
+        <Route path="/triage" component={Triage} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
