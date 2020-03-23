@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonHeader, IonItem, IonImg, IonToolbar } from '@ionic/react';
-import { IonButtons, IonMenuButton, IonBackButton } from '@ionic/react';
+import { IonButtons, IonMenuButton, IonBackButton, IonButton, IonIcon } from '@ionic/react';
+import {close} from 'ionicons/icons';
 
 const TopNav: React.FC = () => {
   return (
@@ -13,7 +14,9 @@ const TopNav: React.FC = () => {
           />
         </IonItem>
         <IonButtons slot="end">
-          <IonBackButton defaultHref="/menu" icon="close"/>
+          <IonButton routerLink="/menu">
+            <IonIcon slot="end" icon={close} />
+          </IonButton>
         </IonButtons>
       </IonToolbar>
     </IonHeader>
