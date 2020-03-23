@@ -2,28 +2,37 @@ import 'package:WHOFlutter/homePage.dart';
 import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
-  PageScaffold(this.body);
-
   final Widget body;
+  final EdgeInsetsGeometry bodyPadding;
+
+  PageScaffold(
+      {this.body,
+      this.bodyPadding = const EdgeInsets.symmetric(horizontal: 24)});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
       child: Container(
-          padding: EdgeInsets.all(24),
           child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-            GestureDetector(
-              child: Image(
-                  image: AssetImage('assets/WHO.jpg'),
-                  width: MediaQuery.of(context).size.width),
-              onTap: () {
-                //return Navigator.of(context).push(
-                //MaterialPageRoute( builder: (c)=>HomePage() ) );
-              },
-            ),
-            Expanded(child: this.body)
-          ])),
+        GestureDetector(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Image(
+                image: AssetImage('assets/WHO.jpg'),
+                width: MediaQuery.of(context).size.width),
+          ),
+          onTap: () {
+            //return Navigator.of(context).push(
+            //MaterialPageRoute( builder: (c)=>HomePage() ) );
+          },
+        ),
+        Expanded(
+            child: Padding(
+          padding: bodyPadding,
+          child: this.body,
+        ))
+      ])),
     ));
   }
 }

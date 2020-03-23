@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
 import 'package:WHOFlutter/pages/protectYourself.dart';
@@ -13,12 +11,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        body: Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Spacer(flex:1),
+        Spacer(flex: 1),
         pageButton(
             AppLocalizations.of(context).translate("protectYourself"),
             () => Navigator.of(context)
@@ -34,7 +32,7 @@ class HomePage extends StatelessWidget {
           () => Share.share(
               'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu'),
         ),
-        Spacer(flex:3)
+        Spacer(flex: 3)
       ],
     ));
   }

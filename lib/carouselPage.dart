@@ -7,13 +7,15 @@ import 'package:page_view_indicator/page_view_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
   CarouselSlide(this.imgSrc, this.message, this.context);
+
   final String imgSrc;
   final String message;
   final BuildContext context;
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
+      padding: EdgeInsets.all(24),
       child: Card(
         elevation: 0,
         child: Column(
@@ -41,6 +43,7 @@ class CarouselSlide extends StatelessWidget {
 
 class CarouselView extends StatelessWidget {
   List<CarouselSlide> items = [];
+
   CarouselView(this.items);
 
   final pageIndexNotifier = ValueNotifier<int>(0);
@@ -48,10 +51,10 @@ class CarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      Stack(
+      body: Stack(
         children: <Widget>[
           PageView(
-            onPageChanged: (i)=>pageIndexNotifier.value = i,
+            onPageChanged: (i) => pageIndexNotifier.value = i,
             children: this.items,
           ),
           Align(
@@ -62,11 +65,17 @@ class CarouselView extends StatelessWidget {
           ),
           Align(
               alignment: FractionalOffset.topRight,
-              child: IconButton(icon: Icon(Icons.close), onPressed: () {
-                Navigator.of(context).pop();
-              } )),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 24.0),
+                child: IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+              )),
         ],
       ),
+      bodyPadding: EdgeInsets.zero,
     );
   }
 

@@ -8,7 +8,8 @@ import './infoForParents.dart';
 class FeelingDistressedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(Column(
+    return PageScaffold(
+        body: Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
