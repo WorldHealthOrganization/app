@@ -6,19 +6,19 @@ MAJOR CAVEAT: This is a WORK IN PROGRESS with many items TBD. We will want weigh
 
 There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
-## Versions
+## Milestones
 
-Aligning on language of versions:
+Version numbering terminology:
 
-* **v0.1**: refers to the initial buildout that will be submitted to the app stores, aiming for Tuesday, March 24
-* **v0.2+**: any versions starting with v0 are _PRE_ publishing the app for public download
+* **v0.1**: refers to the initial buildout that will be submitted to the app stores, aiming for Tuesday, March 24, 2020
+* **v0.2+**: any versions starting with major version v0 are not intended for public distribution or consumption
 * **v1.0**: the first version that we feel offers enough value to be published onto the app stores for public download will be v1.0
 
 ### v0.1
 
-**Goal:** To get a functional build of an application that can be submitted to the Apple App Store and Google Play Store for approval. This app will _NOT_ be published into those app stores for public download, but will instead serve as an approved base for future versions and to prove out that we can deliver on the technical side. The app will serve static content pulled from the WHO's site in English.
+**Goal:** To get a functional build of an application that can be submitted to the Apple App Store and Google Play Store for approval. This app will _NOT_ be published into those app stores for public download, but will instead serve as an approved base for future versions and to prove out that we can deliver on the technical side. The app will serve static content manually adapted from the WHO's site in English.
 
-**Target Date:** Tuesday, March 24
+**Target Date:** Tuesday, March 24, 2020
 
 Technical Features / Requirements:
 
@@ -31,7 +31,7 @@ Technical Features / Requirements:
   * Framework in place to localize UI elements
   * Framework in place to load the informational content in localized formats
 * Demonstrate capability to load content dynamically from the cloud, even if this feature will _NOT_ be turned on as part of the v0.1 launch
-* Demonstrate capability to instrument the app and collect basic analytics around which features and pages are actually being used, even if this feature will _NOT_ be turned on as part of the v0.1 launch
+* _(Open Question)_ Demonstrate capability to instrument the app and collect basic analytics around which features and pages are actually being used, even if this feature will _NOT_ be turned on as part of the v0.1 launch
   * Investigating legal requirements of this data collection, including whether updated TOS/Privacy Policy is needed
 
 Features _NOT_ included in v0.1:
@@ -60,7 +60,7 @@ Other notes on v0.1:
 
 This section is a major WORK IN PROGRESS and is not fully complete. Listing out very initial thoughts for now.
 
-**Goal:** Iterations on initial app submission to get closer to initial specs
+**Goal:** Iterate on initial app submission with the goal of matching or exceeding the existing functionality in the WHO WhatsApp Bot presented idiomatically as an app. The app content should be localized to the 6 official WHO languages, with the ability to be served from the cloud.
 
 **Target Date:** _(ongoing)_
 
@@ -68,6 +68,9 @@ Features:
 
 * Process & pipeline for beta distribution of the app before public availability on app stores (e.g. TestFlight)
   * _Possible v0.1 feature?_
+* Possibly remodel the presentation of content using a Snapchat story-style interface
+* Match or exceed the existing functionality & content in the WHO WhatsApp Bot, presented idiomatically as an app
+  * _See internal documentation on content in the bot_
 * Dynamically loading data from the cloud for updates on content
   * Should still fall back to default data baked into app bundle for full functionality in an offline environment
 * App content is available in the 6 official WHO languages: Arabic, Chinese, English, French, Russian, and Spanish
