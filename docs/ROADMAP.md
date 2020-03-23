@@ -22,10 +22,10 @@ Version numbering terminology:
 
 Technical Features / Requirements:
 
-* App built to be submitted on Apple App Store and Google Play Store
+* App built to be submitted on Apple App Store and Google Play Store, including code signing process
 * Displaying static information in English
-  * Currently, build to design spec in Figma; this may be updated over the course of the day
-* UI styled to exact design spec in Figma
+  * Currently, build to [design spec in Figma](https://www.figma.com/file/fjzTIloCEK4FpbyDiTLj2X/iOS-UX); this may be updated over the course of the day
+* UI styled to exact [design spec in Figma](https://www.figma.com/file/fjzTIloCEK4FpbyDiTLj2X/iOS-UX)
 * App is still functional in an offline environment with default content able to be accessed without a network connection
 * Demonstrate capability to localize content from the technical platform perspective, even if other languages/cultures are _NOT_ part of that v0.1 launch
   * Framework in place to localize UI elements
@@ -50,7 +50,7 @@ Non-Technical Requirements for v0.1:
 * All content & assets required for submission to Apple App Store and Google Play Store (see issues for [text assets](https://github.com/WorldHealthOrganization/app/issues/188) and [image assets](https://github.com/WorldHealthOrganization/app/issues/187))
 * Confirmed informational content & organization of that content included in app
 * Any legal requirements for submission to app stores & legal review
-* Account information/access from WHO to submit app on behalf of their accounts
+* Account information/access from WHO to submit app on behalf of their accounts (also needed for code signing)
 
 Other notes on v0.1:
 
