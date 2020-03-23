@@ -6,7 +6,7 @@ import 'tachyons';
 const Menu: React.FC = () => {
   return (
     <IonPage className="pa3">
-      <TopNav />
+      <TopNav showClose={false} linkify={false} />
       <IonContent>
         <IonButton
           expand="block"
