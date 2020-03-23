@@ -3,6 +3,7 @@ import { IonHeader, IonItem, IonImg, IonToolbar } from '@ionic/react';
 import { IonButtons, IonButton, IonIcon } from '@ionic/react';
 import { close } from 'ionicons/icons';
 
+// TODO: create a CSS style guide for when to use inline styles, etc.
 const TopNav = ({
   showClose,
   linkify,
