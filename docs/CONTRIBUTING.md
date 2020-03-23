@@ -11,10 +11,10 @@ While we're working quickly, please abide by a few rules to keep us safe and san
 
 ## Pull Requests
 
-Please follow the [default Pull Request template](https://github.com/WorldHealthOrganization/app/blob/master/.github/PULL_REQUEST_TEMPLATE/default_pull_request_template.md) when creating your PR, and follow these rules:
+Please follow the [default Pull Request template](../.github/PULL_REQUEST_TEMPLATE/default_pull_request_template.md) when creating your PR, and follow these rules:
 
 * For authors, before you submit a PR for review:
-  * Add your name to the end of the `team` array in the [content/credits.yaml](content/credits.yaml) contributor list if its your first commit.
+  * Add your name to the end of the `team` array in the [content/credits.yaml](../content/credits.yaml) contributor list if its your first commit.
   * Make sure the commit history you propose reflects meaningful chunks of work each of which is of submittable quality and properly licensed, instead of reflecting your iterative development/debugging process as you add or remove code.  For example your corrections during code review should be squashed into the appropriate relevant original commit, not a separate commit just for fixes.
   * GitHub Email address needs to match your git author email address.
   * For each dependency you add, please acknowledge it in your PR description and describe why you chose it, its license, and a summary of how widely it is used in the open source community (do known apps use it?  does it have known backers?)
