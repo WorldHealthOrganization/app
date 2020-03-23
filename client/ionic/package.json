@@ -61,7 +61,19 @@
     "@capacitor/cli": "1.5.1",
     "@types/js-yaml": "^3.12.2",
     "gts": "^1.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "tachyons": "^4.10.0"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,css,ts,tsx}": [
+      "gts check"
+    ]
+  }
 }
