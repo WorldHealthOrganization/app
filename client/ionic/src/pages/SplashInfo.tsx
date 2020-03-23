@@ -25,7 +25,7 @@ const SplashInfo: React.FC = () => {
   return (
     <IonPage className="pa3">
       <IonContent className="center tc th4 mt4">
-        <IonCard button={true} routerLink="/splash-info">
+        <IonCard button={true} routerLink="/splash-carousel">
           <IonCardHeader>
             <IonImg
               className="center"
