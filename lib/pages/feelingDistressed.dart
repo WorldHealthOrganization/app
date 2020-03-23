@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:WHOFlutter/localization/localization.dart';
 import '../homePage.dart';
+import '../pageButton.dart';
 import '../pageScaffold.dart';
 import './protectYourself.dart';
 import './infoForParents.dart';
@@ -8,7 +9,8 @@ import './infoForParents.dart';
 class FeelingDistressedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(Column(
+    return PageScaffold(
+        body: Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,14 +29,14 @@ class FeelingDistressedPage extends StatelessWidget {
             ],
           ),
         ),
-        pageButton(
-          AppLocalizations.of(context).translate("infoForEveryone"),
-          () => Navigator.of(context)
+        PageButton(
+          title: AppLocalizations.of(context).translate("infoForEveryone"),
+          onPressed: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
-        pageButton(
-            AppLocalizations.of(context).translate("infoForParents"),
-            () => Navigator.of(context)
+        PageButton(
+            title: AppLocalizations.of(context).translate("infoForParents"),
+            onPressed: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => InfoForParents()))),
         Spacer(flex: 4)
       ],
