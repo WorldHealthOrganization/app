@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
-import About from'./pages/About';
+import About from './pages/About';
 import CheckYourHealth from './pages/CheckYourHealth';
 import SplashTitle from './pages/SplashTitle';
 import SplashInfo from './pages/SplashInfo';
@@ -40,15 +40,27 @@ const App: React.FC = () => (
         <Route path="/about" component={About} exact={true} />
         <Route path="/splash-title" component={SplashTitle} exact={true} />
         <Route path="/splash-info" component={SplashInfo} exact={true} />
-        <Route path="/splash-carousel" component={SplashCarousel} exact={true} />
-        <Route path="/check-your-health" component={CheckYourHealth} exact={true} />
+        <Route
+          path="/splash-carousel"
+          component={SplashCarousel}
+          exact={true}
+        />
+        <Route
+          path="/check-your-health"
+          component={CheckYourHealth}
+          exact={true}
+        />
         <Route path="/menu" component={Menu} exact={true} />
         <Route
           path="/protect-yourself"
           component={ProtectYourself}
           exact={true}
         />
-        <Route path="/" render={() => <Redirect to="/splash-title" />} exact={true} />
+        <Route
+          path="/"
+          render={() => <Redirect to="/splash-title" />}
+          exact={true}
+        />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

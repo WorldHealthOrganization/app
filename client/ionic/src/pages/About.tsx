@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  IonPage
-} from '@ionic/react';
+import { IonPage } from '@ionic/react';
 import TopNav from '../components/TopNav';
 
 const About: React.FC = () => {
@@ -13,4 +11,3 @@ const About: React.FC = () => {
 };
 
 export default About;
-

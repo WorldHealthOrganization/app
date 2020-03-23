@@ -16,10 +16,7 @@ const SplashTitle: React.FC = () => {
       <IonContent className="center tc th4 mt4">
         <IonCard button={true} routerLink="/splash-info">
           <IonCardHeader>
-            <IonImg
-              className="center"
-              src="assets/identity/who-logo-rgb.png"
-            />
+            <IonImg className="center" src="assets/identity/who-logo-rgb.png" />
           </IonCardHeader>
           <IonCardContent>
             <IonText color="primary" className="center mt4 pv4">
