@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.4",
     "@types/react-router": "^5.1.4",
     "@types/react-router-dom": "^5.1.3",
+    "dompurify": "^2.0.8",
     "ionicons": "^5.0.0",
     "js-yaml": "^3.13.1",
     "react": "^16.12.0",
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "1.5.1",
+    "@types/dompurify": "^2.0.1",
     "@types/js-yaml": "^3.12.2",
     "gts": "^1.1.2",
     "husky": "^4.2.3",
