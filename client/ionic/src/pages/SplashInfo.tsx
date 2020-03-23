@@ -49,7 +49,7 @@ const SplashInfo: React.FC = () => {
             <IonList lines="none" className="pt4">
               <ListItem>Get the latest information</ListItem>
               <ListItem>Learn how to protect yourself</ListItem>
-              <ListItem>Report Sickness</ListItem>
+              <ListItem>Report sickness</ListItem>
             </IonList>
           </IonCardContent>
         </IonCard>
