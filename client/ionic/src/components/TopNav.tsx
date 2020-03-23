@@ -15,20 +15,25 @@ const TopNav = ({
     <IonHeader className="ion-no-border">
       <IonToolbar>
         <IonButtons slot="start">
-          <IonItem slot="start" lines="none" {...linkProps}>
-            <IonImg
-              className="left h3"
-              src="assets/identity/who-logo-rgb.png"
-            />
-          </IonItem>
+          <IonImg
+            className="h3 ml4"
+            style={{ objectPosition: 'left' }}
+            src="assets/identity/who-logo-rgb.png"
+          />
         </IonButtons>
-        {showClose && (
-          <IonButtons slot="end">
-            <IonButton {...linkProps}>
-              <IonIcon slot="end" icon={close} />
-            </IonButton>
-          </IonButtons>
-        )}
+        <IonButtons
+          slot="end"
+          style={showClose ? {} : { visibility: 'hidden' }}
+        >
+          <IonButton {...linkProps}>
+            <IonIcon
+              slot="end"
+              icon={close}
+              color="primary"
+              style={{ width: '2em', height: '2em' }}
+            />
+          </IonButton>
+        </IonButtons>
       </IonToolbar>
     </IonHeader>
   );
