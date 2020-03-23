@@ -12,22 +12,26 @@ class CarouselSlide extends StatelessWidget {
   final BuildContext context;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width * 9 / 10;
 
     return Container(
       child: Card(
-        child: ListView(
+        elevation: 0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
+            Spacer(flex: 1),
             Image(
               image: AssetImage(imgSrc),
               // width: width,
             ),
+            Spacer(flex: 1),
             Text(
               message,
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),
-            Container(height: 60,)
+            Spacer(flex: 2),
           ],
         ),
       ),
@@ -55,7 +59,12 @@ class CarouselView extends StatelessWidget {
             child: Container(
                 padding: EdgeInsets.only(bottom: 20),
                 child: pageViewIndicator()),
-          )
+          ),
+          Align(
+              alignment: FractionalOffset.topRight,
+              child: IconButton(icon: Icon(Icons.close), onPressed: () {
+                Navigator.of(context).pop();
+              } )),
         ],
       ),
     );
