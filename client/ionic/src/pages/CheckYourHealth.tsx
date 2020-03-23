@@ -15,7 +15,7 @@ import useDynamicFlow from '../hooks/useDynamicFlow';
 const CheckYourHealth: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('check');
+  const flow = useDynamicFlow('check-your-health');
   return (
     <IonPage className="pa3">
       <TopNav />

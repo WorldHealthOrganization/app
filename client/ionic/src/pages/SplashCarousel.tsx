@@ -9,19 +9,16 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
-  IonButton,
   IonImg,
 } from '@ionic/react';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 import TopNav from '../components/TopNav';
 
-import { S } from '../i18n/S';
-
-const Splash: React.FC = () => {
+const SplashCarousel: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
   // of screen archetypes.
-  const flow = useDynamicFlow('splash');
+  const flow = useDynamicFlow('splash-carousel');
   return (
     <IonPage className="pa3">
       <TopNav />
@@ -67,4 +64,4 @@ const Splash: React.FC = () => {
   );
 };
 
-export default Splash;
+export default SplashCarousel;

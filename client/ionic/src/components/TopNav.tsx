@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonHeader, IonItem, IonImg, IonToolbar } from '@ionic/react';
-import { IonButtons, IonMenuButton, IonBackButton, IonButton, IonIcon } from '@ionic/react';
+import { IonButtons, IonButton, IonIcon } from '@ionic/react';
 import {close} from 'ionicons/icons';
 
 const TopNav: React.FC = () => {
