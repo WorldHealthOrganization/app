@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'pageScaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/pageScaffold.dart';
-import 'package:flutter/material.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
@@ -42,7 +41,7 @@ class CarouselSlide extends StatelessWidget {
 }
 
 class CarouselView extends StatelessWidget {
-  List<CarouselSlide> items = [];
+  final List<CarouselSlide> items;
 
   CarouselView(this.items);
 

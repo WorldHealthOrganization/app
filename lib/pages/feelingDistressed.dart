@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:WHOFlutter/localization/localization.dart';
-import '../homePage.dart';
 import '../pageButton.dart';
 import '../pageScaffold.dart';
 import './protectYourself.dart';
@@ -22,9 +21,7 @@ class FeelingDistressedPage extends StatelessWidget {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: () => Navigator.pop(context),
               ),
             ],
           ),

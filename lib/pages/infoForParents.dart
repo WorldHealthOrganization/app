@@ -1,4 +1,3 @@
-import 'package:WHOFlutter/pageScaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:WHOFlutter/carouselPage.dart';
