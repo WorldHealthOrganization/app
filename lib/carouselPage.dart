@@ -16,17 +16,18 @@ class CarouselSlide extends StatelessWidget {
 
     return Container(
       child: Card(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Image(
               image: AssetImage(imgSrc),
-              width: width,
+              // width: width,
             ),
             Text(
               message,
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),
+            Container(height: 60,)
           ],
         ),
       ),

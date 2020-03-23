@@ -14,5 +14,10 @@
   "socialDistancing": "",
   "seekMedicalCare": "",
   "infoForEveryone":"",
-  "infoForParents":""
+  "infoForParents":"",
+  "childStress":"",
+  "childLove":"",
+  "childDistance":"",
+  "childRoutines":"",
+  "childFacts":""
 }

@@ -3,6 +3,7 @@ import 'package:WHOFlutter/localization/localization.dart';
 import '../homePage.dart';
 import '../pageScaffold.dart';
 import './protectYourself.dart';
+import './infoForParents.dart';
 
 class FeelingDistressedPage extends StatelessWidget {
   @override
@@ -16,7 +17,8 @@ class FeelingDistressedPage extends StatelessWidget {
                 .push(MaterialPageRoute(builder: (c) => ProtectYourself())),),
           pageButton(
             AppLocalizations.of(context).translate("infoForParents"),
-            () {}),
+            () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => InfoForParents()))),
         ],
       )
     );
