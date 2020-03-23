@@ -11,6 +11,7 @@ import {
 import TopNav from '../components/TopNav';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
+import ReactMarkdown from 'react-markdown';
 
 const ProtectYourself: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
@@ -37,7 +38,9 @@ const ProtectYourself: React.FC = () => {
                             />
                           )}
                           {screen.bodyTexts &&
-                            screen.bodyTexts.map(txt => <p>{txt}</p>)}
+                            screen.bodyTexts.map((txt, key) => (
+                              <ReactMarkdown source={txt} key={key} />
+                            ))}
                         </IonCardContent>
                       </IonCard>
                     </IonSlide>
