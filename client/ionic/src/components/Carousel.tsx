@@ -4,9 +4,6 @@ import {
   IonPage,
   IonSlides,
   IonSlide,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonImg,
@@ -16,21 +13,25 @@ import useDynamicFlow from '../hooks/useDynamicFlow';
 import TopNav from '../components/TopNav';
 import { TextImageScreen, LoadedFlow } from '../content/flow';
 
-const TextImage = ( { screen, flow }: { screen: TextImageScreen, flow: LoadedFlow}) => {
+const TextImage = ({
+  screen,
+  flow,
+}: {
+  screen: TextImageScreen;
+  flow: LoadedFlow;
+}) => {
   return (
     <IonSlide>
-      <div className="flex flex-column h-100">
-        <div>
+      <div className="flex flex-column justify-around h-100 pa4">
+        <div className="mt3 tl" style={{ fontSize: '1.5em' }}>
           <IonCardTitle className="near-black">
             {screen.headingText}
           </IonCardTitle>
           <IonCardSubtitle></IonCardSubtitle>
-        </div>
-        <div className="tl">
           {screen.bodyTexts &&
-            screen.bodyTexts.map((txt, key) => (
-              <p key={key}>{txt}</p>
-            ))}
+            screen.bodyTexts.map((txt, key) => <p key={key}>{txt}</p>)}
+        </div>
+        <div>
           {screen.bottomImageUri && (
             /* TODO: actual css */
             <IonImg
@@ -42,24 +43,27 @@ const TextImage = ( { screen, flow }: { screen: TextImageScreen, flow: LoadedFlo
       </div>
     </IonSlide>
   );
-}
+};
 
 const Carousel = ({ flow: flowName }: { flow: string }) => {
-  // TODO: Refactor this out to separate Flow components. Use a dictionary
-  // of screen archetypes.
   const flow = useDynamicFlow(flowName);
+  const slidesStyles = {
+    '--bullet-background': 'var(--ion-color-primary-tint)',
+    '--bullet-background-active': 'var(--ion-color-primary)',
+  };
   return (
     <IonPage className="pa3">
       <TopNav />
       <IonContent className="center tc">
         {flow.content && flow.content.screens && (
-          <IonSlides pager={true} className="h-auto">
+          <IonSlides pager={true} className="h-100" style={slidesStyles}>
             {flow.content.screens.map((screen, key) => {
               switch (screen.type) {
                 case 'TextImage':
                   return <TextImage key={key} screen={screen} flow={flow} />;
                 default:
-                /** TODO: Handle errors of unsupported screen types correctly. */
+                  /** TODO: Handle errors of unsupported screen types correctly. */
+                  return null;
               }
             })}
           </IonSlides>
