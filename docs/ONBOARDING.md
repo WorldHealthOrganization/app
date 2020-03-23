@@ -23,7 +23,7 @@ Where to find answers to your questions:
 * Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
 * Most up-to-date app design spec: https://github.com/WorldHealthOrganization/app/issues/129
-* Most up-to-date preview of app in development: https://preview.whoapp.org/about
+* Most up-to-date preview of app in development: https://preview.whoapp.org
 
 Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
 
@@ -49,7 +49,7 @@ This is very much a committee effort, and we are moving quickly enough that we h
 
 # Building and Running
 
-Please review the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/CONTRIBUTING.md) before making any contributions to the code.
+Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any contributions to the code.
 
 This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
 
