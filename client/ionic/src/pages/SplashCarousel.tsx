@@ -14,7 +14,7 @@ import {
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 import TopNav from '../components/TopNav';
-import ReactMarkdown from 'react-markdown';
+import RenderHTML from '../components/RenderHTML';
 
 const SplashCarousel: React.FC = () => {
   // TODO: Refactor this out to separate Flow components. Use a dictionary
@@ -41,7 +41,7 @@ const SplashCarousel: React.FC = () => {
                         <IonCardContent className="tl">
                           {screen.bodyTexts &&
                             screen.bodyTexts.map((txt, key) => (
-                              <ReactMarkdown source={txt} key={key} />
+                              <RenderHTML source={txt} key={key} />
                             ))}
                           {screen.bottomImageUri && (
                             /* TODO: actual css */
