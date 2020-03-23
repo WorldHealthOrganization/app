@@ -26,6 +26,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "survey-react": "^1.5.16",
+    "tachyons": "^4.10.0",
     "typescript": "3.7.4"
   },
   "scripts": {
@@ -62,8 +63,7 @@
     "@types/js-yaml": "^3.12.2",
     "gts": "^1.1.2",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "tachyons": "^4.10.0"
+    "lint-staged": "^10.0.8"
   },
   "description": "An Ionic project",
   "husky": {
