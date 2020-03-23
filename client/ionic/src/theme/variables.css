@@ -76,6 +76,14 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
+.ios {
+  --ion-font-family: "San Francisco";
+}
+.md {
+  /* Android and web */
+  --ion-font-family: Roboto;
+}
+
 @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
