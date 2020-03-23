@@ -1,6 +1,6 @@
 import React from 'react';
 import TopNav from '../components/TopNav';
-import { IonContent, IonPage, IonItem, IonLabel } from '@ionic/react';
+import { IonButton, IonContent, IonPage, IonItem, IonLabel } from '@ionic/react';
 import 'tachyons';
 
 const Menu: React.FC = () => {
@@ -8,25 +8,11 @@ const Menu: React.FC = () => {
     <IonPage className="pa3">
       <TopNav />
       <IonContent>
-        <IonItem
-          routerLink="/protect-yourself"
-          color="primary"
-          className="pb3 tc ph4 pt2"
-        >
-          <IonLabel>Protect Yourself</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/check-your-health" color="primary" className="pb3 tc ph4">
-          <IonLabel>Check Your Health</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/share" color="primary" className="pb3 tc ph4">
-          <IonLabel>Share the App</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/send-feedback" color="primary" className="pb3 tc ph4">
-          <IonLabel>Send Feedback</IonLabel>
-        </IonItem>
-        <IonItem routerLink="/about" color="primary" className="pb3 tc ph4">
-          <IonLabel>About the App</IonLabel>
-        </IonItem>
+        <IonButton expand="block" routerLink="/protect-yourself" className="mb3 mh4 tc mt4">Protect Yourself</IonButton>
+        <IonButton expand="block" routerLink="/check-your-health" className="mb3 mh4 tc">Check your Health</IonButton>
+        <IonButton expand="block" fill="outline" routerLink="/about" className="mb3 mh4 tc">Share the App</IonButton>
+        <IonButton expand="block" fill="outline" routerLink="/about" className="mb3 mh4 tc">Send Feedback</IonButton>
+        <IonButton expand="block" fill="outline" routerLink="/about" className="mh4 tc">About the App</IonButton>
       </IonContent>
     </IonPage>
   );
