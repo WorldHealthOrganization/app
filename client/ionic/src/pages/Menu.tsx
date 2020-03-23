@@ -1,51 +1,56 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import TopNav from '../components/TopNav';
 import { IonButton, IonContent, IonPage } from '@ionic/react';
 import 'tachyons';
 
+const MenuItem = ({
+  link,
+  children,
+  fill,
+}: {
+  link: string;
+  children: ReactNode;
+  fill?: boolean;
+}) => {
+  const buttonStyle = {
+    fontWeight: 'bold',
+    height: 60,
+    fontSize: '1.5em',
+    textTransform: 'none',
+    '--border-radius': '10px',
+    letterSpacing: 'normal',
+  };
+  return (
+    <div>
+      <IonButton
+        expand="block"
+        routerLink={link}
+        className="tc"
+        fill={fill ? 'solid' : 'outline'}
+        style={buttonStyle}
+      >
+        {children}
+      </IonButton>
+    </div>
+  );
+};
+
 const Menu: React.FC = () => {
   return (
     <IonPage className="pa3">
-      <TopNav />
+      <TopNav showClose={false} linkify={false} />
       <IonContent>
-        <IonButton
-          expand="block"
-          routerLink="/protect-yourself"
-          className="mb3 mh4 tc mt4"
-        >
-          Protect Yourself
-        </IonButton>
-        <IonButton
-          expand="block"
-          routerLink="/check-your-health"
-          className="mb3 mh4 tc"
-        >
-          Check your Health
-        </IonButton>
-        <IonButton
-          expand="block"
-          fill="outline"
-          routerLink="/about"
-          className="mb3 mh4 tc"
-        >
-          Share the App
-        </IonButton>
-        <IonButton
-          expand="block"
-          fill="outline"
-          routerLink="/about"
-          className="mb3 mh4 tc"
-        >
-          Send Feedback
-        </IonButton>
-        <IonButton
-          expand="block"
-          fill="outline"
-          routerLink="/about"
-          className="mh4 tc"
-        >
-          About the App
-        </IonButton>
+        <div className="flex flex-column h-100 justify-around pt3 pb6 ph4">
+          <MenuItem fill link="/protect-yourself">
+            Protect Yourself
+          </MenuItem>
+          <MenuItem fill link="/check-your-health">
+            Check Your Health
+          </MenuItem>
+          <MenuItem link="/about">Share the App</MenuItem>
+          <MenuItem link="/about">Send Feedback</MenuItem>
+          <MenuItem link="/about">About the App</MenuItem>
+        </div>
       </IonContent>
     </IonPage>
   );
