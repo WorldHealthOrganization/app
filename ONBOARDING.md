@@ -68,6 +68,7 @@ To run on Android, from the `client/ionic` directory run:
 ```
 ionic build
 ionic capacitor copy android
+npx cap update android
 ionic capacitor run android -l --host=YOUR_IP_ADDRESS
 ```
 
