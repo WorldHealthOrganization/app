@@ -1,0 +1,5 @@
+[build]
+  base = "client/ionic"
+  publish = "build"
+  command = "npx ionic build"
+  environment = { NODE_VERSION = "10.19.0" }
