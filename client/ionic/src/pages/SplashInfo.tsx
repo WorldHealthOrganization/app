@@ -13,10 +13,13 @@ import {
   IonCardTitle,
   IonButton,
   IonImg,
-  IonList
+  IonList,
+  IonIcon,
+  IonLabel
 } from '@ionic/react';
+
 import 'tachyons';
-import 'square' from '@ionicons';
+import {square} from 'ionicons/icons';
 
 const SplashInfo: React.FC = () => {
   return (
@@ -30,15 +33,25 @@ const SplashInfo: React.FC = () => {
             />
           </IonCardHeader>
           <IonCardContent>
-            <IonList lines="none">
-               <IonItem>Item 1
-          <IonLabel>
-            Large Icon End
-      </IonLabel>
-          <IonIcon icon={square} size="large" slot="end" />
-</IonItem>
-               <IonItem>Item 2</IonItem>
-               <IonItem>Item 3</IonItem>
+            <IonList lines="none" className="pt4">
+               <IonItem>
+                 <IonLabel color="primary">
+                   Get the latest information
+                 </IonLabel>
+                 <IonIcon icon={square} size="large" slot="start" color="primary"/>
+               </IonItem>
+               <IonItem>
+                 <IonLabel color="primary">
+                   Learn how to protect yourself
+                 </IonLabel>
+                 <IonIcon icon={square} size="large" slot="start" color="primary"/>
+               </IonItem>
+               <IonItem>
+                 <IonLabel color="primary">
+                   Report Sickness
+                 </IonLabel>
+                 <IonIcon icon={square} size="large" slot="start" color="primary"/>
+               </IonItem>
             </IonList>
           </IonCardContent>
         </IonCard>
