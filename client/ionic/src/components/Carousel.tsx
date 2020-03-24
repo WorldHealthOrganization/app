@@ -40,25 +40,21 @@ const TextImage = ({
   );
 };
 
-const TextEmoji = ({
-  screen,
-}: {
-  screen: TextEmojiScreen;
-}) => {
+const TextEmoji = ({ screen }: { screen: TextEmojiScreen }) => {
   return (
     <IonSlide>
       <div className="flex flex-column justify-around h-100 pa4">
         <div className="mt3 tl">
-          { screen.bodyTexts && (
+          {screen.bodyTexts && (
             <div style={{ fontSize: '1.5em', textAlign: 'center' }}>
-              { screen.bodyTexts.map((txt, key) => (
+              {screen.bodyTexts.map((txt, key) => (
                 <RenderHTML source={txt} key={key} />
               ))}
             </div>
           )}
         </div>
         <div>
-          { screen.bottomEmoji && (
+          {screen.bottomEmoji && (
             <p style={{ fontSize: '6em' }}>{screen.bottomEmoji}</p>
           )}
         </div>
