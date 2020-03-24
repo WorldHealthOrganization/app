@@ -54,6 +54,11 @@ Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any co
 
 This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
 
+## Node version
+
+The node version is currently specified via `client/ionic/.nvmrc`, for users of [nvm](https://github.com/nvm-sh/nvm).  [asdf](https://github.com/asdf-vm/asdf) users can also use the version in this file by adding `legacy_version_file = yes` to `$HOME/.asdfrc`.
+
+
 ## Client
 
 The client app will be built initially using [Ionic React](https://ionicframework.com/docs/react). To get started, clone the repo and from the `client/ionic` directory run:
