@@ -2,30 +2,37 @@
 ______
 since there is no server component at this time
 
-## Prepare release
-1. [ ]  User testing on mockups (design)
+## Checkoffs
+
+## Product checks
+1. [ ]  fidelity checks with mockups (design) \*
 1. [ ]  go/nogo on individual features (engineering)
-1. [ ]  create release tag for the selected features
+1. [ ]  release tag created
 1. [ ]  all automated tests pass
 1. [ ]  all internationalization tests pass
-1. [ ]  generate release notes
+1. [ ]  release notes generated
+
+\* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
 
 ## Security checks
 TBD: Andrew will send a list
 
-## Collect store materials
+## Store material check
 
 TODO: Maintain full list of assets required in template
-1. [ ] generate iOS text assets
-1. [ ] generate android text assets
-1. [ ] generate iOS screenshots
-1. [ ] generate android screenshots
+1. [ ] iOS text assets committed
+1. [ ] android text assets committed
+1. [ ] iOS screenshots committed
+1. [ ] android screenshots committed 
 
 ## Final WHO sign off/approval
 ??? not sure what the process for this is
 
-## Push to the stores for beta testing
+## Release processes
 
+### Push to stores
+
+1. [ ] get all [checkoffs](#checkoffs)
 1. [ ] publish .apk and .ipa to github using automated build
 1. [ ] WHO will fill in store information and upload apk/ipa
 
@@ -43,11 +50,11 @@ at least on iOS with a small group before submission**
 1. [ ] collect beta test feedback in google doc
 1. [ ] prioritize issues that need to be fixed before release
 1. [ ] fix issues
-1. [ ] ask WHO to push fixed version to stores
+1. [ ] [push to stores](push-to-stores)
 
 ## Release!!
 
-1. [ ] when no high priority/blocking issues left, publish on both stores
+1. [ ] push beta version with no blocking/high priority issues to production
 
 ## Post-release marketing
 
