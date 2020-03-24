@@ -1,10 +1,18 @@
 {
-  "title": "Health check",
-  "completedHtml": "Thanks for using this survey. Your data has NOT been transmitted and is only kept locally.",
+  "title": "Health Survey",
+  "questionsOnPageMode": "singlequestion",
   "completedHtmlOnCondition": [
     {
-      "expression": "16 > 14",
-      "html": "Given that your symptoms started more than 2 weeks ago and you are not experiencing shortness of breath it is unlikely that you COVID-19.\n\nFeel free to repeat this survey in case your symptoms change."
+      "expression": "{question-primary-symptoms} anyof ['item-fever', 'item-cough', 'item-breath']",
+      "html": "For your symptoms please follow these steps: <br> <br> Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor or your local healthline"
+    },
+    {
+      "expression": "{question-secondary-symptoms} anyof ['item-muscle', 'item-nasal', 'item-throat', 'item-headache']",
+      "html": "There is a low probability that these symptoms relate to COVID-19, but please follow the following steps to protect yourself and others: <br> <br>Step 1: Please isolate yourself from others, read the <a href=/self-isolation> TODO link self isolation guide </a> <br> Step 2: Call your doctor, please do not visit in person"
+    },
+    {
+      "expression": "{question-pre-existing} anyof ['item-heart', 'item-diabetes', 'item-lung'] or {question-age} >= 60",
+      "html": "You do not show any of the symptoms of COVID-19, however you are at higher risk. <br> <br> <ul><li>Take everyday precautions to keep space between yourself and others.</li><li>When you go out in public, keep away from others who are sick, limit close contact and wash your hands often.</li><li>During a COVID-19 outbreak in your community, stay home as much as possible to further reduce your risk of being exposed.</li><li>Have enough household items, groceries and necessary medications on hand so that you will be prepared to stay at home for a period of time.</li><li>Keep the number of your local doctor or healthline handy in the event that you develop symptoms</li></ul> "
     }
   ],
   "pages": [
@@ -13,37 +21,308 @@
       "elements": [
         {
           "type": "checkbox",
-          "name": "symptoms",
-          "title": "Which of these symptoms do you have?",
+          "name": "question-primary-symptoms",
+          "title": "Are you experiencing any of the following symptoms?",
+          "isRequired": true,
           "choices": [
             {
-              "value": "fever",
+              "value": "item-fever",
               "text": "Fever"
             },
             {
-              "value": "cough",
+              "value": "item-cough",
               "text": "Cough"
             },
             {
-              "value": "breath",
-              "text": "Shortness of breath"
+              "value": "item-breath",
+              "text": "Difficulty Breathing"
+            },
+            {
+              "value": "item-other",
+              "text": "Other"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "name": "question-secondary-symptoms",
+          "visibleIf": "{question-primary-symptoms} contains 'item-other'",
+          "title": "Are you experiencing any of the following symptoms?",
+          "choices": [
+            {
+              "value": "item-muscle",
+              "text": "Muscle Pain"
+            },
+            {
+              "value": "item-nasal",
+              "text": "Nasal Congestion"
+            },
+            {
+              "value": "item-throat",
+              "text": "Sore Throat"
+            },
+            {
+              "value": "item-headache",
+              "text": "Headache"
+            }
+          ],
+          "hasNone": true,
+          "noneText": "None of the above"
+        },
+        {
+          "type": "text",
+          "name": "question-symptom-date",
+          "visibleIf": "{question-primary-symptoms} anyof ['item-fever', 'item-cough', 'item-breath'] or {question-secondary-symptoms} anyof ['item-muscle', 'item-nasal', 'item-throat', 'item-headache']",
+          "title": "When did these symptoms start",
+          "inputType": "date"
+        },
+        {
+          "type": "checkbox",
+          "name": "question-pre-existing",
+          "title": "Do you have the following pre-existing medical conditions",
+          "choices": [
+            {
+              "value": "item-heart",
+              "text": "Heart Disease"
+            },
+            {
+              "value": "item-diabetes",
+              "text": "Diabetes"
+            },
+            {
+              "value": "item-lung",
+              "text": "Lung Disease"
             }
           ]
         },
         {
           "type": "text",
-          "name": "days",
-          "visibleIf": "{symptoms} notempty",
-          "title": "Approximately how long ago did you first notice symptoms?",
-          "description": "Please enter the number of days",
+          "name": "question-age",
+          "visibleIf": "{question-primary-symptoms} notempty",
+          "title": "Your Age",
+          "validators": [
+            {
+              "type": "numeric",
+              "text": "must be a number"
+            }
+          ],
           "inputType": "number"
         },
         {
-          "type": "text",
-          "name": "question1",
-          "visibleIf": "{days} > 14"
+          "type": "dropdown",
+          "name": "question-country",
+          "title": "Your Country",
+          "choices": [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "The Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Cape Verde",
+            "Central African Republic",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo, Republic of the",
+            "Congo, Democratic Republic of the",
+            "Costa Rica",
+            "Cote d'Ivoire",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "East Timor (Timor-Leste)",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "The Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea, North",
+            "Korea, South",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia, Federated States of",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar (Burma)",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "Saint Kitts and Nevis",
+            "Saint Lucia",
+            "Saint Vincent and the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome and Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "South Sudan",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Togo",
+            "Tonga",
+            "Trinidad and Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States of America",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City (Holy See)",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
+            "Zimbabwe"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "triggers": [
+    {
+      "type": "complete"
+    },
+    {
+      "type": "complete"
+    }
+  ],
+  "showTitle": false,
+  "showPageTitles": false,
+  "showQuestionNumbers": "off"
 }

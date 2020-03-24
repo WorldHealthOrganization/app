@@ -9,6 +9,7 @@ import SplashInfo from './pages/SplashInfo';
 import SplashCarousel from './pages/SplashCarousel';
 import Menu from './pages/Menu';
 import ProtectYourself from './pages/ProtectYourself';
+import Triage from './pages/Triage';
 import WhoMythbusters from './pages/WhoMythbusters';
 import TravelAdvice from './pages/TravelAdvice';
 
@@ -63,6 +64,7 @@ const App: React.FC = () => (
           render={() => <Redirect to="/splash-title" />}
           exact={true}
         />
+        <Route path="/triage" component={Triage} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
