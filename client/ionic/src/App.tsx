@@ -10,6 +10,7 @@ import SplashInfo from './pages/SplashInfo';
 import SplashCarousel from './pages/SplashCarousel';
 import Menu from './pages/Menu';
 import ProtectYourself from './pages/ProtectYourself';
+import WhoMythbusters from './pages/WhoMythbusters';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -54,6 +55,11 @@ const App: React.FC = () => (
         <Route
           path="/protect-yourself"
           component={ProtectYourself}
+          exact={true}
+        />
+        <Route
+          path="/who-mythbusters"
+          component={WhoMythbusters}
           exact={true}
         />
         <Route

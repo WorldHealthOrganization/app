@@ -47,8 +47,10 @@ const Menu: React.FC = () => {
           <MenuItem fill link="/check-your-health">
             Check Your Health
           </MenuItem>
+          <MenuItem fill link="/who-mythbusters">
+            WHO Myth-busters
+          </MenuItem>
           <MenuItem link="/about">Share the App</MenuItem>
-          <MenuItem link="/about">Send Feedback</MenuItem>
           <MenuItem link="/about">About the App</MenuItem>
         </div>
       </IonContent>
