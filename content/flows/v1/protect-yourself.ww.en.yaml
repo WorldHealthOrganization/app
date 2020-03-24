@@ -1,32 +1,37 @@
 type: LinearCarousel
 screens:
-  - type: TextImage
-    bottomImageUri: placeholder/protect/washHands.png
+  - type: TextEmoji
+    bottomEmoji: 🧼
     bodyTexts:
       - >
-        <em>Wash your hands</em> often with soap and running water frequently
-  - type: TextImage
-    bottomImageUri: placeholder/protect/cough.png
+        <em>Wash your hands</em> frequently
+  - type: TextEmoji
+    bottomEmoji: 👄
     bodyTexts:
       - >
-        When coughing and squeezing <em>cover mouth and nose</em> with flexed elbow or tissue
-  - type: TextImage
-    bottomImageUri: placeholder/protect/cough.png
+        Avoid touching your eyes, mouth and nose
+  - type: TextEmoji
+    bottomEmoji: 💪
     bodyTexts:
       - >
-        Throw tissue into <em>closed bin</em> immediately after use
-  - type: TextImage
-    bottomImageUri: placeholder/protect/washHands.png
+        Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze
+  - type: TextEmoji
+    bottomEmoji: 🚷
     bodyTexts:
       - >
-        Wash your hands again, <em>frequently</em>
-  - type: TextImage
-    bottomImageUri: placeholder/protect/distance.png
+        Avoid crowded places
+  - type: TextEmoji
+    bottomEmoji: 🏠
     bodyTexts:
       - >
-        <em>Avoid close contact</em> and keep the physical distancing
-  - type: TextImage
-    bottomImageUri: placeholder/protect/distance.png
+        Stay at home if you feel unwell - even with a slight fever and cough
+  - type: TextEmoji
+    bottomEmoji: 🤒
     bodyTexts:
       - >
-        <em>Seek medical care early</em> if you have fever, cough and difficulty breathing
+        If you have a fever, cough and difficulty breathing, <em>seek medical care early</em> - but call by phone first
+  - type: TextEmoji
+    bottomEmoji: ℹ️
+    bodyTexts:
+      - >
+        <em>Stay aware</em> of the latest information from WHO

@@ -3,7 +3,7 @@ import { IonContent, IonPage, IonSlides, IonSlide, IonImg } from '@ionic/react';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 import TopNav from '../components/TopNav';
-import { TextImageScreen, LoadedFlow } from '../content/flow';
+import { TextEmojiScreen, TextImageScreen, LoadedFlow } from '../content/flow';
 import RenderHTML from './RenderHTML';
 
 const TextImage = ({
@@ -40,6 +40,29 @@ const TextImage = ({
   );
 };
 
+const TextEmoji = ({ screen }: { screen: TextEmojiScreen }) => {
+  return (
+    <IonSlide>
+      <div className="flex flex-column justify-around h-100 pa4">
+        <div className="mt3 tl">
+          {screen.bodyTexts && (
+            <div style={{ fontSize: '1.5em', textAlign: 'center' }}>
+              {screen.bodyTexts.map((txt, key) => (
+                <RenderHTML source={txt} key={key} />
+              ))}
+            </div>
+          )}
+        </div>
+        <div>
+          {screen.bottomEmoji && (
+            <p style={{ fontSize: '6em' }}>{screen.bottomEmoji}</p>
+          )}
+        </div>
+      </div>
+    </IonSlide>
+  );
+};
+
 const Carousel = ({ flow: flowName }: { flow: string }) => {
   const flow = useDynamicFlow(flowName);
   const slidesStyles = {
@@ -56,6 +79,8 @@ const Carousel = ({ flow: flowName }: { flow: string }) => {
               switch (screen.type) {
                 case 'TextImage':
                   return <TextImage key={key} screen={screen} flow={flow} />;
+                case 'TextEmoji':
+                  return <TextEmoji key={key} screen={screen} />;
                 default:
                   /** TODO: Handle errors of unsupported screen types correctly. */
                   return null;
