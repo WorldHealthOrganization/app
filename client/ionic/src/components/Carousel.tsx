@@ -24,7 +24,9 @@ const TextImage = ({
     <IonSlide>
       <div className="flex flex-column justify-around h-100 pa4">
         <div className="mt3 tl">
-          <div style={{ fontSize: '1.5em' }}>{screen.headingText}</div>
+          {screen.headingText && (
+            <div style={{ fontSize: '1.5em' }}>{screen.headingText}</div>
+          )}
           <div style={{ fontSize: screen.headingText ? '1em' : '1.5em' }}>
             {screen.bodyTexts &&
               screen.bodyTexts.map((txt, key) => <p key={key}>{txt}</p>)}
