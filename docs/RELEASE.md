@@ -50,7 +50,7 @@ at least on iOS with a small group before submission**
 1. [ ] collect beta test feedback in google doc
 1. [ ] prioritize issues that need to be fixed before release
 1. [ ] fix issues
-1. [ ] [push to stores](push-to-stores)
+1. [ ] [push to stores](#push-to-stores)
 
 ## Release!!
 
