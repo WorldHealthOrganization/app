@@ -2,6 +2,46 @@
   "name": "whoapp",
   "version": "0.0.1",
   "private": true,
+  "description": "An Ionic project",
+  "scripts": {
+    "build": "react-scripts build",
+    "check": "gts check",
+    "cleanbuild": "gts clean",
+    "compile": "tsc -p .",
+    "eject": "react-scripts eject",
+    "fix": "gts fix",
+    "i18n": "node scripts/generate-i18n.js",
+    "prepare": "npm run compile",
+    "start": "react-scripts start",
+    "pretest": "npm run compile",
+    "test": "react-scripts test",
+    "posttest": "npm run check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,ts,tsx}": [
+      "gts check"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "dependencies": {
     "@capacitor/android": "1.5.1",
     "@capacitor/core": "1.5.1",
@@ -30,35 +70,6 @@
     "tachyons": "^4.10.0",
     "typescript": "3.7.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "check": "gts check",
-    "cleanbuild": "gts clean",
-    "compile": "tsc -p .",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run check",
-    "i18n": "node scripts/generate-i18n.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@capacitor/cli": "1.5.1",
     "@types/dompurify": "^2.0.1",
@@ -66,16 +77,5 @@
     "gts": "^1.1.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8"
-  },
-  "description": "An Ionic project",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{json,ts,tsx}": [
-      "gts check"
-    ]
   }
 }
