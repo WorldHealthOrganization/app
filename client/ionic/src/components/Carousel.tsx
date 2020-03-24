@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-  IonContent,
-  IonPage,
-  IonSlides,
-  IonSlide,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonImg,
-} from '@ionic/react';
+import { IonContent, IonPage, IonSlides, IonSlide, IonImg } from '@ionic/react';
 import 'tachyons';
 import useDynamicFlow from '../hooks/useDynamicFlow';
 import TopNav from '../components/TopNav';
 import { TextImageScreen, LoadedFlow } from '../content/flow';
+import RenderHTML from './RenderHTML';
 
 const TextImage = ({
   screen,
@@ -29,7 +22,9 @@ const TextImage = ({
           )}
           <div style={{ fontSize: screen.headingText ? '1em' : '1.5em' }}>
             {screen.bodyTexts &&
-              screen.bodyTexts.map((txt, key) => <p key={key}>{txt}</p>)}
+              screen.bodyTexts.map((txt, key) => (
+                <RenderHTML source={txt} key={key} />
+              ))}
           </div>
         </div>
         <div>

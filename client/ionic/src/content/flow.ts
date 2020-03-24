@@ -12,8 +12,6 @@ export interface BaseScreen {
   id: string;
 }
 
-// TODO: Should the texts be html instead?
-
 export interface TextImageScreen extends BaseScreen {
   type: 'TextImage';
   topImageUri?: string;

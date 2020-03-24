@@ -4,29 +4,29 @@ screens:
     bottomImageUri: placeholder/protect/washHands.png
     bodyTexts:
       - >
-        Wash your hands often with soap and running water frequently
+        <em>Wash your hands</em> often with soap and running water frequently
   - type: TextImage
     bottomImageUri: placeholder/protect/cough.png
     bodyTexts:
       - >
-        When coughing and squeezing cover mouth and nose with flexed elbow or tissue
+        When coughing and squeezing <em>cover mouth and nose</em> with flexed elbow or tissue
   - type: TextImage
     bottomImageUri: placeholder/protect/cough.png
     bodyTexts:
       - >
-        Throw tissue into closed bin immediately after use
+        Throw tissue into <em>closed bin</em> immediately after use
   - type: TextImage
     bottomImageUri: placeholder/protect/washHands.png
     bodyTexts:
       - >
-        Wash your hands frequently
+        Wash your hands again, <em>frequently</em>
   - type: TextImage
     bottomImageUri: placeholder/protect/distance.png
     bodyTexts:
       - >
-        Avoid close contact and keep the physical distancing
+        <em>Avoid close contact</em> and keep the physical distancing
   - type: TextImage
     bottomImageUri: placeholder/protect/distance.png
     bodyTexts:
       - >
-        Seek medical care early if you have fever, cough, and difficulty breathing
+        <em>Seek medical care early</em> if you have fever, cough and difficulty breathing
