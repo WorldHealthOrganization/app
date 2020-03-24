@@ -4,13 +4,13 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 import About from './pages/About';
-import CheckYourHealth from './pages/CheckYourHealth';
 import SplashTitle from './pages/SplashTitle';
 import SplashInfo from './pages/SplashInfo';
 import SplashCarousel from './pages/SplashCarousel';
 import Menu from './pages/Menu';
 import ProtectYourself from './pages/ProtectYourself';
 import WhoMythbusters from './pages/WhoMythbusters';
+import TravelAdvice from './pages/TravelAdvice';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,11 +46,6 @@ const App: React.FC = () => (
           component={SplashCarousel}
           exact={true}
         />
-        <Route
-          path="/check-your-health"
-          component={CheckYourHealth}
-          exact={true}
-        />
         <Route path="/menu" component={Menu} exact={true} />
         <Route
           path="/protect-yourself"
@@ -62,6 +57,7 @@ const App: React.FC = () => (
           component={WhoMythbusters}
           exact={true}
         />
+        <Route path="/travel-advice" component={TravelAdvice} exact={true} />
         <Route
           path="/"
           render={() => <Redirect to="/splash-title" />}
