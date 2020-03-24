@@ -11,7 +11,7 @@ interface Credits {
 }
 
 function useCredits() {
-  const [credits, setCredits] = useState({} as Credits);
+  const [credits, setCredits] = useState(null as Credits | null);
 
   useEffect(() => {
     async function fetchCredits() {
@@ -26,7 +26,7 @@ function useCredits() {
 }
 
 function useLicenseTexts() {
-  const [licenses, setLicenses] = useState([] as string[]);
+  const [licenses, setLicenses] = useState(null as string[] | null);
 
   useEffect(() => {
     async function fetchCredits() {
