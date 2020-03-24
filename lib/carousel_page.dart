@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pageScaffold.dart';
 import 'package:WHOFlutter/constants.dart';
-import 'package:WHOFlutter/pageScaffold.dart';
+import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {

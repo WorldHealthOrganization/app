@@ -1,6 +1,6 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/carouselPage.dart';
+import 'package:WHOFlutter/carousel_page.dart';
 
 class ProtectYourself extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/pageScaffold.dart';
+import 'package:WHOFlutter/page_scaffold.dart';
 
 class HealthCheckPage extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:WHOFlutter/localization/localization.dart';
-import 'package:WHOFlutter/carouselPage.dart';
+import 'package:WHOFlutter/carousel_page.dart';
 
 class InfoForParents extends StatelessWidget {
   @override

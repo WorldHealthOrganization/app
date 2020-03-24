@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:WHOFlutter/localization/localization.dart';
-import '../pageButton.dart';
-import '../pageScaffold.dart';
-import './protectYourself.dart';
-import './infoForParents.dart';
+import '../page_button.dart';
+import '../page_scaffold.dart';
+import './protect_yourself.dart';
+import './info_for_parents.dart';
 
 class FeelingDistressedPage extends StatelessWidget {
   @override

@@ -1,11 +1,12 @@
 import 'package:WHOFlutter/localization/localization.dart';
-import 'package:WHOFlutter/pageButton.dart';
-import 'package:WHOFlutter/pageScaffold.dart';
-import 'package:WHOFlutter/pages/protectYourself.dart';
+import 'package:WHOFlutter/page_button.dart';
+import 'package:WHOFlutter/page_scaffold.dart';
+import 'package:WHOFlutter/pages/feeling_distressed.dart';
+import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-import './pages/feelingDistressed.dart';
+import './pages/feeling_distressed.dart';
 
 class HomePage extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:WHOFlutter/localization/localization.dart';
 import 'package:flutter/material.dart';
-import './homePage.dart';
+import './home_page.dart';
 import './constants.dart';
 
 void main() => runApp(MyApp());
