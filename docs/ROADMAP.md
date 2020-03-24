@@ -42,8 +42,6 @@ Features _NOT_ included in v0.1:
 * Triage survey telling users whether or not they should go to the hospital
   * Blockers: full definition on what the survey entails + legal review on the implications of making medical suggestions
   * _Question:_ do we want to link to an existing triage survey in a webview for v0.1, and if so, which one?
-* Contact tracing
-  * Blockers: full product thought on how we will do this, who is using this data, etc + legal/implementation ramifications of data protection, privacy, etc
 
 Non-Technical Requirements for v0.1:
 
