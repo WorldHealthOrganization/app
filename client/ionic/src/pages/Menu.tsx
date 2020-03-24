@@ -44,11 +44,11 @@ const Menu: React.FC = () => {
           <MenuItem fill link="/protect-yourself">
             Protect Yourself
           </MenuItem>
-          <MenuItem fill link="/check-your-health">
-            Check Your Health
-          </MenuItem>
           <MenuItem fill link="/who-mythbusters">
             WHO Myth-busters
+          </MenuItem>
+          <MenuItem fill link="/travel-advice">
+            Travel Advice
           </MenuItem>
           <MenuItem link="/about">Share the App</MenuItem>
           <MenuItem link="/about">About the App</MenuItem>
