@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/localization/localization.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/page_button.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:WHOFlutter/pages/feeling_distressed.dart';
@@ -19,18 +19,18 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         Spacer(flex: 1),
         PageButton(
-            title: AppLocalizations.of(context).translate("protectYourself"),
+            title: S.of(context).protectYourself,
             onPressed: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
         PageButton(
-            title: AppLocalizations.of(context).translate("checkYourHealth"),
+            title:  S.of(context).checkYourHealth,
             onPressed: () {}),
         PageButton(
-            title: AppLocalizations.of(context).translate("feelingDistressed"),
+            title:  S.of(context).feelingDistressed,
             onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(builder: (c) => FeelingDistressedPage()))),
         PageButton(
-            title: AppLocalizations.of(context).translate("shareTheApp"),
+            title:  S.of(context).shareTheApp,
             onPressed: () => Share.share(
                 'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu')),
         Spacer(flex: 3)

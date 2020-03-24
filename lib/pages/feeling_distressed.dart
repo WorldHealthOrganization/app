@@ -1,5 +1,5 @@
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/localization/localization.dart';
 import '../page_button.dart';
 import '../page_scaffold.dart';
 import './protect_yourself.dart';
@@ -27,12 +27,12 @@ class FeelingDistressedPage extends StatelessWidget {
           ),
         ),
         PageButton(
-          title: AppLocalizations.of(context).translate("infoForEveryone"),
+          title: S.of(context).infoForEveryone,
           onPressed: () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
         PageButton(
-            title: AppLocalizations.of(context).translate("infoForParents"),
+            title: S.of(context).infoForParents,
             onPressed: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => InfoForParents()))),
         Spacer(flex: 4)

@@ -9,11 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
+
   share: ^0.6.3+6
   url_launcher: ^5.4.2
   page_view_indicator: ^2.0.4
   intl: ^0.16.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -25,4 +27,5 @@ flutter:
   assets:
     - assets/
     - lang/
-    
+flutter_intl:
+  enabled: true
