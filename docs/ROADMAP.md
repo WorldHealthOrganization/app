@@ -10,7 +10,7 @@ There is an urgent, global need for an official WHO App to help contain and miti
 
 Version numbering terminology:
 
-* **v0.1**: refers to the initial buildout that will be submitted to the app stores, aiming for Tuesday, March 24, 2020
+* **v0.1**: refers to the initial buildout that will be submitted to the app stores, aiming for Tuesday, March 24, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
 * **v0.2+**: any versions starting with major version v0 are not intended for public distribution or consumption
 * **v1.0**: the first version that we feel offers enough value to be published onto the app stores for public download will be v1.0
 
@@ -19,6 +19,7 @@ Version numbering terminology:
 **Goal:** To get a functional build of an application that can be submitted to the Apple App Store and Google Play Store for approval. This app will _NOT_ be published into those app stores for public download, but will instead serve as an approved base for future versions and to prove out that we can deliver on the technical side. The app will serve static content manually adapted from the WHO's site in English.
 
 **Target Date:** Tuesday, March 24, 2020
+
 **GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/2
 
 Technical Features / Requirements:
@@ -48,7 +49,7 @@ Non-Technical Requirements for v0.1:
 * All content & assets required for submission to Apple App Store and Google Play Store ([#188](https://github.com/WorldHealthOrganization/app/issues/188), [#187](https://github.com/WorldHealthOrganization/app/issues/187) :warning:)
 * Confirmed informational content & organization of that content included in app ([#93](https://github.com/WorldHealthOrganization/app/issues/93) :warning:)
 * Any legal requirements for submission to app stores & legal review ([#17](https://github.com/WorldHealthOrganization/app/issues/17) :warning:)
-* Account information/access from WHO to submit app on behalf of their accounts (also needed for code signing) ([#20](https://github.com/WorldHealthOrganization/app/issues/20))
+* Account information/access from WHO to submit app on behalf of their accounts (also needed for code signing) ([#20](https://github.com/WorldHealthOrganization/app/issues/20) :warning:)
 
 Other notes on v0.1:
 
