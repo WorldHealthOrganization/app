@@ -3,19 +3,19 @@ screens:
   - type: TextImage
     bodyTexts: 
       - >
-        WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks...
+        WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks…
   - type: TextImage
     bodyTexts: 
       - >
-        It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions...
+        It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions…
   - type: TextImage
     bodyTexts: 
       - >
-        “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases...
+        “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases…
   - type: TextImage
     bodyTexts: 
       - >
-        General recommendations for all travellers include...
+        General recommendations for all travellers include…
   - type: TextEmoji
     bottomEmoji: 🧼
     bodyTexts:
