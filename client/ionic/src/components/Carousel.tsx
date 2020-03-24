@@ -46,7 +46,7 @@ const TextEmoji = ({ screen }: { screen: TextEmojiScreen }) => {
       <div className="flex flex-column justify-around h-100 pa4">
         <div className="mt3 tl">
           {screen.bodyTexts && (
-            <div style={{ fontSize: '1.5em', textAlign: 'center' }}>
+            <div style={{ fontSize: '1.2em', textAlign: 'center' }}>
               {screen.bodyTexts.map((txt, key) => (
                 <RenderHTML source={txt} key={key} />
               ))}
