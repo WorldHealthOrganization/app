@@ -1,6 +1,6 @@
 # World Health Organization Coronavirus Pandemic App
 
-This is the official World Health Organization application focused on the Coronavirus Pandemic.
+This is the official World Health Organization application focused on the coronavirus pandemic.
 
 **This repository is a work in progress and has not yet been medically reviewed.  Until the app is ready, the general public should consult the [WHO's COVID-19 website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019).**
 
