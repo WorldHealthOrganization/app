@@ -2,3 +2,7 @@
   padding: var(--ion-safe-area-top) var(--ion-safe-area-right)
     var(--ion-safe-area-bottom) var(--ion-safe-area-left);
 }
+
+.flex > div {
+  flex: 1;
+}
