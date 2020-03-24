@@ -6,7 +6,7 @@ This is the official World Health Organization app.
 
 ## Getting Started
 
-If you're interested in joining in the effort, please see the [ONBOARDING](https://github.com/WorldHealthOrganization/app/blob/master/ONBOARDING.md) docs.
+If you're interested in joining in the effort, please see the [ONBOARDING](ONBOARDING.md) docs.
 
 ## Summary
 
@@ -49,6 +49,3 @@ These documents are still works in progress and may not be complete or up to dat
 
 Design Doc:
 https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs/edit
-
-App Mockups:
-https://brunobowden.proto.io/player/index.cfm?id=0b416785-8d8a-4521-8d03-e29885d848e7

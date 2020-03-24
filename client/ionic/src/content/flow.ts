@@ -12,8 +12,6 @@ export interface BaseScreen {
   id: string;
 }
 
-// TODO: Should the texts be html instead?
-
 export interface TextImageScreen extends BaseScreen {
   type: 'TextImage';
   topImageUri?: string;
@@ -22,13 +20,19 @@ export interface TextImageScreen extends BaseScreen {
   bottomImageUri?: string;
 }
 
+export interface TextEmojiScreen extends BaseScreen {
+  type: 'TextEmoji';
+  bodyTexts?: string[];
+  bottomEmoji?: string;
+}
+
 // TODO: This is an example, and is not yet implemented.
 export interface HeroImageScreen extends BaseScreen {
   type: 'HeroImage';
   imageUri: string;
 }
 
-export type Screen = TextImageScreen | HeroImageScreen;
+export type Screen = TextImageScreen | TextEmojiScreen | HeroImageScreen;
 
 export interface BaseFlow {
   type: string;

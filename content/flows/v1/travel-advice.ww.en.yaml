@@ -1,0 +1,67 @@
+type: LinearCarousel
+screens:
+  - type: TextImage
+    bodyTexts: 
+      - >
+        WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks…
+  - type: TextImage
+    bodyTexts: 
+      - >
+        It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions…
+  - type: TextImage
+    bodyTexts: 
+      - >
+        “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases…
+  - type: TextImage
+    bodyTexts: 
+      - >
+        General recommendations for all travellers include…
+  - type: TextEmoji
+    bottomEmoji: 🧼
+    bodyTexts:
+      - >
+        Wash your hands frequently
+  - type: TextEmoji
+    bottomEmoji: 👄
+    bodyTexts:
+      - >
+        Avoid touching your eyes, mouth and nose
+  - type: TextEmoji
+    bottomEmoji: 💪
+    bodyTexts:
+      - >
+        Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze
+  - type: TextEmoji
+    bottomEmoji: ↔️
+    bodyTexts:
+      - >
+        Stay more than 1 meter (3 feet) away from a person who is sick
+  - type: TextEmoji
+    bottomEmoji: 🍗
+    bodyTexts:
+      - >
+        Follow proper food hygiene practices
+  - type: TextEmoji
+    bottomEmoji: 😷
+    bodyTexts:
+      - >
+        Only wear a mask if you are ill with COVID-19 symptoms (especially coughing) or looking after someone who may have COVID-19
+  - type: TextImage
+    bodyTexts:
+      - >
+        Travellers returning from affected areas should:
+  - type: TextEmoji
+    bottomEmoji: 🌡
+    bodyTexts:
+      - >
+        Self-monitor for symptoms for 14 days and follow national protocols of receiving countries. Some countries may require returning travellers to enter quarantine
+  - type: TextEmoji
+    bottomEmoji: 🌡️
+    bodyTexts:
+      - >
+        Thermal scanners CAN detect if people have a fever but CANNOT detect whether or not someone has the coronavirus
+  - type: TextEmoji
+    bottomEmoji: 🤒
+    bodyTexts:
+      - >
+        If symptoms occur, such as fever, or cough or difficulty breathing, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and their travel history
