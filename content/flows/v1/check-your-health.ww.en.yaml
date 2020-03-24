@@ -4,29 +4,15 @@ screens:
     bottomImageUri: placeholder/protect/washHands.png
     bodyTexts:
       - >
-        Wash your hands often with soap and running water frequently
+        Symptoms may appear <em>2-14 days after exposure</em>
   - type: TextImage
     bottomImageUri: placeholder/protect/cough.png
     bodyTexts:
       - >
-        When coughing and squeezing cover mouth and nose with flexed elbow or tissue
+        Common symptoms include <em>fever, tiredness, or dry cough</em>
   - type: TextImage
     bottomImageUri: placeholder/protect/cough.png
+    headingText: Contact Your Doctor
     bodyTexts:
       - >
-        Throw tissue into closed bin immediately after use
-  - type: TextImage
-    bottomImageUri: placeholder/protect/washHands.png
-    bodyTexts:
-      - >
-        Wash your hands frequently
-  - type: TextImage
-    bottomImageUri: placeholder/protect/distance.png
-    bodyTexts:
-      - >
-        Avoid close contact and keep the physical distancing
-  - type: TextImage
-    bottomImageUri: placeholder/protect/distance.png
-    bodyTexts:
-      - >
-        Seek medical care early if you have fever, cough, and difficulty breathing
+        If you think you may have been exposed to COVID-19, contact your healthcare provider
