@@ -21,6 +21,7 @@ Where to find answers to your questions:
 * GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
 * Slack: https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw
 * Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
+* WIP product roadmap: [ROADMAP.md](ROADMAP.md)
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
 * Most up-to-date app design spec: https://github.com/WorldHealthOrganization/app/issues/129
 * Most up-to-date preview of app in development: https://preview.whoapp.org
