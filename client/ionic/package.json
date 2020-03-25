@@ -27,7 +27,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "survey-react": "^1.5.16",
-    "tachyons": "^4.10.0",
+    "tachyons": "^4.11.1",
     "typescript": "3.7.4"
   },
   "scripts": {
