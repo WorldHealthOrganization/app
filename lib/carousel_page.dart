@@ -4,8 +4,6 @@ import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
-Container basicContainer = Container();
-
 class CarouselSlide extends StatelessWidget {
   final Widget titleWidget;
   final String message;
@@ -22,11 +20,11 @@ class CarouselSlide extends StatelessWidget {
       child: Card(
         elevation: 0,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            Container(
+            this.titleWidget == null?Container(height: 0,):Container(
                 height: screenHeight * 0.4,
                 child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
