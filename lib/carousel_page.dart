@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+   
+   
 
+Container basicContainer =Container();
 class CarouselSlide extends StatelessWidget {
-  CarouselSlide(this.titleWidget, this.message, this.context);
-
   final Widget titleWidget;
   final String message;
   final BuildContext context;
 
+  CarouselSlide(this.context,{this.titleWidget, this.message = ""});
+
+  
   @override
   Widget build(BuildContext context) {
     double scale = contentScale(context);
@@ -23,7 +27,7 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            Container(height: screenHeight * 0.4, child: this.titleWidget),
+            Container(height: screenHeight * 0.4, child: this.titleWidget??Container()),
             Spacer(flex: 1),
             Text(
               this.message,
