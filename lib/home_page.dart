@@ -40,8 +40,8 @@ class HomePage extends StatelessWidget {
         PageButton(
             title: S.of(context).aboutTheApp,
             lightColor: true,
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
+            onPressed: () => showAboutDialog(context: context, applicationLegalese: "This app needs a real description here but I can't write it.")
+          ),
         Spacer(flex: 3)
       ],
     ));
