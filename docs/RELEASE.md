@@ -17,9 +17,8 @@ since there is no server component at this time
 ## Security checks
 :construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
 
-## Store material check
+## Store material check [(complete list)](release/store_asset_checks.md)
 
-:construction: Maintain full list of assets required in template
 1. [ ] iOS text assets committed
 1. [ ] android text assets committed
 1. [ ] iOS screenshots committed
