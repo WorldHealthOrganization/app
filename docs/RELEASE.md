@@ -33,6 +33,7 @@ since there is no server component at this time
 
 1. [ ] create release channel
 1. [ ] create release tag/branch ([discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
+1. [ ] determine drop-dead time
 
 ### Push to stores
 
