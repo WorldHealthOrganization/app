@@ -47,7 +47,7 @@ function useLicenseTexts() {
   return licenses;
 }
 
-// TODO: DRY with above, funtional per content type / relative path
+// TODO: DRY with above, functional per content type / relative path
 // TODO: INTL
 
 function usePrivacyPolicy() {
