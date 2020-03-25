@@ -97,7 +97,11 @@ const About: React.FC = () => {
         </p>
         <p>
           Help fight Coronavirus by going to{' '}
-          <a href="https://covid19responsefund.org" target="_blank">
+          <a
+            href="https://covid19responsefund.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             https://covid19responsefund.org
           </a>
         </p>
@@ -117,7 +121,7 @@ const About: React.FC = () => {
         <b>Licenses</b>
         {licenseTexts &&
           licenseTexts.map((txt, i) => {
-            const origText =	
+            const origText =
               'Built by the WHO COVID App Collective (see content/credits.yaml).';
             return (
               <view>

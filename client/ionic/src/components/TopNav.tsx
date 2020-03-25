@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonHeader, IonItem, IonImg, IonToolbar } from '@ionic/react';
+import { IonHeader, IonImg, IonToolbar } from '@ionic/react';
 import { IonButtons, IonButton, IonIcon } from '@ionic/react';
 import { close } from 'ionicons/icons';
 
