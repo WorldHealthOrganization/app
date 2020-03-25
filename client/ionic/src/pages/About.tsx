@@ -117,6 +117,8 @@ const About: React.FC = () => {
         <b>Licenses</b>
         {licenseTexts &&
           licenseTexts.map((txt, i) => {
+            const origText =	
+              'Built by the WHO COVID App Collective (see content/credits.yaml).';
             return (
               <view>
                 <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
