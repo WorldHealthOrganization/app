@@ -1,4 +1,4 @@
 [build]
   base = "client/flutter"
-  command = "./flutter-netlify-build.sh"
+  command = "chmod +x flutter-netlify-build.sh && ./flutter-netlify-build.sh"
   publish = "build/web"
