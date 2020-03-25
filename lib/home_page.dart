@@ -3,6 +3,8 @@ import 'package:WHOFlutter/page_button.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:WHOFlutter/pages/feeling_distressed.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
+import 'package:WHOFlutter/pages/travel_advice.dart';
+import 'package:WHOFlutter/pages/who_myth_busters.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -23,19 +25,25 @@ class HomePage extends StatelessWidget {
             onPressed: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
         PageButton(
-            title:  S.of(context).checkYourHealth,
-            onPressed: () {}),
+            title: S.of(context).whoMythBusters,
+            onPressed: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => WhoMythBusters()))),
         PageButton(
-            title:  S.of(context).feelingDistressed,
-            onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (c) => FeelingDistressedPage()))),
+            title: S.of(context).travelAdvice,
+            onPressed: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
         PageButton(
-            title:  S.of(context).shareTheApp,
+            title: S.of(context).shareTheApp,
+            lightColor: true,
             onPressed: () => Share.share(
                 'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu')),
+        PageButton(
+            title: S.of(context).aboutTheApp,
+            lightColor: true,
+            onPressed: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
         Spacer(flex: 3)
       ],
     ));
   }
 }
-
