@@ -40,8 +40,10 @@ class HomePage extends StatelessWidget {
         PageButton(
             title: S.of(context).aboutTheApp,
             lightColor: true,
-            onPressed: () => showAboutDialog(context: context, applicationLegalese: "This app needs a real description here but I can't write it.")
-          ),
+            onPressed: () => showAboutDialog(
+                context: context,
+                applicationLegalese:
+                    "The official World Health Organization COVID-19 App.")),
         Spacer(flex: 3)
       ],
     ));
