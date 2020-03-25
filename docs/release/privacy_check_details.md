@@ -6,7 +6,7 @@ Data collection should occur only with the knowledge and consent of a concerned 
 1. Data Quality:
 You should only collect information which is relevant and accurate for a particular aim.
 1. Individual Participation:
-The concerned individual should know if their information has been collected and must be able to access it if such data exists.
+The concerned individual should know if their information has been collected and must be able to access it if such data exists. They should also be able to delete it upon request.
 1. Purpose Specification:
 The intended use for a particular piece of information must be known at the time of collection.
 1. Use Limitation:
