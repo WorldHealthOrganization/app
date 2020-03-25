@@ -7,37 +7,47 @@ import 'package:page_view_indicator/page_view_indicator.dart';
 class CarouselSlide extends StatelessWidget {
   final Widget titleWidget;
   final String message;
-  final BuildContext context;
 
-  CarouselSlide(this.context, {this.titleWidget, this.message = ""});
+  CarouselSlide({this.titleWidget, this.message = ""});
 
   @override
   Widget build(BuildContext context) {
     double scale = contentScale(context);
-    var screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      padding: EdgeInsets.all(24),
-      child: Card(
-        elevation: 0,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Spacer(flex: 1),
-            this.titleWidget == null?Container(height: 0,):Container(
-                height: screenHeight * 0.4,
-                child: this.titleWidget ?? Container()),
-            Spacer(flex: 1),
-            Text(
-              this.message,
-              textScaleFactor: scale * 1.5,
-              textAlign: TextAlign.center,
+
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      final double spacerHeight = constraints.biggest.height * .2;
+
+      return Container(
+        padding: EdgeInsets.all(24),
+        child: Card(
+          elevation: 0,
+          child: SingleChildScrollView(
+            child: IntrinsicHeight(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(height: spacerHeight),
+                  if (this.titleWidget != null)
+                    titleWidget
+                  else
+                    SizedBox(height: EmojiHeader.kHeight),
+                  SizedBox(height: spacerHeight),
+                  Expanded(
+                    child: Text(
+                      this.message,
+                      textScaleFactor: scale * 1.5,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Spacer(flex: 2),
-          ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 
@@ -119,12 +129,16 @@ class EmojiHeader extends StatelessWidget {
 
   final String emoji;
 
+  static const double kHeight = 100.0;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SizedBox(
+      height: kHeight,
       child: Text(
         this.emoji,
         textScaleFactor: 6,
+        textAlign: TextAlign.center,
       ),
     );
   }
