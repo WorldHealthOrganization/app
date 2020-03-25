@@ -122,7 +122,7 @@ const About: React.FC = () => {
             return (
               <view>
                 <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
-                  {i === 0 ? '' : txt}
+                  {i === 0 ? txt.replace(origText, '') : txt}
                 </pre>
               </view>
             );
