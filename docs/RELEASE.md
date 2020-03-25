@@ -7,7 +7,7 @@ since there is no server component at this time
 ## Product checks
 1. [ ]  fidelity checks with mockups (design) \*
 1. [ ]  go/nogo on individual features (engineering)
-1. [ ]  release tag created (or maybe release branch, [discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
+1. [ ]  release tag created (or maybe release branch, [discussion](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ]  all automated tests pass
 1. [ ]  LQA tests
 1. [ ]  release notes generated
@@ -21,7 +21,7 @@ since there is no server component at this time
 - [ ] Infrastructure
 - [ ] Data Flow
 - [ ] Cryptography
-### Privacy checks (from [#280](https://github.com/WorldHealthOrganization/app/issues/280))
+### Privacy checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/280))
 Check how we stack up against these principles (qualitative evaluation, [details](release/privacy_check_details.md))
 - [ ] Collection Limitation Principle
 - [ ] Data Quality Principle
@@ -31,13 +31,13 @@ Check how we stack up against these principles (qualitative evaluation, [details
 - [ ] Openness Principle
 - [ ] Individual Participation Principle
 - [ ] Accountability Principle
-### Legal checks (from [#17](https://github.com/WorldHealthOrganization/app/issues/17))
+### Legal checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
 - [ ] 3rd party libraries / dependency license review
 - [ ] CLA / developer license review
 - [ ] Verify privacy policy vs actual system
 
 
-## Store material check [(complete list)](release/store_asset_checks.md)
+## Store material check ([details](release/store_asset_checks.md))
 
 1. [ ] iOS text assets committed
 1. [ ] android text assets committed
@@ -52,7 +52,7 @@ Check how we stack up against these principles (qualitative evaluation, [details
 ### Prepare to release
 
 1. [ ] create release channel
-1. [ ] create release tag/branch ([discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
+1. [ ] create release tag/branch ([discussion](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ] :construction: create Google Drive to push release to WHO
 1. [ ] determine the gatekeepers for the following categories (this may change as people join or leave)
    1. [ ] engineering
@@ -72,7 +72,7 @@ Check how we stack up against these principles (qualitative evaluation, [details
 
 ## Alpha testing (iOS only)
 
-:construction: Can be removed if we don't use TestFlight, see https://github.com/WorldHealthOrganization/app/issues/132
+:construction: Can be removed if we don't use TestFlight ([discussion](https://github.com/WorldHealthOrganization/app/issues/132))
 
 **[TestFlight requires a simplified version of app store review for > 25 people](https://developer.apple.com/testflight/), so we should alpha test at least on iOS with a small group before submission** 
 
