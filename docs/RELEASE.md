@@ -7,7 +7,7 @@ since there is no server component at this time
 ## Product checks
 1. [ ]  fidelity checks with mockups (design) \*
 1. [ ]  go/nogo on individual features (engineering)
-1. [ ]  release tag created
+1. [ ]  release tag created (or maybe release branch, [discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ]  all automated tests pass
 1. [ ]  all internationalization tests pass
 1. [ ]  release notes generated
@@ -15,18 +15,18 @@ since there is no server component at this time
 \* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
 
 ## Security checks
-TBD: Andrew will send a list
+:construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
 
 ## Store material check
 
-TODO: Maintain full list of assets required in template
+:construction: Maintain full list of assets required in template
 1. [ ] iOS text assets committed
 1. [ ] android text assets committed
 1. [ ] iOS screenshots committed
 1. [ ] android screenshots committed 
 
 ## Final WHO sign off/approval
-??? not sure what the process for this is
+:construction: waiting for input from @brunobowden https://github.com/WorldHealthOrganization/app/issues/274
 
 ## Release processes
 
@@ -38,8 +38,10 @@ TODO: Maintain full list of assets required in template
 
 ## Alpha testing (iOS only)
 
-**[TestFlight requires a simplified version of app store review for > 25 people](https://developer.apple.com/testflight/), so we should alpha test
-at least on iOS with a small group before submission**
+:construction: Can be removed if we don't use TestFlight, see https://github.com/WorldHealthOrganization/app/issues/132
+
+**[TestFlight requires a simplified version of app store review for > 25 people](https://developer.apple.com/testflight/), so we should alpha test at least on iOS with a small group before submission** 
+
 1. [ ] recruit small sample of < 25 users from slack with a variety of different phone models
 1. [ ] ask them to perform basic testing, ensure that app does not crash or look weird
 1. [ ] once alpha testing passes, submit for testflight app store review
