@@ -1,6 +1,6 @@
 # Building the App for App Store Submission
 
-These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed.
+These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), [Android Studio](https://developer.android.com/studio/index.html), [XCode](https://developer.apple.com/xcode/), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed.  You must use a macOS system to build the iOS app.
   * _Note: this was tested using CocoaPods version `1.9.1`_
 
 ## Clone the Repo
