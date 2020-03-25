@@ -109,7 +109,7 @@ class EmojiHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(this.emoji, textScaleFactor: 3,),
+      child: Text(this.emoji, textScaleFactor: 10,),
     );
   }
 }
