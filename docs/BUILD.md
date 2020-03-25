@@ -15,7 +15,7 @@ These instructions assume that an app record has already been added to the App S
 
 ### Install Dependencies
 
-`cd` into the `client/flutter/ios` directory and install CocoaPods dependencies (requires `CocoaPods` - see [Dependencies](#dependencies)):
+CocoaPods install - see [Dependencies](#dependencies):
 
 ```
 cd client/flutter/ios
