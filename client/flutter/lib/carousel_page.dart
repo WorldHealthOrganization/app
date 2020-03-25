@@ -48,12 +48,17 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
+  PageController pageController = new PageController();
+
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      
       body: Stack(
         children: <Widget>[
+
           PageView(
+            controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
             children: this.items,
           ),
@@ -63,6 +68,10 @@ class CarouselView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 20),
                 child: pageViewIndicator(context)),
           ),
+          GestureDetector(
+          onTap: ()=>pageController.nextPage(duration: Duration(milliseconds: 500), curve: ElasticInCurve())
+        ),
+          
           Align(
               alignment: FractionalOffset.topRight,
               child: Padding(
@@ -73,6 +82,7 @@ class CarouselView extends StatelessWidget {
                       Navigator.of(context).pop();
                     }),
               )),
+        
         ],
       ),
       bodyPadding: EdgeInsets.zero,
