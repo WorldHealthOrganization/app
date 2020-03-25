@@ -16,6 +16,13 @@ since there is no server component at this time
 
 ## Security checks
 :construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
+### Privacy checks
+:construction: Filed https://github.com/WorldHealthOrganization/app/issues/280
+### Legal checks (copied from https://github.com/WorldHealthOrganization/app/issues/17)
+- [ ] 3rd party libraries / dependency license review
+- [ ] CLA / developer license review
+- [ ] Verify privacy policy vs actual system
+
 
 ## Store material check [(complete list)](release/store_asset_checks.md)
 
