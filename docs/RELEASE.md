@@ -54,6 +54,7 @@ Check how we stack up against these principles (qualitative evaluation, [details
 1. [ ] create release channel
 1. [ ] create release tag/branch ([discussion](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ] :construction: create Google Drive to push release to WHO
+1. [ ] check build instructions for clarity and accuracy. :construction: wrap instructions in a single script
 1. [ ] determine the gatekeepers for the following categories (this may change as people join or leave)
    1. [ ] engineering
    1. [ ] design
