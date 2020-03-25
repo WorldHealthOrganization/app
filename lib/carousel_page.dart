@@ -124,7 +124,7 @@ class EmojiHeader extends StatelessWidget {
     return Center(
       child: Text(
         this.emoji,
-        textScaleFactor: 10,
+        textScaleFactor: 8,
       ),
     );
   }
