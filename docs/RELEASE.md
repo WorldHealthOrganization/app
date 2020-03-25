@@ -49,7 +49,7 @@ Check how we stack up against these principles (qualitative evaluation, [details
 
 1. [ ] create release channel
 1. [ ] create release tag/branch ([discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
-1. [ ] determine drop-dead time
+1. [ ] create Google Drive to push release to WHO **Temporary**
 1. [ ] determine the gatekeepers for the following categories (this may change as people join or leave)
    1. [ ] engineering
    1. [ ] design
@@ -57,9 +57,14 @@ Check how we stack up against these principles (qualitative evaluation, [details
 
 ### Push to stores
 
-1. [ ] get all [checkoffs](#checkoffs)
-1. [ ] publish .apk and .ipa to github using automated build
-1. [ ] WHO will fill in store information and upload apk/ipa
+- [ ] get all [checkoffs](#checkoffs)
+- determine drop-dead time for:
+  - [ ] finalizing release in Github
+  - [ ] pushing build from GitHub to WHO
+- [ ] Upload all assets needed to Google Drive **Temporary**
+  - ‼️Note that this should include all source code, not just binaries‼️
+- [ ] WHO will **build and sign** (.apk/.ipa) the binaries using their keys
+- [ ] WHO will fill in store information and upload .apk/.ipa
 
 ## Alpha testing (iOS only)
 
