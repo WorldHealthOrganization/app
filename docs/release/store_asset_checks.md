@@ -29,12 +29,23 @@ ______
 1. [ ] Website URL
 1. [ ] Contact phone
 
-### iOS screenshots
-???
+### iOS screenshots (from https://github.com/WorldHealthOrganization/app/issues/187)
+
+[exact dimensions of all possible screenshots here](https://help.apple.com/app-store-connect/#/devd274dd925)
+- [ ] 1 screenshot for iPhone 5.5" display (1242 x 2208 pixels (portrait) or 2208 x 1242 pixels (landscape))
+- [ ] 1 screenshot for iPhone 6.5" display (1242 x 2688 pixels (portrait) or 2688 x 1242 pixels (landscape))
+- [ ] 1 screenshot for iPad Pro (3rd Gen) 12.9" display (2048 x 2732 pixels (portrait) or 2732 x 2048 pixels (landscape))
+- [ ] 1 screenshot for iPad Pro (2nd Gen) 12.9" display (2048 x 2732 pixels (portrait) or 2732 x 2048 pixels (landscape))
+- [ ] App Store Icon (1024 x 1024)
+
+#### OPTIONAL
+
+- Up to 10 screenshots and 3 App Previews for each device size
 
 ### Android screenshots
 
-- [ ] 8 screenshots (phone)
+- [ ] upto 8 screenshots (phone)
+- [ ] High-res icon
 - [ ] Feature Graphic
 - [ ] Promo Graphic (OPTIONAL)
 - [ ] TV Banner (OPTIONAL)
