@@ -6,16 +6,16 @@ class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselView([
-      CarouselSlide("assets/washHands.png", S.of(context).washHands, context),
+      CarouselSlide(Image.asset("assets/washHands.png"), S.of(context).washHands, context),
       CarouselSlide(
-          "assets/cough.png", S.of(context).cougningAndSneezing, context),
-      CarouselSlide("assets/cough.png", S.of(context).throwAwayTissue, context),
+          Image.asset("assets/cough.png"), S.of(context).cougningAndSneezing, context),
+      CarouselSlide( Image.asset("assets/cough.png"), S.of(context).throwAwayTissue, context),
       CarouselSlide(
-          "assets/washHands.png", S.of(context).washHandsFrequently, context),
+          Image.asset("assets/washHands.png"), S.of(context).washHandsFrequently, context),
       CarouselSlide(
-          "assets/distance.png", S.of(context).socialDistancing, context),
+          Image.asset("assets/distance.png"), S.of(context).socialDistancing, context),
       CarouselSlide(
-          "assets/distance.png", S.of(context).seekMedicalCare, context),
+          Image.asset("assets/distance.png"), S.of(context).seekMedicalCare, context),
     ]);
   }
 }
