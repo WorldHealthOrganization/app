@@ -109,23 +109,18 @@ const About: React.FC = () => {
         <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
           {privacyPolicy}
         </pre>
-        {credits &&
-          licenseTexts &&
+        <b>Credits</b>
+        <p>
+          Built by the WHO COVID App Collective:{' '}
+          {credits && credits.team.join(', ')}.
+        </p>
+        <b>Licenses</b>
+        {licenseTexts &&
           licenseTexts.map((txt, i) => {
-            const origText =
-              'Built by the WHO COVID App Collective (see content/credits.yaml).';
             return (
               <view>
-                <b>Credits</b>
-                {i === 0 && (
-                  <p>
-                    Built by the WHO COVID App Collective:{' '}
-                    {credits.team.join(', ')}.
-                  </p>
-                )}
-                <b>Licenses</b>
                 <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
-                  {i === 0 ? txt.replace(origText, '') : txt}
+                  {i === 0 ? '' : txt}
                 </pre>
               </view>
             );
