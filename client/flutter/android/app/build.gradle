@@ -37,7 +37,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.who.myhealth"
+        applicationId "org.who.WHOMyHealth"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
