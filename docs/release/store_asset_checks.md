@@ -3,6 +3,7 @@ ______
 
 ### iOS text assets
 
+1. [ ] What's New
 1. [ ] Name (0-30 chars)
 1. [ ] Subtitle (0-30 chars)
 1. [ ] Privacy Policy URL (#58)
@@ -17,6 +18,7 @@ ______
 
 ### Android text assets
 
+1. [ ] What's new
 1. [ ] Title (0-50 chars)
 1. [ ] Description (0-80 chars)
 1. [ ] Full description (0-4000 chars)
