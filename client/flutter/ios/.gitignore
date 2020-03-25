@@ -9,7 +9,6 @@
 **/.vagrant/
 **/DerivedData/
 Icon?
-**/Pods/
 **/.symlinks/
 profile
 xcuserdata
