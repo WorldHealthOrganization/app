@@ -5,7 +5,7 @@ These instructions will assume that you have the up-to-date [`git`](https://git-
 
 ## Clone the Repo
 
-In order to ensure reproducibility, you will always build from a specified `TAG_NAME`.
+In order to ensure reproducibility, you will always build from a specified `TAG_NAME` and should not change bundle/application ids or version or build numbers that are stored in the git repository.
 
 ```
 git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
