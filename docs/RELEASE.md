@@ -29,6 +29,11 @@ since there is no server component at this time
 
 ## Release processes
 
+### Prepare to release
+
+1. [ ] create release channel
+1. [ ] create release tag/branch ([discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
+
 ### Push to stores
 
 1. [ ] get all [checkoffs](#checkoffs)
