@@ -1,9 +1,9 @@
 # Building the App for App Store Submission
 
-First, clone the repo (requires `git` - see [Dependencies](#dependencies)):
+First, clone the repo (requires `git` - see [Dependencies](#dependencies)).  In order to ensure reproducibility, you will always build from a specified `TAG_NAME`.
 
 ```
-git clone https://github.com/WorldHealthOrganization/app.git
+git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
 cd app
 ```
 
