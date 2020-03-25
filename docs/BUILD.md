@@ -15,10 +15,12 @@ These instructions assume that an app record has already been added to the App S
 
 ### Install Dependencies
 
-CocoaPods install - see [Dependencies](#dependencies):
+CocoaPods install (requires `CocoaPods` and `Flutter` - see [Dependencies](#dependencies)):
 
 ```
-cd client/flutter/ios
+cd $(git rev-parse --show-toplevel)/client/flutter
+flutter pub get
+cd ios
 pod install
 ```
 
@@ -175,15 +177,10 @@ These instructions use the App Bundle release format instead of the APK format.
 
 #### Build an app bundle
 
-`cd` into the `client/flutter` directory:
+Build the app bundle from the `client/flutter` directory (requires `Flutter` - see [Dependencies(#dependencies)]):
 
 ```
-cd .. # this assumes you're in the client/flutter/ios directory, if you're in the app directory you'll want to cd client/flutter
-```
-
-Build the app bundle with flutter:
-
-```
+cd $(git rev-parse --show-toplevel)/client/flutter
 flutter build appbundle
 ```
 
@@ -230,4 +227,6 @@ Assets prepared for submission: https://drive.google.com/drive/folders/17wi6q3Vl
 
 * [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) (for building iOS)
-* [Flutter](https://flutter.dev/docs/get-started/install) (for building Android)
+  * Please ensure you are using the latest version of CocoaPods (currently version `1.9.1`)
+  * This may require updating your ruby. These instructions were tested using ruby version `2.7.0`
+* [Flutter](https://flutter.dev/docs/get-started/install)
