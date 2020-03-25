@@ -2,18 +2,24 @@ Security check template
 ----
 
 ### [ ] System Boundary
-- [ ] Diagram of internal services, components, connections to external services and systems.
-- [ ] APIs and Interconnection (external systems and services)
-- [ ] Data types transmitted to, stored by, or processed by the API or system/service. Data categorization/impact assessment
+Diagram of:
+- [ ] internal services
+- [ ] components
+- [ ] connections to external services and systems.
 
-### [ ] Connectivity Details (Protocols/Ports, Encryption)
-- [ ] Note Agreements (SLAs or licenses)
-- [ ] Infrastructure
-- [ ] List of IaaS services
-  - compute
-  - network
-  - storage
-  - etc? :construction:
+### [ ] APIs and Interconnection (external systems and services)
+- [ ] Data types transmitted to, stored by, or processed by the API or system/service
+- [ ] Data categorization/impact assessment
+- [ ] Connectivity Details:
+  - Protocols + Ports
+  - Encryption
+- [ ] Agreements (SLAs or licenses)
+
+### [ ] Infrastructure: List of IaaS services
+- [ ] compute
+- [ ] network
+- [ ] storage
+- [ ] etc? :construction:
 
 ### [ ] Data Flow
   - [ ] Identify where data is to be processed, stored, or transmitted
