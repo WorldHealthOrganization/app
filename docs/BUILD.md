@@ -169,26 +169,6 @@ Configure the `signingConfigs` block in your module’s `build.gradle` file.
 
 Release builds of your app will now be signed automatically.
 
-### Reviewing the app manifest
-
-Review the default [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro) file, `AndroidManifest.xml`, located in `client/flutter/android/app/src/main` and verify that the values are correct, especially the following:
-
-`application`
-
-Edit the `android:label` in the application tag to reflect the final name of the app.
-
-### Reviewing the build configuration
-
-Review the default [Gradle build file](https://developer.android.com/studio/build/#module-level) file, `build.gradle`, located in `client/flutter/android/app` and verify the values are correct, especially the following values in the `defaultConfig` block:
-
-`applicationId`
-
-Specify the final, unique (Application Id)appid
-
-`versionCode` & `versionName`
-
-Specify the internal app version number, and the version number display string. You can do this by setting the version property in the pubspec.yaml file. Consult the version information guidance in the [versions documentation](https://developer.android.com/studio/publish/versioning).
-
 ### Building the app for release
 
 These instructions use the App Bundle release format instead of the APK format.
