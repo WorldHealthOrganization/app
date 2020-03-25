@@ -42,12 +42,15 @@
         </provider>
     </application>
 
-    <!-- TODO: Review requires permissions: https://github.com/WorldHealthOrganization/app/issues/56 -->
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Geolocation API -->
+    <!-- TODO: uncomment when location permissions are actually needed. -->
+    <!--
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
+    -->
 </manifest>
