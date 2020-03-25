@@ -12,6 +12,8 @@ class CarouselSlide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scale = contentScale(context);
+    var screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.all(24),
       child: Card(
@@ -21,11 +23,11 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            this.titleWidget,
+            Container(height: screenHeight * 0.4, child: this.titleWidget),
             Spacer(flex: 1),
             Text(
               this.message,
-              textScaleFactor: 1.7,
+              textScaleFactor: scale * 1.5,
               textAlign: TextAlign.center,
             ),
             Spacer(flex: 2),

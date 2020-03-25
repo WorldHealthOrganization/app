@@ -16,10 +16,7 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    const tall = 812.0;
-    const short = 480.0;
-    double scale = ((height - short) / (tall - short)).clamp(1.0, 2.0);
+    double scale = contentScale(context);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
@@ -42,3 +39,4 @@ class PageButton extends StatelessWidget {
     );
   }
 }
+

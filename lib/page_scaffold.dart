@@ -16,7 +16,7 @@ class PageScaffold extends StatelessWidget {
           child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
         GestureDetector(
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
             child: Image(
                 image: AssetImage('assets/WHO.jpg'),
                 width: MediaQuery.of(context).size.width),
