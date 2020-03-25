@@ -28,7 +28,7 @@
     "react-scripts": "3.4.0",
     "survey-react": "^1.5.16",
     "tachyons": "^4.10.0",
-    "typescript": "3.7.4"
+    "typescript": "3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
