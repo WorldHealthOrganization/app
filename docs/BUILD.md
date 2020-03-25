@@ -69,4 +69,8 @@ The release bundle for your app is created at `client/flutter/build/app/outputs/
 
 ### Upload the bundle to Google Play
 
-Follow Google's instructions to [prepare & roll out releases](https://support.google.com/googleplay/android-developer/answer/7159011). We have prepared the [assets needed for submission](https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing).
+Follow Google's instructions to [prepare & roll out releases](https://support.google.com/googleplay/android-developer/answer/7159011).
+
+**WARNING:** You must set the release type you want to create to "Closed" or you will inadvertently distribute the app to the general public.
+
+We have prepared the [assets needed for submission](https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing).
