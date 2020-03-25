@@ -47,32 +47,91 @@ function useLicenseTexts() {
   return licenses;
 }
 
+// TODO: DRY with above, funtional per content type / relative path
+// TODO: INTL
+
+function usePrivacyPolicy() {
+  const [privacyPolicy, setPrivacyPolicy] = useState(null as string | null);
+
+  useEffect(() => {
+    async function fetchPrivacyPolicy() {
+      const url = `${process.env.PUBLIC_URL}/assets/content/privacy-policy.txt`;
+      const respText = await fetch(url).then(e => e.text());
+      setPrivacyPolicy(respText);
+    }
+    fetchPrivacyPolicy();
+  }, []);
+
+  return privacyPolicy;
+}
+
+function useTermsOfService() {
+  const [termsOfService, setTermsOfService] = useState(null as string | null);
+
+  useEffect(() => {
+    async function fetchTermsOfService() {
+      const url = `${process.env.PUBLIC_URL}/assets/content/terms-of-service.txt`;
+      const respText = await fetch(url).then(e => e.text());
+      setTermsOfService(respText);
+    }
+    fetchTermsOfService();
+  }, []);
+
+  return termsOfService;
+}
+
 const About: React.FC = () => {
   const credits = useCredits();
   const licenseTexts = useLicenseTexts();
+  const privacyPolicy = usePrivacyPolicy();
+  const termsOfService = useTermsOfService();
+
+  // TODO: Dynamic App / build versions updated by CI/CD
+
   return (
     <IonPage className="pa3">
       <TopNav />
       <IonContent>
-        {credits &&
+        <p>
+          This is the official COVID-19 app by WHO (World Health Organization).
+        </p>
+        <p>
+          Help fight Coronavirus by going to{' '}
+          <a href="https://covid19responsefund.org" target="_blank">
+            https://covid19responsefund.org
+          </a>
+        </p>
+        <b>Terms of Service</b>
+        <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
+          {termsOfService}
+        </pre>
+        <b>Privacy Policy</b>
+        <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
+          {privacyPolicy}
+        </pre>
+        {termsOfService &&
+          credits &&
           licenseTexts &&
           licenseTexts.map((txt, i) => {
             const origText =
               'Built by the WHO COVID App Collective (see content/credits.yaml).';
             return (
               <view>
+                <b>Credits</b>
                 {i === 0 && (
                   <p>
                     Built by the WHO COVID App Collective:{' '}
                     {credits.team.join(', ')}.
                   </p>
                 )}
+                <b>Licenses</b>
                 <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
                   {i === 0 ? txt.replace(origText, '') : txt}
                 </pre>
               </view>
             );
           })}
+        <p>App version 0.1</p>
       </IonContent>
     </IonPage>
   );
