@@ -9,7 +9,7 @@ since there is no server component at this time
 1. [ ]  go/nogo on individual features (engineering)
 1. [ ]  release tag created (or maybe release branch, [discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ]  all automated tests pass
-1. [ ]  all internationalization tests pass
+1. [ ]  LQA tests
 1. [ ]  release notes generated
 
 \* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
@@ -18,7 +18,7 @@ since there is no server component at this time
 ### Security checks
 :construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
 ### Privacy checks (from [#280](https://github.com/WorldHealthOrganization/app/issues/280))
-Check how we stack up against these principles (qualitative evaluation, [source](http://www.oecd.org/internet/ieconomy/oecdguidelinesontheprotectionofprivacyandtransborderflowsofpersonaldata.htm))
+Check how we stack up against these principles (qualitative evaluation, [details](release/privacy_check_details.md))
 - [ ] Collection Limitation Principle
 - [ ] Data Quality Principle
 - [ ] Purpose Specification Principle
@@ -50,6 +50,10 @@ Check how we stack up against these principles (qualitative evaluation, [source]
 1. [ ] create release channel
 1. [ ] create release tag/branch ([discussion in #279](https://github.com/WorldHealthOrganization/app/issues/279))
 1. [ ] determine drop-dead time
+1. [ ] determine the gatekeepers for the following categories (this may change as people join or leave)
+   1. [ ] engineering
+   1. [ ] design
+   1. [ ] compliance
 
 ### Push to stores
 
