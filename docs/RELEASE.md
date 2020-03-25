@@ -15,8 +15,12 @@ since there is no server component at this time
 \* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
 
 ## Compliance checks
-### Security checks
-:construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
+### Security checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/269), [details](release/security_check_details.md))
+- [ ] System Boundary
+- [ ] APIs and Interconnection (external systems and services)
+- [ ] Infrastructure
+- [ ] Data Flow
+- [ ] Cryptography
 ### Privacy checks (from [#280](https://github.com/WorldHealthOrganization/app/issues/280))
 Check how we stack up against these principles (qualitative evaluation, [details](release/privacy_check_details.md))
 - [ ] Collection Limitation Principle
