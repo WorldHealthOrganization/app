@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "aboutTheApp" : MessageLookupByLibrary.simpleMessage("About the App"),
     "checkYourHealth" : MessageLookupByLibrary.simpleMessage("Check your health"),
     "childDistance" : MessageLookupByLibrary.simpleMessage("Try and keep children close to their parents and family and avoid separating children and their caregivers to the extent possible. If separation occurs (e.g. hospitalization) ensure regular contact (e.g. via phone) and re-assurance."),
     "childFacts" : MessageLookupByLibrary.simpleMessage("Provide facts about what has happened, explain what is going on now and give them clear information about how to reduce their risk of being infected by the disease in words that they can understand depending on their age.\nThis also includes providing information about what could happen in a re-assuring way (e.g. a family member and/or the child may start not feeling well and may have to go to the hospital for some time so doctors can help them feel better)."),
@@ -39,8 +40,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "shareTheApp" : MessageLookupByLibrary.simpleMessage("Share the App"),
     "socialDistancing" : MessageLookupByLibrary.simpleMessage("Avoid close contact and keep the physical distancing"),
     "throwAwayTissue" : MessageLookupByLibrary.simpleMessage("Throw tissue into closed bin immediately after use"),
+    "travelAdvice" : MessageLookupByLibrary.simpleMessage("Travel Advice"),
     "washHands" : MessageLookupByLibrary.simpleMessage("Wash your hand often with soap and running water frequently"),
     "washHandsFrequently" : MessageLookupByLibrary.simpleMessage("Wash your hands frequently"),
+    "whoMythBusters" : MessageLookupByLibrary.simpleMessage("WHO Myth-busters"),
     "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization")
   };
 }

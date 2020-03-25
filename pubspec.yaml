@@ -26,6 +26,5 @@ flutter:
 
   assets:
     - assets/
-    - lang/
 flutter_intl:
   enabled: true
