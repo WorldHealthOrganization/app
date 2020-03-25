@@ -15,27 +15,22 @@ These instructions assume that an app record has already been added to the App S
 
 ### Install Dependencies
 
-`cd` into the `client/flutter/ios` directory:
+`cd` into the `client/flutter/ios` directory and install CocoaPods dependencies (requires `CocoaPods` - see [Dependencies](#dependencies)):
 
 ```
 cd client/flutter/ios
-```
-
-Install CocoaPods dependencies (requires `CocoaPods` - see [Dependencies](#dependencies)):
-
-```
 pod install
-```
-
-Open the Xcode Workspace:
-
-```
-open Runner.xcworkspace
 ```
 
 ### Review Xcode Build Settings
 
 For detailed procedures and descriptions, see [Prepare for app distribution](https://help.apple.com/xcode/mac/current/#/dev91fe7130a).
+
+Open the Xcode Workspace:
+
+```
+open Runner.xcworkspace # run this in the client/flutter/ios directory
+```
 
 In Xcode:
 
@@ -52,7 +47,7 @@ Configure the app version and build:
 1. Select **Product > Scheme > Runner**.
 1. Select **Product > Destination > Generic iOS Device**.
 1. Select **Runner** in the Xcode project navigator, then select the **Runner** target in the settings view sidebar.
-1. In the Identity section, update the **Version** number to the user-facing version number you wish to publish. For the initial App Store submission, version number should be `0.1.0`.
+1. In the Identity section, update the **Version** number to the user-facing version number you wish to publish.
 1. In the Identity section, update the **Build** identifier to a unique build number used to track this build on App Store Connect. Each upload requires a unique build number.
 
 Create a build archive and upload it to App Store Connect:
@@ -69,9 +64,7 @@ You should receive an email within 30 minutes notifying you that your build has 
 Go to the app's application details page on App Store Connect, and follow these steps:
 
 1. Select Pricing and Availability from the sidebar of your app’s application details page on App Store Connect and complete the required information.
-  * **_TODO: fill in details for how to not publish_**
-1. Select the status from the sidebar. If this is the first release of this app, its status is 1.0 Prepare for Submission. Complete all required fields.
-  * Assets prepared for submission: https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing
+1. Select the status from the sidebar and complete all required fields. [Assets prepared for submission](https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing)
 1. Click **Submit for Review**.
 
 ## Android
