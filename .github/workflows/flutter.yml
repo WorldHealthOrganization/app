@@ -30,8 +30,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.8'
-          channel: 'beta'
+          channel: 'stable'
       - run: flutter pub get
         working-directory: ./client/flutter
       - run: flutter test
