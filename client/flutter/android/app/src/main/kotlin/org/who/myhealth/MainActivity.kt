@@ -1,4 +1,4 @@
-package com.example.WHOFlutter
+package org.who.myhealth
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
