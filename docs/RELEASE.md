@@ -14,7 +14,8 @@ since there is no server component at this time
 
 \* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
 
-## Security checks
+## Compliance checks
+### Security checks
 :construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
 ### Privacy checks
 :construction: Filed https://github.com/WorldHealthOrganization/app/issues/280
