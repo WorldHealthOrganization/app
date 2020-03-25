@@ -4,9 +4,9 @@ import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
-  CarouselSlide(this.imgSrc, this.message, this.context);
+  CarouselSlide(this.titleWidget, this.message, this.context);
 
-  final String imgSrc;
+  final Widget titleWidget;
   final String message;
   final BuildContext context;
 
@@ -21,13 +21,10 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            Image(
-              image: AssetImage(imgSrc),
-              // width: width,
-            ),
+            this.titleWidget,
             Spacer(flex: 1),
             Text(
-              message,
+              this.message,
               textScaleFactor: 1.7,
               textAlign: TextAlign.center,
             ),

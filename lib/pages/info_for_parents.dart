@@ -6,11 +6,16 @@ class InfoForParents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselView([
-      CarouselSlide("assets/washHands.png", S.of(context).childStress, context),
-      CarouselSlide("assets/cough.png", S.of(context).childLove, context),
-      CarouselSlide("assets/cough.png", S.of(context).childDistance, context),
-      CarouselSlide("assets/washHands.png", S.of(context).childRoutines, context),
-      CarouselSlide("assets/distance.png", S.of(context).childFacts, context),
+      CarouselSlide(Image.asset("assets/washHands.png"),
+          S.of(context).childStress, context),
+      CarouselSlide(
+          Image.asset("assets/cough.png"), S.of(context).childLove, context),
+      CarouselSlide(Image.asset("assets/cough.png"),
+          S.of(context).childDistance, context),
+      CarouselSlide(Image.asset("assets/washHands.png"),
+          S.of(context).childRoutines, context),
+      CarouselSlide(Image.asset("assets/distance.png"),
+          S.of(context).childFacts, context),
     ]);
   }
 }

@@ -1,8 +1,8 @@
+import 'package:WHOFlutter/carousel_page.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/carousel_page.dart';
 
-class ProtectYourself extends StatelessWidget {
+class MythsAboutCorona extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselView([
