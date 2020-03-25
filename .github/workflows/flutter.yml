@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Flutter CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request 
 # events but only for the master branch
@@ -30,7 +30,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.11.0'
+          flutter-version: '1.12.8'
           channel: 'beta'
       - run: flutter pub get
         working-directory: ./client/flutter
