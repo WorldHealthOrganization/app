@@ -9,13 +9,13 @@ class ProtectYourself extends StatelessWidget {
       CarouselSlide(Image.asset("assets/washHands.png"), S.of(context).washHands, context),
       CarouselSlide(
           Image.asset("assets/cough.png"), S.of(context).cougningAndSneezing, context),
-      CarouselSlide( Image.asset("assets/cough.png"), S.of(context).throwAwayTissue, context),
+      CarouselSlide( Image.asset("assets/trash.png"), S.of(context).throwAwayTissue, context),
       CarouselSlide(
            Image.asset("assets/washHands.png"), S.of(context).washHandsFrequently, context),
       CarouselSlide(
-           Image.asset("assets/distance.png"), S.of(context).socialDistancing, context),
+           Image.asset("assets/socialdistance.png"), S.of(context).socialDistancing, context),
       CarouselSlide(
-           Image.asset("assets/distance.png"), S.of(context).seekMedicalCare, context),
+           Image.asset("assets/medicalcare.png"), S.of(context).seekMedicalCare, context),
     ]);
   }
 }
