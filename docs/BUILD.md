@@ -50,7 +50,7 @@ You should receive an email within 30 minutes notifying you that your build has 
 
 Follow Apple's instructions to [publish the app](https://help.apple.com/app-store-connect/#/dev34e9bbb5a). We have prepared the [assets needed for submission](https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing).
 
-**WARNING:** In step 4, choose the  "Manually release this version" option in the "Version Release" section to prevent inadvertent public distribution.
+**WARNING:** In step 4 of [Submit your App for Review](https://help.apple.com/app-store-connect/#/dev301cb2b3e), choose the  "Manually release this version" (release your app manually) option in the "Version Release" section to prevent inadvertent public distribution.
 
 ## Android
 
