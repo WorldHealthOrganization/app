@@ -5,7 +5,7 @@ These instructions will assume that you have the up-to-date [`git`](https://git-
 
 ## Clone the Repo
 
-In order to ensure reproducibility, you will always build from a specified `TAG_NAME` and should not change bundle/application ids or version or build numbers that are stored in the git repository.
+In order to ensure reproducibility, you will always build from a specified `TAG_NAME` (e.g. `v0.1.0`) and should not change bundle/application ids or version or build numbers that are stored in the git repository.
 
 ```
 git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
@@ -56,7 +56,7 @@ Follow Apple's instructions to [publish the app](https://help.apple.com/app-stor
 
 ### Signing the App
 
-Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/deployment/android#signing-the-app).
+Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/deployment/android#signing-the-app). We strongly suggest using [app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423?hl=en).
 
 ### Building the app for release
 
