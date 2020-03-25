@@ -12,7 +12,10 @@ ______
 1. [ ] Description (0-4000 chars)
 1. [ ] Contact info: first name, last name, email, phone number
 1. [ ] Fill out questionnaire for Age Rating
-1. [ ] Promotional Text (0-170 chars) (appears above description) **OPTIONAL**
+
+ **OPTIONAL**
+
+1. [ ] Promotional Text (0-170 chars) (appears above description)
 1. [ ] Copyright text (such as "2008 Acme Inc.")
 1. [ ] Secondary Category
 
@@ -25,9 +28,13 @@ ______
 1. [ ] Application Category, Tags
 1. [ ] Fill out questionnaire to get content rating
 1. [ ] Contact email
+
+**OPTIONAL**
+
 1. [ ] Privacy Policy URL
 1. [ ] Website URL
 1. [ ] Contact phone
+
 
 ### iOS screenshots (from https://github.com/WorldHealthOrganization/app/issues/187)
 
@@ -44,10 +51,15 @@ ______
 
 ### Android screenshots
 
+All files need to be JPEG / PNG (more info on exact requirements).
+- [ ] 2 screenshots (Min length for any side: 320px. Max length for any side: 3840px)
+- [ ] High-res icon, 512 x 512 32-bit PNG, has to be less than 1024 KB
+- [ ] Feature graphic, 1024px by 500px
+
+#### OPTIONAL
+
 - [ ] upto 8 screenshots (phone)
-- [ ] High-res icon
-- [ ] Feature Graphic
-- [ ] Promo Graphic (OPTIONAL)
-- [ ] TV Banner (OPTIONAL)
-- [ ] Promo video (OPTIONAL)
-- [ ] Daydream image (OPTIONAL)
+- [ ] Promo Graphic
+- [ ] TV Banner
+- [ ] Promo video
+- [ ] Daydream image
