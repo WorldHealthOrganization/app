@@ -12,7 +12,7 @@ since there is no server component at this time
 1. [ ]  LQA tests
 1. [ ]  release notes generated
 
-\* sometimes, engineering slightly changes the mockups for ease of implementation/scalability. Unit or integration tests won't catch this since they are focused on functionality. Design needs to have a final check to verify that such modifications (if any) work with the overall design.
+\* Sometimes, engineering slightly changes the mockups for ease of implementation/scalability or runs into unforeseen issues on various devices, etc. — issues not generally caught by unit and integration tests. A release preview (whether URL or TestFlight release) should be provided to the design team with enough time to provide light feedback and discuss any implementation trade-offs. We imagine a few hours to be ideal for this, but more time is always welcome.
 
 ## Compliance checks
 ### Security checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/269), [details](release/security_check_details.md))
