@@ -109,8 +109,7 @@ const About: React.FC = () => {
         <pre style={{ whiteSpace: 'pre-wrap', fontSize: '75%' }}>
           {privacyPolicy}
         </pre>
-        {termsOfService &&
-          credits &&
+        {credits &&
           licenseTexts &&
           licenseTexts.map((txt, i) => {
             const origText =
