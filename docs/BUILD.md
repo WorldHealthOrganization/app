@@ -9,6 +9,8 @@ cd app
 
 ## iOS
 
+Adapting instructions from [Flutter's iOS deployment docs](https://flutter.dev/docs/deployment/ios).
+
 These instructions assume that an app record has already been added to the App Store Connect account. If you haven't done so already, you can follow [these instructions](https://help.apple.com/app-store-connect/#/dev2cd126805).
 
 ### Install Dependencies
@@ -74,9 +76,185 @@ Go to the app's application details page on App Store Connect, and follow these 
 
 ## Android
 
+Adapting instructions from [Flutter's Android deployment docs](https://flutter.dev/docs/deployment/android)
 
+### Signing the App
+
+#### Create a Keystore
+
+If you have an existing keystore, skip to the next step. If not, create one by running the following at the command line:
+
+On Mac/Linux, use the following command:
+
+```
+keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+```
+
+On Windows, use the following command:
+
+```
+keytool -genkey -v -keystore c:/Users/USER_NAME/key.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias key
+```
+
+_Warning: Keep the keystore file private; do not check it into public source control._
+
+_Note: `keytool` is part of Java and requires Java to be part of your path_
+
+#### Reference the keystore from the app
+
+Create a file named `key.properties` in the `client/flutter/android` directory that contains a reference to your keystore:
+
+```
+storePassword=<password from previous step>
+keyPassword=<password from previous step>
+keyAlias=key
+storeFile=<location of the key store file, such as /Users/<user name>/key.jks>
+```
+
+_Warning: Keep the key.properties file private; do not check it into public source control._
+
+#### Configure signing in gradle
+
+Configure signing for your app by editing the `build.gradle` file in the `client/flutter/android/app` directory.
+
+1. Add code before android block:
+
+```
+   android {
+      ...
+   }
+```
+
+With the keystore information from your properties file:
+
+```
+   def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+
+   android {
+         ...
+   }
+```
+
+Load the `key.properties` file into the `keystoreProperties` object.
+
+2. Add code before buildTypes block:
+
+```
+   buildTypes {
+       release {
+           // TODO: Add your own signing config for the release build.
+           // Signing with the debug keys for now,
+           // so `flutter run --release` works.
+           signingConfig signingConfigs.debug
+       }
+   }
+```
+
+With the signing configuration info:
+
+```
+   signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
+   }
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+       }
+   }
+```
+
+Configure the `signingConfigs` block in your module’s `build.gradle` file.
+
+Release builds of your app will now be signed automatically.
+
+### Reviewing the app manifest
+
+Review the default [App Manifest](https://developer.android.com/guide/topics/manifest/manifest-intro) file, `AndroidManifest.xml`, located in `client/flutter/android/app/src/main` and verify that the values are correct, especially the following:
+
+`application`
+
+Edit the `android:label` in the application tag to reflect the final name of the app.
+
+### Reviewing the build configuration
+
+Review the default [Gradle build file](https://developer.android.com/studio/build/#module-level) file, `build.gradle`, located in `client/flutter/android/app` and verify the values are correct, especially the following values in the `defaultConfig` block:
+
+`applicationId`
+
+Specify the final, unique (Application Id)appid
+
+`versionCode` & `versionName`
+
+Specify the internal app version number, and the version number display string. You can do this by setting the version property in the pubspec.yaml file. Consult the version information guidance in the [versions documentation](https://developer.android.com/studio/publish/versioning).
+
+### Building the app for release
+
+These instructions use the App Bundle release format instead of the APK format.
+
+#### Build an app bundle
+
+`cd` into the `client/flutter` directory:
+
+```
+cd .. # this assumes you're in the client/flutter/ios directory, if you're in the app directory you'll want to cd client/flutter
+```
+
+Build the app bundle with flutter:
+
+```
+flutter build appbundle
+```
+
+The release bundle for your app is created at `client/flutter/build/app/outputs/bundle/release/app.aab`.
+
+### Upload the bundle to Google Play
+
+This adapts instructions found [here](https://support.google.com/googleplay/android-developer/answer/7159011).
+
+#### Create a release
+
+A release is a combination of one or more build artifacts that you'll prepare to roll out an app or app update.
+
+To start your release:
+
+1. Go to your [Play Console](https://play.google.com/apps/publish/).
+2. Select an app.
+3. On the left menu, select **Release management > App releases**.
+4. Next to the release type you want to create, select **Manage**, then select **Closed**.
+5. To create a new release, select **Create release**.
+
+#### Prepare your app's release
+
+1. Follow the on-screen instructions to add APKs or app bundles, describe what's new in this release, and name your release. Use the APK generated in [Create a release](#create-a-release).
+2. To save any changes you make to your release, select Save.
+3. When you've finished preparing your release, select Review.
+
+#### Review and roll out
+
+Prerequisite: Before you can roll out your release, make sure you've completed your app's store listing, content rating, & pricing & distribution sections. When each section is complete, you'll see a green check mark next to it on the left menu.
+
+Assets prepared for submission: https://drive.google.com/drive/folders/17wi6q3Vlpt9KB6FuEOpZBdCJHtLCSXzh?usp=sharing
+
+1. Go to your Play Console.
+2. Select an app.
+3. On the left menu, select **Release management > App releases**.
+4. Next to the release you want to roll out, select **Edit release**.
+5. Review your draft release and make any additional changes that are needed.
+6. Select **Review**. You'll be taken to the "Review and roll out release" screen, where you can make sure there aren't any issues with your release before rolling out to users.
+7. Review any warnings or errors.
+8. Select **Confirm rollout**.
 
 ## Dependencies
 
 * [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) (for building iOS)
+* [Flutter](https://flutter.dev/docs/get-started/install) (for building Android)
