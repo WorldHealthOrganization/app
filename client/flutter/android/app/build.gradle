@@ -18,7 +18,7 @@ if (flutterVersionCode == null) {
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = '0.1.0'
 }
 
 apply plugin: 'com.android.application'
@@ -37,7 +37,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.who.myhealth"
+        applicationId "org.who.WHOMyHealth"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
