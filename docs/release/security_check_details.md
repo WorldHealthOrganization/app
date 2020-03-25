@@ -1,6 +1,8 @@
 Security check template
 ----
 
+For every release, a filled in copy of the template [should be checked in and tagged](https://github.com/WorldHealthOrganization/app/issues/269#issuecomment-603653099).
+
 ### [ ] System Boundary
 Diagram of:
 - [ ] internal services
