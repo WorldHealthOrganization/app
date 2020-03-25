@@ -14,7 +14,7 @@ class InfoForParents extends StatelessWidget {
           S.of(context).childDistance, context),
       CarouselSlide(Image.asset("assets/washHands.png"),
           S.of(context).childRoutines, context),
-      CarouselSlide(Image.asset("assets/distance.png"),
+      CarouselSlide(Image.asset("assets/socialdistance.png"),
           S.of(context).childFacts, context),
     ]);
   }
