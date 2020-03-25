@@ -63,6 +63,7 @@ Check how we stack up against these principles (qualitative evaluation, [details
 
 - [ ] get all [checkoffs](#checkoffs)
 - determine drop-dead time for:
+  - [ ] stopping code churn
   - [ ] finalizing release in Github
   - [ ] pushing build from GitHub to WHO
 - [ ] :construction: Upload all assets needed to Google Drive
