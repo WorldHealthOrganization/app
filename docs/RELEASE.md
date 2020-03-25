@@ -17,8 +17,16 @@ since there is no server component at this time
 ## Compliance checks
 ### Security checks
 :construction: waiting for input from Andrew https://github.com/WorldHealthOrganization/app/issues/269
-### Privacy checks
-:construction: Filed https://github.com/WorldHealthOrganization/app/issues/280
+### Privacy checks (from [#280](https://github.com/WorldHealthOrganization/app/issues/280))
+Check how we stack up against these principles (qualitative evaluation, [source](http://www.oecd.org/internet/ieconomy/oecdguidelinesontheprotectionofprivacyandtransborderflowsofpersonaldata.htm))
+- [ ] Collection Limitation Principle
+- [ ] Data Quality Principle
+- [ ] Purpose Specification Principle
+- [ ] Use Limitation Principle
+- [ ] Security Safeguards Principle
+- [ ] Openness Principle
+- [ ] Individual Participation Principle
+- [ ] Accountability Principle
 ### Legal checks (copied from https://github.com/WorldHealthOrganization/app/issues/17)
 - [ ] 3rd party libraries / dependency license review
 - [ ] CLA / developer license review
