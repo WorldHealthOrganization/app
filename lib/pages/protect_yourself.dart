@@ -7,7 +7,7 @@ class ProtectYourself extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselView([
       CarouselSlide(context,
-          titleWidget: Image.asset("assets/washHands.png"),
+          titleWidget: Image.asset("assets/washhands.png"),
           message: S.of(context).washHands),
       CarouselSlide(context,
           titleWidget: Image.asset("assets/cough.png"),
@@ -16,7 +16,7 @@ class ProtectYourself extends StatelessWidget {
           titleWidget: Image.asset("assets/trash.png"),
           message: S.of(context).throwAwayTissue),
       CarouselSlide(context,
-          titleWidget: Image.asset("assets/washHands.png"),
+          titleWidget: Image.asset("assets/washhands.png"),
           message: S.of(context).washHandsFrequently),
       CarouselSlide(context,
           titleWidget: Image.asset("assets/socialdistance.png"),

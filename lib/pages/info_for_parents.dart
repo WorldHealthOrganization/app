@@ -7,7 +7,7 @@ class InfoForParents extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselView([
       CarouselSlide(context,
-          titleWidget: Image.asset("assets/washHands.png"),
+          titleWidget: Image.asset("assets/washhands.png"),
           message: S.of(context).childStress),
       CarouselSlide(context,
           titleWidget: Image.asset("assets/cough.png"),
@@ -16,7 +16,7 @@ class InfoForParents extends StatelessWidget {
           titleWidget: Image.asset("assets/cough.png"),
           message: S.of(context).childDistance),
       CarouselSlide(context,
-          titleWidget: Image.asset("assets/washHands.png"),
+          titleWidget: Image.asset("assets/washhands.png"),
           message: S.of(context).childRoutines),
       CarouselSlide(
         context,
