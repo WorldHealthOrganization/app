@@ -56,7 +56,12 @@ This app uses a monorepo structure with the client application in the `client` d
 
 ## Client
 
-TODO
+Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
+
+Clone the repo and from the  `client/flutter` directory, run 
+```
+flutter run
+```
 
 ### Troubleshooting
 
