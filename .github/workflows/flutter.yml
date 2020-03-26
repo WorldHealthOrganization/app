@@ -33,7 +33,7 @@ jobs:
           ref: stable
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
-      - run: flutter get pub
+      - run: flutter pub get
       - run: flutter test
         working-directory: ./client/flutter
       - run: flutter build ios
@@ -41,3 +41,5 @@ jobs:
         if: matrix.platform == 'macos-latest'
       - run: flutter build apk
         working-directory: ./client/flutter
+  build:
+    name: Build
