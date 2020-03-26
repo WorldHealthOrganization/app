@@ -10,7 +10,7 @@ void main() {
   testWidgets('WHO Myth Buster Page is rendered Properly',
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
-    await binding.setSurfaceSize(Size(800, 640));
+    await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(MyApp());
     await tester.pumpAndSettle(Duration(seconds: 1));
     // Navigate to WHO Myth Buster Page
@@ -25,7 +25,7 @@ void main() {
   testWidgets('WHO Myth-buster page carousel is working correctly',
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
-    await binding.setSurfaceSize(Size(800, 640));
+    await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(MyApp());
     await tester.pumpAndSettle(Duration(seconds: 1));
     await tester.tap(find.text('WHO Myth-busters'));
