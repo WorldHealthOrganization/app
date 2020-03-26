@@ -59,6 +59,8 @@ Version numbering terminology:
 
 **Target Date:** Monday, March 30, 2020 - app store submission by EOD PDT
 
+**GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/4
+
 #### Technical Features / Requirements
 
 * Content parity with the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=)
@@ -94,6 +96,8 @@ Version numbering terminology:
 ### vNext backlogs
 
 This section is a major WORK IN PROGRESS and is not fully complete. Listing out very initial thoughts for now.
+
+**GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/3
 
 #### Fast Follow-Ons
 
