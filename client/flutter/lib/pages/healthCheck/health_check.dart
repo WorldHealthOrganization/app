@@ -5,6 +5,8 @@ import 'package:WHOFlutter/page_scaffold.dart';
 class HealthCheckPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(body: Text(S.of(context).healthCheck));
+    return PageScaffold(
+      body: Text(S.of(context).healthCheck),
+    );
   }
 }

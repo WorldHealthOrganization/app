@@ -4,8 +4,10 @@ class PageScaffold extends StatelessWidget {
   final Widget body;
   final EdgeInsetsGeometry bodyPadding;
 
-  PageScaffold(
-      {@required this.body, this.bodyPadding = const EdgeInsets.symmetric(horizontal: 24)});
+  const PageScaffold({
+    @required this.body,
+    this.bodyPadding = const EdgeInsets.symmetric(horizontal: 24),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,8 @@ class PageScaffold extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
             child: Image(
-                image: AssetImage('assets/WHO.jpg'), width: MediaQuery.of(context).size.width),
+                image: const AssetImage('assets/WHO.jpg'),
+                width: MediaQuery.of(context).size.width),
           ),
           onTap: () {
             //return Navigator.of(context).push(
@@ -27,7 +30,7 @@ class PageScaffold extends StatelessWidget {
         Expanded(
             child: Padding(
           padding: bodyPadding,
-          child: this.body,
+          child: body,
         ))
       ])),
     ));

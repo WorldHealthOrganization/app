@@ -9,33 +9,31 @@ class CarouselSlide extends StatelessWidget {
   final String message;
   final BuildContext context;
 
-  CarouselSlide(this.context, {this.titleWidget, this.message = ""});
+  const CarouselSlide(this.context, {this.titleWidget, this.message = ''});
 
   @override
   Widget build(BuildContext context) {
-    double scale = contentScale(context);
-    var screenHeight = MediaQuery.of(context).size.height;
+    final double scale = contentScale(context);
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       child: Card(
         elevation: 0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Spacer(flex: 1),
-            this.titleWidget == null
-                ? Container(
-                    height: 0,
-                  )
-                : Container(height: screenHeight * 0.4, child: this.titleWidget ?? Container()),
-            Spacer(flex: 1),
+            const Spacer(flex: 1),
+            titleWidget == null
+                ? Container(height: 0)
+                : Container(height: screenHeight * 0.4, child: titleWidget ?? Container()),
+            const Spacer(flex: 1),
             Text(
-              this.message,
+              message,
               textScaleFactor: scale * 1.5,
               textAlign: TextAlign.center,
             ),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
           ],
         ),
       ),
@@ -48,7 +46,7 @@ class CarouselView extends StatelessWidget {
 
   CarouselView(this.items);
 
-  final pageIndexNotifier = ValueNotifier<int>(0);
+  final ValueNotifier<int> pageIndexNotifier = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +54,15 @@ class CarouselView extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           PageView(
-            onPageChanged: (i) => pageIndexNotifier.value = i,
-            children: this.items,
+            onPageChanged: (int i) => pageIndexNotifier.value = i,
+            children: items,
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
-            child:
-                Container(padding: EdgeInsets.only(bottom: 20), child: pageViewIndicator(context)),
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: pageViewIndicator(context),
+            ),
           ),
           Align(
               alignment: FractionalOffset.topRight,
@@ -81,7 +81,7 @@ class CarouselView extends StatelessWidget {
   }
 
   Widget pageViewIndicator(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -91,21 +91,25 @@ class CarouselView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: PageViewIndicator(
               pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
-              normalBuilder: (animationController, index) => Circle(
-                size: 8.0,
-                color: Colors.grey,
-              ),
-              highlightedBuilder: (animationController, index) => ScaleTransition(
-                scale: CurvedAnimation(
-                  parent: animationController,
-                  curve: Curves.ease,
-                ),
-                child: Circle(
-                  size: 10.0,
-                  color: Constants.primaryColor,
-                ),
-              ),
+              length: items.length,
+              normalBuilder: (AnimationController animationController, int index) {
+                return Circle(
+                  size: 8.0,
+                  color: Colors.grey,
+                );
+              },
+              highlightedBuilder: (AnimationController animationController, int index) {
+                return ScaleTransition(
+                  scale: CurvedAnimation(
+                    parent: animationController,
+                    curve: Curves.ease,
+                  ),
+                  child: Circle(
+                    size: 10.0,
+                    color: Constants.primaryColor,
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -115,7 +119,7 @@ class CarouselView extends StatelessWidget {
 }
 
 class EmojiHeader extends StatelessWidget {
-  EmojiHeader(this.emoji);
+  const EmojiHeader(this.emoji);
 
   final String emoji;
 
@@ -123,7 +127,7 @@ class EmojiHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        this.emoji,
+        emoji,
         textScaleFactor: 6,
       ),
     );

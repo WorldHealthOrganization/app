@@ -17,19 +17,31 @@ class HomePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Spacer(flex: 1),
+        const Spacer(flex: 1),
         PageButton(
-            title: S.of(context).protectYourself,
-            onPressed: () =>
-                Navigator.of(context).push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
+          title: S.of(context).protectYourself,
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext c) => ProtectYourself(),
+            ),
+          ),
+        ),
         PageButton(
-            title: S.of(context).whoMythBusters,
-            onPressed: () =>
-                Navigator.of(context).push(MaterialPageRoute(builder: (c) => WhoMythBusters()))),
+          title: S.of(context).whoMythBusters,
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext c) => WhoMythBusters(),
+            ),
+          ),
+        ),
         PageButton(
-            title: S.of(context).travelAdvice,
-            onPressed: () =>
-                Navigator.of(context).push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
+          title: S.of(context).travelAdvice,
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (BuildContext c) => TravelAdvice(),
+            ),
+          ),
+        ),
         PageButton(
             title: S.of(context).shareTheApp,
             lightColor: true,
@@ -40,8 +52,8 @@ class HomePage extends StatelessWidget {
             lightColor: true,
             onPressed: () => showAboutDialog(
                 context: context,
-                applicationLegalese: "The official World Health Organization COVID-19 App.")),
-        Spacer(flex: 3)
+                applicationLegalese: 'The official World Health Organization COVID-19 App.')),
+        const Spacer(flex: 3)
       ],
     ));
   }

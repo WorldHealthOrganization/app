@@ -11,7 +11,7 @@ on:
       - 'client/flutter/**'
 jobs:
   test:
-    name: Test on ${{ matrix.os }}
+    name: Analyze on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -27,5 +27,4 @@ jobs:
         working-directory: ./client/flutter
       - fun: flutter analyze
       - run: flutter format --line-length=100 --set-exit-if-changed .
-      - run: flutter test
         working-directory: ./client/flutter

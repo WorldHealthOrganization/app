@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './home_page.dart';
-import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'constants.dart';
 import 'generated/l10n.dart';
+import 'home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,14 +18,14 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+        <DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "WHO",
-      localizationsDelegates: [
+      title: 'WHO',
+      localizationsDelegates: <LocalizationsDelegate<dynamic>>[
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         S.delegate
