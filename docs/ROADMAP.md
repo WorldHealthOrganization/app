@@ -55,9 +55,9 @@ Version numbering terminology:
 
 ### v1.0
 
-**Goal:** Match or exceed the existing functionality in the WHO WhatsApp Bot presented idiomatically with native look-and-feel, with dynamically-updatable content localized to at least one other language besides English and ability to deliver push notifications to users.
+**Goal:** Match or exceed the existing content in the WHO WhatsApp Bot presented idiomatically with native look-and-feel, with dynamically-updatable content localized to at least one other language besides English and ability to deliver push notifications to users.
 
-**Target Date:** Monday, March 30, 2020 - app store submission by EOD PDT
+**Target Date:** Monday, March 30, 2020 - transmission of app to WHO team for app store submission by EOD PDT
 
 **GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/4
 
@@ -70,8 +70,9 @@ Version numbering terminology:
 * Dynamically updated content served from the cloud so users don't need to update the app to receive content updates
 * Localized push notification capabilities
   * _(Needs Discussion)_ What are the localization requirements for v1.0? What level of granularity will we need in region (e.g. language, continent, country, city, etc)? How will the user choose their location(s) for push delivery?
-* Analytics capabilities with the ability to collect aggregated data for product improvement complying with all applicable laws & regulations and app policies
+* Instrumentation capabilities for understanding aggregated useage information to be used for product improvement, complying with all applicable laws & regulations and app policies
 * _(Needs Discussion)_ Distribution pipeline using [fastlane](https://fastlane.tools/) for integration with WHO's existing app distribution process
+* Full security review
 
 #### Features NOT Included
 
