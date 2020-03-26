@@ -56,7 +56,30 @@ This app uses a monorepo structure with the client application in the `client` d
 
 ## Client
 
-TODO
+### Flutter Setup
+To get setup, clone the Flutter repo with the following command:
+```
+git clone https://github.com/flutter/flutter.git -b stable
+```
+Add the following to your `.bash_profile` or `.bashrc` file.
+```
+export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
+```
+Make sure to source the file where you put this path (e.g. `source ~/.bash_profile`).
+
+Run the following command and inspect the output. 
+```
+flutter doctor
+```
+You may have to install some dependencies in order to finish setup.
+
+### Running the client
+Clone the repo and get your [platform set up](https://flutter.dev/docs/get-started/install/macos#platform-setup).
+Then from the  `client/setup` directory, run 
+```
+flutter run
+```
+
 
 ### Troubleshooting
 
