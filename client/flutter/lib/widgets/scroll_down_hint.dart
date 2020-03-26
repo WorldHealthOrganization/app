@@ -50,7 +50,8 @@ class _ScrollDownHintState extends State<ScrollDownHint> {
     if (!widget.controller.hasClients || !widget.controller.position.haveDimensions) {
       return;
     }
-    bool atBottom = widget.controller.position.pixels >= widget.controller.position.maxScrollExtent - widget.margin;
+    bool atBottom = widget.controller.position.pixels >=
+        widget.controller.position.maxScrollExtent - widget.margin;
     if (atBottom != _atBottom) {
       setState(() {
         _atBottom = atBottom;

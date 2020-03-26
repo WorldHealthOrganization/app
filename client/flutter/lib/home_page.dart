@@ -85,7 +85,8 @@ class _HomePageState extends State<HomePage> {
                         lightColor: true,
                         onPressed: () => showAboutDialog(
                           context: context,
-                          applicationLegalese: "The official World Health Organization COVID-19 App.",
+                          applicationLegalese:
+                              "The official World Health Organization COVID-19 App.",
                         ),
                       ),
                     ],

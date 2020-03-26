@@ -7,8 +7,7 @@ class WhoMythBusters extends StatelessWidget {
     return ListOfItemsPage([
       ListItem(
         titleWidget: EmojiHeader("🧠"),
-        message:
-            "There is a lot of false information around. These are the facts",
+        message: "There is a lot of false information around. These are the facts",
       ),
       ListItem(
         titleWidget: EmojiHeader("🔢"),
@@ -20,8 +19,7 @@ class WhoMythBusters extends StatelessWidget {
           message: "Cold weather and snow CANNOT kill the coronavirus"),
       ListItem(
         titleWidget: EmojiHeader("☀️"),
-        message:
-            "The coronavirus CAN be transmitted in areas with hot and humid climates",
+        message: "The coronavirus CAN be transmitted in areas with hot and humid climates",
       ),
       ListItem(
         titleWidget: EmojiHeader("🦟"),
@@ -70,8 +68,7 @@ class WhoMythBusters extends StatelessWidget {
       ),
       ListItem(
         titleWidget: EmojiHeader("💊"),
-        message:
-            "Antibiotics DO NOT work against viruses, antibiotics only work against bacteria",
+        message: "Antibiotics DO NOT work against viruses, antibiotics only work against bacteria",
       ),
       ListItem(
         titleWidget: EmojiHeader("🧪"),
