@@ -49,14 +49,7 @@ Non-Technical Requirements for v0.1:
 
 Other notes on v0.1:
 
-* We have chosen to use Ionic React to get to a launchable prototype for v0.1. However, we are _NOT_ committed to using that in the longer term, and we have ongoing conversations about what the right frameworks to use will be (investigating Flutter and React Native)
-
-
-• v0.2 - informal preview provided EOD Friday to WHO alone, not going to any app store
-• v1.0 - formal build provided EOD Monday  to WHO to push live publicly
-• (all times Pacific)
-Is this correct?
-In one sentence: v1.0 is a native look-and-feel, dynamically-updatable “port” of the WhatsApp bot content on iOS/Android, with information able to be served specific to your country and language (with at least 2 languages actually implemented), and the ability to push notifications in the future.   v0.2 is just whatever is in the repo by EOD friday and is not an intermediate milestone being pushed for separately.
+* We switched to the Flutter client framework for 0.1, and going forward.
 
 ### v0.2
 
