@@ -27,12 +27,19 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
+      - uses: actions/cache@v1
+          id: cache
+          with:
+            path: client/flutter
+            key: ${{ runner.os }}-${{ hashFiles('pubspec.**') }}
       - uses: actions/checkout@v2
+        if: steps.cache.outputs.cache-hit != 'true'
         with:
           repository: 'flutter/flutter'
           ref: stable
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter get pub
       - run: flutter test
         working-directory: ./client/flutter
       - run: flutter build ios
