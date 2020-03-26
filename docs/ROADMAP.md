@@ -11,8 +11,8 @@ There is an urgent, global need for an official WHO App to help contain and miti
 Version numbering terminology:
 
 * **v0.1**: refers to the initial buildout that will be submitted to the app stores but not intended for public release, aiming for submission on Thursday, March 26, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
-* **v0.2+**: any versions starting with major version v0 are not intended for public distribution or consumption
-* **v1.0**: the first version that we feel offers enough value to be published onto the app stores for public download will be v1.0
+* **v0.2**: an informal preview build for WHO by end of day Friday, March 27, 2020
+* **v1.0**: first public release, sent to WHO end of day Monday, March 30, 2020
 
 ### v0.1
 
@@ -51,11 +51,32 @@ Other notes on v0.1:
 
 * We have chosen to use Ionic React to get to a launchable prototype for v0.1. However, we are _NOT_ committed to using that in the longer term, and we have ongoing conversations about what the right frameworks to use will be (investigating Flutter and React Native)
 
-### v0.2+
+
+• v0.2 - informal preview provided EOD Friday to WHO alone, not going to any app store
+• v1.0 - formal build provided EOD Monday  to WHO to push live publicly
+• (all times Pacific)
+Is this correct?
+In one sentence: v1.0 is a native look-and-feel, dynamically-updatable “port” of the WhatsApp bot content on iOS/Android, with information able to be served specific to your country and language (with at least 2 languages actually implemented), and the ability to push notifications in the future.   v0.2 is just whatever is in the repo by EOD friday and is not an intermediate milestone being pushed for separately.
+
+### v0.2
+
+**Target Date:** March 27, 2020
+
+**Goal:** v0.2 is not a separate milestone, it simply whatever is in the repo by EOD Friday for preview by the WHO.
+
+### v1.0
+
+**Target Date:** March 30, 2020
+
+**Goal:** In one sentence: v1.0 is a native look-and-feel, dynamically-updatable “port” of the WhatsApp bot content on iOS/Android, with information able to be served specific to your country and language (with at least 2 languages actually implemented), and the ability to push notifications in the future.
+
+### vNext backlogs
 
 This section is a major WORK IN PROGRESS and is not fully complete. Listing out very initial thoughts for now.
 
 **Goal:** Match or exceed the existing functionality in the WHO WhatsApp Bot presented idiomatically as an app. App content should be localized to the 6 official WHO languages, with the ability to be served from the cloud.
+
+Lots of ongoing thoughts & conversations - we will update here when there are more concrete thoughts.
 
 **Target Date:** _(ongoing)_
 
@@ -75,8 +96,3 @@ Features:
   * Should be able to get basic analytics for product improvement, such as which features and pages are being used by end users
 * Basic triage survey?
 
-### v1.0
-
-**Goal:** First fully-public app available for download
-
-Lots of ongoing thoughts & conversations - we will update here when there are more concrete thoughts.
