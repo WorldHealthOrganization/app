@@ -28,10 +28,10 @@ jobs:
         with:
           java-version: '12.x'
       - uses: actions/cache@v1
-          id: cache
-          with:
-            path: client/flutter
-            key: ${{ runner.os }}-${{ hashFiles('pubspec.**') }}
+        id: cache
+        with:
+          path: client/flutter
+          key: ${{ runner.os }}-${{ hashFiles('pubspec.**') }}
       - uses: actions/checkout@v2
         if: steps.cache.outputs.cache-hit != 'true'
         with:
