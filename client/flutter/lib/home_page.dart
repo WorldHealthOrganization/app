@@ -20,16 +20,16 @@ class HomePage extends StatelessWidget {
         Spacer(flex: 1),
         PageButton(
             title: S.of(context).protectYourself,
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute(builder: (c) => ProtectYourself()))),
         PageButton(
             title: S.of(context).whoMythBusters,
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (c) => WhoMythBusters()))),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute(builder: (c) => WhoMythBusters()))),
         PageButton(
             title: S.of(context).travelAdvice,
-            onPressed: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
+            onPressed: () =>
+                Navigator.of(context).push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
         PageButton(
             title: S.of(context).shareTheApp,
             lightColor: true,
@@ -40,8 +40,7 @@ class HomePage extends StatelessWidget {
             lightColor: true,
             onPressed: () => showAboutDialog(
                 context: context,
-                applicationLegalese:
-                    "The official World Health Organization COVID-19 App.")),
+                applicationLegalese: "The official World Health Organization COVID-19 App.")),
         Spacer(flex: 3)
       ],
     ));

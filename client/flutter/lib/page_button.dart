@@ -21,10 +21,7 @@ class PageButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
         shape: RoundedRectangleBorder(
-            side: BorderSide(
-                color: Constants.primaryColor,
-                width: 1.5,
-                style: BorderStyle.solid),
+            side: BorderSide(color: Constants.primaryColor, width: 1.5, style: BorderStyle.solid),
             borderRadius: BorderRadius.all(Radius.circular(12))),
         padding: EdgeInsets.all(16.0 + 16.0 * (scale - 1.0)),
         onPressed: onPressed,
@@ -32,11 +29,9 @@ class PageButton extends StatelessWidget {
         child: Text(
           title,
           textScaleFactor: scale * 1.2,
-          style: TextStyle(
-              color: lightColor ? Constants.primaryColor : Colors.white),
+          style: TextStyle(color: lightColor ? Constants.primaryColor : Colors.white),
         ),
       ),
     );
   }
 }
-

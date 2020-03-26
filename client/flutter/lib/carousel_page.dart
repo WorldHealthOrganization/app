@@ -24,9 +24,11 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            this.titleWidget == null?Container(height: 0,):Container(
-                height: screenHeight * 0.4,
-                child: this.titleWidget ?? Container()),
+            this.titleWidget == null
+                ? Container(
+                    height: 0,
+                  )
+                : Container(height: screenHeight * 0.4, child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
               this.message,
@@ -59,9 +61,8 @@ class CarouselView extends StatelessWidget {
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
-            child: Container(
-                padding: EdgeInsets.only(bottom: 20),
-                child: pageViewIndicator(context)),
+            child:
+                Container(padding: EdgeInsets.only(bottom: 20), child: pageViewIndicator(context)),
           ),
           Align(
               alignment: FractionalOffset.topRight,
@@ -95,8 +96,7 @@ class CarouselView extends StatelessWidget {
                 size: 8.0,
                 color: Colors.grey,
               ),
-              highlightedBuilder: (animationController, index) =>
-                  ScaleTransition(
+              highlightedBuilder: (animationController, index) => ScaleTransition(
                 scale: CurvedAnimation(
                   parent: animationController,
                   curve: Curves.ease,
