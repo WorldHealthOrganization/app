@@ -13,20 +13,25 @@ class CarouselSlide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double scale = contentScale(context);
-    var screenHeight = MediaQuery.of(context).size.height;
+    var scale = contentScale(context),
+        screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.all(24),
       child: Card(
+        color: Colors.transparent,
         elevation: 0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            this.titleWidget == null?Container(height: 0,):Container(
-                height: screenHeight * 0.4,
-                child: this.titleWidget ?? Container()),
+            this.titleWidget == null
+                ? Container(
+                    height: 0,
+                  )
+                : Container(
+                    height: screenHeight * 0.4,
+                    child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
               this.message,
@@ -48,23 +53,32 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
+  PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
       body: Stack(
         children: <Widget>[
           PageView(
+            controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
             children: this.items,
           ),
           Align(
-            alignment: FractionalOffset.bottomCenter,
+            alignment: Alignment.bottomCenter,
             child: Container(
                 padding: EdgeInsets.only(bottom: 20),
                 child: pageViewIndicator(context)),
           ),
+          GestureDetector(
+              onTap: () => pageController.page == this.items.length - 1
+                  ? null
+                  : pageController.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeInOutCubic)),
           Align(
-              alignment: FractionalOffset.topRight,
+              alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 24.0),
                 child: IconButton(

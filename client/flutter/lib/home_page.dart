@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
             onPressed: () => showAboutDialog(
                 context: context,
                 applicationLegalese:
-                    "The official World Health Organization COVID-19 App.")),
+                    'The official World Health Organization COVID-19 App.')),
         Spacer(flex: 3)
       ],
     ));
