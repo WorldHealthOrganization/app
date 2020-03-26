@@ -1,11 +1,11 @@
 {
-    "name": "flutter_app",
-    "short_name": "flutter_app",
+    "name": "WHO MyHealth",
+    "short_name": "MyHealth",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "WHO MyHealth app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
