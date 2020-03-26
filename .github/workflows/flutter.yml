@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: git clone https://github.com/flutter/flutter.git -b stable _flutter
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
@@ -43,12 +43,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: actions/checkout@v2
-        with:
-          repository: 'flutter/flutter'
-          ref: stable
-          fetch-depth: 0
-          path: '_flutter'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
@@ -62,12 +57,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: actions/checkout@v2
-        with:
-          repository: 'flutter/flutter'
-          ref: stable
-          fetch-depth: 0
-          path: '_flutter'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
