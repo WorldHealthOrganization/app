@@ -14,17 +14,12 @@ class PageScaffold extends StatelessWidget {
         body: SafeArea(
       child: Container(
           child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-        GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
-            child: Image(
-                image: AssetImage('assets/WHO.jpg'),
-                width: MediaQuery.of(context).size.width),
-          ),
-          onTap: () {
-            //return Navigator.of(context).push(
-            //MaterialPageRoute( builder: (c)=>HomePage() ) );
-          },
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
+          child: Image(
+              image: AssetImage('assets/WHO.jpg'),
+              width: MediaQuery.of(context).size.width),
         ),
         Expanded(
             child: Padding(
