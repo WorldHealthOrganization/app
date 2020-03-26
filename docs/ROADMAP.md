@@ -2,6 +2,8 @@
 
 MAJOR CAVEAT: This is a WORK IN PROGRESS with many items TBD. We will want weigh-in from key folks across all areas, but the idea is that this is a living, breathing document that will grow over time.
 
+All deadlines are in Pacific (US West Coast) time.
+
 ### Summary
 
 There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
@@ -11,8 +13,8 @@ There is an urgent, global need for an official WHO App to help contain and miti
 Version numbering terminology:
 
 * **v0.1**: refers to the initial buildout that will be submitted to the app stores but not intended for public release, aiming for submission on Thursday, March 26, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
-* **v0.2**: an informal preview build for WHO by end of day Friday, March 27, 2020
-* **v1.0**: first public release, sent to WHO end of day Monday, March 30, 2020
+* **v0.2**: an informal preview build for WHO by end of day Friday, March 27, 2020.  This is not a separate milestone.
+* **v1.0**: first public release, sent to WHO end of day Monday, March 30, 2020 ([v1.0 milestone](https://github.com/WorldHealthOrganization/app/milestone/4))
 
 ### v0.1
 
