@@ -60,7 +60,7 @@ TODO
 
 ### Troubleshooting
 
-TODO
+* If you built the Ionic client previously and see a warning about husky (git hooks), we no longer use husky git hooks. As long as you have no personal git hooks, run: `pushd .git/hooks && ( ls | grep \.sample -v | xargs rm ) && popd` from repo root after you sync.
 
 ## Server
 
