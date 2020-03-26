@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - echo '::set-env name=FLUTTER_REVISION::$(grep revision: .metadata | sed "s/  revision: //g")'
+      - echo "::set-env name=FLUTTER_REVISION::$(grep revision: .metadata | sed \"s/  revision: //g\")"
       - uses: actions/checkout@v2
         with:
           repository: 'flutter/flutter'
