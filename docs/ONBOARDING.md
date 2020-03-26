@@ -56,34 +56,11 @@ This app uses a monorepo structure with the client application in the `client` d
 
 ## Client
 
-The client app will be built initially using [Ionic React](https://ionicframework.com/docs/react). To get started, clone the repo and from the `client/ionic` directory run:
-
-```
-npm install -g @ionic/cli
-npm install
-ionic serve
-```
-
-To run on Android, from the `client/ionic` directory run:
-
-```
-ionic build
-ionic capacitor copy android
-npx cap update android
-ionic capacitor run android -l --host=YOUR_IP_ADDRESS
-```
-
-To run on iOS, from the `client/ionic` directory run:
-
-```
-ionic build
-ionic capacitor copy ios
-ionic capacitor run ios
-```
+TODO
 
 ### Troubleshooting
 
-If you are getting an `unable to open file (in target "App" in project "App")` error message when attempting to build the iOS app in Xcode, this may be related to an issue with needing to install pods from CocoaPods that we are currently investigating. Ensure that your ruby and CocoaPods are up to date, then run `pod install` from the `client/ionic/ios/App` directory. If that install succeeds, you should be able to build your iOS app without issue.
+* If you built the Ionic client previously and see a warning about husky (git hooks), we no longer use husky git hooks. As long as you have no personal git hooks, run: `pushd .git/hooks && ( ls | grep \.sample -v | xargs rm ) && popd` from repo root after you sync.
 
 ## Server
 
