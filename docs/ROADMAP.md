@@ -10,30 +10,25 @@ There is an urgent, global need for an official WHO App to help contain and miti
 
 Version numbering terminology:
 
-* **v0.1**: refers to the initial buildout that will be submitted to the app stores, aiming for Tuesday, March 24, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
+* **v0.1**: refers to the initial buildout that will be submitted to the app stores but not intended for public release, aiming for submission on Thursday, March 26, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
 * **v0.2+**: any versions starting with major version v0 are not intended for public distribution or consumption
 * **v1.0**: the first version that we feel offers enough value to be published onto the app stores for public download will be v1.0
 
 ### v0.1
 
-**Goal:** To get a functional build of an application that can be submitted to the Apple App Store and Google Play Store for approval. This app will _NOT_ be published into those app stores for public download, but will instead serve as an approved base for future versions and to prove out that we can deliver on the technical side. The app will serve static content manually adapted from the WHO's site in English.
+**Goal:** To uncover any issues with app approvals
 
-**Target Date:** Tuesday, March 24, 2020
+**Target Date:** Thursday, March 26, 2020
 
 **GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/2
 
 Technical Features / Requirements:
 
-* App built to be submitted on Apple App Store and Google Play Store, including code signing process
+* Submit app to Apple App Store and Google Play Store, including code signing process
 * UI styled to exact [design spec in Figma](https://www.figma.com/file/fjzTIloCEK4FpbyDiTLj2X/iOS-UX) ([#186](https://github.com/WorldHealthOrganization/app/issues/186))
   * Displaying static content in English only
-* App is still functional in an offline environment with default content able to be accessed without a network connection ([#120](https://github.com/WorldHealthOrganization/app/pull/120) :white_check_mark:)
-* Demonstrate capability to localize content from the technical platform perspective, even if other languages/cultures are _NOT_ part of that v0.1 launch
-  * Framework in place to localize UI elements ([#126](https://github.com/WorldHealthOrganization/app/pull/126) :white_check_mark:)
-  * Framework in place to load the informational content in localized formats ([#120](https://github.com/WorldHealthOrganization/app/pull/120) :white_check_mark:)
-* Demonstrate capability to load content dynamically from the cloud, even if this feature will _NOT_ be turned on as part of the v0.1 launch ([#120](https://github.com/WorldHealthOrganization/app/pull/120) :white_check_mark:)
-* _(Open Question)_ Demonstrate capability to instrument the app and collect basic analytics around which features and pages are actually being used, even if this feature will _NOT_ be turned on as part of the v0.1 launch ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
-  * Investigating legal requirements of this data collection, including whether updated TOS/Privacy Policy is needed
+* Offline functionality: default content still available without a network connection ([#120](https://github.com/WorldHealthOrganization/app/pull/120))
+* Localization technical frameworks for UI elements and informational content, demonstrating capabilities even if content is not adapted to languages/cultures in this milestone ([#284](https://github.com/WorldHealthOrganization/app/pull/284))
 
 Features _NOT_ included in v0.1:
 
@@ -42,13 +37,14 @@ Features _NOT_ included in v0.1:
   * We are building in the capabilities into v0.1 from the technical perspective
 * Triage survey telling users whether or not they should go to the hospital
   * Blockers: full definition on what the survey entails + legal review on the implications of making medical suggestions
-  * _Question:_ do we want to link to an existing triage survey in a webview for v0.1, and if so, which one?
 
 Non-Technical Requirements for v0.1:
 
-* All content & assets required for submission to Apple App Store and Google Play Store ([#188](https://github.com/WorldHealthOrganization/app/issues/188), [#187](https://github.com/WorldHealthOrganization/app/issues/187) :warning:)
-* Confirmed informational content & organization of that content included in app ([#93](https://github.com/WorldHealthOrganization/app/issues/93) :warning:)
-* Any legal requirements for submission to app stores & legal review ([#17](https://github.com/WorldHealthOrganization/app/issues/17) :warning:)
+* Content & assets required for submission to Apple App Store and Google Play Store (Text: [#188](https://github.com/WorldHealthOrganization/app/issues/188), Images: [#187](https://github.com/WorldHealthOrganization/app/issues/187))
+* Informational content & organization of that content included in app ([#93](https://github.com/WorldHealthOrganization/app/issues/93))
+* Legal requirements for submission to app stores & legal review ([#17](https://github.com/WorldHealthOrganization/app/issues/17) :warning:)
+  * Privacy Policy
+  * License Agreement
 * Account information/access from WHO to submit app on behalf of their accounts (also needed for code signing) ([#20](https://github.com/WorldHealthOrganization/app/issues/20) :warning:)
 
 Other notes on v0.1:
@@ -59,22 +55,22 @@ Other notes on v0.1:
 
 This section is a major WORK IN PROGRESS and is not fully complete. Listing out very initial thoughts for now.
 
-**Goal:** Iterate on initial app submission with the goal of matching or exceeding the existing functionality in the WHO WhatsApp Bot presented idiomatically as an app. The app content should be localized to the 6 official WHO languages, with the ability to be served from the cloud.
+**Goal:** Match or exceed the existing functionality in the WHO WhatsApp Bot presented idiomatically as an app. App content should be localized to the 6 official WHO languages, with the ability to be served from the cloud.
 
 **Target Date:** _(ongoing)_
 
 Features:
 
-* Process & pipeline for beta distribution of the app before public availability on app stores (e.g. TestFlight) ([#132](https://github.com/WorldHealthOrganization/app/issues/132))
+* Beta distribution setup for the app before public availability on app stores (e.g. TestFlight) ([#132](https://github.com/WorldHealthOrganization/app/issues/132))
   * _Possible v0.1 feature?_
-* Possibly remodel the presentation of content using a Snapchat story-style interface
-* Match or exceed the existing functionality & content in the WHO WhatsApp Bot, presented idiomatically as an app ([#208](https://github.com/WorldHealthOrganization/app/issues/208))
+* Possibly remodel the presentation of content using a Snapchat story-style interface ([#229](https://github.com/WorldHealthOrganization/app/issues/229))
+* Match or exceed the existing functionality & content in the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=), presented idiomatically as an app ([#208](https://github.com/WorldHealthOrganization/app/issues/208))
   * _See internal documentation on content in the bot_
-* Dynamically loading data from the cloud for updates on content ([#120](https://github.com/WorldHealthOrganization/app/pull/120) :white_check_mark:)
+* Dynamically loading data from the cloud for updates on content ([#120](https://github.com/WorldHealthOrganization/app/pull/120))
   * Should still fall back to default data baked into app bundle for full functionality in an offline environment
 * App content is available in the 6 official WHO languages: Arabic, Chinese, English, French, Russian, and Spanish ([#224](https://github.com/WorldHealthOrganization/app/issues/224))
   * Possibly further localized based on country
-* Basic app instrumentation and analytics turned on in the app ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
+* Analytics and instrumentation enabled in the app ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
   * Complying with all applicable laws & regulations and app policies
   * Should be able to get basic analytics for product improvement, such as which features and pages are being used by end users
 * Basic triage survey?

@@ -21,6 +21,7 @@ dev_dependencies:
   pedantic: ^1.8.0
   flutter_test:
     sdk: flutter
+  pedantic: ^1.8.0
 
 flutter:
   uses-material-design: true
