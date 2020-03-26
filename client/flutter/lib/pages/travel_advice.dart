@@ -1,6 +1,5 @@
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:flutter/material.dart';
 import 'package:WHOFlutter/carousel_page.dart';
+import 'package:flutter/material.dart';
 
 class TravelAdvice extends StatelessWidget {
   @override
