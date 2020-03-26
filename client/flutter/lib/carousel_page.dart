@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:flutter/rendering.dart';
-import 'package:page_view_indicator/page_view_indicator.dart';
+import 'package:scrolling_page_indicator/scrolling_page_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
   final Widget titleWidget;
@@ -46,7 +46,7 @@ class CarouselView extends StatelessWidget {
 
   CarouselView(this.items);
 
-  final pageIndexNotifier = ValueNotifier<int>(0);
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class CarouselView extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           PageView(
-            onPageChanged: (i) => pageIndexNotifier.value = i,
+            controller: pageController,
             children: this.items,
           ),
           Align(
@@ -81,35 +81,18 @@ class CarouselView extends StatelessWidget {
 
   Widget pageViewIndicator(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          constraints: BoxConstraints(maxWidth: width * 0.75),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: PageViewIndicator(
-              pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
-              normalBuilder: (animationController, index) => Circle(
-                size: 8.0,
-                color: Colors.grey,
-              ),
-              highlightedBuilder: (animationController, index) =>
-                  ScaleTransition(
-                scale: CurvedAnimation(
-                  parent: animationController,
-                  curve: Curves.ease,
-                ),
-                child: Circle(
-                  size: 10.0,
-                  color: Constants.primaryColor,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+    return Container(
+      constraints: BoxConstraints(maxWidth: width * 0.75),
+      child: ScrollingPageIndicator(
+        dotColor: Colors.grey,
+        dotSelectedColor: Constants.primaryColor,
+        dotSize: 8,
+        dotSelectedSize: 10,
+        dotSpacing: 24,
+        visibleDotCount: 7,
+        controller: pageController,
+        itemCount: items.length,
+      ),
     );
   }
 }
