@@ -27,5 +27,5 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter analyze
         working-directory: ./client/flutter
-      - run: flutter test
+      - run: flutter test --no-pub
         working-directory: ./client/flutter
