@@ -2,11 +2,11 @@
 FLUTTER_BRANCH=`grep channel: .metadata | sed 's/  channel: //g'`
 FLUTTER_REVISION=`grep revision: .metadata | sed 's/  revision: //g'`
 
-git clone https://github.com/flutter/flutter.git
+mkdir flutter
 cd flutter
-git checkout $FLUTTER_BRANCH
-git pull origin $FLUTTER_BRANCH
-git checkout $FLUTTER_REVISION
+git init
+git remote add origin https://github.com/flutter/flutter.git
+git fetch --depth 1 origin $FLUTTER_REVISION
 cd ..
 
 flutter/bin/flutter config --enable-web
