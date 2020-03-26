@@ -1,9 +1,0 @@
-{
-  "appId": "test.who.app",
-  "appName": "whoapp",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "cordova": {},
-  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh"
-}

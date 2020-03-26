@@ -2,3 +2,4 @@
   base = "client/flutter"
   command = "chmod +x flutter-netlify-build.sh && ./flutter-netlify-build.sh"
   publish = "build/web"
+  ignore = "echo 0"

@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">whoapp</string>
-    <string name="title_activity_main">whoapp</string>
-    <string name="package_name">test.who.app</string>
-    <string name="custom_url_scheme">test.who.app</string>
-</resources>
