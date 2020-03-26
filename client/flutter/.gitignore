@@ -36,3 +36,6 @@ lib/generated_plugin_registrant.dart
 /coverage/
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Clean commits
+pubspec.lock
