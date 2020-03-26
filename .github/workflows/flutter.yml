@@ -31,6 +31,7 @@ jobs:
         with:
           repository: 'flutter/flutter'
           ref: stable
+          fetch-depth: 0
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
@@ -51,6 +52,7 @@ jobs:
         with:
           repository: 'flutter/flutter'
           ref: stable
+          fetch-depth: 0
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
@@ -69,6 +71,7 @@ jobs:
         with:
           repository: 'flutter/flutter'
           ref: stable
+          fetch-depth: 0
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
