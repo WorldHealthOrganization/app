@@ -5,7 +5,7 @@
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "WHO MyHealth app.",
+    "description": "WHO MyHealth Web Preview",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
