@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
@@ -34,6 +34,7 @@ jobs:
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
+        working-directory: ./client/flutter
       - run: flutter test
         working-directory: ./client/flutter
       - run: flutter build apk
@@ -53,6 +54,7 @@ jobs:
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
+        working-directory: ./client/flutter
       - run: flutter build ios
         working-directory: ./client/flutter
   buildandroid:
