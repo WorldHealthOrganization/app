@@ -28,9 +28,13 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - uses: subosito/flutter-action@v1
+      - echo "::set-env name=FLUTTER_REVISION::$(grep revision: .metadata | sed 's/  revision: //g')"
+      - uses: actions/checkout@v2
         with:
-          channel: 'stable'
+          repository: 'flutter/flutter'
+          ref: $FLUTTER_REVISION
+          path: '_flutter'
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
       - run: flutter test
