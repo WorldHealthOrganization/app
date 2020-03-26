@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData.light().copyWith(
+      theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
