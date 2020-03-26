@@ -24,9 +24,13 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            this.titleWidget == null?Container(height: 0,):Container(
-                height: screenHeight * 0.4,
-                child: this.titleWidget ?? Container()),
+            this.titleWidget == null
+                ? Container(
+                    height: 0,
+                  )
+                : Container(
+                    height: screenHeight * 0.4,
+                    child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
               this.message,
@@ -53,10 +57,8 @@ class CarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      
       body: Stack(
         children: <Widget>[
-
           PageView(
             controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
@@ -69,9 +71,11 @@ class CarouselView extends StatelessWidget {
                 child: pageViewIndicator(context)),
           ),
           GestureDetector(
-          onTap: ()=>pageController.page == this.items.length-1?null:pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic)
-        ),
-          
+              onTap: () => pageController.page == this.items.length - 1
+                  ? null
+                  : pageController.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeInOutCubic)),
           Align(
               alignment: FractionalOffset.topRight,
               child: Padding(
@@ -82,7 +86,6 @@ class CarouselView extends StatelessWidget {
                       Navigator.of(context).pop();
                     }),
               )),
-        
         ],
       ),
       bodyPadding: EdgeInsets.zero,
