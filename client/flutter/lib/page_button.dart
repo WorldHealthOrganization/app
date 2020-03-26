@@ -31,8 +31,7 @@ class PageButton extends StatelessWidget {
         color: lightColor ? Colors.white : Constants.primaryColor,
         child: Text(
           title,
-          textScaleFactor: scale * 1.2,
-          style: TextStyle(
+          style: Theme.of(context).textTheme.headline.copyWith(
               color: lightColor ? Constants.primaryColor : Colors.white),
         ),
       ),
