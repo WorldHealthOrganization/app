@@ -69,7 +69,7 @@ class CarouselView extends StatelessWidget {
                 child: pageViewIndicator(context)),
           ),
           GestureDetector(
-          onTap: ()=>pageController.nextPage(duration: Duration(milliseconds: 500), curve: ElasticInCurve())
+          onTap: ()=>pageController.page == this.items.length-1?null:pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic)
         ),
           
           Align(
