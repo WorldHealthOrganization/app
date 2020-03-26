@@ -52,7 +52,7 @@ This is very much a committee effort, and we are moving quickly enough that we h
 
 Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any contributions to the code.
 
-This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
+This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/flutter` directory is used).
 
 ## Client
 
