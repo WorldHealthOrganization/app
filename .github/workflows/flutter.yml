@@ -27,11 +27,10 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: "echo ::set-env name=FLUTTER_REVISION::$(grep revision .metadata | awk '{print $2}')"
       - uses: actions/checkout@v2
         with:
           repository: 'flutter/flutter'
-          ref: ${{ env.FLUTTER_REVISION }}
+          ref: stable
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter doctor -v
