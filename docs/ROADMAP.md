@@ -10,7 +10,7 @@ There is an urgent, global need for an official WHO App to help contain and miti
 
 Version numbering terminology:
 
-* **v0.1**: refers to the initial buildout that will be submitted to the app stores but not intended for public release, aiming for submission on Tuesday, March 24, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
+* **v0.1**: refers to the initial buildout that will be submitted to the app stores but not intended for public release, aiming for submission on Thursday, March 26, 2020 ([v0.1 milestone](https://github.com/WorldHealthOrganization/app/milestone/2))
 * **v0.2+**: any versions starting with major version v0 are not intended for public distribution or consumption
 * **v1.0**: the first version that we feel offers enough value to be published onto the app stores for public download will be v1.0
 
@@ -18,7 +18,7 @@ Version numbering terminology:
 
 **Goal:** To uncover any issues with app approvals
 
-**Target Date:** Tuesday, March 24, 2020
+**Target Date:** Thursday, March 26, 2020
 
 **GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/2
 
@@ -28,10 +28,7 @@ Technical Features / Requirements:
 * UI styled to exact [design spec in Figma](https://www.figma.com/file/fjzTIloCEK4FpbyDiTLj2X/iOS-UX) ([#186](https://github.com/WorldHealthOrganization/app/issues/186))
   * Displaying static content in English only
 * Offline functionality: default content still available without a network connection ([#120](https://github.com/WorldHealthOrganization/app/pull/120))
-* Localization technical frameworks for UI elements and informational content, demonstrating capabilities even if content is not adapted to languages/cultures in this milestone ([#120](https://github.com/WorldHealthOrganization/app/pull/120), [#126](https://github.com/WorldHealthOrganization/app/pull/126))
-* Dynamic content loaded from the cloud, demonstrating capability even if this feature will not be turned on in this milestone ([#120](https://github.com/WorldHealthOrganization/app/pull/120))
-* _(Open Question)_ Analytics capturing which features are being used, demonstrating capability even if this feature will not be included in this milestone ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
-  * Legal requirements investigate for data collection, including whether updated TOS/Privacy Policy is needed ([#228](https://github.com/WorldHealthOrganization/app/issues/228))
+* Localization technical frameworks for UI elements and informational content, demonstrating capabilities even if content is not adapted to languages/cultures in this milestone ([#284](https://github.com/WorldHealthOrganization/app/pull/284))
 
 Features _NOT_ included in v0.1:
 
@@ -40,7 +37,6 @@ Features _NOT_ included in v0.1:
   * We are building in the capabilities into v0.1 from the technical perspective
 * Triage survey telling users whether or not they should go to the hospital
   * Blockers: full definition on what the survey entails + legal review on the implications of making medical suggestions
-  * _Question:_ do we want to link to an existing triage survey in a webview for v0.1, and if so, which one?
 
 Non-Technical Requirements for v0.1:
 
@@ -74,7 +70,7 @@ Features:
   * Should still fall back to default data baked into app bundle for full functionality in an offline environment
 * App content is available in the 6 official WHO languages: Arabic, Chinese, English, French, Russian, and Spanish ([#224](https://github.com/WorldHealthOrganization/app/issues/224))
   * Possibly further localized based on country
-* Analytics and instrumentation turned on in the app ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
+* Analytics and instrumentation enabled in the app ([#183](https://github.com/WorldHealthOrganization/app/issues/183))
   * Complying with all applicable laws & regulations and app policies
   * Should be able to get basic analytics for product improvement, such as which features and pages are being used by end users
 * Basic triage survey?
