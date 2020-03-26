@@ -34,8 +34,7 @@ jobs:
           ref: ${{ env.FLUTTER_REVISION }}
           path: '_flutter'
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
-      - run: flutter pub get
-        working-directory: ./client/flutter
+      - run: flutter doctor -v
       - run: flutter test
         working-directory: ./client/flutter
       - run: flutter build ios
