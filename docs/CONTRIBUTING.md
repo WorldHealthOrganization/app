@@ -11,7 +11,7 @@ While we're working quickly, please abide by a few rules to keep us safe and san
 
 ## Pull Requests
 
-Please follow the [default Pull Request template](../.github/PULL_REQUEST_TEMPLATE/default_pull_request_template.md) when creating your PR, and follow these rules:
+Please follow the [default Pull Request template](../.github/pull_request_template.md) when creating your PR, and follow these rules:
 
 * For authors, before you submit a PR for review:
   * Add your name to the end of the `team` array in the [content/credits.yaml](../content/credits.yaml) contributor list if it's your first commit.
