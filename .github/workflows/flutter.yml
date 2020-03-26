@@ -36,10 +36,40 @@ jobs:
       - run: flutter pub get
       - run: flutter test
         working-directory: ./client/flutter
-      - run: flutter build ios
-        working-directory: ./client/flutter
-        if: matrix.platform == 'macos-latest'
       - run: flutter build apk
         working-directory: ./client/flutter
-  build:
-    name: Build
+  buildios:
+    name: Build ios
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: actions/checkout@v2
+        with:
+          repository: 'flutter/flutter'
+          ref: stable
+          path: '_flutter'
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+      - run: flutter build ios
+        working-directory: ./client/flutter
+  buildandroid:
+    name: Build android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: actions/checkout@v2
+        with:
+          repository: 'flutter/flutter'
+          ref: stable
+          path: '_flutter'
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/flutter
+      - run: flutter build apk
+        working-directory: ./client/flutter
