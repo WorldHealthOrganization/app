@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "aboutTheApp" : MessageLookupByLibrary.simpleMessage("アプリについて"),
     "checkYourHealth" : MessageLookupByLibrary.simpleMessage("あなたの健康をチェックする"),
-    "childDistance" : MessageLookupByLibrary.simpleMessage("親や家族との距離を縮め、子どもと保育者が離れないようにしましょう。もし(入院などで)離れ離れになった場合は、(電話などで)定期的に連絡を取り、安心させましょう。"),
+    "childDistance" : MessageLookupByLibrary.simpleMessage("親や家族との距離を縮め、子どもと保護者が離れないようにしましょう。もし(入院などで)離れ離れになった場合は、(電話などで)定期的に連絡を取り、安心させましょう。"),
     "childFacts" : MessageLookupByLibrary.simpleMessage("何が起こったのか、今何が起こっているのかを説明し、病気に感染するリスクをどのように減らすかについて年齢に応じて理解できる言葉で正確な情報を与えましょう。これには、安心させるために起こりうることについての情報を提供することも含まれています。（例えば、家族や子供が具合が悪くなり始め、しばらくの間病院に行かなければならない時に医師に助けてもらうことができます）"),
     "childLove" : MessageLookupByLibrary.simpleMessage("辛い時、子供たちには大人の愛情が必要です。十分な時間、気にかけてあげてください。子どもの話に耳を傾け、優しく話し、大切にすることを忘れないようにしましょう。できれば子どもが遊んだりリラックスしたりする機会を作ってあげましょう。"),
     "childRoutines" : MessageLookupByLibrary.simpleMessage("できるだけ規則正しい生活習慣やスケジュールを守ったり、学校や自習だけでなく、安全に遊んだりくつろいだりする時間も含めて新しい環境の中で新しいものを生み出すお手伝いをしましょう。"),
