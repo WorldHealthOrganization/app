@@ -18,6 +18,7 @@ class CarouselSlide extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(24),
       child: Card(
+        color: Colors.transparent,
         elevation: 0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +53,7 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
-  PageController pageController = new PageController();
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class CarouselView extends StatelessWidget {
             children: this.items,
           ),
           Align(
-            alignment: FractionalOffset.bottomCenter,
+            alignment: Alignment.bottomCenter,
             child: Container(
                 padding: EdgeInsets.only(bottom: 20),
                 child: pageViewIndicator(context)),
@@ -77,7 +78,7 @@ class CarouselView extends StatelessWidget {
                       duration: Duration(milliseconds: 500),
                       curve: Curves.easeInOutCubic)),
           Align(
-              alignment: FractionalOffset.topRight,
+              alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 24.0),
                 child: IconButton(
