@@ -22,6 +22,12 @@ Please follow the [default Pull Request template](../.github/pull_request_templa
   * 2 person rule - any code can be committed only with the approval of at least one person with commit authority who is not the author of the PR (applies to admins too)
   * Committers must use the `Squash and Merge` function for merging a PR.
 
+### Client specific (Flutter)
+
+Before you commit any change to the Flutter client app, make sure to run all of the following:
+
+* `flutter format . --fix` in `client/flutter`, which will format all Dart code and fix style issues in the directory.
+* `flutter test` in `client/flutter`. Make sure that no tests fail before you commit your changes.
 
 ## Commit Message Guidelines
 
