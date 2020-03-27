@@ -76,16 +76,22 @@ class CarouselView extends StatelessWidget {
                   : pageController.nextPage(
                       duration: Duration(milliseconds: 500),
                       curve: Curves.easeInOutCubic)),
-          Align(
+           Align(
               alignment: FractionalOffset.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 24.0),
-                child: IconButton(
+                child: Material( 
+                  child: InkWell(
+                    customBorder: CircleBorder(),
+                    child: IconButton(
                     icon: Icon(Icons.close),
                     onPressed: () {
                       Navigator.of(context).pop();
                     }),
-              )),
+                  )
+              )
+            ),
+          )
         ],
       ),
       bodyPadding: EdgeInsets.zero,
