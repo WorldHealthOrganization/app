@@ -12,36 +12,35 @@
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 
-final messages = MessageLookup();
+final messages = new MessageLookup();
 
-typedef MessageIfAbsent = String Function(
-    String messageStr, List<dynamic> args);
+typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'es';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
-        "checkYourHealth": MessageLookupByLibrary.simpleMessage(""),
-        "childDistance": MessageLookupByLibrary.simpleMessage(""),
-        "childFacts": MessageLookupByLibrary.simpleMessage(""),
-        "childLove": MessageLookupByLibrary.simpleMessage(""),
-        "childRoutines": MessageLookupByLibrary.simpleMessage(""),
-        "childStress": MessageLookupByLibrary.simpleMessage(""),
-        "cougningAndSneezing": MessageLookupByLibrary.simpleMessage(""),
-        "feelingDistressed": MessageLookupByLibrary.simpleMessage(""),
-        "healthCheck": MessageLookupByLibrary.simpleMessage(""),
-        "infoForEveryone": MessageLookupByLibrary.simpleMessage(""),
-        "infoForParents": MessageLookupByLibrary.simpleMessage(""),
-        "learnMore": MessageLookupByLibrary.simpleMessage(""),
-        "localMaps": MessageLookupByLibrary.simpleMessage(""),
-        "protectYourself": MessageLookupByLibrary.simpleMessage(""),
-        "seekMedicalCare": MessageLookupByLibrary.simpleMessage(""),
-        "shareTheApp": MessageLookupByLibrary.simpleMessage(""),
-        "socialDistancing": MessageLookupByLibrary.simpleMessage(""),
-        "throwAwayTissue": MessageLookupByLibrary.simpleMessage(""),
-        "washHands": MessageLookupByLibrary.simpleMessage(""),
-        "washHandsFrequently": MessageLookupByLibrary.simpleMessage(""),
-        "worldHealthOrganization": MessageLookupByLibrary.simpleMessage("")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "checkYourHealth" : MessageLookupByLibrary.simpleMessage(""),
+    "childDistance" : MessageLookupByLibrary.simpleMessage(""),
+    "childFacts" : MessageLookupByLibrary.simpleMessage(""),
+    "childLove" : MessageLookupByLibrary.simpleMessage(""),
+    "childRoutines" : MessageLookupByLibrary.simpleMessage(""),
+    "childStress" : MessageLookupByLibrary.simpleMessage(""),
+    "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
+    "feelingDistressed" : MessageLookupByLibrary.simpleMessage(""),
+    "healthCheck" : MessageLookupByLibrary.simpleMessage(""),
+    "infoForEveryone" : MessageLookupByLibrary.simpleMessage(""),
+    "infoForParents" : MessageLookupByLibrary.simpleMessage(""),
+    "learnMore" : MessageLookupByLibrary.simpleMessage(""),
+    "localMaps" : MessageLookupByLibrary.simpleMessage(""),
+    "protectYourself" : MessageLookupByLibrary.simpleMessage(""),
+    "seekMedicalCare" : MessageLookupByLibrary.simpleMessage(""),
+    "shareTheApp" : MessageLookupByLibrary.simpleMessage(""),
+    "socialDistancing" : MessageLookupByLibrary.simpleMessage(""),
+    "throwAwayTissue" : MessageLookupByLibrary.simpleMessage(""),
+    "washHands" : MessageLookupByLibrary.simpleMessage(""),
+    "washHandsFrequently" : MessageLookupByLibrary.simpleMessage(""),
+    "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("")
+  };
 }
