@@ -2,7 +2,6 @@ TODO: All other parts of this document past v1.
 
 For v1, we will work in the following subteams:
 
-TODO: Put github usernames
 * Client UI - @patniemeyer , @theswerd 
 * Localization and internationalization - @sapte91 , DanL
 * Instrumentation/analytics - @epicfaace 
@@ -13,4 +12,5 @@ TODO: Put github usernames
 
 Please sync-up directly with the subteam leads here.
 
+TODO: Put github usernames
 
