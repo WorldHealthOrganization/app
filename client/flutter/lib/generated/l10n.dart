@@ -175,7 +175,7 @@ class S {
 
   String get childStress {
     return Intl.message(
-      'Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespind to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
+      'Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespond to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
       name: 'childStress',
       desc: '',
       args: [],
@@ -184,7 +184,7 @@ class S {
 
   String get childLove {
     return Intl.message(
-      'Children need adults\' love and attention during difficult times. Give them extra time and attention.\nRemember to listen to your children, speak kindly and reasure.\nIf possible, make opportunities for the child to play and relax.',
+      'Children need adults\' love and attention during difficult times. Give them extra time and attention.\nRemember to listen to your children, speak kindly and reassure.\nIf possible, make opportunities for the child to play and relax.',
       name: 'childLove',
       desc: '',
       args: [],
