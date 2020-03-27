@@ -32,14 +32,26 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
+      child: Stack(
         children: <Widget>[
-          this.titleWidget ?? Divider(),
-          Text(
-            this.message,
-            textScaleFactor: 1.5,
-            textAlign: TextAlign.center,
+          Column(
+            children: <Widget>[
+              this.titleWidget ?? Divider(),
+              Text(
+                this.message,
+                textScaleFactor: 1.5,
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
+          Positioned(
+            bottom: 0.0,
+            child: Center(
+                child: Container(
+              color: Color(0xC8ffffff),
+              height: 500,
+              width: MediaQuery.of(context).size.width,
+            ))),
         ],
       ),
     );
