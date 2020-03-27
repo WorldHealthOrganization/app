@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: SafeArea(
           child: CustomScrollView(slivers: [
             SliverAppBar(
@@ -119,7 +119,7 @@ class PageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.borderRadius)),
       color: backgroundColor,
       child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(vertical:15.0, horizontal: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: this.centerItems
