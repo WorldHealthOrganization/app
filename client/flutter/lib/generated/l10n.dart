@@ -244,6 +244,24 @@ class S {
       args: [],
     );
   }
+
+  String get avoidTouching {
+    return Intl.message(
+      'Avoid touching your eyes, mouth, and nose',
+      name: 'avoidTouching',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get coverUrMouth {
+    return Intl.message(
+      'Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze',
+      name: 'coverUrMouth',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -251,7 +269,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'es'), Locale.fromSubtags(languageCode: 'fr'), Locale.fromSubtags(languageCode: 'ru'), Locale.fromSubtags(languageCode: 'zh'),
+      Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'es'), Locale.fromSubtags(languageCode: 'fr'), Locale.fromSubtags(languageCode: 'ku'), Locale.fromSubtags(languageCode: 'ru'), Locale.fromSubtags(languageCode: 'zh'),
     ];
   }
 

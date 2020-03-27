@@ -5,16 +5,17 @@ import 'package:WHOFlutter/carousel_page.dart';
 class ProtectYourself extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return CarouselView([
       CarouselSlide(context,
           titleWidget: EmojiHeader("🧼"), message: S.of(context).washHands),
       CarouselSlide(context,
           titleWidget: EmojiHeader("👄"),
-          message: "Avoid touching your eyes, mouth, and nose"),
+          message: S.of(context).avoidTouching),
       CarouselSlide(context,
           titleWidget: EmojiHeader("💪"),
           message:
-              "Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze"),
+              S.of(context).coverUrMouth),
       CarouselSlide(context,
           titleWidget: EmojiHeader("🚷"), message: "Avoid crowded places"),
       CarouselSlide(context,

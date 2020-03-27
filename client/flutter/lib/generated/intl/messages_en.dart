@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "aboutTheApp" : MessageLookupByLibrary.simpleMessage("About the App"),
+    "avoidTouching" : MessageLookupByLibrary.simpleMessage("Avoid touching your eyes, mouth, and nose"),
     "checkYourHealth" : MessageLookupByLibrary.simpleMessage("Check your health"),
     "childDistance" : MessageLookupByLibrary.simpleMessage("Try and keep children close to their parents and family and avoid separating children and their caregivers to the extent possible. If separation occurs (e.g. hospitalization) ensure regular contact (e.g. via phone) and re-assurance."),
     "childFacts" : MessageLookupByLibrary.simpleMessage("Provide facts about what has happened, explain what is going on now and give them clear information about how to reduce their risk of being infected by the disease in words that they can understand depending on their age.\nThis also includes providing information about what could happen in a re-assuring way (e.g. a family member and/or the child may start not feeling well and may have to go to the hospital for some time so doctors can help them feel better)."),
@@ -29,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "childRoutines" : MessageLookupByLibrary.simpleMessage("Keep to regular routines and schedules as much as possible, or help create new ones in a new environment, including school/learning as well as time for safely playing and relaxing."),
     "childStress" : MessageLookupByLibrary.simpleMessage("Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespind to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention."),
     "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage("When coughing and sneezing cover mouth and nose with flexed elbow or tissue"),
+    "coverUrMouth" : MessageLookupByLibrary.simpleMessage("Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze"),
     "feelingDistressed" : MessageLookupByLibrary.simpleMessage("Feeling Distressed?"),
     "healthCheck" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "infoForEveryone" : MessageLookupByLibrary.simpleMessage("Information for Everyone"),
