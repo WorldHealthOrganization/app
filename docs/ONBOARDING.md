@@ -4,7 +4,7 @@ If you're here, that means you're interested in being a part of the volunteer ef
 
 The goal of this document is to give you a starting point for where to find the resources you need to get up to speed. This is by no means an exhaustive document, and I'm sure that we'll be missing some important items here, so if you're missing something, just ask and we will try to update this document.
 
-First thing's first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://forms.gle/FUugWvUVvMcV3dLJA
+First things first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://forms.gle/FUugWvUVvMcV3dLJA
 
 Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cx6ycppt-ccqPJ7ZSGy3~77gSByexJw) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
 
