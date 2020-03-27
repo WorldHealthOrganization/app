@@ -1,21 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:WHOFlutter/main.dart';
+import 'package:WHOFlutter/constants.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:WHOFlutter/pages/who_myth_busters.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
 
+  Widget TestableWidget({Widget child}) {
+    return MaterialApp(
+      title: "WHO",
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        S.delegate
+      ],
+      locale: Locale('en', ''),
+      supportedLocales: S.delegate.supportedLocales,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Constants.backgroundColor,
+        primaryColor: Constants.primaryColor,
+        accentColor: Constants.textColor,
+        buttonTheme: ButtonThemeData(
+            buttonColor: Constants.primaryColor,
+            textTheme: ButtonTextTheme.accent),
+      ),
+      home: child,
+    );
+  }
+
   testWidgets('WHO Myth Buster Page is rendered Properly',
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(TestableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
-    // Navigate to WHO Myth Buster Page
-    await tester.tap(find.text('WHO Myth-busters'));
-    await tester.pumpAndSettle();
+    expect(find.byType(Image), findsOneWidget);
     expect(
         find.text(
             'There is a lot of false information around. These are the facts'),
@@ -26,10 +50,8 @@ void main() {
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(TestableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
-    await tester.tap(find.text('WHO Myth-busters'));
-    await tester.pumpAndSettle();
     // Performs Swipe Left action
     await tester.fling(find.byType(PageView), Offset(-100, 0), 800);
     await tester.pumpAndSettle();
