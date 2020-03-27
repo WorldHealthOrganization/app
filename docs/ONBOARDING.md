@@ -34,7 +34,7 @@ This is very much a committee effort, and we are moving quickly enough that we h
 
 * Product: Karen Wong ([asianfoodlab](https://github.com/asianfoodlab))
 * Design: _update to come_
-* Engineering: Hunter Spinks ([hspinks](https://github.com/hspinks)) & Advay Mengle ([advayDev1](https://github.com/advayDev1))
+* Engineering: Hunter Spinks ([hspinks](https://github.com/hspinks)) and Advay Mengle ([advayDev1](https://github.com/advayDev1))
 
 # Building and Running
 
