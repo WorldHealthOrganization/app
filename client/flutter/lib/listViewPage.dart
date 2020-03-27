@@ -29,9 +29,12 @@ class ListOfItemsPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: Align(
                   alignment: Alignment.topRight,
-                  child: IconButton(
-                    onPressed: () {}, 
-                    icon: Icon(Icons.share)
+                  child: Container(
+                    padding: EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      onPressed: () {}, 
+                      icon: Icon(Icons.share, size: 22,)
+                    ),
                   )),
               ))),
         ],
