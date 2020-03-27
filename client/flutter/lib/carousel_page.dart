@@ -7,9 +7,8 @@ import 'package:page_view_indicator/page_view_indicator.dart';
 class CarouselSlide extends StatelessWidget {
   final Widget titleWidget;
   final String message;
-  final BuildContext context;
 
-  CarouselSlide(this.context, {this.titleWidget, this.message = ""});
+  CarouselSlide({this.titleWidget, this.message = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +44,20 @@ class CarouselSlide extends StatelessWidget {
   }
 }
 
-class CarouselView extends StatelessWidget {
+class CarouselView extends StatefulWidget {
   final List<CarouselSlide> items;
 
   CarouselView(this.items);
 
-  final pageIndexNotifier = ValueNotifier<int>(0);
+  @override
+  _CarouselViewState createState() => _CarouselViewState();
+}
 
-  PageController pageController = new PageController();
+class _CarouselViewState extends State<CarouselView> {
+  final _kPageTransitionDuration = const Duration(milliseconds: 300);
+
+  final pageIndexNotifier = ValueNotifier<int>(0);
+  final pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,49 @@ class CarouselView extends StatelessWidget {
           PageView(
             controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
-            children: this.items,
+            children: this.widget.items,
+          ),
+          ValueListenableBuilder(
+            valueListenable: pageIndexNotifier,
+            builder: (BuildContext context, int page, Widget child) {
+              return Visibility(
+                visible: page > 0,
+                child: child,
+              );
+            },
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                icon: Icon(Icons.chevron_left, size: 36),
+                onPressed: () {
+                  pageController.previousPage(
+                    duration: _kPageTransitionDuration,
+                    curve: Curves.fastOutSlowIn
+                  );
+                },
+              ),
+            ),
+          ),
+          ValueListenableBuilder(
+            valueListenable: pageIndexNotifier,
+            builder: (BuildContext context, int page, Widget child) {
+              return Visibility(
+                visible: page < widget.items.length - 1,
+                child: child,
+              );
+            },
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: Icon(Icons.chevron_right, size: 36),
+                onPressed: () {
+                  pageController.nextPage(
+                    duration: _kPageTransitionDuration,
+                    curve: Curves.fastOutSlowIn
+                  );
+                },
+              ),
+            ),
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
@@ -70,18 +117,13 @@ class CarouselView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 20),
                 child: pageViewIndicator(context)),
           ),
-          GestureDetector(
-              onTap: () => pageController.page == this.items.length - 1
-                  ? null
-                  : pageController.nextPage(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeInOutCubic)),
           Align(
               alignment: FractionalOffset.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 24.0),
                 child: IconButton(
                     icon: Icon(Icons.close),
+                    color: Colors.grey,
                     onPressed: () {
                       Navigator.of(context).pop();
                     }),
@@ -103,7 +145,7 @@ class CarouselView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: PageViewIndicator(
               pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
+              length: this.widget.items.length,
               normalBuilder: (animationController, index) => Circle(
                 size: 8.0,
                 color: Colors.grey,
