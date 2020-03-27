@@ -9,7 +9,8 @@ import 'package:WHOFlutter/pages/travel_advice.dart';
 enum Direction { LEFT, RIGHT }
 
 // Reusable swiping function.
-void swipe(WidgetTester tester, [Direction direction = Direction.LEFT]) async {
+void swipePageView(WidgetTester tester,
+    [Direction direction = Direction.LEFT]) async {
   double horizontalOffset = direction == Direction.LEFT ? -100 : 100;
   await tester.fling(find.byType(PageView), Offset(horizontalOffset, 0), 800);
   await tester.pumpAndSettle();
@@ -66,15 +67,15 @@ void main() {
     await tester.pumpWidget(testableWidget(child: TravelAdvice()));
     await tester.pumpAndSettle(Duration(seconds: 1));
     // Performs Swipe Left action
-    await swipe(tester, Direction.LEFT);
+    await swipePageView(tester, Direction.LEFT);
     // Once we have swiped left, we should be able to read the text of second page
     expect(find.text(pagesTexts[1]), findsOneWidget);
     // Performs Swipe Right action
-    await swipe(tester, Direction.RIGHT);
+    await swipePageView(tester, Direction.RIGHT);
     // Once we have swiped right, we should be able to read the text of first page.
     expect(find.text(pagesTexts.first), findsOneWidget);
     // Performs Swipe Right action
-    await swipe(tester, Direction.RIGHT);
+    await swipePageView(tester, Direction.RIGHT);
     // Once we have swiped right again, the page should not change as it is the first page.
     expect(find.text(pagesTexts.first), findsOneWidget);
   });
@@ -87,7 +88,7 @@ void main() {
     // Check all content of all pages
     for (String pageText in pagesTexts) {
       expect(find.text(pageText), findsOneWidget);
-      await swipe(tester, Direction.LEFT);
+      await swipePageView(tester, Direction.LEFT);
     }
     // Swiping left on the last page should not change the page.
     expect(find.text(pagesTexts.last), findsOneWidget);
