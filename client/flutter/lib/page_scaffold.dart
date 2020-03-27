@@ -11,9 +11,12 @@ class PageScaffold extends StatelessWidget {
   Widget logo(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
-      child: Image(
-        image: AssetImage('assets/WHO.jpg'),
-        width: MediaQuery.of(context).size.width,
+      child: Semantics(
+        value: 'WHO logo',
+        child: Image(
+          image: AssetImage('assets/WHO.jpg'),
+          width: MediaQuery.of(context).size.width,
+        ),
       ),
     );
   }
@@ -29,10 +32,13 @@ class PageScaffold extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Opacity(
+              IgnorePointer(
                 // This is just used for positioning the body correctly.
-                opacity: 0,
-                child: logo(context),
+                child: Opacity(
+                  // An opacity of 0 ensures that only layout and not paint is called (the widget is not drawn).
+                  opacity: 0,
+                  child: logo(context),
+                ),
               ),
               Expanded(
                 child: Padding(
