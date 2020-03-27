@@ -25,7 +25,7 @@ Version numbering terminology:
 
 #### Technical Features / Requirements
 
-* Content parity with the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=) ([#381][https://github.com/WorldHealthOrganization/app/issues/381])
+* Content parity with the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=) ([#381](https://github.com/WorldHealthOrganization/app/issues/381))
 * Native look-and-feel, designed to present content on mobile screens ([#382](https://github.com/WorldHealthOrganization/app/issues/382))
 * Localized content translated to at least one other language besides English ([#383](https://github.com/WorldHealthOrganization/app/issues/383))
 * Offline functionality with default content baked into the app bundle ([#384](https://github.com/WorldHealthOrganization/app/issues/384))
