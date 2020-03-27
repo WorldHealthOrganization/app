@@ -175,7 +175,7 @@ class S {
 
   String get childStress {
     return Intl.message(
-      'Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespind to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
+      'Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespond to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
       name: 'childStress',
       desc: '',
       args: [],
@@ -251,7 +251,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('es', ''), Locale('ar', ''), Locale('zh', ''), Locale('en', ''), Locale('ru', ''), Locale('fr', ''),
+      Locale('es', ''), Locale('ar', ''), Locale('zh', ''), Locale('en', ''), Locale('ru', ''), Locale('fr', ''), Locale('nl', ''),
     ];
   }
 
