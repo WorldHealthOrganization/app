@@ -70,7 +70,7 @@ Version numbering terminology:
 * Dynamically updated content served from the cloud so users don't need to update the app to receive content updates
 * Localized push notification capabilities
   * _(Needs Discussion)_ What are the localization requirements for v1.0? What level of granularity will we need in region (e.g. language, continent, country, city, etc)? How will the user choose their location(s) for push delivery?
-* Instrumentation capabilities for understanding aggregated useage information to be used for product improvement, complying with all applicable laws & regulations and app policies
+* Instrumentation capabilities for understanding aggregated usage information to be used for product improvement, complying with all applicable laws & regulations and app policies
 * _(Needs Discussion)_ Distribution pipeline using [fastlane](https://fastlane.tools/) for integration with WHO's existing app distribution process
 * Full security review
 
