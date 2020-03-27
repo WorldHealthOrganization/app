@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class ListOfItemsPage extends StatelessWidget {
   final List<ListItem> listOfItems;
@@ -32,7 +33,7 @@ class ListOfItemsPage extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.only(right: 20),
                     child: IconButton(
-                      onPressed: () {}, 
+                      onPressed: () => Share.share('Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
                       icon: Icon(Icons.share, size: 22,)
                     ),
                   )),
