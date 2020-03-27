@@ -29,6 +29,8 @@ class PageButton extends StatelessWidget {
         padding: EdgeInsets.all(16.0 + 16.0 * (scale - 1.0)),
         onPressed: onPressed,
         color: lightColor ? Colors.white : Constants.primaryColor,
+        splashColor:
+            (lightColor ? Constants.primaryColor : Colors.white).withAlpha(66),
         child: Text(
           title,
           textScaleFactor: scale * 1.2,
@@ -39,4 +41,3 @@ class PageButton extends StatelessWidget {
     );
   }
 }
-
