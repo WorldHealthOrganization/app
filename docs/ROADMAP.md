@@ -12,14 +12,14 @@ There is an urgent, global need for an official WHO App to help contain and miti
 
 Version numbering terminology:
 
-* **v1.0**: public release on the app stores, aiming for submission to app stores on Monday, March 30, 2020 ([v1.0 milestone](https://github.com/WorldHealthOrganization/app/milestone/4))
+* **v1.0**: public release on the app stores, aiming for handoff to WHO for app store submission on Monday, March 30, 2020 ([v1.0 milestone](https://github.com/WorldHealthOrganization/app/milestone/4))
 * **vNext**: describes features considered for future releases, but not yet prioritized into a specific milestone ([vNext milestone](https://github.com/WorldHealthOrganization/app/milestone/3))
 
 ### v1.0
 
 **Goal:** Match or exceed the existing content in the WHO WhatsApp Bot presented idiomatically with native look-and-feel, with dynamically-updatable content localized to at least one other language besides English and ability to deliver push notifications to users.
 
-**Target Date:** Monday, March 30, 2020 - transmission of app to WHO team for app store submission by EOD PDT
+**Target Date:** Monday, March 30, 2020 - handoff of app to WHO team for app store submission by EOD PDT
 
 **GitHub Milestone:** https://github.com/WorldHealthOrganization/app/milestone/4
 
