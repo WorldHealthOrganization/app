@@ -14,7 +14,7 @@ If you're interested in joining in the effort, please see the [ONBOARDING](ONBOA
 
 **Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
-The initial focus is on delivering a v0.1:
+The initial focus is on delivering a v1.0:
 * an app for individuals (non-healthcare providers, non-public health people) 
 * for Android and iOS 
 * across the six WHO languages: English, French, Chinese, Spanish, Arabic, and Russian
@@ -25,7 +25,7 @@ and exiting this phase with a functioning team and infrastructure to rapidly ite
 
 The long term goal is support of the World Health Organization's mission for global public health.
 
-## Key Goals for v0.1:
+## Key Goals for v1.0:
 * **Containment & Mitigation:** WHO best practices for protecting communities. Also, demonstrate the ability to update content on the server side and have it reflected in the app. 
 * **Diagnosis & Triage:** self-assessment, self-care & references to guidance from local health resources. 
 * **Live ASAP:** so that we can iterate quickly and improve. 
@@ -36,18 +36,10 @@ We want to get this out and working so we can move on to more significant functi
 
 ## Key Goals for Next Release
 
-We are assessing the feature roadmap (contact tracing and more) for the next and subsequent releases.
+We are assessing the [feature roadmap](/docs/ROADMAP.md) for the next and subsequent releases.
 
 ## Community
 
 GitHub: https://github.com/WorldHealthOrganization/app
 
 Slack: https://who-app.slack.com/
-
-
-## References
-
-These documents are still works in progress and may not be complete or up to date. This will be a rapidly evolving situation:
-
-Design Doc:
-https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs/edit
