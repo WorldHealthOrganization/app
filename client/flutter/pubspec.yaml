@@ -22,12 +22,13 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.8.0
+  pedantic: ^1.8.0+1
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
+
 flutter_intl:
   enabled: true
