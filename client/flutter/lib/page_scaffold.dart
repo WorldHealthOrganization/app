@@ -22,10 +22,14 @@ class PageScaffold extends StatelessWidget {
           ),
         ), 
         Expanded(
+          child: Material(
+            type: MaterialType.transparency,
             child: Padding(
-          padding: bodyPadding,
-          child: this.body,
-        ))
+            padding: bodyPadding,
+            child: this.body,
+          ),
+          ),
+        )
       ])),
     ));
   }
