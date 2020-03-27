@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a zh locale. All the
+// This is a library that provides messages for a ja locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "seekMedicalCare" : MessageLookupByLibrary.simpleMessage("発熱、咳、呼吸困難の場合は、早めに医療機関を受診してください"),
     "shareTheApp" : MessageLookupByLibrary.simpleMessage("アプリを共有する"),
     "socialDistancing" : MessageLookupByLibrary.simpleMessage("密接な接触を避け、物理的な距離を保つ"),
-    "throwAwayTissue" : MessageLookupByLibrary.simpleMessage("使用後すぐに蓋を閉じたゴミ箱にティッシュを捨てる"),
+    "throwAwayTissue" : MessageLookupByLibrary.simpleMessage("使用後すぐに蓋がついたゴミ箱にティッシュを捨てる"),
     "travelAdvice" : MessageLookupByLibrary.simpleMessage("旅行のアドバイス"),
     "washHands" : MessageLookupByLibrary.simpleMessage("石鹸と流水でこまめに手を洗う"),
     "washHandsFrequently" : MessageLookupByLibrary.simpleMessage("手を頻繁に洗う"),
