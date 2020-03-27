@@ -1,4 +1,4 @@
-app_identifier("int.who.WHOMyHealth") # The bundle identifier of your app
+app_identifier("int.who.WHOMyHealth")
 apple_id("") # Your Apple email address
 
 itc_team_id("") # App Store Connect Team ID

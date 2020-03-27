@@ -29,7 +29,7 @@ platform :android do
         '../build/app/outputs/apk/release/app-arm64-v8a-release.apk',
         '../build/app/outputs/apk/release/app-x86_64-release.apk'
       ],
-      json_key_data: ${{ secrets.JSON_KEY_DATA }}
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
     )
   end
 
@@ -42,7 +42,7 @@ platform :android do
       skip_upload_screenshots: true,
       track: 'internal',
       track_promote_to: 'alpha',
-      json_key_data: ${{ secrets.JSON_KEY_DATA }}
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
     )
   end
 
@@ -55,7 +55,7 @@ platform :android do
       skip_upload_screenshots: true,
       track: 'alpha',
       track_promote_to: 'production',
-      json_key_data: ${{ secrets.JSON_KEY_DATA }}
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
     )
   end
 end
