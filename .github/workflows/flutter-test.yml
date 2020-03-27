@@ -1,0 +1,29 @@
+name: Flutter Test
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'client/flutter/**'
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/flutter
+      - run: flutter test
+        working-directory: ./client/flutter

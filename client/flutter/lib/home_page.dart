@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             title: S.of(context).shareTheApp,
             lightColor: true,
             onPressed: () => Share.share(
-                'Check out the official COVID-19 GUIDE App https://preview.whoapp.org/menu')),
+                'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app')),
         PageButton(
             title: S.of(context).aboutTheApp,
             lightColor: true,
