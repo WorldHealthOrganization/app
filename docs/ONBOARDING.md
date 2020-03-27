@@ -12,7 +12,7 @@ Due to the number of people joining the project you might not immediately be ass
 
 ## Standup
 
-We have a regular all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
+We have a regular all-hands over Zoom. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
 
 ## Resources
 
