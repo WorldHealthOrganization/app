@@ -1,28 +1,23 @@
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/page_button.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
-import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
-List<StaggeredTile> _staggeredTiles = const <StaggeredTile>[
-  const StaggeredTile.count(1, 2),
-  const StaggeredTile.count(1, 1),
-  const StaggeredTile.count(1, 1),
-  const StaggeredTile.count(2, 1),
-];
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-        body: new StaggeredGridView.count(
+        body: StaggeredGridView.count(
       crossAxisCount: 2,
-      staggeredTiles: _staggeredTiles,
+      staggeredTiles: [
+        StaggeredTile.count(1, 2),
+        StaggeredTile.count(1, 1),
+        StaggeredTile.count(1, 1),
+        StaggeredTile.count(2, 1),
+      ],
       children: [
         PageButton(
           Colors.green,
@@ -32,13 +27,13 @@ class HomePage extends StatelessWidget {
         ),
         PageButton(
           Colors.lightBlue,
-          "Latest Numbers",
+          "Latest\nNumbers",
           () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
         PageButton(
           Colors.amber,
-          "Your Questions Answered",
+          "Your\nQuestions\nAnswered",
           () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
@@ -50,25 +45,8 @@ class HomePage extends StatelessWidget {
       ],
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
-      padding: const EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(4.0),
     ));
-
-    // PageButton(
-    //     title: S.of(context).travelAdvice,
-    //     onPressed: () => Navigator.of(context)
-    //         .push(MaterialPageRoute(builder: (c) => TravelAdvice()))),
-    // PageButton(
-    //     title: S.of(context).shareTheApp,
-    //     lightColor: true,
-    //     onPressed: () => Share.share(
-    //         'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app')),
-    // PageButton(
-    //     title: S.of(context).aboutTheApp,
-    //     lightColor: true,
-    //     onPressed: () => showAboutDialog(
-    //         context: context,
-    //         applicationLegalese:
-    //             "The official World Health Organization COVID-19 App.")),
   }
 }
 
@@ -81,12 +59,12 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new FlatButton(
+    return FlatButton(
       color: backgroundColor,
-      child: new Center(
-          child: new Padding(
-              padding: const EdgeInsets.all(4.0), child: new Text(title)),
-        ),
+      child: Center(
+        child: Padding(
+            padding: const EdgeInsets.all(4.0), child: Text(title, textAlign: TextAlign.center)),
+      ),
       onPressed: this.onPressed,
     );
   }
