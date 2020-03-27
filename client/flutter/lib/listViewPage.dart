@@ -24,8 +24,8 @@ class ListOfItemsPage extends StatelessWidget {
             bottom: 0.0,
             child: Center(
                 child: Container(
-              color: Color(0xC8ffffff),
-              height: 500,
+              color: Color(0xF9ffffff),
+              height: 80,
               width: MediaQuery.of(context).size.width,
             ))),
         ],
