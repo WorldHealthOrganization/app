@@ -81,10 +81,10 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Card(
+    return new FlatButton(
       color: backgroundColor,
       child: new InkWell(
-        onTap: () {},
+        onTap: this.onPressed,
         child: new Center(
           child: new Padding(
               padding: const EdgeInsets.all(4.0), child: new Text(title)),
