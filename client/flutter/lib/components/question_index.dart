@@ -15,8 +15,13 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   @override
   void initState() {
     super.initState();
+    initStateAsync();
+  }
+
+  void initStateAsync() async {
     // Fetch the dynamic query data. This is a placeholder.
-    _questions = QuestionData.questions();
+    _questions = await QuestionData.questions();
+    setState(() { });
   }
 
   @override

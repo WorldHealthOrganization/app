@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 /// This is just a *placeholder* for the dynamic content.
 class QuestionData {
-  static List<QuestionItem> questions() {
+  static Future<List<QuestionItem>> questions() async {
     return [
       QuestionItem(
           title:
