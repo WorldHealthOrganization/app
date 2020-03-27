@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
@@ -52,7 +52,7 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
-  PageController pageController = new PageController();
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
