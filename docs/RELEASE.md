@@ -32,8 +32,6 @@ Check how we stack up against these principles (qualitative evaluation, [details
 - [ ] Openness Principle
 - [ ] Individual Participation Principle
 - [ ] Accountability Principle
-### Content checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/327))
-- [ ] :construction:
 ### Legal checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
 - [ ] 3rd party libraries / dependency license review
 - [ ] CLA / developer license review
