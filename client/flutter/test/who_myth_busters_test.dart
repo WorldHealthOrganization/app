@@ -11,7 +11,7 @@ void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
 
-  Widget TestableWidget({Widget child}) {
+  Widget testableWidget({Widget child}) {
     return MaterialApp(
       title: "WHO",
       localizationsDelegates: [
@@ -37,7 +37,7 @@ void main() {
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(TestableWidget(child: WhoMythBusters()));
+    await tester.pumpWidget(testableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
     expect(find.byType(Image), findsOneWidget);
     expect(
@@ -50,7 +50,7 @@ void main() {
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(TestableWidget(child: WhoMythBusters()));
+    await tester.pumpWidget(testableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
     // Performs Swipe Left action
     await tester.fling(find.byType(PageView), Offset(-100, 0), 800);
