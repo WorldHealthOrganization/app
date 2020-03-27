@@ -8,29 +8,42 @@ class PageScaffold extends StatelessWidget {
       {@required this.body,
       this.bodyPadding = const EdgeInsets.symmetric(horizontal: 24)});
 
+  Widget logo(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
+      child: Image(
+        image: AssetImage('assets/WHO.jpg'),
+        width: MediaQuery.of(context).size.width,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Container(
-          child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
-          child: Image(
-            image: AssetImage('assets/WHO.jpg'),
-            width: MediaQuery.of(context).size.width
+      child: Stack(children: <Widget>[
+        logo(context),
+        Material(
+          type: MaterialType.transparency,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Opacity(
+                // This is just used for positioning the body correctly.
+                opacity: 0,
+                child: logo(context),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: bodyPadding,
+                  child: this.body,
+                ),
+              ),
+            ],
           ),
-        ), 
-        Expanded(
-          child: Material(
-            type: MaterialType.transparency,
-            child: Padding(
-            padding: bodyPadding,
-            child: this.body,
-          ),
-          ),
-        )
-      ])),
+        ),
+      ]),
     ));
   }
 }
