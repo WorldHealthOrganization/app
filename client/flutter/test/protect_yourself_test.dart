@@ -24,7 +24,7 @@ void main() {
     );
   }
 
-  testWidgets('ProtectYourself page is rendered Properly',
+  testWidgets('ProtectYourself page is rendered properly',
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
