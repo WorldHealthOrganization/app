@@ -30,7 +30,11 @@ void main() {
     await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(testableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
-    expect(find.byType(Image), findsOneWidget);
+
+    // Testing for the semantics label as the Image widget is used twice, once for sizing.
+    // Semantic labels will be excluded by a 0 opacity Opacity widget.
+    expect(find.bySemanticsLabel('WHO logo'), findsOneWidget);
+
     expect(
         find.text(
             'There is a lot of false information around. These are the facts'),
