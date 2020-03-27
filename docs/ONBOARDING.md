@@ -6,20 +6,20 @@ The goal of this document is to give you a starting point for where to find the 
 
 First thing's first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://forms.gle/FUugWvUVvMcV3dLJA
 
-Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cx6ycppt-ccqPJ7ZSGy3~77gSByexJw) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
+Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cvzz1av4-SYmfiIK7dY0AXrc_hQ2MpA) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
 
-If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
+Due to the number of people joining the project you might not immediately be assigned a task or find something to work on. Please be patient while we work out how to most efficiently use our resources.
 
-## Daily Standup
+## Standup
 
-We have a regular, daily all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
+We have a regular all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
 
 ## Resources
 
 Where to find answers to your questions:
 
 * GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
-* Slack: https://join.slack.com/t/who-app/shared_invite/zt-cx6ycppt-ccqPJ7ZSGy3~77gSByexJw
+* Slack: https://join.slack.com/t/who-app/shared_invite/zt-cvzz1av4-SYmfiIK7dY0AXrc_hQ2MpA
 * Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
 * WIP product roadmap: [ROADMAP.md](ROADMAP.md)
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
