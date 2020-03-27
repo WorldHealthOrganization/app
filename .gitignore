@@ -96,4 +96,3 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
-/client/flutter/lib/generated/
