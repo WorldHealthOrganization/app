@@ -52,7 +52,7 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
-  PageController pageController = new PageController();
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
