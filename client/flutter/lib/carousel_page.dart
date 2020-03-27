@@ -45,7 +45,6 @@ class CarouselSlide extends StatelessWidget {
   }
 }
 
-
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
 
