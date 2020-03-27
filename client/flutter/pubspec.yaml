@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  intl_translation: ^0.17.9
   share: ^0.6.3+6
   url_launcher: ^5.4.2
   page_view_indicator: ^2.0.4
