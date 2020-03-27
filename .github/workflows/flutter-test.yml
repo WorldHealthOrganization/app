@@ -25,5 +25,7 @@ jobs:
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
-      - run: flutter test
+      - run: flutter analyze --no-pub
+        working-directory: ./client/flutter
+      - run: flutter test --no-pub
         working-directory: ./client/flutter
