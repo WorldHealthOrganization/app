@@ -36,7 +36,7 @@ class CarouselSlide extends StatelessWidget {
                this.message,
               style:TextStyle(fontWeight: FontWeight.bold),
              
-              textScaleFactor: scale * 1.2,
+              textScaleFactor: scale * 1.3,
               textAlign: TextAlign.center,
             ),
             Spacer(flex: 1),
