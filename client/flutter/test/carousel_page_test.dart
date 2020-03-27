@@ -1,15 +1,15 @@
-import 'package:WHOFlutter/carousel_page.dart';
+import 'package:WHOFlutter/listViewPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('CarouselSlide', () {
+  group('ListItem', () {
     testWidgets(
       'should display the message provided to it',
       (WidgetTester tester) async {
         final String message = 'test message';
         await tester.pumpWidget(
-          MaterialApp(home: CarouselSlide(null, message: message)),
+          MaterialApp(home: ListItem(message: message)),
         );
 
         final Finder messageFinder = find.text(message);
@@ -26,7 +26,7 @@ void main() {
           key: titleWidgetKey,
         );
         await tester.pumpWidget(
-          MaterialApp(home: CarouselSlide(null, titleWidget: titleWidget)),
+          MaterialApp(home: ListItem(titleWidget: titleWidget)),
         );
         final Finder titleWidgetFinder = find.byKey(titleWidgetKey);
         expect(titleWidgetFinder, findsOneWidget);
@@ -34,31 +34,26 @@ void main() {
     );
   });
 
-  group('CarouselView', () {
+  group('ListOfItemsPage', () {
     testWidgets(
-      'should display every CarouselSlide provided to it',
+      'should display every ListItem provided to it',
       (WidgetTester tester) async {
-        final List<CarouselSlide> carouselSlideItems = [];
+        final List<ListItem> listItems = [];
 
-        /// Populates [carouselSlideItems]
+        /// Populates [listItems]
         for (int i = 1; i <= 5; i++) {
-          carouselSlideItems.add(CarouselSlide(null, message: '$i'));
+          listItems.add(ListItem(message: '$i'));
         }
 
         await tester.pumpWidget(
-          MaterialApp(home: CarouselView(carouselSlideItems)),
+          MaterialApp(home: ListOfItemsPage(listItems)),
         );
 
-        for (CarouselSlide carouselSlide in carouselSlideItems) {
-          final Finder carouselSlideFinder = find.text(carouselSlide.message);
+        for (ListItem listItem in listItems) {
+          final Finder listItemFinder = find.text(listItem.message);
 
-          // Expects to find the message provided to the CarouselSlider via a
-          // CarouselSlide object
-          expect(carouselSlideFinder, findsOneWidget);
-
-          // Swipe to the next page so it's content can be found
-          await tester.fling(find.byType(PageView), Offset(-100, 0), 800);
-          await tester.pumpAndSettle();
+          // Expects to find the message provided to the ListItem
+          expect(listItemFinder, findsOneWidget);
         }
       },
     );
