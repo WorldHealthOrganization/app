@@ -6,6 +6,6 @@ class HealthCheckPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-        body: Text(S.of(context).healthCheck));
+        body: Text(S.of(context).healthCheckTitle));
   }
 }

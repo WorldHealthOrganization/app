@@ -21,25 +21,25 @@ class HomePage extends StatelessWidget {
       children: [
         PageButton(
           Colors.green,
-          S.of(context).protectYourself,
+          S.of(context).homePagePageButtonProtectYourself,
           () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
         PageButton(
           Colors.lightBlue,
-          "Latest\nNumbers",
+          S.of(context).homePagePageButtonLatestNumbers,
           () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
         PageButton(
           Colors.amber,
-          "Your\nQuestions\nAnswered",
+          S.of(context).homePagePageButtonYourQuestionsAnswered,
           () => Navigator.of(context)
               .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
         ),
         PageButton(
             Colors.brown,
-            S.of(context).whoMythBusters,
+            S.of(context).homePagePageButtonWHOMythBusters,
             () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (c) => WhoMythBusters()))),
       ],
@@ -63,7 +63,8 @@ class PageButton extends StatelessWidget {
       color: backgroundColor,
       child: Center(
         child: Padding(
-            padding: const EdgeInsets.all(4.0), child: Text(title, textAlign: TextAlign.center)),
+            padding: const EdgeInsets.all(4.0),
+            child: Text(title, textAlign: TextAlign.center)),
       ),
       onPressed: this.onPressed,
     );
