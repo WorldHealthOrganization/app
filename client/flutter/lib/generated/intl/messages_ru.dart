@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "childLove" : MessageLookupByLibrary.simpleMessage(""),
     "childRoutines" : MessageLookupByLibrary.simpleMessage(""),
     "childStress" : MessageLookupByLibrary.simpleMessage(""),
-    "coughingAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
+    "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
     "feelingDistressed" : MessageLookupByLibrary.simpleMessage(""),
     "healthCheck" : MessageLookupByLibrary.simpleMessage(""),
     "infoForEveryone" : MessageLookupByLibrary.simpleMessage(""),
