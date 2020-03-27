@@ -1,6 +1,23 @@
+import 'package:WHOFlutter/constants.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:WHOFlutter/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:WHOFlutter/main.dart';
+
+Widget testableWidget({Widget child}) {
+  return MaterialApp(
+    title: "WHO",
+    localizationsDelegates: [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      S.delegate
+    ],
+    locale: Locale('en', ''),
+    supportedLocales: S.delegate.supportedLocales,
+    home: HomePage(),
+  );
+}
 
 void main() {
   final TestWidgetsFlutterBinding binding =
@@ -9,7 +26,7 @@ void main() {
   testWidgets('Home Page Renders Correctly', (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 640));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(testableWidget());
     // Delay to load the text from Localization
     await tester.pumpAndSettle(Duration(seconds: 1));
     // Expects the WHO logo displayed on the top
@@ -24,7 +41,7 @@ void main() {
   testWidgets('WHO Myth-busters navigation works correctly',
       (WidgetTester tester) async {
     await binding.setSurfaceSize(Size(800, 640));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(testableWidget());
     await tester.pumpAndSettle(Duration(seconds: 1));
     await tester.tap(find.text('Protect yourself'));
     await tester.pumpAndSettle();
@@ -37,7 +54,7 @@ void main() {
   testWidgets('Protect yourself navigation works correctly',
       (WidgetTester tester) async {
     await binding.setSurfaceSize(Size(800, 640));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(testableWidget());
     await tester.pumpAndSettle(Duration(seconds: 1));
     await tester.tap(find.text('WHO Myth-busters'));
     await tester.pumpAndSettle();
@@ -50,7 +67,7 @@ void main() {
   testWidgets('Travel Advice navigation works correctly',
       (WidgetTester tester) async {
     await binding.setSurfaceSize(Size(800, 640));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(testableWidget());
     await tester.pumpAndSettle(Duration(seconds: 1));
     await tester.tap(find.text('Travel Advice'));
     await tester.pumpAndSettle();
@@ -64,7 +81,7 @@ void main() {
   testWidgets('Clicking on About App shows showDialog',
       (WidgetTester tester) async {
     await binding.setSurfaceSize(Size(800, 640));
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(testableWidget());
     await tester.pumpAndSettle(Duration(seconds: 1));
     await tester.tap(find.text('About the App'));
     expect(find.byType(AboutDialog), findsNothing);
