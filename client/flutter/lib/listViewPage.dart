@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class ListOfItemsPage extends StatelessWidget {
   final List<ListItem> listOfItems;
@@ -7,15 +8,36 @@ class ListOfItemsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            flexibleSpace: Container(),
-            expandedHeight: 200,
+      child: Stack(
+        children: <Widget>[
+          CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                flexibleSpace: Container(),
+                expandedHeight: 200,
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate(this.listOfItems),
+              ),
+            ],
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(this.listOfItems),
-          ),
+          Positioned(
+              bottom: 0.0,
+              child: Center(
+                  child: Container(
+                color: Color(0xF8ffffff),
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    padding: EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      onPressed: () => Share.share('Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
+                      icon: Icon(Icons.share, size: 22,)
+                    ),
+                  )),
+              ))),
         ],
       ),
     );
