@@ -46,6 +46,7 @@ class CarouselSlide extends StatelessWidget {
   }
 }
 
+
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
 
@@ -53,7 +54,7 @@ class CarouselView extends StatelessWidget {
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
-  PageController pageController = PageController();
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
