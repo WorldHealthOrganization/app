@@ -103,7 +103,7 @@ class S {
 
   String get washHands {
     return Intl.message(
-      'Wash your hand often with soap and running water frequently',
+      'Wash your hands with soap and running water frequently',
       name: 'washHands',
       desc: '',
       args: [],
@@ -121,7 +121,7 @@ class S {
 
   String get throwAwayTissue {
     return Intl.message(
-      'Throw tissue into closed bin immediately after use',
+      'Throw tissues into a closed bin immediately after use',
       name: 'throwAwayTissue',
       desc: '',
       args: [],
@@ -175,7 +175,7 @@ class S {
 
   String get childStress {
     return Intl.message(
-      'Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespond to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
+      'Children may respond to stress in different ways such as being more clingy, anxious, withdrawn, angry or agitated; by bedwetting etc.\nRespond to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention.',
       name: 'childStress',
       desc: '',
       args: [],
@@ -193,7 +193,7 @@ class S {
 
   String get childDistance {
     return Intl.message(
-      'Try and keep children close to their parents and family and avoid separating children and their caregivers to the extent possible. If separation occurs (e.g. hospitalization) ensure regular contact (e.g. via phone) and re-assurance.',
+      'Try and keep children close to their parents and family and avoid separating children and their caregivers to the extent possible. If separation occurs (e.g. hospitalization) ensure regular contact (e.g. via phone) and reassurance.',
       name: 'childDistance',
       desc: '',
       args: [],
@@ -211,7 +211,7 @@ class S {
 
   String get childFacts {
     return Intl.message(
-      'Provide facts about what has happened, explain what is going on now and give them clear information about how to reduce their risk of being infected by the disease in words that they can understand depending on their age.\nThis also includes providing information about what could happen in a re-assuring way (e.g. a family member and/or the child may start not feeling well and may have to go to the hospital for some time so doctors can help them feel better).',
+      'Provide facts about what has happened, explain what is going on now and give them clear information about how to reduce their risk of being infected by the disease in words that they can understand depending on their age.\nThis also includes providing information about what could happen in a reassuring way (e.g. a family member and/or the child may start not feeling well and may have to go to the hospital for some time so doctors can help them feel better).',
       name: 'childFacts',
       desc: '',
       args: [],
