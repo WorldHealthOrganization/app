@@ -83,13 +83,11 @@ class PageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return new FlatButton(
       color: backgroundColor,
-      child: new InkWell(
-        onTap: this.onPressed,
-        child: new Center(
+      child: new Center(
           child: new Padding(
               padding: const EdgeInsets.all(4.0), child: new Text(title)),
         ),
-      ),
+      onPressed: this.onPressed,
     );
   }
 }
