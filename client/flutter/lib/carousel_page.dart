@@ -5,16 +5,15 @@ import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
+  final BuildContext context;
   final Widget titleWidget;
   final String message;
-  final BuildContext context;
 
-  CarouselSlide(this.context, {this.titleWidget, this.message = ""});
+  CarouselSlide(this.context, {this.titleWidget, this.message});
 
   @override
   Widget build(BuildContext context) {
     double scale = contentScale(context);
-    var screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: EdgeInsets.all(24),
       child: Card(
@@ -25,12 +24,8 @@ class CarouselSlide extends StatelessWidget {
           children: <Widget>[
             Spacer(flex: 1),
             this.titleWidget == null
-                ? Container(
-                    height: 0,
-                  )
-                : Container(
-                    height: screenHeight * 0.4,
-                    child: this.titleWidget ?? Container()),
+                ? Container()
+                : Container(child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
               this.message,
@@ -47,12 +42,10 @@ class CarouselSlide extends StatelessWidget {
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
-
-  CarouselView(this.items);
-
+  final PageController pageController = PageController();
   final pageIndexNotifier = ValueNotifier<int>(0);
 
-  PageController pageController = new PageController();
+  CarouselView(this.items);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +54,7 @@ class CarouselView extends StatelessWidget {
         children: <Widget>[
           PageView(
             controller: pageController,
-            onPageChanged: (i) => pageIndexNotifier.value = i,
+            onPageChanged: (index) => pageIndexNotifier.value = index,
             children: this.items,
           ),
           Align(
@@ -128,9 +121,9 @@ class CarouselView extends StatelessWidget {
 }
 
 class EmojiHeader extends StatelessWidget {
-  EmojiHeader(this.emoji);
-
   final String emoji;
+
+  EmojiHeader(this.emoji);
 
   @override
   Widget build(BuildContext context) {
