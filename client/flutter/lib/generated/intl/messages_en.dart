@@ -41,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "socialDistancing" : MessageLookupByLibrary.simpleMessage("Avoid close contact and keep the physical distancing"),
     "throwAwayTissue" : MessageLookupByLibrary.simpleMessage("Throw tissues into a closed bin immediately after use"),
     "travelAdvice" : MessageLookupByLibrary.simpleMessage("Travel Advice"),
-    "washHands" : MessageLookupByLibrary.simpleMessage("Wash your hands often with soap and running water frequently"),
+    "washHands" : MessageLookupByLibrary.simpleMessage("Wash your hands with soap and running water frequently"),
     "whoMythBusters" : MessageLookupByLibrary.simpleMessage("WHO Myth-busters"),
     "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization")
   };
