@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/components/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
@@ -45,7 +46,7 @@ class HomePage extends StatelessWidget {
                   Color(0xffbe7141),
                   "Your\nQuestions\nAnswered",
                   () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -119,7 +120,7 @@ class PageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.borderRadius)),
       color: backgroundColor,
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical:15.0, horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: this.centerItems
