@@ -128,7 +128,7 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.6,
+                textScaleFactor: 1.5,
                 textAlign: TextAlign.left,
                 style: TextStyle(fontWeight: FontWeight.w900),
               ),
