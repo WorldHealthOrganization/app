@@ -110,10 +110,10 @@ class S {
     );
   }
 
-  String get cougningAndSneezing {
+  String get coughingAndSneezing {
     return Intl.message(
       'When coughing and sneezing cover mouth and nose with flexed elbow or tissue',
-      name: 'cougningAndSneezing',
+      name: 'coughingAndSneezing',
       desc: '',
       args: [],
     );

@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "childLove" : MessageLookupByLibrary.simpleMessage("Children need adults\' love and attention during difficult times. Give them extra time and attention.\nRemember to listen to your children, speak kindly and reasure.\nIf possible, make opportunities for the child to play and relax."),
     "childRoutines" : MessageLookupByLibrary.simpleMessage("Keep to regular routines and schedules as much as possible, or help create new ones in a new environment, including school/learning as well as time for safely playing and relaxing."),
     "childStress" : MessageLookupByLibrary.simpleMessage("Children may respond to stress in different ways such as being more clingy, anxious, withdraw, angry or agitated, bedwetting etc\nRespind to your child\'s reactions in a supportive way, listen to their concerns and give them extra love and attention."),
-    "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage("When coughing and sneezing cover mouth and nose with flexed elbow or tissue"),
+    "coughingAndSneezing" : MessageLookupByLibrary.simpleMessage("When coughing and sneezing cover mouth and nose with flexed elbow or tissue"),
     "feelingDistressed" : MessageLookupByLibrary.simpleMessage("Feeling Distressed?"),
     "healthCheck" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "infoForEveryone" : MessageLookupByLibrary.simpleMessage("Information for Everyone"),
