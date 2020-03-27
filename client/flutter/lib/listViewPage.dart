@@ -21,13 +21,19 @@ class ListOfItemsPage extends StatelessWidget {
             ],
           ),
           Positioned(
-            bottom: 0.0,
-            child: Center(
-                child: Container(
-              color: Color(0xF8ffffff),
-              height: 60,
-              width: MediaQuery.of(context).size.width,
-            ))),
+              bottom: 0.0,
+              child: Center(
+                  child: Container(
+                color: Color(0xF8ffffff),
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    onPressed: () {}, 
+                    icon: Icon(Icons.share)
+                  )),
+              ))),
         ],
       ),
     );
