@@ -27,5 +27,7 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter format --set-exit-if-changed --dry-run lib/
         working-directory: ./client/flutter
-      - run: flutter test
+      - run: flutter analyze --no-pub
+        working-directory: ./client/flutter
+      - run: flutter test --no-pub
         working-directory: ./client/flutter
