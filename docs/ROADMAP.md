@@ -25,15 +25,15 @@ Version numbering terminology:
 
 #### Technical Features / Requirements
 
-* Content parity with the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=)
-* Native look-and-feel, designed to present content on mobile screens
-* Localized content translated to at least one other language besides English
-* Offline functionality with default content baked into the app bundle
-* Dynamically updated content served from the cloud so users don't need to update the app to receive content updates
-* Localized push notification capabilities
+* Content parity with the [WHO WhatsApp Bot](https://api.whatsapp.com/send?phone=41225017615&text=hi&source=&data=) ([#381][https://github.com/WorldHealthOrganization/app/issues/381])
+* Native look-and-feel, designed to present content on mobile screens ([#382](https://github.com/WorldHealthOrganization/app/issues/382))
+* Localized content translated to at least one other language besides English ([#383](https://github.com/WorldHealthOrganization/app/issues/383))
+* Offline functionality with default content baked into the app bundle ([#384](https://github.com/WorldHealthOrganization/app/issues/384))
+* Dynamically updated content served from the cloud so users don't need to update the app to receive content updates ([#385](https://github.com/WorldHealthOrganization/app/issues/385))
+* Localized push notification capabilities ([#387](https://github.com/WorldHealthOrganization/app/issues/387))
   * _(Needs Discussion)_ What are the localization requirements for v1.0? What level of granularity will we need in region (e.g. language, continent, country, city, etc)? How will the user choose their location(s) for push delivery?
-* Instrumentation/analytics capabilities for understanding aggregated usage information to be used for product improvement, complying with all applicable laws & regulations and app policies
-* _(Needs Discussion)_ Distribution pipeline using [fastlane](https://fastlane.tools/) for integration with WHO's existing app distribution process
+* Instrumentation/analytics capabilities for understanding aggregated usage information to be used for product improvement, complying with all applicable laws & regulations and app policies ([#389](https://github.com/WorldHealthOrganization/app/issues/389))
+* _(Needs Discussion)_ Distribution pipeline using [fastlane](https://fastlane.tools/) for integration with WHO's existing app distribution process ([#318](https://github.com/WorldHealthOrganization/app/issues/318))
 * Full security review
 
 #### Features NOT Included
