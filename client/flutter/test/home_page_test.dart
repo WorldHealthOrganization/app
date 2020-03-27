@@ -1,4 +1,3 @@
-import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/home_page.dart';
 import 'package:flutter/material.dart';
