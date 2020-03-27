@@ -1,36 +1,24 @@
 # Getting Started
 
-If you're here, that means you're interested in being a part of the volunteer effort. Welcome! We're glad to have you.
+**To everyone who has jumped in wanting to help:** We are humbled at the outpouring of support we have received from all over the world and are eager to have you contribute and apologize that we are still in the early process of figuring out how to manage all the contributions.  Please bear with us while we get an initial version out the door and split out into smaller teams working in parallel, when we can then on-board more volunteers.  Until then, please keep filing issues, and fill out the [volunteer form here](https://forms.gle/FUugWvUVvMcV3dLJA) and we’ll get back in touch.
 
-The goal of this document is to give you a starting point for where to find the resources you need to get up to speed. This is by no means an exhaustive document, and I'm sure that we'll be missing some important items here, so if you're missing something, just ask and we will try to update this document.
+## Standup
 
-First thing's first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://docs.google.com/spreadsheets/d/1jt4xrXWUnsh8DmtawNV4XGBj8RAdgn-d7ckgL2qEXPM/edit#gid=0
-
-Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
-
-If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
-
-## Daily Standup
-
-We have a regular, daily all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
+All-hands meetings will happen over Zoom every Monday and Thursday at 11am PDT, and engineering-only standups are daily at 11am PDT.
 
 ## Resources
 
 Where to find answers to your questions:
 
 * GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
-* Slack: https://join.slack.com/t/who-app/shared_invite/zt-cylowls6-Q7iQPvTAenkN_Yb9MLxVIw
-* Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
+* Slack: _We apologize, but the Slack is closed to new contributors until initial app release_
 * WIP product roadmap: [ROADMAP.md](ROADMAP.md)
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
-* Most up-to-date app design spec: https://github.com/WorldHealthOrganization/app/issues/129
-* Most up-to-date preview of app in development: https://preview.whoapp.org
+* Most up-to-date preview of app in development: _Will be re-added soon_
 
-Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
+### Slack
 
-### Key Slack Channels
-
-For key conversations related to each major area, please see the following Slack channels:
+Please add your GitHub URL to your Slack profile. For key conversations related to each major area, please see the following Slack channels:
 
 * `#eng` - Engineering
 * `#design` - Design
@@ -44,46 +32,28 @@ For key conversations related to each major area, please see the following Slack
 
 This is very much a committee effort, and we are moving quickly enough that we have to self-organize as much as we can. You're encouraged to step up and find places to contribute rather than relying on anyone to tell you what to do. Even in just the first couple days of the project, there has been incredible effort from a lot of contributors. With that said, there are a couple people helping play point around different areas that are trying to keep a pulse of everything going on in those areas:
 
-* Karen Wong ([asianfoodlab](https://github.com/asianfoodlab)) - all things Product
-* Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
-* Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
+* Product: Karen Wong ([asianfoodlab](https://github.com/asianfoodlab))
+* Design: _update to come_
+* Engineering: Hunter Spinks ([hspinks](https://github.com/hspinks)) and Advay Mengle ([advayDev1](https://github.com/advayDev1))
 
 # Building and Running
 
 Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any contributions to the code.
 
-This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/ionic` directory is used).
+This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/flutter` directory is used).
 
 ## Client
 
-The client app will be built initially using [Ionic React](https://ionicframework.com/docs/react). To get started, clone the repo and from the `client/ionic` directory run:
+Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
 
+Clone the repo and from the  `client/flutter` directory, run 
 ```
-npm install -g @ionic/cli
-npm install
-ionic serve
-```
-
-To run on Android, from the `client/ionic` directory run:
-
-```
-ionic build
-ionic capacitor copy android
-npx cap update android
-ionic capacitor run android -l --host=YOUR_IP_ADDRESS
-```
-
-To run on iOS, from the `client/ionic` directory run:
-
-```
-ionic build
-ionic capacitor copy ios
-ionic capacitor run ios
+flutter run
 ```
 
 ### Troubleshooting
 
-If you are getting an `unable to open file (in target "App" in project "App")` error message when attempting to build the iOS app in Xcode, this may be related to an issue with needing to install pods from CocoaPods that we are currently investigating. Ensure that your ruby and CocoaPods are up to date, then run `pod install` from the `client/ionic/ios/App` directory. If that install succeeds, you should be able to build your iOS app without issue.
+* If you built the Ionic client previously and see a warning about husky (git hooks), we no longer use husky git hooks. As long as you have no personal git hooks, run: `pushd .git/hooks && ( ls | grep \.sample -v | xargs rm ) && popd` from repo root after you sync.
 
 ## Server
 
