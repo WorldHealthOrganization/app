@@ -7,15 +7,27 @@ class ListOfItemsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            flexibleSpace: Container(),
-            expandedHeight: 200,
+      child: Stack(
+        children: <Widget>[
+          CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                flexibleSpace: Container(),
+                expandedHeight: 200,
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate(this.listOfItems),
+              ),
+            ],
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(this.listOfItems),
-          ),
+          Positioned(
+            bottom: 0.0,
+            child: Center(
+                child: Container(
+              color: Color(0xC8ffffff),
+              height: 500,
+              width: MediaQuery.of(context).size.width,
+            ))),
         ],
       ),
     );
@@ -32,26 +44,14 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Stack(
+      child: Column(
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              this.titleWidget ?? Divider(),
-              Text(
-                this.message,
-                textScaleFactor: 1.5,
-                textAlign: TextAlign.center,
-              ),
-            ],
+          this.titleWidget ?? Divider(),
+          Text(
+            this.message,
+            textScaleFactor: 1.5,
+            textAlign: TextAlign.center,
           ),
-          Positioned(
-            bottom: 0.0,
-            child: Center(
-                child: Container(
-              color: Color(0xC8ffffff),
-              height: 500,
-              width: MediaQuery.of(context).size.width,
-            ))),
         ],
       ),
     );
