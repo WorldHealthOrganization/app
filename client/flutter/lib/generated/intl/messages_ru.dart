@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "childLove" : MessageLookupByLibrary.simpleMessage(""),
     "childRoutines" : MessageLookupByLibrary.simpleMessage(""),
     "childStress" : MessageLookupByLibrary.simpleMessage(""),
-    "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
+    "coughingAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
     "feelingDistressed" : MessageLookupByLibrary.simpleMessage(""),
     "healthCheck" : MessageLookupByLibrary.simpleMessage(""),
     "infoForEveryone" : MessageLookupByLibrary.simpleMessage(""),
@@ -40,7 +40,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "socialDistancing" : MessageLookupByLibrary.simpleMessage(""),
     "throwAwayTissue" : MessageLookupByLibrary.simpleMessage(""),
     "washHands" : MessageLookupByLibrary.simpleMessage(""),
-    "washHandsFrequently" : MessageLookupByLibrary.simpleMessage(""),
     "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("")
   };
 }
