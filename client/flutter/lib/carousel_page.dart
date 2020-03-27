@@ -29,15 +29,17 @@ class CarouselSlide extends StatelessWidget {
                     height: 0,
                   )
                 : Container(
-                    height: screenHeight * 0.4,
+                    height: screenHeight * 0.3,
                     child: this.titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
-              this.message,
-              textScaleFactor: scale * 1.5,
+               this.message,
+              style:TextStyle(fontWeight: FontWeight.bold),
+             
+              textScaleFactor: scale * 1.2,
               textAlign: TextAlign.center,
             ),
-            Spacer(flex: 2),
+            Spacer(flex: 1),
           ],
         ),
       ),
