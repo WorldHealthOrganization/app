@@ -78,7 +78,8 @@ class HomePage extends StatelessWidget {
                       'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
                 ),
                 ListTile(
-                  title: Text(S.of(context).homePagePageSliverListProvideFeedback),
+                  title:
+                      Text(S.of(context).homePagePageSliverListProvideFeedback),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {},
                 ),
@@ -87,8 +88,9 @@ class HomePage extends StatelessWidget {
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => showAboutDialog(
                       context: context,
-                      applicationLegalese: S.of(context).homePagePageSliverListAboutTheAppDialog
-                  ),
+                      applicationLegalese: S
+                          .of(context)
+                          .homePagePageSliverListAboutTheAppDialog),
                 )
               ]),
             ),
@@ -119,8 +121,8 @@ class PageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.borderRadius)),
       color: backgroundColor,
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical:15.0, horizontal: 8.0),
-            child: Column(
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: this.centerItems
                 ? MainAxisAlignment.center

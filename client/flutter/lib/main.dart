@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,13 +7,7 @@ import './constants.dart';
 import './home_page.dart';
 import 'generated/l10n.dart';
 
-void main() {
-  /// Since macOS is not yet a supported platform in TargetPlatform we need
-  /// to override the default platform to one that is.
-  debugDefaultTargetPlatformOverride ??= TargetPlatform.iOS;
-
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
@@ -42,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         S.delegate,
       ],
-      supportedLocales: Platform.isMacOS ? [Locale('en', '')] : S.delegate.supportedLocales,
+      supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
@@ -53,7 +44,10 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       home: Directionality(
-          child: HomePage(), textDirection: GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale())).textDirection),
+          child: HomePage(),
+          textDirection:
+              GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
+                  .textDirection),
     );
   }
 }
