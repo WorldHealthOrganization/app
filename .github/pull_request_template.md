@@ -1,10 +1,12 @@
-<!--
-NOTE: Please ensure you:
-* provide a detailed pull request description and a succinct title (consider template below for guidance),
-* follow the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/docs/CONTRIBUTING.md),
-* use a draft PR if you don't want the committers to review your code,
-* and make sure that all contributions are properly licensed pursuant to the LICENSE file in the root of the repository.
--->
+**Please follow this checklist. Please check each appropriate box (put an 'x' or check it after creating the PR).**
+- [ ] Provided detailed pull request description and a succinct title (consider template below for guidance).
+- [ ] Tested your changes, especially after any code review iterations.
+- [ ] Included any relevant screenshots of UI updates.
+- [ ] Followed the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/docs/CONTRIBUTING.md).
+- [ ] Verified all contributions are properly licensed pursuant to the [LICENSE](https://github.com/WorldHealthOrganization/app/blob/master/LICENSE) file in the root of the repository.
+- [ ] Verified your name is in the [content/credits.yaml](https://github.com/WorldHealthOrganization/app/blob/master/content/credits.yaml) file (if you want it to be).
+
+After all boxes above are checked, request and receive an Approved review from any team member knowledgable in the area (TODO team member list).  Once approved, the team member will assign your review to a Committer or use the `needs-merge` label.
 
 ## What does this PR accomplish?
 
