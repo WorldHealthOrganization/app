@@ -12,7 +12,7 @@ void main() {
 
   Widget testableWidget({Widget child}) {
     return MaterialApp(
-      title: "WHO",
+      title: 'WHO',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

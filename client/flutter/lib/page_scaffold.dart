@@ -24,7 +24,7 @@ class PageScaffold extends StatelessWidget {
         Expanded(
             child: Padding(
           padding: bodyPadding,
-          child: this.body,
+          child: body,
         ))
       ])),
     ));

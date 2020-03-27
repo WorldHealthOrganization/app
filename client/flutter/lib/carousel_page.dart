@@ -9,12 +9,12 @@ class CarouselSlide extends StatelessWidget {
   final String message;
   final BuildContext context;
 
-  CarouselSlide(this.context, {this.titleWidget, this.message = ""});
+  CarouselSlide(this.context, {this.titleWidget, this.message = ''});
 
   @override
   Widget build(BuildContext context) {
-    double scale = contentScale(context);
-    var screenHeight = MediaQuery.of(context).size.height;
+    var scale = contentScale(context), screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
       padding: EdgeInsets.all(24),
       child: Card(
@@ -24,16 +24,16 @@ class CarouselSlide extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Spacer(flex: 1),
-            this.titleWidget == null
+            titleWidget == null
                 ? Container(
                     height: 0,
                   )
                 : Container(
                     height: screenHeight * 0.4,
-                    child: this.titleWidget ?? Container()),
+                    child: titleWidget ?? Container()),
             Spacer(flex: 1),
             Text(
-              this.message,
+              message,
               textScaleFactor: scale * 1.5,
               textAlign: TextAlign.center,
             ),
@@ -63,7 +63,7 @@ class CarouselView extends StatelessWidget {
           PageView(
             controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
-            children: this.items,
+            children: items,
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
@@ -72,7 +72,7 @@ class CarouselView extends StatelessWidget {
                 child: pageViewIndicator(context)),
           ),
           GestureDetector(
-              onTap: () => pageController.page == this.items.length - 1
+              onTap: () => pageController.page == items.length - 1
                   ? null
                   : pageController.nextPage(
                       duration: Duration(milliseconds: 500),
@@ -104,7 +104,7 @@ class CarouselView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: PageViewIndicator(
               pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
+              length: items.length,
               normalBuilder: (animationController, index) => Circle(
                 size: 8.0,
                 color: Colors.grey,
@@ -137,7 +137,7 @@ class EmojiHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        this.emoji,
+        emoji,
         textScaleFactor: 6,
       ),
     );

@@ -16,7 +16,7 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double scale = contentScale(context);
+    var scale = contentScale(context);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
