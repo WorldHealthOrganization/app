@@ -11,12 +11,9 @@ class PageScaffold extends StatelessWidget {
   Widget logo(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 24.0, bottom: 0, left: 24, right: 24),
-      child: Semantics(
-        label: 'WHO logo',
-        child: Image(
-          image: AssetImage('assets/WHO.jpg'),
-          width: MediaQuery.of(context).size.width,
-        ),
+      child: Image(
+        image: AssetImage('assets/WHO.jpg'),
+        width: MediaQuery.of(context).size.width,
       ),
     );
   }
