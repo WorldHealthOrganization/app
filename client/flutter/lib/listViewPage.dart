@@ -29,7 +29,7 @@ class ListOfItemsPage extends StatelessWidget {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Align(
-                  alignment: Alignment.topRight,
+                  alignment: Alignment.centerRight,
                   child: Container(
                     padding: EdgeInsets.only(right: 20),
                     child: IconButton(
