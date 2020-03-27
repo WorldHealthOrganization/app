@@ -45,11 +45,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias  System.getenv('ANDROID_KEYSTORE_ALIAS')
+            keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
+            storeFile System.getenv('ANDROID_KEYSTORE_FILE')
+            storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
