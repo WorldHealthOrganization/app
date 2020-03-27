@@ -30,7 +30,8 @@ class CarouselSlide extends StatelessWidget {
                   )
                 : Container(
                     height: screenHeight * 0.4,
-                    child: this.titleWidget ?? Container()),
+                    child: this.titleWidget ?? Container(),
+                  ),
             Spacer(flex: 1),
             Text(
               this.message,
@@ -44,7 +45,6 @@ class CarouselSlide extends StatelessWidget {
     );
   }
 }
-
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
@@ -78,15 +78,17 @@ class CarouselView extends StatelessWidget {
                       duration: Duration(milliseconds: 500),
                       curve: Curves.easeInOutCubic)),
           Align(
-              alignment: FractionalOffset.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 24.0),
-                child: IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    }),
-              )),
+            alignment: FractionalOffset.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 24.0),
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ),
         ],
       ),
       bodyPadding: EdgeInsets.zero,

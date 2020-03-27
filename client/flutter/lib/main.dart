@@ -1,6 +1,6 @@
+import 'package:WHOFlutter/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -38,7 +38,8 @@ class _MyAppState extends State<MyApp> {
             buttonColor: Constants.primaryColor,
             textTheme: ButtonTextTheme.accent),
       ),
-      home: HomePage(),
+      onGenerateRoute: Router.routes(),
+      // home: HomePage(),
     );
   }
 }
