@@ -20,27 +20,27 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "checkYourHealth" : MessageLookupByLibrary.simpleMessage(""),
-    "childDistance" : MessageLookupByLibrary.simpleMessage(""),
-    "childFacts" : MessageLookupByLibrary.simpleMessage(""),
-    "childLove" : MessageLookupByLibrary.simpleMessage(""),
-    "childRoutines" : MessageLookupByLibrary.simpleMessage(""),
-    "childStress" : MessageLookupByLibrary.simpleMessage(""),
-    "cougningAndSneezing" : MessageLookupByLibrary.simpleMessage(""),
-    "feelingDistressed" : MessageLookupByLibrary.simpleMessage(""),
-    "healthCheck" : MessageLookupByLibrary.simpleMessage(""),
-    "infoForEveryone" : MessageLookupByLibrary.simpleMessage(""),
-    "infoForParents" : MessageLookupByLibrary.simpleMessage(""),
-    "learnMore" : MessageLookupByLibrary.simpleMessage(""),
-    "localMaps" : MessageLookupByLibrary.simpleMessage(""),
-    "protectYourself" : MessageLookupByLibrary.simpleMessage(""),
-    "seekMedicalCare" : MessageLookupByLibrary.simpleMessage(""),
-    "shareTheApp" : MessageLookupByLibrary.simpleMessage(""),
-    "socialDistancing" : MessageLookupByLibrary.simpleMessage(""),
-    "throwAwayTissue" : MessageLookupByLibrary.simpleMessage(""),
-    "washHands" : MessageLookupByLibrary.simpleMessage(""),
-    "washHandsFrequently" : MessageLookupByLibrary.simpleMessage(""),
-    "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("")
-  };
+  static _notInlinedMessages(_) => <String, Function>{
+        "checkYourHealth": MessageLookupByLibrary.simpleMessage(""),
+        "childDistance": MessageLookupByLibrary.simpleMessage(""),
+        "childFacts": MessageLookupByLibrary.simpleMessage(""),
+        "childLove": MessageLookupByLibrary.simpleMessage(""),
+        "childRoutines": MessageLookupByLibrary.simpleMessage(""),
+        "childStress": MessageLookupByLibrary.simpleMessage(""),
+        "cougningAndSneezing": MessageLookupByLibrary.simpleMessage(""),
+        "feelingDistressed": MessageLookupByLibrary.simpleMessage(""),
+        "healthCheck": MessageLookupByLibrary.simpleMessage(""),
+        "infoForEveryone": MessageLookupByLibrary.simpleMessage(""),
+        "infoForParents": MessageLookupByLibrary.simpleMessage(""),
+        "learnMore": MessageLookupByLibrary.simpleMessage(""),
+        "localMaps": MessageLookupByLibrary.simpleMessage(""),
+        "protectYourself": MessageLookupByLibrary.simpleMessage(""),
+        "seekMedicalCare": MessageLookupByLibrary.simpleMessage(""),
+        "shareTheApp": MessageLookupByLibrary.simpleMessage(""),
+        "socialDistancing": MessageLookupByLibrary.simpleMessage(""),
+        "throwAwayTissue": MessageLookupByLibrary.simpleMessage(""),
+        "washHands": MessageLookupByLibrary.simpleMessage(""),
+        "washHandsFrequently": MessageLookupByLibrary.simpleMessage(""),
+        "worldHealthOrganization": MessageLookupByLibrary.simpleMessage("")
+      };
 }
