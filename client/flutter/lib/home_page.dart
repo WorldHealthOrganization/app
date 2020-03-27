@@ -13,85 +13,87 @@ class HomePage extends StatelessWidget {
     return Material(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: CustomScrollView(slivers: [
-          SliverAppBar(
-              expandedHeight: 110,
-              backgroundColor: Colors.white,
-              flexibleSpace: Image.asset("assets/WHO.jpg")),
-          SliverStaggeredGrid.count(
-            crossAxisCount: 2,
-            staggeredTiles: [
-              StaggeredTile.count(1, 2),
-              StaggeredTile.count(1, 1),
-              StaggeredTile.count(1, 1),
-              StaggeredTile.count(2, 1),
-              StaggeredTile.count(2, .5),
-            ],
-            children: [
-              PageButton(
-                Color(0xff3b8bc4),
-                S.of(context).protectYourself,
-                () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
-              ),
-              PageButton(
-                Color(0xfff6c35c),
-                "Latest\nNumbers",
-                () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
-              ),
-              PageButton(
-                Color(0xffbe7141),
-                "Your\nQuestions\nAnswered",
-                () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => ProtectYourself())),
-              ),
-              PageButton(
-                Color(0xff234689),
-                S.of(context).whoMythBusters,
-                () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (c) => WhoMythBusters()),
+        child: SafeArea(
+          child: CustomScrollView(slivers: [
+            SliverAppBar(
+                expandedHeight: 110,
+                backgroundColor: Colors.white,
+                flexibleSpace: Image.asset("assets/WHO.jpg")),
+            SliverStaggeredGrid.count(
+              crossAxisCount: 2,
+              staggeredTiles: [
+                StaggeredTile.count(1, 2),
+                StaggeredTile.count(1, 1),
+                StaggeredTile.count(1, 1),
+                StaggeredTile.count(2, 1),
+                StaggeredTile.count(2, .5),
+              ],
+              children: [
+                PageButton(
+                  Color(0xff3b8bc4),
+                  S.of(context).protectYourself,
+                  () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => ProtectYourself())),
                 ),
-                description:
-                    "Learn the facts about Coronavirus and how to prevent the spread",
-                centerItems: true,
-              ),
-              PageButton(
-                Color(0xffba4344),
-                S.of(context).travelAdvice,
-                () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
-                borderRadius: 50,
-                centerItems: true,
-              ),
-            ],
-            mainAxisSpacing: 15.0,
-            crossAxisSpacing: 15.0,
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate.fixed([
-              ListTile(
-                title: Text(S.of(context).shareTheApp),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Share.share(
-                    'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
-              ),
-              ListTile(
-                title: Text("Provide app feedback"),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Text("About the app"),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => showAboutDialog(
-                    context: context,
-                    applicationLegalese:
-                        "The official World Health Organization COVID-19 App."),
-              )
-            ]),
-          ),
-        ]),
+                PageButton(
+                  Color(0xfff6c35c),
+                  "Latest\nNumbers",
+                  () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                ),
+                PageButton(
+                  Color(0xffbe7141),
+                  "Your\nQuestions\nAnswered",
+                  () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                ),
+                PageButton(
+                  Color(0xff234689),
+                  S.of(context).whoMythBusters,
+                  () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (c) => WhoMythBusters()),
+                  ),
+                  description:
+                      "Learn the facts about Coronavirus and how to prevent the spread",
+                  centerItems: true,
+                ),
+                PageButton(
+                  Color(0xffba4344),
+                  S.of(context).travelAdvice,
+                  () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                  borderRadius: 50,
+                  centerItems: true,
+                ),
+              ],
+              mainAxisSpacing: 15.0,
+              crossAxisSpacing: 15.0,
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate.fixed([
+                ListTile(
+                  title: Text(S.of(context).shareTheApp),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () => Share.share(
+                      'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
+                ),
+                ListTile(
+                  title: Text("Provide app feedback"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: Text("About the app"),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () => showAboutDialog(
+                      context: context,
+                      applicationLegalese:
+                          "The official World Health Organization COVID-19 App."),
+                )
+              ]),
+            ),
+          ]),
+        ),
       ),
     );
   }
