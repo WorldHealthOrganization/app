@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "throwAwayTissue" : MessageLookupByLibrary.simpleMessage("Throw tissues into a closed bin immediately after use"),
     "travelAdvice" : MessageLookupByLibrary.simpleMessage("Travel Advice"),
     "washHands" : MessageLookupByLibrary.simpleMessage("Wash your hands with soap and running water frequently"),
+    "washHandsFrequently" : MessageLookupByLibrary.simpleMessage("Wash your hands frequently"),
     "whoMythBusters" : MessageLookupByLibrary.simpleMessage("WHO Myth-busters"),
     "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization")
   };

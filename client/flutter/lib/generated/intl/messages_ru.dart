@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "socialDistancing" : MessageLookupByLibrary.simpleMessage(""),
     "throwAwayTissue" : MessageLookupByLibrary.simpleMessage(""),
     "washHands" : MessageLookupByLibrary.simpleMessage(""),
+    "washHandsFrequently" : MessageLookupByLibrary.simpleMessage(""),
     "worldHealthOrganization" : MessageLookupByLibrary.simpleMessage("")
   };
 }
