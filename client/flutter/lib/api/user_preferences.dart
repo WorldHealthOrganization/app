@@ -21,7 +21,6 @@ class UserPreferences {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.OnboardingCompleted.toString(), value);
   }
-
 }
 
 enum UserPreferenceKey {
