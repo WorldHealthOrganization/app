@@ -1,34 +1,72 @@
-import 'package:WHOFlutter/generated/l10n.dart';
+// import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
+final normal = TextStyle(color: Colors.black, fontSize: 16);
+final bold = TextStyle(
+  color: Colors.black,
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+);
+
 class ProtectYourself extends StatelessWidget {
-  RichText get _washHands => RichText(
-        text: TextSpan(
-          // text: 'Wash your hands frequently',
-          style: TextStyle(
-            color: Colors.black,
+  Widget get _placeholder => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+        ),
+      );
+
+  Widget get _washHandsAnimation => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+          child: FlareActor(
+            'assets/protect.flr',
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            animation: 'Hands',
           ),
+        ),
+      );
+
+  Widget get _coverMouthAnimation => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+          child: FlareActor(
+            'assets/protect.flr',
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            animation: 'Cover',
+          ),
+        ),
+      );
+
+  RichText get _washHandsMessage => RichText(
+        text: TextSpan(
+          style: normal,
           children: <TextSpan>[
             TextSpan(
               text: 'Wash your hands',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: bold,
             ),
-            TextSpan(text: ' with soap and water for at least 20 seconds'),
+            TextSpan(
+              text: ' with soap and water for at least 20 seconds',
+            ),
           ],
         ),
       );
 
-  RichText get _avoidEyes => RichText(
+  RichText get _avoidEyesMessage => RichText(
         text: TextSpan(
           // text: 'Wash your hands frequently',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: normal,
           children: <TextSpan>[
             TextSpan(
               text: 'Avoid touching',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: bold,
             ),
             TextSpan(text: ' your eyes, mouth and nose'),
           ],
@@ -38,13 +76,11 @@ class ProtectYourself extends StatelessWidget {
   RichText get _coverMouth => RichText(
         text: TextSpan(
           // text: 'Wash your hands frequently',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: normal,
           children: <TextSpan>[
             TextSpan(
               text: 'Cover your mouth and nose',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: bold,
             ),
             TextSpan(
                 text: ' with your bent elbow or tissue'
@@ -53,33 +89,26 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  RichText get _distance => RichText(
+  RichText get _distanceMessage => RichText(
         text: TextSpan(
           // text: 'Wash your hands frequently',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: normal,
           children: <TextSpan>[
             TextSpan(text: 'Stay more than '),
             TextSpan(
               text: '1 meter (>3 feet) away from a person who is sick',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: bold,
             ),
-            TextSpan(
-                text: ' with your bent elbow or tissue'
-                    ' when you cough or sneeze'),
           ],
         ),
       );
 
-  RichText get _mask => RichText(
+  RichText get _maskMessage => RichText(
         text: TextSpan(
           text: 'Only wear a mask if you or someone you'
               ' are looking after are ill with COVID-19 symptoms'
               ' (especially coughing)',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: normal,
         ),
       );
 
@@ -87,11 +116,24 @@ class ProtectYourself extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListOfItems(
       [
-        ProtectYourselfCard(message: _washHands),
-        ProtectYourselfCard(message: _avoidEyes),
-        ProtectYourselfCard(message: _coverMouth),
-        ProtectYourselfCard(message: _distance),
-        ProtectYourselfCard(message: _mask),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Text(
+              'General Recommendations',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
+            ),
+          ),
+        ),
+        ProtectYourselfCard(
+            message: _washHandsMessage, child: _washHandsAnimation),
+        ProtectYourselfCard(message: _avoidEyesMessage, child: _placeholder),
+        ProtectYourselfCard(message: _coverMouth, child: _coverMouthAnimation),
+        ProtectYourselfCard(message: _distanceMessage, child: _placeholder),
+        ProtectYourselfCard(message: _maskMessage, child: _placeholder),
       ],
     );
   }
@@ -99,29 +141,39 @@ class ProtectYourself extends StatelessWidget {
 
 class ProtectYourselfCard extends StatelessWidget {
   const ProtectYourselfCard({
-    this.message,
+    @required this.message,
+    @required this.child,
   });
   final RichText message;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        elevation: 0,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Placeholder(),
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              child: child,
             ),
-            const SizedBox(height: 10),
-            message,
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: message,
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

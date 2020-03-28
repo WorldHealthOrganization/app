@@ -33,6 +33,6 @@ flutter:
   assets:
     - assets/
     - assets/animations/
-    
+
 flutter_intl:
   enabled: true
