@@ -5,6 +5,6 @@ class HealthCheckPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Text(S.of(context).healthCheck));
+        child: Text(S.of(context).healthCheckTitle));
   }
 }

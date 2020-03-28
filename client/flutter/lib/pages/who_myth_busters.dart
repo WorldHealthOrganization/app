@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/listViewPage.dart';
 import 'package:flutter/material.dart';
 
@@ -7,76 +8,67 @@ class WhoMythBusters extends StatelessWidget {
     return ListOfItemsPage([
       ListItem(
         titleWidget: EmojiHeader("🧠"),
-        message:
-            "There is a lot of false information around. These are the facts",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem1,
       ),
       ListItem(
         titleWidget: EmojiHeader("🔢"),
-        message:
-            "People of all ages CAN be infected by the coronavirus. Older people, and people with pre-existing medical conditions (such as asthma, diabetes, heart disease) appear to be more vulnerable to becoming severely ill with the virus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem2,
       ),
       ListItem(
-          titleWidget: EmojiHeader("❄️"),
-          message: "Cold weather and snow CANNOT kill the coronavirus"),
+        titleWidget: EmojiHeader("❄️"),
+        message: S.of(context).whoMythBustersListOfItemsPageListItem3,
+      ),
       ListItem(
         titleWidget: EmojiHeader("☀️"),
-        message:
-            "The coronavirus CAN be transmitted in areas with hot and humid climates",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem4,
       ),
       ListItem(
         titleWidget: EmojiHeader("🦟"),
-        message: "The coronavirus CANNOT be transmitted through mosquito bites",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem5,
       ),
       ListItem(
         titleWidget: EmojiHeader("🐶"),
-        message:
-            "There is NO evidence that companion animals/pets such as dogs or cats can transmit the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem6,
       ),
       ListItem(
-          titleWidget: EmojiHeader("🛀"),
-          message: "Taking a hot bath DOES NOT prevent the coronavirus"),
+        titleWidget: EmojiHeader("🛀"),
+        message: S.of(context).whoMythBustersListOfItemsPageListItem7,
+      ),
       ListItem(
-          titleWidget: EmojiHeader("💨"),
-          message: "Hand dryers are NOT effective in killing the coronavirus"),
+        titleWidget: EmojiHeader("💨"),
+        message: S.of(context).whoMythBustersListOfItemsPageListItem8,
+      ),
       ListItem(
         titleWidget: EmojiHeader("🟣"),
-        message:
-            "Ultraviolet light SHOULD NOT be used for sterilization and can cause skin irritation",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem9,
       ),
       ListItem(
         titleWidget: EmojiHeader("🌡️"),
-        message:
-            "Thermal scanners CAN detect if people have a fever but CANNOT detect whether or not someone has the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem10,
       ),
       ListItem(
         titleWidget: EmojiHeader("💦"),
-        message:
-            "Spraying alcohol or chlorine all over your body WILL NOT kill viruses that have already entered your body",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem11,
       ),
       ListItem(
         titleWidget: EmojiHeader("💉"),
-        message:
-            "Vaccines against pneumonia, such as pneumococcal vaccine and Haemophilus influenzae type b (Hib) vaccine, DO NOT provide protection against the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem12,
       ),
       ListItem(
         titleWidget: EmojiHeader("👃"),
-        message:
-            "There is NO evidence that regularly rinsing the nose with saline has protected people from infection with the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem13,
       ),
       ListItem(
         titleWidget: EmojiHeader("🧄"),
-        message:
-            "Garlic is healthy but there is NO evidence from the current outbreak that eating garlic has protected people from the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem14,
       ),
       ListItem(
         titleWidget: EmojiHeader("💊"),
-        message:
-            "Antibiotics DO NOT work against viruses, antibiotics only work against bacteria",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem15,
       ),
       ListItem(
         titleWidget: EmojiHeader("🧪"),
-        message:
-            "To date, there is NO specific medicine recommended to prevent or treat the coronavirus",
+        message: S.of(context).whoMythBustersListOfItemsPageListItem16,
       ),
     ]);
   }
