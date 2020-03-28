@@ -3,12 +3,15 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 
 class HomePage extends StatelessWidget {
+  final FirebaseAnalytics analytics;
+  HomePage(this.analytics);
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -33,8 +36,11 @@ class HomePage extends StatelessWidget {
                 PageButton(
                   Color(0xff3b8bc4),
                   S.of(context).homePagePageButtonProtectYourself,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                  () {
+                    analytics.logEvent(name: 'Protect_Yourself');
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => ProtectYourself()));
+                  },
                 ),
                 PageButton(
                   Color(0xfff6c35c),
@@ -75,8 +81,14 @@ class HomePage extends StatelessWidget {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => Share.share(
-                      'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
+                  onTap: () {
+                    analytics.logShare(
+                        contentType: 'App',
+                        itemId: null,
+                        method: 'Website link');
+                    return Share.share(
+                        'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app');
+                  },
                 ),
                 ListTile(
                   title:
