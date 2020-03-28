@@ -17,7 +17,7 @@ screens:
         Throw tissue into closed bin immediately after use
   - type: TextImage
     bottomImageUri: placeholder/protect/washHands.png
-    bodyTexts:
+    bodyTexts:å
       - >
         Wash your hands frequently
   - type: TextImage
