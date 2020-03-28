@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
-class ListOfItemsPage extends StatelessWidget {
+class ListOfItems extends StatelessWidget {
   final List<ListItem> listOfItems;
-  ListOfItemsPage(this.listOfItems);
+  ListOfItems(this.listOfItems);
 
   @override
   Widget build(BuildContext context) {

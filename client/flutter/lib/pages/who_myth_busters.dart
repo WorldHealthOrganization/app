@@ -1,11 +1,11 @@
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/listViewPage.dart';
+import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:flutter/material.dart';
 
 class WhoMythBusters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListOfItemsPage([
+    return ListOfItems([
       ListItem(
         titleWidget: EmojiHeader("🧠"),
         message: S.of(context).whoMythBustersListOfItemsPageListItem1,
