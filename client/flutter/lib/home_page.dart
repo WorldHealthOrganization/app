@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/page_button.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
@@ -6,11 +7,22 @@ import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:share/share.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness:
+          Platform.isAndroid ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarDividerColor: Colors.grey,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ));
+
     return PageScaffold(
         body: Column(
       mainAxisSize: MainAxisSize.max,
