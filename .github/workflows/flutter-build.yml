@@ -1,4 +1,4 @@
-name: Flutter build
+name: Client build
 on:
   push:
     paths:
