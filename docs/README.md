@@ -42,7 +42,7 @@ We are assessing the feature roadmap (contact tracing and more) for the next and
 
 GitHub: https://github.com/WorldHealthOrganization/app
 
-Slack: https://who-app.slack.com/
+Slack: https://who-app.slack.com/ _New invitations are currently closed_
 
 
 ## References
