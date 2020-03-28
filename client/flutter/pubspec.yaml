@@ -34,5 +34,17 @@ flutter:
   assets:
     - assets/
 
+  fonts:
+    - family: SFProDisplay
+      fonts:
+        - asset: assets/fonts/SFProDisplay-Regular.ttf
+        - asset: assets/fonts/SFProDisplay-SemiBold.ttf
+          weight: 800
+    - family: SFProText
+      fonts:
+        - asset: assets/fonts/SFProText-Regular.ttf
+        - asset: assets/fonts/SFProText-SemiBold.ttf
+          weight: 700
+
 flutter_intl:
   enabled: true
