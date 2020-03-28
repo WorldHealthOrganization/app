@@ -18,9 +18,12 @@ class HomePage extends StatelessWidget {
         child: SafeArea(
           child: CustomScrollView(slivers: [
             SliverAppBar(
-                expandedHeight: 110,
-                backgroundColor: Colors.white,
-                flexibleSpace: Image.asset("assets/WHO.jpg")),
+              expandedHeight: 110,
+              backgroundColor: Colors.white,
+              flexibleSpace: Image.asset("assets/WHO.jpg"),
+              floating: false,
+              snap: false,
+            ),
             SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
