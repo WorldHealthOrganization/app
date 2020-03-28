@@ -1,11 +1,16 @@
 // import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:WHOFlutter/rive_animation.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
-final normal = TextStyle(color: Colors.black, fontSize: 16);
-final bold = TextStyle(
+const whoBlue = Color(0xFF3D8BCC);
+const normal = TextStyle(color: Colors.black, fontSize: 16);
+const header = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.w800,
+  fontSize: 24,
+);
+const bold = TextStyle(
   color: Colors.black,
   fontSize: 16,
   fontWeight: FontWeight.bold,
@@ -15,35 +20,26 @@ class ProtectYourself extends StatelessWidget {
   Widget get _placeholder => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: Colors.blue,
+          color: whoBlue,
         ),
       );
 
-  Widget get _washHandsAnimation => AspectRatio(
+  Widget _getAnimation(String animationName) => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: Colors.blue,
+          color: whoBlue,
           child: RiveAnimation(
             'assets/protect.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
-            animation: 'Hands',
+            animation: animationName,
           ),
         ),
       );
 
-  Widget get _coverMouthAnimation => AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Container(
-          color: Colors.blue,
-          child: RiveAnimation(
-            'assets/protect.flr',
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            animation: 'Cover',
-          ),
-        ),
-      );
+  Widget get _washHandsAnimation => _getAnimation('Hands');
+
+  Widget get _coverMouthAnimation => _getAnimation('Cover');
 
   RichText get _washHandsMessage => RichText(
         text: TextSpan(
@@ -122,19 +118,30 @@ class ProtectYourself extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: Text(
               'General Recommendations',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
+              style: header,
             ),
           ),
         ),
         ProtectYourselfCard(
-            message: _washHandsMessage, child: _washHandsAnimation),
-        ProtectYourselfCard(message: _avoidEyesMessage, child: _placeholder),
-        ProtectYourselfCard(message: _coverMouth, child: _coverMouthAnimation),
-        ProtectYourselfCard(message: _distanceMessage, child: _placeholder),
-        ProtectYourselfCard(message: _maskMessage, child: _placeholder),
+          message: _washHandsMessage,
+          child: _washHandsAnimation,
+        ),
+        ProtectYourselfCard(
+          message: _avoidEyesMessage,
+          child: _placeholder,
+        ),
+        ProtectYourselfCard(
+          message: _coverMouth,
+          child: _coverMouthAnimation,
+        ),
+        ProtectYourselfCard(
+          message: _distanceMessage,
+          child: _placeholder,
+        ),
+        ProtectYourselfCard(
+          message: _maskMessage,
+          child: _placeholder,
+        ),
       ],
     );
   }
@@ -151,7 +158,11 @@ class ProtectYourselfCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(
+        top: 24,
+        left: 24,
+        right: 24,
+      ),
       child: Card(
         elevation: 0,
         color: Colors.white,
@@ -169,12 +180,13 @@ class ProtectYourselfCard extends StatelessWidget {
               ),
               child: child,
             ),
-            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 20,
+              ),
               child: message,
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),
