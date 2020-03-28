@@ -7,9 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 
 void main() {
-  final TestWidgetsFlutterBinding binding =
-      TestWidgetsFlutterBinding.ensureInitialized();
-
   Widget testableWidget() {
     return MaterialApp(
       title: "WHO",
@@ -24,33 +21,34 @@ void main() {
     );
   }
 
-  testWidgets('ProtectYourself page is rendered properly',
+  testWidgets('ProtectYourself Page is rendered Properly',
       (WidgetTester tester) async {
-    // Increasing the default viewport size to avoid RenderFlex overflow error
-    await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(testableWidget());
-    await tester.pumpAndSettle(Duration(seconds: 1));
-    expect(find.byType(Image), findsOneWidget);
+    await tester.pumpAndSettle();
+
     expect(find.text('Wash your hands with soap and running water frequently'),
         findsOneWidget);
+    expect(find.byIcon(Icons.share), findsOneWidget);
   });
 
-  testWidgets('ProtectYourself page carousel is working correctly',
+  testWidgets('ProtectYourself page Sliver List is working correctly',
       (WidgetTester tester) async {
-    // Increasing the default viewport size to avoid RenderFlex overflow error
-    await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(testableWidget());
-    await tester.pumpAndSettle(Duration(seconds: 1));
-    // Performs Swipe Left action
-    await tester.fling(find.byType(PageView), Offset(-100, 0), 800);
     await tester.pumpAndSettle();
-    // Once we have swiped left, we should be able to read the text of second page
-    expect(
-        find.text('Avoid touching your eyes, mouth, and nose'), findsOneWidget);
-    // Performs Swipe Right action
-    await tester.fling(find.byType(PageView), Offset(500, 0), 800);
-    await tester.pump();
-    // Once we have swiped right, we should be able to read the text of first page.
+
+    // Performs Scroll up action
+    await tester.flingFrom(Offset(400, 400), Offset(0, -400), 800);
+    await tester.pumpAndSettle();
+
+    // Once we have scrolled up, we should be able to read the first text
+    expect(find.text('Wash your hands with soap and running water frequently'),
+        findsNothing);
+
+    // Performs Scroll down action
+    await tester.flingFrom(Offset(400, 400), Offset(0, 400), 800);
+    await tester.pumpAndSettle();
+
+    // Once we have scrolled down, we should be able to read the first text.
     expect(find.text('Wash your hands with soap and running water frequently'),
         findsOneWidget);
   });
