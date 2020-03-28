@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/components/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
@@ -45,7 +46,7 @@ class HomePage extends StatelessWidget {
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
                   () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -78,7 +79,8 @@ class HomePage extends StatelessWidget {
                       'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
                 ),
                 ListTile(
-                  title: Text(S.of(context).homePagePageSliverListProvideFeedback),
+                  title:
+                      Text(S.of(context).homePagePageSliverListProvideFeedback),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {},
                 ),
@@ -87,8 +89,9 @@ class HomePage extends StatelessWidget {
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => showAboutDialog(
                       context: context,
-                      applicationLegalese: S.of(context).homePagePageSliverListAboutTheAppDialog
-                  ),
+                      applicationLegalese: S
+                          .of(context)
+                          .homePagePageSliverListAboutTheAppDialog),
                 )
               ]),
             ),
@@ -119,8 +122,8 @@ class PageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.borderRadius)),
       color: backgroundColor,
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical:15.0, horizontal: 8.0),
-            child: Column(
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: this.centerItems
                 ? MainAxisAlignment.center
