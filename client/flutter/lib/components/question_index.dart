@@ -21,7 +21,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   void initStateAsync() async {
     // Fetch the dynamic query data. This is a placeholder.
     _questions = await QuestionData.questions();
-    setState(() { });
+    setState(() {});
   }
 
   @override
@@ -36,22 +36,17 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
+            iconTheme: IconThemeData(
+              color: Colors.black,
+            ),
             backgroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
                 background: SafeArea(
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    // TODO: Should we have to add our own back button here?
-                    IconButton(
-                      icon: Icon(Icons.arrow_back, size: 24),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
                     Image.asset("assets/WHO.jpg", width: 300),
-                    SizedBox(width: 24)
                   ]),
             )),
             expandedHeight: 120,
