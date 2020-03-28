@@ -4,16 +4,22 @@ import 'package:WHOFlutter/rive_animation.dart';
 import 'package:flutter/material.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
-const normal = TextStyle(color: Colors.black, fontSize: 16);
+const normal = TextStyle(
+  fontFamily: 'SFProText',
+  color: Colors.black,
+  fontSize: 16,
+);
+const bold = TextStyle(
+  fontFamily: 'SFProText',
+  color: Colors.black,
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+);
 const header = TextStyle(
+  fontFamily: 'SFProDisplay',
   color: Colors.black,
   fontWeight: FontWeight.w800,
   fontSize: 24,
-);
-const bold = TextStyle(
-  color: Colors.black,
-  fontSize: 16,
-  fontWeight: FontWeight.bold,
 );
 
 class ProtectYourself extends StatelessWidget {
@@ -29,7 +35,7 @@ class ProtectYourself extends StatelessWidget {
         child: Container(
           color: whoBlue,
           child: RiveAnimation(
-            'assets/protect.flr',
+            'assets/animations/protect.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
             animation: animationName,
