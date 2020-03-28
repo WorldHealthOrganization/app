@@ -1,6 +1,8 @@
+import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/question_index.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
@@ -9,7 +11,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    _initStateAsync();
+  }
+
+  void _initStateAsync() async {
+    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+    if (!onboardingComplete) {
+      // TODO: This should be a bottom-up slide.
+      await Navigator.of(context)
+          .push(MaterialPageRoute(builder: (c) => LocationSharing()));
+      await UserPreferences().setOnboardingCompleted(true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -57,7 +80,7 @@ class HomePage extends StatelessWidget {
                   ),
                   description:
                       "Learn the facts about Coronavirus and how to prevent the spread",
-                  centerItems: true,
+                  centerVertical: true,
                 ),
                 PageButton(
                   Color(0xffba4344),
@@ -65,7 +88,7 @@ class HomePage extends StatelessWidget {
                   () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
                   borderRadius: 50,
-                  centerItems: true,
+                  centerVertical: true,
                 ),
               ],
               mainAxisSpacing: 15.0,
@@ -104,17 +127,25 @@ class HomePage extends StatelessWidget {
 }
 
 class PageButton extends StatelessWidget {
-  const PageButton(this.backgroundColor, this.title, this.onPressed,
-      {this.description = "",
-      this.borderRadius = 25.0,
-      this.centerItems = false});
-
   final Color backgroundColor;
   final String title;
   final String description;
   final double borderRadius;
   final Function onPressed;
-  final bool centerItems;
+  final bool centerVertical;
+  final bool centerHorizontal;
+  final TextStyle titleStyle;
+
+  const PageButton(
+    this.backgroundColor,
+    this.title,
+    this.onPressed, {
+    this.description = "",
+    this.borderRadius = 25.0,
+    this.centerVertical = false,
+    this.centerHorizontal = false,
+    this.titleStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +156,10 @@ class PageButton extends StatelessWidget {
       child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: this.centerItems
+            crossAxisAlignment: this.centerHorizontal
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+            mainAxisAlignment: this.centerVertical
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.end,
             children: <Widget>[
@@ -134,7 +167,7 @@ class PageButton extends StatelessWidget {
                 this.title,
                 textScaleFactor: 1.0 + 0.5 * contentScale(context),
                 textAlign: TextAlign.left,
-                style: TextStyle(fontWeight: FontWeight.w900),
+                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w900),
               ),
               SizedBox(height: 4),
               this.description.isNotEmpty
