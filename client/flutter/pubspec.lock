@@ -90,7 +90,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.1"
+    version: "0.16.0"
   matcher:
     dependency: transitive
     description:
@@ -147,6 +147,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  scrolling_page_indicator:
+    dependency: "direct main"
+    description:
+      name: scrolling_page_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   share:
     dependency: "direct main"
     description:
@@ -200,7 +207,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.15"
+    version: "0.2.11"
   typed_data:
     dependency: transitive
     description:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/page_scaffold.dart';
 import 'package:flutter/rendering.dart';
-import 'package:page_view_indicator/page_view_indicator.dart';
+import 'package:scrolling_page_indicator/scrolling_page_indicator.dart';
 
 class CarouselSlide extends StatelessWidget {
   final Widget titleWidget;
@@ -102,25 +102,16 @@ class CarouselView extends StatelessWidget {
           constraints: BoxConstraints(maxWidth: width * 0.75),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: PageViewIndicator(
-              pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
-              normalBuilder: (animationController, index) => Circle(
-                size: 8.0,
-                color: Colors.grey,
-              ),
-              highlightedBuilder: (animationController, index) =>
-                  ScaleTransition(
-                scale: CurvedAnimation(
-                  parent: animationController,
-                  curve: Curves.ease,
-                ),
-                child: Circle(
-                  size: 10.0,
-                  color: Constants.primaryColor,
-                ),
-              ),
-            ),
+            child:ScrollingPageIndicator(
+              dotColor: Colors.grey,
+              dotSelectedColor: Colors.blueAccent,
+              dotSize: 8,
+              dotSelectedSize: 14,
+              dotSpacing: 20,
+              controller: pageController,
+              itemCount: items.length,
+              
+            )
           ),
         ),
       ],
