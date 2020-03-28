@@ -29,8 +29,7 @@ void main() {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
     await tester.pumpWidget(testableWidget(child: WhoMythBusters()));
-    await tester.pumpAndSettle(Duration(seconds: 1));
-    expect(find.byType(Image), findsOneWidget);
+    await tester.pumpAndSettle();
     expect(
         find.text(
             'There is a lot of false information around. These are the facts'),
@@ -44,7 +43,7 @@ void main() {
     await tester.pumpWidget(testableWidget(child: WhoMythBusters()));
     await tester.pumpAndSettle(Duration(seconds: 1));
     // Performs Swipe Left action
-    await tester.fling(find.byType(PageView), Offset(-100, 0), 800);
+    await tester.flingFrom(Offset(400, 400), Offset(-100, 0), 800);
     await tester.pumpAndSettle();
     // Once we have swiped left, we should be able to read the text of second page
     expect(
@@ -54,7 +53,7 @@ void main() {
             'with the virus'),
         findsOneWidget);
     // Performs Swipe Right action
-    await tester.fling(find.byType(PageView), Offset(100, 0), 800);
+    await tester.flingFrom(Offset(400, 400), Offset(100, 0), 800);
     await tester.pumpAndSettle();
     // Once we have swiped right, we should be able to read the text of first page.
     expect(
