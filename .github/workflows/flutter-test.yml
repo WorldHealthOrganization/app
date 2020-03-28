@@ -1,4 +1,4 @@
-name: Flutter Test
+name: Flutter Test SHOULD NOT SEE THIS
 on:
   push:
     paths:
@@ -23,6 +23,7 @@ jobs:
           java-version: '12.x'
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: echo Test
       - run: flutter pub get
         working-directory: ./client/flutter
       - run: flutter analyze --no-pub
