@@ -6,7 +6,7 @@ on:
       - 'client/flutter/**'
 jobs:
   buildios:
-    name: Build ios
+    name: Build iOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
   buildandroid:
-    name: Build android
+    name: Build Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
