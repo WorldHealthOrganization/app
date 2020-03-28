@@ -1,5 +1,6 @@
-import 'package:WHOFlutter/generated/l10n.dart';
+// import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 final normal = TextStyle(color: Colors.black, fontSize: 16);
@@ -17,10 +18,29 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  Widget get _washHands => AspectRatio(
+  Widget get _washHandsAnimation => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
           color: Colors.blue,
+          child: FlareActor(
+            'assets/protect.flr',
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            animation: 'Hands',
+          ),
+        ),
+      );
+
+  Widget get _coverMouthAnimation => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+          child: FlareActor(
+            'assets/protect.flr',
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            animation: 'Cover',
+          ),
         ),
       );
 
@@ -79,9 +99,6 @@ class ProtectYourself extends StatelessWidget {
               text: '1 meter (>3 feet) away from a person who is sick',
               style: bold,
             ),
-            TextSpan(
-                text: ' with your bent elbow or tissue'
-                    ' when you cough or sneeze'),
           ],
         ),
       );
@@ -111,9 +128,10 @@ class ProtectYourself extends StatelessWidget {
             ),
           ),
         ),
-        ProtectYourselfCard(message: _washHandsMessage, child: _washHands),
+        ProtectYourselfCard(
+            message: _washHandsMessage, child: _washHandsAnimation),
         ProtectYourselfCard(message: _avoidEyesMessage, child: _placeholder),
-        ProtectYourselfCard(message: _coverMouth, child: _placeholder),
+        ProtectYourselfCard(message: _coverMouth, child: _coverMouthAnimation),
         ProtectYourselfCard(message: _distanceMessage, child: _placeholder),
         ProtectYourselfCard(message: _maskMessage, child: _placeholder),
       ],

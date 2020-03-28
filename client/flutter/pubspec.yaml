@@ -15,6 +15,7 @@ dependencies:
   page_view_indicator: ^2.0.4
   flutter_staggered_grid_view: ^0.3.0
   flutter_html: ^0.11.1
+  flare_flutter: ^2.0.1
 
   intl: ^0.16.0
   flutter_localizations:
