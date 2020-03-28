@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/components/question_index.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
@@ -131,15 +132,16 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.5,
+                textScaleFactor: 1.0 + 0.5 * contentScale(context),
                 textAlign: TextAlign.left,
                 style: TextStyle(fontWeight: FontWeight.w900),
               ),
+              SizedBox(height: 4),
               this.description.isNotEmpty
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
-                      textScaleFactor: 1.35,
+                      textScaleFactor: 0.9 + 0.45 * contentScale(context),
                       style: TextStyle(fontWeight: FontWeight.w400),
                     )
                   : Container()
