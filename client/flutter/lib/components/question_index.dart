@@ -83,7 +83,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
     );
   }
 
-  // flutter_hmtl supports a subset of html: https://pub.dev/packages/flutter_html
+  // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
     return Html(
       data: html,
