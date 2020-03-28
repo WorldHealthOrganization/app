@@ -3,40 +3,50 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PageButton extends StatelessWidget {
-  const PageButton({
-    Key key,
-    @required this.title,
-    @required this.onPressed,
-    this.lightColor = false,
-  }) : super(key: key);
+  const PageButton(this.backgroundColor, this.title, this.onPressed,
+      {this.description = "",
+      this.borderRadius = 25.0,
+      this.centerItems = false});
 
+  final Color backgroundColor;
   final String title;
+  final String description;
+  final double borderRadius;
   final Function onPressed;
-  final bool lightColor;
+  final bool centerItems;
 
   @override
   Widget build(BuildContext context) {
-    double scale = contentScale(context);
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-            side: BorderSide(
-                color: Constants.primaryColor,
-                width: 1.5,
-                style: BorderStyle.solid),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
-        padding: EdgeInsets.all(16.0 + 16.0 * (scale - 1.0)),
-        onPressed: onPressed,
-        color: lightColor ? Colors.white : Constants.primaryColor,
-        child: Text(
-          title,
-          textScaleFactor: scale * 1.2,
-          style: TextStyle(
-              color: lightColor ? Constants.primaryColor : Colors.white),
-        ),
-      ),
+    return FlatButton(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(this.borderRadius)),
+      color: backgroundColor,
+      child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: this.centerItems
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                this.title,
+                textScaleFactor: 1.0 + 0.5 * contentScale(context),
+                textAlign: TextAlign.left,
+                style: TextStyle(fontWeight: FontWeight.w900),
+              ),
+              SizedBox(height: 4),
+              this.description.isNotEmpty
+                  ? Text(
+                      this.description,
+                      textAlign: TextAlign.left,
+                      textScaleFactor: 0.9 + 0.45 * contentScale(context),
+                      style: TextStyle(fontWeight: FontWeight.w400),
+                    )
+                  : Container()
+            ],
+          )),
+      onPressed: this.onPressed,
     );
   }
 }
-
