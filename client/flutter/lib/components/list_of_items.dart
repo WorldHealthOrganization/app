@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class ListOfItems extends StatelessWidget {
-  final List<ListItem> listOfItems;
+  final List<Widget> listOfItems;
   ListOfItems(this.listOfItems);
 
   @override
@@ -29,14 +29,17 @@ class ListOfItems extends StatelessWidget {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: EdgeInsets.only(right: 20),
-                    child: IconButton(
-                      onPressed: () => Share.share('Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
-                      icon: Icon(Icons.share, size: 22,)
-                    ),
-                  )),
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      padding: EdgeInsets.only(right: 20),
+                      child: IconButton(
+                          onPressed: () => Share.share(
+                              'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
+                          icon: Icon(
+                            Icons.share,
+                            size: 22,
+                          )),
+                    )),
               ))),
         ],
       ),
