@@ -68,14 +68,11 @@ Check how we stack up against these principles (qualitative evaluation, [details
   - [ ] stopping code churn
   - [ ] finalizing release in Github
   - [ ] pushing build from GitHub to WHO
-- [ ] :construction: Upload all assets needed to Google Drive
-  - ‼️ Note that this should include all source code, not just binaries ‼️
+- [ ] Upload all assets needed to Google Drive
 - [ ] WHO will **build and sign** (.apk/.ipa) the binaries using **their keys**
 - [ ] WHO will fill in store information and upload .apk/.ipa
 
-## Alpha testing (iOS only)
-
-:construction: Can be removed if we don't use TestFlight ([discussion](https://github.com/WorldHealthOrganization/app/issues/132))
+## Alpha testing (iOS, for native code changes only)
 
 **[TestFlight requires a simplified version of app store review for > 25 people](https://developer.apple.com/testflight/), so we should alpha test at least on iOS with a small group before submission** 
 
