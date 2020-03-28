@@ -10,7 +10,21 @@ final bold = TextStyle(
 );
 
 class ProtectYourself extends StatelessWidget {
-  RichText get _washHands => RichText(
+  Widget get _placeholder => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+        ),
+      );
+
+  Widget get _washHands => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: Colors.blue,
+        ),
+      );
+
+  RichText get _washHandsMessage => RichText(
         text: TextSpan(
           style: normal,
           children: <TextSpan>[
@@ -25,7 +39,7 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  RichText get _avoidEyes => RichText(
+  RichText get _avoidEyesMessage => RichText(
         text: TextSpan(
           // text: 'Wash your hands frequently',
           style: normal,
@@ -55,7 +69,7 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  RichText get _distance => RichText(
+  RichText get _distanceMessage => RichText(
         text: TextSpan(
           // text: 'Wash your hands frequently',
           style: normal,
@@ -72,7 +86,7 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  RichText get _mask => RichText(
+  RichText get _maskMessage => RichText(
         text: TextSpan(
           text: 'Only wear a mask if you or someone you'
               ' are looking after are ill with COVID-19 symptoms'
@@ -97,11 +111,11 @@ class ProtectYourself extends StatelessWidget {
             ),
           ),
         ),
-        ProtectYourselfCard(message: _washHands),
-        ProtectYourselfCard(message: _avoidEyes),
-        ProtectYourselfCard(message: _coverMouth),
-        ProtectYourselfCard(message: _distance),
-        ProtectYourselfCard(message: _mask),
+        ProtectYourselfCard(message: _washHandsMessage, child: _washHands),
+        ProtectYourselfCard(message: _avoidEyesMessage, child: _placeholder),
+        ProtectYourselfCard(message: _coverMouth, child: _placeholder),
+        ProtectYourselfCard(message: _distanceMessage, child: _placeholder),
+        ProtectYourselfCard(message: _maskMessage, child: _placeholder),
       ],
     );
   }
@@ -109,9 +123,11 @@ class ProtectYourself extends StatelessWidget {
 
 class ProtectYourselfCard extends StatelessWidget {
   const ProtectYourselfCard({
-    this.message,
+    @required this.message,
+    @required this.child,
   });
   final RichText message;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -125,19 +141,22 @@ class ProtectYourselfCard extends StatelessWidget {
             Radius.circular(15),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Placeholder(),
+        child: Column(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
-              const SizedBox(height: 20),
-              message,
-              const SizedBox(height: 20),
-            ],
-          ),
+              child: child,
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: message,
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );
