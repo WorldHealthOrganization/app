@@ -1,4 +1,3 @@
-import 'package:WHOFlutter/components/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
