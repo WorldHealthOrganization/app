@@ -6,6 +6,11 @@
   "homePagePageButtonLatestNumbers": "Cifras más recientes",
   "homePagePageButtonYourQuestionsAnswered": "Sus preguntas respondidas",
   "homePagePageButtonWHOMythBusters": "QUIÉN es el mito-Busters",
+  "homePagePageButtonTravelAdvice": "Consejo de viaje",
+  "homePagePageSliverListShareTheApp": "Compartir la aplicación",
+  "homePagePageSliverListProvideFeedback": "Proporcionar comentarios de la aplicación",
+  "homePagePageSliverListAboutTheApp": "Acerca de la aplicación",
+  "homePagePageSliverListAboutTheAppDialog": "La aplicación oficial COVID-19 de la Organización Mundial de la salud.",
   "@section": "Project Yourself Section",
   "protectYourselfListOfItemsPageListItem1": "Lave las manos con agua corriente y jabón con frecuencia",
   "protectYourselfListOfItemsPageListItem2": "Evita tocar los ojos, la boca y la nariz",
@@ -26,7 +31,7 @@
   "travelAdviceListOfItemsPageListItem9": "Siga las prácticas de higiene alimentaria adecuadas",
   "travelAdviceListOfItemsPageListItem10": "Use solo una máscara si está enfermo con síntomas COVID-19 (especialmente tos) o cuidando a alguien que pueda tener CÓVIDO-19",
   "travelAdviceListOfItemsPageListItem11": "Los viajeros que regresen de las zonas afectadas deberán:",
-  "travelAdviceListOfItemsPageListItem12": "Automonitorear los síntomas durante 14 días y seguir los protocolos nacionales de los países receptores. Algunos países pueden requerir que los viajeros que regresan entren en cuarentena",
+  "travelAdviceListOfItemsPageListItem12": "Automonitoree los síntomas durante 14 días y siga los protocolos nacionales de los países receptores. Algunos países pueden requerir que los viajeros que regresan entren en cuarentena",
   "travelAdviceListOfItemsPageListItem13": "Los lectores térmicos PUEDEN detectar si la gente tiene fiebre pero no pueden detectar si alguien tiene coronavirus o no",
   "travelAdviceListOfItemsPageListItem14": "Si se producen síntomas, como fiebre, tos o dificultad para respirar, se aconseja a los viajeros que se pongan en contacto con los proveedores de atención médica locales, preferiblemente por teléfono, y que les informen de sus síntomas y de su historial de viaje.",
   "@section": "WHO Myth-busters Page",
@@ -48,5 +53,4 @@
   "whoMythBustersListOfItemsPageListItem16": "Hasta la fecha, NO se recomienda ningún medicamento específico para prevenir o tratar los coronavirus",
   "@section": "Health Check",
   "healthCheckTitle": "Control de salud"
-
 }

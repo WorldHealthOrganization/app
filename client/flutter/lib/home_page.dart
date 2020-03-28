@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                 ),
                 PageButton(
                   Color(0xffba4344),
-                  S.of(context).travelAdvice,
+                  S.of(context).homePagePageButtonTravelAdvice,
                   () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
                   borderRadius: 50,
@@ -72,23 +72,23 @@ class HomePage extends StatelessWidget {
             SliverList(
               delegate: SliverChildListDelegate.fixed([
                 ListTile(
-                  title: Text(S.of(context).shareTheApp),
+                  title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => Share.share(
                       'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
                 ),
                 ListTile(
-                  title: Text("Provide app feedback"),
+                  title: Text(S.of(context).homePagePageSliverListProvideFeedback),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {},
                 ),
                 ListTile(
-                  title: Text("About the app"),
+                  title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => showAboutDialog(
                       context: context,
-                      applicationLegalese:
-                          "The official World Health Organization COVID-19 App."),
+                      applicationLegalese: S.of(context).homePagePageSliverListAboutTheAppDialog
+                  ),
                 )
               ]),
             ),

@@ -6,6 +6,11 @@
   "homePagePageButtonLatestNumbers": "Последние цифры",
   "homePagePageButtonYourQuestionsAnswered": "Ответы на ваши вопросы",
   "homePagePageButtonWHOMythBusters": "КТО миф-бастеры",
+  "homePagePageButtonTravelAdvice": "Советы по путешествиям",
+  "homePagePageSliverListShareTheApp": "Поделиться приложением",
+  "homePagePageSliverListProvideFeedback": "Предоставить отзыв о приложении",
+  "homePagePageSliverListAboutTheApp": "О приложении",
+  "homePagePageSliverListAboutTheAppDialog": "Официальное приложение для Всемирной организации здравоохранения COVID-19.",
   "@section": "Project Yourself Section",
   "protectYourselfListOfItemsPageListItem1": "Часто мойте руки мылом и проточной водой",
   "protectYourselfListOfItemsPageListItem2": "Не касайтесь глаз, рта и носа",
@@ -48,5 +53,4 @@
   "whoMythBustersListOfItemsPageListItem16": "На сегодняшний день не существует каких-либо специальных препаратов, рекомендуемых для профилактики или лечения коронавируса",
   "@section": "Health Check",
   "healthCheckTitle": "Проверка состояния здоровья"
-
 }

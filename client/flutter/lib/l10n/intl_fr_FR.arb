@@ -6,6 +6,11 @@
   "homePagePageButtonLatestNumbers": "Derniers chiffres",
   "homePagePageButtonYourQuestionsAnswered": "Réponses à vos Questions",
   "homePagePageButtonWHOMythBusters": "Qui se trompent",
+  "homePagePageButtonTravelAdvice": "Conseils de voyage",
+  "homePagePageSliverListShareTheApp": "Partager l'application",
+  "homePagePageSliverListProvideFeedback": "Fournir des commentaires sur l'application",
+  "homePagePageSliverListAboutTheApp": "À propos de l'application",
+  "homePagePageSliverListAboutTheAppDialog": "L'application - 19 OFFICIELLE de l'Organisation mondiale de la santé.",
   "@section": "Project Yourself Section",
   "protectYourselfListOfItemsPageListItem1": "Lavez-vous les mains avec du savon et de l'eau courante",
   "protectYourselfListOfItemsPageListItem2": "Évitez de toucher les yeux, la bouche et le nez",
@@ -26,11 +31,11 @@
   "travelAdviceListOfItemsPageListItem9": "Suivre les bonnes pratiques d'hygiène alimentaire",
   "travelAdviceListOfItemsPageListItem10": "Ne portez un masque que si vous êtes malade (e) avec des symptômes GROSSIERS-19 (surtout la toughing) ou si vous prenez soin de quelqu'un qui peut avoir une consistance-19",
   "travelAdviceListOfItemsPageListItem11": "Les voyageurs revenant des zones touchées doivent :",
-  "travelAdviceListOfItemsPageListItem12": "Auto-Surveillez les symptômes pendant 14 jours et suivez les protocoles nationaux des pays de destination. Certains pays peuvent exiger que les voyageurs rentrant chez eux entrent dans la quarantaine",
+  "travelAdviceListOfItemsPageListItem12": "Auto-Surveillez les symptômes pendant 14 jours et suivez les protocoles nationaux des pays destinataires. Certains pays peuvent exiger que les voyageurs retournant chez eux entrent dans la quarantaine",
   "travelAdviceListOfItemsPageListItem13": "Les lecteurs thermiques PEUVENT détecter si les gens ont de la fièvre mais ne peuvent pas détecter si quelqu'un a ou non le coronavirus",
   "travelAdviceListOfItemsPageListItem14": "Si des symptômes se produisent, tels que la fièvre, la toux ou la difficulté à respirer, il est conseillé aux voyageurs de contacter les prestataires de soins de santé locaux, de préférence par téléphone, et de les informer de leurs symptômes et de leur historique de voyage",
   "@section": "WHO Myth-busters Page",
-  "whoMythBustersListOfItemsPageListItem1": "Il y a beaucoup de fausses informations autour de, ce sont les faits",
+  "whoMythBustersListOfItemsPageListItem1": "Il y a beaucoup de fausses informations autour de. Ce sont les faits",
   "whoMythBustersListOfItemsPageListItem2": "Les personnes de tous âges PEUVENT être infectées par le coronavirus. Les personnes âgées et les personnes souffrant de troubles médicaux préexistants (comme l'asthme, le diabète, les maladies cardiaques) semblent plus vulnérables pour tomber gravement malades avec le virus",
   "whoMythBustersListOfItemsPageListItem3": "Le froid et la neige ne peuvent pas tuer le coronavirus",
   "whoMythBustersListOfItemsPageListItem4": "Le coronavirus PEUT être transmis dans des régions aux climats chauds et humides",
@@ -48,5 +53,4 @@
   "whoMythBustersListOfItemsPageListItem16": "À ce jour, aucun médicament spécifique N'est recommandé pour prévenir ou traiter le coronavirus",
   "@section": "Health Check",
   "healthCheckTitle": "Bilan de santé"
-
 }

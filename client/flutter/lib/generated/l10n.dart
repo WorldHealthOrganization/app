@@ -74,6 +74,51 @@ class S {
     );
   }
 
+  String get homePagePageButtonTravelAdvice {
+    return Intl.message(
+      'Travel Advice',
+      name: 'homePagePageButtonTravelAdvice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListShareTheApp {
+    return Intl.message(
+      'Share The App',
+      name: 'homePagePageSliverListShareTheApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListProvideFeedback {
+    return Intl.message(
+      'Provide app feedback',
+      name: 'homePagePageSliverListProvideFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListAboutTheApp {
+    return Intl.message(
+      'About the app',
+      name: 'homePagePageSliverListAboutTheApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListAboutTheAppDialog {
+    return Intl.message(
+      'The official World Health Organization COVID-19 App.',
+      name: 'homePagePageSliverListAboutTheAppDialog',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get protectYourselfListOfItemsPageListItem1 {
     return Intl.message(
       'Wash your hands with soap and running water frequently',

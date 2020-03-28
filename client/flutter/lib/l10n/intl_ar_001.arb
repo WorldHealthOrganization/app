@@ -6,6 +6,11 @@
   "homePagePageButtonLatestNumbers": "أحدث الأرقام",
   "homePagePageButtonYourQuestionsAnswered": "الإجابة على أسئلةك",
   "homePagePageButtonWHOMythBusters": "هوو أسطورة-بوسترز",
+  "homePagePageButtonTravelAdvice": "نصائح السفر",
+  "homePagePageSliverListShareTheApp": "شارك التطبيق",
+  "homePagePageSliverListProvideFeedback": "تقديم تعقيب على التطبيق",
+  "homePagePageSliverListAboutTheApp": "نبذة عن التطبيق",
+  "homePagePageSliverListAboutTheAppDialog": "التطبيق الرسمي لمنظمة الصحة العالمية COVID-19.",
   "@section": "Project Yourself Section",
   "protectYourselfListOfItemsPageListItem1": "اغسل يديك بالصابون والماء الجاري بشكل متكرر",
   "protectYourselfListOfItemsPageListItem2": "تجنب لمس عينيك وفمك وأنفك",
@@ -26,7 +31,7 @@
   "travelAdviceListOfItemsPageListItem9": "اتباع الممارسات السليمة لالنظافة الصحية لالطعام",
   "travelAdviceListOfItemsPageListItem10": "لا ترتدي قناعًا إلا إذا كنت مريضًا بأعراض COVIDD-19 (لا سيما السعال) أو تعتني بشخص قد يعاني من السعال COVID-19",
   "travelAdviceListOfItemsPageListItem11": "ينبغي لالمسافرين الذين يعودون من المناطق المتأثرة القيام بما يلي:",
-  "travelAdviceListOfItemsPageListItem12": "مراقبة ذاتية لالأعراض لمدة 14 يومًا واتباع البروتوكولات الوطنية لالبلدان المُستقبلة. قد تطلب بعض الدول عودة المسافرين لدخول الحجر الصحي",
+  "travelAdviceListOfItemsPageListItem12": "مراقبة ذاتية لالأعراض لمدة 14 يومًا واتباع البروتوكولات الوطنية لالبلدان المُستقبلة. قد تطلب بعض البلدان عودة المسافرين لدخول الحجر الصحي",
   "travelAdviceListOfItemsPageListItem13": "الماسحات الحرارية يمكنها الكشف عما إذا كان الأشخاص يعانون من الحمى ولكنها لا يمكنها الكشف عما إذا كان شخص ما مصاب بفيروس كورونا أم لا",
   "travelAdviceListOfItemsPageListItem14": "في حالة ظهور أعراض مثل الحمى أو السعال أو صعوبة التنفس، ينصح المسافرون بالاتصال بمقدمي الرعاية الصحية المحليين ، ويفضل الاتصال بهم عن طريق الهاتف، وإبلاغهم بأعراضهم وتاريخ سفرهم",
   "@section": "WHO Myth-busters Page",
@@ -48,5 +53,4 @@
   "whoMythBustersListOfItemsPageListItem16": "حتى الآن، لا توجد أدوية محددة موصى بها لالوقاية من فيروس كورونا أو علاجه",
   "@section": "Health Check",
   "healthCheckTitle": "الفحص الصحي"
-
 }

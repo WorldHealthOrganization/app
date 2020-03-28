@@ -6,6 +6,11 @@
   "homePagePageButtonLatestNumbers": "最新数字",
   "homePagePageButtonYourQuestionsAnswered": "回答您的问题",
   "homePagePageButtonWHOMythBusters": "谁是神话大师",
+  "homePagePageButtonTravelAdvice": "旅行建议",
+  "homePagePageSliverListShareTheApp": "分享应用",
+  "homePagePageSliverListProvideFeedback": "提供应用反馈",
+  "homePagePageSliverListAboutTheApp": "关于应用",
+  "homePagePageSliverListAboutTheAppDialog": "世界卫生组织的官方核心-19 应用程序。",
   "@section": "Project Yourself Section",
   "protectYourselfListOfItemsPageListItem1": "经常用肥皂和自来水洗手",
   "protectYourselfListOfItemsPageListItem2": "避免触摸眼睛、口腔和鼻子",
@@ -26,11 +31,11 @@
   "travelAdviceListOfItemsPageListItem9": "遵循正确的食品卫生习惯",
   "travelAdviceListOfItemsPageListItem10": "只有当你生病时，才会戴面罩，这是 19 种症状（尤其是耦合症），或者只能照顾一个可能患有 COVALD-19 症状的人",
   "travelAdviceListOfItemsPageListItem11": "从受影响地区返回的旅客应：",
-  "travelAdviceListOfItemsPageListItem12": "14 天症状自我监测和遵守接收国的国家协议。有些国家可能需要回流旅客进入隔离",
+  "travelAdviceListOfItemsPageListItem12": "14 天症状自我监测，并遵循接收国的国家协议。有些国家可能需要返回的旅客进入隔离状态",
   "travelAdviceListOfItemsPageListItem13": "热扫描仪可以检测人们是否有发烧，但不能检测是否有人有玉米病毒",
   "travelAdviceListOfItemsPageListItem14": "如果出现症状，如发热、紧固或呼吸困难，我们建议旅客最好通过电话联系当地的医疗服务提供商，并告知他们自己的症状和旅行记录",
   "@section": "WHO Myth-busters Page",
-  "whoMythBustersListOfItemsPageListItem1": "上有很多虚假信息，这些都是事实",
+  "whoMythBustersListOfItemsPageListItem1": "关于有很多虚假信息。这些是事实",
   "whoMythBustersListOfItemsPageListItem2": "所有年龄的人都可能受到玉米病毒的感染。老年人和已经存在疾病的人（如哮喘、糖尿病、心脏病）似乎更容易受到病毒的严重感染",
   "whoMythBustersListOfItemsPageListItem3": "寒冷的天气和雪不能杀死玉米病毒",
   "whoMythBustersListOfItemsPageListItem4": "可以在气候炎热和潮湿的地区传播玉米病毒",
@@ -48,5 +53,4 @@
   "whoMythBustersListOfItemsPageListItem16": "到目前为止，没有建议用具体药物来预防或治疗 coronavis",
   "@section": "Health Check",
   "healthCheckTitle": "健康检查"
-
 }
