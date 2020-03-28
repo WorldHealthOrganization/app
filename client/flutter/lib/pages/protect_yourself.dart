@@ -1,5 +1,6 @@
 // import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
+import 'package:WHOFlutter/rive_animation.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class ProtectYourself extends StatelessWidget {
         aspectRatio: 16 / 9,
         child: Container(
           color: Colors.blue,
-          child: FlareActor(
+          child: RiveAnimation(
             'assets/protect.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
@@ -35,7 +36,7 @@ class ProtectYourself extends StatelessWidget {
         aspectRatio: 16 / 9,
         child: Container(
           color: Colors.blue,
-          child: FlareActor(
+          child: RiveAnimation(
             'assets/protect.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
