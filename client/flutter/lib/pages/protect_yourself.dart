@@ -1,7 +1,6 @@
 // import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
-import 'package:WHOFlutter/rive_animation.dart';
-import 'package:flare_flutter/flare_actor.dart';
+import 'package:WHOFlutter/components/rive_animation.dart';
 import 'package:flutter/material.dart';
 
 final normal = TextStyle(color: Colors.black, fontSize: 16);

@@ -17,6 +17,7 @@ dependencies:
   flutter_html: ^0.11.1
   visibility_detector: ^0.1.4
   flare_flutter: ^2.0.1
+  path_drawing: ^0.4.1
 
   intl: ^0.16.0
   flutter_localizations:
@@ -32,7 +33,6 @@ flutter:
 
   assets:
     - assets/
-    - assets/animations/
 
 flutter_intl:
   enabled: true

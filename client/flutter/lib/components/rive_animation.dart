@@ -25,11 +25,14 @@ class RiveAnimation extends StatefulWidget {
 }
 
 class _RiveAnimationState extends State<RiveAnimation> {
-  final Key _key = GlobalKey();
+  final GlobalKey _key = GlobalKey();
   bool _isPlaying = false;
 
   bool get isPlaying => _isPlaying;
   set isPlaying(bool value) {
+    if (!mounted) {
+      return;
+    }
     if (_isPlaying != value) {
       setState(() {
         _isPlaying = value;

@@ -1,9 +1,12 @@
+import 'package:WHOFlutter/components/back_arrow.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class ListOfItems extends StatelessWidget {
+  final String title;
+
   final List<Widget> listOfItems;
-  ListOfItems(this.listOfItems);
+  ListOfItems(this.listOfItems, {this.title = 'Provide Title'});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,51 @@ class ListOfItems extends StatelessWidget {
           CustomScrollView(
             slivers: [
               SliverAppBar(
-                flexibleSpace: Container(),
+                leading: SizedBox(),
+                flexibleSpace: ColoredBox(
+                  color: Colors.white,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => Navigator.pop(context),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: 15,
+                            right: 25,
+                            bottom: 20,
+                            top: 20,
+                          ),
+                          child: BackArrow(),
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              title,
+                              style: TextStyle(
+                                color: const Color(0xFF3D8BCC),
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'WHO Coronavirus App',
+                              style: TextStyle(
+                                color: const Color(0xFF050C1D),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 expandedHeight: 200,
               ),
               SliverList(
