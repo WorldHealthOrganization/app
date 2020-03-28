@@ -40,4 +40,4 @@ We are assessing the [feature roadmap](/docs/ROADMAP.md) for the next and subseq
 
 GitHub: https://github.com/WorldHealthOrganization/app
 
-Slack: https://who-app.slack.com/
+Slack: https://who-app.slack.com/ _New invitations are currently closed_
