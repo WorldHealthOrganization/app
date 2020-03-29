@@ -1,6 +1,6 @@
-import 'package:WHOFlutter/constants.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewWidget extends StatefulWidget {
   final String externalUrl;
@@ -14,18 +14,47 @@ class WebViewWidget extends StatefulWidget {
 }
 
 class _WebViewWidgetState extends State<WebViewWidget> {
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
+  Future _navigate(BuildContext context) async {
+    WebViewController webViewController = await _controller.future;
+
+    if (await webViewController.canGoBack()) {
+      await webViewController.goBack();
+    } else {
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(
-        url: widget.externalUrl,
-        withJavascript: true,
-        withZoom: false,
-        hidden: false,
-        appBar: AppBar(title: Text(widget.title), elevation: 1),
-        initialChild: Container(
-            color: Constants.backgroundColor,
-            child: const Center(
-              child: Text('Loading...'),
-            )));
+    return WillPopScope(
+      onWillPop: () => _navigate(context),
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+            actions: <Widget>[
+              // action button
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
+              )
+            ],
+          ),
+          body: Builder(builder: (BuildContext context) {
+            return WebView(
+                initialUrl: widget.externalUrl,
+                javascriptMode: JavascriptMode.unrestricted,
+                gestureNavigationEnabled: true,
+                onWebViewCreated: (WebViewController webViewController) {
+                  _controller.complete(webViewController);
+                });
+          })),
+    );
   }
 }
