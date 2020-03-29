@@ -70,6 +70,6 @@ class WhoMythBusters extends StatelessWidget {
         titleWidget: EmojiHeader("🧪"),
         message: S.of(context).whoMythBustersListOfItemsPageListItem16,
       ),
-    ]);
+    ], title:S.of(context).homePagePageButtonWHOMythBusters);
   }
 }
