@@ -4,10 +4,24 @@ import 'package:flutter/material.dart';
 
 class WhoMythBusters extends StatelessWidget {
   static const EdgeInsetsGeometry addedPadding = EdgeInsets.only(top: 20);
+
+  static Widget mapToPaddingWithDivider(widget) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Divider(),
+        Padding(
+          padding: addedPadding,
+          child: widget,
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListOfItems(
-        [
+        <Widget>[
           ListItem(
             titleWidget: EmojiHeader("🧠"),
             message: S.of(context).whoMythBustersListOfItemsPageListItem1,
@@ -74,20 +88,7 @@ class WhoMythBusters extends StatelessWidget {
           ),
           //ADD SIZED BOX to allow continue scrolling if bottom of screen is obstructed
           SizedBox(height: 20),
-        ]
-            .map(
-              (w) => Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Divider(),
-                  Padding(
-                    padding: addedPadding,
-                    child: w,
-                  )
-                ],
-              ),
-            )
-            .toList(),
+        ].map(mapToPaddingWithDivider).toList(),
         title: S.of(context).homePagePageButtonWHOMythBusters);
   }
 }
