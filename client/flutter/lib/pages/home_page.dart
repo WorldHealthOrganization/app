@@ -1,16 +1,20 @@
+import 'dart:io';
+
+import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/constants.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
-import 'package:WHOFlutter/pages/question_index.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
+import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -44,7 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,
@@ -91,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.whoMythbusters,
-                              title: S.of(context).homePagePageButtonWHOMythBusters,
+                              title: S
+                                  .of(context)
+                                  .homePagePageButtonWHOMythBusters,
                             )),
                   ),
                   description:
@@ -149,12 +155,13 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () =>
                         launch(S.of(context).homePagePageSliverListDonateUrl)),
               ),
-              ListTile(
-                leading: Icon(Icons.share),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Share.share(
-                    S.of(context).commonWhoAppShareIconButtonDescription),
+              Builder(
+                builder: (context) => ListTile(
+                  leading: Icon(Icons.share),
+                  title: Text(S.of(context).homePagePageSliverListShareTheApp),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () => _tryShareOrShowSnackBar(context),
+                ),
               ),
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
@@ -188,13 +195,34 @@ class _HomePageState extends State<HomePage> {
     // onboardingComplete = false;
 
     if (!onboardingComplete) {
-
       await Navigator.of(context).push(MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (c)=>OnboardingPage()
-      ));
+          fullscreenDialog: true, builder: (c) => OnboardingPage()));
 
       await UserPreferences().setOnboardingCompleted(true);
+    }
+  }
+
+  Future<void> _tryShareOrShowSnackBar(BuildContext context) async {
+    const url = 'https://www.who.int/covid-19-app';
+
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      await Share.share(S.of(context).commonWhoAppShareIconButtonDescription);
+    } else {
+      final snackBar = SnackBar(
+        backgroundColor: Constants.primaryColor,
+        duration: const Duration(seconds: 6),
+        action: SnackBarAction(
+          label: 'Open link',
+          onPressed: () async => await launch(url),
+        ),
+        content: Text('Link copied to clipboard.'),
+      );
+
+      await Clipboard.setData(ClipboardData(
+          text: S.of(context).commonWhoAppShareIconButtonDescription));
+      Scaffold.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     }
   }
 }

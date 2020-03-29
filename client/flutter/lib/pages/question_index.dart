@@ -1,11 +1,12 @@
 import 'dart:math';
+
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:url_launcher/url_launcher.dart';
 
 typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(
     BuildContext);
@@ -64,7 +65,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         .toList();
 
     return PageScaffold(
-      context,
       body: [
         items.isNotEmpty
             ? SliverList(
@@ -100,9 +100,10 @@ class _QuestionTileState extends State<QuestionTile>
   void initState() {
     super.initState();
     rotationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: pi/4);
-
-    
+        duration: const Duration(milliseconds: 200),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: pi / 4);
   }
 
   @override
@@ -115,9 +116,9 @@ class _QuestionTileState extends State<QuestionTile>
         ),
         ExpansionTile(
           onExpansionChanged: (expanded) {
-            if(expanded){
+            if (expanded) {
               rotationController.forward();
-            }else{
+            } else {
               rotationController.reverse();
             }
           },
@@ -125,8 +126,11 @@ class _QuestionTileState extends State<QuestionTile>
           trailing: AnimatedBuilder(
             animation: rotationController,
             child: Icon(Icons.add_circle_outline, color: Colors.grey),
-            builder: (context, child){
-              return Transform.rotate(angle: rotationController.value, child: child,);
+            builder: (context, child) {
+              return Transform.rotate(
+                angle: rotationController.value,
+                child: child,
+              );
             },
           ),
           title: html(widget.questionItem.title),
