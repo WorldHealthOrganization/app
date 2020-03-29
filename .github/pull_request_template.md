@@ -1,4 +1,5 @@
 **Please follow this checklist. Please check each appropriate box (put an 'x' or check it after creating the PR).**
+- [ ] REQUIRED: Do you have an Issue **assigned to you** within the v1 milestone for this PR?  Put the Issue number here:
 - [ ] Provided detailed pull request description and a succinct title (consider template below for guidance).
 - [ ] Tested your changes, especially after any code review iterations.
 - [ ] Included any relevant screenshots of UI updates.
