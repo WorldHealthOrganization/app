@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './home_page.dart';
+import 'package:intl/intl.dart';
+import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -34,11 +35,15 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
+        brightness: Brightness.light,
         buttonTheme: ButtonThemeData(
             buttonColor: Constants.primaryColor,
             textTheme: ButtonTextTheme.accent),
       ),
-      home: HomePage(),
+      home: Directionality(
+          child: HomePage(),
+          textDirection:
+            GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale())).textDirection),
     );
   }
 }
