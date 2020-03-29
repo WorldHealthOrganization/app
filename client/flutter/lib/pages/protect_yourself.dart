@@ -1,6 +1,7 @@
 // import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
@@ -18,14 +19,43 @@ const header = TextStyle(
   fontSize: 24,
 );
 
-class ProtectYourself extends StatelessWidget {
-  Widget get _placeholder => AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Container(
-          color: whoBlue,
+RichText _message(String input) {
+  // Make sections delineated by asterisk * bold. For example:
+  // String text = '*This is bold* this is not';
+
+  var regex = RegExp(r'\*([^,*]+)\*');
+
+  var matched = regex.allMatches(input);
+
+  var spans = <TextSpan>[];
+  int before = 0;
+  for (var match in matched) {
+    var value = match.group(1);
+    if (before < match.start) {
+      spans.add(
+        TextSpan(
+          text: input.substring(before, match.start),
         ),
       );
+    }
 
+    spans.add(
+      TextSpan(text: value, style: bold),
+    );
+    before = match.end;
+  }
+
+  spans.add(
+    TextSpan(
+      text: input.substring(before),
+    ),
+  );
+  return RichText(
+    text: TextSpan(style: normal, children: spans),
+  );
+}
+
+class ProtectYourself extends StatelessWidget {
   Widget _getAnimation(String animationName) => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
@@ -49,76 +79,9 @@ class ProtectYourself extends StatelessWidget {
 
   Widget get _distanceAnimation => _getAnimation('Stay');
 
-  RichText get _washHandsMessage => RichText(
-        text: TextSpan(
-          style: normal,
-          children: <TextSpan>[
-            TextSpan(
-              text: 'Wash your hands',
-              style: bold,
-            ),
-            TextSpan(
-              text: ' with soap and water for at least 20 seconds',
-            ),
-          ],
-        ),
-      );
-
-  RichText get _avoidEyesMessage => RichText(
-        text: TextSpan(
-          // text: 'Wash your hands frequently',
-          style: normal,
-          children: <TextSpan>[
-            TextSpan(
-              text: 'Avoid touching',
-              style: bold,
-            ),
-            TextSpan(text: ' your eyes, mouth and nose'),
-          ],
-        ),
-      );
-
-  RichText get _coverMouth => RichText(
-        text: TextSpan(
-          // text: 'Wash your hands frequently',
-          style: normal,
-          children: <TextSpan>[
-            TextSpan(
-              text: 'Cover your mouth and nose',
-              style: bold,
-            ),
-            TextSpan(
-                text: ' with your bent elbow or tissue'
-                    ' when you cough or sneeze'),
-          ],
-        ),
-      );
-
-  RichText get _distanceMessage => RichText(
-        text: TextSpan(
-          // text: 'Wash your hands frequently',
-          style: normal,
-          children: <TextSpan>[
-            TextSpan(text: 'Stay more than '),
-            TextSpan(
-              text: '1 meter (>3 feet) away from a person who is sick',
-              style: bold,
-            ),
-          ],
-        ),
-      );
-
-  RichText get _maskMessage => RichText(
-        text: TextSpan(
-          text: 'Only wear a mask if you or someone you'
-              ' are looking after are ill with COVID-19 symptoms'
-              ' (especially coughing)',
-          style: normal,
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
+    var localized = S.of(context);
     return ListOfItems(
       [
         Padding(
@@ -129,27 +92,27 @@ class ProtectYourself extends StatelessWidget {
           ),
         ),
         ProtectYourselfCard(
-          message: _washHandsMessage,
+          message: _message(localized.protectYourselfListOfItemsPageListItem1),
           child: _washHandsAnimation,
         ),
         ProtectYourselfCard(
-          message: _avoidEyesMessage,
+          message: _message(localized.protectYourselfListOfItemsPageListItem2),
           child: _avoidTouchingAnimation,
         ),
         ProtectYourselfCard(
-          message: _coverMouth,
+          message: _message(localized.protectYourselfListOfItemsPageListItem3),
           child: _coverMouthAnimation,
         ),
         ProtectYourselfCard(
-          message: _distanceMessage,
+          message: _message(localized.protectYourselfListOfItemsPageListItem4),
           child: _distanceAnimation,
         ),
         ProtectYourselfCard(
-          message: _maskMessage,
+          message: _message(localized.protectYourselfListOfItemsPageListItem5),
           child: _protectAnimation,
         ),
       ],
-      title: 'Protect Yourself',
+      title: localized.protectYourselfTitle,
     );
   }
 }

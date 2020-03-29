@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("当你粘结或打喷时，用弯曲或组织盖住你的口腔和鼻子"),
     "protectYourselfListOfItemsPageListItem4" : MessageLookupByLibrary.simpleMessage("避免拥挤的地方"),
     "protectYourselfListOfItemsPageListItem5" : MessageLookupByLibrary.simpleMessage("如果你感觉不好，即使有轻微的发烧和耦合感，也能留在家里"),
-    "protectYourselfListOfItemsPageListItem6" : MessageLookupByLibrary.simpleMessage("如果你有发烧、紧固和呼吸困难，请尽早寻求医疗服务，但先打电话！"),
-    "protectYourselfListOfItemsPageListItem7" : MessageLookupByLibrary.simpleMessage("随时留意谁提供的最新信息"),
     "travelAdviceListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("谁会继续建议不要将旅行或贸易限制应用到发生 COVID-19 突发事件的国家……"),
     "travelAdviceListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("只有当你生病时，才会戴面罩，这是 19 种症状（尤其是耦合症），或者只能照顾一个可能患有 COVALD-19 症状的人"),
     "travelAdviceListOfItemsPageListItem11" : MessageLookupByLibrary.simpleMessage("从受影响地区返回的旅客应："),

@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/components/back_arrow.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
@@ -50,7 +51,9 @@ class ListOfItems extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            'WHO Coronavirus App',
+                            S
+                                .of(context)
+                                .commonWorldHealthOrganizationCoronavirusApp,
                             style: TextStyle(
                               fontWeight: FontWeight.w900,
                               color: const Color(0xFF050C1D),
