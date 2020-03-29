@@ -1,4 +1,4 @@
-name: Flutter build
+name: Client build
 on:
   push:
     paths:
@@ -6,7 +6,7 @@ on:
       - 'client/flutter/**'
 jobs:
   buildios:
-    name: Build ios
+    name: Build iOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
   buildandroid:
-    name: Build android
+    name: Build Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,5 +31,5 @@ jobs:
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
-      - run: flutter build apk
+      - run: flutter build appbundle
         working-directory: ./client/flutter
