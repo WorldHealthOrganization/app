@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:WHOFlutter/constants.dart';
 
 typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function();
 
@@ -46,8 +47,9 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   Widget _buildPage() {
     var items = (_questions ?? []).map(_buildQuestion).toList();
+    items.add(Divider());
     return Material(
-      color: Colors.grey.shade200,
+      color: Constants.backgroundColor,
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -110,11 +112,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   Widget _buildQuestion(QuestionItem questionItem) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        color: Colors.grey.shade400,
-        child: ExpansionTile(
+      child: Column(children: <Widget>[
+        Divider(),
+        ExpansionTile(
           key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(Icons.add),
+          trailing: Icon(Icons.add_circle_outline),
           title: Padding(
             padding: const EdgeInsets.all(8.0),
             child: html(questionItem.title),
@@ -127,7 +129,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
             )
           ],
         ),
-      ),
+      ]),
     );
   }
 
