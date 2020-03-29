@@ -14,11 +14,17 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
+  final FirebaseAnalytics analytics;
+
+  HomePage(this.analytics);
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(analytics);
 }
 
 class _HomePageState extends State<HomePage> {
+  final FirebaseAnalytics analytics;
+  _HomePageState(this.analytics);
+
   @override
   void initState() {
     super.initState();
@@ -39,6 +45,7 @@ class _HomePageState extends State<HomePage> {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
       await launch(url);
+      await analytics.logEvent(name: 'Latest_Numbers');
     }
   }
 
@@ -110,8 +117,14 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => Share.share(
-                      S.of(context).commonWhoAppShareIconButtonDescription),
+                  onTap: () {
+                    analytics.logShare(
+                        contentType: 'App',
+                        itemId: null,
+                        method: 'Website link');
+                    return Share.share(
+                        S.of(context).commonWhoAppShareIconButtonDescription);
+                  },
                 ),
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
