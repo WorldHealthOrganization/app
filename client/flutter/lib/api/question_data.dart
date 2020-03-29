@@ -35,8 +35,13 @@ class QuestionData {
 }
 
 class QuestionItem {
-  String title;
-  String body;
+  final String title;
+  final String body;
+  bool expanded;
 
-  QuestionItem({@required this.title, @required this.body});
+  QuestionItem(
+      {@required this.title, @required this.body, this.expanded = false})
+      : assert(title != null),
+        assert(body != null),
+        assert(expanded != null);
 }

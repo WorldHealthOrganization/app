@@ -1,12 +1,10 @@
-import 'package:WHOFlutter/api/content_bundle.dart';
 import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:url_launcher/url_launcher.dart';
 
 typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(
     BuildContext);
@@ -48,7 +46,9 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       return;
     }
     _questions = await widget.dataSource(context);
-    setState(() {});
+    setState(() {
+      // Updates the list
+    });
   }
 
   @override
@@ -84,18 +84,30 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         Divider(),
         ExpansionTile(
           key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(
-            Icons.add_circle_outline,
-            color: Colors.black,
+          trailing: AnimatedCrossFade(
+            firstChild: const Icon(
+              Icons.add_circle_outline,
+              color: Colors.black,
+            ),
+            secondChild: const Icon(
+              Icons.remove_circle_outline,
+              color: Colors.black,
+            ),
+            duration: const Duration(milliseconds: 200),
+            crossFadeState: questionItem.expanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
           ),
+          onExpansionChanged: (bool expanded) {
+            setState(() => questionItem.expanded = expanded);
+          },
           title: Padding(
             padding: const EdgeInsets.all(8.0),
             child: html(questionItem.title),
           ),
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 32, bottom: 32),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
               child: html(questionItem.body),
             )
           ],
