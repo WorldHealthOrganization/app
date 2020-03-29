@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,6 +31,13 @@ class _HomePageState extends State<HomePage> {
       await Navigator.of(context)
           .push(MaterialPageRoute(builder: (c) => LocationSharing()));
       await UserPreferences().setOnboardingCompleted(true);
+    }
+  }
+
+  _launchStatsDashboard() async {
+    const url = 'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd';
+    if (await canLaunch(url)) {
+      await launch(url);
     }
   }
 
@@ -63,8 +71,7 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xfff6c35c),
                   S.of(context).homePagePageButtonLatestNumbers,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                  _launchStatsDashboard,
                 ),
                 PageButton(
                   Color(0xffbe7141),
