@@ -28,6 +28,14 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    if (!kAnalyticsAllowed) {
+      _disableAnalytics();
+    }
+  }
+
+  _disableAnalytics() async {
+    await analytics.resetAnalyticsData();
+    await analytics.setAnalyticsCollectionEnabled(false);
   }
 
   @override
