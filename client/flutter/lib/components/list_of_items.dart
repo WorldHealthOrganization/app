@@ -91,7 +91,9 @@ class ListOfItems extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.only(right: 20),
                       child: IconButton(
-                          onPressed: () => Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
+                          onPressed: () => Share.share(S
+                              .of(context)
+                              .commonWhoAppShareIconButtonDescription),
                           icon: Icon(
                             Icons.share,
                             size: 22,
