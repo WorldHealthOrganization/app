@@ -72,7 +72,7 @@ class _PathRenderObject extends RenderBox {
 
   @override
   void performLayout() {
-    size = _bounds.size;
+    size = constraints.constrain(_bounds.size);
   }
 
   @override

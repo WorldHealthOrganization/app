@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
+        brightness: Brightness.light,
         buttonTheme: ButtonThemeData(
             buttonColor: Constants.primaryColor,
             textTheme: ButtonTextTheme.accent),

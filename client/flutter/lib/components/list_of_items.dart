@@ -16,63 +16,65 @@ class ListOfItems extends StatelessWidget {
           CustomScrollView(
             slivers: [
               SliverAppBar(
+                backgroundColor: Colors.white,
+                brightness: Brightness.light,
                 leading: SizedBox(),
-                flexibleSpace: ColoredBox(
-                  color: Colors.white,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () => Navigator.pop(context),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 15,
-                            right: 25,
-                            bottom: 20,
-                            top: 20,
+                flexibleSpace: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 15,
+                          right: 25,
+                          bottom: 20,
+                          top: 20,
+                        ),
+                        child: BackArrow(),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontFamily: 'SFProDisplayHeavy',
+                              color: const Color(0xFF3D8BCC),
+                              fontSize: 30,
+                            ),
                           ),
-                          child: BackArrow(),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              title,
-                              style: TextStyle(
-                                fontFamily: 'SFProDisplayHeavy',
-                                color: const Color(0xFF3D8BCC),
-                                fontSize: 30,
-                              ),
+                          SizedBox(height: 5),
+                          Text(
+                            'WHO Coronavirus App',
+                            style: TextStyle(
+                              fontFamily: 'SFProDisplay',
+                              fontWeight: FontWeight.w900,
+                              color: const Color(0xFF050C1D),
+                              fontSize: 18,
                             ),
-                            SizedBox(height:5),
-                            Text(
-                              'WHO Coronavirus App',
-                              style: TextStyle(
-                                fontFamily: 'SFProDisplay',
-                                fontWeight: FontWeight.w900,
-                                color: const Color(0xFF050C1D),
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 expandedHeight: 200,
               ),
               SliverList(
                 delegate: SliverChildListDelegate(this.listOfItems),
               ),
+
               /// Pad by the Positioned container at the bottom so we can scroll
               /// past it. Plus some padding.
-              SliverToBoxAdapter(child:SizedBox(height:70),)
+              SliverToBoxAdapter(
+                child: SizedBox(height: 70),
+              )
             ],
           ),
           Positioned(
