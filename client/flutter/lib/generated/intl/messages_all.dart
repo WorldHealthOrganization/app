@@ -15,23 +15,28 @@ import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 import 'package:intl/src/intl_helpers.dart';
 
-import 'messages_fr.dart' as messages_fr;
-import 'messages_ru.dart' as messages_ru;
+import 'messages_ru_RU.dart' as messages_ru_ru;
+import 'messages_ar_001.dart' as messages_ar_001;
+import 'messages_es_ES.dart' as messages_es_es;
+import 'messages_en_GB.dart' as messages_en_gb;
+import 'messages_fr_FR.dart' as messages_fr_fr;
 import 'messages_en.dart' as messages_en;
-import 'messages_ar.dart' as messages_ar;
+import 'messages_en_US.dart' as messages_en_us;
+import 'messages_zh_CN.dart' as messages_zh_cn;
 import 'messages_np.dart' as messages_np;
-import 'messages_zh.dart' as messages_zh;
-import 'messages_es.dart' as messages_es;
 
 typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
-  'fr': () => new Future.value(null),
-  'ru': () => new Future.value(null),
+  'ru_RU': () => new Future.value(null),
+  'ar_001': () => new Future.value(null),
+  'es_ES': () => new Future.value(null),
+  'en_GB': () => new Future.value(null),
+  'fr_FR': () => new Future.value(null),
   'en': () => new Future.value(null),
-  'ar': () => new Future.value(null),
+  'en_US': () => new Future.value(null),
+  'zh_CN': () => new Future.value(null),
   'np': () => new Future.value(null),
-  'zh': () => new Future.value(null),
-  'es': () => new Future.value(null),
+  
 };
 
 MessageLookupByLibrary _findExact(String localeName) {
@@ -44,12 +49,28 @@ MessageLookupByLibrary _findExact(String localeName) {
       return messages_en.messages;
     case 'ar':
       return messages_ar.messages;
-    case 'np':
-      return messages_np.messages;
     case 'zh':
       return messages_zh.messages;
     case 'es':
       return messages_es.messages;
+    case 'ru_RU':
+      return messages_ru_ru.messages;
+    case 'ar_001':
+      return messages_ar_001.messages;
+    case 'es_ES':
+      return messages_es_es.messages;
+    case 'en_GB':
+      return messages_en_gb.messages;
+    case 'fr_FR':
+      return messages_fr_fr.messages;
+    case 'en':
+      return messages_en.messages;
+    case 'en_US':
+      return messages_en_us.messages;
+    case 'zh_CN':
+      return messages_zh_cn.messages;
+    case 'np':
+      return messages_np.messages;
     default:
       return null;
   }
