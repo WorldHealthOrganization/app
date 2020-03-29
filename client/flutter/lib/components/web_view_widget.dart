@@ -20,7 +20,7 @@ class _WebViewWidgetState extends State<WebViewWidget> {
         url: widget.externalUrl,
         withJavascript: true,
         withZoom: false,
-        hidden: true,
+        hidden: false,
         appBar: AppBar(title: Text(widget.title), elevation: 1),
         initialChild: Container(
             color: Constants.backgroundColor,
