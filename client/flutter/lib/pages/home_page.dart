@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
 
     if (!onboardingComplete) {
       // TODO: We should wrap these in a single Navigation context so that they can
-      // TODO: slide up as a modal, proceed with pushes left to rigth, and then be
+      // TODO: slide up as a modal, proceed with pushes left to right, and then be
       // TODO: dismissed together.
       await Navigator.of(context).push(MaterialPageRoute(
           fullscreenDialog: true, builder: (c) => LocationSharingPage()));
