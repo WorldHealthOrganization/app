@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/pages/credits.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
@@ -112,11 +113,29 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => showAboutDialog(
+                  onTap: () {
+                    showAboutDialog(
                       context: context,
-                      applicationLegalese: S
-                          .of(context)
-                          .homePagePageSliverListAboutTheAppDialog),
+                      applicationLegalese:
+                          S.of(context).homePagePageSliverListAboutTheAppDialog,
+                      children: <Widget>[
+                        FlatButton(
+                          textColor: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Supporters()));
+                          },
+                          child: Text('VIEW SUPPORTERS'),
+                        ),
+                        FlatButton(
+                          textColor: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Contributors()));
+                          },
+                          child: Text('VIEW CONTRIBUTORS'),
+                        ),
+                      ],
+                    );
+                  },
                 )
               ]),
             ),
