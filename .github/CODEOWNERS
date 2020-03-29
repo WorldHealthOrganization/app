@@ -29,6 +29,7 @@
 
 # Release process
 /docs/RELEASE.md @advaydev1 @brunobowden @crazybob @epicfaace @hspinks @deanhach
+/docs/release/ @advaydev1 @brunobowden @crazybob @epicfaace @hspinks @deanhach
 
 # Server
 /server/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
