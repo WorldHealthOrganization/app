@@ -44,7 +44,6 @@ class ListOfItems extends StatelessWidget {
                           Text(
                             title,
                             style: TextStyle(
-                              fontFamily: 'SFProDisplayHeavy',
                               color: const Color(0xFF3D8BCC),
                               fontSize: 30,
                             ),
@@ -53,7 +52,6 @@ class ListOfItems extends StatelessWidget {
                           Text(
                             'WHO Coronavirus App',
                             style: TextStyle(
-                              fontFamily: 'SFProDisplay',
                               fontWeight: FontWeight.w900,
                               color: const Color(0xFF050C1D),
                               fontSize: 18,

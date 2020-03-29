@@ -5,18 +5,15 @@ import 'package:flutter/material.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
 const normal = TextStyle(
-  fontFamily: 'SFProText',
   color: Colors.black,
   fontSize: 16,
 );
 const bold = TextStyle(
-  fontFamily: 'SFProText',
   color: Colors.black,
   fontSize: 16,
   fontWeight: FontWeight.w700,
 );
 const header = TextStyle(
-  fontFamily: 'SFProDisplayHeavy',
   color: Colors.black,
   fontSize: 24,
 );
@@ -49,6 +46,8 @@ class ProtectYourself extends StatelessWidget {
   Widget get _avoidTouchingAnimation => _getAnimation('Face');
 
   Widget get _protectAnimation => _getAnimation('Mask');
+
+  Widget get _distanceAnimation => _getAnimation('Stay');
 
   RichText get _washHandsMessage => RichText(
         text: TextSpan(
@@ -143,7 +142,7 @@ class ProtectYourself extends StatelessWidget {
         ),
         ProtectYourselfCard(
           message: _distanceMessage,
-          child: _placeholder,
+          child: _distanceAnimation,
         ),
         ProtectYourselfCard(
           message: _maskMessage,
