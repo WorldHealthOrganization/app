@@ -92,6 +92,15 @@ class S {
     );
   }
 
+  String get homePageButtonNewsAndPress {
+    return Intl.message(
+      'News and Press',
+      name: 'homePageButtonNewsAndPress',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
       'Share The App',

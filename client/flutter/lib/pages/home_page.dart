@@ -1,5 +1,7 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/components/web_view_widget.dart';
+import 'package:WHOFlutter/pages/news_and_press.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
@@ -60,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                 StaggeredTile.count(1, 1),
                 StaggeredTile.count(2, 1),
                 StaggeredTile.count(2, .5),
+                StaggeredTile.count(2, .5),
               ],
               children: [
                 PageButton(
@@ -90,13 +93,21 @@ class _HomePageState extends State<HomePage> {
                   centerVertical: true,
                 ),
                 PageButton(
-                  Color(0xffba4344),
-                  S.of(context).homePagePageButtonTravelAdvice,
+                  Color(0xff008dc9),
+                  S.of(context).homePageButtonNewsAndPress,
                   () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                      .push(MaterialPageRoute(builder: (c) => NewsAndPress())),
                   borderRadius: 50,
                   centerVertical: true,
                 ),
+                PageButton(
+                  Color(0xffba4344),
+                  S.of(context).homePagePageButtonTravelAdvice,
+                      () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                  borderRadius: 50,
+                  centerVertical: true,
+                )
               ],
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 15.0,
