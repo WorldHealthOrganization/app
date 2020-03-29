@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
       await launch(url);
-      _logAnalyticsEvent('/LatestNumbers');
+      _logAnalyticsEvent('LatestNumbers');
     }
   }
 
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff3b8bc4),
                   S.of(context).homePagePageButtonProtectYourself,
                   () {
-                    _logAnalyticsEvent('/ProtectYourself');
+                    _logAnalyticsEvent('ProtectYourself');
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => ProtectYourself()));
                   },
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
                   () {
-                    _logAnalyticsEvent('/QuestionsAnswered');
+                    _logAnalyticsEvent('QuestionsAnswered');
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => QuestionIndexPage()));
                   },
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () {
-                    _logAnalyticsEvent('/MythBusters');
+                    _logAnalyticsEvent('MythBusters');
                     return Navigator.of(context).push(
                       MaterialPageRoute(builder: (c) => WhoMythBusters()),
                     );
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xffba4344),
                   S.of(context).homePagePageButtonTravelAdvice,
                   () {
-                    _logAnalyticsEvent('/TravelAdvice');
+                    _logAnalyticsEvent('TravelAdvice');
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
