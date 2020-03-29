@@ -1,0 +1,280 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: qa
+  items:
+    -
+      title_html: |
+        ¿Qué son los coronaviros, qué es el COVID-19 y cómo se relaciona con el SARS?
+      body_html: |
+        <p><b>¿Qué son los coronavirusis, el cóvid-19 y cómo están relacionados con el SARS?</b></p>
+
+        <p><b>¿Qué es un coronavirus?</b></p>
+
+        <p>Los coronaviros son una gran familia de virus que pueden causar enfermedades en animales o humanos.  En los seres humanos se sabe que varios coronaviros causan infecciones respiratorias que van desde el frío común hasta enfermedades más graves, como el síndrome respiratorio del Oriente Medio (TCM) y el síndrome respiratorio agudo y grave (SARS). El coronavirus descubierto más recientemente causa la enfermedad coronavirus COVID-19.</p>
+
+        <p><b>¿Qué es el COVID-19?</b></p>
+
+        <p>El COVID-19 es la enfermedad infecciosa causada por los coronavirus descubiertos más recientemente. Este nuevo virus y esta nueva enfermedad se desconocían antes de que comenzara el brote en Wuhan( China) en diciembre de 2019.</p>
+
+        <p><b>¿Es el cóvido-19 el mismo que el SARS?</b></p>
+
+        <p>No. El virus que causa el cóvido 19 y el que causó el brote del síndrome respiratorio agudo y grave (SARS) en 2003 están relacionados entre sí genéticamente, pero las enfermedades que causan son muy diferentes. El SARS fue más mortal pero mucho menos infeccioso que el COVID-19. No se han producido brotes de SRAS en ningún lugar del mundo desde 2003.</p>
+    -
+      title_html: |
+        ¿Cuáles son los síntomas del CÓVIDO-19?
+      body_html: |
+        <p><b>¿Cuáles son los síntomas del CÓVIDO-19?</b></p>
+
+        <p>Los síntomas más comunes del CÓVIDO-19 son:</p>
+
+        <ul>
+          <li>🤒 fiebre</li>
+          <li>😴 Cansancio</li>
+          <li>💨 tos secos</li>
+        </ul>
+
+        <p>Algunos pacientes pueden tener dolores y dolores, congestión nasal, nariz escurrida, dolor en la garganta o diarrea. </p>
+
+        <p>Estos síntomas suelen ser leves y comienzan gradualmente. Algunas personas se infectan pero no desarrollan síntomas y no se sienten mal. </p>
+
+        <p>La mayoría de las personas (alrededor del 80 %) se recuperan de la enfermedad sin necesitar tratamiento especial. Alrededor de 1 de cada 6 personas que se ponen COVID-19 se enferma gravemente y desarrolla dificultades para respirar. </p>
+
+        <p>Las personas mayores, y aquellas con problemas médicos subyacentes como presión arterial alta, problemas cardíacos o diabetes, tienen más probabilidades de desarrollar enfermedades graves. </p>
+
+        <p><b>Las personas con fiebre, tos y dificultad para respirar deben buscar atención médica.</b></p>
+    -
+      title_html: |
+        ¿Cómo se propaga el COVID-19?
+      body_html: |
+        <b>¿ Cómo se propaga el COVID-19?</b>
+
+        <p>🤧 Las personas pueden capturar el COVID-19 de otras personas que tienen el virus.</p>
+
+        <p>💦 La enfermedad puede propagarse de una persona a otra a través de pequeñas gotas de la nariz o la boca que se propagan cuando una persona con primos COVID-19 o exhales.</p>
+
+        <p>🥄 Estas gotitas caen sobre objetos y superficies alrededor de la persona.</p>
+
+        <p>👈 A continuación, otras personas atrapan el CÓVID-19 tocando estos objetos o superficies, y luego tocando los ojos, la nariz o la boca.</p>
+
+        <p>Asimismo, las personas pueden atrapar el COVID-19 si respiran gotitas de una persona con COVID-19 que sale o exhales gotitas.
+        Por eso es importante permanecer a más de 1 metro (3 pies) de una persona enferma.</p>
+
+        <p>La OMS está evaluando la investigación en curso sobre las formas en que el CÓVID-19 se está propagando y seguirá compartiendo las conclusiones actualizadas.</p>
+
+        <p><b>¿ puede transmitirse a través del aire el virus que causa el CÓVID-19?</b> Los estudios realizados hasta la fecha sugieren que
+        virus that causes COVID-19 is mainly transmitted through contact with respiratory droplets rather than through the air.</p>
+
+        <p><b>¿ Se puede capturar al COVID - 19 de una persona que no tiene síntomas?</b>
+        La principal forma en que se propaga la enfermedad es a través de gotas respiratorias expulsadas por alguien que está bombeando.
+        El riesgo de capturar COVID-19 de una persona sin síntomas es muy bajo.
+        Sin embargo, muchas personas con COVID-19 solo experimentan síntomas leves.
+        Esto es especialmente cierto en las primeras etapas de la enfermedad.
+        Por lo tanto, es posible capturar el COVID-19 de alguien que, por ejemplo, solo tiene una tos leve y no se siente enfermo.</p>
+
+        <p>La OMS está evaluando las investigaciones en curso sobre el período de transmisión del COVID-19 y seguirá compartiendo las conclusiones actualizadas.</p>
+    -
+      title_html: |
+        ¿Puedo capturar COVID-19 de superficies o paquetes?
+      body_html: |
+        <p><b>¿Qué puedo hacer para protegerme y evitar la propagación de enfermedades?</b></p>
+
+        <p><b>Medidas de protección para todos</b></p>
+
+        <p>- Manténgase al tanto de la información más reciente sobre el brote COVID-19, disponible en el sitio web de la OMS y a través de su autoridad de salud pública local y nacional. En muchos países de todo el mundo se han producido casos de CÓVIDOS-19 y en varios se han producido brotes. Las autoridades de China y de otros países han logrado ralentizar o detener sus brotes. Sin embargo, la situación es impredecible, así que compruebe con regularidad las últimas noticias.</p>
+
+        <p>Puede reducir sus probabilidades de infección o de propagación del CÓVIDO-19 tomando algunas precauciones sencillas:</p>
+
+        <p>🧼 <b>Limpie las manos de forma regular y exhaustiva con un bizcocho a base de alcohol o lávelas con agua y jabón.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Lavar las manos con agua y jabón o usar alfombrilla de manos a base de alcohol mata virus que pueden estar en las manos.</i></p>
+
+        <p>• <b>Mantenga una distancia de al menos 1 metro (3 pies) entre usted y cualquier persona que esté enganchando o escondido.</b></p>
+
+        <p><i><b>¿ Por qué?</b>  Cuando alguien pisa o respira, pulveriza pequeñas gotitas líquidas de la nariz o la boca que pueden contener virus. Si estás demasiado cerca, puedes respirar las gotas, incluido el virus COVID-19, si la persona que padece la enfermedad.</i></p>
+
+        <p>🚫 <b>Evita tocar los ojos, la nariz y la boca</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las manos tocan muchas superficies y pueden recoger virus. Una vez contaminadas, las manos pueden transferir el virus a los ojos, la nariz o la boca. A partir de ahí, el virus puede entrar en tu cuerpo y hacerte enfermar.</i></p>
+
+        <p>🤧 <b>Asegúrate de que tú y las personas que te rodean sigan una buena higiene respiratoria. Esto significa cubrir la boca y la nariz con el codo o tejido doblado cuando se cuelga o se esconde. A continuación, deseche el tejido usado inmediatamente.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las gotitas propagan el virus. Al seguir una buena higiene respiratoria, proteges a las personas que te rodean de virus como el frío, la gripe y el COVID-19.</i></p>
+
+        <p>🏠 <b>Permanezca en casa si no se siente bien. Si tienes fiebre, tos y dificultad para respirar, busca atención médica y llama con antelación. Siga las instrucciones de su autoridad sanitaria local.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las autoridades nacionales y locales tendrán la información más actualizada sobre la situación en su zona. Llamar con antelación le permitirá a su proveedor de atención médica dirigirle rápidamente al centro de salud adecuado. Esto también lo protegerá y ayudará a evitar la propagación de virus y otras infecciones.</i></p>
+
+        <p>🧳 <b>Manténgase al día de las últimas zonas conflictivas COVID-19 (ciudades o zonas locales en las que COVID-19 se está extendiendo ampliamente). If possible, avoid traveling to places  – especially if you are an older person or have diabetes, heart or lung disease.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Es más probable que captes COVID-19 en una de estas áreas.</i></p>
+    -
+      title_html: |
+        ¿Qué puedo hacer para protegerme y evitar la propagación de enfermedades?
+      body_html: |
+        <p><b>¿Qué puedo hacer para protegerme y evitar la propagación de enfermedades?</b></p>
+
+        <p><b>Medidas de protección para todos</b></p>
+
+        <p>- Manténgase al tanto de la información más reciente sobre el brote COVID-19, disponible en el sitio web de la OMS y a través de su autoridad de salud pública local y nacional. En muchos países de todo el mundo se han producido casos de CÓVIDOS-19 y en varios se han producido brotes. Las autoridades de China y de otros países han logrado ralentizar o detener sus brotes. Sin embargo, la situación es impredecible, así que compruebe con regularidad las últimas noticias.</p>
+
+        <p>Puede reducir sus probabilidades de infección o de propagación del CÓVIDO-19 tomando algunas precauciones sencillas:</p>
+
+        <p>🧼 <b>Limpie las manos de forma regular y exhaustiva con un bizcocho a base de alcohol o lávelas con agua y jabón.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Lavar las manos con agua y jabón o usar alfombrilla de manos a base de alcohol mata virus que pueden estar en las manos.</i></p>
+
+        <p>• <b>Mantenga una distancia de al menos 1 metro (3 pies) entre usted y cualquier persona que esté enganchando o escondido.</b></p>
+
+        <p><i><b>¿ Por qué?</b>  Cuando alguien pisa o respira, pulveriza pequeñas gotitas líquidas de la nariz o la boca que pueden contener virus. Si estás demasiado cerca, puedes respirar las gotas, incluido el virus COVID-19, si la persona que padece la enfermedad.</i></p>
+
+        <p>🚫 <b>Evita tocar los ojos, la nariz y la boca</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las manos tocan muchas superficies y pueden recoger virus. Una vez contaminadas, las manos pueden transferir el virus a los ojos, la nariz o la boca. A partir de ahí, el virus puede entrar en tu cuerpo y hacerte enfermar.</i></p>
+
+        <p>🤧 <b>Asegúrate de que tú y las personas que te rodean sigan una buena higiene respiratoria. Esto significa cubrir la boca y la nariz con el codo o tejido doblado cuando se cuelga o se esconde. A continuación, deseche el tejido usado inmediatamente.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las gotitas propagan el virus. Al seguir una buena higiene respiratoria, proteges a las personas que te rodean de virus como el frío, la gripe y el COVID-19.</i></p>
+
+        <p>🏠 <b>Permanezca en casa si no se siente bien. Si tienes fiebre, tos y dificultad para respirar, busca atención médica y llama con antelación. Siga las instrucciones de su autoridad sanitaria local.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Las autoridades nacionales y locales tendrán la información más actualizada sobre la situación en su zona. Llamar con antelación le permitirá a su proveedor de atención médica dirigirle rápidamente al centro de salud adecuado. Esto también lo protegerá y ayudará a evitar la propagación de virus y otras infecciones.</i></p>
+
+        <p>🧳 <b>Manténgase al día de las últimas zonas conflictivas COVID-19 (ciudades o zonas locales en las que COVID-19 se está extendiendo ampliamente). If possible, avoid traveling to places  – especially if you are an older person or have diabetes, heart or lung disease.</b></p>
+
+        <p><i><b>¿ Por qué?</b> Es más probable que captes COVID-19 en una de estas áreas.</i></p>
+    -
+      title_html: |
+        ¿Qué debo hacer si he visitado una zona en la que se está propagando el cóvid-19?→
+      body_html: |
+        <p><b>¿Qué debo hacer si he visitado una zona en la que el CÓVID-19 se está propagando?</b></p>
+
+        <p>Si ha visitado recientemente (en los últimos 14 días) zonas en las que COVID-19 se está propagando, siga las directrices descritas en la pregunta 15. (¿Qué puedo hacer para protegerme y evitar la propagación de la enfermedad?) y hacer lo siguiente:</p>
+
+        <p>🏠 <b>Se autoaísla al permanecer en casa si empieza a sentirse mal, incluso con síntomas leves como dolor de cabeza, fiebre de bajo grado (37,3°C o más) y leve nariz escurrida, hasta que se recupera.</b> </p>
+
+        <p>Si es esencial que alguien le traiga suministros o que salga, por ejemplo, para comprar alimentos, use una máscara para evitar infectar a otras personas.</p>
+
+        <p><b><i>¿Por qué?</i></b></p>
+
+        <p>Evitar el contacto con otras personas y las visitas a las instalaciones médicas permitirá que estas instalaciones funcionen de forma más eficaz y le ayudará a usted y a otras personas a protegerse de posibles virus COVID-19 y de otros virus.</p>
+
+        <p>🤒 <b>Si usted desarrolla fiebre, tos y dificultad para respirar, solicite asesoramiento médico de inmediato, ya que esto puede deberse a una infección respiratoria u otra afección grave. Llame con antelación e informe a su proveedor de cualquier viaje reciente o contacto con viajeros.</b></p>
+
+        <p><b><i>¿Por qué?</i></b></p>
+
+        <p>Llamar con antelación le permitirá a su proveedor de atención médica dirigirle rápidamente al centro de salud adecuado. Esto también ayudará a evitar la posible propagación de COVID-19 y otros virus.</p>
+    -
+      title_html: |
+        ¿Cuáles son las opciones de tratamiento para el COVID-19 (incluyendo fármacos, vacunas, terapias)?
+      body_html: |
+        <p><b>¿Cuáles son las opciones de tratamiento para el COVID-19 (incluyendo fármacos, vacunas, terapias)?</b></p>
+
+        <p>💊 <b>¿ Son los antibióticos eficaces para prevenir o tratar el CÓVIDO-19?</b></p>
+
+        <p>No. Los antibióticos no trabajan contra los virus, solo trabajan en infecciones bacterianas. El COVID-19 es causado por un virus, por lo que los antibióticos no funcionan. Los antibióticos no deben utilizarse como medio de prevención o tratamiento del COVID-19. Solo se deben utilizar siguiendo las instrucciones de un médico para tratar una infección bacteriana. </p>
+
+        <p>🧪 <b>¿ Hay algún medicamento o terapia que pueda prevenir o curar el CÓVIDO-19?</b></p>
+
+        <p>Aunque algunos remedios occidentales, tradicionales o caseros pueden proporcionar comodidad y aliviar los síntomas del CÓVIDO-19, no hay pruebas de que la medicina actual pueda prevenir o curar la enfermedad. La OMS no recomienda la automedicación con ningún medicamento, incluidos los antibióticos, como prevención o cura para el COVID-19. Sin embargo, hay varios ensayos clínicos en curso que incluyen medicamentos tanto occidentales como tradicionales. La OMS seguirá proporcionando información actualizada tan pronto como se disponga de los hallazgos clínicos.</p>
+
+        <p>💉 <b>¿ Existe una vacuna, un medicamento o un tratamiento para el COVID-19?</b></p>
+
+        <p>Aún no lo ha hecho. Hasta la fecha, no hay vacunas ni medicamentos antivirales específicos para prevenir o tratar el CÓVID-2019. Sin embargo, los afectados deben recibir atención para aliviar los síntomas. Las personas con enfermedades graves deben ser hospitalizadas. La mayoría de los pacientes se recuperan gracias a la atención de apoyo.</p>
+
+        <p>Se están investigando posibles vacunas y algunos tratamientos farmacéuticos específicos. Se están probando a través de ensayos clínicos. La OMS coordina los esfuerzos para desarrollar vacunas y medicamentos con el fin de prevenir y tratar el COVID-19.</p>
+
+        <p>Las formas más eficaces de protegerse a sí mismo y a los demás contra el CÓVIDO-19 son limpiar las manos con frecuencia, cubrir la tos con la curvatura del codo o tejido y mantener una distancia de al menos 1 metro (3 pies) de las personas que están enganchando o encogiendo. </p>
+    -
+      title_html: |
+        ¿Debo usar una máscara para protegerme?
+      body_html: |
+        <p>😷 <b>¿ Debo usar una máscara para protegerme?</b></p>
+
+        <p>Use solo una máscara si está enfermo con síntomas COVID-19 (especialmente tos) o cuidando a alguien que pueda tener COVID-19. La máscara facial desechable solo se puede usar una vez. Si no estás enfermo o cuida de alguien que está enfermo, estás desperdiciando una máscara. Existe una escasez de máscaras en todo el mundo, así que, que insta a las personas a utilizar las máscaras con sabiduría.</p>
+
+        <p>La OMS aconseja el uso racional de máscaras médicas para evitar el desperdicio innecesario de recursos preciosos y el mal uso de máscaras.</p>
+
+        <p>Las formas más eficaces de protegerse a sí mismo y a los demás contra el CÓVIDO-19 son limpiar las manos con frecuencia, cubrir la tos con la curvatura del codo o tejido y mantener una distancia de al menos 1 metro (3 pies) de las personas que están enganchando o encogiendo. </p>
+
+        <p>🚮 <b>¿ Cómo poner, usar, despegar y desechar una máscara?</b></p>
+
+        <ol>
+          <li>Recuerde que una máscara solo debe ser utilizada por los trabajadores sanitarios, los cuidadores y las personas con síntomas respiratorios, como fiebre y tos.</li>
+          <li>Antes de tocar la máscara, limpie las manos con un jabón y agua a base de alcohol</li>
+          <li>Coja la máscara e inspecciónela en busca de desgarros o orificios.</li>
+          <li>Oriente qué lado es el lado superior (donde está la tira de metal).</li>
+          <li>Asegúrese del lado adecuado de las caras de la máscara hacia el exterior (el lado coloreado).</li>
+          <li>Coloque la máscara en la cara. Pellizque la tira metálica o el borde rígido de la máscara para que se moldee a la forma de la nariz.</li>
+          <li>Tire del fondo de la máscara para que cubra la boca y la barbilla.</li>
+          <li>Después de su uso, retire la máscara; retire los lazos elásticos de detrás de las orejas mientras mantiene la máscara alejada de la cara y la ropa, para evitar tocar superficies potencialmente contaminadas de la máscara.</li>
+          <li>Deseche la máscara en un recipiente cerrado inmediatamente después de su uso.</li>
+          <li>Realice la higiene de las manos después de tocar o desechar la máscara : utilice un frotador de mano con alcohol o, si está visiblemente sucio, lave las manos con agua y jabón.</li>
+        </ol>
+    -
+      title_html: |
+        ¿Hay algo que no debería hacer?
+      body_html: |
+        <p><b>¿Hay algo que no debería hacer?</b></p>
+
+        <p>Las siguientes medidas NO SON eficaces contra el COVID-19 y pueden ser perjudiciales:</p>
+
+        <ul>
+          <li>🚭 Fumar</li>
+          <li>😷 Usar varias máscaras</li>
+          <li>💊 Tomar antibióticos</li>
+        </ul>
+
+        <p>En cualquier caso, si tiene fiebre, tos y dificultad para respirar, busque atención médica con antelación para reducir el riesgo de desarrollar una infección más grave y asegúrese de compartir su historial de viajes reciente con su proveedor de atención médica.</p>
+    -
+      title_html: |
+        Hacer frente al estrés durante el COVID-19
+      body_html: |
+        <p><b>Hacer frente al estrés durante el COVID-19</b></p>
+
+        <p>📞 Es normal sentirse triste, estresado, confuso, asustado o enfadado durante una crisis. Hablar con personas en las que confíe puede ayudar. Póngase en contacto con sus amigos y familiares.</p>
+
+        <p>🥦  If you must stay at home, maintain a healthy lifestyle - including proper diet, sleep, exercise and social contacts with loved ones at home and by email and phone with other family and friends.</p>
+
+        <p>🚭 No consumes tabaco, alcohol u otras drogas para lidiar con tus emociones. Si te sientes abrumado, habla con un trabajador sanitario o asesor. Tenga un plan, a dónde dirigirse y cómo buscar ayuda para las necesidades de salud física y mental si es necesario.</p>
+
+        <p>- Conozca los hechos. Recopile información que le ayudará a determinar con precisión su riesgo para que pueda tomar precauciones razonables. Encuentre una fuente creíble en la que pueda confiar, como el sitio web de la OMS o, una agencia de salud pública local o estatal.</p>
+
+        <p>😭 Limite la preocupación y la agitación al reducir el tiempo que usted y su familia pasan viendo o escuchando la cobertura de los medios de comunicación que usted percibe como molesta.</p>
+
+        <p>⭐• aprovecha las habilidades que has utilizado en el pasado que te han ayudado a gestionar las adversidades de la vida anterior y utiliza esas habilidades para ayudarte a gestionar tus emociones durante el difícil momento de este brote.</p>
+    -
+      title_html: |
+        ¿Cuáles son las opciones de tratamiento para el COVID-19 (incluyendo fármacos, vacunas, terapias)?
+      body_html: |
+        <p><b>¿Cuáles son las opciones de tratamiento para el COVID-19 (incluyendo fármacos, vacunas, terapias)?</b></p>
+
+        <p>💊 <b>¿ Son los antibióticos eficaces para prevenir o tratar el CÓVIDO-19?</b></p>
+        <p>No. Los antibióticos no trabajan contra los virus, solo trabajan en infecciones bacterianas. El COVID-19 es causado por un virus, por lo que los antibióticos no funcionan. Los antibióticos no deben utilizarse como medio de prevención o tratamiento del COVID-19. Solo se deben utilizar siguiendo las instrucciones de un médico para tratar una infección bacteriana. </p>
+
+        <p>🧪 <b>¿ Hay algún medicamento o terapia que pueda prevenir o curar el CÓVIDO-19?</b></p>
+
+        <p>Aunque algunos remedios occidentales, tradicionales o caseros pueden proporcionar comodidad y aliviar los síntomas del CÓVIDO-19, no hay pruebas de que la medicina actual pueda prevenir o curar la enfermedad. La OMS no recomienda la automedicación con ningún medicamento, incluidos los antibióticos, como prevención o cura para el COVID-19. Sin embargo, hay varios ensayos clínicos en curso que incluyen medicamentos tanto occidentales como tradicionales. La OMS seguirá proporcionando información actualizada tan pronto como se disponga de los hallazgos clínicos.</p>
+
+        <p>💉 <b>¿ Existe una vacuna, un medicamento o un tratamiento para el COVID-19?</b></p>
+
+        <p>Aún no lo ha hecho. Hasta la fecha, no hay vacunas ni medicamentos antivirales específicos para prevenir o tratar el CÓVID-2019. Sin embargo, los afectados deben recibir atención para aliviar los síntomas. Las personas con enfermedades graves deben ser hospitalizadas. La mayoría de los pacientes se recuperan gracias a la atención de apoyo.</p>
+
+        <p>Se están investigando posibles vacunas y algunos tratamientos farmacéuticos específicos. Se están probando a través de ensayos clínicos. La OMS coordina los esfuerzos para desarrollar vacunas y medicamentos con el fin de prevenir y tratar el COVID-19.</p>
+
+        <p>Las formas más eficaces de protegerse a sí mismo y a los demás contra el CÓVIDO-19 son limpiar las manos con frecuencia, cubrir la tos con la curvatura del codo o tejido y mantener una distancia de al menos 1 metro (3 pies) de las personas que están enganchando o encogiendo. </p>
+    -
+      title_html: |
+        Ayudar a los niños a hacer frente al estrés durante el CÓVIDO-19
+      body_html: |
+        <p><b>Ayudar a los niños a hacer frente al estrés durante el CÓVIDO-19</b></p>
+
+        <p>🧒 Los niños pueden responder al estrés de diferentes maneras, como ser más afeitados, ansiosos, retirados, enfadados o agitados, dormir, etc. Responde a las reacciones de tu hijo de forma solidaria, escucha sus preocupaciones y les da más amor y atención.</p>
+
+        <p>💖 Los niños necesitan el amor y la atención de los adultos en momentos difíciles. Deles más tiempo y atención. Recuerde escuchar a sus hijos, hablar amablemente y tranquilizarlos. Si es posible, ofrezca al niño la oportunidad de jugar y relajarse.</p>
+
+        <p>👪 Trate de mantener a los niños cerca de sus padres y su familia y evite separar a los niños y a sus cuidadores en la medida de lo posible. Si se produce la separación (por ejemplo, hospitalización) , asegúrese de que el contacto sea regular (por ejemplo, por teléfono) y vuelva a asegurarlo.</p>
+
+        <p>🪁 Mantener los horarios y las rutinas regulares en la medida de lo posible, o ayudar a crear otros nuevos en un nuevo entorno, incluyendo la escuela/aprendizaje, así como tiempo para jugar y relajarse de forma segura.</p>
+
+        <p>• Proporcione datos sobre lo que ha ocurrido, explique lo que está sucediendo ahora y proporcione información clara sobre cómo reducir el riesgo de infección por la enfermedad en palabras que pueda entender en función de su edad. Esto también incluye proporcionar información sobre lo que podría ocurrir de una manera que garantice la seguridad (por ejemplo, un miembro de la familia o el niño puede empezar a sentirse mal y puede tener que ir al hospital durante algún tiempo para que los médicos puedan ayudarles a sentirse mejor).</p>
