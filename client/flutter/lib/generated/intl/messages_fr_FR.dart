@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("Couvrez votre bouche et votre nez avec votre coude ou votre tissu tordu lorsque vous touchez ou étincelez"),
     "protectYourselfListOfItemsPageListItem4" : MessageLookupByLibrary.simpleMessage("Éviter les lieux bondés"),
     "protectYourselfListOfItemsPageListItem5" : MessageLookupByLibrary.simpleMessage("Restez à la maison si vous vous sentez mal - même avec une légère fièvre et une toux"),
-    "protectYourselfListOfItemsPageListItem6" : MessageLookupByLibrary.simpleMessage("Si vous avez une fièvre, une toux et des difficultés à respirer, cherchez des soins médicaux tôt mais Appelez d\'abord par téléphone !"),
-    "protectYourselfListOfItemsPageListItem7" : MessageLookupByLibrary.simpleMessage("Tenez-vous au courant des dernières informations de QUI"),
     "travelAdviceListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("QUI continue de se prémunir contre l\'application de restrictions commerciales ou de voyages aux pays subissant des épidémies graves de-19…"),
     "travelAdviceListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("Ne portez un masque que si vous êtes malade (e) avec des symptômes GROSSIERS-19 (surtout la toughing) ou si vous prenez soin de quelqu\'un qui peut avoir une consistance-19"),
     "travelAdviceListOfItemsPageListItem11" : MessageLookupByLibrary.simpleMessage("Les voyageurs revenant des zones touchées doivent :"),

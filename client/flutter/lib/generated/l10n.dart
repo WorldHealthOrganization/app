@@ -15,7 +15,7 @@ class S {
     AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -33,6 +33,15 @@ class S {
     return Intl.message(
       'World Health Organization',
       name: 'commonWorldHealthOrganization',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get commonWorldHealthOrganizationCoronavirusApp {
+    return Intl.message(
+      'WHO Coronavirus App',
+      name: 'commonWorldHealthOrganizationCoronavirusApp',
       desc: '',
       args: [],
     );
@@ -119,9 +128,18 @@ class S {
     );
   }
 
+  String get protectYourselfTitle {
+    return Intl.message(
+      'Protect Yourself',
+      name: 'protectYourselfTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get protectYourselfListOfItemsPageListItem1 {
     return Intl.message(
-      'Wash your hands with soap and running water frequently',
+      '*Wash your hands* with soap and water for at least 20 seconds',
       name: 'protectYourselfListOfItemsPageListItem1',
       desc: '',
       args: [],
@@ -130,7 +148,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem2 {
     return Intl.message(
-      'Avoid touching your eyes, mouth, and nose',
+      '*Avoid touching* your eyes, mouth, and nose',
       name: 'protectYourselfListOfItemsPageListItem2',
       desc: '',
       args: [],
@@ -139,7 +157,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem3 {
     return Intl.message(
-      'Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze',
+      '*Cover your mouth and nose* with your bent elbow or tissue when you cough or sneeze',
       name: 'protectYourselfListOfItemsPageListItem3',
       desc: '',
       args: [],
@@ -148,7 +166,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem4 {
     return Intl.message(
-      'Avoid crowded places',
+      '*Stay more than* 1 meter (>3 feet) away from a person who is sick',
       name: 'protectYourselfListOfItemsPageListItem4',
       desc: '',
       args: [],
@@ -157,26 +175,8 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem5 {
     return Intl.message(
-      'Stay at home if you feel unwell - even with a slight fever and cough',
+      'Only wear a mask if you or someone you are looking after are ill with COVID-19 symptoms (especially coughing)',
       name: 'protectYourselfListOfItemsPageListItem5',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get protectYourselfListOfItemsPageListItem6 {
-    return Intl.message(
-      'If you have a fever, cough and difficulty breathing, seek medical care early but call by phone first!',
-      name: 'protectYourselfListOfItemsPageListItem6',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get protectYourselfListOfItemsPageListItem7 {
-    return Intl.message(
-      'Stay aware of the latest information from WHO',
-      name: 'protectYourselfListOfItemsPageListItem7',
       desc: '',
       args: [],
     );
@@ -467,7 +467,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('ru', 'RU'), Locale('ar', '001'), Locale('es', 'ES'), Locale('en', 'GB'), Locale('fr', 'FR'), Locale('en', ''), Locale('en', 'US'), Locale('zh', 'CN'),
+      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

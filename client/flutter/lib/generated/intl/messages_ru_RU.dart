@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("Защитите рот и нос изогнутым локоть или тканью, когда вы кашелеете или чихните"),
     "protectYourselfListOfItemsPageListItem4" : MessageLookupByLibrary.simpleMessage("Избегайте переполненных мест"),
     "protectYourselfListOfItemsPageListItem5" : MessageLookupByLibrary.simpleMessage("Оставайтесь дома, если чувствуете себя плохо , даже если у вас небольшая лихорадка и кашель"),
-    "protectYourselfListOfItemsPageListItem6" : MessageLookupByLibrary.simpleMessage("Если вы испытываете лихорадку, кашель и трудности с дыханием, обращайтесь за медицинской помощью заранее, но сначала позвоните по телефону!"),
-    "protectYourselfListOfItemsPageListItem7" : MessageLookupByLibrary.simpleMessage("Будьте в курсе самой свежей информации от"),
     "travelAdviceListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("КОТОРЫЙ продолжает рекомендовать против применения ограничений на поездки или торговлю в странах, в которых вспыхивают 19 вспышек..."),
     "travelAdviceListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("Носите маску только в том случае, если вы страдаете симптомами COVID-19 (особенно Кашеля) или осуществляете уход за человеком, у которого может быть КОДОВЫЙ-19"),
     "travelAdviceListOfItemsPageListItem11" : MessageLookupByLibrary.simpleMessage("Путешественники, возвращающиеся из пострадавших районов, должны:"),

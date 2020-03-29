@@ -57,6 +57,6 @@ class TravelAdvice extends StatelessWidget {
         titleWidget: EmojiHeader("🤒"),
         message:  S.of(context).travelAdviceListOfItemsPageListItem14,
       ),
-    ]);
+    ], title: S.of(context).homePagePageButtonTravelAdvice);
   }
 }

@@ -1,9 +1,13 @@
+import 'package:WHOFlutter/components/back_arrow.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 class ListOfItems extends StatelessWidget {
-  final List<ListItem> listOfItems;
-  ListOfItems(this.listOfItems);
+  final String title;
+
+  final List<Widget> listOfItems;
+  ListOfItems(this.listOfItems, {this.title = 'Provide Title'});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +17,65 @@ class ListOfItems extends StatelessWidget {
           CustomScrollView(
             slivers: [
               SliverAppBar(
-                flexibleSpace: Container(),
+                backgroundColor: Colors.white,
+                brightness: Brightness.light,
+                leading: SizedBox(),
+                flexibleSpace: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () => Navigator.pop(context),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                          bottom: 20,
+                          top: 20,
+                        ),
+                        child: BackArrow(),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              color: const Color(0xFF3D8BCC),
+                              fontSize: 30,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            S
+                                .of(context)
+                                .commonWorldHealthOrganizationCoronavirusApp,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              color: const Color(0xFF050C1D),
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 expandedHeight: 200,
               ),
               SliverList(
                 delegate: SliverChildListDelegate(this.listOfItems),
               ),
+
+              /// Pad by the Positioned container at the bottom so we can scroll
+              /// past it. Plus some padding.
+              SliverToBoxAdapter(
+                child: SizedBox(height: 70),
+              )
             ],
           ),
           Positioned(
@@ -29,14 +86,17 @@ class ListOfItems extends StatelessWidget {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: EdgeInsets.only(right: 20),
-                    child: IconButton(
-                      onPressed: () => Share.share('Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
-                      icon: Icon(Icons.share, size: 22,)
-                    ),
-                  )),
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      padding: EdgeInsets.only(right: 20),
+                      child: IconButton(
+                          onPressed: () => Share.share(
+                              'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
+                          icon: Icon(
+                            Icons.share,
+                            size: 22,
+                          )),
+                    )),
               ))),
         ],
       ),
