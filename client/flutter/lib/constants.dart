@@ -4,6 +4,8 @@ class Constants {
   static Color backgroundColor = Color(0xffffffff);
   static Color primaryColor = Color(0xff0093CE);
   static Color textColor = Color(0xffffffff);
+
+  static String imagePathLogo = 'assets/WHO.webp';
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging

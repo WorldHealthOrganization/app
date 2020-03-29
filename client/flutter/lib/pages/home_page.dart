@@ -1,9 +1,10 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/pages/question_index.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
+import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +22,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _initStateAsync();
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(AssetImage(Constants.imagePathLogo), context);
+    super.didChangeDependencies();
   }
 
   void _initStateAsync() async {
@@ -41,9 +48,10 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: CustomScrollView(slivers: [
             SliverAppBar(
-                expandedHeight: 110,
-                backgroundColor: Colors.white,
-                flexibleSpace: Image.asset("assets/WHO.jpg")),
+              expandedHeight: 110,
+              backgroundColor: Colors.white,
+              flexibleSpace: Image.asset(Constants.imagePathLogo),
+            ),
             SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [

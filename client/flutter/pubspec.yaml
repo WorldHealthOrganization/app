@@ -31,5 +31,6 @@ flutter:
 
   assets:
     - assets/
+
 flutter_intl:
   enabled: true

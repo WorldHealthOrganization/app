@@ -1,8 +1,9 @@
 import 'package:WHOFlutter/components/question_data.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:url_launcher/url_launcher.dart';
 
 class QuestionIndexPage extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/WHO.jpg", width: 300),
+                    Image.asset(Constants.imagePathLogo, width: 300),
                   ]),
             )),
             expandedHeight: 120,
