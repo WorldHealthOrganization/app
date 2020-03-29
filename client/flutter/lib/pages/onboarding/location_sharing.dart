@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class LocationSharing extends StatefulWidget {
@@ -22,7 +23,7 @@ class _LocationSharingState extends State<LocationSharing> {
               Spacer(),
               PageButton(
                 Color(0xff3b8bc4),
-                "Allow Location Sharing",
+                S.of(context).onBoardingLocationSharingPageButtonAllow,
                 _allowLocationSharing,
                 titleStyle: TextStyle(),
                 centerVertical: true,
@@ -31,7 +32,7 @@ class _LocationSharingState extends State<LocationSharing> {
               SizedBox(height: 16),
               FlatButton(
                 child: Text(
-                  "Skip",
+                  S.of(context).onBoardingLocationSharingPageButtonSkip,
                   style: TextStyle(color: Colors.grey),
                 ),
                 onPressed: _skipLocationSharing,
