@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("غطّي فمك وأنفك بالقوس أو النسيج الذي تنحدر منه عند السعال أو العطس"),
     "protectYourselfListOfItemsPageListItem4" : MessageLookupByLibrary.simpleMessage("تجنب ازدحام الأماكن"),
     "protectYourselfListOfItemsPageListItem5" : MessageLookupByLibrary.simpleMessage("البقاء في المنزل إذا شعرت بعدم الراحة - حتى مع حمى وسعال طفيفين"),
-    "protectYourselfListOfItemsPageListItem6" : MessageLookupByLibrary.simpleMessage("إذا كان لديك حمى وسعال وصعوبة في التنفس، فاطلب الرعاية الطبية مبكرًا ولكن اتصل بالهاتف أولا!"),
-    "protectYourselfListOfItemsPageListItem7" : MessageLookupByLibrary.simpleMessage("ابق على دراية بأحدث المعلومات من منظمة الصحة العالمية"),
     "travelAdviceListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("وتواصل منظمة الصحة العالمية تقديم المشورة ضد تطبيق القيود المفروضة على السفر أو التجارة في البلدان التي تشهد حالات انتشار من طراز COVID - 19..."),
     "travelAdviceListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("لا ترتدي قناعًا إلا إذا كنت مريضًا بأعراض COVIDD-19 (لا سيما السعال) أو تعتني بشخص قد يعاني من السعال COVID-19"),
     "travelAdviceListOfItemsPageListItem11" : MessageLookupByLibrary.simpleMessage("ينبغي لالمسافرين الذين يعودون من المناطق المتأثرة القيام بما يلي:"),

@@ -1,4 +1,8 @@
+import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
@@ -6,8 +10,37 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    _initStateAsync();
+  }
+
+  void _initStateAsync() async {
+    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+    if (!onboardingComplete) {
+      // TODO: This should be a bottom-up slide.
+      await Navigator.of(context)
+          .push(MaterialPageRoute(builder: (c) => LocationSharing()));
+      await UserPreferences().setOnboardingCompleted(true);
+    }
+  }
+
+  _launchStatsDashboard() async {
+    const url = 'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd';
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -38,14 +71,13 @@ class HomePage extends StatelessWidget {
                 PageButton(
                   Color(0xfff6c35c),
                   S.of(context).homePagePageButtonLatestNumbers,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                  _launchStatsDashboard,
                 ),
                 PageButton(
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
                   () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -55,7 +87,7 @@ class HomePage extends StatelessWidget {
                   ),
                   description:
                       "Learn the facts about Coronavirus and how to prevent the spread",
-                  centerItems: true,
+                  centerVertical: true,
                 ),
                 PageButton(
                   Color(0xffba4344),
@@ -63,7 +95,7 @@ class HomePage extends StatelessWidget {
                   () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
                   borderRadius: 50,
-                  centerItems: true,
+                  centerVertical: true,
                 ),
               ],
               mainAxisSpacing: 15.0,
@@ -78,71 +110,19 @@ class HomePage extends StatelessWidget {
                       'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
                 ),
                 ListTile(
-                  title: Text(S.of(context).homePagePageSliverListProvideFeedback),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () {},
-                ),
-                ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => showAboutDialog(
                       context: context,
-                      applicationLegalese: S.of(context).homePagePageSliverListAboutTheAppDialog
-                  ),
+                      applicationLegalese: S
+                          .of(context)
+                          .homePagePageSliverListAboutTheAppDialog),
                 )
               ]),
             ),
           ]),
         ),
       ),
-    );
-  }
-}
-
-class PageButton extends StatelessWidget {
-  const PageButton(this.backgroundColor, this.title, this.onPressed,
-      {this.description = "",
-      this.borderRadius = 25.0,
-      this.centerItems = false});
-
-  final Color backgroundColor;
-  final String title;
-  final String description;
-  final double borderRadius;
-  final Function onPressed;
-  final bool centerItems;
-
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(this.borderRadius)),
-      color: backgroundColor,
-      child: Padding(
-          padding: const EdgeInsets.symmetric(vertical:15.0, horizontal: 8.0),
-            child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: this.centerItems
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                this.title,
-                textScaleFactor: 1.5,
-                textAlign: TextAlign.left,
-                style: TextStyle(fontWeight: FontWeight.w900),
-              ),
-              this.description.isNotEmpty
-                  ? Text(
-                      this.description,
-                      textAlign: TextAlign.left,
-                      textScaleFactor: 1.35,
-                      style: TextStyle(fontWeight: FontWeight.w400),
-                    )
-                  : Container()
-            ],
-          )),
-      onPressed: this.onPressed,
     );
   }
 }
