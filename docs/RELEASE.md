@@ -45,9 +45,6 @@ Check how we stack up against these principles (qualitative evaluation, [details
 1. [ ] iOS screenshots committed
 1. [ ] android screenshots committed 
 
-## Final WHO sign off/approval
-:construction: [waiting for input](https://github.com/WorldHealthOrganization/app/issues/274) from @brunobowden
-
 ## Release processes
 
 ### Prepare to release
