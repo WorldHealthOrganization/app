@@ -1,11 +1,11 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/components/question_data.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
-import 'package:WHOFlutter/pages/who_myth_busters.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -87,14 +87,21 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (c) => QuestionIndexPage(
+                          dataSource: QuestionData.yourQuestionsAnswered,
+                          title: "Questions",
+                          subtitle: "WHO Coronavirus App"))), // TODO: Localize
                 ),
                 PageButton(
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (c) => WhoMythBusters()),
+                    MaterialPageRoute(
+                        builder: (c) => QuestionIndexPage(
+                            dataSource: QuestionData.whoMythbusters,
+                            title: "WHO Myth-busters",
+                            subtitle: "WHO Coronavirus App")),
                   ),
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
