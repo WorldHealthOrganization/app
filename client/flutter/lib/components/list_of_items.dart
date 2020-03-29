@@ -27,7 +27,7 @@ class ListOfItems extends StatelessWidget {
                       onTap: () => Navigator.pop(context),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          left: 15,
+                          left: 25,
                           right: 25,
                           bottom: 20,
                           top: 20,

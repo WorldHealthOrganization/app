@@ -46,6 +46,10 @@ class ProtectYourself extends StatelessWidget {
 
   Widget get _coverMouthAnimation => _getAnimation('Cover');
 
+  Widget get _avoidTouchingAnimation => _getAnimation('Face');
+
+  Widget get _protectAnimation => _getAnimation('Mask');
+
   RichText get _washHandsMessage => RichText(
         text: TextSpan(
           style: normal,
@@ -131,7 +135,7 @@ class ProtectYourself extends StatelessWidget {
         ),
         ProtectYourselfCard(
           message: _avoidEyesMessage,
-          child: _placeholder,
+          child: _avoidTouchingAnimation,
         ),
         ProtectYourselfCard(
           message: _coverMouth,
@@ -143,7 +147,7 @@ class ProtectYourself extends StatelessWidget {
         ),
         ProtectYourselfCard(
           message: _maskMessage,
-          child: _placeholder,
+          child: _protectAnimation,
         ),
       ],
       title: 'Protect Yourself',
