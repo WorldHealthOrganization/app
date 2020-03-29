@@ -1,11 +1,12 @@
 schema_version: 1
+content_version: 1
 contents:
   type: qa
   items:
     -
-    title: |
+    title_html: |
       What are coronaviruses, what is COVID-19 and how is it related to SARS?
-    body: |
+    body_html: |
       <b>What are coronaviruses, COVID-19 and how are they related to SARS?<b>
 
       <b>What is a coronavirus?<b>
@@ -27,9 +28,9 @@ contents:
       infectious than COVID-19. There have been no outbreaks of SARS anywhere in the world
       since 2003.</p>
     -
-    title: |
+    title_html: |
       Question two title...
-    body: |
+    body_html: |
       Question two body...
 
 
