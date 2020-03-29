@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("Cubre la boca y la nariz con el codo o tejido doblado cuando tos o te escondes"),
     "protectYourselfListOfItemsPageListItem4" : MessageLookupByLibrary.simpleMessage("Evitar lugares abarrotados"),
     "protectYourselfListOfItemsPageListItem5" : MessageLookupByLibrary.simpleMessage("Quédate en casa si te sientes mal , incluso con una fiebre y una tos leves"),
-    "protectYourselfListOfItemsPageListItem6" : MessageLookupByLibrary.simpleMessage("Si tienes fiebre, tos y dificultad para respirar, ¡ busca atención médica pronto pero llama primero por teléfono!"),
-    "protectYourselfListOfItemsPageListItem7" : MessageLookupByLibrary.simpleMessage("Manténgase al tanto de la información más reciente de QUIÉN"),
     "travelAdviceListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("QUE continúa asesorando contra la aplicación de restricciones a los viajes o al comercio a países que sufren brotes de CÓVIDOS - 19…"),
     "travelAdviceListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("Use solo una máscara si está enfermo con síntomas COVID-19 (especialmente tos) o cuidando a alguien que pueda tener CÓVIDO-19"),
     "travelAdviceListOfItemsPageListItem11" : MessageLookupByLibrary.simpleMessage("Los viajeros que regresen de las zonas afectadas deberán:"),
