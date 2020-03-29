@@ -103,12 +103,6 @@ class _HomePageState extends State<HomePage> {
                       'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
                 ),
                 ListTile(
-                  title:
-                      Text(S.of(context).homePagePageSliverListProvideFeedback),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () {},
-                ),
-                ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () => showAboutDialog(
