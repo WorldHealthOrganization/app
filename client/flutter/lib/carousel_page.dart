@@ -15,28 +15,22 @@ class CarouselSlide extends StatelessWidget {
   Widget build(BuildContext context) {
     double scale = contentScale(context);
     var screenHeight = MediaQuery.of(context).size.height;
-    return Container(
+    return ListView(
       padding: EdgeInsets.all(24),
-      child: Card(
-        elevation: 0,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Spacer(flex: 1),
-            this.titleWidget == null?Container(height: 0,):Container(
+      children: <Widget>[
+        this.titleWidget == null
+            ? Container(
+                height: 0,
+              )
+            : Container(
                 height: screenHeight * 0.4,
                 child: this.titleWidget ?? Container()),
-            Spacer(flex: 1),
-            Text(
-              this.message,
-              textScaleFactor: scale * 1.5,
-              textAlign: TextAlign.center,
-            ),
-            Spacer(flex: 2),
-          ],
+        Text(
+          this.message,
+          textScaleFactor: scale * 1.5,
+          textAlign: TextAlign.center,
         ),
-      ),
+      ],
     );
   }
 }
