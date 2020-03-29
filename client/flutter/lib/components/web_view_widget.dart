@@ -35,7 +35,6 @@ class _WebViewWidgetState extends State<WebViewWidget> {
           appBar: AppBar(
             title: Text(widget.title),
             actions: <Widget>[
-              // action button
               IconButton(
                 icon: Icon(Icons.close),
                 onPressed: () {
