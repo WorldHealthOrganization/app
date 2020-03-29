@@ -45,8 +45,12 @@ class _HomePageState extends State<HomePage> {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
       await launch(url);
-      await analytics.logEvent(name: 'Latest_Numbers');
+      _logAnalyticsEvent('/LatestNumbers');
     }
+  }
+
+  _logAnalyticsEvent(String name) async {
+    await analytics.logEvent(name: name);
   }
 
   @override
@@ -74,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff3b8bc4),
                   S.of(context).homePagePageButtonProtectYourself,
                   () {
-                    analytics.logEvent(name: 'Protect_Yourself');
+                    _logAnalyticsEvent('/ProtectYourself');
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => ProtectYourself()));
                   },
@@ -87,15 +91,21 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
+                  () {
+                    _logAnalyticsEvent('/QuestionsAnswered');
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => QuestionIndexPage()));
+                  },
                 ),
                 PageButton(
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
-                  () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (c) => WhoMythBusters()),
-                  ),
+                  () {
+                    _logAnalyticsEvent('/MythBusters');
+                    return Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => WhoMythBusters()),
+                    );
+                  },
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
                   centerVertical: true,
@@ -103,8 +113,11 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xffba4344),
                   S.of(context).homePagePageButtonTravelAdvice,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                  () {
+                    _logAnalyticsEvent('/TravelAdvice');
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => TravelAdvice()));
+                  },
                   borderRadius: 50,
                   centerVertical: true,
                 ),
