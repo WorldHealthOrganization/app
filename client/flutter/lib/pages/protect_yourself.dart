@@ -16,9 +16,8 @@ const bold = TextStyle(
   fontWeight: FontWeight.w700,
 );
 const header = TextStyle(
-  fontFamily: 'SFProDisplay',
+  fontFamily: 'SFProDisplayHeavy',
   color: Colors.black,
-  fontWeight: FontWeight.w800,
   fontSize: 24,
 );
 
@@ -119,13 +118,11 @@ class ProtectYourself extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListOfItems(
       [
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Text(
-              'General Recommendations',
-              style: header,
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 26, top: 20),
+          child: Text(
+            'General Recommendations',
+            style: header,
           ),
         ),
         ProtectYourselfCard(
@@ -149,6 +146,7 @@ class ProtectYourself extends StatelessWidget {
           child: _placeholder,
         ),
       ],
+      title: 'Protect Yourself',
     );
   }
 }

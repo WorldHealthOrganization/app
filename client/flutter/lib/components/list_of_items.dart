@@ -44,15 +44,19 @@ class ListOfItems extends StatelessWidget {
                             Text(
                               title,
                               style: TextStyle(
+                                fontFamily: 'SFProDisplayHeavy',
                                 color: const Color(0xFF3D8BCC),
-                                fontSize: 20,
+                                fontSize: 30,
                               ),
                             ),
+                            SizedBox(height:5),
                             Text(
                               'WHO Coronavirus App',
                               style: TextStyle(
+                                fontFamily: 'SFProDisplay',
+                                fontWeight: FontWeight.w900,
                                 color: const Color(0xFF050C1D),
-                                fontSize: 20,
+                                fontSize: 18,
                               ),
                             ),
                           ],
@@ -66,6 +70,9 @@ class ListOfItems extends StatelessWidget {
               SliverList(
                 delegate: SliverChildListDelegate(this.listOfItems),
               ),
+              /// Pad by the Positioned container at the bottom so we can scroll
+              /// past it. Plus some padding.
+              SliverToBoxAdapter(child:SizedBox(height:70),)
             ],
           ),
           Positioned(
