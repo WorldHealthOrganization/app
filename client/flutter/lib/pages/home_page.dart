@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/components/question_data.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
@@ -104,8 +105,11 @@ class _HomePageState extends State<HomePage> {
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
                   () {
                     _logAnalyticsEvent('QuestionsAnswered');
-                    return Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => QuestionIndexPage()));
+                    return Navigator.of(context).push(MaterialPageRoute(
+                      builder: (c) => QuestionIndexPage(
+                          dataSource: QuestionData.yourQuestionsAnswered,
+                          title: "Questions",
+                          subtitle: "WHO Coronavirus App"))), // TODO: Localize
                   },
                 ),
                 PageButton(
@@ -114,8 +118,11 @@ class _HomePageState extends State<HomePage> {
                   () {
                     _logAnalyticsEvent('MythBusters');
                     return Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => WhoMythBusters()),
-                    );
+                    MaterialPageRoute(
+                        builder: (c) => QuestionIndexPage(
+                            dataSource: QuestionData.whoMythbusters,
+                            title: "WHO Myth-busters",
+                            subtitle: "WHO Coronavirus App")),
                   },
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
