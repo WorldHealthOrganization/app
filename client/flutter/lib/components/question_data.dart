@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-/// This is just a *placeholder* for the dynamic content.
 class QuestionData {
-  static Future<List<QuestionItem>> questions() async {
+  /// TODO: This is just a *placeholder* for the dynamic content.
+  static Future<List<QuestionItem>> yourQuestionsAnswered() async {
     return [
       QuestionItem(
           title:
@@ -41,6 +41,11 @@ class QuestionData {
               </ul>
               """),
     ];
+  }
+
+  /// TODO: This is just a *placeholder* for the dynamic content.
+  static Future<List<QuestionItem>> whoMythbusters() async {
+    return yourQuestionsAnswered();
   }
 }
 

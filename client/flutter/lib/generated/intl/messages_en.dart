@@ -21,18 +21,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("WHO Coronavirus App"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest \nNumbers"),
+    "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"),
     "homePagePageButtonProtectYourself" : MessageLookupByLibrary.simpleMessage("Protect yourself"),
     "homePagePageButtonTravelAdvice" : MessageLookupByLibrary.simpleMessage("Travel Advice"),
     "homePagePageButtonWHOMythBusters" : MessageLookupByLibrary.simpleMessage("WHO Myth-busters"),
+    "homePagePageButtonWHOMythBustersDescription" : MessageLookupByLibrary.simpleMessage("Learn the facts about Coronavirus and how to prevent the spread"),
     "homePagePageButtonYourQuestionsAnswered" : MessageLookupByLibrary.simpleMessage("Your \nQuestions \nAnswered"),
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("About the app"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("The official World Health Organization COVID-19 App."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Provide app feedback"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Share The App"),
+    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Allow Location Sharing"),
+    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*Wash your hands* with soap and water for at least 20 seconds"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Avoid touching* your eyes, mouth, and nose"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*Cover your mouth and nose* with your bent elbow or tissue when you cough or sneeze"),
