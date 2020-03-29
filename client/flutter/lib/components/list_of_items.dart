@@ -7,6 +7,7 @@ class ListOfItems extends StatelessWidget {
   final String title;
 
   final List<Widget> listOfItems;
+
   ListOfItems(this.listOfItems, {this.title = 'Provide Title'});
 
   @override
@@ -90,8 +91,7 @@ class ListOfItems extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.only(right: 20),
                       child: IconButton(
-                          onPressed: () => Share.share(
-                              'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27'),
+                          onPressed: () => Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
                           icon: Icon(
                             Icons.share,
                             size: 22,

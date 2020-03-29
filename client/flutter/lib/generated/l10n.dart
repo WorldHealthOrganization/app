@@ -47,6 +47,33 @@ class S {
     );
   }
 
+  String get commonWhoAppShareIconButtonDescription {
+    return Intl.message(
+      'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27',
+      name: 'commonWhoAppShareIconButtonDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get onBoardingLocationSharingPageButtonAllow {
+    return Intl.message(
+      'Allow Location Sharing',
+      name: 'onBoardingLocationSharingPageButtonAllow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get onBoardingLocationSharingPageButtonSkip {
+    return Intl.message(
+      'Skip',
+      name: 'onBoardingLocationSharingPageButtonSkip',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageButtonProtectYourself {
     return Intl.message(
       'Protect yourself',
@@ -78,6 +105,15 @@ class S {
     return Intl.message(
       'WHO Myth-busters',
       name: 'homePagePageButtonWHOMythBusters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageButtonWHOMythBustersDescription {
+    return Intl.message(
+      'Learn the facts about Coronavirus and how to prevent the spread',
+      name: 'homePagePageButtonWHOMythBustersDescription',
       desc: '',
       args: [],
     );
@@ -123,6 +159,15 @@ class S {
     return Intl.message(
       'The official World Health Organization COVID-19 App.',
       name: 'homePagePageSliverListAboutTheAppDialog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageButtonLatestNumbersUrl {
+    return Intl.message(
+      'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd',
+      name: 'homePagePageButtonLatestNumbersUrl',
       desc: '',
       args: [],
     );
@@ -467,7 +512,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

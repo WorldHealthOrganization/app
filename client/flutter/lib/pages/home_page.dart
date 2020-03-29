@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _launchStatsDashboard() async {
-    const url = 'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd';
+    var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
       await launch(url);
     }
@@ -85,8 +85,7 @@ class _HomePageState extends State<HomePage> {
                   () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (c) => WhoMythBusters()),
                   ),
-                  description:
-                      "Learn the facts about Coronavirus and how to prevent the spread",
+                  description: S.of(context).homePagePageButtonWHOMythBustersDescription,
                   centerVertical: true,
                 ),
                 PageButton(
@@ -106,8 +105,7 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => Share.share(
-                      'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app'),
+                  onTap: () => Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
                 ),
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
