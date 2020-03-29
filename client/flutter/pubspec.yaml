@@ -19,8 +19,9 @@ dependencies:
   flare_flutter: ^2.0.1
   path_drawing: ^0.4.1
   shared_preferences: ^0.5.6
-
+  permission_handler: ^4.4.0+hotfix.2
   intl: ^0.16.0
+  
   flutter_localizations:
     sdk: flutter
 
