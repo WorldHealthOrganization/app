@@ -2,7 +2,7 @@ import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
+import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:WHOFlutter/pages/who_myth_busters.dart';
@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'onboarding/notifications_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,10 +28,19 @@ class _HomePageState extends State<HomePage> {
 
   void _initStateAsync() async {
     var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+
+    // TODO: Uncomment for testing.  Remove when appropriate.
+    // onboardingComplete = false;
+
     if (!onboardingComplete) {
-      // TODO: This should be a bottom-up slide.
-      await Navigator.of(context)
-          .push(MaterialPageRoute(builder: (c) => LocationSharing()));
+      // TODO: We should wrap these in a single Navigation context so that they can
+      // TODO: slide up as a modal, proceed with pushes left to right, and then be
+      // TODO: dismissed together.
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => NotificationsPage()));
+
       await UserPreferences().setOnboardingCompleted(true);
     }
   }
@@ -85,7 +96,8 @@ class _HomePageState extends State<HomePage> {
                   () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (c) => WhoMythBusters()),
                   ),
-                  description: S.of(context).homePagePageButtonWHOMythBustersDescription,
+                  description:
+                      S.of(context).homePagePageButtonWHOMythBustersDescription,
                   centerVertical: true,
                 ),
                 PageButton(
@@ -105,7 +117,8 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
+                  onTap: () => Share.share(
+                      S.of(context).commonWhoAppShareIconButtonDescription),
                 ),
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
