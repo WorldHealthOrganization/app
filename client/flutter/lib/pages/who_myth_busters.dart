@@ -39,7 +39,7 @@ class WhoMythBusters extends StatelessWidget {
         message: S.of(context).whoMythBustersListOfItemsPageListItem8,
       ),
       ListItem(
-        titleWidget: EmojiHeader("🟣"),
+        titleWidget: EmojiHeader("♒"),
         message: S.of(context).whoMythBustersListOfItemsPageListItem9,
       ),
       ListItem(
@@ -67,7 +67,7 @@ class WhoMythBusters extends StatelessWidget {
         message: S.of(context).whoMythBustersListOfItemsPageListItem15,
       ),
       ListItem(
-        titleWidget: EmojiHeader("🧪"),
+        titleWidget: EmojiHeader("⚕️"),
         message: S.of(context).whoMythBustersListOfItemsPageListItem16,
       ),
     ], title:S.of(context).homePagePageButtonWHOMythBusters);
