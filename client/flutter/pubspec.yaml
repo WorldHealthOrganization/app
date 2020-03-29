@@ -34,6 +34,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/images/
     - assets/animations/
 
 flutter_intl:

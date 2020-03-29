@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/components/question_data.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing.dart';
@@ -76,16 +77,24 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xffbe7141),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => QuestionIndexPage())),
+                  () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (c) => QuestionIndexPage(
+                          dataSource: QuestionData.yourQuestionsAnswered,
+                          title: "Questions",
+                          subtitle: "WHO Coronavirus App"))), // TODO: Localize
                 ),
                 PageButton(
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (c) => WhoMythBusters()),
+                    MaterialPageRoute(
+                        builder: (c) => QuestionIndexPage(
+                            dataSource: QuestionData.whoMythbusters,
+                            title: "WHO Myth-busters",
+                            subtitle: "WHO Coronavirus App")),
                   ),
-                  description: S.of(context).homePagePageButtonWHOMythBustersDescription,
+                  description:
+                      S.of(context).homePagePageButtonWHOMythBustersDescription,
                   centerVertical: true,
                 ),
                 PageButton(
@@ -105,7 +114,8 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListShareTheApp),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
+                  onTap: () => Share.share(
+                      S.of(context).commonWhoAppShareIconButtonDescription),
                 ),
                 ListTile(
                   title: Text(S.of(context).homePagePageSliverListAboutTheApp),
