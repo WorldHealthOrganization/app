@@ -25,11 +25,13 @@ class CarouselSlide extends StatelessWidget {
             : Container(
                 height: screenHeight * 0.4,
                 child: this.titleWidget ?? Container()),
-        Text(
+        Padding(
+          padding: EdgeInsets.only(bottom: 30),
+            child: Text(
           this.message,
           textScaleFactor: scale * 1.5,
           textAlign: TextAlign.center,
-        ),
+        )),
       ],
     );
   }
