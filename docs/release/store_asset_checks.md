@@ -1,6 +1,8 @@
 # Checklist of material required for storefronts
 ______
 
+The text and image assets should be added to a shared Google Drive folder.
+
 ### iOS text assets
 
 1. [ ] What's New
@@ -58,7 +60,7 @@ All files need to be JPEG / PNG (more info on exact requirements).
 
 #### OPTIONAL
 
-- [ ] upto 8 screenshots (phone)
+- [ ] up to 8 other screenshots
 - [ ] Promo Graphic
 - [ ] TV Banner
 - [ ] Promo video

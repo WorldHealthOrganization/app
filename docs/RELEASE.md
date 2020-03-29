@@ -1,29 +1,31 @@
-# Release process and check offs (client only)
+# Release process
 ______
-since there is no server component at this time
+Items that are still under discussion / not ready to be used for v1.0 currently are marked with the :construction: icon.
+
+:construction: Server-side aspects of the release process
 
 ## Checkoffs
 
-## Product checks
-1. [ ]  fidelity checks with mockups (design) \*
-1. [ ]  :construction: user testing (**[there is currently no plan for this](https://github.com/WorldHealthOrganization/app/issues/243)**)
-1. [ ]  go/nogo on individual features (engineering)
-1. [ ]  release tag created (or maybe release branch, [discussion](https://github.com/WorldHealthOrganization/app/issues/279))
-1. [ ]  all automated tests pass
-1. [ ]  LQA tests
-1. [ ]  release notes generated
+### Product checks
+1. [ ]  Fidelity checks with mockups (design) \*
+1. [ ]  :construction: user testing ([discussion](https://github.com/WorldHealthOrganization/app/issues/243))
+1. [ ]  Go / No-go on individual features (engineering)
+1. [ ]  Create [release tag and release notes](https://github.com/WorldHealthOrganization/app/releases) for the newest release (engineering, [discussion](https://github.com/WorldHealthOrganization/app/issues/279))
+1. [ ]  Ensure that [all automated tests](https://github.com/WorldHealthOrganization/app/actions) pass for the given release tag (engineering)
+1. [ ]  :construction: QA and LQA (Localization Quality Assurance) tests
+
 
 \* Sometimes, engineering slightly changes the mockups for ease of implementation/scalability or runs into unforeseen issues on various devices, etc. — issues not generally caught by unit and integration tests. A release preview (whether URL or TestFlight release) should be provided to the design team with enough time to provide light feedback and discuss any implementation trade-offs. We imagine a few hours to be ideal for this, but more time is always welcome.
 
-## Compliance checks
-### Security checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/269), [details](release/security_check_details.md))
+### Compliance checks
+#### Security checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/269), [details](release/security_check_details.md))
 - [ ] System Boundary
 - [ ] APIs and Interconnection (external systems and services)
 - [ ] Infrastructure
 - [ ] Data Flow
 - [ ] Cryptography
-### Privacy checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/280))
-Check how we stack up against these principles (qualitative evaluation, [details](release/privacy_check_details.md))
+#### Privacy checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/280), [details](release/privacy_check_details.md))
+Check how we stack up against these principles (qualitative evaluation):
 - [ ] Collection Limitation Principle
 - [ ] Data Quality Principle
 - [ ] Purpose Specification Principle
@@ -32,63 +34,68 @@ Check how we stack up against these principles (qualitative evaluation, [details
 - [ ] Openness Principle
 - [ ] Individual Participation Principle
 - [ ] Accountability Principle
-### Legal checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
+#### Legal checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
 - [ ] 3rd party libraries / dependency license review
 - [ ] CLA / developer license review
-- [ ] Verify privacy policy vs actual system
+- [ ] Verify that our app meets the requirements of the [current privacy policy](https://github.com/WorldHealthOrganization/app/issues/58)
 
 
-## Store material check ([details](release/store_asset_checks.md))
+### Store material check ([details](release/store_asset_checks.md))
 
-1. [ ] iOS text assets committed
-1. [ ] android text assets committed
-1. [ ] iOS screenshots committed
-1. [ ] android screenshots committed 
+1. [ ] iOS text assets
+1. [ ] Android text assets
+1. [ ] iOS screenshots
+1. [ ] Android screenshots 
 
 ## Release processes
 
 ### Prepare to release
 
-1. [ ] create release channel
-1. [ ] create release tag/branch ([discussion](https://github.com/WorldHealthOrganization/app/issues/279))
-1. [ ] :construction: create Google Drive to push release to WHO
-1. [ ] check build instructions for clarity and accuracy. :construction: wrap instructions in a single script
-1. [ ] determine the gatekeepers for the following categories (this may change as people join or leave)
-   1. [ ] engineering
-   1. [ ] design
-   1. [ ] compliance
+1. [ ] Create release Slack channel for updates and announcements
+1. [ ] Create Google Drive folder to store text / image assets
+1. [ ] Check build instructions for clarity and accuracy. :construction: wrap instructions in a single script
+1. [ ] Determine the gatekeepers for the following categories (this may change as people join or leave)
+   1. [ ] Engineering
+   1. [ ] Design
+   1. [ ] Compliance
 
 ### Push to stores
 
-- [ ] get all [checkoffs](#checkoffs)
-- determine drop-dead time for:
-  - [ ] stopping code churn
-  - [ ] finalizing release in Github
-  - [ ] pushing build from GitHub to WHO
-- [ ] Upload all assets needed to Google Drive
-- [ ] WHO will **build and sign** (.apk/.ipa) the binaries using **their keys**
-- [ ] WHO will fill in store information and upload .apk/.ipa
+1. [ ] Get all [checkoffs](#checkoffs)
+- Determine drop-dead time for:
+  - [ ] Stopping code churn
+  - [ ] Finalizing release in Github
+  - [ ] Pushing build from GitHub to WHO
+1. [ ] Upload all assets needed to Google Drive and share it with the WHO
+1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**.
+1. [ ] WHO will fill in store information and update screenshots from the Google Drive folder.
+1. [ ] iOS: WHO will upload build to TestFlight. They will also submit the build for app review and select "Manually release this version".
+1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.
+1. [ ] Double check that WHO has uploaded and updated the text / image assets that we want.
 
-## Alpha testing (iOS, for native code changes only)
+## Alpha testing
 
-**[TestFlight requires a simplified version of app store review for > 25 people](https://developer.apple.com/testflight/), so we should alpha test at least on iOS with a small group before submission** 
+Alpha testing lets you share the app with a known list of email addresses.
 
-1. [ ] recruit small sample of < 25 users from slack with a variety of different phone models
-1. [ ] ask them to perform basic testing, ensure that app does not crash or look weird
-1. [ ] once alpha testing passes, submit for testflight app store review
+1. [ ] Recruit a small sample of < 25 users from Slack with a variety of different phone models.
+1. [ ] Send these testing users' emails to the WHO so they can invite them for Alpha testing (Android) or TestFlight (iOS).
+1. [ ] Ask them to perform basic testing, ensure that app does not crash or have serious problems.
+1. [ ] If a serious issue is detected, fix the issue and restart the release process.
 
-## Beta testing
+## :construction: Beta testing
 
-1. [ ] publish beta testing URLs for both android and iOS to slack
-1. [ ] collect beta test feedback in google doc
-1. [ ] prioritize issues that need to be fixed before release
-1. [ ] fix issues
-1. [ ] [push to stores](#push-to-stores)
+Unlike Alpha testing, Beta testing lets you share a public link to invite testers.
 
-## Release!!
+1. [ ] WHO will promote the app to the "Beta" track on Google Play, and updates TestFlight Beta testing with the latest build.
+1. [ ] Publish beta testing URLs for both Android and iOS to Slack.
+1. [ ] Collect beta test feedback in a Google doc.
 
-1. [ ] push beta version with no blocking/high priority issues to production
+## Release to production
 
-## Post-release marketing
+1. [ ] Once the App Store review approval has been granted, WHO should manually release the new version.
+1. [ ] WHO should promote the Play Store release to "Production".
 
-1. [ ] send out press releases etc
+## :construction: Post-release tasks
+
+1. [ ] Marketing
+1. [ ] Additional testing
