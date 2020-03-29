@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="@dimen/img_width_height"
+                android:layout_height="@dimen/img_width_height">
+
+                <ImageView
+                    android:id="@+id/view_img"
+                    android:layout_width="@dimen/img_width_height"
+                    android:layout_height="@dimen/img_width_height"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/img" />
+
+                <ProgressBar
+                    android:id="@+id/view_loader"
+                    style="?android:attr/progressBarStyle"
+                    android:theme="@style/AppThemeLight"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_title"
+                android:textAlignment="center"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/slide_title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/view_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/txt_subtitle"
+                android:textAlignment="center"
+                android:textColor="@android:color/tab_indicator_text"
+                android:textSize="@dimen/slide_desc" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

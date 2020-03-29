@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WHO COVID-19</string>
+
+    <string name="next">SIGUIENTE</string>
+    <string name="omit">OMITIR</string>
+    <string name="start">ENTENDIDO</string>
+
+    <string name="content_lenguaje">es</string>
+    <string name="txt_title">Comó se propaga</string>
+    <string name="txt_subtitle">COVID-19, también llamado "Coronavirus" principlmente se propaga de persona a persona entre personas que tienen contacto directo una persona con el virus.</string>
+</resources>

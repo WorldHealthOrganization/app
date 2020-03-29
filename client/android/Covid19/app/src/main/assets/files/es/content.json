@@ -1,0 +1,22 @@
+{
+  "slider": [
+    {
+      "id": 1,
+      "title": "Comó se propaga?",
+      "description": "COVID-19, también llamado \"Coronavirus\" principlmente se propaga de persona a persona entre personas que tienen contacto directo una persona con el virus.",
+      "img": "https://www.campland.com/wp-content/uploads/2020/03/Picture5-covermouth.png"
+    },
+    {
+      "id": 2,
+      "title": "Limpia tus manos con frecuencia",
+      "description": "Lávese las manos a menudo con agua y jabón durante al menos 20 segundos, especialmente después de haber estado en un lugar público, o después de sonarse la nariz, toser o estornudar",
+      "img": "https://www.campland.com/wp-content/uploads/2020/03/Picture1-WashHands.png"
+    },
+    {
+      "id": 3,
+      "title": "Evita el contacto",
+      "description": "Ponga distancia entre usted y otras personas si COVID-19 se está extendiendo en su comunidad. Esto es importante para las personas que corren un mayor riesgo ya que pueden enfermarse gravemente.",
+      "img": "https://www.campland.com/wp-content/uploads/2020/03/Picture2-AvoidContact.png"
+    }
+  ]
+}
