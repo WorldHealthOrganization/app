@@ -61,11 +61,13 @@ Check how we stack up against these principles (qualitative evaluation):
 
 ### Push to stores
 
-1. [ ] Get all [checkoffs](#checkoffs)
-- Determine drop-dead time for:
+1. Determine drop-dead time for:
   - [ ] Stopping code churn
   - [ ] Finalizing release in Github
   - [ ] Pushing build from GitHub to WHO
+  - [ ] Alpha release planned date
+  - [ ] Production release planned date
+1. [ ] Get all [checkoffs](#checkoffs)
 1. [ ] Upload all assets needed to Google Drive and share it with the WHO
 1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**.
 1. [ ] WHO will fill in store information and update screenshots from the Google Drive folder.
