@@ -18,6 +18,7 @@ dependencies:
   visibility_detector: ^0.1.4
   flare_flutter: ^2.0.1
   path_drawing: ^0.4.1
+  shared_preferences: ^0.5.6
 
   intl: ^0.16.0
   flutter_localizations:
