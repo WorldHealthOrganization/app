@@ -18,7 +18,7 @@ class LegalLandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/WHO.jpg"),
-            Text("Official Coronavirus Information App", style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
+            Text("Official WHO COVID-19 Information App", style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
             SizedBox(height: 70,),
             PageButton(
               Constants.primaryColor,

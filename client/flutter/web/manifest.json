@@ -1,11 +1,11 @@
 {
-    "name": "WHO MyHealth",
-    "short_name": "MyHealth",
+    "name": "WHO COVID-19",
+    "short_name": "COVID-19",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "WHO MyHealth Web Preview",
+    "description": "WHO COVID-19 Web Preview [This is not approved content]",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
