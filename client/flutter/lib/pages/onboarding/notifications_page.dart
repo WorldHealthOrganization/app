@@ -33,6 +33,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
         const IosNotificationSettings(
             sound: true, badge: true, alert: true, provisional: false));
 
+    await _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+
     _registerFCMToken();
 
     _complete();
