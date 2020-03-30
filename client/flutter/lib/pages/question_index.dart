@@ -128,7 +128,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               child: html(questionItem.body),
             )
           ],
-          // onExpansionChanged: ,
         ),
       ]),
     );
