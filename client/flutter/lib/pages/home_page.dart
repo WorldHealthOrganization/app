@@ -2,6 +2,7 @@ import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/legal_landing_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
@@ -23,6 +24,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final String versionString = packageInfo != null
+      ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
+      : null;
+  final String copyrightString = '© 2020 WHO';
   @override
   void initState() {
     super.initState();
@@ -159,6 +164,7 @@ class _HomePageState extends State<HomePage> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () => showAboutDialog(
                     context: context,
+                    applicationVersion: packageInfo?.version,
                     applicationLegalese:
                         S.of(context).homePagePageSliverListAboutTheAppDialog),
               ),
@@ -166,10 +172,10 @@ class _HomePageState extends State<HomePage> {
                 height: 25,
               ),
               Text(
-                S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion,
+                '${versionString ?? ''}$copyrightString',
                 style: TextStyle(color: Color(0xff26354E)),
                 textAlign: TextAlign.center,
-              ), //TODO: pull these values in
+              ),
               Container(
                 height: 40,
               ),
