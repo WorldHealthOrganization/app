@@ -6,7 +6,7 @@ class WhoService {
   static final String serviceUrlStaging =
       'https://staging.whocoronavirus.org/WhoService';
   static final String serviceUrlProd = 'https://whocoronavirus.org/WhoService';
-  static final String serviceUrl = serviceUrlStaging;
+  static final String serviceUrl = serviceUrlProd;
 
   /// Put device token.
   static Future<bool> putDeviceToken(String token) async {
