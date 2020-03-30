@@ -5,6 +5,7 @@ import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,11 +15,45 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+
+
   @override
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+     _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(
+            sound: true, badge: true, alert: true, provisional: true));
+            
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      setState(() {
+        // _homeScreenText = "Push Messaging token: $token";
+      });
+      // print(_homeScreenText);
+    });
   }
 
   @override
