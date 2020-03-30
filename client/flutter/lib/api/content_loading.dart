@@ -45,7 +45,7 @@ class ContentLoading {
                 title: "App Update Required",
                 // TODO: Provide the sharing link here?
                 bodyText:
-                    "Please update to the latest version of the app in order store to receive the latest information and updates.");
+                    "Please update to the latest version of the app in order to receive the latest information and updates.");
           });
         }
       }
