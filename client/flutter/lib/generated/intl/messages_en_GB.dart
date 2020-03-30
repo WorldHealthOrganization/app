@@ -36,8 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("The official World Health Organization COVID-19 App."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Provide app feedback"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Share The App"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Allow Location Sharing"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*Wash your hands* with soap and water for at least 20 seconds"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Avoid touching* your eyes, mouth, and nose"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*Cover your mouth and nose* with your bent elbow or tissue when you cough or sneeze"),
