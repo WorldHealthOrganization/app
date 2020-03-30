@@ -17,15 +17,15 @@ class PermissionRequestPage extends StatelessWidget {
     @required this.buttonTitle,
     @required this.onGrantPermission,
     @required this.onSkip,
-    this.backgroundImageSrc
+    @required this.backgroundImageSrc
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Material(
+      child: Stack(
         children: <Widget>[
-          Center(child:this.backgroundImageSrc!=null?Image.asset(this.backgroundImageSrc, fit: BoxFit.contain, alignment: Alignment.center,):FlutterLogo(size: 75)),
+          Center(child: Image.asset(this.backgroundImageSrc, fit: BoxFit.fitWidth, alignment: Alignment.center)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 50.0),
             child: Column(
@@ -57,7 +57,7 @@ class PermissionRequestPage extends StatelessWidget {
                     FlatButton(
                       padding: EdgeInsets.all(16),
                       child: Text(
-                        S.of(context).onBoardingLocationSharingPageButtonSkip,
+                        S.of(context).commonPermissionRequestPageButtonSkip,
                         style: TextStyle(color: Colors.grey),
                       ),
                       onPressed: onSkip,

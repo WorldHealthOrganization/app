@@ -2,6 +2,7 @@
 
 import 'package:WHOFlutter/components/news_feed_item.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class NewsFeed extends StatelessWidget {
@@ -13,37 +14,40 @@ class NewsFeed extends StatelessWidget {
         SliverList(
             delegate: SliverChildListDelegate([
           NewsFeedItem(
-            title: "Situation Reports",
+            title: S.of(context).newsFeedSliverListNewsFeedItemTitle1,
             description:
-                "Situation reports provide the latest updates on the novel coronavirus outbreak.",
-            imageProvider:
-                AssetImage("assets/news_press/news_situation_reports.png"),
-            url: "https://who.int",
+                S.of(context).newsFeedSliverListNewsFeedItemDescription1,
+            imageProvider: AssetImage(
+                S.of(context).newsFeedSliverListNewsFeedItemImagePath1),
+            url: S.of(context).newsFeedSliverListNewsFeedItemUrl1,
           ),
           NewsFeedItem(
-            title: "Rolling Updates",
+            title: S.of(context).newsFeedSliverListNewsFeedItemTitle2,
             description:
-                "Rolling updates on coronavirus disease (COVID-19) sourced from across WHO media.",
-            imageProvider: AssetImage("assets/news_press/rolling_updates.png"),
-            url: "https://who.int",
+                S.of(context).newsFeedSliverListNewsFeedItemDescription2,
+            imageProvider: AssetImage(
+                S.of(context).newsFeedSliverListNewsFeedItemImagePath2),
+            url: S.of(context).newsFeedSliverListNewsFeedItemUrl2,
           ),
           NewsFeedItem(
-            title: "News Articles",
+            title: S.of(context).newsFeedSliverListNewsFeedItemTitle3,
             description:
-                "All news releases, statements, and notes for the media.",
-            imageProvider: AssetImage("assets/news_press/news_articles.png"),
-            url: "https://who.int",
+                S.of(context).newsFeedSliverListNewsFeedItemDescription3,
+            imageProvider: AssetImage(
+                S.of(context).newsFeedSliverListNewsFeedItemImagePath3),
+            url: S.of(context).newsFeedSliverListNewsFeedItemUrl3,
           ),
           NewsFeedItem(
-            title: "Press Briefings",
+            title: S.of(context).newsFeedSliverListNewsFeedItemTitle4,
             description:
-                "Coronavirus disease (COVID019) press briefings including videos, audio and transcripts.",
-            imageProvider: AssetImage("assets/news_press/press_briefings.png"),
-            url: "https://who.int",
+                S.of(context).newsFeedSliverListNewsFeedItemDescription4,
+            imageProvider: AssetImage(
+                S.of(context).newsFeedSliverListNewsFeedItemImagePath4),
+            url: S.of(context).newsFeedSliverListNewsFeedItemUrl4,
           )
         ]))
       ],
-      title: "News & Press",
+      title: S.of(context).newsFeedTitle,
     );
   }
 }

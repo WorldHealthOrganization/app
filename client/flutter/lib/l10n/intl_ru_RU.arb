@@ -2,7 +2,7 @@
   "@section": "Common strings",
   "commonWorldHealthOrganization": "Всемирная организация здравоохранения",
   "commonWorldHealthOrganizationCoronavirusApp": "Приложение WHO coronavirtuus",
-  "commonWhoAppShareIconButtonDescription": "Ознакомьтесь с официальным справочным приложением COVID-19 https://www.who.int/covid-19-app%27",
+  "commonWhoAppShareIconButtonDescription": "Ознакомьтесь с официальным справочным приложением COVID-19 https://www.who.int/covid-19-app",
   "@section": "Onboarding",
   "onBoardingLocationSharingPageButtonAllow": "Разрешить совместное использование местоположения",
   "onBoardingLocationSharingPageButtonSkip": "Пропустить",

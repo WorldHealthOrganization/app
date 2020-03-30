@@ -67,7 +67,7 @@ class ContentLoading {
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
     var response = await http.get(url,
-        headers: {"Content-Type": "application/yaml"}).timeout(networkTimeout);
+        headers: {"Accept": "application/yaml"}).timeout(networkTimeout);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
