@@ -4,7 +4,13 @@ import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// TODO: Get all the strings from generated file
+///========================================================
+/// TODO SUMMARY:
+///   1. User title and subtitle texts from generated
+///      file (already generated)
+///   2. fetch stored shared pref for "_switchValue"
+///   3. turn on/off Google Analytics
+///=========================================================
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -12,6 +18,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+
+  /// TODO: fetch below value from shared pref!
   bool _switchValue = true;
   int indexSelected = 0;
 
@@ -33,7 +41,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 activeColor: Constants.primaryColor,
                 value: _switchValue,
                 onChanged: (value){
-                  /// TODO: Take actions here!
+                  /// (1) TODO: updating the stored user preferences
+                  /// (2) TODO: turning Google Analytics on/off
                   setState(() {
                     _switchValue = value;
                   });
@@ -47,6 +56,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context).textTheme.subhead,
               ),
             ),
+
+            /// TODO: Implement UI:-
+            /// TODO:   selection of language preferences already created PR for it (#654)
+
           ],
         ),
       ),
