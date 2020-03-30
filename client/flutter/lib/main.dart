@@ -2,12 +2,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:package_info/package_info.dart';
 import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
-void main() => runApp(MyApp());
+PackageInfo _packageInfo;
+PackageInfo get packageInfo => _packageInfo;
+
+void main() async {
+  // Asyncronous code that runs before the splash screen is hidden goes before
+  // runApp()
+  if (!kIsWeb) {
+    // Initialises binding so we can use the framework before calling runApp
+    WidgetsFlutterBinding.ensureInitialized();
+    _packageInfo = await PackageInfo.fromPlatform();
+  }
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
