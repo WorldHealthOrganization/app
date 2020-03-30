@@ -19,8 +19,14 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
-      - run: git --no-pager diff
-        working-directory: ./client/flutter
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Podfile
+          path: client/flutter/Podfile
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Podfile.lock
+          path: client/flutter/Podfile.lock
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
