@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
       home: Directionality(
           child: HomePage(),
           textDirection:
-            GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale())).textDirection),
+              GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
+                  .textDirection),
     );
   }
 }

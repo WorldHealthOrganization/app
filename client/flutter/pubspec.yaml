@@ -20,6 +20,7 @@ dependencies:
   path_drawing: ^0.4.1
   shared_preferences: ^0.5.6
   yaml: ^2.2.0
+  http: ^0.12.0+3
 
   intl: ^0.16.0
   flutter_localizations:
@@ -40,6 +41,7 @@ flutter:
     - assets/news_press/
     - assets/onboarding/
     - assets/travel_advice/
+    - assets/content_bundles/
 
 flutter_intl:
   enabled: true
