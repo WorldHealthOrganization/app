@@ -34,7 +34,7 @@ We want to get this out and working so we can move on to more significant functi
 
 ## Key Goals for Next Release
 
-We are assessing the [feature roadmap](/docs/ROADMAP.md) for the next and subsequent releases.
+We are assessing the [feature roadmap](https://github.com/WorldHealthOrganization/app/blob/master/docs/ROADMAP.md) for the next and subsequent releases.
 
 ## Community
 
