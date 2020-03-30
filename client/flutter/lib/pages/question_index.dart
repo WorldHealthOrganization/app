@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,14 +51,22 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   // TODO: Should show a spinner while loading.
   Widget _buildPage() {
-    var items = (_questions ?? []).map(_buildQuestion).toList();
+    List items = (_questions ?? []).map(_buildQuestion).toList();
 
     return PageScaffold(
       context,
       body: [
-        SliverList(
-          delegate: SliverChildListDelegate(items),
-        )
+        items.isNotEmpty
+            ? SliverList(
+                delegate: SliverChildListDelegate(items),
+              )
+            : SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(48.0),
+                  child: CupertinoActivityIndicator(),
+                )
+
+              )
       ],
       title: widget.title,
     );
@@ -70,7 +79,10 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         Divider(),
         ExpansionTile(
           key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(Icons.add_circle_outline, color: Colors.black,),
+          trailing: Icon(
+            Icons.add_circle_outline,
+            color: Colors.black,
+          ),
           title: Padding(
             padding: const EdgeInsets.all(8.0),
             child: html(questionItem.title),
