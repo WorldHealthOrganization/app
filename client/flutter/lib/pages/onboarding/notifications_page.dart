@@ -16,7 +16,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(
-      pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
+     pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
       pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
       buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
       backgroundImageSrc: "assets/onboarding/onboarding_notifications.png",
@@ -26,13 +26,14 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _allowNotifications() async {
+
+    // iOS needs a call for permissions but Android doesn't. 
+    // If the user opts-out on Android we just don't register the device token. 
     await _firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(
             sound: true, badge: true, alert: true, provisional: false));
 
-    
     _registerFCMToken();
-    // TODO: Register token with web service
 
     _complete();
   }
