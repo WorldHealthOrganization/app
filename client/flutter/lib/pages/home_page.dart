@@ -2,6 +2,7 @@ import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -165,10 +166,10 @@ class _HomePageState extends State<HomePage> {
                 height: 25,
               ),
               Text(
-                "Version 0.1 (12412)\n© 2020 WHO",
+                "Version ${packageInfo.version} (${packageInfo.buildNumber})\n© 2020 WHO",
                 style: TextStyle(color: Color(0xff26354E)),
                 textAlign: TextAlign.center,
-              ), //TODO: pull these values in
+              ),
               Container(
                 height: 40,
               ),
