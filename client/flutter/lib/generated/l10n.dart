@@ -130,7 +130,7 @@ class S {
 
   String get homePagePageTitle {
     return Intl.message(
-      'Corona Virus',
+      'Coronavirus',
       name: 'homePagePageTitle',
       desc: '',
       args: [],
