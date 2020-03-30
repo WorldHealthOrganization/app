@@ -12,6 +12,12 @@ git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
 cd app
 ```
 
+## Set up Firebase
+
+The default Firebase configuration files are using the staging Firebase project. Before building, you must add in the configuration files for the prod Firebase project.
+
+Copy `google-services.json` to `client/flutter/android/app` and copy `GoogleService-Info.plist` to `client/flutter/ios/Runner`.
+
 ## iOS
 
 These instructions assume that an app record has already been added to the App Store Connect account. If you haven't done so already, you can follow [these instructions](https://help.apple.com/app-store-connect/#/dev2cd126805).
