@@ -1,8 +1,10 @@
-// import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/components/list_of_items.dart';
-import 'package:WHOFlutter/components/rive_animation.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:WHOFlutter/components/list_of_items.dart';
+// import 'package:WHOFlutter/components/rive_animation.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
 const normal = TextStyle(
@@ -56,28 +58,46 @@ Text _message(String input) {
 }
 
 class ProtectYourself extends StatelessWidget {
-  Widget _getAnimation(String animationName) => AspectRatio(
+  Widget _getImage(String svgAssetName) => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
           color: whoBlue,
-          child: RiveAnimation(
-            'assets/animations/protect.flr',
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            animation: animationName,
-          ),
+          child: SvgPicture.asset(svgAssetName),
         ),
       );
 
-  Widget get _washHandsAnimation => _getAnimation('Hands');
+  Widget get _washHandsImage => _getImage('assets/svg/wash_hands.svg');
 
-  Widget get _coverMouthAnimation => _getAnimation('Cover');
+  Widget get _elbowImage => _getImage('assets/svg/elbow.svg');
 
-  Widget get _avoidTouchingAnimation => _getAnimation('Face');
+  Widget get _avoidTouchImage => _getImage('assets/svg/avoid_touch.svg');
 
-  Widget get _protectAnimation => _getAnimation('Mask');
+  Widget get _maskImage => _getImage('assets/svg/mask.svg');
 
-  Widget get _distanceAnimation => _getAnimation('Stay');
+  Widget get _distanceImage => _getImage('assets/svg/social_distance.svg');
+
+  // Widget _getAnimation(String animationName) => AspectRatio(
+  //       aspectRatio: 16 / 9,
+  //       child: Container(
+  //         color: whoBlue,
+  //         child: RiveAnimation(
+  //           'assets/animations/protect.flr',
+  //           alignment: Alignment.center,
+  //           fit: BoxFit.contain,
+  //           animation: animationName,
+  //         ),
+  //       ),
+  //     );
+
+  // Widget get _washHandsAnimation => _getAnimation('Hands');
+
+  // Widget get _coverMouthAnimation => _getAnimation('Cover');
+
+  // Widget get _avoidTouchAnimation => _getAnimation('Face');
+
+  // Widget get _protectAnimation => _getAnimation('Mask');
+
+  // Widget get _distanceAnimation => _getAnimation('Stay');
 
   @override
   Widget build(BuildContext context) {
@@ -93,23 +113,23 @@ class ProtectYourself extends StatelessWidget {
         ),
         ProtectYourselfCard(
           message: _message(localized.protectYourselfListOfItemsPageListItem1),
-          child: _washHandsAnimation,
+          child: _washHandsImage,
         ),
         ProtectYourselfCard(
           message: _message(localized.protectYourselfListOfItemsPageListItem2),
-          child: _avoidTouchingAnimation,
+          child: _avoidTouchImage,
         ),
         ProtectYourselfCard(
           message: _message(localized.protectYourselfListOfItemsPageListItem3),
-          child: _coverMouthAnimation,
+          child: _elbowImage,
         ),
         ProtectYourselfCard(
           message: _message(localized.protectYourselfListOfItemsPageListItem4),
-          child: _distanceAnimation,
+          child: _distanceImage,
         ),
         ProtectYourselfCard(
           message: _message(localized.protectYourselfListOfItemsPageListItem5),
-          child: _protectAnimation,
+          child: _maskImage,
         ),
       ],
       title: localized.protectYourselfTitle,
