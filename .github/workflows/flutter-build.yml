@@ -8,7 +8,10 @@ on:
     branches: [ master ]
     paths:
       - '.github/workflows/**'
-      - 'client/flutter/**'
+      - 'client/flutter/pubspec.yaml'
+      - 'client/flutter/pubspec.lock'
+      - 'client/flutter/ios/**'
+      - 'client/flutter/android/**'
 jobs:
   buildios:
     name: Build iOS
