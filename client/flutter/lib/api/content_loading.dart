@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'content_bundle.dart';
 
 class ContentLoading {
+  static final networkLoadingEnabled = true;
   static final ContentLoading _singleton = ContentLoading._internal();
 
   // TODO: Real URL
-  static final String baseContentURL = 'http://who.int/who/content/v1'; // no trailing
+  static final String baseContentURL =
+      'http://who.int/who/content/v1'; // no trailing
   static final Duration networkTimeout = Duration(seconds: 3);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
@@ -23,15 +25,17 @@ class ContentLoading {
     Locale locale = Localizations.localeOf(context);
     var languageCode = locale.languageCode;
     var countryCode = locale.countryCode;
-    var languageAndCountry = "${languageCode}.${countryCode}";
+    var languageAndCountry = "${languageCode}_${countryCode}";
 
     // Attempt to load the full language and country path from the network.
     // The content server contains linked / duplicated paths as needed such that
     // no explicit fallback to language-only is required.
-    try {
-      return await _loadFromNetwork(name, languageAndCountry);
-    } catch (err) {
-      print("Network bundle for $languageAndCountry not found: $err");
+    if (networkLoadingEnabled) {
+      try {
+        return await _loadFromNetwork(name, languageAndCountry);
+      } catch (err) {
+        print("Network bundle for $languageAndCountry not found: $err");
+      }
     }
 
     // Attempt to load the full language and country path from local resources.
@@ -61,7 +65,7 @@ class ContentLoading {
 
   /// Load a localized content bundle from the network, throwing an exception if not found.
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
-    var url = '$baseContentURL/${name}.$suffix.yaml';
+    var url = '$baseContentURL/${_fileName(name, suffix)}';
     var response = await http.get(url,
         headers: {"Content-Type": "application/yaml"}).timeout(networkTimeout);
     if (response.statusCode != 200) {
@@ -73,9 +77,13 @@ class ContentLoading {
 
   /// Load a localized content bundle from local assets, throwing an exception if not found.
   Future<ContentBundle> _loadFromAssets(String name, String suffix) async {
-    var path = '$baseAssetPath/${name}.${suffix}.yaml';
+    var path = '$baseAssetPath/${_fileName(name, suffix)}';
     var body = await rootBundle.loadString(path);
     return ContentBundle.from(body);
   }
-}
 
+  /// Format the filename. e.g. screen_name.en_US.yaml
+  String _fileName(String name, String suffix) {
+    return '${name}.$suffix.yaml';
+  }
+}
