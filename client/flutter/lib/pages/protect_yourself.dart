@@ -3,7 +3,7 @@ import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import '../components/youtube_embed.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
 const normal = TextStyle(
@@ -20,8 +20,7 @@ const header = TextStyle(
   fontSize: 24,
 );
 
-const youtubeUrl = 'https://www.youtube.com/embed/8c_UJwLq8PI';
-const double youtubeAspectRatio = (16 / 9);
+const youtubeId = '8c_UJwLq8PI';
 
 RichText _message(String input) {
   // Make sections delineated by asterisk * bold. For example:
@@ -88,19 +87,7 @@ class ProtectYourself extends StatelessWidget {
     var localized = S.of(context);
     return ListOfItems(
       [
-        AspectRatio(
-          aspectRatio: youtubeAspectRatio,
-          child: WebView(
-            initialUrl: youtubeUrl,
-            javascriptMode: JavascriptMode.unrestricted,
-            navigationDelegate: (NavigationRequest request) {
-              if (request.url != youtubeUrl) {
-                return NavigationDecision.prevent;
-              }
-              return NavigationDecision.navigate;
-            },
-          ),
-        ),
+        YoutubeEmbed(youtubeId),
         Padding(
           padding: const EdgeInsets.only(left: 26, top: 20),
           child: Text(
