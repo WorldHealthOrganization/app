@@ -1,0 +1,55 @@
+import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
+
+class WhoService {
+  static final String serviceUrlStaging =
+      'https://staging.whocoronavirus.org/WhoService';
+  static final String serviceUrlProd = 'https://whocoronavirus.org/WhoService';
+  static final String serviceUrl = serviceUrlProd;
+
+  /// Put device token.
+  static Future<bool> putDeviceToken(String token) async {
+    Map<String, String> headers = await _getHeaders();
+    var postBody = '{"token": "$token"}';
+    var url = '$serviceUrl/putDeviceToken';
+    var response = await http.post(url, headers: headers, body: postBody);
+    if (response.statusCode != 200) {
+      throw Exception("Error status code: ${response.statusCode}");
+    }
+    return true;
+  }
+
+  /// Put location
+  static Future<bool> putLocation({double latitude, double longitude}) async {
+    Map<String, String> headers = await _getHeaders();
+    var postBody = '{"latitude": "$latitude", "longitude": "$longitude"}';
+    var url = '$serviceUrl/putLocation';
+    var response = await http.post(url, headers: headers, body: postBody);
+    if (response.statusCode != 200) {
+      throw Exception("Error status code: ${response.statusCode}");
+    }
+    return true;
+  }
+
+  static Future<Map<String, String>> _getHeaders() async {
+    var clientId = await UserPreferences().getClientUuid();
+    var headers = {
+      'Content-Type': 'application/json',
+      'Who-Client-ID': clientId,
+      'Who-Platform': _platform
+    };
+    return headers;
+  }
+
+  static String get _platform {
+    if (Platform.isIOS) {
+      return "IOS";
+    }
+    if (Platform.isAndroid) {
+      return "ANDROID";
+    }
+    return "WEB";
+  }
+}
+
