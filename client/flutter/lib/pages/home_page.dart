@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                         S.of(context).homePagePageSliverListAboutTheAppDialog),
               ),
               Container(height: 25,),
-              Text("Version 0.1 (12412)\n© 2020 WHO", style: TextStyle(color: Color(0xff26354E)), textAlign: TextAlign.center,),
+              Text("Version 0.1 (12412)\n© 2020 WHO", style: TextStyle(color: Color(0xff26354E)), textAlign: TextAlign.center,),//TODO: pull these values in
               Container(height: 15,),
             ]),
           )
