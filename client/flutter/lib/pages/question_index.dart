@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/content_bundle.dart';
 import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
