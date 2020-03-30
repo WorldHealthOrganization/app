@@ -1,6 +1,6 @@
 {
     "name": "WHO COVID-19",
-    "short_name": "WHO COVID-19",
+    "short_name": "COVID-19",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
