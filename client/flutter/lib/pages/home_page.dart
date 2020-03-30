@@ -8,7 +8,6 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -18,17 +17,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'onboarding/notifications_page.dart';
 
 class HomePage extends StatefulWidget {
-  final FirebaseAnalytics analytics;
-
-  HomePage(this.analytics);
   @override
-  _HomePageState createState() => _HomePageState(analytics);
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final FirebaseAnalytics analytics;
-  _HomePageState(this.analytics);
-
   @override
   void initState() {
     super.initState();
@@ -43,12 +36,7 @@ class _HomePageState extends State<HomePage> {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
       await launch(url);
-      _logAnalyticsEvent('LatestNumbers');
     }
-  }
-
-  _logAnalyticsEvent(String name) async {
-    await analytics.logEvent(name: name);
   }
 
   @override
@@ -74,11 +62,8 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonProtectYourself,
-                  () {
-                    _logAnalyticsEvent('ProtectYourself');
-                    return Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => ProtectYourself()));
-                  },
+                  () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => ProtectYourself())),
                 ),
                 PageButton(
                   Color(0xff1A458E),
@@ -89,30 +74,23 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () {
-                    _logAnalyticsEvent('QuestionsAnswered');
-                    return Navigator.of(context).push(MaterialPageRoute(
+                  () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (c) => QuestionIndexPage(
                             dataSource: QuestionData.yourQuestionsAnswered,
                             title: "Questions",
-                          ))
-                    ); // TODO: Localize
-                  },
+                          ))), // TODO: Localize
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 PageButton(
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
-                  () {
-                    _logAnalyticsEvent('MythBusters');
-                    return Navigator.of(context).push(
+                  () => Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
-                            dataSource: QuestionData.whoMythbusters,
-                            title: "WHO Myth-busters",
-                          ))
-                    );
-                  },
+                              dataSource: QuestionData.whoMythbusters,
+                              title: "WHO Myth-busters",
+                            )),
+                  ),
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -120,11 +98,8 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonTravelAdvice,
-                  () {
-                    _logAnalyticsEvent('TravelAdvice');
-                    return Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => TravelAdvice()));
-                  },
+                  () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),
