@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 class QuestionData {
   static Future<List<QuestionItem>> yourQuestionsAnswered(
       BuildContext context) async {
-    var bundle =
-        await ContentLoading().load(context, "your_questions_answered");
     try {
+      var bundle =
+          await ContentLoading().load(context, "your_questions_answered");
       return bundle.contents
           .map((item) =>
               QuestionItem(title: item['title_html'], body: item['body_html']))
