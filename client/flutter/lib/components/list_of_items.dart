@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
+import 'package:WHOFlutter/components/page_header.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -21,51 +21,7 @@ class ListOfItems extends StatelessWidget {
                 backgroundColor: Colors.white,
                 brightness: Brightness.light,
                 leading: SizedBox(),
-                flexibleSpace: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => Navigator.pop(context),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: 25,
-                          right: 25,
-                          bottom: 20,
-                          top: 20,
-                        ),
-                        child: BackArrow(),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            title,
-                            style: TextStyle(
-                              color: const Color(0xFF3D8BCC),
-                              fontSize: 30,
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            S
-                                .of(context)
-                                .commonWorldHealthOrganizationCoronavirusApp,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              color: const Color(0xFF050C1D),
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                flexibleSpace: PageHeader(context, title: this.title),
                 expandedHeight: 120,
               ),
               SliverList(
