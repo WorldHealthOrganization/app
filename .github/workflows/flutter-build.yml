@@ -22,11 +22,11 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Podfile
-          path: client/flutter/Podfile
+          path: client/flutter/ios/Podfile
       - uses: actions/upload-artifact@v1
         with:
           name: Podfile.lock
-          path: client/flutter/Podfile.lock
+          path: client/flutter/ios/Podfile.lock
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
