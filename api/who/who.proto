@@ -7,6 +7,8 @@ message Void {}
 service WhoService {
 
   rpc putDeviceToken(PutDeviceTokenRequest) returns (Void);
+
+  // The client should not pass a precise location.
   rpc putLocation(PutLocationRequest) returns (Void);
 }
 
