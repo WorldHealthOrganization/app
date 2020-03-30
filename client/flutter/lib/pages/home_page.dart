@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (c) => QuestionIndexPage(
                           dataSource: QuestionData.yourQuestionsAnswered,
                           title: "Questions",
-                          subtitle: "WHO Coronavirus App"))), // TODO: Localize
+                          subtitle: "WHO Coronavirus App"))); // TODO: Localize
                   },
                 ),
                 PageButton(
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                         builder: (c) => QuestionIndexPage(
                             dataSource: QuestionData.whoMythbusters,
                             title: "WHO Myth-busters",
-                            subtitle: "WHO Coronavirus App")),
+                            subtitle: "WHO Coronavirus App")));
                   },
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
