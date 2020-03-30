@@ -4,6 +4,14 @@ on:
     paths:
       - '.github/workflows/**'
       - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'client/flutter/pubspec.yaml'
+      - 'client/flutter/pubspec.lock'
+      - 'client/flutter/ios/**'
+      - 'client/flutter/android/**'
 jobs:
   buildios:
     name: Build iOS

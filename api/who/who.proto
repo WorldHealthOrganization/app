@@ -4,11 +4,25 @@ package who;
 
 message Void {}
 
-// Example service
-service EchoService {
-  rpc echo(EchoMessage) returns (EchoMessage);
+service WhoService {
+
+  rpc putDeviceToken(PutDeviceTokenRequest) returns (Void);
+
+  // The client should not pass a precise location.
+  rpc putLocation(PutLocationRequest) returns (Void);
 }
 
-message EchoMessage {
-  uint32 value = 1;
+message PutDeviceTokenRequest {
+  string token = 1;
+}
+
+message PutLocationRequest {
+  double latitude = 2;
+  double longitude = 3;
+}
+
+enum Platform {
+  IOS = 0;
+  ANDROID = 1;
+  WEB = 2;
 }

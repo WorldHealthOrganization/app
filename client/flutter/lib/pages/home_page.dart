@@ -1,7 +1,8 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
-import 'package:WHOFlutter/components/question_data.dart';
+import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
@@ -35,22 +36,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _initStateAsync() async {
-    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
-
-    // TODO: Uncomment for testing.  Remove when appropriate.
-    // onboardingComplete = false;
-
-    if (!onboardingComplete) {
-      // TODO: We should wrap these in a single Navigation context so that they can
-      // TODO: slide up as a modal, proceed with pushes left to right, and then be
-      // TODO: dismissed together.
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => NotificationsPage()));
-
-      await UserPreferences().setOnboardingCompleted(true);
-    }
+    await _pushOnboardingIfNeeded();
   }
 
   _launchStatsDashboard() async {
@@ -145,9 +131,8 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff008DC9),
                   "News\n& Press",
-                  () {},
-                  // () => Navigator.of(context)
-                  //     .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                  () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => NewsFeed())),
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                 ),
@@ -159,34 +144,32 @@ class _HomePageState extends State<HomePage> {
           SliverList(
             delegate: SliverChildListDelegate.fixed([
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:38.0),
+                padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: Text(
                   "Help support the relief effort",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xffCA6B35)
-                  ),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xffCA6B35)),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(15),
                 child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40)
-                  ),
-                  padding: EdgeInsets.symmetric(vertical:24, horizontal:23),
-                  color: Color(0xffCA6B35),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("Donate here"),
-                      Icon(Icons.arrow_forward_ios)
-                    ],
-                  ),
-                  onPressed: ()=>launch("https://www.who.int/Covid19ResponseFund")
-                ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)),
+                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 23),
+                    color: Color(0xffCA6B35),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("Donate here"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
+                    onPressed: () =>
+                        launch("https://www.who.int/Covid19ResponseFund")),
               ),
               ListTile(
                 leading: Icon(Icons.share),
@@ -203,11 +186,38 @@ class _HomePageState extends State<HomePage> {
                     applicationLegalese:
                         S.of(context).homePagePageSliverListAboutTheAppDialog),
               ),
-              Container(height: 25,),
-              Text("Version 0.1 (12412)\n© 2020 WHO", style: TextStyle(color: Color(0xff26354E)), textAlign: TextAlign.center,),//TODO: pull these values in
-              Container(height: 15,),
+              Container(
+                height: 25,
+              ),
+              Text(
+                "Version 0.1 (12412)\n© 2020 WHO",
+                style: TextStyle(color: Color(0xff26354E)),
+                textAlign: TextAlign.center,
+              ), //TODO: pull these values in
+              Container(
+                height: 40,
+              ),
             ]),
           )
         ]);
+  }
+
+  Future _pushOnboardingIfNeeded() async {
+    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+
+    // TODO: Uncomment for testing.  Remove when appropriate.
+    // onboardingComplete = false;
+
+    if (!onboardingComplete) {
+      // TODO: We should wrap these in a single Navigation context so that they can
+      // TODO: slide up as a modal, proceed with pushes left to right, and then be
+      // TODO: dismissed together.
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => NotificationsPage()));
+
+      await UserPreferences().setOnboardingCompleted(true);
+    }
   }
 }
