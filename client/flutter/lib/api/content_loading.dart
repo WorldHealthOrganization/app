@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
@@ -35,6 +36,20 @@ class ContentLoading {
         return await _loadFromNetwork(name, languageAndCountry);
       } catch (err) {
         print("Network bundle for $languageAndCountry not found: $err");
+        if (err is ContentBundleVersionException) {
+          // TODO: Refactor the loader API to support passing this information
+          // TODO: back to the UI layer rather than handling it here.
+          // Defer showing the dialog briefly until after screen build.
+          Future.delayed(const Duration(seconds: 1), () {
+            // TODO: Localize
+            Dialogs.showAppDialog(
+                context: context,
+                title: "App Update Required",
+                // TODO: Provide the sharing link here?
+                bodyText:
+                    "Please update to the latest version of the app in order to receive the latest information and updates.");
+          });
+        }
       }
     }
 
