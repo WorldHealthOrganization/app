@@ -150,7 +150,8 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         if (node is dom.Element) {
           switch (node.localName) {
             case "h2":
-              return baseStyle.merge(TextStyle(fontSize: 20, color: Colors.black));
+              return baseStyle
+                  .merge(TextStyle(fontSize: 20, color: Colors.black));
           }
         }
         return baseStyle.merge(TextStyle(color: Colors.black));
