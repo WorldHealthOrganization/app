@@ -3,6 +3,7 @@ import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
+import 'package:WHOFlutter/pages/onboarding/legal_landing_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
@@ -187,6 +188,10 @@ class _HomePageState extends State<HomePage> {
       // TODO: We should wrap these in a single Navigation context so that they can
       // TODO: slide up as a modal, proceed with pushes left to right, and then be
       // TODO: dismissed together.
+      await Navigator.of(context).push(MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (c)=>LegalLandingPage()
+      ));
       await Navigator.of(context).push(MaterialPageRoute(
           fullscreenDialog: true, builder: (c) => LocationSharingPage()));
       await Navigator.of(context).push(MaterialPageRoute(
