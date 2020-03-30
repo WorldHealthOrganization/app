@@ -88,17 +88,24 @@ class QuestionTile extends StatefulWidget {
   _QuestionTileState createState() => _QuestionTileState();
 }
 
-class _QuestionTileState extends State<QuestionTile> {
+class _QuestionTileState extends State<QuestionTile>
+    with TickerProviderStateMixin {
   bool isExpanded;
+  AnimationController rotationController;
 
   @override
   void initState() {
     super.initState();
     isExpanded = false;
+    rotationController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: 45);
+
+    
   }
 
   @override
   Widget build(BuildContext context) {
+    print(rotationController.value);
     return Container(
       color: Colors.white,
       child: Column(children: <Widget>[
@@ -106,25 +113,25 @@ class _QuestionTileState extends State<QuestionTile> {
           height: 1,
         ),
         ExpansionTile(
-          onExpansionChanged: (v){
-            setState(() {
-              isExpanded = v;
-            });
+          onExpansionChanged: (v) {
+            if(v){
+              rotationController.forward();
+            }else{
+              rotationController.reverse();
+            }
           },
           key: PageStorageKey<String>(widget.questionItem.title),
-          trailing: Transform.rotate(
-            angle: this.isExpanded?45:0,
-                    child: Icon(
-              Icons.add_circle_outline,
-              color: Colors.black,
-            ),
+          trailing: AnimatedBuilder(
+            animation: rotationController,
+            builder: (c,w){
+              return Transform.rotate(angle: rotationController.value, child: Icon(Icons.add_circle_outline, color: Colors.grey),);
+            },
           ),
           title: html(widget.questionItem.title),
-          
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 32),
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 32, bottom: 32),
               child: html(widget.questionItem.body),
             )
           ],
