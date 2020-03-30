@@ -9,7 +9,7 @@ class ContentLoading {
 
   // TODO: Real URL
   static final String baseContentURL =
-      'http://who.int/who/content/v1'; // no trailing
+      'https://who.int/covid19/content/v1'; // no trailing
   static final Duration networkTimeout = Duration(seconds: 3);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
