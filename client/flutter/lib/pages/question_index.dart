@@ -1,4 +1,3 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:WHOFlutter/components/question_data.dart';
 import 'package:flutter/material.dart';
