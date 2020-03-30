@@ -7,6 +7,8 @@ import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 PackageInfo _packageInfo;
@@ -25,17 +27,32 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState(analytics, observer);
 }
 
 class _MyAppState extends State<MyApp> {
+  _MyAppState(this.analytics, this.observer);
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+
   @override
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    if (!kAnalyticsAllowed) {
+      _disableAnalytics();
+    }
     _registerLicenses();
+  }
+
+  _disableAnalytics() async {
+    await analytics.resetAnalyticsData();
+    await analytics.setAnalyticsCollectionEnabled(false);
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -67,6 +84,7 @@ class _MyAppState extends State<MyApp> {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
+      navigatorObservers: <NavigatorObserver>[observer],
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
@@ -77,7 +95,7 @@ class _MyAppState extends State<MyApp> {
             textTheme: ButtonTextTheme.accent),
       ),
       home: Directionality(
-          child: HomePage(),
+          child: HomePage(analytics),
           textDirection:
               GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
                   .textDirection),
