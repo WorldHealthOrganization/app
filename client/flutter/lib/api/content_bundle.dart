@@ -3,10 +3,14 @@ import 'package:yaml/yaml.dart';
 /// A localized YAML file loaded preferentially from the network, falling back
 /// to a local asset.
 class ContentBundle {
+  static int maxSupportedSchemaVersion = 1;
   dynamic yaml;
 
   ContentBundle.from(String yamlString) {
     this.yaml = loadYaml(yamlString);
+    if (schemaVersion > maxSupportedSchemaVersion) {
+      throw ContentBundleVersionException();
+    }
   }
 
   int get schemaVersion {
@@ -15,6 +19,14 @@ class ContentBundle {
 
   int get contentVersion {
     return _getInt('content_version');
+  }
+
+  String get contentType {
+    try {
+      return yaml['contents']['type'];
+    } catch (err) {
+      return null;
+    }
   }
 
   YamlList get contents {
@@ -29,3 +41,5 @@ class ContentBundle {
     return yaml[key];
   }
 }
+
+class ContentBundleVersionException implements Exception { }

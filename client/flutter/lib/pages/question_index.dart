@@ -1,4 +1,7 @@
+import 'dart:math';
+import 'package:WHOFlutter/api/content_bundle.dart';
 import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +36,20 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
+    await _loadQuestionData();
+  }
+
+  Future _loadQuestionData() async {
     // Fetch the question data.
     // Note: this depends on the build context for the locale and hence is not
     // Note: available at the usual initState() time.
     // TODO: We should detect a schema version problem here and display a dialog
     // TODO: prompting the user to upgrade.
-    if (_questions == null) {
-      _questions = await widget.dataSource(context);
-      setState(() {});
+    if (_questions != null) {
+      return;
     }
+    _questions = await widget.dataSource(context);
+    setState(() {});
   }
 
   @override
@@ -51,7 +59,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   // TODO: Should show a spinner while loading.
   Widget _buildPage() {
-    List items = (_questions ?? []).map(_buildQuestion).toList();
+    List items = (_questions ?? [])
+        .map((questionData) => QuestionTile(
+              questionItem: questionData,
+            ))
+        .toList();
 
     return PageScaffold(
       context,
@@ -62,39 +74,72 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               )
             : SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: CupertinoActivityIndicator(),
-                )
-
-              )
+                padding: const EdgeInsets.all(48.0),
+                child: CupertinoActivityIndicator(),
+              ))
       ],
       title: widget.title,
     );
   }
+}
 
-  Widget _buildQuestion(QuestionItem questionItem) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+class QuestionTile extends StatefulWidget {
+  const QuestionTile({
+    @required this.questionItem,
+  });
+
+  final QuestionItem questionItem;
+
+  @override
+  _QuestionTileState createState() => _QuestionTileState();
+}
+
+class _QuestionTileState extends State<QuestionTile>
+    with TickerProviderStateMixin {
+  AnimationController rotationController;
+
+  @override
+  void initState() {
+    super.initState();
+    rotationController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: pi/4);
+
+    
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
       child: Column(children: <Widget>[
-        Divider(),
+        Divider(
+          height: 1,
+        ),
         ExpansionTile(
-          key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(
-            Icons.add_circle_outline,
-            color: Colors.black,
+          onExpansionChanged: (expanded) {
+            if(expanded){
+              rotationController.forward();
+            }else{
+              rotationController.reverse();
+            }
+          },
+          key: PageStorageKey<String>(widget.questionItem.title),
+          trailing: AnimatedBuilder(
+            animation: rotationController,
+            child: Icon(Icons.add_circle_outline, color: Colors.grey),
+            builder: (context, child){
+              return Transform.rotate(angle: rotationController.value, child: child,);
+            },
           ),
-          title: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: html(questionItem.title),
-          ),
+          title: html(widget.questionItem.title),
           children: [
             Padding(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, top: 32, bottom: 32),
-              child: html(questionItem.body),
+              child: html(widget.questionItem.body),
             )
           ],
-        ),
+        )
       ]),
     );
   }

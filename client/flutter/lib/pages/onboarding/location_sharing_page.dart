@@ -3,6 +3,7 @@ import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 
 class LocationSharingPage extends StatefulWidget {
+
   @override
   _LocationSharingPageState createState() => _LocationSharingPageState();
 }
@@ -28,7 +29,7 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
     _complete();
   }
 
-  void _complete() async {
-    Navigator.of(context).pop();
+  void _complete() {
+    Navigator.pop(context);
   }
 }
