@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
   _launchStatsDashboard() async {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
-      await launch(url);
       _logAnalyticsEvent('LatestNumbers');
+      await launch(url);
     }
   }
 
@@ -168,23 +168,31 @@ class _HomePageState extends State<HomePage> {
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
-                    onPressed: () =>
-                        launch("https://www.who.int/Covid19ResponseFund")),
+                    onPressed: () {
+                        _logAnalyticsEvent('Donate');
+                        launch("https://www.who.int/Covid19ResponseFund");
+                    })
               ),
               ListTile(
                 leading: Icon(Icons.share),
                 title: Text(S.of(context).homePagePageSliverListShareTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Share.share(
-                    S.of(context).commonWhoAppShareIconButtonDescription),
+                onTap: () {
+                  _logAnalyticsEvent('Share');
+                  Share.share(
+                    S.of(context).commonWhoAppShareIconButtonDescription);
+                },
               ),
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => showAboutDialog(
+                onTap: () {
+                  _logAnalyticsEvent('About');
+                  showAboutDialog(
                     context: context,
                     applicationLegalese:
-                        S.of(context).homePagePageSliverListAboutTheAppDialog),
+                        S.of(context).homePagePageSliverListAboutTheAppDialog);
+                },
               ),
               Container(
                 height: 25,
