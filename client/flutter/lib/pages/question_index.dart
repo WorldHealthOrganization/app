@@ -75,8 +75,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       title: widget.title,
     );
   }
-
-  // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
 }
 
 class QuestionTile extends StatefulWidget {
@@ -92,13 +90,11 @@ class QuestionTile extends StatefulWidget {
 
 class _QuestionTileState extends State<QuestionTile>
     with TickerProviderStateMixin {
-  bool isExpanded;
   AnimationController rotationController;
 
   @override
   void initState() {
     super.initState();
-    isExpanded = false;
     rotationController = AnimationController(
         duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: pi/4);
 
@@ -114,8 +110,8 @@ class _QuestionTileState extends State<QuestionTile>
           height: 1,
         ),
         ExpansionTile(
-          onExpansionChanged: (v) {
-            if(v){
+          onExpansionChanged: (expanded) {
+            if(expanded){
               rotationController.forward();
             }else{
               rotationController.reverse();
@@ -124,8 +120,9 @@ class _QuestionTileState extends State<QuestionTile>
           key: PageStorageKey<String>(widget.questionItem.title),
           trailing: AnimatedBuilder(
             animation: rotationController,
-            builder: (c,w){
-              return Transform.rotate(angle: rotationController.value, child: Icon(Icons.add_circle_outline, color: Colors.grey),);
+            child: Icon(Icons.add_circle_outline, color: Colors.grey),
+            builder: (context, child){
+              return Transform.rotate(angle: rotationController.value, child: child,);
             },
           ),
           title: html(widget.questionItem.title),
@@ -141,6 +138,7 @@ class _QuestionTileState extends State<QuestionTile>
     );
   }
 
+  // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
     return Html(
       data: html,
