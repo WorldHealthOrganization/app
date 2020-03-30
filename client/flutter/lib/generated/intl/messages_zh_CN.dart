@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("查看官方 COADD-19 指南应用： https://www.who.int/covid-19-app"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("查看官方 COADD-19 指南应用： https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("世界卫生组织"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("谁是 coronavis 应用程序"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("健康检查"),
@@ -32,13 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageButtonWHOMythBusters" : MessageLookupByLibrary.simpleMessage("谁是神话大师"),
     "homePagePageButtonWHOMythBustersDescription" : MessageLookupByLibrary.simpleMessage("了解有关 coronavis 的事实以及如何防止传播"),
     "homePagePageButtonYourQuestionsAnswered" : MessageLookupByLibrary.simpleMessage("回答您的问题"),
-    "homePagePageSliverListSettingsHeader1": MessageLookupByLibrary.simpleMessage("数据采集"),
-    "homePagePageSliverListSettingsHeader2": MessageLookupByLibrary.simpleMessage("语言"),
-    "homePagePageSliverListSettings": MessageLookupByLibrary.simpleMessage("设定"),
-    "homePagePageSliverListSettingsDataCollection": MessageLookupByLibrary.simpleMessage("允许世界卫生组织收集数据，以更好地向公众通报冠状病毒更新。（需要副本）"),
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("关于应用"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("世界卫生组织的官方核心-19 应用程序。"),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("提供应用反馈"),
+    "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("设定"),
+    "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("允许世界卫生组织收集数据，以更好地向公众通报冠状病毒更新。（需要副本）"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("数据采集"),
+    "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("语言"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("分享应用"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*用肥皂和水洗手* 至少 20 秒"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*避免触摸你的眼睛、口腔和鼻子"),

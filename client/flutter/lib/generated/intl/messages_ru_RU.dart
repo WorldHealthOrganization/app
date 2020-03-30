@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Ознакомьтесь с официальным справочным приложением COVID-19 https://www.who.int/covid-19-app"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Ознакомьтесь с официальным справочным приложением COVID-19 https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("Всемирная организация здравоохранения"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("Приложение WHO coronavirtuus"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Проверка состояния здоровья"),
@@ -32,13 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageButtonWHOMythBusters" : MessageLookupByLibrary.simpleMessage("КТО миф-бастеры"),
     "homePagePageButtonWHOMythBustersDescription" : MessageLookupByLibrary.simpleMessage("Узнайте факты о коронавирусе и о том, как предотвратить его распространение"),
     "homePagePageButtonYourQuestionsAnswered" : MessageLookupByLibrary.simpleMessage("Ответы на ваши вопросы"),
-    "homePagePageSliverListSettingsHeader1": MessageLookupByLibrary.simpleMessage("Сбор информации"),
-    "homePagePageSliverListSettingsHeader2": MessageLookupByLibrary.simpleMessage("язык"),
-    "homePagePageSliverListSettings": MessageLookupByLibrary.simpleMessage("настройки"),
-    "homePagePageSliverListSettingsDataCollection": MessageLookupByLibrary.simpleMessage("Разрешить WHO собирать данные, чтобы лучше информировать общественность об обновлениях коронавируса. (нужна копия)"),
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("О приложении"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("Официальное приложение для Всемирной организации здравоохранения COVID-19."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Предоставить отзыв о приложении"),
+    "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("настройки"),
+    "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("Разрешить WHO собирать данные, чтобы лучше информировать общественность об обновлениях коронавируса. (нужна копия)"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("Сбор информации"),
+    "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("язык"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*промойте руки с мылом и водой не менее 20 секунд *"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*не прикасайтесь* к глазам, рту и носу"),

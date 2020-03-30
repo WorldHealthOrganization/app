@@ -40,7 +40,7 @@ class S {
 
   String get commonWorldHealthOrganizationCoronavirusApp {
     return Intl.message(
-      'WHO Coronavirus App',
+      'WHO COVID-19 App',
       name: 'commonWorldHealthOrganizationCoronavirusApp',
       desc: '',
       args: [],
@@ -49,7 +49,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 Guide App https://www.who.int/covid-19-app',
+      'Check out the official COVID-19 Guide App https://whocoronavirus.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -697,7 +697,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemUrl1 {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/',
       name: 'newsFeedSliverListNewsFeedItemUrl1',
       desc: '',
       args: [],
@@ -733,7 +733,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemUrl2 {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen',
       name: 'newsFeedSliverListNewsFeedItemUrl2',
       desc: '',
       args: [],
@@ -769,7 +769,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemUrl3 {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news',
       name: 'newsFeedSliverListNewsFeedItemUrl3',
       desc: '',
       args: [],
@@ -787,7 +787,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemDescription4 {
     return Intl.message(
-      'Coronavirus disease (COVID019) press briefings including videos, audio and transcripts.',
+      'Coronavirus disease (COVID-2019) press briefings including videos, audio and transcripts.',
       name: 'newsFeedSliverListNewsFeedItemDescription4',
       desc: '',
       args: [],
@@ -805,7 +805,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemUrl4 {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings',
       name: 'newsFeedSliverListNewsFeedItemUrl4',
       desc: '',
       args: [],
