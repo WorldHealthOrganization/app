@@ -28,6 +28,10 @@ class _MyAppState extends State<MyApp> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _registerLicenses();
 
+
+    // onMessage: Fires when app is foreground 
+    // onLaunch: Fires when user taps and app is in background.
+    // onResume: Fires when user taps and app is terminated
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
@@ -39,23 +43,13 @@ class _MyAppState extends State<MyApp> {
         print("onResume: $message");
       },
     );
-
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-            sound: true, badge: true, alert: true, provisional: true));
             
     _firebaseMessaging.onIosSettingsRegistered
         .listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
     });
 
-    _firebaseMessaging.getToken().then((String token) {
-      assert(token != null);
-      setState(() {
-       
-      });
 
-    });
   }
 
   Future<LicenseEntry> _loadLicense() async {
