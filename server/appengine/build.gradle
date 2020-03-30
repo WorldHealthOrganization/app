@@ -61,6 +61,9 @@ dependencies {
     implementation deps.present.engine
     implementation deps.okhttp;
 
+    // Linked from https://github.com/google/s2-geometry-library-java/issues/7.
+    implementation "io.sgr:s2-geometry-library-java:1.0.1";
+
     // Not sure why this didn't come in with present-engine...
     implementation 'com.google.appengine:appengine-remote-api:+'
     implementation 'com.google.appengine:appengine-remote-api:+'

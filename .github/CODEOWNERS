@@ -1,1 +1,44 @@
-.github/workflows @SamMousa @brunobowden
+# Each line is a file pattern followed by one or more owners.
+# Order is important; the last matching pattern takes the most
+# precedence. 
+#
+# Security sensitive items must be at the end.
+#
+# All user entries should be alpha-sorted and lowercase.
+
+# These owners will be the default owners for everything in
+# the repo, unless a later match takes precedence.
+# Sadly, we have to repeat the top-level owners everywhere,
+# since we are not team-members of a GitHub Organization.
+
+* @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+
+# Feature areas:
+
+# Client UI
+/client/flutter/ @advaydev1 @brunobowden @crazybob @hspinks @patniemeyer @sammousa @theswerd
+
+# Client Localization
+# Pure translation changes can be approved by @sapte91, but Client UI folks can also still approve/submit
+# as needed when mixed with code changes.
+/client/flutter/lib/generated/intl/ @advaydev1 @brunobowden @crazybob @hspinks @patniemeyer @sammousa @sapte91 @theswerd
+/client/flutter/lib/l10n/ @advaydev1 @brunobowden @crazybob @hspinks @patniemeyer @sammousa @sapte91 @theswerd
+
+# Team-wide processes
+/docs/ @advaydev1 @brunobowden @crazybob @hspinks @deanhach
+
+# Release process
+/docs/RELEASE.md @advaydev1 @brunobowden @crazybob @epicfaace @hspinks @deanhach
+/docs/release/ @advaydev1 @brunobowden @crazybob @epicfaace @hspinks @deanhach
+
+# Server
+/server/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+
+# API
+/api/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+
+# ***** Security-sensitive - always keep these at the end. *****
+
+# CI and CD, Repo admins who can access secrets.
+/.github/workflows/ @brunobowden @crazybob @sammousa
+/.github/CODEOWNERS @brunobowden @crazybob @sammousa

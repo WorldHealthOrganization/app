@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -25,8 +26,9 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    _registerLicenses();
 
-     _firebaseMessaging.configure(
+    _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
       },
@@ -50,9 +52,28 @@ class _MyAppState extends State<MyApp> {
     _firebaseMessaging.getToken().then((String token) {
       assert(token != null);
       setState(() {
-        // _homeScreenText = "Push Messaging token: $token";
+       
       });
-      // print(_homeScreenText);
+
+    });
+  }
+
+  Future<LicenseEntry> _loadLicense() async {
+    final licenseText = await rootBundle.loadString('assets/REPO_LICENSE');
+    return LicenseEntryWithLineBreaks(["https://github.com/WorldHealthOrganization/app"], licenseText);
+  }
+
+  Future<LicenseEntry> _load3pLicense() async {
+    final licenseText = await rootBundle.loadString('assets/THIRD_PARTY_LICENSE');
+    return LicenseEntryWithLineBreaks(["https://github.com/WorldHealthOrganization/app - THIRD_PARTY_LICENSE"], licenseText);
+  }
+
+  _registerLicenses() {
+    LicenseRegistry.addLicense(() {
+      return Stream<LicenseEntry>.fromFutures(<Future<LicenseEntry>>[
+        _loadLicense(),
+        _load3pLicense(),
+      ]);
     });
   }
 
@@ -78,7 +99,8 @@ class _MyAppState extends State<MyApp> {
       home: Directionality(
           child: HomePage(),
           textDirection:
-            GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale())).textDirection),
+              GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
+                  .textDirection),
     );
   }
 }
