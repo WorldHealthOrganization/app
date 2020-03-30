@@ -12,6 +12,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  /// TODO: fetch below value from shared_pref
   bool _switchValue = true;
   int indexSelected = 0;
 
@@ -29,12 +30,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700,),
               ),
+
               trailing: CupertinoSwitch(
                 activeColor: Constants.primaryColor,
-                trackColor: Colors.grey.shade400,
                 value: _switchValue,
                 onChanged: (value){
-                  /// TODO: Take actions here!
+                  /// (1) TODO: updating the stored user preferences
+                  /// (2) TODO: turning Google Analytics on/off
                   setState(() {
                     _switchValue = value;
                   });
