@@ -66,7 +66,7 @@ class ListOfItems extends StatelessWidget {
                     ),
                   ],
                 ),
-                expandedHeight: 200,
+                expandedHeight: 120,
               ),
               SliverList(
                 delegate: SliverChildListDelegate(this.listOfItems),
