@@ -116,7 +116,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         Divider(),
         ExpansionTile(
           key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(Icons.add_circle_outline),
+          trailing: Icon(Icons.add_circle_outline, color: Colors.black,),
           title: Padding(
             padding: const EdgeInsets.all(8.0),
             child: html(questionItem.title),
@@ -128,6 +128,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               child: html(questionItem.body),
             )
           ],
+          // onExpansionChanged: ,
         ),
       ]),
     );
@@ -150,10 +151,10 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         if (node is dom.Element) {
           switch (node.localName) {
             case "h2":
-              return baseStyle.merge(TextStyle(fontSize: 20));
+              return baseStyle.merge(TextStyle(fontSize: 20, color: Colors.black));
           }
         }
-        return baseStyle;
+        return baseStyle.merge(TextStyle(color: Colors.black));
       },
     );
   }
