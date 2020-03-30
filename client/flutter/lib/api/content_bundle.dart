@@ -27,6 +27,7 @@ class ContentBundle {
 
   // Return the value for the specified key or the default value if not found.
   // Note: A missing key should not prevent the bulk of the page from loading.
+  // ignore: unused_element
   String _getString(String key, {String orDefault = "..."}) {
     return yaml[key];
   }
