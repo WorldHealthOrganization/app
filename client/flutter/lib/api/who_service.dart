@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -54,3 +53,4 @@ class WhoService {
     return "WEB";
   }
 }
+
