@@ -37,6 +37,8 @@ class ContentLoading {
       } catch (err) {
         print("Network bundle for $languageAndCountry not found: $err");
         if (err is ContentBundleVersionException) {
+          // TODO: Refactor the loader API to support passing this information
+          // TODO: back to the UI layer rather than handling it here.
           // Defer showing the dialog briefly until after screen build.
           Future.delayed(const Duration(seconds: 1), () {
             // TODO: Localize
