@@ -170,13 +170,6 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => Share.share(
                     S.of(context).commonWhoAppShareIconButtonDescription),
               ),
-              /*UNCOMMENT WHEN ADDING SETTINGS TILE
-                ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text("Settings"),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                  
-                ),*/
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
