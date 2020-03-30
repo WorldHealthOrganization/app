@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                 textAlign: TextAlign.center,
               ), //TODO: pull these values in
               Container(
-                height: 15,
+                height: 40,
               ),
             ]),
           )
