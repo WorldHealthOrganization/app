@@ -28,8 +28,8 @@ class PermissionRequestPage extends StatelessWidget {
           buttonTitle,
           onGrantPermission,
           titleStyle: TextStyle(),
-          centerVertical: true,
-          centerHorizontal: true,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
         ),
         SizedBox(height: 16),
         FlatButton(
