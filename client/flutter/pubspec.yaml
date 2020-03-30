@@ -22,6 +22,7 @@ dependencies:
   firebase_messaging: ^6.0.13
   yaml: ^2.2.0
   http: ^0.12.0+3
+  package_info: '>=0.4.0+16 <2.0.0'
 
   intl: ^0.16.0
   flutter_localizations:

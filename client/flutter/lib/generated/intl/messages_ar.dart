@@ -36,8 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("التطبيق الرسمي لمنظمة الصحة العالمية COVID-19."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("تقديم تعقيب على التطبيق"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("شارك التطبيق"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("السماح بمشاركة الموقع"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("تخطي"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*اغسل يديك* بالصابون والماء لمدة 20 ثانية على الأقل"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*تجنب لمس* عينيك وفمك وأنفك"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*قم بتغطية فمك وأنفك* بالقوس أو النسيج الذي تنحدر منه عند السعال أو العطس"),

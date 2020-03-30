@@ -36,8 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("Официальное приложение для Всемирной организации здравоохранения COVID-19."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Предоставить отзыв о приложении"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Разрешить совместное использование местоположения"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Пропустить"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*промойте руки с мылом и водой не менее 20 секунд *"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*не прикасайтесь* к глазам, рту и носу"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*Закройте рот и нос* изогнутым локтевым слоем или тканью, когда вы кашелеете или чихните"),

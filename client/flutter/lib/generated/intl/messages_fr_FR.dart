@@ -36,8 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("L\'application - 19 OFFICIELLE de l\'Organisation mondiale de la santé."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Fournir des commentaires sur l\'application"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Partager l\'application"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Autoriser le partage de lieux"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Sauter"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*Lavez vos mains* avec du savon et de l\'eau pendant au moins 20 secondes"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Évitez de toucher* vos yeux, votre bouche et votre nez"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*Couvrez votre bouche et votre nez* avec votre coude ou votre tissu tordu lorsque vous touchez ou étincelez"),

@@ -57,7 +57,7 @@ class PermissionRequestPage extends StatelessWidget {
                     FlatButton(
                       padding: EdgeInsets.all(16),
                       child: Text(
-                        S.of(context).onBoardingLocationSharingPageButtonSkip,
+                        S.of(context).commonPermissionRequestPageButtonSkip,
                         style: TextStyle(color: Colors.grey),
                       ),
                       onPressed: onSkip,
