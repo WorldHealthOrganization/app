@@ -1,6 +1,6 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/components/question_data.dart';
+import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
