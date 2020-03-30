@@ -178,7 +178,10 @@ class _HomePageState extends State<HomePage> {
                 title: Text(S.of(context).homePagePageSliverListShareTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  _logAnalyticsEvent('Share');
+                  analytics.logShare(
+                      contentType: 'App',
+                      itemId: null,
+                      method: 'Website link');
                   Share.share(
                     S.of(context).commonWhoAppShareIconButtonDescription);
                 },
