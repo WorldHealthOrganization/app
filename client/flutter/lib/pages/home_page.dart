@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       Icon(Icons.arrow_forward_ios)
                     ],
                   ),
-                  onPressed: ()=>launch("https://www.who.int/Covid19ResponseFund")//TODO: DOUBLE CHECK LINK
+                  onPressed: ()=>launch("https://www.who.int/Covid19ResponseFund")
                 ),
               ),
               ListTile(
