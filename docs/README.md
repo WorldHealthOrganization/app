@@ -38,6 +38,6 @@ We are assessing the [feature roadmap](/docs/ROADMAP.md) for the next and subseq
 
 ## Community
 
-GitHub: https://github.com/WorldHealthOrganization/app
+GitHub: [https://github.com/WorldHealthOrganization/app](https://github.com/WorldHealthOrganization/app)
 
-Slack: https://who-app.slack.com/ _New invitations are currently closed_
+Slack: [https://who-app.slack.com/](https://who-app.slack.com/) _New invitations are currently closed_
