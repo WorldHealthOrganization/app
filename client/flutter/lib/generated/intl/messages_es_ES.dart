@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consulte la aplicación oficial de guía COVID - 19 https://www.who.int/covid-19-app%27"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consulte la aplicación oficial de guía COVID - 19 https://www.who.int/covid-19-app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("Organización Mundial de la salud"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("Aplicación de WHO Coronavirus"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Control de salud"),

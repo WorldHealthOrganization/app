@@ -13,6 +13,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       pageTitle: "Stay up to date on the Coronavirus",
       pageDescription: "To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.",
       buttonTitle: "Allow Notifications", // TODO: Localize
+      backgroundImageSrc: "assets/onboarding/onboarding_notifications.png",
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
     );

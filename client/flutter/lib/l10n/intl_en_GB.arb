@@ -2,7 +2,7 @@
   "@section": "Common strings",
   "commonWorldHealthOrganization": "World Health Organization",
   "commonWorldHealthOrganizationCoronavirusApp": "WHO Coronavirus App",
-  "commonWhoAppShareIconButtonDescription": "Check out the official COVID-19 Guide App https://www.who.int/covid-19-app%27",
+  "commonWhoAppShareIconButtonDescription": "Check out the official COVID-19 Guide App https://www.who.int/covid-19-app",
   "@section": "Onboarding",
   "onBoardingLocationSharingPageButtonAllow": "Allow Location Sharing",
   "onBoardingLocationSharingPageButtonSkip": "Skip",
