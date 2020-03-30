@@ -1,97 +1,75 @@
-import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/models/question.dart';
+import 'package:WHOFlutter/providers/question/index_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
 
-typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(
-    BuildContext);
-
-/// A Data driven series of questions and answers using HTML fragments.
-class QuestionIndexPage extends StatefulWidget {
+class QuestionIndexPage extends StatelessWidget {
   final String title;
-  final QuestionIndexDataSource dataSource;
+  final QuestionType type;
 
-  const QuestionIndexPage(
-      {Key key, @required this.title, @required this.dataSource})
-      : super(key: key);
-
-  @override
-  _QuestionIndexPageState createState() => _QuestionIndexPageState();
-}
-
-class _QuestionIndexPageState extends State<QuestionIndexPage> {
-  List<QuestionItem> _questions;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    // Fetch the question data.
-    // Note: this depends on the build context for the locale and hence is not
-    // Note: available at the usual initState() time.
-    // TODO: We should detect a schema version problem here and display a dialog
-    // TODO: prompting the user to upgrade.
-    if (_questions == null) {
-      _questions = await widget.dataSource(context);
-      setState(() {});
-    }
-  }
+  QuestionIndexPage({this.title, this.type});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _buildPage());
-  }
-
-  // TODO: Should show a spinner while loading.
-  Widget _buildPage() {
-    List items = (_questions ?? []).map(_buildQuestion).toList();
-
-    return PageScaffold(
-      context,
-      body: [
-        items.isNotEmpty
-            ? SliverList(
-                delegate: SliverChildListDelegate(items),
-              )
-            : SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: CupertinoActivityIndicator(),
-                )
-
-              )
-      ],
-      title: widget.title,
+    return ChangeNotifierProvider<QuestionIndexProvider>(
+      create: (_) => QuestionIndexProvider(
+        type: type,
+        context: context,
+      ),
+      child: Scaffold(
+        body: Consumer<QuestionIndexProvider>(
+          builder: (_, provider, __) {
+            return PageScaffold(
+              context,
+              body: [
+                provider.questions.isNotEmpty
+                    ? SliverList(
+                        delegate: SliverChildListDelegate(
+                          provider.questions
+                              .map((question) => _buildQuestion(question))
+                              .toList(),
+                        ),
+                      )
+                    : SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.all(48.0),
+                          child: CupertinoActivityIndicator(),
+                        ),
+                      )
+              ],
+              title: title,
+            );
+          },
+        ),
+      ),
     );
   }
 
-  Widget _buildQuestion(QuestionItem questionItem) {
+  Widget _buildQuestion(Question question) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(children: <Widget>[
         Divider(),
         ExpansionTile(
-          key: PageStorageKey<String>(questionItem.title),
+          key: PageStorageKey<String>(question.title),
           trailing: Icon(
             Icons.add_circle_outline,
             color: Colors.black,
           ),
           title: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: html(questionItem.title),
+            child: _html(question.title),
           ),
           children: [
             Padding(
               padding: const EdgeInsets.only(
                   left: 16, right: 16, top: 32, bottom: 32),
-              child: html(questionItem.body),
+              child: _html(question.body),
             )
           ],
         ),
@@ -100,7 +78,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
-  Widget html(String html) {
+  Widget _html(String html) {
     return Html(
       data: html,
       defaultTextStyle: TextStyle(fontSize: 16.0),
