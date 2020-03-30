@@ -39,6 +39,9 @@ flutter:
     - assets/
     - assets/images/
     - assets/animations/
+    - assets/news_press/
+    - assets/onboarding/
+    - assets/travel_advice/
     - assets/content_bundles/
 
 flutter_intl:
