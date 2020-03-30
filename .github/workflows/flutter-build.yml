@@ -19,6 +19,8 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
+      - run: git --no-pager diff
+        working-directory: ./client/flutter
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
