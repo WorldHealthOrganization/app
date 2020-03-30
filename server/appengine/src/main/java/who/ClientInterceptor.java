@@ -40,7 +40,7 @@ public class ClientInterceptor implements RpcInterceptor {
 
     Client client = Client.getOrCreate(clientId, platform);
     Client.currentClient.set(client);
-    logger.info(CLIENT_ID + ": " + client.uuid);
+    if (!Environment.isProduction()) logger.info(CLIENT_ID + ": " + client.uuid);
     try {
       return invocation.proceed();
     } finally {
