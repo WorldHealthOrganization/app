@@ -21,7 +21,7 @@ class QuestionData {
       BuildContext context) async {
     try {
       var bundle =
-      await ContentLoading().load(context, "myth_busters");
+      await ContentLoading().load(context, "mythbusters");
       return bundle.contents
           .map((item) =>
           QuestionItem(title: item['title_html'], body: item['body_html']))
