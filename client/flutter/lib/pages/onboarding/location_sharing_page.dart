@@ -11,10 +11,10 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(
-      pageTitle: "Get the latest news from your community",
-      pageDescription: "To get local news and information, allow location sharing.",
+      pageTitle: S.of(context).locationSharingPageTitle,
+      pageDescription: S.of(context).locationSharingPageDescription,
       backgroundImageSrc: "assets/onboarding/onboarding_location.png",
-      buttonTitle: S.of(context).onBoardingLocationSharingPageButtonAllow,
+      buttonTitle: S.of(context).locationSharingPageButton,
       onGrantPermission: _allowLocationSharing,
       onSkip: _skipLocationSharing,
     );

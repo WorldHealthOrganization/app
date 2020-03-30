@@ -15,7 +15,7 @@ class S {
     AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -56,19 +56,100 @@ class S {
     );
   }
 
-  String get onBoardingLocationSharingPageButtonAllow {
+  String get commonWorldHealthOrganizationCoronavirusAppVersion {
     return Intl.message(
-      'Allow Location Sharing',
-      name: 'onBoardingLocationSharingPageButtonAllow',
+      'Version 0.1 (12412)\n© 2020 WHO',
+      name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
       desc: '',
       args: [],
     );
   }
 
-  String get onBoardingLocationSharingPageButtonSkip {
+  String get commonPermissionRequestPageButtonSkip {
     return Intl.message(
       'Skip',
-      name: 'onBoardingLocationSharingPageButtonSkip',
+      name: 'commonPermissionRequestPageButtonSkip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get locationSharingPageTitle {
+    return Intl.message(
+      'Get the latest news from your community',
+      name: 'locationSharingPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get locationSharingPageDescription {
+    return Intl.message(
+      'To get local news and information, allow location sharing.',
+      name: 'locationSharingPageDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get locationSharingPageButton {
+    return Intl.message(
+      'Allow Location Sharing',
+      name: 'locationSharingPageButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsPagePermissionRequestPageTitle {
+    return Intl.message(
+      'Stay up to date on the Coronavirus',
+      name: 'notificationsPagePermissionRequestPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsPagePermissionRequestPageDescription {
+    return Intl.message(
+      'To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.',
+      name: 'notificationsPagePermissionRequestPageDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsPagePermissionRequestPageButton {
+    return Intl.message(
+      'Allow Notifications',
+      name: 'notificationsPagePermissionRequestPageButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageTitle {
+    return Intl.message(
+      'Coronavirus',
+      name: 'homePagePageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSubTitle {
+    return Intl.message(
+      'Virus response & tools',
+      name: 'homePagePageSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageButtonQuestions {
+    return Intl.message(
+      'Questions',
+      name: 'homePagePageButtonQuestions',
       desc: '',
       args: [],
     );
@@ -105,6 +186,15 @@ class S {
     return Intl.message(
       'WHO Myth-busters',
       name: 'homePagePageButtonWHOMythBusters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageButtonNewsAndPress {
+    return Intl.message(
+      'News & Press',
+      name: 'homePagePageButtonNewsAndPress',
       desc: '',
       args: [],
     );
@@ -164,6 +254,33 @@ class S {
     );
   }
 
+  String get homePagePageSliverListSupport {
+    return Intl.message(
+      'Help support the relief effort',
+      name: 'homePagePageSliverListSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListDonate {
+    return Intl.message(
+      'Donate here',
+      name: 'homePagePageSliverListDonate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListDonateUrl {
+    return Intl.message(
+      'https://www.who.int/Covid19ResponseFund',
+      name: 'homePagePageSliverListDonateUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageButtonLatestNumbersUrl {
     return Intl.message(
       'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd',
@@ -177,6 +294,15 @@ class S {
     return Intl.message(
       'Protect Yourself',
       name: 'protectYourselfTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get protectYourselfHeader {
+    return Intl.message(
+      'General Recommendations',
+      name: 'protectYourselfHeader',
       desc: '',
       args: [],
     );
@@ -497,6 +623,159 @@ class S {
     );
   }
 
+  String get newsFeedTitle {
+    return Intl.message(
+      'News & Press',
+      name: 'newsFeedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemTitle1 {
+    return Intl.message(
+      'Situation Reports',
+      name: 'newsFeedSliverListNewsFeedItemTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemDescription1 {
+    return Intl.message(
+      'Situation reports provide the latest updates on the novel coronavirus outbreak.',
+      name: 'newsFeedSliverListNewsFeedItemDescription1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemImagePath1 {
+    return Intl.message(
+      'assets/news_press/news_situation_reports.png',
+      name: 'newsFeedSliverListNewsFeedItemImagePath1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemUrl1 {
+    return Intl.message(
+      'https://who.int',
+      name: 'newsFeedSliverListNewsFeedItemUrl1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemTitle2 {
+    return Intl.message(
+      'Rolling Updates',
+      name: 'newsFeedSliverListNewsFeedItemTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemDescription2 {
+    return Intl.message(
+      'Rolling updates on coronavirus disease (COVID-19) sourced from across WHO media.',
+      name: 'newsFeedSliverListNewsFeedItemDescription2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemImagePath2 {
+    return Intl.message(
+      'assets/news_press/rolling_updates.png',
+      name: 'newsFeedSliverListNewsFeedItemImagePath2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemUrl2 {
+    return Intl.message(
+      'https://who.int',
+      name: 'newsFeedSliverListNewsFeedItemUrl2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemTitle3 {
+    return Intl.message(
+      'News Articles',
+      name: 'newsFeedSliverListNewsFeedItemTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemDescription3 {
+    return Intl.message(
+      'All news releases, statements, and notes for the media.',
+      name: 'newsFeedSliverListNewsFeedItemDescription3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemImagePath3 {
+    return Intl.message(
+      'assets/news_press/news_articles.png',
+      name: 'newsFeedSliverListNewsFeedItemImagePath3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemUrl3 {
+    return Intl.message(
+      'https://who.int',
+      name: 'newsFeedSliverListNewsFeedItemUrl3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemTitle4 {
+    return Intl.message(
+      'Press Briefings',
+      name: 'newsFeedSliverListNewsFeedItemTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemDescription4 {
+    return Intl.message(
+      'Coronavirus disease (COVID019) press briefings including videos, audio and transcripts.',
+      name: 'newsFeedSliverListNewsFeedItemDescription4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemImagePath4 {
+    return Intl.message(
+      'assets/news_press/press_briefings.png',
+      name: 'newsFeedSliverListNewsFeedItemImagePath4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newsFeedSliverListNewsFeedItemUrl4 {
+    return Intl.message(
+      'https://who.int',
+      name: 'newsFeedSliverListNewsFeedItemUrl4',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get healthCheckTitle {
     return Intl.message(
       'Health Check',
@@ -512,7 +791,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('ru', 'RU'), Locale('es', 'ES'), Locale('en', 'GB'), Locale('ar', ''), Locale('fr', 'FR'), Locale('en', ''), Locale('en', 'US'), Locale('zh', 'CN'),
+      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 
