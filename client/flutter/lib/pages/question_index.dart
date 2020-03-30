@@ -106,9 +106,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
+    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
+
     return Html(
       data: html,
-      defaultTextStyle: TextStyle(fontSize: 16.0),
+      defaultTextStyle: TextStyle(fontSize: 16 * textScaleFactor),
       linkStyle: const TextStyle(
         color: Colors.deepPurple,
       ),
