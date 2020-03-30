@@ -19,7 +19,7 @@ const header = TextStyle(
   fontSize: 24,
 );
 
-RichText _message(String input) {
+Text _message(String input) {
   // Make sections delineated by asterisk * bold. For example:
   // String text = '*This is bold* this is not';
 
@@ -50,8 +50,8 @@ RichText _message(String input) {
       text: input.substring(before),
     ),
   );
-  return RichText(
-    text: TextSpan(style: normal, children: spans),
+  return Text.rich(
+    TextSpan(style: normal, children: spans),
   );
 }
 
@@ -122,7 +122,7 @@ class ProtectYourselfCard extends StatelessWidget {
     @required this.message,
     @required this.child,
   });
-  final RichText message;
+  final Text message;
   final Widget child;
 
   @override
