@@ -8,6 +8,7 @@ import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
+import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -153,6 +154,13 @@ class _HomePageState extends State<HomePage> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () => Share.share(
                     S.of(context).commonWhoAppShareIconButtonDescription),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text(S.of(context).homePagePageSliverListSettings),
+                trailing: Icon(Icons.arrow_forward_ios),
+                onTap: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (c) => SettingsPage())),
               ),
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
