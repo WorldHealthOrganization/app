@@ -2,12 +2,10 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsPage extends StatefulWidget {
-  @override
-  _NotificationsPageState createState() => _NotificationsPageState();
-}
+class NotificationsPage extends StatelessWidget  {
+  final PageController pageController;
+  NotificationsPage(this.pageController);
 
-class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(
@@ -28,7 +26,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     _complete();
   }
 
-  void _complete() async {
-    Navigator.of(context).pop();
+  void _complete() {
+    this.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 }
