@@ -51,7 +51,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   // TODO: Should show a spinner while loading.
   Widget _buildPage() {
-    List items = (_questions ?? []).map(_buildQuestion).toList();
+    List items = (_questions ?? [])
+        .map((questionData) => QuestionTile(
+              questionItem: questionData,
+            ))
+        .toList();
 
     return PageScaffold(
       context,
@@ -62,44 +66,73 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               )
             : SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: CupertinoActivityIndicator(),
-                )
-
-              )
+                padding: const EdgeInsets.all(48.0),
+                child: CupertinoActivityIndicator(),
+              ))
       ],
       title: widget.title,
     );
   }
 
-  Widget _buildQuestion(QuestionItem questionItem) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+  // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
+}
+
+class QuestionTile extends StatefulWidget {
+  const QuestionTile({
+    @required this.questionItem,
+  });
+
+  final QuestionItem questionItem;
+
+  @override
+  _QuestionTileState createState() => _QuestionTileState();
+}
+
+class _QuestionTileState extends State<QuestionTile> {
+  bool isExpanded;
+
+  @override
+  void initState() {
+    super.initState();
+    isExpanded = false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
       child: Column(children: <Widget>[
-        Divider(),
+        Divider(
+          height: 1,
+        ),
         ExpansionTile(
-          key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(
-            Icons.add_circle_outline,
-            color: Colors.black,
+          onExpansionChanged: (v){
+            setState(() {
+              isExpanded = v;
+            });
+          },
+          key: PageStorageKey<String>(widget.questionItem.title),
+          trailing: Transform.rotate(
+            angle: this.isExpanded?45:0,
+                    child: Icon(
+              Icons.add_circle_outline,
+              color: Colors.black,
+            ),
           ),
-          title: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: html(questionItem.title),
-          ),
+          title: html(widget.questionItem.title),
+          
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 32, bottom: 32),
-              child: html(questionItem.body),
+              padding:
+                  const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 32),
+              child: html(widget.questionItem.body),
             )
           ],
-        ),
+        )
       ]),
     );
   }
 
-  // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
     return Html(
       data: html,
