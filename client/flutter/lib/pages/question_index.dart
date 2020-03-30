@@ -105,7 +105,6 @@ class _QuestionTileState extends State<QuestionTile>
 
   @override
   Widget build(BuildContext context) {
-    print(rotationController.value);
     return Container(
       color: Colors.white,
       child: Column(children: <Widget>[
