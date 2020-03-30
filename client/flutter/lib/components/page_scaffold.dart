@@ -27,7 +27,7 @@ class PageScaffold extends StatelessWidget {
           child: CustomScrollView(slivers: [
             SliverAppBar(
               // Hide the built-in icon for now
-              automaticallyImplyLeading：false,
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
               expandedHeight: 120,
