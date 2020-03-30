@@ -31,7 +31,7 @@ class PageScaffold extends StatelessWidget {
                 color: Colors.transparent,
               ),
               backgroundColor: Colors.white,
-              flexibleSpace: PageHeader(context, title: this.title, subtitle: this.subtitle, padding: this.padding, showBackButton: this.showBackButton),
+              flexibleSpace: PageHeader(title: this.title, subtitle: this.subtitle, padding: this.padding, showBackButton: this.showBackButton),
               expandedHeight: 120,
             ),
             ...this.body

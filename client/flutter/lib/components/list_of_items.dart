@@ -21,7 +21,7 @@ class ListOfItems extends StatelessWidget {
                 backgroundColor: Colors.white,
                 brightness: Brightness.light,
                 leading: SizedBox(),
-                flexibleSpace: PageHeader(context, title: this.title),
+                flexibleSpace: PageHeader(title: this.title),
                 expandedHeight: 120,
               ),
               SliverList(
