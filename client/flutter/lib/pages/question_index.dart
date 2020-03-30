@@ -62,7 +62,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               )
             : SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(48.0),
                   child: CupertinoActivityIndicator(),
                 )
 
