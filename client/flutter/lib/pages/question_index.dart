@@ -1,4 +1,6 @@
+import 'package:WHOFlutter/api/content_bundle.dart';
 import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +35,20 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
+    await _loadQuestionData();
+  }
+
+  Future _loadQuestionData() async {
     // Fetch the question data.
     // Note: this depends on the build context for the locale and hence is not
     // Note: available at the usual initState() time.
     // TODO: We should detect a schema version problem here and display a dialog
     // TODO: prompting the user to upgrade.
-    if (_questions == null) {
-      _questions = await widget.dataSource(context);
-      setState(() {});
+    if (_questions != null) {
+      return;
     }
+    _questions = await widget.dataSource(context);
+    setState(() {});
   }
 
   @override
@@ -62,11 +69,9 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               )
             : SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(48.0),
-                  child: CupertinoActivityIndicator(),
-                )
-
-              )
+                padding: const EdgeInsets.all(48.0),
+                child: CupertinoActivityIndicator(),
+              ))
       ],
       title: widget.title,
     );
