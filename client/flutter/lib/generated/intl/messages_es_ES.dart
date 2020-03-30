@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consulte la aplicación oficial de guía COVID - 19 https://www.who.int/covid-19-app%27"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consulte la aplicación oficial de guía COVID - 19 https://www.who.int/covid-19-app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("Organización Mundial de la salud"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("Aplicación de WHO Coronavirus"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Control de salud"),
@@ -36,8 +36,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("La aplicación oficial COVID-19 de la Organización Mundial de la salud."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Proporcionar comentarios de la aplicación"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Compartir la aplicación"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Permitir compartir ubicación"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Saltar"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*lave las manos* con agua y jabón durante al menos 20 segundos"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Evita tocar* tus ojos, boca y nariz"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*cubre la boca y la nariz* con el codo o tejido doblado cuando tos o te escondes"),
