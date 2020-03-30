@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-        title: "Corona Virus",
+        title: "Coronavirus",
         subtitle: "Virus response & tools",
         showBackButton: false,
         body: [
