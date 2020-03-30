@@ -9,8 +9,6 @@ class ContentBundle {
     this.yaml = loadYaml(yamlString);
   }
 
-//  print("content = ${content.getString('contents')}");
-
   int get schemaVersion {
     return _getInt('schema_version');
   }
