@@ -13,6 +13,7 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
     return PermissionRequestPage(
       pageTitle: S.of(context).locationSharingPageTitle,
       pageDescription: S.of(context).locationSharingPageDescription,
+      backgroundImageSrc: "assets/onboarding/onboarding_location.png",
       buttonTitle: S.of(context).locationSharingPageButton,
       onGrantPermission: _allowLocationSharing,
       onSkip: _skipLocationSharing,

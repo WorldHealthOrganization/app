@@ -14,6 +14,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
       pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
       buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
+      backgroundImageSrc: "assets/onboarding/onboarding_notifications.png",
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
     );
