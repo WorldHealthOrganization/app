@@ -12,7 +12,7 @@ class TravelAdvice extends StatelessWidget {
     return PageScaffold(context,
         body: [
           SliverPersistentHeader(
-            delegate: MyDynamicHeader(),
+            delegate: TravelWarningHeader(),
             
           ),
           SliverList(
@@ -51,20 +51,20 @@ class TravelAdvice extends StatelessWidget {
   }
 }
 
-class MyDynamicHeader extends SliverPersistentHeaderDelegate {
+class TravelWarningHeader extends SliverPersistentHeaderDelegate {
   int index = 0;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return LayoutBuilder(builder: (context, constraints) {
+    return LayoutBuilder(builder: (layoutContext, constraints) {
       return Container(
         color: Color(0xffD82037),
         height: constraints.maxHeight,
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Center(
             child: Text(
-          "WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.",
+          shrinkOffset<180?"WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.":"WHO travel warning",
           style: TextStyle(color: Colors.white, fontSize: 16),
         )),
       );
