@@ -8,8 +8,8 @@ class PageButton extends StatelessWidget {
   final String description;
   final double borderRadius;
   final Function onPressed;
-  final bool centerVertical;
-  final bool centerHorizontal;
+  final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
   final TextStyle titleStyle;
 
   final double verticalPadding;
@@ -24,8 +24,8 @@ class PageButton extends StatelessWidget {
     this.borderRadius = 25.0,
     this.verticalPadding = 15.0,
     this.horizontalPadding = 8.0,
-    this.centerVertical = false,
-    this.centerHorizontal = false,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
   });
 
@@ -40,16 +40,12 @@ class PageButton extends StatelessWidget {
               vertical: this.verticalPadding,
               horizontal: this.horizontalPadding),
           child: Column(
-            crossAxisAlignment: this.centerHorizontal
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            mainAxisAlignment: this.centerVertical
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.end,
+            crossAxisAlignment: this.crossAxisAlignment,
+            mainAxisAlignment: this.mainAxisAlignment,
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.0 + 0.5 * contentScale(context),
+                textScaleFactor: 1.0 + 0.6 * contentScale(context),
                 textAlign: TextAlign.left,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w900),
               ),
@@ -58,7 +54,7 @@ class PageButton extends StatelessWidget {
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
-                      textScaleFactor: 0.9 + 0.45 * contentScale(context),
+                      textScaleFactor: 0.9 + 0.5 * contentScale(context),
                       style: TextStyle(fontWeight: FontWeight.w400),
                     )
                   : Container()
@@ -67,4 +63,5 @@ class PageButton extends StatelessWidget {
       onPressed: this.onPressed,
     );
   }
+  
 }

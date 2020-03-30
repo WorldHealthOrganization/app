@@ -51,6 +51,7 @@ class _RiveAnimationState extends State<RiveAnimation> {
           alignment: widget.alignment,
           fit: widget.fit,
           animation: widget.animation,
+          boundsNode: widget.animation,
           isPaused: !_isPlaying,
         ),
       );

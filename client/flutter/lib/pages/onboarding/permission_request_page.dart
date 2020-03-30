@@ -49,8 +49,8 @@ class PermissionRequestPage extends StatelessWidget {
                       buttonTitle,
                       onGrantPermission,
                       titleStyle: TextStyle(),
-                      centerVertical: true,
-                      centerHorizontal: true,
+                      crossAxisAlignment = CrossAxisAlignment.center,
+                      mainAxisAlignment = MainAxisAlignment.center,
                       verticalPadding: 24,
                       borderRadius: 35,
                     ),
@@ -66,6 +66,7 @@ class PermissionRequestPage extends StatelessWidget {
                 ),
               ],
             ),
+
           ),
         ],
       ),
