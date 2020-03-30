@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
@@ -98,7 +100,7 @@ class _QuestionTileState extends State<QuestionTile>
     super.initState();
     isExpanded = false;
     rotationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: 45);
+        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: pi/4);
 
     
   }
