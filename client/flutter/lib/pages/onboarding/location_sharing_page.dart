@@ -10,17 +10,12 @@ class LocationSharingPage extends StatefulWidget {
 class _LocationSharingPageState extends State<LocationSharingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(48.0),
-          child: PermissionRequestPage(
-            buttonTitle: S.of(context).onBoardingLocationSharingPageButtonAllow,
-            onGrantPermission: _allowLocationSharing,
-            onSkip: _skipLocationSharing,
-          ),
-        ),
-      ),
+    return PermissionRequestPage(
+      pageTitle: "Get the latest news from your community",
+      pageDescription: "To get local news and information, allow location sharing.",
+      buttonTitle: S.of(context).onBoardingLocationSharingPageButtonAllow,
+      onGrantPermission: _allowLocationSharing,
+      onSkip: _skipLocationSharing,
     );
   }
 
@@ -36,4 +31,3 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
     Navigator.of(context).pop();
   }
 }
-
