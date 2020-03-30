@@ -5,6 +5,10 @@ import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LegalLandingPage extends StatelessWidget {
+  final PageController pageController;
+
+  LegalLandingPage(this.pageController);
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +23,7 @@ class LegalLandingPage extends StatelessWidget {
             PageButton(
               Constants.primaryColor,
               "Get Started",
-              ()=>Navigator.pop(context),
+              ()=>this.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

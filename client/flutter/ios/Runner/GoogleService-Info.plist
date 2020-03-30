@@ -23,11 +23,11 @@
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<false></false>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1057717871229:ios:6eb7d73a768f00570dc714</string>
 	<key>DATABASE_URL</key>

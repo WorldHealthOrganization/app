@@ -4,26 +4,30 @@ import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
-import 'package:WHOFlutter/pages/onboarding/legal_landing_page.dart';
+import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'onboarding/notifications_page.dart';
-
 class HomePage extends StatefulWidget {
+  final FirebaseAnalytics analytics;
+
+  HomePage(this.analytics);
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(analytics);
 }
 
 class _HomePageState extends State<HomePage> {
+  final FirebaseAnalytics analytics;
+  _HomePageState(this.analytics);
+
   final String versionString = packageInfo != null
       ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
       : null;
@@ -41,8 +45,13 @@ class _HomePageState extends State<HomePage> {
   _launchStatsDashboard() async {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
+      _logAnalyticsEvent('LatestNumbers');
       await launch(url);
     }
+  }
+
+  _logAnalyticsEvent(String name) async {
+    await analytics.logEvent(name: name);
   }
 
   @override
@@ -68,8 +77,11 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonProtectYourself,
-                  () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => ProtectYourself())),
+                  () {
+                    _logAnalyticsEvent('ProtectYourself');
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => ProtectYourself()));
+                  },
                 ),
                 PageButton(
                   Color(0xff1A458E),
@@ -80,23 +92,30 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () => Navigator.of(context).push(MaterialPageRoute(
+                  () {
+                    _logAnalyticsEvent('QuestionsAnswered');
+                    return Navigator.of(context).push(MaterialPageRoute(
                       builder: (c) => QuestionIndexPage(
                             dataSource: QuestionData.yourQuestionsAnswered,
                             title: S.of(context).homePagePageButtonQuestions,
-                          ))),
+                          ))
+                    );
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 PageButton(
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
-                  () => Navigator.of(context).push(
+                  () {
+                    _logAnalyticsEvent('MythBusters');
+                    return Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
-                              dataSource: QuestionData.whoMythbusters,
-                              title: S.of(context).homePagePageButtonWHOMythBusters,
-                            )),
-                  ),
+                            dataSource: QuestionData.whoMythbusters,
+                            title: S.of(context).homePagePageButtonWHOMythBusters,
+                          ))
+                    );
+                  },
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -104,8 +123,11 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonTravelAdvice,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => TravelAdvice())),
+                  () {
+                    _logAnalyticsEvent('TravelAdvice');
+                    return Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => TravelAdvice()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),
@@ -149,24 +171,35 @@ class _HomePageState extends State<HomePage> {
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
-                    onPressed: () =>
-                        launch(S.of(context).homePagePageSliverListDonateUrl)),
+                    onPressed: () {
+                        _logAnalyticsEvent('Donate');
+                        launch(S.of(context).homePagePageSliverListDonateUrl);
+                    })
               ),
               ListTile(
                 leading: Icon(Icons.share),
                 title: Text(S.of(context).homePagePageSliverListShareTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Share.share(
-                    S.of(context).commonWhoAppShareIconButtonDescription),
+                onTap: () {
+                  analytics.logShare(
+                      contentType: 'App',
+                      itemId: null,
+                      method: 'Website link');
+                  Share.share(
+                    S.of(context).commonWhoAppShareIconButtonDescription);
+                },
               ),
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => showAboutDialog(
+                onTap: () {
+                  _logAnalyticsEvent('About');
+                  showAboutDialog(
                     context: context,
                     applicationVersion: packageInfo?.version,
                     applicationLegalese:
-                        S.of(context).homePagePageSliverListAboutTheAppDialog),
+                        S.of(context).homePagePageSliverListAboutTheAppDialog);
+                },
               ),
               Container(
                 height: 25,
@@ -191,17 +224,11 @@ class _HomePageState extends State<HomePage> {
     // onboardingComplete = false;
 
     if (!onboardingComplete) {
-      // TODO: We should wrap these in a single Navigation context so that they can
-      // TODO: slide up as a modal, proceed with pushes left to right, and then be
-      // TODO: dismissed together.
+
       await Navigator.of(context).push(MaterialPageRoute(
         fullscreenDialog: true,
-        builder: (c)=>LegalLandingPage()
+        builder: (c)=>OnboardingPage()
       ));
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => NotificationsPage()));
 
       await UserPreferences().setOnboardingCompleted(true);
     }

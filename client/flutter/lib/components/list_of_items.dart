@@ -75,7 +75,7 @@ class ListItem extends StatelessWidget {
           this.titleWidget ?? Divider(),
           Text(
             this.message,
-            textScaleFactor: 1.5,
+            style: TextStyle(fontSize: 21),
             textAlign: TextAlign.center,
           ),
         ],
