@@ -51,6 +51,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   // TODO: Should show a spinner while loading.
   Widget _buildPage() {
     var items = (_questions ?? []).map(_buildQuestion).toList();
+
     return PageScaffold(
       context,
       body: [
@@ -65,11 +66,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   Widget _buildQuestion(QuestionItem questionItem) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        color: Colors.grey.shade400,
-        child: ExpansionTile(
+      child: Column(children: <Widget>[
+        Divider(),
+        ExpansionTile(
           key: PageStorageKey<String>(questionItem.title),
-          trailing: Icon(Icons.add),
+          trailing: Icon(Icons.add_circle_outline, color: Colors.black,),
           title: Padding(
             padding: const EdgeInsets.all(8.0),
             child: html(questionItem.title),
@@ -82,7 +83,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
             )
           ],
         ),
-      ),
+      ]),
     );
   }
 
@@ -103,10 +104,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         if (node is dom.Element) {
           switch (node.localName) {
             case "h2":
-              return baseStyle.merge(TextStyle(fontSize: 20));
+              return baseStyle
+                  .merge(TextStyle(fontSize: 20, color: Colors.black));
           }
         }
-        return baseStyle;
+        return baseStyle.merge(TextStyle(color: Colors.black));
       },
     );
   }
