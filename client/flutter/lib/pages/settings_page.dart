@@ -55,9 +55,48 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: Theme.of(context).textTheme.subhead,
               ),
             ),
-
-            /// TODO: Implement UI:-
-            /// TODO:   selection of language preferences already created PR for it (#654)
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: SelectableText(
+                S.of(context).homePagePageSliverListSettingsHeader2,
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700,),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ChoiceChip(
+                selectedColor: indexSelected == 0 ? Constants.primaryColor : Colors.grey[300],
+                label: ListTile(
+                  title: Text("English", style: TextStyle(color: indexSelected == 0 ? Colors.white : Colors.black),),
+                  trailing: indexSelected == 0 ? Icon(Icons.check, color: Colors.white,) : null,
+                ),
+                selected: indexSelected == 0,
+                onSelected: (value){
+                  setState(() {
+                    S.delegate.load(Locale('en', 'US'));
+                    indexSelected = value ? 0 : -1;
+                  });
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ChoiceChip(
+                selectedColor: indexSelected == 1 ? Constants.primaryColor : Colors.grey[300],
+                label: ListTile(
+                  title: Text("French", style: TextStyle(color: indexSelected == 1 ? Colors.white : Colors.black),),
+                  trailing: indexSelected == 1 ? Icon(Icons.check, color: Colors.white,) : null,
+                ),
+                selected: indexSelected == 1,
+                onSelected: (value){
+                  setState(() {
+                    S.delegate.load(Locale('fr', 'FR'));
+                    indexSelected = value ? 1 : -1;
+                  });
+                },
+              ),
+            ),
           ],
         ),
       ),
