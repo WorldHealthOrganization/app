@@ -236,6 +236,42 @@ class S {
     );
   }
 
+  String get homePagePageSliverListSettingsHeader1 {
+    return Intl.message(
+      'Data Collection',
+      name: 'homePagePageSliverListSettingsHeader1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettingsHeader2 {
+    return Intl.message(
+      'Language',
+      name: 'homePagePageSliverListSettingsHeader2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettings {
+    return Intl.message(
+      'Settings',
+      name: 'homePagePageSliverListSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettingsDataCollection {
+    return Intl.message(
+      'Allow WHO to collect data to better inform the public about Coronavirus updates. (need copy)',
+      name: 'homePagePageSliverListSettingsDataCollection',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
       'About the app',
