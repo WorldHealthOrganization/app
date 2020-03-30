@@ -17,9 +17,19 @@ class QuestionData {
     }
   }
 
-  static Future<List<QuestionItem>> whoMythbusters(BuildContext context) async {
-    // TODO: Wrong data!!!
-    return yourQuestionsAnswered(context);
+  static Future<List<QuestionItem>> whoMythbusters(
+      BuildContext context) async {
+    try {
+      var bundle =
+      await ContentLoading().load(context, "mythbusters");
+      return bundle.contents
+          .map((item) =>
+          QuestionItem(title: item['title_html'], body: item['body_html']))
+          .toList();
+    } catch (err) {
+      print("Error loading myth busters data: $err");
+      return [];
+    }
   }
 }
 

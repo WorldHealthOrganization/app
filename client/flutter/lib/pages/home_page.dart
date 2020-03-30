@@ -2,6 +2,7 @@ import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/legal_landing_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
@@ -24,6 +25,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final String versionString = packageInfo != null
+      ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
+      : null;
+  final String copyrightString = '© 2020 WHO';
   @override
   void initState() {
     super.initState();
@@ -44,8 +49,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-        title: "Coronavirus",
-        subtitle: "Virus response & tools",
+        title: S.of(context).homePagePageTitle,
+        subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,
         body: [
           SliverPadding(
@@ -79,8 +84,8 @@ class _HomePageState extends State<HomePage> {
                   () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (c) => QuestionIndexPage(
                             dataSource: QuestionData.yourQuestionsAnswered,
-                            title: "Questions",
-                          ))), // TODO: Localize
+                            title: S.of(context).homePagePageButtonQuestions,
+                          ))),
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 PageButton(
@@ -90,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.whoMythbusters,
-                              title: "WHO Myth-busters",
+                              title: S.of(context).homePagePageButtonWHOMythBusters,
                             )),
                   ),
                   description:
@@ -107,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 PageButton(
                   Color(0xff008DC9),
-                  "News\n& Press",
+                  S.of(context).homePagePageButtonNewsAndPress,
                   () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (c) => NewsFeed())),
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -123,7 +128,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: Text(
-                  "Help support the relief effort",
+                  S.of(context).homePagePageSliverListSupport,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 30,
@@ -141,12 +146,12 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text("Donate here"),
+                        Text(S.of(context).homePagePageSliverListDonate),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
                     onPressed: () =>
-                        launch("https://www.who.int/Covid19ResponseFund")),
+                        launch(S.of(context).homePagePageSliverListDonateUrl)),
               ),
               ListTile(
                 leading: Icon(Icons.share),
@@ -167,6 +172,7 @@ class _HomePageState extends State<HomePage> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () => showAboutDialog(
                     context: context,
+                    applicationVersion: packageInfo?.version,
                     applicationLegalese:
                         S.of(context).homePagePageSliverListAboutTheAppDialog),
               ),
@@ -174,10 +180,10 @@ class _HomePageState extends State<HomePage> {
                 height: 25,
               ),
               Text(
-                "Version 0.1 (12412)\n© 2020 WHO",
+                '${versionString ?? ''}$copyrightString',
                 style: TextStyle(color: Color(0xff26354E)),
                 textAlign: TextAlign.center,
-              ), //TODO: pull these values in
+              ),
               Container(
                 height: 40,
               ),

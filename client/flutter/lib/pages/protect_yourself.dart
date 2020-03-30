@@ -87,7 +87,7 @@ class ProtectYourself extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 26, top: 20),
           child: Text(
-            'General Recommendations',
+            localized.protectYourselfHeader,
             style: header,
           ),
         ),
