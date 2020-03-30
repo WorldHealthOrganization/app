@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
+import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:WHOFlutter/components/question_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -10,14 +10,10 @@ typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function();
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends StatefulWidget {
   final String title;
-  final String subtitle;
   final QuestionIndexDataSource dataSource;
 
   const QuestionIndexPage(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
-      @required this.dataSource})
+      {Key key, @required this.title, @required this.dataSource})
       : super(key: key);
 
   @override
@@ -46,64 +42,14 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   Widget _buildPage() {
     var items = (_questions ?? []).map(_buildQuestion).toList();
-    return Material(
-      color: Colors.grey.shade200,
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            // Hide the built-in icon for now
-            iconTheme: IconThemeData(
-              color: Colors.transparent,
-            ),
-            backgroundColor: Colors.white,
-            flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
-            expandedHeight: 120,
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(items),
-          ),
-        ],
-      ),
-    );
-  }
-
-  SafeArea _buildHeader() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _buildBackArrow(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(widget.title,
-                      textScaleFactor: 1.8,
-                      style: TextStyle(
-                          color: Colors.blueAccent,
-                          fontWeight: FontWeight.bold)),
-                  SizedBox(height: 4),
-                  Text(widget.subtitle,
-                      textScaleFactor: 1.0,
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Image.asset('assets/images/mark.png', width: 75),
-            ]),
-      ),
-    );
-  }
-
-  // TODO: Factor this out with the other pages?
-  GestureDetector _buildBackArrow() {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => Navigator.pop(context),
-      child: BackArrow(),
+    return PageScaffold(
+      context,
+      body: [
+        SliverList(
+          delegate: SliverChildListDelegate(items),
+        )
+      ],
+      title: widget.title,
     );
   }
 
