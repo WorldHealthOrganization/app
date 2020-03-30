@@ -176,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     onPressed: () {
                         _logAnalyticsEvent('Donate');
-                        launch(S.of(context).homePagePageSliverListDonateUrl));
+                        launch(S.of(context).homePagePageSliverListDonateUrl);
                     })
               ),
               ListTile(
