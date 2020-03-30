@@ -27,22 +27,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _initStateAsync() async {
-    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
-
-    // TODO: Uncomment for testing.  Remove when appropriate.
-    // onboardingComplete = false;
-
-    if (!onboardingComplete) {
-      // TODO: We should wrap these in a single Navigation context so that they can
-      // TODO: slide up as a modal, proceed with pushes left to right, and then be
-      // TODO: dismissed together.
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => NotificationsPage()));
-
-      await UserPreferences().setOnboardingCompleted(true);
-    }
+    await _pushOnboardingIfNeeded();
   }
 
   _launchStatsDashboard() async {
@@ -143,4 +128,24 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Future _pushOnboardingIfNeeded() async {
+    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+
+    // TODO: Uncomment for testing.  Remove when appropriate.
+    // onboardingComplete = false;
+
+    if (!onboardingComplete) {
+      // TODO: We should wrap these in a single Navigation context so that they can
+      // TODO: slide up as a modal, proceed with pushes left to right, and then be
+      // TODO: dismissed together.
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => LocationSharingPage()));
+      await Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true, builder: (c) => NotificationsPage()));
+
+      await UserPreferences().setOnboardingCompleted(true);
+    }
+  }
+
 }

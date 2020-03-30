@@ -1,51 +1,25 @@
+import 'package:WHOFlutter/api/content_loading.dart';
 import 'package:flutter/cupertino.dart';
 
 class QuestionData {
-  /// TODO: This is just a *placeholder* for the dynamic content.
-  static Future<List<QuestionItem>> yourQuestionsAnswered() async {
-    return [
-      QuestionItem(
-          title:
-          "What are coronaviruses, <b>what is COVID-19</b>, and how is it related to SARS?",
-          body: """
-              <h2>What are the symptoms of COVID-19?</h2>
-              The most common symptoms of COVID-19 are:
-              <ul>
-              <li>🤒 fever</li>
-              <li>tiredness</li>
-              <li>cough</li>
-              </ul>
-              """),
-      QuestionItem(
-          title:
-          "What are coronaviruses, <b>what is COVID-19</b>, and how is it related to SARS? 2",
-          body: """
-              <h2>What are the symptoms of COVID-19?</h2>
-              The most common symptoms of COVID-19 are:
-              <ul>
-              <li>🤒 fever</li>
-              <li>tiredness</li>
-              <li>cough</li>
-              </ul>
-              """),
-      QuestionItem(
-          title:
-              "What are coronaviruses, <b>what is COVID-19</b>, and how is it related to SARS? 3",
-          body: """
-              <h2>What are the symptoms of COVID-19?</h2>
-              The most common symptoms of COVID-19 are:
-              <ul>
-              <li>🤒 fever</li>
-              <li>tiredness</li>
-              <li>cough</li>
-              </ul>
-              """),
-    ];
+  static Future<List<QuestionItem>> yourQuestionsAnswered(
+      BuildContext context) async {
+    var bundle =
+        await ContentLoading().load(context, "your_questions_answered");
+    try {
+      return bundle.contents
+          .map((item) =>
+              QuestionItem(title: item['title_html'], body: item['body_html']))
+          .toList();
+    } catch (err) {
+      print("Error loading question data: $err");
+      return [];
+    }
   }
 
-  /// TODO: This is just a *placeholder* for the dynamic content.
-  static Future<List<QuestionItem>> whoMythbusters() async {
-    return yourQuestionsAnswered();
+  static Future<List<QuestionItem>> whoMythbusters(BuildContext context) async {
+    // TODO: Wrong data!!!
+    return yourQuestionsAnswered(context);
   }
 }
 

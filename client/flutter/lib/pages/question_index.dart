@@ -5,7 +5,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
 
-typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function();
+typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(BuildContext);
 
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends StatefulWidget {
@@ -30,13 +30,20 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   @override
   void initState() {
     super.initState();
-    _initStateAsync();
   }
 
-  void _initStateAsync() async {
-    // Fetch the dynamic query data. This is a placeholder.
-    _questions = await widget.dataSource();
-    setState(() {});
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    // Fetch the question data.
+    // Note: this depends on the build context for the locale and hence is not
+    // Note: available at the usual initState() time.
+    // TODO: We should detect a schema version problem here and display a dialog
+    // TODO: prompting the user to upgrade.
+    if (_questions == null) {
+      _questions = await widget.dataSource(context);
+      setState(() {});
+    }
   }
 
   @override
@@ -44,6 +51,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
     return Scaffold(body: _buildPage());
   }
 
+  // TODO: Should show a spinner while loading.
   Widget _buildPage() {
     var items = (_questions ?? []).map(_buildQuestion).toList();
     return Material(
