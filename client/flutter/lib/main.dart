@@ -7,17 +7,20 @@ import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
 
 void main() async {
-  // Initialises binding so we can use the framework before calling runApp
-  WidgetsFlutterBinding.ensureInitialized();
-  
   // Asyncronous code that runs before the splash screen is hidden goes before
   // runApp()
-  _packageInfo = await PackageInfo.fromPlatform();
+  if (!kIsWeb) {
+    // Initialises binding so we can use the framework before calling runApp
+    WidgetsFlutterBinding.ensureInitialized();
+    _packageInfo = await PackageInfo.fromPlatform();
+  }
+
   runApp(MyApp());
 }
 
