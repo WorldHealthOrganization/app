@@ -15,4 +15,4 @@ double contentScale(BuildContext context) {
   return ((height - short) / (tall - short)).clamp(0.0, 1.0);
 }
 
-bool kAnalyticsAllowed = true;
+bool kAnalyticsAllowed = false;
