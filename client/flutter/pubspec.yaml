@@ -37,6 +37,9 @@ flutter:
     - assets/
     - assets/images/
     - assets/animations/
+    - assets/news_press/
+    - assets/onboarding/
+    - assets/travel_advice/
 
 flutter_intl:
   enabled: true
