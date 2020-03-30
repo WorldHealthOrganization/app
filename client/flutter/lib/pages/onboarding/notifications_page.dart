@@ -9,17 +9,12 @@ class NotificationsPage extends StatefulWidget {
 class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(48.0),
-          child: PermissionRequestPage(
-            buttonTitle: "Allow Notifications", // TODO: Localize
-            onGrantPermission: _allowNotifications,
-            onSkip: _skipNotifications,
-          ),
-        ),
-      ),
+    return PermissionRequestPage(
+      pageTitle: "Stay up to date on the Coronavirus",
+      pageDescription: "To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.",
+      buttonTitle: "Allow Notifications", // TODO: Localize
+      onGrantPermission: _allowNotifications,
+      onSkip: _skipNotifications,
     );
   }
 

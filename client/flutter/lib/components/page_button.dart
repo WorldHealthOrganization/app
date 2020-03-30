@@ -12,6 +12,9 @@ class PageButton extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final TextStyle titleStyle;
 
+  final double verticalPadding;
+  final double horizontalPadding;
+
   // TODO: Let's move the positional args to named args.
   const PageButton(
     this.backgroundColor,
@@ -19,6 +22,8 @@ class PageButton extends StatelessWidget {
     this.onPressed, {
     this.description = "",
     this.borderRadius = 25.0,
+    this.verticalPadding = 15.0,
+    this.horizontalPadding = 8.0,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
@@ -31,7 +36,9 @@ class PageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(this.borderRadius)),
       color: backgroundColor,
       child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+          padding: EdgeInsets.symmetric(
+              vertical: this.verticalPadding,
+              horizontal: this.horizontalPadding),
           child: Column(
             crossAxisAlignment: this.crossAxisAlignment,
             mainAxisAlignment: this.mainAxisAlignment,
