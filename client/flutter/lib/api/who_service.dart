@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -11,7 +12,7 @@ class WhoService {
   /// Put device token.
   static Future<bool> putDeviceToken(String token) async {
     Map<String, String> headers = await _getHeaders();
-    var postBody = '{"token": "$token"}';
+    var postBody = jsonEncode({"token": token});
     var url = '$serviceUrl/putDeviceToken';
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
@@ -23,7 +24,7 @@ class WhoService {
   /// Put location
   static Future<bool> putLocation({double latitude, double longitude}) async {
     Map<String, String> headers = await _getHeaders();
-    var postBody = '{"latitude": "$latitude", "longitude": "$longitude"}';
+    var postBody = jsonEncode({"latitude": latitude, "longitude": longitude});
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
