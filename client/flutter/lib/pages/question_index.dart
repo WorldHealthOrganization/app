@@ -1,7 +1,6 @@
+
 import 'dart:math';
-import 'package:WHOFlutter/api/content_bundle.dart';
 import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,15 +35,14 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
+
+    // Note: this depends on the build context for the locale and hence is not
+    // Note: available at the usual initState() time.
     await _loadQuestionData();
   }
 
   Future _loadQuestionData() async {
     // Fetch the question data.
-    // Note: this depends on the build context for the locale and hence is not
-    // Note: available at the usual initState() time.
-    // TODO: We should detect a schema version problem here and display a dialog
-    // TODO: prompting the user to upgrade.
     if (_questions != null) {
       return;
     }
@@ -57,7 +55,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
     return Scaffold(body: _buildPage());
   }
 
-  // TODO: Should show a spinner while loading.
   Widget _buildPage() {
     List items = (_questions ?? [])
         .map((questionData) => QuestionTile(
@@ -102,9 +99,10 @@ class _QuestionTileState extends State<QuestionTile>
   void initState() {
     super.initState();
     rotationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this, lowerBound: 0, upperBound: pi/4);
-
-    
+        duration: const Duration(milliseconds: 200),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: pi / 4);
   }
 
   @override
@@ -117,9 +115,9 @@ class _QuestionTileState extends State<QuestionTile>
         ),
         ExpansionTile(
           onExpansionChanged: (expanded) {
-            if(expanded){
+            if (expanded) {
               rotationController.forward();
-            }else{
+            } else {
               rotationController.reverse();
             }
           },
@@ -127,8 +125,11 @@ class _QuestionTileState extends State<QuestionTile>
           trailing: AnimatedBuilder(
             animation: rotationController,
             child: Icon(Icons.add_circle_outline, color: Colors.grey),
-            builder: (context, child){
-              return Transform.rotate(angle: rotationController.value, child: child,);
+            builder: (context, child) {
+              return Transform.rotate(
+                angle: rotationController.value,
+                child: child,
+              );
             },
           ),
           title: html(widget.questionItem.title),
@@ -146,9 +147,11 @@ class _QuestionTileState extends State<QuestionTile>
 
   // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
+    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
+
     return Html(
       data: html,
-      defaultTextStyle: TextStyle(fontSize: 16.0),
+      defaultTextStyle: TextStyle(fontSize: 16 * textScaleFactor),
       linkStyle: const TextStyle(
         color: Colors.deepPurple,
       ),
