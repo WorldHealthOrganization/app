@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "1057717871229",
-    "firebase_url": "https://who-myhealth-staging.firebaseio.com",
-    "project_id": "who-myhealth-staging",
-    "storage_bucket": "who-myhealth-staging.appspot.com"
+    "project_number": "936622942451",
+    "firebase_url": "https://who-myhealth-production.firebaseio.com",
+    "project_id": "who-myhealth-production",
+    "storage_bucket": "who-myhealth-production.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1057717871229:android:4fbe832a3de230450dc714",
+        "mobilesdk_app_id": "1:936622942451:android:f2ade1e8837e8849076f86",
         "android_client_info": {
-          "package_name": "org.who.WHOMyHealth"
+          "package_name": "org.who.WhoMyHealth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1057717871229-i95ol1e2smafmpja9ujf3vt3ru4hmcqh.apps.googleusercontent.com",
+          "client_id": "936622942451-uuscl0i30v69r33m0ktp4mirdm7r807h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyALhiQKpx8jjtC6OIyaj3cJVTp8xDrcSnY"
+          "current_key": "AIzaSyB4t5psAYF9GAfeOIvopOKHOoRE4yUWDx8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1057717871229-i95ol1e2smafmpja9ujf3vt3ru4hmcqh.apps.googleusercontent.com",
+              "client_id": "936622942451-uuscl0i30v69r33m0ktp4mirdm7r807h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "936622942451-bhjm61j553i0soe10b7vou3ebratp6bn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "int.who.WHOMyHealth"
+              }
             }
           ]
         }
