@@ -1,5 +1,5 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
-import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';

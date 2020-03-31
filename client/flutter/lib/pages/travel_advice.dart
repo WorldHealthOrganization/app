@@ -1,5 +1,5 @@
 import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

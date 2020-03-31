@@ -1,7 +1,6 @@
-import 'package:WHOFlutter/components/page_header.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import './page_header.dart';
+import './share_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
@@ -44,21 +43,7 @@ class PageScaffold extends StatelessWidget {
                 child: SizedBox(height: 70),
               ),
               ]),
-              if(this.showShareBottomBar) Positioned(
-                bottom: 0,
-                child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.white.withOpacity(.85),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    icon: Icon(Icons.share),
-                    iconSize: 28,
-                    onPressed: ()=>Share.share(S.of(context).commonWhoAppShareIconButtonDescription),
-                  ),
-                ),
-              ))
+              if(this.showShareBottomBar) ShareBar()
             ],
           ),
         ));

@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';

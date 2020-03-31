@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
+import './back_arrow.dart';
 import 'package:flutter/material.dart';
 
 class PageHeader extends StatelessWidget {
