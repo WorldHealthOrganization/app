@@ -355,7 +355,7 @@ class S {
 
   String get homePagePageSliverListProvideFeedback {
     return Intl.message(
-      'Provide app feedback',
+      'Provide App Feedback',
       name: 'homePagePageSliverListProvideFeedback',
       desc: '',
       args: [],
@@ -400,7 +400,7 @@ class S {
 
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the app',
+      'About the App',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
