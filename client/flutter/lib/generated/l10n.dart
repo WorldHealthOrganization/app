@@ -256,7 +256,7 @@ class S {
 
   String get homePagePageTitle {
     return Intl.message(
-      'Coronavirus',
+      'COVID-19',
       name: 'homePagePageTitle',
       desc: '',
       args: [],
@@ -283,7 +283,7 @@ class S {
 
   String get homePagePageButtonProtectYourself {
     return Intl.message(
-      'Protect yourself',
+      'Protect Yourself',
       name: 'homePagePageButtonProtectYourself',
       desc: '',
       args: [],
@@ -310,7 +310,7 @@ class S {
 
   String get homePagePageButtonWHOMythBusters {
     return Intl.message(
-      'WHO Myth-busters',
+      'Get The Facts',
       name: 'homePagePageButtonWHOMythBusters',
       desc: '',
       args: [],
@@ -418,7 +418,7 @@ class S {
 
   String get homePagePageSliverListSupport {
     return Intl.message(
-      'Help support the relief effort',
+      'Help support the\nrelief effort',
       name: 'homePagePageSliverListSupport',
       desc: '',
       args: [],
