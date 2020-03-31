@@ -13,8 +13,6 @@ class OnboardingPage extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         LegalLandingPage(this.pageController),
-        NotificationsPage(this.pageController),
-        LocationSharingPage()
       ],
     );
   }

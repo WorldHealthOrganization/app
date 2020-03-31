@@ -38,12 +38,20 @@ class LegalLandingPage extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: "By proceeding, you agree with our "
+                    text: "By proceeding, you agree to our "
                   ),
                   LinkTextSpan(
-                    text: "terms of service",
+                    text: "Terms of Service",
                     style: TextStyle(decoration: TextDecoration.underline),
-                    url: "https://who.int",//TODO: REPLACE WITH TERMS OF SERVICE LINK
+                    url: "https://whocoronavirus.org/terms",
+                    onLinkTap: (v)=>launch(v)
+                  ),
+                   TextSpan(
+                    text: " and "
+                  ),LinkTextSpan(
+                    text: "Privacy Policy",
+                    style: TextStyle(decoration: TextDecoration.underline),
+                    url: "https://whocoronavirus.org/privacy",
                     onLinkTap: (v)=>launch(v)
                   ),
                    TextSpan(
