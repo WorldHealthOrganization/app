@@ -49,9 +49,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    if (!kAnalyticsAllowed) {
-      _disableAnalytics();
-    }
     _registerLicenses();
 
 
@@ -78,19 +75,18 @@ class _MyAppState extends State<MyApp> {
 
   }
 
-  _disableAnalytics() async {
-    await analytics.resetAnalyticsData();
-    await analytics.setAnalyticsCollectionEnabled(false);
-  }
-
   Future<LicenseEntry> _loadLicense() async {
     final licenseText = await rootBundle.loadString('assets/REPO_LICENSE');
-    return LicenseEntryWithLineBreaks(["https://github.com/WorldHealthOrganization/app"], licenseText);
+    return LicenseEntryWithLineBreaks(
+        ["https://github.com/WorldHealthOrganization/app"], licenseText);
   }
 
   Future<LicenseEntry> _load3pLicense() async {
-    final licenseText = await rootBundle.loadString('assets/THIRD_PARTY_LICENSE');
-    return LicenseEntryWithLineBreaks(["https://github.com/WorldHealthOrganization/app - THIRD_PARTY_LICENSE"], licenseText);
+    final licenseText =
+        await rootBundle.loadString('assets/THIRD_PARTY_LICENSE');
+    return LicenseEntryWithLineBreaks([
+      "https://github.com/WorldHealthOrganization/app - THIRD_PARTY_LICENSE"
+    ], licenseText);
   }
 
   _registerLicenses() {
@@ -105,7 +101,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "WHO",
+      title: "WHO COVID-19",
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

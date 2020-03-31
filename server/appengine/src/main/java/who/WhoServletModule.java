@@ -19,6 +19,8 @@ public class WhoServletModule extends ServletModule {
     // App Engine Remote API
     serve("/remote_api").with(new RemoteApiServlet());
 
+    serve("/app").with(new AppStoreServlet());
+
     // Set up Objectify
     filter("/*").through(ObjectifyFilter.class);
     bind(ObjectifyFilter.class).in(Singleton.class);

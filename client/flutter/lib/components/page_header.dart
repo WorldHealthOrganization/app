@@ -11,7 +11,7 @@ class PageHeader extends StatelessWidget {
 
   PageHeader(this.context,
       {@required this.title,
-      this.subtitle = "WHO Coronavirus App",
+      this.subtitle = "COVID-19 App",
       this.padding = EdgeInsets.zero,
       this.showBackButton = true});
 
@@ -52,11 +52,10 @@ class PageHeader extends StatelessWidget {
     );
   }
 
-  GestureDetector _buildBackArrow() {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => Navigator.pop(this.context),
-      child: BackArrow(),
+  Widget _buildBackArrow() {
+    return IconButton(
+      icon: BackArrow(),
+      onPressed: () => Navigator.pop(this.context),
     );
   }
 }

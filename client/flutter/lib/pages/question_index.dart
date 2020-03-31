@@ -124,7 +124,7 @@ class _QuestionTileState extends State<QuestionTile>
           key: PageStorageKey<String>(widget.questionItem.title),
           trailing: AnimatedBuilder(
             animation: rotationController,
-            child: Icon(Icons.add_circle_outline, color: Colors.grey),
+            child: Icon(Icons.add_circle_outline, color: Color(0xff26354E)),
             builder: (context, child) {
               return Transform.rotate(
                 angle: rotationController.value,
@@ -165,10 +165,10 @@ class _QuestionTileState extends State<QuestionTile>
           switch (node.localName) {
             case "h2":
               return baseStyle
-                  .merge(TextStyle(fontSize: 20, color: Colors.black));
+                  .merge(TextStyle(fontSize: 20, color: Color(0xff26354E), fontWeight: FontWeight.w500));
           }
         }
-        return baseStyle.merge(TextStyle(color: Colors.black));
+        return baseStyle.merge(TextStyle(color: Color(0xff26354E), fontWeight: FontWeight.w500));
       },
     );
   }
