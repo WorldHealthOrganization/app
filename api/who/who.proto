@@ -19,7 +19,7 @@ service WhoService {
 // These responses are publicly cacheable and clients must
 // not send a client ID header.
 service PublicWhoService {
-  rpc getGlobalStats(GetGlobalStatsRequest) returns (GetGlobalStatsResponse);
+  rpc getGlobalStats(Void) returns (GetGlobalStatsResponse);
 }
 
 message PutDeviceTokenRequest {
@@ -31,9 +31,6 @@ message PutLocationRequest {
   double longitude = 3;
 }
 
-message GetGlobalStatsRequest {
-}
-
 message GetGlobalStatsResponse {
   CaseStats stats = 1;
   string attribution = 2;
@@ -41,6 +38,7 @@ message GetGlobalStatsResponse {
 
 // Statistics in a single or aggregate jurisdiction.
 message CaseStats {
+  // msec since epoch.
   int64 lastUpdated = 1;
 
   int64 cases = 2;

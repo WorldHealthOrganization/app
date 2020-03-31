@@ -4,7 +4,7 @@ package who;
 // No Client instance is available in this service.
 public class PublicWhoServiceImpl implements PublicWhoService {
 
-  @Override public GetGlobalStatsResponse getGlobalStats(GetGlobalStatsRequest request) {
+  @Override public GetGlobalStatsResponse getGlobalStats(Void request) {
     // TODO: Configure cache response headers. RFC 2616 Section 9.5 says we can cache
     // POST requests.  Or we can enable GET method in present.rpc.RpcFilter.
 
