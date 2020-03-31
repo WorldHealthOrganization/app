@@ -4,7 +4,6 @@ import 'package:WHOFlutter/components/news_feed_item.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/components/news_feed_item.dart';
 
 class NewsFeed extends StatelessWidget {
   @override
