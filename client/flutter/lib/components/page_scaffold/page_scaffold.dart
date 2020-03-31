@@ -17,7 +17,7 @@ class PageScaffold extends StatelessWidget {
       {@required this.body,
       @required this.title,
        this.showShareBottomBar = false,
-      this.subtitle = "WHO COVID-19 App",
+      this.subtitle = "COVID-19 App",
       this.padding = EdgeInsets.zero,
       this.showBackButton = true,
       });
