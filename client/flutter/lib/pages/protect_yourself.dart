@@ -102,7 +102,7 @@ class ProtectYourself extends StatelessWidget {
     var localized = S.of(context);
     return PageScaffold(context,
         title: S.of(context).protectYourselfTitle,
-        showShareBottomBar: true,
+        showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
