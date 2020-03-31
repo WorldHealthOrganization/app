@@ -12,7 +12,7 @@
   "@section": "Legal Landing Page",
   "legalLandingPageTitle": "Official WHO COVID-19 Information App",
   "legalLandingPageButtonGetStarted": "Get Started",
-  "legalLandingPageButtonAgree": "By proceeding, you agree to our",
+  "legalLandingPageButtonAgree": "By proceeding, you agree to our\n",
   "LegalLandingPageTermsOfServiceLinkText": "Terms of Service",
   "legalLandingPageTermsOfServiceLinkUrl": "https://whocoronavirus.org/terms",
   "legalLandingPageAnd": " and ",
