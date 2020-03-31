@@ -23,7 +23,6 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   }
 
   void _allowLocationSharing() async {
-
     await Location().requestPermission();    
     _complete();
   }
