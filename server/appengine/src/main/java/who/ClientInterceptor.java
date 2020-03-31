@@ -14,7 +14,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
  */
 public class ClientInterceptor implements RpcInterceptor {
 
-  static final String CLIENT_ID = "Who-Client-ID";
+  private static final String CLIENT_ID = "Who-Client-ID";
   private static final String PLATFORM = "Who-Platform";
 
   private static Logger logger = LoggerFactory.getLogger(ClientInterceptor.class);
