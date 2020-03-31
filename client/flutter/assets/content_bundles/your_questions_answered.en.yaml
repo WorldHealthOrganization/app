@@ -75,6 +75,20 @@ contents:
         <p>WHO is assessing ongoing research on the period of transmission of COVID-19 and will continue to share updated findings.</p>
     -
       title_html: |
+        Can I catch COVID-19 from feces, animals or pets?
+      body_html: |
+        <p>🚽 <b>Can I catch COVID-19 from the feces of someone with the disease?</b></p>
+        <p>The risk of catching COVID-19 from the feces of an infected person appears to be low. While initial investigations suggest the virus may be present in feces in some cases, spread through this route is not a main feature of the outbreak. WHO is assessing ongoing research on the ways COVID-19 is spread and will continue to share new findings. Because this is a risk, however, it is another reason to clean hands regularly, after using the bathroom and before eating.</p>
+        
+        <p>🐾 <b>Can humans become infected with the COVID-19 from an animal source?</b></p>
+        <p>Coronaviruses are a large family of viruses that are common in animals. Occasionally, people get infected with these viruses which may then spread to other people. For example, SARS-CoV was associated with civet cats and MERS-CoV is transmitted by dromedary camels. Possible animal sources of COVID-19 have not yet been confirmed.</p>
+        
+        <p>To protect yourself, such as when visiting live animal markets, avoid direct contact with animals and surfaces in contact with animals. Ensure good food safety practices at all times. Handle raw meat, milk or animal organs with care to avoid contamination of uncooked foods and avoid consuming raw or undercooked animal products.</p>
+        
+        <p>🐶 <b>Can I catch COVID-19 from my pet?</b></p>
+        <p>There is no evidence that a dog, cat or any pet can transmit COVID-19. COVID-19 is mainly spread through droplets produced when an infected person coughs, sneezes or speaks. To protect yourself clean your hands frequently and thoroughly.</p>
+    -
+      title_html: |
         Can I catch COVID-19 from surfaces or packages?
       body_html: |
         <p><b>What can I do to protect myself and prevent the spread of disease?</b></p>
@@ -228,7 +242,7 @@ contents:
         <p>In any case, if you have fever, cough and difficulty breathing seek medical care early to reduce the risk of developing a more severe infection and be sure to share your recent travel history with your health care provider.</p>
     -
       title_html: |
-        Coping with stress during COVID-19
+        How do I cope with stress during COVID-19?
       body_html: |
         <p><b>Coping with stress during COVID-19</b></p>
 
@@ -265,7 +279,7 @@ contents:
         <p>The most effective ways to protect yourself and others against COVID-19 are to frequently clean your hands, cover your cough with the bend of elbow or tissue, and maintain a distance of at least 1 meter (3 feet) from people who are coughing or sneezing. </p>
     -
       title_html: |
-        Helping children cope with stress during COVID-19
+        How do I help children cope with stress during COVID-19?
       body_html: |
         <p><b>Helping children cope with stress during COVID-19</b></p>
 
