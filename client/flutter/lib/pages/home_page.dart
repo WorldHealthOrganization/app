@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
     var onboardingComplete = await UserPreferences().getOnboardingCompleted();
 
     // TODO: Uncomment for testing.  Remove when appropriate.
-    // onboardingComplete = false;
+    onboardingComplete = false;
 
     if (!onboardingComplete) {
       await Navigator.of(context).push(MaterialPageRoute(
