@@ -238,7 +238,7 @@ class S {
 
   String get homePagePageSliverListSettingsHeader1 {
     return Intl.message(
-      'Data Collection',
+      'Analytics',
       name: 'homePagePageSliverListSettingsHeader1',
       desc: '',
       args: [],
@@ -265,7 +265,7 @@ class S {
 
   String get homePagePageSliverListSettingsDataCollection {
     return Intl.message(
-      'Allow WHO to collect data to better inform the public about Coronavirus updates. (need copy)',
+      'Allow WHO to collect analytics for product improvement using Google Analytics',
       name: 'homePagePageSliverListSettingsDataCollection',
       desc: '',
       args: [],

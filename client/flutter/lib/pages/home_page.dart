@@ -3,6 +3,7 @@ import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold.dart';
 import 'package:WHOFlutter/main.dart';
+import 'package:WHOFlutter/pages/about_page.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
@@ -199,12 +200,8 @@ class _HomePageState extends State<HomePage> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   _logAnalyticsEvent('About');
-                  showAboutDialog(
-                      context: context,
-                      applicationVersion: packageInfo?.version,
-                      applicationLegalese: S
-                          .of(context)
-                          .homePagePageSliverListAboutTheAppDialog);
+                  return Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (c) => AboutPage()));
                 },
               ),
               Container(

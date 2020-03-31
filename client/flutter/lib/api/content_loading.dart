@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'content_bundle.dart';
 
 class ContentLoading {
-  static final networkLoadingEnabled = true;
+  static final networkLoadingEnabled = false;
   static final ContentLoading _singleton = ContentLoading._internal();
 
   // TODO: Real URL
