@@ -19,6 +19,7 @@ const bold = TextStyle(
 const header = TextStyle(
   color: Colors.black,
   fontSize: 24,
+  fontWeight: FontWeight.w800
 );
 
 Text _message(String input) {
