@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
@@ -21,8 +22,25 @@ class UserPreferences {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.OnboardingCompleted.toString(), value);
   }
+
+  Future<bool> getAnalyticsEnabled() async {
+    return (await SharedPreferences.getInstance())
+            .getBool(UserPreferenceKey.AnalyticsEnabled.toString()) ??
+        false;
+  }
+
+  Future<bool> setAnalyticsEnabled(bool value) async {
+    FirebaseAnalytics analytics = FirebaseAnalytics();
+    if (!value) {
+      await analytics.resetAnalyticsData();
+    }
+    await analytics.setAnalyticsCollectionEnabled(value);
+    return (await SharedPreferences.getInstance())
+        .setBool(UserPreferenceKey.AnalyticsEnabled.toString(), value);
+  }
 }
 
 enum UserPreferenceKey {
   OnboardingCompleted,
+  AnalyticsEnabled,
 }
