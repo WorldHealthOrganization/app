@@ -1,11 +1,11 @@
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsPage extends StatefulWidget  {
-  final OnboardingPage onboardingPage;
-  NotificationsPage(this.onboardingPage);
+class NotificationsPage extends StatefulWidget {
+  final VoidCallback onNext;
+
+  const NotificationsPage({@required this.onNext}) : assert(onNext != null);
 
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
@@ -33,6 +33,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _complete() {
-    this.widget.onboardingPage.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    widget.onNext();
   }
 }
