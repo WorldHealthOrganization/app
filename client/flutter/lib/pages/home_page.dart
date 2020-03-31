@@ -97,11 +97,10 @@ class _HomePageState extends State<HomePage> {
                   () {
                     _logAnalyticsEvent('QuestionsAnswered');
                     return Navigator.of(context).push(MaterialPageRoute(
-                      builder: (c) => QuestionIndexPage(
-                            dataSource: QuestionData.yourQuestionsAnswered,
-                            title: S.of(context).homePagePageButtonQuestions,
-                          ))
-                    );
+                        builder: (c) => QuestionIndexPage(
+                              dataSource: QuestionData.yourQuestionsAnswered,
+                              title: S.of(context).homePagePageButtonQuestions,
+                            )));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
@@ -110,13 +109,13 @@ class _HomePageState extends State<HomePage> {
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () {
                     _logAnalyticsEvent('MythBusters');
-                    return Navigator.of(context).push(
-                    MaterialPageRoute(
+                    return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
-                            dataSource: QuestionData.whoMythbusters,
-                            title: S.of(context).homePagePageButtonWHOMythBusters,
-                          ))
-                    );
+                              dataSource: QuestionData.whoMythbusters,
+                              title: S
+                                  .of(context)
+                                  .homePagePageButtonWHOMythBusters,
+                            )));
                   },
                   description:
                       S.of(context).homePagePageButtonWHOMythBustersDescription,
@@ -127,8 +126,8 @@ class _HomePageState extends State<HomePage> {
                   S.of(context).homePagePageButtonTravelAdvice,
                   () {
                     _logAnalyticsEvent('TravelAdvice');
-                    return Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => TravelAdvice()));
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,34 +160,33 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
-                child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40)),
-                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-                    color: Color(0xffCA6B35),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(S.of(context).homePagePageSliverListDonate),
-                        Icon(Icons.arrow_forward_ios)
-                      ],
-                    ),
-                    onPressed: () {
+
+                  child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 24, horizontal: 23),
+                      color: Color(0xffCA6B35),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(S.of(context).homePagePageSliverListDonate),
+                          Icon(Icons.arrow_forward_ios)
+                        ],
+                      ),
+                      onPressed: () {
                         _logAnalyticsEvent('Donate');
                         launch(S.of(context).homePagePageSliverListDonateUrl);
-                    })
-              ),
+                      })),
               ListTile(
                 leading: Icon(Icons.share),
                 title: Text(S.of(context).homePagePageSliverListShareTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   analytics.logShare(
-                      contentType: 'App',
-                      itemId: null,
-                      method: 'Website link');
+                      contentType: 'App', itemId: null, method: 'Website link');
                   Share.share(
-                    S.of(context).commonWhoAppShareIconButtonDescription);
+                      S.of(context).commonWhoAppShareIconButtonDescription);
                 },
               ),
               ListTile(
@@ -204,10 +202,11 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   _logAnalyticsEvent('About');
                   showAboutDialog(
-                    context: context,
-                    applicationVersion: packageInfo?.version,
-                    applicationLegalese:
-                        S.of(context).homePagePageSliverListAboutTheAppDialog);
+                      context: context,
+                      applicationVersion: packageInfo?.version,
+                      applicationLegalese: S
+                          .of(context)
+                          .homePagePageSliverListAboutTheAppDialog);
                 },
               ),
               Container(
@@ -233,12 +232,10 @@ class _HomePageState extends State<HomePage> {
     // onboardingComplete = false;
 
     if (!onboardingComplete) {
-
       await Navigator.of(context).push(MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (c)=>OnboardingPage()
-      ));
+          fullscreenDialog: true, builder: (c) => OnboardingPage()));
 
+      await UserPreferences().setAnalyticsEnabled(true);
       await UserPreferences().setOnboardingCompleted(true);
     }
   }
