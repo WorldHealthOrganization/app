@@ -69,9 +69,9 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
-  - PromisesObjC (1.2.8)
   - package_info (0.0.1):
     - Flutter
+  - PromisesObjC (1.2.8)
   - share (0.5.2):
     - Flutter
   - shared_preferences (0.0.1):
@@ -150,8 +150,8 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   share: bae0a282aab4483288913fc4dc0b935d4b491f2e
   shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
@@ -162,4 +162,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 083258d7f5e80b42ea9bfee905fe93049bc04c64
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
