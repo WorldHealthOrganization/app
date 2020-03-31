@@ -24,7 +24,7 @@ class TravelAdvice extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
               child: Text(
                 S.of(context).travelAdviceListOfItemsPageListItem11,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
               ),
             ),
             TravelAdviceListItem(
@@ -89,7 +89,7 @@ class TravelAdviceListItem extends StatelessWidget {
           Flexible(
               child: Text(
             this.description,
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, color: Color(0xff3C4245)),
           )),
         ],
       ),
