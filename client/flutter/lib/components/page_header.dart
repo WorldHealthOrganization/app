@@ -38,7 +38,8 @@ class PageHeader extends StatelessWidget {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         ],
       ),
-      Image.asset('assets/images/mark.png', width: 75),
+      SizedBox(width: 4),
+      Expanded(child: Image.asset('assets/images/mark.png', width: 75)),
     ];
     headerItems.removeWhere((element) => element == null);
     return SafeArea(
