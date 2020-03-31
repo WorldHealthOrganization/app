@@ -99,7 +99,8 @@ class ProtectYourself extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var localized = S.of(context);
+    final S localized = S.of(context);
+
     return PageScaffold(context,
         title: S.of(context).protectYourselfTitle,
         showShareBottomBar: true,
