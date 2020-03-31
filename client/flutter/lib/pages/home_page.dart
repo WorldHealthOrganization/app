@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double tileHeightFactor = 0.7;
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
@@ -67,12 +68,12 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(2, 1),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(1, 1),
+                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(2, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
               ],
               children: [
                 PageButton(
@@ -147,19 +148,19 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverList(
             delegate: SliverChildListDelegate.fixed([
+            //   Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 38.0),
+            //     child: Text(
+            //       S.of(context).homePagePageSliverListSupport,
+            //       textAlign: TextAlign.center,
+            //       style: TextStyle(
+            //           fontSize: 30,
+            //           fontWeight: FontWeight.bold,
+            //           color: Color(0xffCA6B35)),
+            //     ),
+            //   ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 38.0),
-                child: Text(
-                  S.of(context).homePagePageSliverListSupport,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffCA6B35)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 child: FlatButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40)),
@@ -168,7 +169,8 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(S.of(context).homePagePageSliverListDonate),
+                        // Text(S.of(context).homePagePageSliverListDonate),
+                        Text(S.of(context).homePagePageSliverListSupport, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
