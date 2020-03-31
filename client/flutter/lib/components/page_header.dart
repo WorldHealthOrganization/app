@@ -52,11 +52,10 @@ class PageHeader extends StatelessWidget {
     );
   }
 
-  GestureDetector _buildBackArrow() {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => Navigator.pop(this.context),
-      child: BackArrow(),
+  Widget _buildBackArrow() {
+    return IconButton(
+      icon: BackArrow(),
+      onPressed: () => Navigator.pop(this.context),
     );
   }
 }
