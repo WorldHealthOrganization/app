@@ -15,7 +15,7 @@
   "legalLandingPageButtonAgree": "By proceeding, you agree to our",
   "LegalLandingPageTermsOfServiceLinkText": "Terms of Service",
   "legalLandingPageTermsOfServiceLinkUrl": "https://whocoronavirus.org/terms",
-  "legalLandingPageAnd": "and",
+  "legalLandingPageAnd": " and ",
   "legalLandingPagePrivacyPolicyLinkText": "Privacy Policy",
   "legalLandingPagePrivacyPolicyLinkUrl": "https://whocoronavirus.org/privacy",
   "@section": "Location Sharing Permission",
