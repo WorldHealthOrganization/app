@@ -6,11 +6,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 class NotificationsPage extends StatefulWidget  {
   final PageController pageController;
   NotificationsPage(this.pageController);
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   _NotificationsPageState createState() => _NotificationsPageState();
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(

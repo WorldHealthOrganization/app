@@ -36,9 +36,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
 
   _MyAppState(this.analytics, this.observer);
   final FirebaseAnalytics analytics;
@@ -51,8 +49,7 @@ class _MyAppState extends State<MyApp> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _registerLicenses();
 
-
-    // onMessage: Fires when app is foreground 
+    // onMessage: Fires when app is foreground
     // onLaunch: Fires when user taps and app is in background.
     // onResume: Fires when user taps and app is terminated
     _firebaseMessaging.configure(
@@ -66,13 +63,11 @@ class _MyAppState extends State<MyApp> {
         print("onResume: $message");
       },
     );
-            
+
     _firebaseMessaging.onIosSettingsRegistered
         .listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
     });
-
-
   }
 
   Future<LicenseEntry> _loadLicense() async {
