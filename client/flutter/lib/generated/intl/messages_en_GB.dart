@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "newsFeedSliverListNewsFeedItemDescription1" : MessageLookupByLibrary.simpleMessage("Situation reports provide the latest updates on the novel coronavirus outbreak."),
     "newsFeedSliverListNewsFeedItemDescription2" : MessageLookupByLibrary.simpleMessage("Rolling updates on coronavirus disease (COVID-19) sourced from across WHO media."),
     "newsFeedSliverListNewsFeedItemDescription3" : MessageLookupByLibrary.simpleMessage("All news releases, statements, and notes for the media."),
-    "newsFeedSliverListNewsFeedItemDescription4" : MessageLookupByLibrary.simpleMessage("Coronavirus disease (COVID-2019) press briefings including videos, audio and transcripts."),
+    "newsFeedSliverListNewsFeedItemDescription4" : MessageLookupByLibrary.simpleMessage("Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts."),
     "newsFeedSliverListNewsFeedItemImagePath1" : MessageLookupByLibrary.simpleMessage("assets/news_press/news_situation_reports.png"),
     "newsFeedSliverListNewsFeedItemImagePath2" : MessageLookupByLibrary.simpleMessage("assets/news_press/rolling_updates.png"),
     "newsFeedSliverListNewsFeedItemImagePath3" : MessageLookupByLibrary.simpleMessage("assets/news_press/news_articles.png"),
