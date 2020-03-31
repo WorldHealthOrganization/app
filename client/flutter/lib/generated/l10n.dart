@@ -310,7 +310,7 @@ class S {
 
   String get homePagePageButtonWHOMythBusters {
     return Intl.message(
-      'Get The Facts',
+      'Get the Facts',
       name: 'homePagePageButtonWHOMythBusters',
       desc: '',
       args: [],
@@ -346,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share The App',
+      'Share the App',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
