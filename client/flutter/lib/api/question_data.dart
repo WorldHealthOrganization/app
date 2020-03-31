@@ -8,9 +8,7 @@ class QuestionData {
   }
 
   static Future<List<QuestionItem>> whoMythbusters(BuildContext context) async {
-    // TODO: Switch after merge
-    //return _load(context, "myth_busters");
-    return _load(context, "your_questions_answered");
+    return _load(context, "mythbusters");
   }
 
   /// Load a content bundle and interpret it as question data.

@@ -18,12 +18,13 @@ class LegalLandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/WHO.jpg"),
+            SizedBox(height: 20,),
             Text("Official WHO COVID-19 Information App", style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
             SizedBox(height: 70,),
             PageButton(
               Constants.primaryColor,
               "Get Started",
-              ()=>this.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
+              ()=>Navigator.pop(context),
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,12 +39,20 @@ class LegalLandingPage extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: "By proceeding, you agree with our "
+                    text: "By proceeding, you agree to our\n"
                   ),
                   LinkTextSpan(
-                    text: "terms of service",
+                    text: "Terms of Service",
                     style: TextStyle(decoration: TextDecoration.underline),
-                    url: "https://who.int",//TODO: REPLACE WITH TERMS OF SERVICE LINK
+                    url: "https://whocoronavirus.org/terms",
+                    onLinkTap: (v)=>launch(v)
+                  ),
+                   TextSpan(
+                    text: " and "
+                  ),LinkTextSpan(
+                    text: "Privacy Policy",
+                    style: TextStyle(decoration: TextDecoration.underline),
+                    url: "https://whocoronavirus.org/privacy",
                     onLinkTap: (v)=>launch(v)
                   ),
                    TextSpan(
