@@ -55,8 +55,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final String versionString = packageInfo != null
-        ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-        packageInfo.version, packageInfo.buildNumber)
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
+        packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
 
     final String copyrightString = S
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () {
-                    _logAnalyticsEvent('MythBusters');
+                    _logAnalyticsEvent('GetTheFacts');
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.whoMythbusters,
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 ),
                 PageButton(
                   Color(0xff008DC9),
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
     var onboardingComplete = await UserPreferences().getOnboardingCompleted();
 
     // TODO: Uncomment for testing.  Remove when appropriate.
-    onboardingComplete = false;
+    // onboardingComplete = false;
 
     if (!onboardingComplete) {
       await Navigator.of(context).push(MaterialPageRoute(
