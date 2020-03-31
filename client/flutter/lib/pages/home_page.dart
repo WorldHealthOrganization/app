@@ -158,8 +158,7 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        // Text(S.of(context).homePagePageSliverListDonate),
-                        Text(S.of(context).homePagePageSliverListSupport, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),),
+                        Text(S.of(context).homePagePageSliverListDonate),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
