@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/constants.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,11 +20,11 @@ class LegalLandingPage extends StatelessWidget {
           children: <Widget>[
             Image.asset("assets/WHO.jpg"),
             SizedBox(height: 20,),
-            Text("Official WHO COVID-19 Information App", style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
+            Text(S.of(context).legalLandingPageTitle, style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
             SizedBox(height: 70,),
             PageButton(
               Constants.primaryColor,
-              "Get Started",
+              S.of(context).legalLandingPageButtonGetStarted,
               ()=>Navigator.pop(context),
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -39,20 +40,20 @@ class LegalLandingPage extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: "By proceeding, you agree to our\n"
+                    text: S.of(context).legalLandingPageButtonAgree
                   ),
                   LinkTextSpan(
-                    text: "Terms of Service",
+                    text: S.of(context).LegalLandingPageTermsOfServiceLinkText,
                     style: TextStyle(decoration: TextDecoration.underline),
-                    url: "https://whocoronavirus.org/terms",
+                    url: S.of(context).legalLandingPageTermsOfServiceLinkUrl,
                     onLinkTap: (v)=>launch(v)
                   ),
                    TextSpan(
-                    text: " and "
+                    text: S.of(context).legalLandingPageAnd
                   ),LinkTextSpan(
-                    text: "Privacy Policy",
+                    text: S.of(context).legalLandingPagePrivacyPolicyLinkText,
                     style: TextStyle(decoration: TextDecoration.underline),
-                    url: "https://whocoronavirus.org/privacy",
+                    url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
                     onLinkTap: (v)=>launch(v)
                   ),
                    TextSpan(

@@ -56,12 +56,21 @@ class S {
     );
   }
 
-  String get commonWorldHealthOrganizationCoronavirusAppVersion {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(dynamic version, dynamic buildNumber) {
     return Intl.message(
-      'Version 0.1 (12412)\n© 2020 WHO',
+      'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
       desc: '',
-      args: [],
+      args: [version, buildNumber],
+    );
+  }
+
+  String commonWorldHealthOrganizationCoronavirusCopyright(dynamic year) {
+    return Intl.message(
+      '© $year WHO',
+      name: 'commonWorldHealthOrganizationCoronavirusCopyright',
+      desc: '',
+      args: [year],
     );
   }
 
@@ -69,6 +78,105 @@ class S {
     return Intl.message(
       'Skip',
       name: 'commonPermissionRequestPageButtonSkip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get commonDialogButtonOk {
+    return Intl.message(
+      'OK',
+      name: 'commonDialogButtonOk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get commonContentLoadingDialogUpdateRequiredTitle {
+    return Intl.message(
+      'App Update Required',
+      name: 'commonContentLoadingDialogUpdateRequiredTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get commonContentLoadingDialogUpdateRequiredBodyText {
+    return Intl.message(
+      'Please update to the latest version of the app in order to receive the latest information and updates.',
+      name: 'commonContentLoadingDialogUpdateRequiredBodyText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPageTitle {
+    return Intl.message(
+      'Official WHO COVID-19 Information App',
+      name: 'legalLandingPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPageButtonGetStarted {
+    return Intl.message(
+      'Get Started',
+      name: 'legalLandingPageButtonGetStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPageButtonAgree {
+    return Intl.message(
+      'By proceeding, you agree to our\n',
+      name: 'legalLandingPageButtonAgree',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get LegalLandingPageTermsOfServiceLinkText {
+    return Intl.message(
+      'Terms of Service',
+      name: 'LegalLandingPageTermsOfServiceLinkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPageTermsOfServiceLinkUrl {
+    return Intl.message(
+      'https://whocoronavirus.org/terms',
+      name: 'legalLandingPageTermsOfServiceLinkUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPageAnd {
+    return Intl.message(
+      ' and ',
+      name: 'legalLandingPageAnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPagePrivacyPolicyLinkText {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'legalLandingPagePrivacyPolicyLinkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get legalLandingPagePrivacyPolicyLinkUrl {
+    return Intl.message(
+      'https://whocoronavirus.org/privacy',
+      name: 'legalLandingPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
     );
@@ -101,6 +209,15 @@ class S {
     );
   }
 
+  String get locationSharingPageBackgroundImage {
+    return Intl.message(
+      'assets/onboarding/onboarding_location.png',
+      name: 'locationSharingPageBackgroundImage',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
       'Stay up to date on the Coronavirus',
@@ -123,6 +240,15 @@ class S {
     return Intl.message(
       'Allow Notifications',
       name: 'notificationsPagePermissionRequestPageButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsPagePermissionRequestBackgroundImage {
+    return Intl.message(
+      'assets/onboarding/onboarding_notifications.png',
+      name: 'notificationsPagePermissionRequestBackgroundImage',
       desc: '',
       args: [],
     );
@@ -389,127 +515,100 @@ class S {
     );
   }
 
-  String get travelAdviceListOfItemsPageListItem1 {
+  String get travelAdviceContainerText {
     return Intl.message(
-      'WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks…',
-      name: 'travelAdviceListOfItemsPageListItem1',
+      'WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.',
+      name: 'travelAdviceContainerText',
       desc: '',
       args: [],
     );
   }
 
-  String get travelAdviceListOfItemsPageListItem2 {
-    return Intl.message(
-      'It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions…',
-      name: 'travelAdviceListOfItemsPageListItem2',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem3 {
-    return Intl.message(
-      '“Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases…',
-      name: 'travelAdviceListOfItemsPageListItem3',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem4 {
-    return Intl.message(
-      'General recommendations for all travellers include…',
-      name: 'travelAdviceListOfItemsPageListItem4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem5 {
-    return Intl.message(
-      'Wash your hands frequently',
-      name: 'travelAdviceListOfItemsPageListItem5',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem6 {
-    return Intl.message(
-      'Avoid touching your eyes, mouth and nose',
-      name: 'travelAdviceListOfItemsPageListItem6',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem7 {
-    return Intl.message(
-      'Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze',
-      name: 'travelAdviceListOfItemsPageListItem7',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem8 {
-    return Intl.message(
-      'Stay more than 1 meter (3 feet) away from a person who is sick',
-      name: 'travelAdviceListOfItemsPageListItem8',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem9 {
-    return Intl.message(
-      'Follow proper food hygiene practices',
-      name: 'travelAdviceListOfItemsPageListItem9',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem10 {
-    return Intl.message(
-      'Only wear a mask if you are ill with COVID-19 symptoms (especially coughing) or looking after someone who may have COVID-19',
-      name: 'travelAdviceListOfItemsPageListItem10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdviceListOfItemsPageListItem11 {
+  String get travelAdvicePageListTitle {
     return Intl.message(
       'Travellers returning from affected areas should:',
-      name: 'travelAdviceListOfItemsPageListItem11',
+      name: 'travelAdvicePageListTitle',
       desc: '',
       args: [],
     );
   }
 
-  String get travelAdviceListOfItemsPageListItem12 {
+  String get travelAdvicePageListItem1Text {
     return Intl.message(
-      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries. Some countries may require returning travellers to enter quarantine',
-      name: 'travelAdviceListOfItemsPageListItem12',
+      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries',
+      name: 'travelAdvicePageListItem1Text',
       desc: '',
       args: [],
     );
   }
 
-  String get travelAdviceListOfItemsPageListItem13 {
+  String get travelAdvicePageListItem1Image {
     return Intl.message(
-      'Thermal scanners CAN detect if people have a fever but CANNOT detect whether or not someone has the coronavirus',
-      name: 'travelAdviceListOfItemsPageListItem13',
+      'assets/travel_advice/self-monitor.png',
+      name: 'travelAdvicePageListItem1Image',
       desc: '',
       args: [],
     );
   }
 
-  String get travelAdviceListOfItemsPageListItem14 {
+  String get travelAdvicePageListItem2Text {
     return Intl.message(
-      'If symptoms occur, such as fever, or cough or difficulty breathing, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and their travel history',
-      name: 'travelAdviceListOfItemsPageListItem14',
+      'Some countries may require returning travellers to enter quarantine.',
+      name: 'travelAdvicePageListItem2Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageListItem2Image {
+    return Intl.message(
+      'assets/travel_advice/quarantine.png',
+      name: 'travelAdvicePageListItem2Image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageListItem3Text {
+    return Intl.message(
+      'If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
+      name: 'travelAdvicePageListItem3Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageListItem3Image {
+    return Intl.message(
+      'assets/travel_advice/doctor.png',
+      name: 'travelAdvicePageListItem3Image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageButtonGeneralRecommendations {
+    return Intl.message(
+      'General\nRecommendations',
+      name: 'travelAdvicePageButtonGeneralRecommendations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageButtonGeneralRecommendationsLink {
+    return Intl.message(
+      'https://who.int',
+      name: 'travelAdvicePageButtonGeneralRecommendationsLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get travelAdvicePageButtonGeneralRecommendationsDescription {
+    return Intl.message(
+      'Learn the facts about Coronavirus and how to prevent the spread',
+      name: 'travelAdvicePageButtonGeneralRecommendationsDescription',
       desc: '',
       args: [],
     );
@@ -787,7 +886,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemDescription4 {
     return Intl.message(
-      'Coronavirus disease (COVID-2019) press briefings including videos, audio and transcripts.',
+      'Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts.',
       name: 'newsFeedSliverListNewsFeedItemDescription4',
       desc: '',
       args: [],
@@ -816,6 +915,78 @@ class S {
     return Intl.message(
       'Health Check',
       name: 'healthCheckTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get aboutPageTermsOfServiceLinkText {
+    return Intl.message(
+      'Terms of Service',
+      name: 'aboutPageTermsOfServiceLinkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get aboutPageTermsOfServiceLinkUrl {
+    return Intl.message(
+      'https://whocoronavirus.org/terms',
+      name: 'aboutPageTermsOfServiceLinkUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get aboutPagePrivacyPolicyLinkText {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'aboutPagePrivacyPolicyLinkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get aboutPagetermsOfServiceLinkUrl {
+    return Intl.message(
+      'https://whocoronavirus.org/privacy',
+      name: 'aboutPagetermsOfServiceLinkUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get aboutPageViewLicensesLinkText {
+    return Intl.message(
+      'View Licenses',
+      name: 'aboutPageViewLicensesLinkText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String aboutPageBuiltByCreditText(dynamic copyrightString, dynamic versionString) {
+    return Intl.message(
+      '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
+      name: 'aboutPageBuiltByCreditText',
+      desc: '',
+      args: [copyrightString, versionString],
+    );
+  }
+
+  String aboutPageThanksToText(dynamic team) {
+    return Intl.message(
+      'Thanks to: $team',
+      name: 'aboutPageThanksToText',
+      desc: '',
+      args: [team],
+    );
+  }
+
+  String get aboutPageTitle {
+    return Intl.message(
+      'About',
+      name: 'aboutPageTitle',
       desc: '',
       args: [],
     );

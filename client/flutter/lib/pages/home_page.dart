@@ -30,10 +30,6 @@ class _HomePageState extends State<HomePage> {
   final FirebaseAnalytics analytics;
   _HomePageState(this.analytics);
 
-  final String versionString = packageInfo != null
-      ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
-      : null;
-  final String copyrightString = '© 2020 WHO';
   @override
   void initState() {
     super.initState();
@@ -58,6 +54,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final String versionString = packageInfo != null
+        ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
+        packageInfo.version, packageInfo.buildNumber)
+        : null;
+
+    final String copyrightString = S
+        .of(context)
+        .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
+
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,

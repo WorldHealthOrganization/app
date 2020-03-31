@@ -15,7 +15,7 @@ class TravelAdvice extends StatelessWidget {
               color: Color(0xffD82037),
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: Text(
-                "WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.",
+                S.of(context).travelAdviceContainerText,
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
@@ -23,24 +23,24 @@ class TravelAdvice extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
               child: Text(
-                S.of(context).travelAdviceListOfItemsPageListItem11,
+                S.of(context).travelAdvicePageListTitle,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
               ),
             ),
             TravelAdviceListItem(
-              imageSrc: "assets/travel_advice/self-monitor.png",
+              imageSrc: S.of(context).travelAdvicePageListItem1Image,
               description:
-                  "Self-monitor for symptoms for 14 days and follow national protocols of receiving countries",
+                  S.of(context).travelAdvicePageListItem1Text,
             ),
             TravelAdviceListItem(
-              imageSrc: "assets/travel_advice/quarantine.png",
+              imageSrc: S.of(context).travelAdvicePageListItem2Image,
               description:
-                  "Some countries may require returning travellers to enter quarantine.",
+                  S.of(context).travelAdvicePageListItem2Text,
             ),
             TravelAdviceListItem(
-              imageSrc: "assets/travel_advice/doctor.png",
+              imageSrc: S.of(context).travelAdvicePageListItem3Image,
               description:
-                  "If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.",
+                  S.of(context).travelAdvicePageListItem3Text,
             ),
             SizedBox(
               height: 30,
@@ -49,10 +49,10 @@ class TravelAdvice extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
               child: PageButton(
                 Color(0xff008DC9),
-                "General\nRecommendations",
-                () => launch("https://who.int"),
+                S.of(context).travelAdvicePageButtonGeneralRecommendations,
+                () => launch(S.of(context).travelAdvicePageButtonGeneralRecommendationsLink),
                 description:
-                    "Learn the facts about Coronavirus and how to prevent the spread",
+                    S.of(context).travelAdvicePageButtonGeneralRecommendationsDescription,
                 verticalPadding: 16,
                 titleStyle:
                     TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
