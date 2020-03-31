@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.0"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.11"
   flare_dart:
     dependency: transitive
     description:
@@ -153,7 +160,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.1"
+    version: "0.16.0"
   matcher:
     dependency: transitive
     description:
