@@ -2,7 +2,7 @@
   "@section": "Common strings",
   "commonWorldHealthOrganization": "世界卫生组织",
   "commonWorldHealthOrganizationCoronavirusApp": "谁是 coronavis 应用程序",
-  "commonWhoAppShareIconButtonDescription": "查看官方 COADD-19 指南应用： https://www.who.int/covid-19-app",
+  "commonWhoAppShareIconButtonDescription": "查看官方 COADD-19 指南应用： https://whocoronavirus.org/app",
   "@section": "Onboarding",
   "onBoardingLocationSharingPageButtonAllow": "允许位置共享",
   "onBoardingLocationSharingPageButtonSkip": "跳过",
