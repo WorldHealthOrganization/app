@@ -11,6 +11,7 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
+import 'package:WHOFlutter/utils/debounce_handler.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
       : null;
   final String copyrightString = '© 2020 WHO';
+  final _debounceHandler = DebounceHandler();
   @override
   void initState() {
     super.initState();
@@ -184,8 +186,8 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   analytics.logShare(
                       contentType: 'App', itemId: null, method: 'Website link');
-                  Share.share(
-                      S.of(context).commonWhoAppShareIconButtonDescription);
+                  /// TODO: Just for testing debounce
+                  _debounceHandler.run(() => Share.share(S.of(context).commonWhoAppShareIconButtonDescription));
                 },
               ),
               ListTile(
