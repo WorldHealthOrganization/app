@@ -1,42 +1,23 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
+import './back_arrow.dart';
 import 'package:flutter/material.dart';
 
-class PageScaffold extends StatelessWidget {
+class PageHeader extends StatelessWidget {
   final String title;
   final String subtitle;
-
-  final List<Widget> body;
 
   final BuildContext context;
   final EdgeInsets padding;
   final bool showBackButton;
 
-  PageScaffold(this.context,
-      {@required this.body,
-      @required this.title,
-      this.subtitle = "WHO Coronavirus App",
+  PageHeader(this.context,
+      {@required this.title,
+      this.subtitle = "WHO COVID-19 App",
       this.padding = EdgeInsets.zero,
       this.showBackButton = true});
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.grey.shade200,
-        child: Padding(
-          padding: this.padding,
-          child: CustomScrollView(slivers: [
-            SliverAppBar(
-              // Hide the built-in icon for now
-              iconTheme: IconThemeData(
-                color: Colors.transparent,
-              ),
-              backgroundColor: Colors.white,
-              flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
-              expandedHeight: 120,
-            ),
-            ...this.body
-          ]),
-        ));
+    return FlexibleSpaceBar(background: _buildHeader());
   }
 
   SafeArea _buildHeader() {
@@ -71,11 +52,10 @@ class PageScaffold extends StatelessWidget {
     );
   }
 
-  GestureDetector _buildBackArrow() {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => Navigator.pop(this.context),
-      child: BackArrow(),
+  Widget _buildBackArrow() {
+    return IconButton(
+      icon: BackArrow(),
+      onPressed: () => Navigator.pop(this.context),
     );
   }
 }

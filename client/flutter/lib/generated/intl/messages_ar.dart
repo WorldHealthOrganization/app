@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("اطلع على تطبيق الدليل الرسمي COVID-19 https://www.who.int/covid-19-app%27"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("اطلع على تطبيق الدليل الرسمي COVID-19 https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("منظمة الصحة العالمية"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("تطبيق WHO coronavis"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("الفحص الصحي"),
@@ -35,9 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("نبذة عن التطبيق"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("التطبيق الرسمي لمنظمة الصحة العالمية COVID-19."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("تقديم تعقيب على التطبيق"),
+    "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("السماح لمنظمة الصحة العالمية بجمع البيانات لإعلام الجمهور بشكل أفضل عن تحديثات Coronavirus. (تحتاج إلى نسخة)"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("جمع البيانات"),
+    "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("لغة"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("شارك التطبيق"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("السماح بمشاركة الموقع"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("تخطي"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*اغسل يديك* بالصابون والماء لمدة 20 ثانية على الأقل"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*تجنب لمس* عينيك وفمك وأنفك"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*قم بتغطية فمك وأنفك* بالقوس أو النسيج الذي تنحدر منه عند السعال أو العطس"),

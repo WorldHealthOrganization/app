@@ -4,6 +4,14 @@ on:
     paths:
       - '.github/workflows/**'
       - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'client/flutter/pubspec.yaml'
+      - 'client/flutter/pubspec.lock'
+      - 'client/flutter/ios/**'
+      - 'client/flutter/android/**'
 jobs:
   buildios:
     name: Build iOS
@@ -19,6 +27,7 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
+      - run: git diff --exit-code
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
@@ -33,3 +42,4 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build appbundle
         working-directory: ./client/flutter
+      - run: git diff --exit-code
