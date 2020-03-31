@@ -148,17 +148,6 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverList(
             delegate: SliverChildListDelegate.fixed([
-            //   Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 38.0),
-            //     child: Text(
-            //       S.of(context).homePagePageSliverListSupport,
-            //       textAlign: TextAlign.center,
-            //       style: TextStyle(
-            //           fontSize: 30,
-            //           fontWeight: FontWeight.bold,
-            //           color: Color(0xffCA6B35)),
-            //     ),
-            //   ),
               Padding(
                 padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 child: FlatButton(
