@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Ознакомьтесь с официальным справочным приложением COVID-19 https://www.who.int/covid-19-app%27"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Ознакомьтесь с официальным справочным приложением COVID-19 https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("Всемирная организация здравоохранения"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("Приложение WHO coronavirtuus"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Проверка состояния здоровья"),
@@ -35,9 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("О приложении"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("Официальное приложение для Всемирной организации здравоохранения COVID-19."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Предоставить отзыв о приложении"),
+    "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("настройки"),
+    "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("Разрешить WHO собирать данные, чтобы лучше информировать общественность об обновлениях коронавируса. (нужна копия)"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("Сбор информации"),
+    "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("язык"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Поделиться приложением"),
-    "onBoardingLocationSharingPageButtonAllow" : MessageLookupByLibrary.simpleMessage("Разрешить совместное использование местоположения"),
-    "onBoardingLocationSharingPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Пропустить"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*промойте руки с мылом и водой не менее 20 секунд *"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*не прикасайтесь* к глазам, рту и носу"),
     "protectYourselfListOfItemsPageListItem3" : MessageLookupByLibrary.simpleMessage("*Закройте рот и нос* изогнутым локтевым слоем или тканью, когда вы кашелеете или чихните"),
