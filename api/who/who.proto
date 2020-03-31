@@ -4,12 +4,22 @@ package who;
 
 message Void {}
 
+// None of these responses are cacheable.
+// Clients must send a client ID header.
 service WhoService {
 
   rpc putDeviceToken(PutDeviceTokenRequest) returns (Void);
 
   // The client should not pass a precise location.
   rpc putLocation(PutLocationRequest) returns (Void);
+
+  // TODO: Add location-specific stats.
+}
+
+// These responses are publicly cacheable and clients must
+// not send a client ID header.
+service PublicWhoService {
+  rpc getGlobalStats(GetGlobalStatsRequest) returns (GetGlobalStatsResponse);
 }
 
 message PutDeviceTokenRequest {
@@ -19,6 +29,23 @@ message PutDeviceTokenRequest {
 message PutLocationRequest {
   double latitude = 2;
   double longitude = 3;
+}
+
+message GetGlobalStatsRequest {
+}
+
+message GetGlobalStatsResponse {
+  CaseStats stats = 1;
+  string attribution = 2;
+}
+
+// Statistics in a single or aggregate jurisdiction.
+message CaseStats {
+  int64 lastUpdated = 1;
+
+  int64 cases = 2;
+  int64 deaths = 3;
+  int64 recoveries = 4;
 }
 
 enum Platform {

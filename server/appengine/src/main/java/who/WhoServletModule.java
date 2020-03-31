@@ -29,6 +29,7 @@ public class WhoServletModule extends ServletModule {
     ObjectifyService.register(Client.class);
 
     // Set up Present RPC
-    filter("/*").through(WhoRpcFilter.class);
+    filter("/WhoService/*").through(WhoRpcFilter.class);
+    filter("/PublicWhoService/*").through(PublicWhoRpcFilter.class);
   }
 }
