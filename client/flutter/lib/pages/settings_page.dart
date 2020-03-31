@@ -5,7 +5,6 @@ import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -118,5 +117,4 @@ class _SettingsPageState extends State<SettingsPage> {
       title: S.of(context).homePagePageSliverListSettings,
     );
   }
-
 }
