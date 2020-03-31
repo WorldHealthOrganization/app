@@ -1,6 +1,7 @@
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 
 class LocationSharingPage extends StatefulWidget {
 
@@ -22,6 +23,8 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   }
 
   void _allowLocationSharing() async {
+
+    await Location().requestPermission();    
     _complete();
   }
 
