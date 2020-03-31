@@ -18,6 +18,7 @@ class LegalLandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset("assets/WHO.jpg"),
+            SizedBox(height: 20,),
             Text("Official WHO COVID-19 Information App", style: TextStyle(color: Color(0xff008DC9), fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.center,),
             SizedBox(height: 70,),
             PageButton(
@@ -38,7 +39,7 @@ class LegalLandingPage extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: "By proceeding, you agree to our "
+                    text: "By proceeding, you agree to our\n"
                   ),
                   LinkTextSpan(
                     text: "Terms of Service",
