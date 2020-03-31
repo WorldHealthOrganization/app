@@ -35,6 +35,7 @@
               />
             <meta-data android:name="firebase_analytics_collection_enabled" android:value="false" />
             <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
+            <meta-data android:name="google_analytics_ssaid_collection_enabled" android:value="false" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
