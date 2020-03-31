@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:936622942451:android:f2ade1e8837e8849076f86",
         "android_client_info": {
-          "package_name": "org.who.WhoMyHealth"
+          "package_name": "int.who.WHOMyHealth"
         }
       },
       "oauth_client": [
