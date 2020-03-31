@@ -24,4 +24,24 @@ public class WhoServiceImpl implements WhoService {
     ofy().save().entities(client);
     return new Void();
   }
+
+  // 6 hours
+  private static final long STATS_TTL_SECONDS = 60 * 60 * 6;
+
+  @Override public GetCaseStatsResponse getCaseStats(Void request) {
+    // TODO: Get from data source.
+    return new GetCaseStatsResponse.Builder()
+      .globalStats(new CaseStats.Builder()
+        .cases(719758L)
+        .deaths(33673L)
+        // 2020-03-31 10:00 CET
+        .lastUpdated(1585641600000L)
+        // TODO: Unsure whether we can get an efficient query for recoveries in real-time.
+        .recoveries(-1L)
+        .attribution("WHO")
+        .build()
+      )
+      .ttl(STATS_TTL_SECONDS)
+      .build();
+  }
 }
