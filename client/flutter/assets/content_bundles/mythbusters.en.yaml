@@ -1,7 +1,7 @@
 schema_version: 1
 content_version: 1
 contents:
-  type: mythbusters
+  type: qa
   items:
     - title_html: |
         COVID-19 virus can be transmitted in areas with hot and humid climates

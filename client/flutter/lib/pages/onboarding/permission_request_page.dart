@@ -33,12 +33,12 @@ class PermissionRequestPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.only(left: 20, right: 18, top: 30),
                   child: Column(
                     children: <Widget>[
-                      Text(this.pageTitle, style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),),
-                      SizedBox(height: 17,),
-                      Text(this.pageDescription, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),)
+                      Text(this.pageTitle, style: TextStyle(fontWeight: FontWeight.w800, color: Color(0xff050C1D)), textScaleFactor: 2.5,),
+                      SizedBox(height: 18,),
+                      Text(this.pageDescription, style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xff26354E)), textScaleFactor: 1.2,)
                     ],
                   ),
                 ),
@@ -58,7 +58,8 @@ class PermissionRequestPage extends StatelessWidget {
                       padding: EdgeInsets.all(16),
                       child: Text(
                         S.of(context).commonPermissionRequestPageButtonSkip,
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: Color(0xffC9CDD6)),
+                        textScaleFactor: 1.3,
                       ),
                       onPressed: onSkip,
                     ),
@@ -66,7 +67,6 @@ class PermissionRequestPage extends StatelessWidget {
                 ),
               ],
             ),
-
           ),
         ],
       ),
