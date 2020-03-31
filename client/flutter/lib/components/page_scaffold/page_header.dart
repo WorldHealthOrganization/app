@@ -1,17 +1,16 @@
-import 'package:WHOFlutter/components/back_arrow.dart';
+import './back_arrow.dart';
 import 'package:flutter/material.dart';
 
 class PageHeader extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  final BuildContext context;
   final EdgeInsets padding;
   final bool showBackButton;
 
-  PageHeader(this.context,
+  PageHeader(
       {@required this.title,
-      this.subtitle = "WHO COVID-19 App",
+      this.subtitle = "COVID-19 App",
       this.padding = EdgeInsets.zero,
       this.showBackButton = true});
 
@@ -58,9 +57,20 @@ class PageHeader extends StatelessWidget {
   }
 
   Widget _buildBackArrow() {
+    return BackButton();
+  }
+}
+
+class BackButton extends StatelessWidget {
+  const BackButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return IconButton(
       icon: BackArrow(),
-      onPressed: () => Navigator.pop(this.context),
+      onPressed: () => Navigator.pop(context),
     );
   }
 }

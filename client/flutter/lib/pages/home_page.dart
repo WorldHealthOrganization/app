@@ -1,7 +1,7 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
@@ -30,10 +30,6 @@ class _HomePageState extends State<HomePage> {
   final FirebaseAnalytics analytics;
   _HomePageState(this.analytics);
 
-  final String versionString = packageInfo != null
-      ? 'Version ${packageInfo.version} (${packageInfo.buildNumber})\n'
-      : null;
-  final String copyrightString = '© 2020 WHO';
   @override
   void initState() {
     super.initState();
@@ -58,6 +54,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final String versionString = packageInfo != null
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
+        packageInfo.version, packageInfo.buildNumber)}\n'
+        : null;
+
+    final String copyrightString = S
+        .of(context)
+        .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
+
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
@@ -108,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () {
-                    _logAnalyticsEvent('MythBusters');
+                    _logAnalyticsEvent('GetTheFacts');
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.whoMythbusters,
@@ -130,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 ),
                 PageButton(
                   Color(0xff008DC9),
