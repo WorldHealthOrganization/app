@@ -50,7 +50,7 @@ class _SettingsPageState extends State<SettingsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ListTile(
-                leading: SelectableText(
+                leading: Text(
                   S.of(context).homePagePageSliverListSettingsHeader1,
                   textAlign: TextAlign.start,
                   style: TextStyle(
@@ -70,9 +70,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0, vertical: 10.0),
-                child: SelectableText(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                child: Text(
                   S.of(context).homePagePageSliverListSettingsDataCollection,
                   style: Theme.of(context).textTheme.subhead,
                 ),
