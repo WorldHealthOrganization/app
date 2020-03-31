@@ -8,7 +8,7 @@ class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-    showShareBottomBar: true,
+    showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
