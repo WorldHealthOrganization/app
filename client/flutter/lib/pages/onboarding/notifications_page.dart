@@ -3,8 +3,7 @@ import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsPage extends StatefulWidget  {
-  final PageController pageController;
-  NotificationsPage(this.pageController);
+
 
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
@@ -32,6 +31,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _complete() {
-    this.widget.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    Navigator.pop(context);
   }
 }
