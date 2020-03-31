@@ -2,7 +2,7 @@
   "@section": "Common strings",
   "commonWorldHealthOrganization": "منظمة الصحة العالمية",
   "commonWorldHealthOrganizationCoronavirusApp": "تطبيق WHO coronavis",
-  "commonWhoAppShareIconButtonDescription": "اطلع على تطبيق الدليل الرسمي COVID-19 https://www.who.int/covid-19-app",
+  "commonWhoAppShareIconButtonDescription": "اطلع على تطبيق الدليل الرسمي COVID-19 https://whocoronavirus.org/app",
   "@section": "Onboarding",
   "onBoardingLocationSharingPageButtonAllow": "السماح بمشاركة الموقع",
   "onBoardingLocationSharingPageButtonSkip": "تخطي",

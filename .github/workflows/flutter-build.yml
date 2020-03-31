@@ -27,6 +27,7 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
+      - run: git diff --exit-code
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
@@ -41,3 +42,4 @@ jobs:
         working-directory: ./client/flutter
       - run: flutter build appbundle
         working-directory: ./client/flutter
+      - run: git diff --exit-code
