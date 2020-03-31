@@ -112,7 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "travelAdviceContainerText" : MessageLookupByLibrary.simpleMessage("WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases."),
     "travelAdvicePageButtonGeneralRecommendations" : MessageLookupByLibrary.simpleMessage("General\nRecommendations"),
     "travelAdvicePageButtonGeneralRecommendationsDescription" : MessageLookupByLibrary.simpleMessage("Learn the facts about Coronavirus and how to prevent the spread"),
-    "travelAdvicePageButtonGeneralRecommendationsLink" : MessageLookupByLibrary.simpleMessage("https://who.int"),
+    "travelAdvicePageButtonGeneralRecommendationsLink" : MessageLookupByLibrary.simpleMessage("https://www.who.int/emergencies/diseases/novel-coronavirus-2019"),
     "travelAdvicePageListItem1Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/self-monitor.png"),
     "travelAdvicePageListItem1Text" : MessageLookupByLibrary.simpleMessage("Self-monitor for symptoms for 14 days and follow national protocols of receiving countries"),
     "travelAdvicePageListItem2Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/quarantine.png"),

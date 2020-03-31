@@ -598,7 +598,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendationsLink {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019',
       name: 'travelAdvicePageButtonGeneralRecommendationsLink',
       desc: '',
       args: [],

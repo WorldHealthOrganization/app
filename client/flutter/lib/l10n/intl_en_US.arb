@@ -69,7 +69,7 @@
   "travelAdvicePageListItem3Text": "If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.",
   "travelAdvicePageListItem3Image": "assets/travel_advice/doctor.png",
   "travelAdvicePageButtonGeneralRecommendations": "General\nRecommendations",
-  "travelAdvicePageButtonGeneralRecommendationsLink": "https://who.int",
+  "travelAdvicePageButtonGeneralRecommendationsLink": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
   "travelAdvicePageButtonGeneralRecommendationsDescription": "Learn the facts about Coronavirus and how to prevent the spread",
   "@section": "WHO Myth-busters Page",
   "whoMythBustersListOfItemsPageListItem1": "There is a lot of false information around. These are the facts",
