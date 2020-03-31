@@ -436,7 +436,7 @@ class S {
 
   String get homePagePageSliverListDonateUrl {
     return Intl.message(
-      'https://www.who.int/Covid19ResponseFund',
+      'https://covid19responsefund.org/',
       name: 'homePagePageSliverListDonateUrl',
       desc: '',
       args: [],

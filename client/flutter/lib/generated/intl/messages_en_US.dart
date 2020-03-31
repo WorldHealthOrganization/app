@@ -60,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("About the App"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("The official World Health Organization COVID-19 App."),
     "homePagePageSliverListDonate" : MessageLookupByLibrary.simpleMessage("Donate here"),
-    "homePagePageSliverListDonateUrl" : MessageLookupByLibrary.simpleMessage("https://www.who.int/Covid19ResponseFund"),
+    "homePagePageSliverListDonateUrl" : MessageLookupByLibrary.simpleMessage("https://covid19responsefund.org/"),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Provide App Feedback"),
     "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("Allow WHO to collect analytics for product improvement using Google Analytics"),
