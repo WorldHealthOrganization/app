@@ -1,7 +1,11 @@
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsPage extends StatefulWidget {
+class NotificationsPage extends StatefulWidget  {
+  final PageController pageController;
+  NotificationsPage(this.pageController);
+
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
 }
@@ -10,10 +14,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(
-      pageTitle: "Stay up to date on the Coronavirus",
-      pageDescription: "To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.",
-      buttonTitle: "Allow Notifications", // TODO: Localize
-      backgroundImageSrc: "assets/onboarding/onboarding_notifications.png",
+      pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
+      pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
+      buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
+      backgroundImageSrc: S.of(context).notificationsPagePermissionRequestBackgroundImage,
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
     );
@@ -24,10 +28,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _skipNotifications() async {
-    _complete();
+    Navigator.pop(context);
   }
 
-  void _complete() async {
-    Navigator.of(context).pop();
+  void _complete() {
+    this.widget.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 }

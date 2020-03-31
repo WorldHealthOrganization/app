@@ -1,10 +1,12 @@
+import 'package:WHOFlutter/components/dialogs.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'content_bundle.dart';
 
 class ContentLoading {
-  static final networkLoadingEnabled = true;
+  static final networkLoadingEnabled = false;
   static final ContentLoading _singleton = ContentLoading._internal();
 
   // TODO: Real URL
@@ -35,6 +37,20 @@ class ContentLoading {
         return await _loadFromNetwork(name, languageAndCountry);
       } catch (err) {
         print("Network bundle for $languageAndCountry not found: $err");
+        if (err is ContentBundleVersionException) {
+          // TODO: Refactor the loader API to support passing this information
+          // TODO: back to the UI layer rather than handling it here.
+          // Defer showing the dialog briefly until after screen build.
+          Future.delayed(const Duration(seconds: 1), () {
+            // TODO: Localize
+            Dialogs.showAppDialog(
+                context: context,
+                title: S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
+                // TODO: Provide the sharing link here?
+                bodyText:
+                    S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
+          });
+        }
       }
     }
 
@@ -67,7 +83,7 @@ class ContentLoading {
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
     var response = await http.get(url,
-        headers: {"Content-Type": "application/yaml"}).timeout(networkTimeout);
+        headers: {"Accept": "application/yaml"}).timeout(networkTimeout);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
