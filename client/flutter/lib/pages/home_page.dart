@@ -159,8 +159,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
-
+                padding: EdgeInsets.all(15),
                   child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)),
