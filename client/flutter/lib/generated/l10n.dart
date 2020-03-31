@@ -130,7 +130,7 @@ class S {
 
   String get legalLandingPageButtonAgree {
     return Intl.message(
-      'By proceeding, you agree to our',
+      'By proceeding, you agree to our\n',
       name: 'legalLandingPageButtonAgree',
       desc: '',
       args: [],
@@ -157,7 +157,7 @@ class S {
 
   String get legalLandingPageAnd {
     return Intl.message(
-      'and',
+      ' and ',
       name: 'legalLandingPageAnd',
       desc: '',
       args: [],
@@ -886,7 +886,7 @@ class S {
 
   String get newsFeedSliverListNewsFeedItemDescription4 {
     return Intl.message(
-      'Coronavirus disease (COVID-2019) press briefings including videos, audio and transcripts.',
+      'Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts.',
       name: 'newsFeedSliverListNewsFeedItemDescription4',
       desc: '',
       args: [],
