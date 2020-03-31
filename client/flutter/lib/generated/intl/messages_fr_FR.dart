@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consultez l\'application de Guide officielle COVID-19 https://www.who.int/covid-19-app"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Consultez l\'application de Guide officielle COVID-19 https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("Organisation mondiale de la santé"),
     "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("Application QUI Coronavirus"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Bilan de santé"),
@@ -32,13 +32,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageButtonWHOMythBusters" : MessageLookupByLibrary.simpleMessage("Qui se trompent"),
     "homePagePageButtonWHOMythBustersDescription" : MessageLookupByLibrary.simpleMessage("Apprenez les faits sur le Coronavirus et comment prévenir la propagation"),
     "homePagePageButtonYourQuestionsAnswered" : MessageLookupByLibrary.simpleMessage("Réponses à vos Questions"),
-    "homePagePageSliverListSettingsHeader1": MessageLookupByLibrary.simpleMessage("Collecte de données"),
-    "homePagePageSliverListSettingsHeader2": MessageLookupByLibrary.simpleMessage("Langue"),
-    "homePagePageSliverListSettings": MessageLookupByLibrary.simpleMessage("Paramètres"),
-    "homePagePageSliverListSettingsDataCollection": MessageLookupByLibrary.simpleMessage("Autoriser l'OMS à collecter des données pour mieux informer le public sur les mises à jour du coronavirus. (besoin d'une copie)"),
     "homePagePageSliverListAboutTheApp" : MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
     "homePagePageSliverListAboutTheAppDialog" : MessageLookupByLibrary.simpleMessage("L\'application - 19 OFFICIELLE de l\'Organisation mondiale de la santé."),
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Fournir des commentaires sur l\'application"),
+    "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("Paramètres"),
+    "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("Autoriser l\'OMS à collecter des données pour mieux informer le public sur les mises à jour du coronavirus. (besoin d\'une copie)"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("Collecte de données"),
+    "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("Langue"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Partager l\'application"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*Lavez vos mains* avec du savon et de l\'eau pendant au moins 20 secondes"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Évitez de toucher* vos yeux, votre bouche et votre nez"),
