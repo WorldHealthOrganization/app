@@ -58,8 +58,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 trailing: CupertinoSwitch(
                   activeColor: Constants.primaryColor,
                   value: _switchValue ?? false,
-                  onChanged: (newValue) {
-                    _toggleAnalytics(newValue);
+                  onChanged: (newValue) async {
+                    await _toggleAnalytics(newValue);
                     setState(() {
                       _switchValue = newValue;
                     });
