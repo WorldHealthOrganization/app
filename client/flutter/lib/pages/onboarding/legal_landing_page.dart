@@ -24,7 +24,7 @@ class LegalLandingPage extends StatelessWidget {
             PageButton(
               Constants.primaryColor,
               "Get Started",
-              ()=>this.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
+              ()=>Navigator.pop(context),
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
