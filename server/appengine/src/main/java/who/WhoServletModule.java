@@ -8,6 +8,8 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static who.ForwardingServlet.forwardTo;
+
 /**
  * Guice and web configuration. Use this instead of web.xml.
  */
@@ -18,6 +20,10 @@ public class WhoServletModule extends ServletModule {
   @Override protected void configureServlets() {
     // App Engine Remote API
     serve("/remote_api").with(new RemoteApiServlet());
+
+    serve("/app").with(new AppStoreServlet());
+    serve("/terms").with(forwardTo("/terms.pdf"));
+    serve("/privacy").with(forwardTo("/privacy.pdf"));
 
     // Set up Objectify
     filter("/*").through(ObjectifyFilter.class);
