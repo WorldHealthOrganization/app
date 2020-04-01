@@ -12,15 +12,18 @@ class PageScaffold extends StatelessWidget {
   final EdgeInsets padding;
   final bool showBackButton;
   final bool showShareBottomBar;
+  final bool showLogoInHeader;
 
-  PageScaffold(this.context,
-      {@required this.body,
-      @required this.title,
-       this.showShareBottomBar = false,
-      this.subtitle = "COVID-19 App",
-      this.padding = EdgeInsets.zero,
-      this.showBackButton = true,
-      });
+  PageScaffold(
+    this.context, {
+    @required this.body,
+    @required this.title,
+    this.showShareBottomBar = false,
+    this.subtitle = "COVID-19",
+    this.padding = EdgeInsets.zero,
+    this.showBackButton = true,
+    this.showLogoInHeader = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,22 +34,21 @@ class PageScaffold extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               CustomScrollView(slivers: [
-                SliverAppBar(
-                  // Hide the built-in icon for now
-                  automaticallyImplyLeading: false,
-                  backgroundColor: Colors.white,
-                  flexibleSpace: PageHeader(title: this.title, subtitle: this.subtitle, padding: this.padding, showBackButton: this.showBackButton),
-                  expandedHeight: 120,
+                PageHeader(
+                  title: this.title,
+                  subtitle: this.subtitle,
+                  padding: this.padding,
+                  showBackButton: this.showBackButton,
+                  showLogo: this.showLogoInHeader,
                 ),
                 ...this.body,
                 SliverToBoxAdapter(
-                child: SizedBox(height: 70),
-              ),
+                  child: SizedBox(height: 70),
+                ),
               ]),
-              if(this.showShareBottomBar) ShareBar()
+              if (this.showShareBottomBar) ShareBar()
             ],
           ),
         ));
   }
-
 }
