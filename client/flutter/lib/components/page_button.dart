@@ -49,7 +49,8 @@ class PageButton extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 4),
+              // Makes sure text is centered properly when no description is provided
+              SizedBox(height: description.isNotEmpty ? 4 : 0),
               this.description.isNotEmpty
                   ? Text(
                       this.description,
