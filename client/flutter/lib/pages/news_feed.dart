@@ -1,5 +1,7 @@
+//TODO: ENTER CORRECT URL FOR EACH ITEM
+
 import 'package:WHOFlutter/components/news_feed_item.dart';
-import 'package:WHOFlutter/components/page_scaffold.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

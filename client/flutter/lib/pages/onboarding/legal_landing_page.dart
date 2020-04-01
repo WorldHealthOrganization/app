@@ -6,9 +6,9 @@ import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LegalLandingPage extends StatelessWidget {
-  final PageController pageController;
+  final VoidCallback onNext;
 
-  LegalLandingPage(this.pageController);
+  const LegalLandingPage({@required this.onNext}) : assert(onNext != null);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LegalLandingPage extends StatelessWidget {
             PageButton(
               Constants.primaryColor,
               S.of(context).legalLandingPageButtonGetStarted,
-              ()=>Navigator.pop(context),
+              onNext,
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

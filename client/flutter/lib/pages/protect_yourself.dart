@@ -1,8 +1,8 @@
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:WHOFlutter/components/list_of_items.dart';
 // import 'package:WHOFlutter/components/rive_animation.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 
@@ -16,11 +16,8 @@ const bold = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
 );
-const header = TextStyle(
-  color: Colors.black,
-  fontSize: 24,
-  fontWeight: FontWeight.w800
-);
+const header =
+    TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
 Text _message(String input) {
   // Make sections delineated by asterisk * bold. For example:
@@ -102,39 +99,48 @@ class ProtectYourself extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var localized = S.of(context);
-    return ListOfItems(
-      [
-        Padding(
-          padding: const EdgeInsets.only(left: 26, top: 20),
-          child: Text(
-            localized.protectYourselfHeader,
-            style: header,
-          ),
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem1),
-          child: _washHandsImage,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem2),
-          child: _avoidTouchImage,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem3),
-          child: _elbowImage,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem4),
-          child: _distanceImage,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem5),
-          child: _maskImage,
-        ),
-      ],
-      title: localized.protectYourselfTitle,
-    );
+    final S localized = S.of(context);
+
+    return PageScaffold(context,
+        title: S.of(context).protectYourselfTitle,
+        showShareBottomBar: false,
+        body: [
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.only(left: 26, top: 20),
+              child: Text(
+                localized.protectYourselfHeader,
+                style: header,
+              ),
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem1),
+              child: _washHandsImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem2),
+              child: _avoidTouchImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem3),
+              child: _elbowImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem4),
+              child: _distanceImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem5),
+              child: _maskImage,
+            ),
+          ]))
+        ]);
   }
 }
 

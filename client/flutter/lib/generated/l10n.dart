@@ -40,7 +40,7 @@ class S {
 
   String get commonWorldHealthOrganizationCoronavirusApp {
     return Intl.message(
-      'COVID-19 App',
+      'COVID-19',
       name: 'commonWorldHealthOrganizationCoronavirusApp',
       desc: '',
       args: [],
@@ -49,7 +49,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 Guide App https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -256,7 +256,7 @@ class S {
 
   String get homePagePageTitle {
     return Intl.message(
-      'Coronavirus',
+      'COVID-19',
       name: 'homePagePageTitle',
       desc: '',
       args: [],
@@ -283,7 +283,7 @@ class S {
 
   String get homePagePageButtonProtectYourself {
     return Intl.message(
-      'Protect yourself',
+      'Protect Yourself',
       name: 'homePagePageButtonProtectYourself',
       desc: '',
       args: [],
@@ -310,7 +310,7 @@ class S {
 
   String get homePagePageButtonWHOMythBusters {
     return Intl.message(
-      'WHO Myth-busters',
+      'Get the Facts',
       name: 'homePagePageButtonWHOMythBusters',
       desc: '',
       args: [],
@@ -346,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share The App',
+      'Share the App',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -355,7 +355,7 @@ class S {
 
   String get homePagePageSliverListProvideFeedback {
     return Intl.message(
-      'Provide app feedback',
+      'Provide App Feedback',
       name: 'homePagePageSliverListProvideFeedback',
       desc: '',
       args: [],
@@ -400,7 +400,7 @@ class S {
 
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the app',
+      'About the App',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
@@ -418,7 +418,7 @@ class S {
 
   String get homePagePageSliverListSupport {
     return Intl.message(
-      'Help support the relief effort',
+      'Help support the\nrelief effort',
       name: 'homePagePageSliverListSupport',
       desc: '',
       args: [],
@@ -436,7 +436,7 @@ class S {
 
   String get homePagePageSliverListDonateUrl {
     return Intl.message(
-      'https://www.who.int/Covid19ResponseFund',
+      'https://covid19responsefund.org/',
       name: 'homePagePageSliverListDonateUrl',
       desc: '',
       args: [],
@@ -535,7 +535,7 @@ class S {
 
   String get travelAdvicePageListItem1Text {
     return Intl.message(
-      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries',
+      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries.',
       name: 'travelAdvicePageListItem1Text',
       desc: '',
       args: [],
@@ -598,7 +598,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendationsLink {
     return Intl.message(
-      'https://who.int',
+      'https://www.who.int/emergencies/diseases/novel-coronavirus-2019',
       name: 'travelAdvicePageButtonGeneralRecommendationsLink',
       desc: '',
       args: [],
@@ -607,7 +607,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendationsDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'travelAdvicePageButtonGeneralRecommendationsDescription',
       desc: '',
       args: [],
