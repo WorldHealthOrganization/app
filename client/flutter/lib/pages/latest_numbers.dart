@@ -25,13 +25,6 @@ const header =
     TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
 class LatestNumbers extends StatelessWidget {
-  _launchStatsDashboard(BuildContext context) async {
-    var url = S.of(context).homePagePageButtonLatestNumbersUrl;
-    if (await canLaunch(url)) {
-      await launch(url);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
@@ -41,78 +34,133 @@ class LatestNumbers extends StatelessWidget {
           FutureBuilder(
               future: WhoService.getCaseStats(),
               builder: (context, snapshot) {
-                final hasGlobalStats =
-                    snapshot.hasData && snapshot.data['globalStats'] != null;
-                final globalStats =
-                    hasGlobalStats ? snapshot.data['globalStats'] : null;
-                final ts = hasGlobalStats
-                    ? DateTime.fromMillisecondsSinceEpoch(
-                        globalStats['lastUpdated'])
-                    : DateTime.now();
-                final numFmt = NumberFormat.decimalPattern();
-                final lastUpd = DateFormat.MMMMEEEEd().add_jm().format(ts);
-                return SliverList(
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return SliverList(
                     delegate: SliverChildListDelegate([
-                  StatCard(
-                      title: Text(
-                        "GLOBAL CASES",
-                        style: name,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 48.0),
+                        child: CupertinoActivityIndicator(),
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "Updating...",
+                        textAlign: TextAlign.center,
+                      )
+                    ]),
+                  );
+                } else if (!snapshot.hasData) {
+                  return SliverList(
+                    delegate: SliverChildListDelegate([
+                      SizedBox(height: 15,),
+                       Text(
+                        "No data returned",
+                        textAlign: TextAlign.center,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ViewLiveDataButton(),
+                      ),
+                    ]),
+                  );
+                } else if (true) {
+                  return SliverList(
+                    delegate: SliverChildListDelegate([
+                      SizedBox(height: 15,),
+                       Text(
+                        "Error connecting",
+                        textAlign: TextAlign.center,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ViewLiveDataButton(),
+                      ),
+                     
+                    ]),
+                  );
+                } else {
+                  final globalStats = snapshot.data['globalStats'];
+                  final ts = DateTime.fromMillisecondsSinceEpoch(
+                      globalStats['lastUpdated']);
+                  final lastUpd = DateFormat.MMMMEEEEd().add_jm().format(ts);
+                  return SliverList(
+                      delegate: SliverChildListDelegate([
+                    StatCard(
+                        title: Text(
+                          "GLOBAL CASES",
+                          style: name,
+                        ),
+                        content: Text(
+                          globalStats['cases'].toString() ?? "-",
+                          softWrap: true,
+                          style: globalStats['cases'] != null
+                              ? number
+                              : loadingStyle,
+                          textAlign: TextAlign.left,
+                        )),
+                    StatCard(
+                      title: Text("GLOBAL DEATHS", style: name),
                       content: Text(
-                        hasGlobalStats && globalStats['cases'] != null
-                            ? numFmt.format(globalStats['cases'])
-                            : '-',
+                        globalStats['deaths'].toString() ?? '-',
                         softWrap: true,
-                        style: hasGlobalStats && globalStats['cases'] != null ? number : loadingStyle,
+                        style: globalStats['deaths'] != null
+                            ? number
+                            : loadingStyle,
                         textAlign: TextAlign.left,
-                      )),
-                  StatCard(
-                    title: Text("GLOBAL DEATHS", style: name),
-                    content: Text(
-                      hasGlobalStats && globalStats['deaths'] != null
-                          ? numFmt.format(globalStats['deaths'])
-                          : '-',
-                      softWrap: true,
-                      style: hasGlobalStats && globalStats['deaths'] != null ? number : loadingStyle,
-                      textAlign: TextAlign.left,
+                      ),
                     ),
-                  ),
-                  Container(
-                    height: 25,
-                  ),
-                  Text(
-                    snapshot.hasData ? 'Last updated $lastUpd' : 'Updating…',
-                    style: TextStyle(color: Color(0xff26354E)),
-                    textAlign: TextAlign.center,
-                  ),
-                  Container(
-                    height: 10,
-                  ),
-                  Text(
-                    hasGlobalStats && globalStats['attribution'] != null
-                        ? 'Source: ${globalStats['attribution']}'
-                        : '',
-                    style: TextStyle(color: Color(0xff26354E)),
-                    textAlign: TextAlign.center,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
-                      left: 24,
-                      right: 24,
+                    Container(
+                      height: 25,
                     ),
-                    child: PageButton(
-                      Color(0xff1A458E),
-                      "View live data",
-                      () {
-                        return _launchStatsDashboard(context);
-                      },
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Text(
+                      'Last updated $lastUpd',
+                      style: TextStyle(color: Color(0xff26354E)),
+                      textAlign: TextAlign.center,
                     ),
-                  )
-                ]));
+                    Container(
+                      height: 10,
+                    ),
+                    Text(
+                      globalStats['attribution'] != null
+                          ? 'Source: ${globalStats['attribution']}'
+                          : '',
+                      style: TextStyle(color: Color(0xff26354E)),
+                      textAlign: TextAlign.center,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 24,
+                        left: 24,
+                        right: 24,
+                      ),
+                      child: ViewLiveDataButton(),
+                    )
+                  ]));
+                }
               }),
         ]);
+  }
+}
+
+class ViewLiveDataButton extends StatelessWidget {
+  _launchStatsDashboard(BuildContext context) async {
+    var url = S.of(context).homePagePageButtonLatestNumbersUrl;
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageButton(
+      Color(0xff1A458E),
+      "View live data",
+      () {
+        return _launchStatsDashboard(context);
+      },
+      mainAxisAlignment: MainAxisAlignment.start,
+    );
   }
 }
 

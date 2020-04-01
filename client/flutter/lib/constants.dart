@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -13,4 +14,8 @@ double contentScale(BuildContext context) {
   const tall = 896.0;
   const short = 480.0;
   return ((height - short) / (tall - short)).clamp(0.0, 1.0);
+}
+
+logAnalyticsEvent(String name, FirebaseAnalytics analytics) async {
+  await analytics.logEvent(name: name);
 }

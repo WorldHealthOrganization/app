@@ -2,6 +2,7 @@ import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
@@ -41,10 +42,6 @@ class _HomePageState extends State<HomePage> {
     await _pushOnboardingIfNeeded();
   }
 
-  _logAnalyticsEvent(String name) async {
-    await analytics.logEvent(name: name);
-  }
-
   @override
   Widget build(BuildContext context) {
     final String versionString = packageInfo != null
@@ -79,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonProtectYourself,
                   () {
-                    _logAnalyticsEvent('ProtectYourself');
+                    logAnalyticsEvent('ProtectYourself', this.analytics);
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => ProtectYourself()));
                   },
@@ -88,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff1A458E),
                   S.of(context).homePagePageButtonLatestNumbers,
                   () {
-                    _logAnalyticsEvent('LatestNumbers');
+                    logAnalyticsEvent('LatestNumbers', this.analytics);
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
@@ -98,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonYourQuestionsAnswered,
                   () {
-                    _logAnalyticsEvent('QuestionsAnswered');
+                    logAnalyticsEvent('QuestionsAnswered', this.analytics);
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.yourQuestionsAnswered,
@@ -111,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff234689),
                   S.of(context).homePagePageButtonWHOMythBusters,
                   () {
-                    _logAnalyticsEvent('GetTheFacts');
+                    logAnalyticsEvent('GetTheFacts', this.analytics);
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
                               dataSource: QuestionData.whoMythbusters,
@@ -128,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                   Color(0xff3DA7D4),
                   S.of(context).homePagePageButtonTravelAdvice,
                   () {
-                    _logAnalyticsEvent('TravelAdvice');
+                    logAnalyticsEvent('TravelAdvice', this.analytics);
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
@@ -163,23 +160,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                   padding: EdgeInsets.all(15),
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-                      color: Color(0xffCA6B35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(S.of(context).homePagePageSliverListDonate),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
-                      onPressed: () {
-                        _logAnalyticsEvent('Donate');
-                        launch(S.of(context).homePagePageSliverListDonateUrl);
-                    })
+                  child: ArrowButton()
               ),
               Divider(),
 
@@ -207,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  _logAnalyticsEvent('About');
+                  logAnalyticsEvent('About', this.analytics);
                   return Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => AboutPage()));
                 },
@@ -242,5 +223,36 @@ class _HomePageState extends State<HomePage> {
       await UserPreferences().setAnalyticsEnabled(true);
       await UserPreferences().setOnboardingCompleted(true);
     }
+  }
+}
+
+class ArrowButton extends StatelessWidget {
+  const ArrowButton({
+    this.analytics,
+    this.analyticsTag
+  });
+
+  final FirebaseAnalytics analytics;
+  final String analyticsTag;
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40)),
+        padding:
+            EdgeInsets.symmetric(vertical: 24, horizontal: 23),
+        color: Color(0xffCA6B35),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(S.of(context).homePagePageSliverListDonate),
+            Icon(Icons.arrow_forward_ios)
+          ],
+        ),
+        onPressed: () {
+          if(analytics != null) logAnalyticsEvent('Donate', this.analytics);
+          launch(S.of(context).homePagePageSliverListDonateUrl);
+      });
   }
 }
