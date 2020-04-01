@@ -84,6 +84,9 @@ class _HomePageState extends State<HomePage> {
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => ProtectYourself()));
                   },
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff1A458E),
@@ -93,7 +96,8 @@ class _HomePageState extends State<HomePage> {
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
@@ -107,7 +111,8 @@ class _HomePageState extends State<HomePage> {
                               title: S.of(context).homePagePageButtonQuestions,
                             )));
                   },
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
@@ -123,9 +128,10 @@ class _HomePageState extends State<HomePage> {
                                   .homePagePageButtonWHOMythBusters,
                             )));
                   },
-                  description:
-                      S.of(context).homePagePageButtonWHOMythBustersDescription,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  description: S.of(context).homePagePageButtonWHOMythBustersDescription,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 PageButton(
                   Color(0xff3DA7D4),
@@ -135,16 +141,18 @@ class _HomePageState extends State<HomePage> {
                     return Navigator.of(context).push(
                         MaterialPageRoute(builder: (c) => TravelAdvice()));
                   },
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonNewsAndPress,
                   () => Navigator.of(context)
                       .push(MaterialPageRoute(builder: (c) => NewsFeed())),
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
               ],
               mainAxisSpacing: 15.0,

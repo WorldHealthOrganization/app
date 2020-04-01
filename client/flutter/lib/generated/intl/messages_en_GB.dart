@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest \nNumbers"),
     "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"),
-    "homePagePageButtonProtectYourself" : MessageLookupByLibrary.simpleMessage("Protect yourself"),
+    "homePagePageButtonProtectYourself" : MessageLookupByLibrary.simpleMessage("Protect Yourself"),
     "homePagePageButtonTravelAdvice" : MessageLookupByLibrary.simpleMessage("Travel Advice"),
     "homePagePageButtonWHOMythBusters" : MessageLookupByLibrary.simpleMessage("WHO Myth-busters"),
     "homePagePageButtonWHOMythBustersDescription" : MessageLookupByLibrary.simpleMessage("Learn the facts about Coronavirus and how to prevent the spread"),

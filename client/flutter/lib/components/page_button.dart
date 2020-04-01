@@ -46,14 +46,14 @@ class PageButton extends StatelessWidget {
               Text(
                 this.title,
                 textScaleFactor: 1.0 + 1.0 * contentScale(context),
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
               SizedBox(height: 4),
               this.description.isNotEmpty
                   ? Text(
                       this.description,
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                       textScaleFactor: 0.9 + 0.5 * contentScale(context),
                       style: TextStyle(fontWeight: FontWeight.w400),
                     )
