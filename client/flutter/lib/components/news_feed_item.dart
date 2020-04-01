@@ -18,7 +18,7 @@ class NewsFeedItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => launch(this.url),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 16.0, right: 16, top: 16.0),
         child: Column(
           children: <Widget>[
             Row(
@@ -42,17 +42,20 @@ class NewsFeedItem extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 12,
                 ),
                 Flexible(
                     child: Text(
                   this.description,
                   style: TextStyle(fontSize: 18),
                 )),
-                Center(child: Icon(Icons.arrow_forward_ios)),
+                Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffD1D5DC),)),
               ],
             ),
-            Divider()
+            SizedBox(
+              height: 16,
+            ),
+            Divider(color: Color(0xff808080), indent: 120,)
           ],
         ),
       ),
