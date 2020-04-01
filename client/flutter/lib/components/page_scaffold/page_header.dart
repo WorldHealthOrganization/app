@@ -20,6 +20,7 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
       flexibleSpace: FlexibleSpaceBar(background:_buildHeader()),
@@ -50,7 +51,7 @@ class PageHeader extends StatelessWidget {
       ),
       if(this.showLogo)Image.asset('assets/images/mark.png', width: 75)
     ];
-    return Container(
+    return Material(
       color: Colors.white,
       child: SafeArea(
         child: Padding(
