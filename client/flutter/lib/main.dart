@@ -63,11 +63,6 @@ class _MyAppState extends State<MyApp> {
         print("onResume: $message");
       },
     );
-
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      print("Settings registered: $settings");
-    });
   }
 
   Future<LicenseEntry> _loadLicense() async {
