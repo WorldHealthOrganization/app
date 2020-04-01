@@ -94,6 +94,7 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff3DA7D4),
@@ -107,6 +108,7 @@ class _HomePageState extends State<HomePage> {
                             )));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
+                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff234689),
