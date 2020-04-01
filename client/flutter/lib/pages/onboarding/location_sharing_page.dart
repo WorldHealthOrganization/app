@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/api/jitter_location.dart';
+import 'package:WHOFlutter/api/who_service.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
@@ -30,11 +31,12 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
 
   void _allowLocationSharing() async {
     await Location().requestPermission();    
-    if(await Location().hasPermission() == PermissionStatus.granted) {
+    if (await Location().hasPermission() == PermissionStatus.granted) {
       LocationData location = await Location().getLocation();
       Map jitteredLocationData = JitterLocation().jitter(location.latitude, location.longitude, 5/*kms refers to kilometers*/);
-      print(jitteredLocationData);
-      //TODO: SEND JITTERED LOCATION DATA TO BACKEND
+      await WhoService.putLocation(
+        latitude: jitteredLocationData['lat'],
+        longitude: jitteredLocationData['lng']);
     }
     _complete();
   }

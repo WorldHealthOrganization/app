@@ -26,10 +26,14 @@ class WhoService {
     Map<String, String> headers = await _getHeaders();
     var postBody = jsonEncode({"latitude": latitude, "longitude": longitude});
     var url = '$serviceUrl/putLocation';
+    print(url);
+    print(headers);
+    print(postBody);
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
+    print(response);
     return true;
   }
 
