@@ -47,7 +47,7 @@ Follow Apple's instructions to [create an archive](https://help.apple.com/xcode/
 You should receive an email within 30 minutes notifying you that your build has been validated.
 
 ### Production vs Development Push Settings
-In file Runner.entitlesments change 'aps-environment' to either 'development' or 'production' to select either the 
+In file Runner.entitlements change 'aps-environment' to either 'development' or 'production' to select either the 
 Sandbox or Production Apple Push Notification Service. 
 
 ### Submit For Review
