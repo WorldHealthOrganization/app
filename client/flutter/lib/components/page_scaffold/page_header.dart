@@ -32,7 +32,7 @@ class PageHeader extends StatelessWidget {
 
 class HeaderDelagate extends SliverPersistentHeaderDelegate {
   final double maxHeight = 130.0;
-  final double minHeight = 80.0;
+  final double minHeight = 100.0;
 
   final String title;
   final String subtitle;
