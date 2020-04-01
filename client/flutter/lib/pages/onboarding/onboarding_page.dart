@@ -7,7 +7,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key key, @required this.analytics}) : super(key: key);
+  const OnboardingPage(this.analytics, {Key key}) : super(key: key);
 
   final FirebaseAnalytics analytics;
 

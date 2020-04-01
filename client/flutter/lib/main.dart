@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Directionality(
         child: widget.showOnboarding
-            ? OnboardingPage(analytics: analytics)
+            ? OnboardingPage(analytics)
             : HomePage(analytics),
         textDirection: GlobalWidgetsLocalizations(
           Locale(Intl.getCurrentLocale()),
