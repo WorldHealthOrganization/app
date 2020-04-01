@@ -51,7 +51,7 @@ class PageHeader extends StatelessWidget {
       ),
       if(this.showLogo)Image.asset('assets/images/mark.png', width: 75)
     ];
-    return Container(
+    return Material(
       color: Colors.white,
       child: SafeArea(
         child: Padding(
