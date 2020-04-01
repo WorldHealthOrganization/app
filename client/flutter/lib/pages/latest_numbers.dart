@@ -12,6 +12,10 @@ const number = TextStyle(
   color: Color(0xFFAF2B2B),
   fontSize: 36,
 );
+const loadingStyle = TextStyle(
+  color: Color(0xff26354E),
+  fontSize: 36,
+);
 const name = TextStyle(
   color: Colors.black,
   fontSize: 16,
@@ -30,8 +34,6 @@ class LatestNumbers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final S localized = S.of(context);
-
     return PageScaffold(context,
         title: "Latest Numbers",
         showShareBottomBar: false,
@@ -39,8 +41,16 @@ class LatestNumbers extends StatelessWidget {
           FutureBuilder(
               future: WhoService.getCaseStats(),
               builder: (context, snapshot) {
-                final ts = snapshot.hasData ? new DateTime.fromMillisecondsSinceEpoch(snapshot.data['globalStats']['lastUpdated']) : DateTime.now();
-                final lastUpd = new DateFormat.yMd().add_jm().format(ts);
+                final hasGlobalStats =
+                    snapshot.hasData && snapshot.data['globalStats'] != null;
+                final globalStats =
+                    hasGlobalStats ? snapshot.data['globalStats'] : null;
+                final ts = hasGlobalStats
+                    ? DateTime.fromMillisecondsSinceEpoch(
+                        globalStats['lastUpdated'])
+                    : DateTime.now();
+                final numFmt = NumberFormat.decimalPattern();
+                final lastUpd = DateFormat.MMMMEEEEd().add_jm().format(ts);
                 return SliverList(
                     delegate: SliverChildListDelegate([
                   StatCard(
@@ -48,30 +58,40 @@ class LatestNumbers extends StatelessWidget {
                         "GLOBAL CASES",
                         style: name,
                       ),
-                      content: snapshot.hasData
-                          ? Text(
-                              (snapshot.data['globalStats']['cases'] as int)
-                                  .toString(),
-                              softWrap: true,
-                              style: number,
-                            )
-                          : CupertinoActivityIndicator()),
+                      content: Text(
+                        hasGlobalStats && globalStats['cases'] != null
+                            ? numFmt.format(globalStats['cases'])
+                            : '-',
+                        softWrap: true,
+                        style: hasGlobalStats && globalStats['cases'] != null ? number : loadingStyle,
+                        textAlign: TextAlign.left,
+                      )),
                   StatCard(
                     title: Text("GLOBAL DEATHS", style: name),
-                    content: snapshot.hasData
-                        ? Text(
-                            (snapshot.data['globalStats']['deaths'] as int)
-                                .toString(),
-                            softWrap: true,
-                            style: number,
-                          )
-                        : CupertinoActivityIndicator(),
+                    content: Text(
+                      hasGlobalStats && globalStats['deaths'] != null
+                          ? numFmt.format(globalStats['deaths'])
+                          : '-',
+                      softWrap: true,
+                      style: hasGlobalStats && globalStats['deaths'] != null ? number : loadingStyle,
+                      textAlign: TextAlign.left,
+                    ),
                   ),
                   Container(
                     height: 25,
                   ),
                   Text(
-                    snapshot.hasData ? 'Last updated at $lastUpd' : 'Updating...',
+                    snapshot.hasData ? 'Last updated $lastUpd' : 'Updating…',
+                    style: TextStyle(color: Color(0xff26354E)),
+                    textAlign: TextAlign.center,
+                  ),
+                  Container(
+                    height: 10,
+                  ),
+                  Text(
+                    hasGlobalStats && globalStats['attribution'] != null
+                        ? 'Source: ${globalStats['attribution']}'
+                        : '',
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
                   ),
@@ -121,18 +141,19 @@ class StatCard extends StatelessWidget {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
-                vertical: 20,
+                vertical: 5,
               ),
               child: title,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
-                vertical: 20,
+                vertical: 5,
               ),
               child: content,
             ),
