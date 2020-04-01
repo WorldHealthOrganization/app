@@ -49,8 +49,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
-        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-        packageInfo.version, packageInfo.buildNumber)}\n'
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
 
     final String copyrightString = S
@@ -68,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, 2 * tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(2, tileHeightFactor),
@@ -94,7 +93,8 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff3DA7D4),
@@ -108,7 +108,8 @@ class _HomePageState extends State<HomePage> {
                             )));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -165,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(15),
                   child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)),
@@ -182,40 +183,68 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         _logAnalyticsEvent('Donate');
                         launch(S.of(context).homePagePageSliverListDonateUrl);
-                    })
+                      })),
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: <Widget>[
+                    Divider(
+                      height: 0,
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.share, color: Color(0xffCA6B35)),
+                      title: Text(
+                        S.of(context).homePagePageSliverListShareTheApp,
+                        style: TextStyle(
+                            color: Color(0xffCA6B35),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        analytics.logShare(
+                            contentType: 'App',
+                            itemId: null,
+                            method: 'Website link');
+                        Share.share(
+                            S.of(context).commonWhoAppShareIconButtonDescription);
+                      },
+                    ),
+                    Divider(
+                      height: 1,
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
+                      title: Text(
+                        S.of(context).homePagePageSliverListSettings,
+                        style: TextStyle(
+                            color: Color(0xffCA6B35),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20),
+                      ),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (c) => SettingsPage())),
+                    ),
+                    Divider(
+                      height: 1,
+                    ),
+                    ListTile(
+                      title:
+                          Text(S.of(context).homePagePageSliverListAboutTheApp),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        _logAnalyticsEvent('About');
+                        return Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (c) => AboutPage()));
+                      },
+                    ),
+                    Divider(
+                      height: 0,
+                    ),
+                  ],
+                ),
               ),
-              Divider(),
-
-              ListTile(
-                leading: Icon(Icons.share, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  analytics.logShare(
-                      contentType: 'App', itemId: null, method: 'Website link');
-                  Share.share(
-                      S.of(context).commonWhoAppShareIconButtonDescription);
-                },
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListSettings, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => SettingsPage())),
-              ),
-              Divider(),
-              ListTile(
-                title: Text(S.of(context).homePagePageSliverListAboutTheApp),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  _logAnalyticsEvent('About');
-                  return Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => AboutPage()));
-                },
-              ),
-              Divider(),
               Container(
                 height: 25,
               ),
@@ -240,7 +269,8 @@ class _HomePageState extends State<HomePage> {
 
     if (!onboardingComplete) {
       final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
+        MaterialPageRoute(
+            fullscreenDialog: true, builder: (_) => OnboardingPage()),
       );
 
       if (onboardingCompleted) {
