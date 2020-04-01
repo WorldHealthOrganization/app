@@ -7,70 +7,62 @@ class PageHeader extends StatelessWidget {
 
   final EdgeInsets padding;
   final bool showBackButton;
+  final bool showLogo;
 
-  PageHeader(
-      {@required this.title,
-      this.subtitle = "COVID-19 App",
-      this.padding = EdgeInsets.zero,
-      this.showBackButton = true});
+  PageHeader({
+    @required this.title,
+    this.subtitle = "COVID-19",
+    this.padding = EdgeInsets.zero,
+    this.showBackButton = true,
+    this.showLogo = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return FlexibleSpaceBar(background: _buildHeader());
+    return SliverAppBar(
+      leading: Container(),
+      expandedHeight: 120,
+      backgroundColor: Colors.white,
+      flexibleSpace: FlexibleSpaceBar(background:_buildHeader()),
+    );
   }
 
-  SafeArea _buildHeader() {
+  Widget _buildHeader() {
     List<Widget> headerItems = [
-      this.showBackButton ? _buildBackArrow() : null,
-      Flexible(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            FittedBox(
-              child: Text(this.title,
-                  textScaleFactor: 1.8,
-                  style: TextStyle(
-                      color: Colors.blueAccent, fontWeight: FontWeight.bold)),
-            ),
-            SizedBox(height: 4),
-            Text(this.subtitle,
-                textScaleFactor: 1.0,
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-          ],
+      if (this.showBackButton) BackArrow(),
+      
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(this.title,
+              textScaleFactor: 1.8,
+              style: TextStyle(
+                  color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+          SizedBox(height: 4),
+          Text(this.subtitle,
+              textScaleFactor: 1.0,
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        ],
+      ),
+      Expanded(
+        child: Container(),
+      ),
+      if(this.showLogo)Image.asset('assets/images/mark.png', width: 75)
+    ];
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: headerItems),
         ),
       ),
-      SizedBox(width: 5),
-      Image.asset('assets/images/mark.png', width: 75),
-    ];
-    headerItems.removeWhere((element) => element == null);
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: headerItems),
-      ),
     );
   }
 
-  Widget _buildBackArrow() {
-    return BackButton();
-  }
-}
-
-class BackButton extends StatelessWidget {
-  const BackButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: BackArrow(),
-      onPressed: () => Navigator.pop(context),
-    );
-  }
 }

@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Check out the official COVID-19 Guide App https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization"),
-    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19 App"),
+    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19"),
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest \nNumbers"),
     "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"),

@@ -2,13 +2,14 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:WHOFlutter/api/who_service.dart';
 
-
 class NotificationsPage extends StatefulWidget {
-  final OnboardingPage onboardingPage;
-  NotificationsPage(this.onboardingPage);
+  final VoidCallback onNext;
+
+  const NotificationsPage({@required this.onNext}) : assert(onNext != null);
   
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
@@ -47,11 +48,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _skipNotifications() async {
-    Navigator.pop(context);
+    _complete();
   }
 
   void _complete() {
-    this.widget.onboardingPage.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    widget.onNext();
   }
 
   void _registerFCMToken() async {

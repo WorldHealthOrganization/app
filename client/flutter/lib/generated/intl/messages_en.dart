@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m3(year) => "© ${year} WHO";
 
+  static m4(lastUpd) => "Last updated ${lastUpd}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "LegalLandingPageTermsOfServiceLinkText" : MessageLookupByLibrary.simpleMessage("Terms of Service"),
@@ -42,9 +44,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "commonContentLoadingDialogUpdateRequiredTitle" : MessageLookupByLibrary.simpleMessage("App Update Required"),
     "commonDialogButtonOk" : MessageLookupByLibrary.simpleMessage("OK"),
     "commonPermissionRequestPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
-    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Check out the official COVID-19 Guide App https://whocoronavirus.org/app"),
+    "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization"),
-    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19 App"),
+    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19"),
     "commonWorldHealthOrganizationCoronavirusAppVersion" : m2,
     "commonWorldHealthOrganizationCoronavirusCopyright" : m3,
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
@@ -70,6 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListSupport" : MessageLookupByLibrary.simpleMessage("Help support the\nrelief effort"),
     "homePagePageSubTitle" : MessageLookupByLibrary.simpleMessage("Virus response & tools"),
     "homePagePageTitle" : MessageLookupByLibrary.simpleMessage("COVID-19"),
+    "latestNumbersPageGlobalCasesTitle" : MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
+    "latestNumbersPageGlobalDeaths" : MessageLookupByLibrary.simpleMessage("GLOBAL DEATHS"),
+    "latestNumbersPageLastUpdated" : m4,
+    "latestNumbersPageTitle" : MessageLookupByLibrary.simpleMessage("Latest Numbers"),
+    "latestNumbersPageUpdating" : MessageLookupByLibrary.simpleMessage("Updating…"),
+    "latestNumbersPageViewLiveData" : MessageLookupByLibrary.simpleMessage("View live data"),
     "legalLandingPageAnd" : MessageLookupByLibrary.simpleMessage(" and "),
     "legalLandingPageButtonAgree" : MessageLookupByLibrary.simpleMessage("By proceeding, you agree to our\n"),
     "legalLandingPageButtonGetStarted" : MessageLookupByLibrary.simpleMessage("Get Started"),
@@ -111,10 +119,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "protectYourselfTitle" : MessageLookupByLibrary.simpleMessage("Protect Yourself"),
     "travelAdviceContainerText" : MessageLookupByLibrary.simpleMessage("WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases."),
     "travelAdvicePageButtonGeneralRecommendations" : MessageLookupByLibrary.simpleMessage("General\nRecommendations"),
-    "travelAdvicePageButtonGeneralRecommendationsDescription" : MessageLookupByLibrary.simpleMessage("Learn the facts about Coronavirus and how to prevent the spread"),
+    "travelAdvicePageButtonGeneralRecommendationsDescription" : MessageLookupByLibrary.simpleMessage("Learn the facts about COVID-19 and how to prevent the spread"),
     "travelAdvicePageButtonGeneralRecommendationsLink" : MessageLookupByLibrary.simpleMessage("https://www.who.int/emergencies/diseases/novel-coronavirus-2019"),
     "travelAdvicePageListItem1Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/self-monitor.png"),
-    "travelAdvicePageListItem1Text" : MessageLookupByLibrary.simpleMessage("Self-monitor for symptoms for 14 days and follow national protocols of receiving countries"),
+    "travelAdvicePageListItem1Text" : MessageLookupByLibrary.simpleMessage("Self-monitor for symptoms for 14 days and follow national protocols of receiving countries."),
     "travelAdvicePageListItem2Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/quarantine.png"),
     "travelAdvicePageListItem2Text" : MessageLookupByLibrary.simpleMessage("Some countries may require returning travellers to enter quarantine."),
     "travelAdvicePageListItem3Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/doctor.png"),
