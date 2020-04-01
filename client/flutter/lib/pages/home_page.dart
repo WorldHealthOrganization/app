@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double tileHeightFactor = 0.7;
+    double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
         ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
         packageInfo.version, packageInfo.buildNumber)}\n'
