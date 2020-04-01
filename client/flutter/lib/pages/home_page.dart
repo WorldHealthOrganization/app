@@ -16,17 +16,11 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomePage extends StatefulWidget {
-  final FirebaseAnalytics analytics;
 
+
+class HomePage extends StatelessWidget {
+  final FirebaseAnalytics analytics;
   HomePage(this.analytics);
-  @override
-  _HomePageState createState() => _HomePageState(analytics);
-}
-
-class _HomePageState extends State<HomePage> {
-  final FirebaseAnalytics analytics;
-  _HomePageState(this.analytics);
 
   _logAnalyticsEvent(String name) async {
     await analytics.logEvent(name: name);
