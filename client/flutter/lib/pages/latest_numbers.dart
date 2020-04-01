@@ -35,7 +35,7 @@ class LatestNumbers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-        title: "Latest Numbers",
+        title: S.of(context).latestNumbersPageTitle,
         showShareBottomBar: false,
         body: [
           FutureBuilder(
@@ -55,7 +55,7 @@ class LatestNumbers extends StatelessWidget {
                     delegate: SliverChildListDelegate([
                   StatCard(
                       title: Text(
-                        "GLOBAL CASES",
+                        S.of(context).latestNumbersPageGlobalCasesTitle,
                         style: name,
                       ),
                       content: Text(
@@ -67,7 +67,7 @@ class LatestNumbers extends StatelessWidget {
                         textAlign: TextAlign.left,
                       )),
                   StatCard(
-                    title: Text("GLOBAL DEATHS", style: name),
+                    title: Text(S.of(context).latestNumbersPageGlobalDeaths, style: name),
                     content: Text(
                       hasGlobalStats && globalStats['deaths'] != null
                           ? numFmt.format(globalStats['deaths'])
@@ -81,7 +81,9 @@ class LatestNumbers extends StatelessWidget {
                     height: 25,
                   ),
                   Text(
-                    snapshot.hasData ? 'Last updated $lastUpd' : 'Updating…',
+                    snapshot.hasData
+                        ? S.of(context).latestNumbersPageLastUpdated(lastUpd)
+                        : S.of(context).latestNumbersPageUpdating,
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
                   ),
@@ -103,7 +105,7 @@ class LatestNumbers extends StatelessWidget {
                     ),
                     child: PageButton(
                       Color(0xff1A458E),
-                      "View live data",
+                      S.of(context).latestNumbersPageViewLiveData,
                       () {
                         return _launchStatsDashboard(context);
                       },
