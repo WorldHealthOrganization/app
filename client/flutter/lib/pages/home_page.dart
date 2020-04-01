@@ -181,10 +181,13 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         _logAnalyticsEvent('Donate');
                         launch(S.of(context).homePagePageSliverListDonateUrl);
-                      })),
+                    })
+              ),
+              Divider(),
+
               ListTile(
-                leading: Icon(Icons.share),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp),
+                leading: Icon(Icons.share, color: Color(0xffCA6B35)),
+                title: Text(S.of(context).homePagePageSliverListShareTheApp, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   analytics.logShare(
@@ -193,13 +196,15 @@ class _HomePageState extends State<HomePage> {
                       S.of(context).commonWhoAppShareIconButtonDescription);
                 },
               ),
+              Divider(),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text(S.of(context).homePagePageSliverListSettings),
+                leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
+                title: Text(S.of(context).homePagePageSliverListSettings, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () => Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => SettingsPage())),
               ),
+              Divider(),
               ListTile(
                 title: Text(S.of(context).homePagePageSliverListAboutTheApp),
                 trailing: Icon(Icons.arrow_forward_ios),
@@ -209,6 +214,7 @@ class _HomePageState extends State<HomePage> {
                     .push(MaterialPageRoute(builder: (c) => AboutPage()));
                 },
               ),
+              Divider(),
               Container(
                 height: 25,
               ),
