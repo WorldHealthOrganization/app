@@ -20,6 +20,7 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
       flexibleSpace: FlexibleSpaceBar(background:_buildHeader()),
