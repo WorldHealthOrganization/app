@@ -1,20 +1,20 @@
 import 'package:WHOFlutter/api/jitter_location.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
 class LocationSharingPage extends StatefulWidget {
-  final OnboardingPage onboardingPage;
-  LocationSharingPage(this.onboardingPage);
+  final VoidCallback onNext;
+
+  const LocationSharingPage({@required this.onNext}) : assert(onNext != null);
+
   @override
-  _LocationSharingPageState createState() => _LocationSharingPageState(this.onboardingPage);
+  _LocationSharingPageState createState() => _LocationSharingPageState();
 }
 
 class _LocationSharingPageState extends State<LocationSharingPage> {
-  final OnboardingPage onboardingPage;
-  _LocationSharingPageState(this.onboardingPage);
+  _LocationSharingPageState();
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
     );
   }
 
-  void _allowLocationSharing() async {
-    await Location().requestPermission();    
-    if(await Location().hasPermission() == PermissionStatus.granted) {
+  Future<void> _allowLocationSharing() async {
+    await Location().requestPermission();
+    if (await Location().hasPermission() == PermissionStatus.granted) {
       LocationData location = await Location().getLocation();
       Map jitteredLocationData = JitterLocation().jitter(location.latitude, location.longitude, 5/*kms refers to kilometers*/);
       print(jitteredLocationData);
@@ -39,11 +39,11 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
     _complete();
   }
 
-  void _skipLocationSharing() async {
+  void _skipLocationSharing() {
     _complete();
   }
 
   void _complete() {
-    Navigator.pop(context);
+    widget.onNext();
   }
 }

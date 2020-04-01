@@ -1,20 +1,20 @@
+import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
-import 'package:WHOFlutter/pages/question_index.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
+import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -229,18 +229,25 @@ class _HomePageState extends State<HomePage> {
         ]);
   }
 
-  Future _pushOnboardingIfNeeded() async {
-    var onboardingComplete = await UserPreferences().getOnboardingCompleted();
+  Future<void> _pushOnboardingIfNeeded() async {
+    final onboardingComplete = await UserPreferences().getOnboardingCompleted();
 
     // TODO: Uncomment for testing.  Remove when appropriate.
     // onboardingComplete = false;
 
     if (!onboardingComplete) {
-      await Navigator.of(context).push(MaterialPageRoute(
-          fullscreenDialog: true, builder: (c) => OnboardingPage()));
+      final onboardingCompleted = await Navigator.of(context).push<bool>(
+        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
+      );
 
-      await UserPreferences().setAnalyticsEnabled(true);
-      await UserPreferences().setOnboardingCompleted(true);
+      if (onboardingCompleted) {
+        await UserPreferences().setAnalyticsEnabled(true);
+        await UserPreferences().setOnboardingCompleted(true);
+      } else {
+        // This will close the app.
+        // As the user pressed back, and did not finish onboarding, that's the correct thing to do.
+        await SystemNavigator.pop();
+      }
     }
   }
 }

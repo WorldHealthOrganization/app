@@ -1,15 +1,14 @@
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/constants.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LegalLandingPage extends StatelessWidget {
-  final OnboardingPage onboardingPage;
+  final VoidCallback onNext;
 
-  LegalLandingPage(this.onboardingPage);
+  const LegalLandingPage({@required this.onNext}) : assert(onNext != null);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class LegalLandingPage extends StatelessWidget {
             PageButton(
               Constants.primaryColor,
               S.of(context).legalLandingPageButtonGetStarted,
-              ()=>this.onboardingPage.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
+              onNext,
               verticalPadding: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
