@@ -15,10 +15,10 @@ class TravelAdvice extends StatelessWidget {
               delegate: SliverChildListDelegate([
             Container(
               color: Color(0xffD82037),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: Html(
                 data: S.of(context).travelAdviceContainerText,
-                defaultTextStyle: TextStyle(color: Colors.white, fontSize: 16),
+                defaultTextStyle: TextStyle(height: 1.375, fontSize: 16,color: Colors.white),
               ),
             ),
             Padding(
@@ -57,7 +57,7 @@ class TravelAdvice extends StatelessWidget {
                     S.of(context).travelAdvicePageButtonGeneralRecommendationsDescription,
                 verticalPadding: 16,
                 titleStyle:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    TextStyle(height: 1.375,fontSize: 16, fontWeight: FontWeight.bold),
               ),
             )
           ])),
@@ -91,7 +91,7 @@ class TravelAdviceListItem extends StatelessWidget {
           Flexible(
               child: Text(
             this.description,
-            style: TextStyle(fontSize: 18, color: Color(0xff3C4245)),
+            style: TextStyle(height: 1.375,fontSize: 16, color: Color(0xff3C4245)),
           )),
         ],
       ),
