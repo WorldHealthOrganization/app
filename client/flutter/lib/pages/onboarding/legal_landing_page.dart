@@ -13,6 +13,7 @@ class LegalLandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
