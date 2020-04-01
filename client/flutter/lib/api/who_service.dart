@@ -33,6 +33,18 @@ class WhoService {
     return true;
   }
 
+
+  static Future<Map<String,dynamic>> getCaseStats() async {
+    Map<String, String> headers = await _getHeaders();
+    var url = '$serviceUrl/getCaseStats';
+    var response = await http.post(url, headers: headers, body: '');
+    if (response.statusCode != 200) {
+      throw Exception("Error status code: ${response.statusCode}");
+    }
+    // TODO: Should use protobuf.
+    return jsonDecode(response.body);
+  }
+
   static Future<Map<String, String>> _getHeaders() async {
     var clientId = await UserPreferences().getClientUuid();
     var headers = {

@@ -1,7 +1,7 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/components/list_of_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +39,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListOfItems(
+    return PageScaffold(
+      context,
+      body:[SliverList(
+        delegate:SliverChildListDelegate(
       [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
@@ -47,7 +50,7 @@ class _SettingsPageState extends State<SettingsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ListTile(
-                leading: SelectableText(
+                leading: Text(
                   S.of(context).homePagePageSliverListSettingsHeader1,
                   textAlign: TextAlign.start,
                   style: TextStyle(
@@ -67,9 +70,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0, vertical: 10.0),
-                child: SelectableText(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                child: Text(
                   S.of(context).homePagePageSliverListSettingsDataCollection,
                   style: Theme.of(context).textTheme.subhead,
                 ),
@@ -81,6 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
       ],
+        ))],
       title: S.of(context).homePagePageSliverListSettings,
     );
   }
