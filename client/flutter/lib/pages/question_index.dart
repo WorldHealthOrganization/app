@@ -1,4 +1,3 @@
-
 import 'dart:math';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
@@ -95,6 +94,9 @@ class _QuestionTileState extends State<QuestionTile>
     with TickerProviderStateMixin {
   AnimationController rotationController;
 
+  Color titleColor;
+
+
   @override
   void initState() {
     super.initState();
@@ -103,6 +105,8 @@ class _QuestionTileState extends State<QuestionTile>
         vsync: this,
         lowerBound: 0,
         upperBound: pi / 4);
+
+    titleColor = Colors.black;
   }
 
   @override
@@ -117,14 +121,20 @@ class _QuestionTileState extends State<QuestionTile>
           onExpansionChanged: (expanded) {
             if (expanded) {
               rotationController.forward();
+              setState(() {
+                titleColor = Color(0xff1A458E);
+              });
             } else {
               rotationController.reverse();
+              setState(() {
+                titleColor = Colors.black;
+              });
             }
           },
           key: PageStorageKey<String>(widget.questionItem.title),
           trailing: AnimatedBuilder(
             animation: rotationController,
-            child: Icon(Icons.add_circle_outline, color: Color(0xff26354E)),
+            child: Icon(Icons.add_circle_outline, color: titleColor),
             builder: (context, child) {
               return Transform.rotate(
                 angle: rotationController.value,
@@ -132,7 +142,11 @@ class _QuestionTileState extends State<QuestionTile>
               );
             },
           ),
-          title: html(widget.questionItem.title),
+          title: Html(
+            data: widget.questionItem.title,
+            defaultTextStyle: TextStyle(fontSize: 16 * MediaQuery.of(context).textScaleFactor, color: this.titleColor, fontWeight: FontWeight.bold),
+
+          ),
           children: [
             Padding(
               padding: const EdgeInsets.only(
@@ -164,11 +178,14 @@ class _QuestionTileState extends State<QuestionTile>
         if (node is dom.Element) {
           switch (node.localName) {
             case "h2":
-              return baseStyle
-                  .merge(TextStyle(fontSize: 20, color: Color(0xff26354E), fontWeight: FontWeight.w500));
+              return baseStyle.merge(TextStyle(
+                  fontSize: 20,
+                  color: Color(0xff26354E),
+                  fontWeight: FontWeight.w500));
           }
         }
-        return baseStyle.merge(TextStyle(color: Color(0xff26354E), fontWeight: FontWeight.w500));
+        return baseStyle.merge(
+            TextStyle(color: Color(0xff26354E), fontWeight: FontWeight.w500));
       },
     );
   }
