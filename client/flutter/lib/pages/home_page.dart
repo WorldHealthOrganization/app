@@ -4,6 +4,7 @@ import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
+import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
@@ -38,14 +39,6 @@ class _HomePageState extends State<HomePage> {
 
   void _initStateAsync() async {
     await _pushOnboardingIfNeeded();
-  }
-
-  _launchStatsDashboard() async {
-    var url = S.of(context).homePagePageButtonLatestNumbersUrl;
-    if (await canLaunch(url)) {
-      _logAnalyticsEvent('LatestNumbers');
-      await launch(url);
-    }
   }
 
   _logAnalyticsEvent(String name) async {
@@ -94,7 +87,11 @@ class _HomePageState extends State<HomePage> {
                 PageButton(
                   Color(0xff1A458E),
                   S.of(context).homePagePageButtonLatestNumbers,
-                  _launchStatsDashboard,
+                  () {
+                    _logAnalyticsEvent('LatestNumbers');
+                    return Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => LatestNumbers()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 PageButton(
