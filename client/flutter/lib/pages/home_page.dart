@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
         ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
         packageInfo.version, packageInfo.buildNumber)}\n'
@@ -67,12 +68,12 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(2, 1),
-                StaggeredTile.count(1, 1),
-                StaggeredTile.count(1, 1),
+                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(2, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
+                StaggeredTile.count(1, tileHeightFactor),
               ],
               children: [
                 PageButton(
@@ -162,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.all(15),
+                padding: EdgeInsets.all(15),
                   child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)),
