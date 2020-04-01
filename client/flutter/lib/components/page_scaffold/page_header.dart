@@ -31,25 +31,30 @@ class PageHeader extends StatelessWidget {
     List<Widget> headerItems = [
       if (this.showBackButton) BackArrow(),
       
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(this.title,
-              textScaleFactor: 1.8,
-              style: TextStyle(
-                  color: Colors.blueAccent, fontWeight: FontWeight.bold)),
-          SizedBox(height: 4),
-          Text(this.subtitle,
-              textScaleFactor: 1.0,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-        ],
-      ),
       Expanded(
-        child: Container(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            FittedBox(
+//              fit:BoxFit.fitWidth,
+              child: Text(this.title,
+                  textScaleFactor: 1.8,
+                  style: TextStyle(
+                      color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(height: 4),
+            FittedBox(
+              child: Text(this.subtitle,
+                  textScaleFactor: 1.0,
+                  style:
+                      TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
       ),
-      if(this.showLogo)Image.asset('assets/images/mark.png', width: 75)
+
+      if(this.showLogo)Image.asset('assets/images/mark.png', width: 75) else Container(width: 0,height: 0,)
     ];
     return Material(
       color: Colors.white,
