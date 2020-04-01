@@ -10,7 +10,7 @@ class PageHeader extends StatelessWidget {
 
   PageHeader(
       {@required this.title,
-      this.subtitle = "COVID-19 App",
+      this.subtitle = "COVID-19",
       this.padding = EdgeInsets.zero,
       this.showBackButton = true});
 

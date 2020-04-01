@@ -40,7 +40,7 @@ class S {
 
   String get commonWorldHealthOrganizationCoronavirusApp {
     return Intl.message(
-      'COVID-19 App',
+      'COVID-19',
       name: 'commonWorldHealthOrganizationCoronavirusApp',
       desc: '',
       args: [],
