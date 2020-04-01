@@ -3,6 +3,7 @@ import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:WHOFlutter/api/who_service.dart';
 
 
 class NotificationsPage extends StatefulWidget {
@@ -15,6 +16,7 @@ class NotificationsPage extends StatefulWidget {
 
 class _NotificationsPageState extends State<NotificationsPage> {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   @override
   Widget build(BuildContext context) {
     return PermissionRequestPage(
@@ -56,8 +58,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
     await _firebaseMessaging.getToken().then((String token) {
       assert(token != null);
       print(token);
-
-      //TODO: Make call to web service to register the token.
+      
+      WhoService.putDeviceToken(token);
     });
   }
 }
