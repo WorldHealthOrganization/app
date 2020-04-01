@@ -52,8 +52,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
     this.widget.onboardingPage.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
-  void _registerFCMToken() {
-    _firebaseMessaging.getToken().then((String token) {
+  void _registerFCMToken() async {
+    await _firebaseMessaging.getToken().then((String token) {
       assert(token != null);
       print(token);
 
