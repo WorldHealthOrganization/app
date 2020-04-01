@@ -66,7 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListProvideFeedback" : MessageLookupByLibrary.simpleMessage("Envoyer des commentaires à propos de l\'application"),
     "homePagePageSliverListSettings" : MessageLookupByLibrary.simpleMessage("Paramètres"),
     "homePagePageSliverListSettingsDataCollection" : MessageLookupByLibrary.simpleMessage("Autoriser l\'OMS à collecter des données pour l\'amélioration de l\'application à l\'aide de Google Analytics"),
-    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("Statistiques"),
+    "homePagePageSliverListSettingsHeader1" : MessageLookupByLibrary.simpleMessage("Collecte de données d\'usage"),
     "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("Langues"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Partager l\'application"),
     "homePagePageSliverListSupport" : MessageLookupByLibrary.simpleMessage("Apporter son soutien au personnel soignant"),
