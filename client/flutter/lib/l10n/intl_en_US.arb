@@ -116,5 +116,12 @@
   "aboutPageViewLicensesLinkText": "View Licenses",
   "aboutPageBuiltByCreditText": "{copyrightString} \n\n{versionString} \nBuilt by the WHO COVID-19 App Collective.",
   "aboutPageThanksToText": "Thanks to: {team}",
-  "aboutPageTitle": "About"
+  "aboutPageTitle": "About",
+  "@section": "Latest Numbers",
+  "latestNumbersPageTitle": "Latest Numbers",
+  "latestNumbersPageGlobalCasesTitle": "GLOBAL CASES",
+  "latestNumbersPageGlobalDeaths": "GLOBAL DEATHS",
+  "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
+  "latestNumbersPageUpdating": "Updating…",
+  "latestNumbersPageViewLiveData": "View live data"
 }

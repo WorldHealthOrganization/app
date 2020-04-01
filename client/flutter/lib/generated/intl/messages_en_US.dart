@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m3(year) => "© ${year} WHO";
 
+  static m4(lastUpd) => "Last updated ${lastUpd}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "LegalLandingPageTermsOfServiceLinkText" : MessageLookupByLibrary.simpleMessage("Terms of Service"),
@@ -70,6 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListSupport" : MessageLookupByLibrary.simpleMessage("Help support the\nrelief effort"),
     "homePagePageSubTitle" : MessageLookupByLibrary.simpleMessage("Virus response & tools"),
     "homePagePageTitle" : MessageLookupByLibrary.simpleMessage("COVID-19"),
+    "latestNumbersPageGlobalCasesTitle" : MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
+    "latestNumbersPageGlobalDeaths" : MessageLookupByLibrary.simpleMessage("GLOBAL DEATHS"),
+    "latestNumbersPageLastUpdated" : m4,
+    "latestNumbersPageTitle" : MessageLookupByLibrary.simpleMessage("Latest Numbers"),
+    "latestNumbersPageUpdating" : MessageLookupByLibrary.simpleMessage("Updating…"),
+    "latestNumbersPageViewLiveData" : MessageLookupByLibrary.simpleMessage("View live data"),
     "legalLandingPageAnd" : MessageLookupByLibrary.simpleMessage(" and "),
     "legalLandingPageButtonAgree" : MessageLookupByLibrary.simpleMessage("By proceeding, you agree to our\n"),
     "legalLandingPageButtonGetStarted" : MessageLookupByLibrary.simpleMessage("Get Started"),
