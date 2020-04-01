@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var travelAdviceContainerTextArray=S.of(context).travelAdviceContainerText.split('*');
     return PageScaffold(context,
     showShareBottomBar: false,
         body: [
@@ -14,10 +15,18 @@ class TravelAdvice extends StatelessWidget {
               delegate: SliverChildListDelegate([
             Container(
               color: Color(0xffD82037),
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: Text(
-                S.of(context).travelAdviceContainerText,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+              child: RichText(
+                text: TextSpan(
+                  style: TextStyle(color: Colors.white,fontSize: 16),
+                  children: <TextSpan>[
+                    TextSpan(text: travelAdviceContainerTextArray[0]),
+                    TextSpan(text: travelAdviceContainerTextArray[1],style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(text: travelAdviceContainerTextArray[2]),
+                    TextSpan(text: travelAdviceContainerTextArray[3],style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(text: travelAdviceContainerTextArray[4]),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -47,7 +56,7 @@ class TravelAdvice extends StatelessWidget {
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
               child: PageButton(
                 Color(0xff008DC9),
                 S.of(context).travelAdvicePageButtonGeneralRecommendations,
@@ -90,7 +99,7 @@ class TravelAdviceListItem extends StatelessWidget {
           Flexible(
               child: Text(
             this.description,
-            style: TextStyle(fontSize: 18, color: Color(0xff3C4245)),
+            style: TextStyle(fontSize: 16, color: Color(0xff3C4245)),
           )),
         ],
       ),
