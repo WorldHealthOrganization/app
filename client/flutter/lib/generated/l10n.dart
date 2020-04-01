@@ -49,7 +49,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 Guide App https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -535,7 +535,7 @@ class S {
 
   String get travelAdvicePageListItem1Text {
     return Intl.message(
-      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries',
+      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries.',
       name: 'travelAdvicePageListItem1Text',
       desc: '',
       args: [],
@@ -607,7 +607,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendationsDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'travelAdvicePageButtonGeneralRecommendationsDescription',
       desc: '',
       args: [],
