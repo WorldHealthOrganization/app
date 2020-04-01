@@ -272,7 +272,7 @@ class S {
 
   String get homePagePageButtonQuestions {
     return Intl.message(
-      'Questions',
+      'Questions & Answers',
       name: 'homePagePageButtonQuestions',
       desc: '',
       args: [],
@@ -299,7 +299,7 @@ class S {
 
   String get homePagePageButtonYourQuestionsAnswered {
     return Intl.message(
-      'Your \nQuestions \nAnswered',
+      'Questions & Answers',
       name: 'homePagePageButtonYourQuestionsAnswered',
       desc: '',
       args: [],
@@ -983,7 +983,7 @@ class S {
 
   String get aboutPageTitle {
     return Intl.message(
-      'About',
+      'About the App',
       name: 'aboutPageTitle',
       desc: '',
       args: [],
