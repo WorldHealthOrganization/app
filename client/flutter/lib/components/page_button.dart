@@ -47,7 +47,7 @@ class PageButton extends StatelessWidget {
                 this.title,
                 textScaleFactor: 1.0 + 1.0 * contentScale(context),
                 textAlign: TextAlign.left,
-                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w900),
+                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
               SizedBox(height: 4),
               this.description.isNotEmpty
