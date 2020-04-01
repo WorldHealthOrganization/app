@@ -76,6 +76,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
 
     testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.+"
     testCompile 'com.google.appengine:appengine-testing:+'
     testCompile 'com.google.appengine:appengine-api-stubs:+'
     testCompile 'com.google.appengine:appengine-tools-sdk:+'
