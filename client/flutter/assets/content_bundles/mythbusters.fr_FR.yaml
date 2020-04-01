@@ -42,7 +42,7 @@ contents:
       body_html: |
         <p>Non. Les vaccins contre la pneumonie tels que le vaccin antipneumococcique et le vaccin anti-Haemophilus influenza type B (Hib) ne confèrent pas de protection contre le nouveau coronavirus.</p>
 
-        <p>Le virus est si nouveau et différent qu’il nécessite un vaccin qui lui est propre. Les chercheurs travaillent à la mise au point d’un vaccin contre le 2019-nCoV et l’OMS soutient leurs travaux.</p>
+        <p>Le virus est si nouveau et différent qu’il nécessite un vaccin qui lui est propre. Les chercheurs travaillent à la mise au point d’un vaccin contre le COVID-19 et l’OMS soutient leurs travaux.</p>
 
         <p>Bien que ces vaccins ne soient pas efficaces contre le COVID-19, la vaccination contre les maladies respiratoires est fortement recommandée pour protéger votre santé.</p>
     - title_html: |
@@ -58,19 +58,35 @@ contents:
     - title_html: |
         Le nouveau coronavirus affecte-t-il les personnes âgées ou les jeunes y sont-ils également sensibles ?
       body_html: |
-        <p>Les personnes de tous âges peuvent être infectées par le nouveau coronavirus (2019-nCoV). Les personnes âgées et les personnes souffrant de maladies préexistantes (comme l’asthme, le diabète, les maladies cardiaques) semblent plus susceptibles de tomber gravement malades à cause de ce virus.</p>
+        <p>Les personnes de tous âges peuvent être infectées par le nouveau coronavirus (COVID-19). Les personnes âgées et les personnes souffrant de maladies préexistantes (comme l’asthme, le diabète, les maladies cardiaques) semblent plus susceptibles de tomber gravement malades à cause de ce virus.</p>
         <p>L’OMS conseille aux personnes de tous âges de prendre des mesures pour se protéger du virus, par exemple en suivant une bonne hygiène des mains et respiratoire. </p>
     - title_html: |
         Les antibiotiques sont-ils efficaces pour prévenir et traiter l&#39;infection par le nouveau coronavirus ?
       body_html: |
         <p>Non, les antibiotiques n’agissent pas contre les virus, mais seulement contre les bactéries.</p>
 
-        <p>Le nouveau coronavirus (2019-nCoV) est un virus et, par conséquent, les antibiotiques ne doivent pas être utilisés comme moyen de prévention ou de traitement.</p>
+        <p>Le nouveau coronavirus (COVID-19) est un virus et, par conséquent, les antibiotiques ne doivent pas être utilisés comme moyen de prévention ou de traitement.</p>
 
         <p>Cependant, si vous êtes hospitalisé pour une infection par le COVID-19, vous pouvez recevoir des antibiotiques car une co-infection bactérienne est possible.</p>
     - title_html: |
         Existe-t-il des médicaments spécifiques pour prévenir ou traiter l&#39;infection par le nouveau coronavirus ?
       body_html: |
-        <p>À ce jour, aucun médicament spécifique n’est recommandé pour prévenir ou traiter l’infection par le nouveau coronavirus (2019-nCoV).</p>
+        <p>À ce jour, aucun médicament spécifique n’est recommandé pour prévenir ou traiter l’infection par le nouveau coronavirus (COVID-19).</p>
 
         <p>Toutefois, les personnes infectées par le virus doivent recevoir des soins appropriés pour soulager et traiter les symptômes, et celles qui sont gravement malades doivent recevoir des soins de soutien optimisés. Certains traitements spécifiques sont à l’étude et seront testés dans le cadre d’essais cliniques. L’OMS contribue à accélérer les efforts de recherche et de développement avec toute une série de partenaires.</p>
+    -
+      title_html: |
+        Puis-je réutiliser un masque N95 ? Puis-je le laver ? Puis-je le stériliser avec des désinfectants pour les mains ?
+      body_html: |
+        <p>Non. Les masques faciaux, y compris les masques médicaux plats ou les masques N95, ne doivent pas être réutilisés. Si vous avez été en contact étroit avec une personne infectée par le nouveau coronavirus ou qui présente une autre infection respiratoire, le devant de votre masque doit être considéré comme contaminé. Vous devez enlever le masque sans toucher sa partie avant et le jeter de manière appropriée. Après avoir enlevé votre masque, vous devez vous nettoyer les mains avec un produit hydroalcoolique ou à l'eau et au savon.</p>
+    -
+      title_html: |
+        Est-il sans danger de recevoir une lettre ou un colis de Chine ?
+      body_html: |
+        <p>Oui, c'est sans danger. Les personnes qui reçoivent des colis en provenance de Chine ne risquent pas de contracter le nouveau coronavirus. D'après des analyses antérieures, nous savons que les coronavirus ne survivent pas longtemps sur des objets, tels que des lettres ou des colis.</p>
+    -
+      title_html: |
+        Le fait de mettre de l'huile de sésame empêche-t-il le nouveau coronavirus de pénétrer dans l'organisme ?
+      body_html: |
+        <p>Non. L'huile de sésame ne tue pas le nouveau coronavirus. Il existe des désinfectants chimiques qui peuvent tuer le COVID-19 sur les surfaces. Il s'agit notamment de désinfectants à base d'eau de Javel ou de chlore, de solvants, d'éthanol à 75%, d'acide peracétique et de chloroforme. </p>
+        <p>Cependant, ils ont peu d'impact sinon aucun sur le virus si vous les mettez sur la peau ou sous votre nez. Il peut même être dangereux de se mettre ces produits chimiques sur la peau..</p>
