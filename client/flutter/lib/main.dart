@@ -89,6 +89,14 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+    // TODO: This is not essential for basic operation but we should implement 
+    // Fires if notification settings change. 
+    // Modify user opt-in if they do. 
+    // _firebaseMessaging.onIosSettingsRegistered
+    //     .listen((IosNotificationSettings settings) {
+    // });
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

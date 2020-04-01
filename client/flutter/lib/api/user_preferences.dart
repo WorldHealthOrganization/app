@@ -46,7 +46,7 @@ class UserPreferences {
         false;
   }
 
-  Future<bool> NotificationsEnabled(bool value) async {
+  Future<bool> setNotificationsEnabled(bool value) async {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
