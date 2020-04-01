@@ -4,15 +4,12 @@ import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-class NotificationsPage extends StatefulWidget  {
-  final OnboardingPage onboardingPage;
-
-  NotificationsPage(this.onboardingPage);
 
 class NotificationsPage extends StatefulWidget {
-  final PageController pageController;
+  final OnboardingPage onboardingPage;
+  NotificationsPage(this.onboardingPage);
+  
   @override
-  NotificationsPage(this.pageController);
   _NotificationsPageState createState() => _NotificationsPageState();
 }
 
@@ -22,10 +19,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return PermissionRequestPage(
       pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
-      pageDescription:
       pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
       buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
-      backgroundImageSrc:
       backgroundImageSrc: S.of(context).notificationsPagePermissionRequestBackgroundImage,
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
@@ -54,7 +49,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _complete() {
-    this.widget.pageController.nextPage(
     this.widget.onboardingPage.pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
