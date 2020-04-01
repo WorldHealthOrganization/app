@@ -31,8 +31,7 @@ class PageHeader extends StatelessWidget {
 }
 
 class HeaderDelagate extends SliverPersistentHeaderDelegate {
-
-  final double maxHeight = 120.0;
+  final double maxHeight = 130.0;
   final double minHeight = 80.0;
 
   final String title;
@@ -61,37 +60,39 @@ class HeaderDelagate extends SliverPersistentHeaderDelegate {
   Widget _buildHeader(double currentHeight) {
     List<Widget> headerItems = [
       if (this.showBackButton) BackArrow(),
-      
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(height: this.minHeight< currentHeight-20?0:20,),
           Text(this.title,
               textScaleFactor: 1.8,
               style: TextStyle(
                   color: Colors.blueAccent, fontWeight: FontWeight.bold)),
           SizedBox(height: 4),
-          if(this.minHeight< currentHeight-20) Text(this.subtitle,
-              textScaleFactor: 1.0,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+          if (this.minHeight < currentHeight - 20) Text(this.subtitle,
+                textScaleFactor: 1.0,
+                style: TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.bold)),
         ],
       ),
       Expanded(
         child: Container(),
       ),
-      showLogo && this.minHeight<currentHeight -20 ? Image.asset('assets/images/mark.png', width: 75) : Container(),
+      showLogo && this.minHeight < currentHeight - 20
+          ? Image.asset('assets/images/mark.png', width: 75)
+          : Container(),
     ];
     return Container(
       color: Colors.white,
-      child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+      child: SafeArea(
+         bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: headerItems),
-        
+        ),
       ),
     );
   }
