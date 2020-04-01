@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
@@ -46,8 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
-        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-        packageInfo.version, packageInfo.buildNumber)}\n'
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
 
     final String copyrightString = S
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, 2 * tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(2, tileHeightFactor),
@@ -161,13 +161,24 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                   padding: EdgeInsets.all(15),
-                  child: ArrowButton()
-              ),
+                  child: ArrowButton(
+                    title: S.of(context).homePagePageSliverListDonate,
+                    color: Color(0xffCA6B35),
+                    onPressed: () {
+                      logAnalyticsEvent('Donate', this.analytics);
+                      launch(S.of(context).homePagePageSliverListDonateUrl);
+                    },
+                  )),
               Divider(),
-
               ListTile(
                 leading: Icon(Icons.share, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
+                title: Text(
+                  S.of(context).homePagePageSliverListShareTheApp,
+                  style: TextStyle(
+                      color: Color(0xffCA6B35),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20),
+                ),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   analytics.logShare(
@@ -179,7 +190,13 @@ class _HomePageState extends State<HomePage> {
               Divider(),
               ListTile(
                 leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListSettings, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
+                title: Text(
+                  S.of(context).homePagePageSliverListSettings,
+                  style: TextStyle(
+                      color: Color(0xffCA6B35),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20),
+                ),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () => Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => SettingsPage())),
@@ -191,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   logAnalyticsEvent('About', this.analytics);
                   return Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => AboutPage()));
+                      .push(MaterialPageRoute(builder: (c) => AboutPage()));
                 },
               ),
               Divider(),
@@ -219,7 +236,8 @@ class _HomePageState extends State<HomePage> {
 
     if (!onboardingComplete) {
       final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
+        MaterialPageRoute(
+            fullscreenDialog: true, builder: (_) => OnboardingPage()),
       );
 
       if (onboardingCompleted) {
@@ -231,36 +249,5 @@ class _HomePageState extends State<HomePage> {
         await SystemNavigator.pop();
       }
     }
-  }
-}
-
-class ArrowButton extends StatelessWidget {
-  const ArrowButton({
-    this.analytics,
-    this.analyticsTag
-  });
-
-  final FirebaseAnalytics analytics;
-  final String analyticsTag;
-
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40)),
-        padding:
-            EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-        color: Color(0xffCA6B35),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(S.of(context).homePagePageSliverListDonate),
-            Icon(Icons.arrow_forward_ios)
-          ],
-        ),
-        onPressed: () {
-          if(analytics != null) logAnalyticsEvent('Donate', this.analytics);
-          launch(S.of(context).homePagePageSliverListDonateUrl);
-      });
   }
 }

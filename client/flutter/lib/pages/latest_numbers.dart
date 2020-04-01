@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/api/who_service.dart';
+import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,8 +54,10 @@ class LatestNumbers extends StatelessWidget {
                 } else if (!snapshot.hasData) {
                   return SliverList(
                     delegate: SliverChildListDelegate([
-                      SizedBox(height: 15,),
-                       Text(
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
                         "No data returned",
                         textAlign: TextAlign.center,
                       ),
@@ -64,11 +67,13 @@ class LatestNumbers extends StatelessWidget {
                       ),
                     ]),
                   );
-                } else if (true) {
+                } else if (snapshot.hasError) {
                   return SliverList(
                     delegate: SliverChildListDelegate([
-                      SizedBox(height: 15,),
-                       Text(
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
                         "Error connecting",
                         textAlign: TextAlign.center,
                       ),
@@ -76,7 +81,6 @@ class LatestNumbers extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: ViewLiveDataButton(),
                       ),
-                     
                     ]),
                   );
                 } else {
@@ -153,14 +157,13 @@ class ViewLiveDataButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageButton(
-      Color(0xff1A458E),
-      "View live data",
-      () {
-        return _launchStatsDashboard(context);
-      },
-      mainAxisAlignment: MainAxisAlignment.start,
-    );
+    return ArrowButton(
+        title: "View live data",
+        color: Color(0xff008DC9),
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w600
+        ),
+        onPressed: () => _launchStatsDashboard(context));
   }
 }
 
