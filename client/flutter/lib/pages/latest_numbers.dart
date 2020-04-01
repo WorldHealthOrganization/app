@@ -1,6 +1,5 @@
 import 'package:WHOFlutter/api/who_service.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
-import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
