@@ -67,6 +67,7 @@ class _HomePageState extends State<HomePage> {
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,
+        showLogoInHeader: true,
         body: [
           SliverPadding(
             padding: EdgeInsets.all(16),

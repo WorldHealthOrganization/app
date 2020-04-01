@@ -7,21 +7,61 @@ class PageHeader extends StatelessWidget {
 
   final EdgeInsets padding;
   final bool showBackButton;
+  final bool showLogo;
 
-  PageHeader(
-      {@required this.title,
-      this.subtitle = "COVID-19 App",
-      this.padding = EdgeInsets.zero,
-      this.showBackButton = true});
+  PageHeader({
+    @required this.title,
+    this.subtitle = "COVID-19 App",
+    this.padding = EdgeInsets.zero,
+    this.showBackButton = true,
+    this.showLogo = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return FlexibleSpaceBar(background: _buildHeader());
+    return SliverPersistentHeader(
+        pinned: true,
+        delegate: HeaderDelagate(
+            title: this.title,
+            subtitle: this.subtitle,
+            padding: this.padding,
+            showBackButton: this.showBackButton,
+            showLogo: this.showLogo));
+  }
+}
+
+class HeaderDelagate extends SliverPersistentHeaderDelegate {
+
+  final double maxHeight = 120.0;
+  final double minHeight = 80.0;
+
+  final String title;
+  final String subtitle;
+
+  final EdgeInsets padding;
+  final bool showBackButton;
+  final bool showLogo;
+
+  HeaderDelagate({
+    @required this.title,
+    @required this.subtitle,
+    @required this.padding,
+    @required this.showBackButton,
+    @required this.showLogo,
+  });
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return LayoutBuilder(builder: (context, constraints) {
+      final double currentHeight = constraints.maxHeight;
+      return _buildHeader(currentHeight);
+    });
   }
 
-  SafeArea _buildHeader() {
+  Widget _buildHeader(double currentHeight) {
     List<Widget> headerItems = [
-      this.showBackButton ? _buildBackArrow() : null,
+      if (this.showBackButton) BackArrow(),
+      
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,41 +71,37 @@ class PageHeader extends StatelessWidget {
               style: TextStyle(
                   color: Colors.blueAccent, fontWeight: FontWeight.bold)),
           SizedBox(height: 4),
-          Text(this.subtitle,
+          if(this.minHeight< currentHeight-20) Text(this.subtitle,
               textScaleFactor: 1.0,
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         ],
       ),
-      Image.asset('assets/images/mark.png', width: 75),
+      Expanded(
+        child: Container(),
+      ),
+      showLogo && this.minHeight<currentHeight -20 ? Image.asset('assets/images/mark.png', width: 75) : Container(),
     ];
-    headerItems.removeWhere((element) => element == null);
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: headerItems),
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: headerItems),
+        ),
       ),
     );
   }
 
-  Widget _buildBackArrow() {
-    return BackButton();
-  }
-}
-
-class BackButton extends StatelessWidget {
-  const BackButton({
-    Key key,
-  }) : super(key: key);
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate _) => true;
 
   @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: BackArrow(),
-      onPressed: () => Navigator.pop(context),
-    );
-  }
+  double get maxExtent => this.maxHeight;
+
+  @override
+  double get minExtent => this.minHeight;
 }
