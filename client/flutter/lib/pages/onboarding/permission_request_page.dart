@@ -39,34 +39,43 @@ class PermissionRequestPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Spacer(flex: 5),
                 Expanded(
-                  flex: 4,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        this.pageTitle,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xff1A458E),
-                            letterSpacing: -0.5,),
-                        textScaleFactor: 2.5,
+                  flex: 3,
+                  child: Align(
+                    alignment: Alignment(0, 0.8),
+                    child: ConstrainedBox(
+                      // Allows the titles of adjacent pages to stay vertically
+                      // aligned while allowing the widget to grow to prevent
+                      // an overflow
+                      constraints: BoxConstraints(minHeight: 180),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text(
+                            this.pageTitle,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xff1A458E),
+                              letterSpacing: -0.5,),
+                            textScaleFactor: 2.5,
+                          ),
+                          SizedBox(height: 18),
+                          Text(
+                            this.pageDescription,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff26354E),
+                                height: 1.2),
+                            textScaleFactor: 1.2,
+                          )
+                        ],
                       ),
-                      SizedBox(height: 18),
-                      Text(
-                        this.pageDescription,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff26354E),
-                            height: 1.2),
-                        textScaleFactor: 1.2,
-                      )
-                    ],
+                    ),
                   ),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 1,
                   child: Column(
                     children: <Widget>[
                       Material(

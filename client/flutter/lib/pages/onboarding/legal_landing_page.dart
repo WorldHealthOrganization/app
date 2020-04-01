@@ -19,7 +19,7 @@ class LegalLandingPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Expanded(
-              flex: 9,
+              flex: 3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -38,7 +38,7 @@ class LegalLandingPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 1,
               child: Column(
                 children: <Widget>[
                   PageButton(
