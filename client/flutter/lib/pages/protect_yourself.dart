@@ -40,18 +40,28 @@ Text _message(String input) {
     }
 
     spans.add(
-      TextSpan(text: value, style: bold),
+      TextSpan(
+          text: value,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xff3C4245),
+            fontSize: 16,
+          )),
     );
     before = match.end;
   }
 
   spans.add(
     TextSpan(
-      text: input.substring(before),
-    ),
+        text: input.substring(before),
+        style: TextStyle(
+          color: Color(0xff3C4245),
+          fontSize: 16,
+        )),
   );
   return Text.rich(
-    TextSpan(style: normal, children: spans),
+    TextSpan(style: TextStyle(
+    ), children: spans),
   );
 }
 
@@ -149,6 +159,7 @@ class ProtectYourselfCard extends StatelessWidget {
     @required this.message,
     @required this.child,
   });
+
   final Text message;
   final Widget child;
 
@@ -180,7 +191,7 @@ class ProtectYourselfCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
-                vertical: 20,
+                vertical: 22,
               ),
               child: message,
             ),
