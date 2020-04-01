@@ -1,7 +1,7 @@
 {
   "@section": "Common strings",
   "commonWorldHealthOrganization": "World Health Organization",
-  "commonWorldHealthOrganizationCoronavirusApp": "COVID-19 App",
+  "commonWorldHealthOrganizationCoronavirusApp": "COVID-19",
   "commonWhoAppShareIconButtonDescription": "Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app",
   "commonWorldHealthOrganizationCoronavirusAppVersion": "Version {version} ({buildNumber})",
   "commonWorldHealthOrganizationCoronavirusCopyright": "© {year} WHO",

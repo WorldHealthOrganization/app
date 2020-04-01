@@ -244,8 +244,8 @@ class _HomePageState extends State<HomePage> {
       );
 
       if (onboardingCompleted) {
-        await UserPreferences().setAnalyticsEnabled(true);
         await UserPreferences().setOnboardingCompleted(true);
+        await UserPreferences().setAnalyticsEnabled(true);
       } else {
         // This will close the app.
         // As the user pressed back, and did not finish onboarding, that's the correct thing to do.

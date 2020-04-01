@@ -44,7 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "commonPermissionRequestPageButtonSkip" : MessageLookupByLibrary.simpleMessage("Skip"),
     "commonWhoAppShareIconButtonDescription" : MessageLookupByLibrary.simpleMessage("Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app"),
     "commonWorldHealthOrganization" : MessageLookupByLibrary.simpleMessage("World Health Organization"),
-    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19 App"),
+    "commonWorldHealthOrganizationCoronavirusApp" : MessageLookupByLibrary.simpleMessage("COVID-19"),
     "commonWorldHealthOrganizationCoronavirusAppVersion" : m2,
     "commonWorldHealthOrganizationCoronavirusCopyright" : m3,
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),

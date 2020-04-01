@@ -29,7 +29,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _skipNotifications() async {
-    Navigator.pop(context);
+    _complete();
   }
 
   void _complete() {
