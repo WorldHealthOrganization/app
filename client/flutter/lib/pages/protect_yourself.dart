@@ -46,6 +46,7 @@ Text _message(String input) {
             fontWeight: FontWeight.bold,
             color: Color(0xff3C4245),
             fontSize: 16,
+            height: 1.375,
           )),
     );
     before = match.end;
@@ -57,6 +58,7 @@ Text _message(String input) {
         style: TextStyle(
           color: Color(0xff3C4245),
           fontSize: 16,
+          height: 1.375,
         )),
   );
   return Text.rich(
@@ -190,7 +192,7 @@ class ProtectYourselfCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
-                vertical: 22,
+                vertical: 20,
               ),
               child: message,
             ),
