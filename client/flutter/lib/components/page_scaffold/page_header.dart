@@ -66,6 +66,7 @@ class HeaderDelagate extends SliverPersistentHeaderDelegate {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(height: this.minHeight< currentHeight-20?0:20,),
           Text(this.title,
               textScaleFactor: 1.8,
               style: TextStyle(
@@ -84,14 +85,13 @@ class HeaderDelagate extends SliverPersistentHeaderDelegate {
     ];
     return Container(
       color: Colors.white,
-      child: SafeArea(
-        child: Padding(
+      child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: headerItems),
-        ),
+        
       ),
     );
   }
