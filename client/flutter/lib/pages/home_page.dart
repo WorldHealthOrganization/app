@@ -182,40 +182,86 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         _logAnalyticsEvent('Donate');
                         launch(S.of(context).homePagePageSliverListDonateUrl);
-                    })
+                      })),
+              Divider(height: 1),
+              Material(
+                color: Colors.white,
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  leading: Icon(Icons.share, color: Color(0xffCA6B35)),
+                  title: Text(
+                    S.of(context).homePagePageSliverListShareTheApp,
+                    style: TextStyle(
+                      color: Color(0xffCA6B35),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xFFC9CDD6),
+                  ),
+                  onTap: () {
+                    analytics.logShare(
+                        contentType: 'App',
+                        itemId: null,
+                        method: 'Website link');
+                    Share.share(
+                        S.of(context).commonWhoAppShareIconButtonDescription);
+                  },
+                ),
               ),
-              Divider(),
-
-              ListTile(
-                leading: Icon(Icons.share, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  analytics.logShare(
-                      contentType: 'App', itemId: null, method: 'Website link');
-                  Share.share(
-                      S.of(context).commonWhoAppShareIconButtonDescription);
-                },
+              Divider(height: 1),
+              Material(
+                color: Colors.white,
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
+                  title: Text(
+                    S.of(context).homePagePageSliverListSettings,
+                    style: TextStyle(
+                        color: Color(0xffCA6B35),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xFFC9CDD6),
+                  ),
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+                ),
               ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListSettings, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+              Divider(height: 1),
+              Material(
+                color: Colors.white,
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  title: Text(
+                    S.of(context).homePagePageSliverListAboutTheApp,
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xFFC9CDD6),
+                  ),
+                  onTap: () {
+                    _logAnalyticsEvent('About');
+                    return Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => AboutPage()));
+                  },
+                ),
               ),
-              Divider(),
-              ListTile(
-                title: Text(S.of(context).homePagePageSliverListAboutTheApp),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  _logAnalyticsEvent('About');
-                  return Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => AboutPage()));
-                },
-              ),
-              Divider(),
+              Divider(height: 0),
               Container(
                 height: 25,
               ),

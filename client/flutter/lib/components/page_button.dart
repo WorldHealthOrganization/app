@@ -21,7 +21,7 @@ class PageButton extends StatelessWidget {
     this.title,
     this.onPressed, {
     this.description = "",
-    this.borderRadius = 25.0,
+    this.borderRadius = 16,
     this.verticalPadding = 15.0,
     this.horizontalPadding = 8.0,
     this.crossAxisAlignment = CrossAxisAlignment.start,
