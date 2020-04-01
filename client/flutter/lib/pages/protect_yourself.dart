@@ -60,8 +60,7 @@ Text _message(String input) {
         )),
   );
   return Text.rich(
-    TextSpan(style: TextStyle(
-    ), children: spans),
+    TextSpan(children: spans),
   );
 }
 
