@@ -13,6 +13,7 @@ class PageScaffold extends StatelessWidget {
   final bool showBackButton;
   final bool showShareBottomBar;
   final bool showLogoInHeader;
+  final ScrollController scrollController;
 
   PageScaffold(
     this.context, {
@@ -23,6 +24,7 @@ class PageScaffold extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
     this.showLogoInHeader = false,
+    this.scrollController
   });
 
   @override
@@ -33,19 +35,22 @@ class PageScaffold extends StatelessWidget {
           padding: this.padding,
           child: Stack(
             children: <Widget>[
-              CustomScrollView(slivers: [
-                PageHeader(
-                  title: this.title,
-                  subtitle: this.subtitle,
-                  padding: this.padding,
-                  showBackButton: this.showBackButton,
-                  showLogo: this.showLogoInHeader,
-                ),
-                ...this.body,
-                SliverToBoxAdapter(
-                  child: SizedBox(height: 70),
-                ),
-              ]),
+              CustomScrollView(
+                slivers: [
+                  PageHeader(
+                    title: this.title,
+                    subtitle: this.subtitle,
+                    padding: this.padding,
+                    showBackButton: this.showBackButton,
+                    showLogo: this.showLogoInHeader,
+                  ),
+                  ...this.body,
+                  SliverToBoxAdapter(
+                    child: SizedBox(height: 70),
+                  ),
+                ],
+                controller: this.scrollController
+              ),
               if (this.showShareBottomBar) ShareBar()
             ],
           ),

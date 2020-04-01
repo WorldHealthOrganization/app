@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:async';
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
@@ -55,9 +56,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   Widget _buildPage() {
+    final scrollController = ScrollController();
     List items = (_questions ?? [])
         .map((questionData) => QuestionTile(
               questionItem: questionData,
+              scrollController: scrollController
             ))
         .toList();
 
@@ -75,6 +78,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
               ))
       ],
       title: widget.title,
+      scrollController: scrollController,
     );
   }
 }
@@ -82,9 +86,11 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 class QuestionTile extends StatefulWidget {
   const QuestionTile({
     @required this.questionItem,
+    this.scrollController
   });
 
   final QuestionItem questionItem;
+  final ScrollController scrollController;
 
   @override
   _QuestionTileState createState() => _QuestionTileState();
@@ -123,6 +129,17 @@ class _QuestionTileState extends State<QuestionTile>
               rotationController.forward();
               setState(() {
                 titleColor = Color(0xff1A458E);
+              });
+              // Timer to wait for ExpansionTile to fully expand
+              Timer(Duration(milliseconds: 500), () {
+                final RenderBox renderBox = this.context.findRenderObject();
+                final offset = renderBox.localToGlobal(Offset.zero);
+                double statusBarHeight = MediaQuery.of(context).padding.top;
+                widget.scrollController.animateTo(
+                  widget.scrollController.offset + offset.dy - statusBarHeight,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.ease
+                );
               });
             } else {
               rotationController.reverse();
