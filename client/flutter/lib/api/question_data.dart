@@ -1,19 +1,19 @@
 import 'package:WHOFlutter/api/content_loading.dart';
+import 'package:WHOFlutter/models/question.dart';
 import 'package:flutter/cupertino.dart';
 
 class QuestionData {
-  static Future<List<QuestionItem>> yourQuestionsAnswered(
+  static Future<List<Question>> yourQuestionsAnswered(
       BuildContext context) async {
     return _load(context, "your_questions_answered");
   }
 
-  static Future<List<QuestionItem>> whoMythbusters(BuildContext context) async {
+  static Future<List<Question>> whoMythbusters(BuildContext context) async {
     return _load(context, "mythbusters");
   }
 
   /// Load a content bundle and interpret it as question data.
-  static Future<List<QuestionItem>> _load(
-      BuildContext context, String name) async {
+  static Future<List<Question>> _load(BuildContext context, String name) async {
     try {
       var bundle = await ContentLoading().load(context, name);
 
@@ -23,18 +23,11 @@ class QuestionData {
 
       return bundle.contents
           .map((item) =>
-              QuestionItem(title: item['title_html'], body: item['body_html']))
+              Question(title: item['title_html'], body: item['body_html']))
           .toList();
     } catch (err) {
       print("Error loading question data: $err");
       return [];
     }
   }
-}
-
-class QuestionItem {
-  String title;
-  String body;
-
-  QuestionItem({@required this.title, @required this.body});
 }

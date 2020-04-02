@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/providers/question/index_provider.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
@@ -16,8 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-
 
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
@@ -85,7 +83,7 @@ class HomePage extends StatelessWidget {
                     _logAnalyticsEvent('QuestionsAnswered');
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
-                              dataSource: QuestionData.yourQuestionsAnswered,
+                              type: QuestionIndexType.yourQuestionsAnswered,
                               title: S.of(context).homePagePageButtonQuestions,
                             )));
                   },
@@ -100,7 +98,7 @@ class HomePage extends StatelessWidget {
                     _logAnalyticsEvent('GetTheFacts');
                     return Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => QuestionIndexPage(
-                              dataSource: QuestionData.whoMythbusters,
+                              type: QuestionIndexType.whoMythbusters,
                               title: S
                                   .of(context)
                                   .homePagePageButtonWHOMythBusters,
@@ -157,7 +155,6 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -252,5 +249,4 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
-
 }
