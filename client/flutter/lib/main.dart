@@ -9,6 +9,7 @@ import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -44,6 +45,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   _MyAppState(this.analytics, this.observer);
   final FirebaseAnalytics analytics;
   final FirebaseAnalyticsObserver observer;
@@ -54,6 +57,22 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _registerLicenses();
+
+    // onMessage: Fires when app is foreground
+    // onLaunch: Fires when user taps and app is in background.
+    // onResume: Fires when user taps and app is terminated
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -78,6 +97,14 @@ class _MyAppState extends State<MyApp> {
       ]);
     });
   }
+
+    // TODO: This is not essential for basic operation but we should implement 
+    // Fires if notification settings change. 
+    // Modify user opt-in if they do. 
+    // _firebaseMessaging.onIosSettingsRegistered
+    //     .listen((IosNotificationSettings settings) {
+    // });
+
 
   @override
   Widget build(BuildContext context) {
