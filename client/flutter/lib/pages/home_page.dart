@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -148,23 +149,15 @@ class HomePage extends StatelessWidget {
               ),
               Padding(
                   padding: EdgeInsets.all(15),
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-                      color: Color(0xffCA6B35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(S.of(context).homePagePageSliverListDonate),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
-                      onPressed: () {
-                        _logAnalyticsEvent('Donate');
-                        launch(S.of(context).homePagePageSliverListDonateUrl);
-                      })),
+                  child: ArrowButton(
+                    title: S.of(context).homePagePageSliverListDonate,
+                    color: Color(0xffCA6B35),
+                    onPressed: () {
+                      _logAnalyticsEvent('Donate');
+                      launch(S.of(context).homePagePageSliverListDonateUrl);
+                    },
+                  )),
+
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -259,4 +252,5 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
+
 }
