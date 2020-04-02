@@ -94,7 +94,8 @@ class _QuestionTileState extends State<QuestionTile>
     with TickerProviderStateMixin {
   AnimationController rotationController;
 
-  Color titleColor;
+  Color _titleColor;
+  Color _iconColor;
 
   @override
   void initState() {
@@ -105,7 +106,8 @@ class _QuestionTileState extends State<QuestionTile>
         lowerBound: 0,
         upperBound: pi / 4);
 
-    titleColor = Colors.black;
+    _titleColor = Colors.black;
+    _iconColor = Color(0xff3C4245);
   }
 
   @override
@@ -118,14 +120,22 @@ class _QuestionTileState extends State<QuestionTile>
           onExpansionChanged: (expanded) {
             if (expanded) {
               rotationController.forward();
+
+              _iconColor = Color(0xff1A458E);
+              _titleColor = Color(0xff1A458E);
             } else {
               rotationController.reverse();
+
+              _iconColor = Color(0xff3C4245);
+              _titleColor = Colors.black;
             }
+
+            setState(() {});
           },
           key: PageStorageKey<String>(widget.questionItem.title),
           trailing: AnimatedBuilder(
             animation: rotationController,
-            child: Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
+            child: Icon(Icons.add_circle_outline, color: _iconColor),
             builder: (context, child) {
               return Transform.rotate(
                 angle: rotationController.value,
@@ -139,6 +149,7 @@ class _QuestionTileState extends State<QuestionTile>
             data: widget.questionItem.title,
             defaultTextStyle: _titleStyle.copyWith(
               fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+              color: _titleColor
             ),),
           ),
           children: [
