@@ -20,27 +20,11 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomePage extends StatefulWidget {
-  final FirebaseAnalytics analytics;
 
+
+class HomePage extends StatelessWidget {
+  final FirebaseAnalytics analytics;
   HomePage(this.analytics);
-  @override
-  _HomePageState createState() => _HomePageState(analytics);
-}
-
-class _HomePageState extends State<HomePage> {
-  final FirebaseAnalytics analytics;
-  _HomePageState(this.analytics);
-
-  @override
-  void initState() {
-    super.initState();
-    _initStateAsync();
-  }
-
-  void _initStateAsync() async {
-    await _pushOnboardingIfNeeded();
-  }
 
   _logAnalyticsEvent(String name) async {
     await analytics.logEvent(name: name);
@@ -176,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
+
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -271,26 +256,4 @@ class _HomePageState extends State<HomePage> {
         ]);
   }
 
-  Future<void> _pushOnboardingIfNeeded() async {
-    final onboardingComplete = await UserPreferences().getOnboardingCompleted();
-
-    // TODO: Uncomment for testing.  Remove when appropriate.
-    // onboardingComplete = false;
-
-    if (!onboardingComplete) {
-      final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(
-            fullscreenDialog: true, builder: (_) => OnboardingPage()),
-      );
-
-      if (onboardingCompleted) {
-        await UserPreferences().setOnboardingCompleted(true);
-        await UserPreferences().setAnalyticsEnabled(true);
-      } else {
-        // This will close the app.
-        // As the user pressed back, and did not finish onboarding, that's the correct thing to do.
-        await SystemNavigator.pop();
-      }
-    }
-  }
 }
