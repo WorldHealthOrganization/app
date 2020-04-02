@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage> {
 
     if (!onboardingComplete) {
       final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
+        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage(analytics)),
       );
 
       if (onboardingCompleted) {

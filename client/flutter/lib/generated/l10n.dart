@@ -272,7 +272,7 @@ class S {
 
   String get homePagePageButtonQuestions {
     return Intl.message(
-      'Questions',
+      'Questions & Answers',
       name: 'homePagePageButtonQuestions',
       desc: '',
       args: [],
@@ -299,7 +299,7 @@ class S {
 
   String get homePagePageButtonYourQuestionsAnswered {
     return Intl.message(
-      'Your \nQuestions \nAnswered',
+      'Questions & Answers',
       name: 'homePagePageButtonYourQuestionsAnswered',
       desc: '',
       args: [],
@@ -515,7 +515,7 @@ class S {
 
   String get travelAdviceContainerText {
     return Intl.message(
-      'WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.',
+      '<p>WHO continues to <b>advise against the application of travel or trade restrictions</b> to countries experiencing COVID-19 outbreaks.</p> <p><b>It is prudent for travellers who are sick to delay or avoid travel to affected areas</b>, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.</p>',
       name: 'travelAdviceContainerText',
       desc: '',
       args: [],
@@ -587,7 +587,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendations {
     return Intl.message(
-      'General\nRecommendations',
+      'General Recommendations',
       name: 'travelAdvicePageButtonGeneralRecommendations',
       desc: '',
       args: [],
@@ -983,7 +983,7 @@ class S {
 
   String get aboutPageTitle {
     return Intl.message(
-      'About',
+      'About the App',
       name: 'aboutPageTitle',
       desc: '',
       args: [],
@@ -1050,7 +1050,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
     ];
   }
 
