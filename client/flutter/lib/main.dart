@@ -1,3 +1,5 @@
+import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,13 +25,20 @@ void main() async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  runApp(MyApp());
+  final bool onboardingComplete =
+      await UserPreferences().getOnboardingCompleted();
+
+  runApp(MyApp(showOnboarding: !onboardingComplete));
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key key, @required this.showOnboarding}) : super(key: key);
+  final bool showOnboarding;
+
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
       FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   _MyAppState createState() => _MyAppState(analytics, observer);
 }
@@ -88,14 +97,18 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         dividerColor: Color(0xffC9CDD6),
         buttonTheme: ButtonThemeData(
-            buttonColor: Constants.primaryColor,
-            textTheme: ButtonTextTheme.accent),
+          buttonColor: Constants.primaryColor,
+          textTheme: ButtonTextTheme.accent,
+        ),
       ),
       home: Directionality(
-          child: HomePage(analytics),
-          textDirection:
-              GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
-                  .textDirection),
+        child: widget.showOnboarding
+            ? OnboardingPage(analytics)
+            : HomePage(analytics),
+        textDirection: GlobalWidgetsLocalizations(
+          Locale(Intl.getCurrentLocale()),
+        ).textDirection,
+      ),
     );
   }
 }
