@@ -23,33 +23,40 @@ class PageHeader extends StatelessWidget {
       leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
-      flexibleSpace: FlexibleSpaceBar(background:_buildHeader()),
+      flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
     );
   }
 
   Widget _buildHeader() {
     List<Widget> headerItems = [
-      if (this.showBackButton) BackArrow(),
-      
-      Column(
+      if (this.showBackButton)
+        Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
+      Expanded(child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          //Todo: Decide what to do when title text overflow
           Text(this.title,
-              textScaleFactor: 1.8,
+              maxLines: 1,
+              overflow: TextOverflow.fade,
+              softWrap: false,
               style: TextStyle(
-                  color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+                  color: Color(0xff1A458E),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 24,
+                  letterSpacing: -0.5)),
           SizedBox(height: 4),
           Text(this.subtitle,
-              textScaleFactor: 1.0,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+              style: TextStyle(
+                  color: Color(0xff3C4245),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700)),
         ],
-      ),
-      Expanded(
-        child: Container(),
-      ),
-      if(this.showLogo)Image.asset('assets/images/mark.png', width: 75)
+      ),),
+      if (this.showLogo) Image.asset('assets/images/mark.png', width: 70)
     ];
     return Material(
       color: Colors.white,
@@ -64,5 +71,4 @@ class PageHeader extends StatelessWidget {
       ),
     );
   }
-
 }
