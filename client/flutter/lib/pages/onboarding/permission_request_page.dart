@@ -23,6 +23,7 @@ class PermissionRequestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.white,
       child: Stack(
         children: <Widget>[
           Center(child: Image.asset(this.backgroundImageSrc, fit: BoxFit.fitWidth, alignment: Alignment.center)),

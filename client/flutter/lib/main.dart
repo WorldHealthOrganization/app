@@ -86,12 +86,13 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
         brightness: Brightness.light,
+        dividerColor: Color(0xffC9CDD6),
         buttonTheme: ButtonThemeData(
             buttonColor: Constants.primaryColor,
             textTheme: ButtonTextTheme.accent),
       ),
       home: Directionality(
-          child: HomePage(analytics),
+          child: HomePage(analytics, Locale(Intl.getCurrentLocale())),
           textDirection:
               GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
                   .textDirection),

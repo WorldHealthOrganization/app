@@ -51,6 +51,17 @@ class UserPreferences {
     }
     return uuid;
   }
+
+  Future<String> getUserPrefLanguage() async {
+    return (await SharedPreferences.getInstance())
+        .getString(UserPreferenceKey.LanguagePreference.toString());
+  }
+
+  Future<void> setUserPrefLanguage(String lang_countryCode) async {
+    return (await SharedPreferences.getInstance())
+        .setString(UserPreferenceKey.LanguagePreference.toString(), lang_countryCode);
+  }
+
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, ClientUUID }
+enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, ClientUUID, LanguagePreference }

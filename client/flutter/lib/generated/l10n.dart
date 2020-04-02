@@ -9,7 +9,7 @@ import 'intl/messages_all.dart';
 // **************************************************************************
 
 class S {
-  S(this.localeName);
+  S();
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,15 +19,13 @@ class S {
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      return S();
     });
   } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
-
-  final String localeName;
 
   String get commonWorldHealthOrganization {
     return Intl.message(
@@ -40,7 +38,7 @@ class S {
 
   String get commonWorldHealthOrganizationCoronavirusApp {
     return Intl.message(
-      'COVID-19 App',
+      'COVID-19',
       name: 'commonWorldHealthOrganizationCoronavirusApp',
       desc: '',
       args: [],
@@ -49,14 +47,14 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 Guide App https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusAppVersion(dynamic version, dynamic buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -65,7 +63,7 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusCopyright(dynamic year) {
+  String commonWorldHealthOrganizationCoronavirusCopyright(Object year) {
     return Intl.message(
       '© $year WHO',
       name: 'commonWorldHealthOrganizationCoronavirusCopyright',
@@ -256,7 +254,7 @@ class S {
 
   String get homePagePageTitle {
     return Intl.message(
-      'Coronavirus',
+      'COVID-19',
       name: 'homePagePageTitle',
       desc: '',
       args: [],
@@ -283,7 +281,7 @@ class S {
 
   String get homePagePageButtonProtectYourself {
     return Intl.message(
-      'Protect yourself',
+      'Protect Yourself',
       name: 'homePagePageButtonProtectYourself',
       desc: '',
       args: [],
@@ -310,7 +308,7 @@ class S {
 
   String get homePagePageButtonWHOMythBusters {
     return Intl.message(
-      'WHO Myth-busters',
+      'Get the Facts',
       name: 'homePagePageButtonWHOMythBusters',
       desc: '',
       args: [],
@@ -346,7 +344,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share The App',
+      'Share the App',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -355,7 +353,7 @@ class S {
 
   String get homePagePageSliverListProvideFeedback {
     return Intl.message(
-      'Provide app feedback',
+      'Provide App Feedback',
       name: 'homePagePageSliverListProvideFeedback',
       desc: '',
       args: [],
@@ -400,7 +398,7 @@ class S {
 
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the app',
+      'About the App',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
@@ -418,7 +416,7 @@ class S {
 
   String get homePagePageSliverListSupport {
     return Intl.message(
-      'Help support the relief effort',
+      'Help support the\nrelief effort',
       name: 'homePagePageSliverListSupport',
       desc: '',
       args: [],
@@ -436,7 +434,7 @@ class S {
 
   String get homePagePageSliverListDonateUrl {
     return Intl.message(
-      'https://www.who.int/Covid19ResponseFund',
+      'https://covid19responsefund.org/',
       name: 'homePagePageSliverListDonateUrl',
       desc: '',
       args: [],
@@ -535,7 +533,7 @@ class S {
 
   String get travelAdvicePageListItem1Text {
     return Intl.message(
-      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries',
+      'Self-monitor for symptoms for 14 days and follow national protocols of receiving countries.',
       name: 'travelAdvicePageListItem1Text',
       desc: '',
       args: [],
@@ -607,7 +605,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendationsDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'travelAdvicePageButtonGeneralRecommendationsDescription',
       desc: '',
       args: [],
@@ -965,7 +963,7 @@ class S {
     );
   }
 
-  String aboutPageBuiltByCreditText(dynamic copyrightString, dynamic versionString) {
+  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -974,7 +972,7 @@ class S {
     );
   }
 
-  String aboutPageThanksToText(dynamic team) {
+  String aboutPageThanksToText(Object team) {
     return Intl.message(
       'Thanks to: $team',
       name: 'aboutPageThanksToText',
@@ -991,6 +989,60 @@ class S {
       args: [],
     );
   }
+
+  String get latestNumbersPageTitle {
+    return Intl.message(
+      'Latest Numbers',
+      name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageGlobalCasesTitle {
+    return Intl.message(
+      'GLOBAL CASES',
+      name: 'latestNumbersPageGlobalCasesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageGlobalDeaths {
+    return Intl.message(
+      'GLOBAL DEATHS',
+      name: 'latestNumbersPageGlobalDeaths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String latestNumbersPageLastUpdated(Object lastUpd) {
+    return Intl.message(
+      'Last updated $lastUpd',
+      name: 'latestNumbersPageLastUpdated',
+      desc: '',
+      args: [lastUpd],
+    );
+  }
+
+  String get latestNumbersPageUpdating {
+    return Intl.message(
+      'Updating…',
+      name: 'latestNumbersPageUpdating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageViewLiveData {
+    return Intl.message(
+      'View live data',
+      name: 'latestNumbersPageViewLiveData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -998,7 +1050,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 
