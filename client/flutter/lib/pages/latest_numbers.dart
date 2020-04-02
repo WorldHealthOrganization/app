@@ -87,7 +87,7 @@ class LatestNumbers extends StatelessWidget {
                     height: 25,
                   ),
                   Text(
-                    snapshot.hasData ? 'Last updated $lastUpd' : S.of(context).latestNumbersPageUpdating,
+                    snapshot.hasData ? S.of(context).latestNumbersPageLastUpdated(lastUpd) : S.of(context).latestNumbersPageUpdating,
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
                   ),
