@@ -52,7 +52,7 @@ class PageHeader extends StatelessWidget {
               softWrap: false,
               style: TextStyle(
                   color: Color(0xff3C4245),
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w700)),
         ],
       ),),
