@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -49,8 +50,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
-        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-        packageInfo.version, packageInfo.buildNumber)}\n'
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
 
     final String copyrightString = S
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, 2 * tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(2, tileHeightFactor),
@@ -94,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff3DA7D4),
@@ -108,7 +109,8 @@ class _HomePageState extends State<HomePage> {
                             )));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -165,24 +167,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(15),
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-                      color: Color(0xffCA6B35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(S.of(context).homePagePageSliverListDonate),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
-                      onPressed: () {
-                        _logAnalyticsEvent('Donate');
-                        launch(S.of(context).homePagePageSliverListDonateUrl);
-                      })),
+                  padding: EdgeInsets.all(15),
+                  child: ArrowButton(
+                    title: S.of(context).homePagePageSliverListDonate,
+                    color: Color(0xffCA6B35),
+                    onPressed: () {
+                      _logAnalyticsEvent('Donate');
+                      launch(S.of(context).homePagePageSliverListDonateUrl);
+                    },
+                  )),
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -286,7 +279,8 @@ class _HomePageState extends State<HomePage> {
 
     if (!onboardingComplete) {
       final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
+        MaterialPageRoute(
+            fullscreenDialog: true, builder: (_) => OnboardingPage()),
       );
 
       if (onboardingCompleted) {

@@ -133,6 +133,7 @@ class StatCard extends StatelessWidget {
         top: 24,
         left: 24,
         right: 24,
+        bottom: 6
       ),
       child: Card(
         elevation: 0,
