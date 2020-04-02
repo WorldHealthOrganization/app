@@ -95,6 +95,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
         brightness: Brightness.light,
+        appBarTheme: AppBarTheme(brightness: Brightness.light),
         dividerColor: Color(0xffC9CDD6),
         buttonTheme: ButtonThemeData(
           buttonColor: Constants.primaryColor,
