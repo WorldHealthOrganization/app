@@ -45,7 +45,8 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.0 + 1.0 * contentScale(context),
+                // textScaleFactorOf is for the device font size
+                textScaleFactor: 1.0 + contentScale(context) * MediaQuery.textScaleFactorOf(context),
                 textAlign: TextAlign.left,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
@@ -55,7 +56,7 @@ class PageButton extends StatelessWidget {
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
-                      textScaleFactor: 0.9 + 0.5 * contentScale(context),
+                      textScaleFactor: (0.9 + 0.5 * contentScale(context)) * MediaQuery.textScaleFactorOf(context),
                       style: TextStyle(fontWeight: FontWeight.w400),
                     )
                   : Container()
