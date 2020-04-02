@@ -57,12 +57,8 @@
 	<false/>
   <key>CFBundleLocalizations</key>
   <array>
-      <string>ar</string>
       <string>en</string>
-      <string>es</string>
       <string>fr</string>
-      <string>ru</string>
-      <string>zh</string>
   </array>
 </dict>
 </plist>
