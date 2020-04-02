@@ -19,6 +19,7 @@ class AboutPage extends StatelessWidget {
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
     return PageScaffold(context,
+        color: Colors.white,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
@@ -34,8 +35,7 @@ class AboutPage extends StatelessWidget {
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue),
-                      url:
-                          S.of(context).aboutPageTermsOfServiceLinkUrl,
+                      url: S.of(context).aboutPageTermsOfServiceLinkUrl,
                       onLinkTap: (v) => launch(v)),
                   TextSpan(text: "  —  "),
                   LinkTextSpan(
@@ -43,8 +43,7 @@ class AboutPage extends StatelessWidget {
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue),
-                      url:
-                          S.of(context).aboutPagetermsOfServiceLinkUrl,
+                      url: S.of(context).aboutPagetermsOfServiceLinkUrl,
                       onLinkTap: (v) => launch(v)),
                   TextSpan(text: "  —  "),
                   LinkTextSpan(
@@ -60,7 +59,9 @@ class AboutPage extends StatelessWidget {
               color: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: Text(
-                S.of(context).aboutPageBuiltByCreditText(copyrightString, versionString),
+                S
+                    .of(context)
+                    .aboutPageBuiltByCreditText(copyrightString, versionString),
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             ),
@@ -68,15 +69,23 @@ class AboutPage extends StatelessWidget {
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 child: FutureBuilder(
-                    future: DefaultAssetBundle.of(context).loadString('assets/credits.yaml'),
+                    future: DefaultAssetBundle.of(context)
+                        .loadString('assets/credits.yaml'),
                     builder: (context, snapshot) {
-                      dynamic yaml = loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
+                      dynamic yaml =
+                          loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
                       var team = List<String>.from(yaml['team'] as YamlList);
-                      team.sort((x, y) => (x.toLowerCase().compareTo(y.toLowerCase())));
-                      final founders = ["Bruno Bowden", "Daniel Kraft", "Dean Hachamovitch"];
+                      team.sort((x, y) =>
+                          (x.toLowerCase().compareTo(y.toLowerCase())));
+                      final founders = [
+                        "Bruno Bowden",
+                        "Daniel Kraft",
+                        "Dean Hachamovitch"
+                      ];
                       founders.forEach((x) => team.remove(x));
                       team.insertAll(0, founders);
-                      var teamNames = S.of(context).aboutPageThanksToText(team.join(", "));
+                      var teamNames =
+                          S.of(context).aboutPageThanksToText(team.join(", "));
                       return Text(
                         teamNames,
                         softWrap: true,

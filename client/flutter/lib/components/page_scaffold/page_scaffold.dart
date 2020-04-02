@@ -13,22 +13,23 @@ class PageScaffold extends StatelessWidget {
   final bool showBackButton;
   final bool showShareBottomBar;
   final bool showLogoInHeader;
+  final Color color;
 
-  PageScaffold(
-    this.context, {
-    @required this.body,
-    @required this.title,
-    this.showShareBottomBar = false,
-    this.subtitle = "COVID-19",
-    this.padding = EdgeInsets.zero,
-    this.showBackButton = true,
-    this.showLogoInHeader = false,
-  });
+  PageScaffold(this.context,
+      {@required this.body,
+      @required this.title,
+      this.showShareBottomBar = false,
+      this.subtitle = "COVID-19",
+      this.padding = EdgeInsets.zero,
+      this.showBackButton = true,
+      this.showLogoInHeader = false,
+      this.color = const Color(0xFFEEEEEE) //grey.shade.200
+      });
 
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.grey.shade200,
+        color: this.color,
         child: Padding(
           padding: this.padding,
           child: Stack(
