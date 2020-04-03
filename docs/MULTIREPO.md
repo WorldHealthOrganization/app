@@ -1,7 +1,7 @@
 # This doc describes a workflow for using multiple repositories in a development flow.
 
 ## Problem
-For some of the assets we (will) use in the app we do not have the rights to freely distribute them. Githubs' ToS specify that anything in the public repo must be freely redistributable.
+For some of the assets we (will) use in the app we do not have the rights to freely distribute them. GitHub's ToS specify that anything in the public repo must be freely redistributable.
 This means that we need a flow where we have a public repo for doing the main work and a private for storing those assets and putting them in at build time.
 
 ## Scope
