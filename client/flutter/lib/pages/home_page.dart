@@ -17,8 +17,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
   HomePage(this.analytics);
@@ -120,6 +118,10 @@ class HomePage extends StatelessWidget {
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 PageButton(
                   Color(0xff008DC9),
@@ -128,6 +130,10 @@ class HomePage extends StatelessWidget {
                       .push(MaterialPageRoute(builder: (c) => NewsFeed())),
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
               mainAxisSpacing: 15.0,
@@ -157,7 +163,6 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -252,5 +257,4 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
-
 }

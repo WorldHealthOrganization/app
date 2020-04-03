@@ -9,7 +9,7 @@ class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-    showShareBottomBar: false,
+        showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
@@ -18,7 +18,11 @@ class TravelAdvice extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: Html(
                 data: S.of(context).travelAdviceContainerText,
-                defaultTextStyle: TextStyle(color: Colors.white, fontSize: 16),
+                defaultTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  height: 1.2,
+                ),
               ),
             ),
             Padding(
