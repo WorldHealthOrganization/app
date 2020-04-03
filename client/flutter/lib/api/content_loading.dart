@@ -1,16 +1,17 @@
 import 'package:WHOFlutter/components/dialogs.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'content_bundle.dart';
 
 class ContentLoading {
-  static final networkLoadingEnabled = false;
+  static final networkLoadingEnabled = true;
   static final ContentLoading _singleton = ContentLoading._internal();
 
   // TODO: Real URL
   static final String baseContentURL =
-      'https://who.int/covid19/content/v1'; // no trailing
+      'https://whocoronavirus.org/content/bundles'; // no trailing slash
   static final Duration networkTimeout = Duration(seconds: 3);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
@@ -44,10 +45,10 @@ class ContentLoading {
             // TODO: Localize
             Dialogs.showAppDialog(
                 context: context,
-                title: "App Update Required",
+                title: S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
                 // TODO: Provide the sharing link here?
                 bodyText:
-                    "Please update to the latest version of the app in order to receive the latest information and updates.");
+                    S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
           });
         }
       }

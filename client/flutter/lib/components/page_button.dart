@@ -21,7 +21,7 @@ class PageButton extends StatelessWidget {
     this.title,
     this.onPressed, {
     this.description = "",
-    this.borderRadius = 25.0,
+    this.borderRadius = 16,
     this.verticalPadding = 15.0,
     this.horizontalPadding = 8.0,
     this.crossAxisAlignment = CrossAxisAlignment.start,
@@ -45,11 +45,12 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.0 + 0.6 * contentScale(context),
+                textScaleFactor: 1.0 + 1.0 * contentScale(context),
                 textAlign: TextAlign.left,
-                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w900),
+                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 4),
+              // Makes sure text is centered properly when no description is provided
+              SizedBox(height: description.isNotEmpty ? 4 : 0),
               this.description.isNotEmpty
                   ? Text(
                       this.description,

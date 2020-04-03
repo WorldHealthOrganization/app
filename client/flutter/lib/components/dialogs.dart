@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
@@ -18,7 +19,7 @@ class Dialogs {
           actions: <Widget>[
             FlatButton(
               // TODO: Localize
-              child: Text("OK"),
+              child: Text(S.of(context).commonDialogButtonOk),
               onPressed: () {
                 Navigator.of(context).pop();
               },
