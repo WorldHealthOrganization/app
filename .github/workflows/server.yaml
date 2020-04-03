@@ -1,6 +1,13 @@
 name: Server Tests
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'server/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'server/**'
 
 jobs:
   junit:
