@@ -1,12 +1,12 @@
 import 'dart:convert';
+import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
 class WhoService {
-  static final String serviceUrlStaging =
-      'https://staging.whocoronavirus.org/WhoService';
-  static final String serviceUrlProd = 'https://whocoronavirus.org/WhoService';
+  static final String serviceUrlStaging = '${Endpoints.STAGING}/WhoService';
+  static final String serviceUrlProd = '${Endpoints.PROD}/WhoService';
   static final String serviceUrl = serviceUrlProd;
 
   /// Put device token.
