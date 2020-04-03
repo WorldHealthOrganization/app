@@ -108,5 +108,3 @@ class EmojiHeader extends StatelessWidget {
     );
   }
 }
-
-
