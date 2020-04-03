@@ -26,7 +26,7 @@ Identified paths for the overlay:
   - client/flutter/android/app/src/main/res
   - client/flutter/ios/Runner/Assets.xcassets
 
-From a developers' perspective there will be 2 scenarios: you're working on the app, or you're working on the design.
+From a developer's perspective there will be 2 scenarios: you're working on the app, or you're working on the design.
 If you work on the app you only use the App repository.
 If you're working on design you will need to checkout the Overlay repository, including the App repo submodule.
 
@@ -96,4 +96,3 @@ cp --remove-destination -R ./overlay/android-assets overlay-build/flutter/androi
 cp --remove-destination -R ./overlay/ios-assets overlay-build/flutter/ios/Runner/Assets.xcassets
 (cd overlay-build/flutter; flutter build appbundle) 
 ```
-
