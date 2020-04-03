@@ -3,6 +3,7 @@ import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class TravelAdvice extends StatelessWidget {
   @override
@@ -15,9 +16,9 @@ class TravelAdvice extends StatelessWidget {
             Container(
               color: Color(0xffD82037),
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: Text(
-                S.of(context).travelAdviceContainerText,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              child: Html(
+                data: S.of(context).travelAdviceContainerText,
+                defaultTextStyle: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
             Padding(
