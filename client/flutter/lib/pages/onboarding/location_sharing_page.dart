@@ -35,16 +35,15 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
       if (await Location().hasPermission() == PermissionStatus.granted) {
         if (await Location().requestService()) {
           LocationData location = await Location().getLocation();
-          Map jitteredLocationData = JitterLocation().jitter(
-              location.latitude, location.longitude,
-              5 /*kms refers to kilometers*/);
+          Map jitteredLocationData = JitterLocation().jitter(location.latitude,
+              location.longitude, 5 /*kms refers to kilometers*/);
 
           await WhoService.putLocation(
               latitude: jitteredLocationData['lat'],
               longitude: jitteredLocationData['lng']);
         }
       }
-    } catch(_) {
+    } catch (_) {
       // ignore for now.
     } finally {
       _complete();

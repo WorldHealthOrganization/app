@@ -64,4 +64,9 @@ class UserPreferences {
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID }
+enum UserPreferenceKey {
+  OnboardingCompleted,
+  AnalyticsEnabled,
+  NotificationsEnabled,
+  ClientUUID
+}

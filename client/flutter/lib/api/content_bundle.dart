@@ -42,4 +42,4 @@ class ContentBundle {
   }
 }
 
-class ContentBundleVersionException implements Exception { }
+class ContentBundleVersionException implements Exception {}

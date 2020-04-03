@@ -41,49 +41,55 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return PageScaffold(
       context,
-      body:[SliverList(
-        delegate:SliverChildListDelegate(
-      [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ListTile(
-                leading: Text(
-                  S.of(context).homePagePageSliverListSettingsHeader1,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.w700,
+      body: [
+        SliverList(
+            delegate: SliverChildListDelegate(
+          [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ListTile(
+                    leading: Text(
+                      S.of(context).homePagePageSliverListSettingsHeader1,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    trailing: CupertinoSwitch(
+                      activeColor: Constants.primaryColor,
+                      value: _switchValue ?? false,
+                      onChanged: (newValue) async {
+                        await _toggleAnalytics(newValue);
+                        setState(() {
+                          _switchValue = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-                trailing: CupertinoSwitch(
-                  activeColor: Constants.primaryColor,
-                  value: _switchValue ?? false,
-                  onChanged: (newValue) async {
-                    await _toggleAnalytics(newValue);
-                    setState(() {
-                      _switchValue = newValue;
-                    });
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                child: Text(
-                  S.of(context).homePagePageSliverListSettingsDataCollection,
-                  style: Theme.of(context).textTheme.subhead,
-                ),
-              ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 10.0),
+                    child: Text(
+                      S
+                          .of(context)
+                          .homePagePageSliverListSettingsDataCollection,
+                      style: Theme.of(context).textTheme.subhead,
+                    ),
+                  ),
 
-              /// TODO: Implement UI:-
-              /// TODO:   selection of language preferences already created PR for it (#654)
-            ],
-          ),
-        ),
+                  /// TODO: Implement UI:-
+                  /// TODO:   selection of language preferences already created PR for it (#654)
+                ],
+              ),
+            ),
+          ],
+        ))
       ],
-        ))],
       title: S.of(context).homePagePageSliverListSettings,
     );
   }

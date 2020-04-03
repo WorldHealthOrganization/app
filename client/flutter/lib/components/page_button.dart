@@ -64,5 +64,4 @@ class PageButton extends StatelessWidget {
       onPressed: this.onPressed,
     );
   }
-  
 }

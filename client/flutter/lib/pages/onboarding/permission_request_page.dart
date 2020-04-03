@@ -10,15 +10,15 @@ class PermissionRequestPage extends StatelessWidget {
   final VoidCallback onGrantPermission;
   final VoidCallback onSkip;
 
-  const PermissionRequestPage({
-    Key key,
+  const PermissionRequestPage(
+      {Key key,
       @required this.pageTitle,
       this.pageDescription = "",
       @required this.buttonTitle,
       @required this.onGrantPermission,
       @required this.onSkip,
-      @required this.backgroundImageSrc
-      }) : super(key: key);
+      @required this.backgroundImageSrc})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class PermissionRequestPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal:16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -57,7 +57,8 @@ class PermissionRequestPage extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               color: Color(0xff1A458E),
-                              letterSpacing: -0.5,),
+                              letterSpacing: -0.5,
+                            ),
                             textScaleFactor: 2.5,
                           ),
                           SizedBox(height: 18),

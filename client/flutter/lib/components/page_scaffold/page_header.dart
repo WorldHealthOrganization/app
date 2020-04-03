@@ -31,31 +31,33 @@ class PageHeader extends StatelessWidget {
     List<Widget> headerItems = [
       if (this.showBackButton)
         Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
-      Expanded(child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          //Todo: Decide what to do when title text overflow
-          Text(this.title,
-              maxLines: 1,
-              overflow: TextOverflow.fade,
-              softWrap: false,
-              style: TextStyle(
-                  color: Color(0xff1A458E),
-                  fontWeight: FontWeight.w900,
-                  fontSize: 24,
-                  letterSpacing: -0.5)),
-          SizedBox(height: 4),
-          Text(this.subtitle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              softWrap: false,
-              style: TextStyle(
-                  color: Color(0xff3C4245),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700)),
-        ],
-      ),),
+      Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            //Todo: Decide what to do when title text overflow
+            Text(this.title,
+                maxLines: 1,
+                overflow: TextOverflow.fade,
+                softWrap: false,
+                style: TextStyle(
+                    color: Color(0xff1A458E),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 24,
+                    letterSpacing: -0.5)),
+            SizedBox(height: 4),
+            Text(this.subtitle,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+                style: TextStyle(
+                    color: Color(0xff3C4245),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700)),
+          ],
+        ),
+      ),
       if (this.showLogo) Image.asset('assets/images/mark.png', width: 70)
     ];
     return Material(

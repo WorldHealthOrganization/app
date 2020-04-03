@@ -17,8 +17,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
   HomePage(this.analytics);
@@ -157,7 +155,6 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -252,5 +249,4 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
-
 }

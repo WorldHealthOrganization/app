@@ -9,10 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const number = TextStyle(
-  color: Color(0xFFD82037),
-  fontSize: 36,
-  fontWeight: FontWeight.bold
-);
+    color: Color(0xFFD82037), fontSize: 36, fontWeight: FontWeight.bold);
 const loadingStyle = TextStyle(
   color: Color(0xff26354E),
   fontSize: 36,
@@ -70,7 +67,8 @@ class LatestNumbers extends StatelessWidget {
                         textAlign: TextAlign.left,
                       )),
                   StatCard(
-                    title: Text(S.of(context).latestNumbersPageGlobalDeaths, style: name),
+                    title: Text(S.of(context).latestNumbersPageGlobalDeaths,
+                        style: name),
                     content: Text(
                       hasGlobalStats && globalStats['deaths'] != null
                           ? numFmt.format(globalStats['deaths'])
@@ -86,7 +84,9 @@ class LatestNumbers extends StatelessWidget {
                     height: 25,
                   ),
                   Text(
-                    snapshot.hasData ? S.of(context).latestNumbersPageLastUpdated(lastUpd) : S.of(context).latestNumbersPageUpdating,
+                    snapshot.hasData
+                        ? S.of(context).latestNumbersPageLastUpdated(lastUpd)
+                        : S.of(context).latestNumbersPageUpdating,
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
                   ),
@@ -128,12 +128,7 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 24,
-        left: 24,
-        right: 24,
-        bottom: 6
-      ),
+      padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 6),
       child: Card(
         elevation: 0,
         color: Colors.white,

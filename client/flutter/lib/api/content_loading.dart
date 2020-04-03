@@ -45,10 +45,12 @@ class ContentLoading {
             // TODO: Localize
             Dialogs.showAppDialog(
                 context: context,
-                title: S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
+                title:
+                    S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
                 // TODO: Provide the sharing link here?
-                bodyText:
-                    S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
+                bodyText: S
+                    .of(context)
+                    .commonContentLoadingDialogUpdateRequiredBodyText);
           });
         }
       }

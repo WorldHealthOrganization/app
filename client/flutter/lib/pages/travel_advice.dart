@@ -9,7 +9,7 @@ class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-    showShareBottomBar: false,
+        showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
@@ -26,35 +26,39 @@ class TravelAdvice extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
               child: Text(
                 S.of(context).travelAdvicePageListTitle,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                    color: Color(0xff050C1D)),
               ),
             ),
             TravelAdviceListItem(
               imageSrc: S.of(context).travelAdvicePageListItem1Image,
-              description:
-                  S.of(context).travelAdvicePageListItem1Text,
+              description: S.of(context).travelAdvicePageListItem1Text,
             ),
             TravelAdviceListItem(
               imageSrc: S.of(context).travelAdvicePageListItem2Image,
-              description:
-                  S.of(context).travelAdvicePageListItem2Text,
+              description: S.of(context).travelAdvicePageListItem2Text,
             ),
             TravelAdviceListItem(
               imageSrc: S.of(context).travelAdvicePageListItem3Image,
-              description:
-                  S.of(context).travelAdvicePageListItem3Text,
+              description: S.of(context).travelAdvicePageListItem3Text,
             ),
             SizedBox(
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
               child: PageButton(
                 Color(0xff008DC9),
                 S.of(context).travelAdvicePageButtonGeneralRecommendations,
-                () => launch(S.of(context).travelAdvicePageButtonGeneralRecommendationsLink),
-                description:
-                    S.of(context).travelAdvicePageButtonGeneralRecommendationsDescription,
+                () => launch(S
+                    .of(context)
+                    .travelAdvicePageButtonGeneralRecommendationsLink),
+                description: S
+                    .of(context)
+                    .travelAdvicePageButtonGeneralRecommendationsDescription,
                 verticalPadding: 16,
                 titleStyle:
                     TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

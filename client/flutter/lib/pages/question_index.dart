@@ -113,7 +113,10 @@ class _QuestionTileState extends State<QuestionTile>
     return Container(
       color: Colors.white,
       child: Stack(children: <Widget>[
-        Divider(height: 1, thickness: 1,),
+        Divider(
+          height: 1,
+          thickness: 1,
+        ),
         ExpansionTile(
           onExpansionChanged: (expanded) {
             if (expanded) {
@@ -136,10 +139,11 @@ class _QuestionTileState extends State<QuestionTile>
           title: Padding(
             padding: EdgeInsets.symmetric(vertical: 12),
             child: Html(
-            data: widget.questionItem.title,
-            defaultTextStyle: _titleStyle.copyWith(
-              fontSize: 16 * MediaQuery.of(context).textScaleFactor,
-            ),),
+              data: widget.questionItem.title,
+              defaultTextStyle: _titleStyle.copyWith(
+                fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+              ),
+            ),
           ),
           children: [
             Padding(

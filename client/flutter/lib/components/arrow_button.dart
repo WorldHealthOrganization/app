@@ -16,10 +16,7 @@ class ArrowButton extends StatelessWidget {
         color: this.color,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(this.title),
-            Icon(Icons.arrow_forward_ios)
-          ],
+          children: <Widget>[Text(this.title), Icon(Icons.arrow_forward_ios)],
         ),
         onPressed: this.onPressed);
   }

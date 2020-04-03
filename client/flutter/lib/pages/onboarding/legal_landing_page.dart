@@ -24,7 +24,9 @@ class LegalLandingPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset("assets/WHO.jpg"),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     S.of(context).legalLandingPageTitle,
                     style: TextStyle(
@@ -39,51 +41,43 @@ class LegalLandingPage extends StatelessWidget {
             ),
             Expanded(
               flex: 1,
-              child: Column(
-                children: <Widget>[
-                  PageButton(
-                    Constants.primaryColor,
-                    S.of(context).legalLandingPageButtonGetStarted,
-                    onNext,
-                    verticalPadding: 24,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    borderRadius: 60,
-                  ),
-                  SizedBox(
-                    height: 17,
-                  ),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                        style: TextStyle(color: Colors.grey),
-                        children: [
-                          TextSpan(
-                              text: S.of(context).legalLandingPageButtonAgree
-                              ),
-                          LinkTextSpan(
-                              text: S.of(context).LegalLandingPageTermsOfServiceLinkText,
-                              style: TextStyle(decoration: TextDecoration.underline),
-                              url: S.of(context).legalLandingPageTermsOfServiceLinkUrl,
-                              onLinkTap: (v)=>launch(v)
-                              ),
-                          TextSpan(
-                            text: S.of(context).legalLandingPageAnd
-                            ),LinkTextSpan(
-                              text: S.of(context).legalLandingPagePrivacyPolicyLinkText,
-                              style: TextStyle(decoration: TextDecoration.underline),
-                              url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
-                              onLinkTap: (v)=>launch(v)
-                              ),
-                          TextSpan(
-                            text: "."
-                          ),
-                        ]
-                        ),
-                  ),
-                ]
-
-              ),
+              child: Column(children: <Widget>[
+                PageButton(
+                  Constants.primaryColor,
+                  S.of(context).legalLandingPageButtonGetStarted,
+                  onNext,
+                  verticalPadding: 24,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  borderRadius: 60,
+                ),
+                SizedBox(
+                  height: 17,
+                ),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text:
+                      TextSpan(style: TextStyle(color: Colors.grey), children: [
+                    TextSpan(text: S.of(context).legalLandingPageButtonAgree),
+                    LinkTextSpan(
+                        text: S
+                            .of(context)
+                            .LegalLandingPageTermsOfServiceLinkText,
+                        style: TextStyle(decoration: TextDecoration.underline),
+                        url:
+                            S.of(context).legalLandingPageTermsOfServiceLinkUrl,
+                        onLinkTap: (v) => launch(v)),
+                    TextSpan(text: S.of(context).legalLandingPageAnd),
+                    LinkTextSpan(
+                        text:
+                            S.of(context).legalLandingPagePrivacyPolicyLinkText,
+                        style: TextStyle(decoration: TextDecoration.underline),
+                        url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
+                        onLinkTap: (v) => launch(v)),
+                    TextSpan(text: "."),
+                  ]),
+                ),
+              ]),
             ),
           ],
         ),

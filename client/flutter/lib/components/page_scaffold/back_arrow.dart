@@ -27,6 +27,8 @@ final _paint = Paint()..color = const Color(0x8026354E);
 /// Draws an arrow.
 class BackArrow extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      IconButton(icon: PathWidget(path: _icon, paint: _paint), onPressed: ()=>Navigator.pop(context),);
+  Widget build(BuildContext context) => IconButton(
+        icon: PathWidget(path: _icon, paint: _paint),
+        onPressed: () => Navigator.pop(context),
+      );
 }
