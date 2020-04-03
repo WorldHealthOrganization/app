@@ -39,7 +39,7 @@ public class ClientInterceptor implements RpcInterceptor {
         platform = Platform.WEB;
         break;
       default:
-        throw new ClientException("Unsupported " + PLATFORM + " header: " + platformString);
+        throw new ClientException("Unsupported " + PLATFORM + " header");
     }
 
     Client client = Client.getOrCreate(clientId, platform);
