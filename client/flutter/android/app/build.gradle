@@ -4,6 +4,8 @@ if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
+} else {
+  throw new FileNotFoundException("local.properties not found, ensure app is built via Flutter")
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
@@ -12,14 +14,7 @@ if (flutterRoot == null) {
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '2'
-}
-
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '0.1.1'
-}
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
