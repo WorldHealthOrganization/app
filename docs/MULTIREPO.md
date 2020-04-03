@@ -10,7 +10,7 @@ This document is only about the mobile app(s), it is not about anything server-s
 ## Proposed solution
 We will have 2 repositories set up: App and Overlay.
 
-The App repository will contain everything to build the app on a developers machine.
+The App repository will contain everything to build the app on a developer's machine.
 The App repository will contain an empty theme directory. When looking for an 
 The Overlay repository will contain:
   - A submodule, which is the App repository
