@@ -1,0 +1,15 @@
+client:
+  - client/flutter/**
+
+docs:
+  - docs/**
+
+server:
+  - server/**
+
+string-change:
+  - client/flutter/assets/content_bundles/**
+  - client/flutter/lib/l10n/*.arb
+
+tests:
+  - client/flutter/test/**
