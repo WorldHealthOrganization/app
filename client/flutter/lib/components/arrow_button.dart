@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 
 class ArrowButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class ArrowButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(this.title),
+            Text(this.title, textScaleFactor: 1.0 + 1.0 * contentScale(context), style: TextStyle(fontWeight: FontWeight.w700),),
             Icon(Icons.arrow_forward_ios)
           ],
         ),

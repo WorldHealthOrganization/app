@@ -9,16 +9,16 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const number = TextStyle(
-  color: Color(0xFFD82037),
+  color: Colors.white,
   fontSize: 36,
   fontWeight: FontWeight.bold
 );
 const loadingStyle = TextStyle(
-  color: Color(0xff26354E),
+  color: Colors.white,
   fontSize: 36,
 );
 const name = TextStyle(
-  color: Color(0xff26354E),
+  color: Colors.white,
   fontSize: 16,
   fontWeight: FontWeight.w700,
 );
@@ -108,7 +108,7 @@ class LatestNumbers extends StatelessWidget {
                     ),
                     child: ArrowButton(
                         title: S.of(context).latestNumbersPageViewLiveData,
-                        color: Color(0xff008DC9),
+                        color: Color(0xFF3D8AC4),
                         onPressed: () => _launchStatsDashboard(context)),
                   )
                 ]));
@@ -136,7 +136,7 @@ class StatCard extends StatelessWidget {
       ),
       child: Card(
         elevation: 0,
-        color: Colors.white,
+        color: Color(0xFF3D8AC4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(15),
