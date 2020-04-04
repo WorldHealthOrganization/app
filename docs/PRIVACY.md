@@ -19,7 +19,7 @@ The use of data described in the WHO Privacy Policy applies to the Service. Addi
 
 ## Third-Party Apps and Services
 
-Third-party applications and/or services linked to or embedded in the App governed by those third-party security and privacy policies (see third party tools). If you consent to receiving push notifications, a third-party provider may collect device and regional location information, but your identity or Personal Data will not be revealed to us as a result of enabling such notifications. You may stop push notifications by adjusting your device settings.
+Third-party applications and/or services linked to or embedded in the App governed by those third-party security and privacy policies (see [third party tools][8]). If you consent to receiving push notifications, a third-party provider may collect device and regional location information, but your identity or Personal Data will not be revealed to us as a result of enabling such notifications. You may stop push notifications by adjusting your device settings.
 
 ## Disclaimer
 
@@ -37,10 +37,17 @@ We may disclose your Personal Data in the good faith belief that such action is 
 
 Currently in connection with the WHO COVID-19 App we use the following third-party services and application stores. We may use additional services for testing and internal use.
 
-* Apple Store (iTunes Store) (Privacy Policy)
-* Google Analytics (Privacy Policy and Terms)
-* Google Cloud (Privacy Policy)
-* Google Firebase (Privacy Policy)
-* Google Play Store (Privacy Policy)
+* Apple Store (iTunes Store) ([Privacy Policy][2])
+* Google Analytics ([Privacy Policy][3] and [Terms][4])
+* Google Cloud ([Privacy Policy][5])
+* Google Firebase ([Privacy Policy][6])
+* Google Play Store ([Privacy Policy][7])
 
 [1]: https://www.who.int/about/who-we-are/privacy-policy
+[2]: https://www.apple.com/legal/privacy/en-ww
+[3]: https://support.google.com/analytics/answer/6004245
+[4]: https://www.google.com/analytics/terms
+[5]: https://cloud.google.com/security/privacy
+[6]: https://firebase.google.com/support/privacy
+[7]: https://policies.google.com/privacy?hl=en&gl=us
+[8]: #current-third-party-tools
