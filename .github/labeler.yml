@@ -4,6 +4,9 @@ client:
 docs:
   - docs/**
 
+ops:
+  - .github/**
+
 server:
   - server/**
 
