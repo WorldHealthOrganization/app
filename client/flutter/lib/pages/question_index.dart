@@ -46,7 +46,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       return;
     }
     _questions = await widget.dataSource(context);
-    if (!mounted) return;
+    if (!mounted) { return; }
     setState(() {});
   }
 
