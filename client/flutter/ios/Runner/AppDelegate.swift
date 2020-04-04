@@ -7,6 +7,9 @@ import Flutter
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    var flutter_native_splash = 1
+    UIApplication.shared.isStatusBarHidden = false
+
     GeneratedPluginRegistrant.register(with: self)
     // Work-around for https://github.com/flutter/flutter/issues/39032
     // This is safe to remove once the fix for that is available in the SDK
