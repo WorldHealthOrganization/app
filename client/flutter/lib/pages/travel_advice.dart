@@ -62,6 +62,7 @@ class TravelAdvice extends StatelessWidget {
                 verticalPadding: 16,
                 titleStyle:
                     TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                descriptionColor: Colors.white,
               ),
             )
           ])),

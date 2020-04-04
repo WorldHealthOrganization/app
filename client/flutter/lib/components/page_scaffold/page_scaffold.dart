@@ -28,7 +28,7 @@ class PageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.grey.shade200,
+        color: Color(0xfff6f5f5),
         child: Padding(
           padding: this.padding,
           child: Stack(
