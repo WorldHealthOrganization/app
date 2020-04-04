@@ -168,7 +168,7 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-              Divider(height: 1),
+              divider,
               Material(
                 color: Colors.white,
                 child: InkWell(
