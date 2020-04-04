@@ -1,7 +1,6 @@
 # WHO COVID-19 App Terms
 
-These App Terms govern your use of the service (“Services”) provided by the World Health Organization (‘WHO”, “we” “us” or “our”) via our mobile or web apps (“Apps”). By using our Service, you accept these App Terms. These App Terms supplement our Privacy Policy. We
-may update these App Terms. If you do not agree to these Terms or updates do not use the Services. You must be at least 13 years of age to use the Services. Your data services agreement with your mobile network provider (“Mobile Provider”) will apply to your use of the App.
+These App Terms govern your use of the service (“Services”) provided by the World Health Organization (‘WHO”, “we” “us” or “our”) via our mobile or web apps (“Apps”). By using our Service, you accept these App Terms. These App Terms supplement our [Privacy Policy][1]. We may update these App Terms. If you do not agree to these Terms or updates do not use the Services. You must be at least 13 years of age to use the Services. Your data services agreement with your mobile network provider (“Mobile Provider”) will apply to your use of the App.
 
 ## License
 
@@ -28,3 +27,5 @@ To the fullest extent permitted under applicable law, in no event shall the WHO 
 ## General
 
 These App Terms shall be governed by the laws of Switzerland and the parties submit to the exclusive jurisdiction of the courts of Switzerland to resolve any dispute between them arising under or in connection with these App Terms. If any provision (or part of a provision) of these App Terms is found by any court or administrative body of competent jurisdiction to be invalid, unenforceable or illegal, such term, condition or provision will to that extent be severed from the remaining terms, conditions and provisions which will continue to be valid to the fullest extent permitted by law.
+
+[1]: https://whocoronavirus.org/privacy
