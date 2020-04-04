@@ -1,6 +1,6 @@
 # WHO COVID-19 App Privacy Notice
 
-This App Privacy Notice supplements the general World Health Organization (“WHO” or “us”, “we” or “our”) Privacy Policy available at https://www.who.int/about/who-we-are/privacy-policy (the “WHO Privacy Policy”), and applies to mobile applications and services made available by the WHO (each an “App” or “Service”).
+This App Privacy Notice supplements the general World Health Organization (“WHO” or “us”, “we” or “our”) Privacy Policy available at [https://www.who.int/about/who-we-are/privacy-policy][1] (the “WHO Privacy Policy”), and applies to mobile applications and services made available by the WHO (each an “App” or “Service”).
 
 By using a Service, you agree to the collection and use of data in accordance with these policies. We do not disclose, share, sell, or transfer any information about Service users unless required by law or for law enforcement.
 
@@ -42,3 +42,5 @@ Currently in connection with the WHO COVID-19 App we use the following third-par
 * Google Cloud (Privacy Policy)
 * Google Firebase (Privacy Policy)
 * Google Play Store (Privacy Policy)
+
+[1]: https://www.who.int/about/who-we-are/privacy-policy
