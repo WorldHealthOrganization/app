@@ -118,6 +118,10 @@ class HomePage extends StatelessWidget {
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 PageButton(
                   Color(0xff008DC9),
@@ -129,6 +133,10 @@ class HomePage extends StatelessWidget {
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
               mainAxisSpacing: 15.0,
