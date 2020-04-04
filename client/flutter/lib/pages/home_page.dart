@@ -126,8 +126,11 @@ class HomePage extends StatelessWidget {
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonNewsAndPress,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => NewsFeed())),
+                  () {
+                    _logAnalyticsEvent('News');
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => NewsFeed()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   titleStyle: TextStyle(
@@ -214,8 +217,12 @@ class HomePage extends StatelessWidget {
                     Icons.arrow_forward_ios,
                     color: Color(0xFFC9CDD6),
                   ),
-                  onTap: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+                  onTap: () {
+                    _logAnalyticsEvent('Settings');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => SettingsPage()),
+                    );
+                  },
                 ),
               ),
               Divider(height: 1),

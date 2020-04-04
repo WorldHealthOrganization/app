@@ -23,11 +23,11 @@ class PageHeader extends StatelessWidget {
       leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
-      flexibleSpace: FlexibleSpaceBar(background: _buildHeader()),
+      flexibleSpace: FlexibleSpaceBar(background: _buildHeader(context)),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     List<Widget> headerItems = [
       if (this.showBackButton)
         Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
@@ -61,12 +61,26 @@ class PageHeader extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: headerItems),
+        child: Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: headerItems),
+            ),
+            Positioned(
+              bottom: 0,
+              height: 1,
+              child:  Container(
+                  height: 1,
+                  color: Color(0xffC9CDD6),
+                  width: MediaQuery.of(context).size.width,
+                ) 
+              
+            )
+          ],
         ),
       ),
     );
