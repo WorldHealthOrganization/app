@@ -45,4 +45,8 @@
     </user-data-constraint>
   </security-constraint>
 
+  <mime-mapping>
+    <extension>yaml</extension>
+    <mime-type>application/octet-stream;charset=utf-8</mime-type>
+  </mime-mapping>
 </web-app>
