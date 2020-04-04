@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -12,12 +12,12 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>WHO COVID-19</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-		<string>When In Use Permission</string>
-		<key>NSLocationAlwaysUsageDescription</key>
-		<string>Always Permission</string>
-		<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-		<string>Always And In Use Permission</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
 	<key>CFBundleDisplayName</key>
 	<string>COVID-19</string>
 	<key>CFBundlePackageType</key>
@@ -61,10 +61,10 @@
 	<false/>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
-  <key>CFBundleLocalizations</key>
-  <array>
-      <string>en</string>
-      <string>fr</string>
-  </array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+	</array>
 </dict>
 </plist>
