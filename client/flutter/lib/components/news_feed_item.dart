@@ -49,7 +49,7 @@ class NewsFeedItem extends StatelessWidget {
                   this.description,
                   style: TextStyle(fontSize: 18),
                 )),
-                Center(child: Icon(Icons.arrow_forward_ios)),
+                Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffC9CDD6),)),
               ],
             ),
             Divider()
