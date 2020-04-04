@@ -17,8 +17,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
   HomePage(this.analytics);
@@ -124,8 +122,11 @@ class HomePage extends StatelessWidget {
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonNewsAndPress,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => NewsFeed())),
+                  () {
+                    _logAnalyticsEvent('News');
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => NewsFeed()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                 ),
@@ -157,7 +158,6 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-
               Divider(height: 1),
               Material(
                 color: Colors.white,
@@ -209,8 +209,12 @@ class HomePage extends StatelessWidget {
                     Icons.arrow_forward_ios,
                     color: Color(0xFFC9CDD6),
                   ),
-                  onTap: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+                  onTap: () {
+                    _logAnalyticsEvent('Settings');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => SettingsPage()),
+                    );
+                  },
                 ),
               ),
               Divider(height: 1),
@@ -252,5 +256,4 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
-
 }
