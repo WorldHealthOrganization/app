@@ -11,7 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+update_fastlane
 
 default_platform(:ios)
 
@@ -24,13 +24,6 @@ platform :ios do
 
   desc "Promote the beta build to App Store"
   lane :submit_review do
-    deliver(
-      submit_for_review: true,
-      automatic_release: false,
-      force: true, # This skips the HTML report verification
-      skip_metadata: true,
-      skip_screenshots: true,
-      skip_binary_upload: true
-    )
+    deliver()
   end
 end
