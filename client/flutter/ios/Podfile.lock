@@ -58,6 +58,10 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.5)
     - Protobuf (>= 3.9.2, ~> 3.9)
   - Flutter (1.0.0)
+  - geolocator (5.3.1):
+    - Flutter
+  - google_api_availability (2.0.4):
+    - Flutter
   - GoogleAppMeasurement (6.4.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -87,6 +91,8 @@ PODS:
   - GoogleUtilities/UserDefaults (6.5.2):
     - GoogleUtilities/Logger
   - location (0.0.1):
+    - Flutter
+  - location_permissions (2.0.5):
     - Flutter
   - location_web (0.0.1):
     - Flutter
@@ -118,7 +124,10 @@ DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - geolocator (from `.symlinks/plugins/geolocator/ios`)
+  - google_api_availability (from `.symlinks/plugins/google_api_availability/ios`)
   - location (from `.symlinks/plugins/location/ios`)
+  - location_permissions (from `.symlinks/plugins/location_permissions/ios`)
   - location_web (from `.symlinks/plugins/location_web/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - share (from `.symlinks/plugins/share/ios`)
@@ -155,8 +164,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  geolocator:
+    :path: ".symlinks/plugins/geolocator/ios"
+  google_api_availability:
+    :path: ".symlinks/plugins/google_api_availability/ios"
   location:
     :path: ".symlinks/plugins/location/ios"
+  location_permissions:
+    :path: ".symlinks/plugins/location_permissions/ios"
   location_web:
     :path: ".symlinks/plugins/location_web/ios"
   package_info:
@@ -189,11 +204,14 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
   FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  geolocator: 460cc8e850b616f8c0e90944c86517d91ccbb686
+  google_api_availability: 15fa42a8cd83c0a6738507ffe6e87096f12abcb8
   GoogleAppMeasurement: 6e68a94d0eaeb1d73ef6b0ed4f7334e29d63ae29
   GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
   GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  location_permissions: 4a49d4e5bec5b653643e551ab77963cc99bb0e4a
   location_web: b94e7433cfe28c0f7c8923c2ee482824b32e55a7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
