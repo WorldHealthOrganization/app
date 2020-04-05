@@ -6,5 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v3-preview
+      continue-on-error: true
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
