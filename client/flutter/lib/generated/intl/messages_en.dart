@@ -109,7 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notificationsPagePermissionRequestBackgroundImage" : MessageLookupByLibrary.simpleMessage("assets/onboarding/onboarding_notifications.png"),
     "notificationsPagePermissionRequestPageButton" : MessageLookupByLibrary.simpleMessage("Allow Notifications"),
     "notificationsPagePermissionRequestPageDescription" : MessageLookupByLibrary.simpleMessage("To stay up to date with COVID-19 news, turn on app notifications from the World Health Organization."),
-    "notificationsPagePermissionRequestPageTitle" : MessageLookupByLibrary.simpleMessage("Stay up to date on the COVID-19"),
+    "notificationsPagePermissionRequestPageTitle" : MessageLookupByLibrary.simpleMessage("Stay up to date on COVID-19"),
     "protectYourselfHeader" : MessageLookupByLibrary.simpleMessage("General Recommendations"),
     "protectYourselfListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("*Wash your hands* with soap and water for at least 20 seconds"),
     "protectYourselfListOfItemsPageListItem2" : MessageLookupByLibrary.simpleMessage("*Avoid touching* your eyes, mouth, and nose"),

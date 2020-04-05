@@ -218,7 +218,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
-      'Stay up to date on the COVID-19',
+      'Stay up to date on COVID-19',
       name: 'notificationsPagePermissionRequestPageTitle',
       desc: '',
       args: [],

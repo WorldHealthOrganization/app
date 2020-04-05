@@ -24,7 +24,7 @@
   "locationSharingPageButton": "Allow Location Sharing",
   "locationSharingPageBackgroundImage": "assets/onboarding/onboarding_location.png",
   "@section": "Notification Permission",
-  "notificationsPagePermissionRequestPageTitle": "Stay up to date on the COVID-19",
+  "notificationsPagePermissionRequestPageTitle": "Stay up to date on COVID-19",
   "notificationsPagePermissionRequestPageDescription": "To stay up to date with COVID-19 news, turn on app notifications from the World Health Organization.",
   "notificationsPagePermissionRequestPageButton": "Allow Notifications",
   "notificationsPagePermissionRequestBackgroundImage": "assets/onboarding/onboarding_notifications.png",
