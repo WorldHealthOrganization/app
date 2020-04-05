@@ -1,36 +1,24 @@
 # Getting Started
 
-If you're here, that means you're interested in being a part of the volunteer effort. Welcome! We're glad to have you.
+**To everyone who has jumped in wanting to help:** We are humbled at the outpouring of support we have received from all over the world and are eager to have you contribute and apologize that we are still in the early process of figuring out how to manage all the contributions.  Please bear with us while we get an initial version out the door and split out into smaller teams working in parallel, when we can then on-board more volunteers.  Until then, please keep filing issues, and fill out the [volunteer form here](https://forms.gle/FUugWvUVvMcV3dLJA) and we’ll get back in touch.
 
-The goal of this document is to give you a starting point for where to find the resources you need to get up to speed. This is by no means an exhaustive document, and I'm sure that we'll be missing some important items here, so if you're missing something, just ask and we will try to update this document.
+## Standup
 
-First things first - in order to keep track of everyone working on the project, please add yourself to the project roster: https://forms.gle/FUugWvUVvMcV3dLJA
-
-Next - join the [Slack](https://join.slack.com/t/who-app/shared_invite/zt-cx6ycppt-ccqPJ7ZSGy3~77gSByexJw) and introduce yourself in the #intros channel! To avoid confusion, please include your GitHub username and timezone in your Slack display name, e.g. `Hunter Spinks, hspinks, PST`.
-
-If you need access to issues & tasks on GitHub, please add your GitHub username to [this ticket](https://github.com/WorldHealthOrganization/app/issues/99) and [Sam Mousa](https://github.com/SamMousa) can add you with the appropriate roles.
-
-## Daily Standup
-
-We have a regular, daily all-hands over Zoom at 11am PDT. Details on the standups and links to join can be found pinned in the #standup channel on Slack.
+All-hands meetings will happen over Zoom every Monday and Thursday at 11am PDT, and engineering-only standups are daily at 11am PDT.
 
 ## Resources
 
 Where to find answers to your questions:
 
 * GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
-* Slack: https://join.slack.com/t/who-app/shared_invite/zt-cx6ycppt-ccqPJ7ZSGy3~77gSByexJw
-* Initial project brief (will be updated): https://docs.google.com/document/d/1isNMLpwI2iUY92KPwJHfY7kQnpN3oCuUl6c94J7Qmhs
+* Slack: _We apologize, but the Slack is closed to new contributors until initial app release_
 * WIP product roadmap: [ROADMAP.md](ROADMAP.md)
 * Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
-* Most up-to-date app design spec: https://github.com/WorldHealthOrganization/app/issues/129
-* Most up-to-date preview of app in development: https://preview.whoapp.org
+* Most up-to-date preview of app in development: _Will be re-added soon_
 
-Most discussion will be taking place in a combination of Slack and GitHub issues, so those are your best places to start.
+### Slack
 
-### Key Slack Channels
-
-For key conversations related to each major area, please see the following Slack channels:
+Please add your GitHub URL to your Slack profile. For key conversations related to each major area, please see the following Slack channels:
 
 * `#eng` - Engineering
 * `#design` - Design
@@ -44,9 +32,9 @@ For key conversations related to each major area, please see the following Slack
 
 This is very much a committee effort, and we are moving quickly enough that we have to self-organize as much as we can. You're encouraged to step up and find places to contribute rather than relying on anyone to tell you what to do. Even in just the first couple days of the project, there has been incredible effort from a lot of contributors. With that said, there are a couple people helping play point around different areas that are trying to keep a pulse of everything going on in those areas:
 
-* Karen Wong ([asianfoodlab](https://github.com/asianfoodlab)) - all things Product
-* Vivian Cromwell ([viviancromwell](https://github.com/viviancromwell)) - all things Design
-* Hunter Spinks ([hspinks](https://github.com/hspinks)) - all things Engineering
+* Product: Karen Wong ([asianfoodlab](https://github.com/asianfoodlab))
+* Design: _update to come_
+* Engineering: Hunter Spinks ([hspinks](https://github.com/hspinks)) and Advay Mengle ([advayDev1](https://github.com/advayDev1))
 
 # Building and Running
 
