@@ -3,8 +3,12 @@ description: WHO Flutter app
 
 version: 0.1.1+2
 
+# If the flutter sdk version in pubspec.lock changes,
+# you must update /.github/workflows/flutter-*.yml to use same min Flutter version
+
 environment:
   sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.8 <2.0.0"
 
 dependencies:
   flutter:
@@ -22,6 +26,7 @@ dependencies:
   shared_preferences: ^0.5.6
   firebase_messaging: ^6.0.13
   location: ^3.0.1
+  geolocator: ^5.3.1
   yaml: ^2.2.0
   http: ^0.12.0+3
   uuid: 2.0.4
