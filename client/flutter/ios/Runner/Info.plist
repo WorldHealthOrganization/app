@@ -19,7 +19,7 @@
 	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
 	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
 	<key>CFBundleDisplayName</key>
-	<string>WHO COVID-19</string>
+	<string>COVID-19</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
