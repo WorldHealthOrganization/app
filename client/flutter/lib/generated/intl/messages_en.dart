@@ -70,7 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homePagePageSliverListSettingsHeader2" : MessageLookupByLibrary.simpleMessage("Language"),
     "homePagePageSliverListShareTheApp" : MessageLookupByLibrary.simpleMessage("Share the App"),
     "homePagePageSliverListSupport" : MessageLookupByLibrary.simpleMessage("Help support the\nrelief effort"),
-    "homePagePageSubTitle" : MessageLookupByLibrary.simpleMessage("Virus response & tools"),
+    "homePagePageSubTitle" : MessageLookupByLibrary.simpleMessage("Information & tools"),
     "homePagePageTitle" : MessageLookupByLibrary.simpleMessage("COVID-19"),
     "latestNumbersPageGlobalCasesTitle" : MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
     "latestNumbersPageGlobalDeaths" : MessageLookupByLibrary.simpleMessage("GLOBAL DEATHS"),
