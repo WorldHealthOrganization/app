@@ -24,6 +24,6 @@ platform :ios do
 
   desc "Promote the beta build to App Store"
   lane :submit_review do
-    deliver()
+    deliver
   end
 end
