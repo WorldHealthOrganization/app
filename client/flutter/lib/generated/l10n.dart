@@ -218,7 +218,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
-      'Stay up to date on the Coronavirus',
+      'Stay up to date on COVID-19',
       name: 'notificationsPagePermissionRequestPageTitle',
       desc: '',
       args: [],
@@ -227,7 +227,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageDescription {
     return Intl.message(
-      'To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.',
+      'To stay up to date with COVID-19 news, turn on app notifications from the World Health Organization.',
       name: 'notificationsPagePermissionRequestPageDescription',
       desc: '',
       args: [],
@@ -263,7 +263,7 @@ class S {
 
   String get homePagePageSubTitle {
     return Intl.message(
-      'Virus response & tools',
+      'Information & tools',
       name: 'homePagePageSubTitle',
       desc: '',
       args: [],
@@ -326,7 +326,7 @@ class S {
 
   String get homePagePageButtonWHOMythBustersDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'homePagePageButtonWHOMythBustersDescription',
       desc: '',
       args: [],
@@ -425,7 +425,7 @@ class S {
 
   String get homePagePageSliverListDonate {
     return Intl.message(
-      'Donate here',
+      'Donate Here',
       name: 'homePagePageSliverListDonate',
       desc: '',
       args: [],
