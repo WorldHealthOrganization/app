@@ -81,7 +81,7 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
         }
       }
     } catch (_) {
-      // ignore for now.
+      // TODO: #876 tracks errors with analytics.
     } finally {
       _complete();
     }
