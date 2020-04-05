@@ -4,6 +4,14 @@ on:
     paths:
       - '.github/workflows/**'
       - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'client/flutter/pubspec.yaml'
+      - 'client/flutter/pubspec.lock'
+      - 'client/flutter/ios/**'
+      - 'client/flutter/android/**'
 jobs:
   buildios:
     name: Build iOS
@@ -13,12 +21,13 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
+      - run: git diff --exit-code
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
@@ -27,9 +36,10 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b stable _flutter
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
       - run: flutter build appbundle
         working-directory: ./client/flutter
+      - run: git diff --exit-code

@@ -1,8 +1,9 @@
-// import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/components/list_of_items.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
 const normal = TextStyle(
@@ -14,12 +15,10 @@ const bold = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
 );
-const header = TextStyle(
-  color: Colors.black,
-  fontSize: 24,
-);
+const header =
+    TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
-RichText _message(String input) {
+Text _message(String input) {
   // Make sections delineated by asterisk * bold. For example:
   // String text = '*This is bold* this is not';
 
@@ -28,7 +27,7 @@ RichText _message(String input) {
   var matched = regex.allMatches(input);
 
   var spans = <TextSpan>[];
-  int before = 0;
+  var before = 0;
   for (var match in matched) {
     var value = match.group(1);
     if (before < match.start) {
@@ -50,70 +49,97 @@ RichText _message(String input) {
       text: input.substring(before),
     ),
   );
-  return RichText(
-    text: TextSpan(style: normal, children: spans),
+  return Text.rich(
+    TextSpan(style: normal, children: spans),
   );
 }
 
 class ProtectYourself extends StatelessWidget {
+  Widget _getImage(String svgAssetName) => AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Container(
+          color: whoBlue,
+          child: SvgPicture.asset(svgAssetName),
+        ),
+      );
+
+  // Widget get _washHandsImage => _getImage('assets/svg/wash_hands.svg');
+
+  Widget get _elbowImage => _getImage('assets/svg/elbow.svg');
+
+  Widget get _avoidTouchImage => _getImage('assets/svg/avoid_touch.svg');
+
+  Widget get _maskImage => _getImage('assets/svg/mask.svg');
+
+  Widget get _distanceImage => _getImage('assets/svg/social_distance.svg');
+
   Widget _getAnimation(String animationName) => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
           color: whoBlue,
           child: RiveAnimation(
-            'assets/animations/protect.flr',
+            'assets/animations/$animationName.flr',
             alignment: Alignment.center,
             fit: BoxFit.contain,
-            animation: animationName,
+            animation: 'Untitled',
           ),
         ),
       );
 
-  Widget get _washHandsAnimation => _getAnimation('Hands');
+  // Widget get _washHandsAnimation => _getAnimation('Hands');
 
-  Widget get _coverMouthAnimation => _getAnimation('Cover');
+  // Widget get _coverMouthAnimation => _getAnimation('Cover');
 
-  Widget get _avoidTouchingAnimation => _getAnimation('Face');
+  // Widget get _avoidTouchAnimation => _getAnimation('Face');
 
-  Widget get _protectAnimation => _getAnimation('Mask');
+  // Widget get _protectAnimation => _getAnimation('Mask');
 
-  Widget get _distanceAnimation => _getAnimation('Stay');
+  // Widget get _distanceAnimation => _getAnimation('Stay');
 
   @override
   Widget build(BuildContext context) {
-    var localized = S.of(context);
-    return ListOfItems(
-      [
-        Padding(
-          padding: const EdgeInsets.only(left: 26, top: 20),
-          child: Text(
-            'General Recommendations',
-            style: header,
-          ),
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem1),
-          child: _washHandsAnimation,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem2),
-          child: _avoidTouchingAnimation,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem3),
-          child: _coverMouthAnimation,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem4),
-          child: _distanceAnimation,
-        ),
-        ProtectYourselfCard(
-          message: _message(localized.protectYourselfListOfItemsPageListItem5),
-          child: _protectAnimation,
-        ),
-      ],
-      title: localized.protectYourselfTitle,
-    );
+    final localized = S.of(context);
+
+    return PageScaffold(context,
+        title: S.of(context).protectYourselfTitle,
+        showShareBottomBar: false,
+        body: [
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.only(left: 26, top: 20),
+              child: Text(
+                localized.protectYourselfHeader,
+                style: header,
+              ),
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem1),
+              child: _getAnimation('wash_hands'),
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem2),
+              child: _avoidTouchImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem3),
+              child: _elbowImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem4),
+              child: _distanceImage,
+            ),
+            ProtectYourselfCard(
+              message:
+                  _message(localized.protectYourselfListOfItemsPageListItem5),
+              child: _maskImage,
+            ),
+          ]))
+        ]);
   }
 }
 
@@ -122,7 +148,7 @@ class ProtectYourselfCard extends StatelessWidget {
     @required this.message,
     @required this.child,
   });
-  final RichText message;
+  final Text message;
   final Widget child;
 
   @override
