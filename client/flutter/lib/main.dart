@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +32,21 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  runApp(MyApp(showOnboarding: !onboardingComplete));
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  Crashlytics.instance.enableInDevMode = true;
+
+  // Pass all uncaught errors from the framework to Crashlytics.
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
+  await runZoned<Future<void>>(
+    () async {
+      runApp(MyApp(showOnboarding: !onboardingComplete));
+    },
+    onError: Crashlytics.instance.recordError,
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -72,7 +89,6 @@ class _MyAppState extends State<MyApp> {
         print("onResume: $message");
       },
     );
-
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -98,13 +114,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-    // TODO: This is not essential for basic operation but we should implement 
-    // Fires if notification settings change. 
-    // Modify user opt-in if they do. 
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    // });
-
+  // TODO: This is not essential for basic operation but we should implement
+  // Fires if notification settings change.
+  // Modify user opt-in if they do.
+  // _firebaseMessaging.onIosSettingsRegistered
+  //     .listen((IosNotificationSettings settings) {
+  // });
 
   @override
   Widget build(BuildContext context) {
