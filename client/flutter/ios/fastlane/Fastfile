@@ -26,7 +26,7 @@ platform :ios do
   lane :submit_review do
     deliver(
       submit_for_review: true,
-      automatic_release: true,
+      automatic_release: false,
       force: true, # This skips the HTML report verification
       skip_metadata: true,
       skip_screenshots: true,
