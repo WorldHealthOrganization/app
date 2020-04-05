@@ -3,21 +3,26 @@ import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(context,
-    showShareBottomBar: false,
+        showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
             Container(
               color: Color(0xffD82037),
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: Text(
-                S.of(context).travelAdviceContainerText,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              child: Html(
+                data: S.of(context).travelAdviceContainerText,
+                defaultTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  height: 1.2,
+                ),
               ),
             ),
             Padding(
@@ -57,6 +62,7 @@ class TravelAdvice extends StatelessWidget {
                 verticalPadding: 16,
                 titleStyle:
                     TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                descriptionColor: Colors.white,
               ),
             )
           ])),

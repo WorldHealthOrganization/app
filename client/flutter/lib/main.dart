@@ -1,3 +1,5 @@
+import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +9,7 @@ import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -23,18 +26,27 @@ void main() async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  runApp(MyApp());
+  final bool onboardingComplete =
+      await UserPreferences().getOnboardingCompleted();
+
+  runApp(MyApp(showOnboarding: !onboardingComplete));
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key key, @required this.showOnboarding}) : super(key: key);
+  final bool showOnboarding;
+
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
       FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   _MyAppState createState() => _MyAppState(analytics, observer);
 }
 
 class _MyAppState extends State<MyApp> {
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
   _MyAppState(this.analytics, this.observer);
   final FirebaseAnalytics analytics;
   final FirebaseAnalyticsObserver observer;
@@ -45,6 +57,22 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _registerLicenses();
+
+    // onMessage: Fires when app is foreground
+    // onLaunch: Fires when user taps and app is in background.
+    // onResume: Fires when user taps and app is terminated
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+      },
+    );
+
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -70,6 +98,14 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+    // TODO: This is not essential for basic operation but we should implement 
+    // Fires if notification settings change. 
+    // Modify user opt-in if they do. 
+    // _firebaseMessaging.onIosSettingsRegistered
+    //     .listen((IosNotificationSettings settings) {
+    // });
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -86,15 +122,21 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Constants.primaryColor,
         accentColor: Constants.textColor,
         brightness: Brightness.light,
+        appBarTheme: AppBarTheme(brightness: Brightness.light),
+        dividerColor: Color(0xffC9CDD6),
         buttonTheme: ButtonThemeData(
-            buttonColor: Constants.primaryColor,
-            textTheme: ButtonTextTheme.accent),
+          buttonColor: Constants.primaryColor,
+          textTheme: ButtonTextTheme.accent,
+        ),
       ),
       home: Directionality(
-          child: HomePage(analytics),
-          textDirection:
-              GlobalWidgetsLocalizations(Locale(Intl.getCurrentLocale()))
-                  .textDirection),
+        child: widget.showOnboarding
+            ? OnboardingPage(analytics)
+            : HomePage(analytics),
+        textDirection: GlobalWidgetsLocalizations(
+          Locale(Intl.getCurrentLocale()),
+        ).textDirection,
+      ),
     );
   }
 }

@@ -40,6 +40,17 @@ class UserPreferences {
         .setBool(UserPreferenceKey.AnalyticsEnabled.toString(), value);
   }
 
+  Future<bool> getNotificationsEnabled() async {
+    return (await SharedPreferences.getInstance())
+            .getBool(UserPreferenceKey.NotificationsEnabled.toString()) ??
+        false;
+  }
+
+  Future<bool> setNotificationsEnabled(bool value) async {
+    return (await SharedPreferences.getInstance())
+        .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
+  }
+
   Future<String> getClientUuid() async {
     var prefs = await SharedPreferences.getInstance();
     var uuid = prefs.getString(UserPreferenceKey.ClientUUID.toString());
@@ -53,4 +64,4 @@ class UserPreferences {
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, ClientUUID }
+enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID }

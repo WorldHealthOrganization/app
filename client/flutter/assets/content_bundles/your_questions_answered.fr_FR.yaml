@@ -1,0 +1,221 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: qa
+  items:
+    -
+      title_html: |
+        Que sont les coronavirus, qu&#39;est-ce que le COVID-19 et dans quelle mesure sont-ils liés au SRAS ?
+      body_html: |
+        <p><b>Qu&#39;est-ce qu&#39;un coronavirus ?</b></p>
+
+        <p>Les coronavirus forment une vaste famille de virus qui peuvent être pathogènes chez l&#39;humain et chez l&#39;animal.  On sait que, chez l&#39;être humain, plusieurs coronavirus peuvent entraîner des infections respiratoires dont les manifestations vont du simple rhume à des maladies plus graves comme le syndrome respiratoire du Moyen-Orient (MERS) et le syndrome respiratoire aigu sévère (SRAS). Le dernier coronavirus qui a été découvert est responsable de la maladie à coronavirus COVID-19.</p>
+
+        <p><b>Qu&#39;est-ce que le COVID-19 ?</b></p>
+
+        <p>Le COVID-19 est la maladie infectieuse causée par le coronavirus qui a été le plus récemment découvert. Ce nouveau virus et cette maladie étaient inconnus avant l&#39;apparition de la flambée à Wuhan (Chine) en décembre 2019.</p>
+
+        <p><b>Le COVID-19 est-il la même maladie que le SRAS ?</b></p>
+
+        <p>Non, le virus responsable du COVID-19 et celui qui est à l&#39;origine du syndrome respiratoire aigu sévère (SRAS) sont génétiquement apparentés, mais les maladies résultantes sont différentes. Le SRAS est plus mortel, mais beaucoup moins contagieux que le COVID-19. Aucune épidémie de SRAS n&#39;a été recensée dans le monde depuis 2003.</p>
+    -
+      title_html: |
+        Quels sont les symptômes du COVID-19 ?
+      body_html: |
+        <p>Les symptômes les plus fréquents du COVID-19 sont :</p>
+
+        <ul>
+          <li>🤒 fièvre</li>
+          <li>😴 fatigue</li>
+          <li>💨 toux sèche</li>
+        </ul>
+
+        <p>Certains patients présentent des douleurs, une congestion nasale, un écoulement nasal, des maux de gorge ou une diarrhée. </p>
+
+        <p>Ces symptômes sont généralement bénins et apparaissent de manière progressive. Certaines personnes, bien qu&#39;infectées, ne présentent aucun symptôme et se sentent bien. </p>
+
+        <p>La plupart des gens (de l&#39;ordre de 80 %) guérissent sans avoir besoin de traitement particulier. Environ une personne sur six contractant le COVID-19 présente des symptômes plus graves, notamment des difficultés respiratoires. </p>
+
+        <p>Les personnes âgées, ainsi que celles qui ont d&#39;autres problèmes de santé telles que de l&#39;hypertension artérielle, des problèmes cardiaques ou du diabète, ont davantage de risques de présenter des symptômes graves. </p>
+
+        <p><b>Toute personne qui a de la fièvre, tousse et éprouve des difficultés à respirer doit consulter un médecin.</b></p>
+    -
+      title_html: |
+        Comment le COVID-19 se propage-t-il ?
+      body_html: |
+        <p>🤧 Le COVID-19 se transmet par des personnes porteuses du virus.</p>
+
+        <p>💦 La maladie peut se transmettre d&#39;un individu à l&#39;autre par le biais des gouttelettes respiratoires expulsées par le nez ou par la bouche lorsqu&#39;une personne tousse ou éternue.</p>
+
+        <p>🥄 Ces gouttelettes peuvent se retrouver sur des objets ou des surfaces autour de la personne en question.</p>
+
+        <p>👈 On peut alors contracter le COVID-19 si l&#39;on touche ces objets ou ces surfaces, et si l&#39;on se touche ensuite les yeux, le nez ou la bouche.</p>
+
+        <p>↔️ Il est également possible de contracter la COVID-19 en inhalant des gouttelettes d&#39;une personne malade qui vient de tousser ou d&#39;éternuer.
+        C&#39;est pourquoi il est important de maintenir une distance d&#39;au moins 1 mètre (3 pieds) avec toute personne malade.</p>
+
+        <p>L&#39;OMS évalue actuellement les travaux de recherche en cours sur la manière dont le COVID-19 se propage, et elle continuera à communiquer des résultats actualisés.</p>
+
+        <p><b>Le virus responsable du COVID-19 est-il transmissible par voie aérienne ?</b> Les études menées à ce jour semblent indiquer que le
+        virus responsable du COVID-19 est principalement transmissible par le contact avec des gouttelettes respiratoires, et non par voie aérienne.</p>
+
+        <p><b>Peut-on contracter le COVID-19 au contact d&#39;une personne qui ne présente aucun symptôme ?</b>
+        La maladie se propage principalement par les gouttelettes respiratoires expulsées par les personnes qui toussent.
+        Le risque de contracter le COVID-19 au contact d&#39;une personne qui ne présente aucun symptôme est très faible.
+        Toutefois, de nombreuses personnes atteintes ne présentent que des symptômes modérés.
+        Ceci est particulièrement vrai aux stades initiaux de la maladie.
+        Il est donc possible de contracter le COVID-19 au contact d&#39;une personne qui, par exemple, présente seulement une toux légère mais ne se sent pas souffrante.</p>
+
+        <p>L&#39;OMS évalue actuellement les travaux de recherche en cours sur la période de transmission du COVID-19, et elle continuera à communiquer des résultats actualisés.</p>
+    -
+      title_html: |
+        Puis-je contracter la COVID-19 par contact avec les matières fécales, à partir d&#39;une source animale ou à partir d&#39;un animal domestique ?
+      body_html: |
+        <p>🚽 <b>Puis-je contracter la COVID-19 par contact avec les matières fécales d&#39;une personne malade ?</b></p>
+        <p>Le risque de contracter la COVID-19 par contact avec les matières fécales d&#39;une personne infectée paraît faible. Les premières investigations semblent indiquer que le virus peut être présent dans les matières fécales dans certains cas, mais la flambée ne se propage pas principalement par cette voie. L&#39;OMS examine les travaux de recherche en cours sur la manière dont la COVID-19 se propage et elle continuera à communiquer les nouveaux résultats. Cependant, comme le risque existe, c&#39;est une raison supplémentaire de se laver les mains régulièrement, après être allé aux toilettes et avant de manger.</p>
+        
+        <p>🐾 <b>Les êtres humains peuvent-ils contracter la COVID-19 à partir d&#39;une source animale ?</b></p>
+        <p>Les coronavirus sont une grande famille de virus couramment présents chez les chauves-souris et chez d&#39;autres animaux. Occasionnellement ces virus infectent des êtres humains qui peuvent à leur tour propager l&#39;infection. Ainsi, le SARS-CoV est associé aux civettes tandis que le MERS-CoV est transmis par les dromadaires. Les sources animales éventuelles de la COVID-19 n&#39;ont pas encore été confirmées.</p>
+        
+        <p>Pour se protéger, par exemple lorsque l&#39;on va sur des marchés d&#39;animaux vivants, il faut éviter le contact direct avec les animaux et les surfaces en contact avec les animaux. Toujours respecter les règles relatives à la sécurité sanitaire des aliments. Il faut manipuler la viande crue, le lait et les abats avec précaution pour éviter de contaminer les aliments qui ne sont pas destinés à être cuits et il faut s&#39;abstenir de consommer des produits d&#39;origine animale crus ou mal cuits.</p>
+        
+        <p>🐶 <b>Mon animal domestique peut-il me transmettre la COVID-19 ?</b></p>
+        <p>Il y a eu un cas d&#39;infection chez un chien à Hong Kong mais, à ce jour, rien ne prouve que les animaux de compagnie, tels que les chiens ou les chats, peuvent transmettre la COVID-19. La maladie se transmet principalement par les gouttelettes expulsées par les personnes infectées quand elles toussent, éternuent ou parlent. Pour vous protéger, lavez-vous les mains fréquemment et soigneusement.</p>
+    -
+      title_html: |
+        Comment puis-je me protéger et éviter que la maladie ne se propage ?
+      body_html: |
+        <p><b>Comment puis-je me protéger et éviter que la maladie ne se propage ?</b></p>
+
+        <p><b>Mesures de protection pour tous</b></p>
+
+        <p>ℹ️ Tenez-vous au courant des dernières informations sur l&#39;épidémie de COVID-19, disponibles sur le site Web de l&#39;OMS et auprès des autorités de santé publique nationales et locales. Des cas de COVID-19 ont été recensés dans de nombreux pays et des flambées se sont produites dans plusieurs d&#39;entre eux. En Chine et dans certains autres pays, les autorités sont parvenues à ralentir ou à enrayer la progression de l&#39;épidémie. Toutefois, l&#39;évolution de la situation est imprévisible et chacun doit se tenir régulièrement informé.</p>
+
+        <p>Vous pouvez réduire le risque d&#39;être infecté ou de transmettre le COVID-19 en prenant quelques précautions simples :</p>
+
+        <p>🧼 <b>Se laver fréquemment et soigneusement les mains avec une solution hydroalcoolique ou avec de l&#39;eau et du savon.</b></p>
+
+        <p><i><b>Pourquoi ?</b> Se laver les mains avec une solution hydroalcoolique ou à l’eau et au savon tue le virus s’il est présent sur vos mains.</i></p>
+
+        <p>↔️ <b>Maintenir une distance d’au moins un mètre avec les autres personnes qui toussent ou qui éternuent.</b></p>
+
+        <p><i><b>Pourquoi ?</b>  Lorsqu’une personne tousse ou éternue, elle projette de petites gouttelettes qui peuvent contenir le virus. Si vous êtes trop près, vous pouvez inhaler ces gouttelettes et donc le virus responsable de la COVID-19 si la personne qui tousse en est porteuse.</i></p>
+
+        <p>🚫 <b>Éviter de se toucher les yeux, le nez et la bouche.</b></p>
+
+        <p><i><b>Pourquoi ?</b> Les mains sont en contact avec de nombreuses surfaces qui peuvent être contaminées par le virus. Une fois contaminées, les mains peuvent transmettre le virus à vos yeux, votre nez ou votre bouche. De là, le virus peut pénétrer dans votre organisme et vous pouvez tomber malade.</i></p>
+
+        <p>🤧 <b>Veillez à respecter les règles d’hygiène respiratoire et à ce que les personnes autour de vous en fassent autant. En cas de toux ou d&#39;éternuement, il faut se couvrir la bouche et le nez avec le pli du coude, ou avec un mouchoir. Jetez le mouchoir immédiatement après.</b></p>
+
+        <p><i><b>Pourquoi ?</b> Les gouttelettes respiratoires propagent des virus. En respectant les règles d&#39;hygiène respiratoire, vous protégez votre entourage des virus tels que ceux responsables du rhume, de la grippe ou du COVID-19.</i></p>
+
+        <p>🏠 <b>Si vous ne vous sentez pas bien, restez chez vous. En cas de fièvre, de toux et de difficultés respiratoires, consultez un médecin après l’avoir appelé. Suivez les instructions des autorités sanitaires locales.</b></p>
+
+        <p><i><b>Pourquoi ?</b> Ce sont les autorités nationales et locales qui disposent des informations les plus récentes sur la situation dans la région où vous vous trouvez. Si vous l&#39;appelez, votre médecin pourra vous orienter rapidement vers l’établissement de santé le plus adapté.  En outre, cela vous protègera et évitera la propagation de virus et d’autres agents infectieux.</i></p>
+
+        <p>🧳 <b>Informez-vous constamment pour savoir quelles sont les villes ou les zones où la COVID-19 se propage à grande échelle. Si possible, évitez de voyager, en particulier si vous êtes âgé ou diabétique ou si vous avez une maladie cardiaque ou pulmonaire.</b></p>
+
+        <p><i><b>Pourquoi ?</b> Le risque de contracter la COVID-19 est plus élevé dans ces régions.</i></p>
+    -
+      title_html: |
+        Que dois-je faire si j&#39;ai visité une zone où le COVID-19 se propage ?
+      body_html: |
+        <p>Si vous vous êtes récemment rendu(e) (au cours des 14 derniers jours) dans des régions où le COVID-19 se propage, suivez les instructions décrites à la question 15. ( Comment puis-je me protéger et éviter que la maladie ne se propage ? ») et suivez les conseils présentés ci-dessus ( Mesures de protection pour tous ).</p>
+
+        <p>🏠 <b>Si vous commencez à vous sentir mal, et même si vous ne présentez que des symptômes bénins (maux de tête, légère fièvre à partir de 37,3 °C et écoulement nasal modéré), restez chez vous jusqu&#39;à la guérison.</b> </p>
+
+        <p>Si vous avez absolument besoin que quelqu’un vienne vous ravitailler ou si vous devez sortir, par exemple pour acheter à manger, portez un masque pour éviter d’infecter d’autres personnes.</p>
+
+        <p><b><i>Pourquoi ?</i></b></p>
+
+        <p>Éviter d’entrer en contact avec d’autres personnes et de se rendre dans des établissements de santé permettra à ces établissements de fonctionner plus efficacement et vous protègera, ainsi que les autres personnes, de la COVID-19 et d’autres maladies virales.</p>
+
+        <p>🤒 <b>En cas de fièvre, de toux et de difficultés respiratoires, consultez un médecin sans tarder, car il peut s’agir d’une infection respiratoire ou d’une autre affection grave. Appelez votre médecin et indiquez-lui si vous avez récemment voyagé ou été en contact avec des voyageurs.</b></p>
+
+        <p><b><i>Pourquoi ?</i></b></p>
+
+        <p>Si vous l&#39;appelez, votre médecin pourra vous orienter rapidement vers l’établissement de santé le plus adapté.  En outre, cela vous protègera et évitera la propagation de la COVID-19 et d’autres maladies virales.</p>
+    -
+      title_html: |
+        Quelles sont les options de traitement pour le COVID-19 (y compris les médicaments, les vaccins et les thérapies) ?
+      body_html: |
+        <p>💊 <b>Les antibiotiques sont-ils efficaces pour prévenir ou traiter le COVID-19 ?</b></p>
+
+        <p>Non, les antibiotiques n&#39;agissent pas contre les virus, mais seulement contre les infections bactériennes. La COVID-19 étant due à un virus, les antibiotiques sont inefficaces. Ils ne doivent pas être utilisés comme moyen de prévention ou de traitement de la COVID-19.  Ils doivent être utilisés seulement sur prescription médicale pour traiter une infection bactérienne. </p>
+
+        <p>🧪 <b>Existe-t-il des médicaments ou des thérapies permettant de prévenir ou de guérir la COVID-19 ?</b></p>
+
+        <p>Certains remèdes occidentaux, traditionnels ou domestiques peuvent apporter du confort et soulager les symptômes de la COVID-19 mais rien ne prouve que les médicaments actuels permettent de prévenir ou de guérir la maladie. L’OMS ne recommande de prendre aucun médicament, y compris les antibiotiques, en automédication pour prévenir ou guérir la COVID-19. Cependant, plusieurs essais cliniques de médicaments occidentaux ou traditionnels sont en cours. L’OMS fournira des informations actualisées dès que les résultats des essais cliniques seront disponibles.</p>
+
+        <p>💉 <b>Existe-t-il un vaccin, un médicament ou un traitement contre la COVID-19? </b></p>
+
+        <p>Pas encore. Jusqu&#39;à présent, il n&#39;existe aucun vaccin et aucun médicament antiviral spécifique pour prévenir ou guérir la COVID-2019. Cependant, les personnes concernées devraient recevoir des soins pour soulager les symptômes. Les personnes gravement malades doivent être hospitalisées. La plupart des patients se rétablissent grâce aux soins de soutien.</p>
+
+        <p>Des vaccins possibles et certains traitements médicamenteux spécifiques sont à l&#39;étude. Ils sont testés dans le cadre d&#39;essais cliniques. L&#39;OMS coordonne ses efforts pour mettre au point des vaccins et des médicaments pour prévenir et traiter la COVID-19.</p>
+
+        <p>La meilleure façon de se protéger et de protéger les autres contre le COVID-19 consiste à se laver fréquemment les mains, à se couvrir la bouche avec le pli du coude ou avec un mouchoir, et à se tenir à une distance d&#39;au moins 1 mètre (3 pieds) de toute personne qui tousse ou qui éternue. </p>
+    -
+      title_html: |
+        Dois-je porter un masque pour me protéger ?
+      body_html: |
+        <p>Ne portez un masque que si vous êtes malade avec des symptômes de COVID-19 (en particulier la toux) ou si vous prenez soin d&#39;une personne susceptible d&#39;être atteinte du COVID-19. Les masques jetables sont à usage unique. Si vous portez un masque alors que vous n’êtes pas malade ou que vous ne vous occupez pas de quelqu’un qui est malade, c’est du gaspillage. Comme il y a une pénurie mondiale de masques, l’OMS conseille de les utiliser avec parcimonie.</p>
+
+        <p>L&#39;OMS recommande de faire un usage rationnel des masques médicaux afin d&#39;éviter le gaspillage de ressources précieuses et l&#39;utilisation abusive de masques.</p>
+
+        <p>La meilleure façon de se protéger et de protéger les autres contre le COVID-19 consiste à se laver fréquemment les mains, à se couvrir la bouche avec le pli du coude ou avec un mouchoir, et à se tenir à une distance d&#39;au moins 1 mètre (3 pieds) de toute personne qui tousse ou qui éternue. </p>
+
+        <p>🚮 <b>Comment mettre, utiliser, enlever et éliminer un masque ?</b></p>
+
+        <ol>
+          <li>Ne pas oublier que seuls les agents de santé, les personnes qui s’occupent de malades et les personnes qui présentent des symptômes respiratoires (fièvre et toux) doivent porter un masque.</li>
+          <li>Avant de mettre un masque, se laver les mains avec une solution hydroalcoolique ou à l’eau et au savon</li>
+          <li>Vérifier que le masque n’est ni déchiré ni troué.</li>
+          <li>Orienter le masque dans le bon sens (bande métallique vers le haut).</li>
+          <li>Vérifier que la face colorée du masque est placée vers l’extérieur.</li>
+          <li>Placer le masque sur le visage. Pincer la bande métallique ou le bord dur du masque afin qu’il épouse la forme du nez.</li>
+          <li>Tirer le bas du masque pour recouvrir la bouche et le menton.</li>
+          <li>Après usage, retirer le masque, enlever les élastiques de derrière les oreilles tout en éloignant le masque du visage et des vêtements afin d’éviter de toucher des parties du masque éventuellement contaminées.</li>
+          <li>Jeter le masque dans une poubelle fermée immédiatement après usage.</li>
+          <li>Après avoir touché ou jeté le masque, se laver les mains avec une solution hydroalcoolique ou à l’eau et au savon si elles sont visiblement souillées.</li>
+        </ol>
+    -
+      title_html: |
+        Y a-t-il des choses à ne pas faire ?
+      body_html: |
+        <p>Les mesures ci-après NE SONT PAS efficaces contre la COVID-19 et peuvent même être dangereuses :</p>
+
+        <ul>
+          <li>🚭 Fumer</li>
+          <li>😷 Porter plusieurs masques</li>
+          <li>💊 Prendre des antibiotiques</li>
+        </ul>
+
+        <p>En tout état de cause, en cas de fièvre, de toux et de difficultés respiratoires, consulter un médecin sans tarder afin de limiter le risque de voir l’infection s’aggraver et lui indiquer si vous avez effectué des voyages récemment.</p>
+    -
+      title_html: |
+        Comment gérer le stress pendant le COVID-19 ?
+      body_html: |
+        <p>📞 Il est normal de se sentir triste, stressé, confus, effrayé ou en colère pendant une crise. Parler à des personnes en qui vous avez confiance peut vous aider. Contactez vos amis et votre famille.</p>
+
+        <p>🥦  Si vous devez rester à la maison, maintenez un mode de vie sain – y compris une bonne alimentation, assez de sommeil, du sport et des interactions sociales avec vos proches à la maison, et par e-mail/téléphone avec vos amis et les autres membres de votre famille.</p>
+
+        <p>🚭 Ne consommez pas de tabac, d&#39;alcool ou d&#39;autres drogues pour gérer vos émotions. Si vous vous sentez dépassé(e) par les événements, parlez-en à un médecin ou à un conseiller médical. Planifiez à l’avance où aller et comment chercher de l’aide en cas de problème physique et/ou mental.</p>
+
+        <p>ℹ️ Recherchez les faits. Rassemblez des informations qui vous aideront à déterminer avec précision votre risque afin que vous puissiez prendre des précautions raisonnables. Trouvez une source crédible de confiance, comme le site web de l&#39;OMS ou une agence de santé nationale ou locale.</p>
+
+        <p>😭 Limitez l&#39;inquiétude et l&#39;agitation en réduisant le temps que vous et votre famille passez à regarder ou à écouter les médias que vous percevez comme perturbants.</p>
+
+        <p>⭐️ Rappelez-vous les aptitudes qui vous ont déjà permis de traverser certaines épreuves par le passé et appuyez-vous sur ces compétences pour gérer vos émotions pendant la période difficile de cette épidémie.</p>
+    -
+      title_html: |
+        Comment puis-je aider les enfants à gérer le stress pendant le COVID-19 ?
+      body_html: |
+        <p>🧒 Les enfants peuvent réagir au stress de différentes manières, par exemple en étant plus demandeurs, anxieux, en retrait, en colère ou agités, en faisant pipi au lit, etc. Répondez aux réactions de votre enfant de manière positive, écoutez ses préoccupations et accordez-lui de l&#39;amour et de l&#39;attention supplémentaires.</p>
+
+        <p>💖 Les enfants ont besoin de l’amour et de l’attention des adultes dans les moments difficiles. Accordez-leur davantage de temps et d&#39;attention. N&#39;oubliez pas d&#39;écouter vos enfants, de leur parler avec gentillesse et de les réconforter. Si possible, offrez-leur des occasions de jouer et de se détendre.</p>
+
+        <p>👪 Essayez de maintenir les enfants près de leurs parents et de leur famille et évitez autant que possible les séparations. En cas de séparation nécessaire (par exemple pour une hospitalisation), gardez un contact régulier (par exemple par téléphone) et rassurez les enfants.</p>
+
+        <p>🪁 Respectez des routines et des horaires réguliers autant que possible, ou créez-en de nouveaux dans le nouvel environnement, y compris des temps d&#39;école ou d&#39;apprentissage, ainsi que du temps pour jouer et se détendre en toute sécurité.</p>
+
+        <p>ℹ️ Indiquez-leur des faits sur ce qui s&#39;est passé, expliquez-leur ce qui se passe actuellement et donnez-leur des informations claires sur les moyens de réduire le risque d&#39;être infecté par la maladie, en employant des mots compréhensibles pour leur âge. Cela comprend également leur expliquer, de manière rassurante, ce qui pourrait se produire (par exemple, un membre de la famille et/ou l&#39;enfant va/vont peut-être commencer à ne pas se sentir bien et devra/devront peut-être aller à l&#39;hôpital pendant un certain temps afin que les médecins puissent l&#39;/les aider à se sentir mieux).</p>

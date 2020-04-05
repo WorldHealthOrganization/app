@@ -1,5 +1,5 @@
 import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -7,39 +7,19 @@ import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
-
   HomePage(this.analytics);
-  @override
-  _HomePageState createState() => _HomePageState(analytics);
-}
-
-class _HomePageState extends State<HomePage> {
-  final FirebaseAnalytics analytics;
-  _HomePageState(this.analytics);
-
-  @override
-  void initState() {
-    super.initState();
-    _initStateAsync();
-  }
-
-  void _initStateAsync() async {
-    await _pushOnboardingIfNeeded();
-  }
 
   _logAnalyticsEvent(String name) async {
     await analytics.logEvent(name: name);
@@ -49,13 +29,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
-        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-        packageInfo.version, packageInfo.buildNumber)}\n'
+        ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
 
     final String copyrightString = S
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
+
+    final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
@@ -68,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             sliver: SliverStaggeredGrid.count(
               crossAxisCount: 2,
               staggeredTiles: [
-                StaggeredTile.count(1, 2*tileHeightFactor),
+                StaggeredTile.count(1, 2 * tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(1, tileHeightFactor),
                 StaggeredTile.count(2, tileHeightFactor),
@@ -94,7 +75,8 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (c) => LatestNumbers()));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff3DA7D4),
@@ -108,7 +90,8 @@ class _HomePageState extends State<HomePage> {
                             )));
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle: TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
+                  titleStyle:
+                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
                 ),
                 PageButton(
                   Color(0xff234689),
@@ -137,14 +120,25 @@ class _HomePageState extends State<HomePage> {
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonNewsAndPress,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => NewsFeed())),
+                  () {
+                    _logAnalyticsEvent('News');
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => NewsFeed()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
               mainAxisSpacing: 15.0,
@@ -165,63 +159,119 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(15),
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 23),
-                      color: Color(0xffCA6B35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(S.of(context).homePagePageSliverListDonate),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
-                      onPressed: () {
-                        _logAnalyticsEvent('Donate');
-                        launch(S.of(context).homePagePageSliverListDonateUrl);
-                    })
-              ),
-              Divider(),
+                  padding: EdgeInsets.all(15),
+                  child: ArrowButton(
+                    title: S.of(context).homePagePageSliverListDonate,
+                    color: Color(0xffCA6B35),
+                    onPressed: () {
+                      _logAnalyticsEvent('Donate');
+                      launch(S.of(context).homePagePageSliverListDonateUrl);
+                    },
+                  )),
+              divider,
+              Material(
+                color: Colors.white,
+                child: InkWell(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.share, color: Color(0xffCA6B35)),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            S.of(context).homePagePageSliverListShareTheApp,
+                            style: TextStyle(
+                              color: Color(0xffCA6B35),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFFC9CDD6),
+                        ),
 
-              ListTile(
-                leading: Icon(Icons.share, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListShareTheApp, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  analytics.logShare(
-                      contentType: 'App', itemId: null, method: 'Website link');
-                  Share.share(
-                      S.of(context).commonWhoAppShareIconButtonDescription);
-                },
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    analytics.logShare(
+                        contentType: 'App',
+                        itemId: null,
+                        method: 'Website link');
+                    Share.share(
+                        S.of(context).commonWhoAppShareIconButtonDescription);
+                  },
+                ),
               ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
-                title: Text(S.of(context).homePagePageSliverListSettings, style: TextStyle(color: Color(0xffCA6B35), fontWeight: FontWeight.w600, fontSize: 20),),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+              divider,
+              Material(
+                color: Colors.white,
+                child: InkWell(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.settings, color: Color(0xffCA6B35)),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            S.of(context).homePagePageSliverListSettings,
+                            style: TextStyle(
+                              color: Color(0xffCA6B35),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFFC9CDD6),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    _logAnalyticsEvent('Settings');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => SettingsPage()),
+                    );
+                  },
+                ),
               ),
-              Divider(),
-              ListTile(
-                title: Text(S.of(context).homePagePageSliverListAboutTheApp),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  _logAnalyticsEvent('About');
-                  return Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (c) => AboutPage()));
-                },
+              divider,
+              Material(
+                color: Colors.white,
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  title: Text(
+                    S.of(context).homePagePageSliverListAboutTheApp,
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xFFC9CDD6),
+                  ),
+                  onTap: () {
+                    _logAnalyticsEvent('About');
+                    return Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => AboutPage()));
+                  },
+                ),
               ),
-              Divider(),
+              divider,
               Container(
                 height: 25,
               ),
               Text(
                 '${versionString ?? ''}$copyrightString',
-                style: TextStyle(color: Color(0xff26354E)),
+                style: TextStyle(color: Color(0xff26354E).withOpacity(0.75)),
                 textAlign: TextAlign.center,
               ),
               Container(
@@ -230,27 +280,5 @@ class _HomePageState extends State<HomePage> {
             ]),
           )
         ]);
-  }
-
-  Future<void> _pushOnboardingIfNeeded() async {
-    final onboardingComplete = await UserPreferences().getOnboardingCompleted();
-
-    // TODO: Uncomment for testing.  Remove when appropriate.
-    // onboardingComplete = false;
-
-    if (!onboardingComplete) {
-      final onboardingCompleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(fullscreenDialog: true, builder: (_) => OnboardingPage()),
-      );
-
-      if (onboardingCompleted) {
-        await UserPreferences().setOnboardingCompleted(true);
-        await UserPreferences().setAnalyticsEnabled(true);
-      } else {
-        // This will close the app.
-        // As the user pressed back, and did not finish onboarding, that's the correct thing to do.
-        await SystemNavigator.pop();
-      }
-    }
   }
 }

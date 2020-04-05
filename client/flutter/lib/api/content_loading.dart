@@ -1,3 +1,4 @@
+import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:http/http.dart' as http;
@@ -6,12 +7,11 @@ import 'package:flutter/material.dart';
 import 'content_bundle.dart';
 
 class ContentLoading {
-  static final networkLoadingEnabled = false;
+  static final networkLoadingEnabled = true;
   static final ContentLoading _singleton = ContentLoading._internal();
 
-  // TODO: Real URL
   static final String baseContentURL =
-      'https://who.int/covid19/content/v1'; // no trailing
+      '${Endpoints.PROD}/content/bundles'; // no trailing slash
   static final Duration networkTimeout = Duration(seconds: 3);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 

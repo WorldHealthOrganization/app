@@ -9,7 +9,7 @@ import 'intl/messages_all.dart';
 // **************************************************************************
 
 class S {
-  S(this.localeName);
+  S();
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,15 +19,13 @@ class S {
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      return S();
     });
   } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
-
-  final String localeName;
 
   String get commonWorldHealthOrganization {
     return Intl.message(
@@ -56,7 +54,7 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusAppVersion(dynamic version, dynamic buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -65,7 +63,7 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusCopyright(dynamic year) {
+  String commonWorldHealthOrganizationCoronavirusCopyright(Object year) {
     return Intl.message(
       '© $year WHO',
       name: 'commonWorldHealthOrganizationCoronavirusCopyright',
@@ -274,7 +272,7 @@ class S {
 
   String get homePagePageButtonQuestions {
     return Intl.message(
-      'Questions',
+      'Questions & Answers',
       name: 'homePagePageButtonQuestions',
       desc: '',
       args: [],
@@ -301,7 +299,7 @@ class S {
 
   String get homePagePageButtonYourQuestionsAnswered {
     return Intl.message(
-      'Your \nQuestions \nAnswered',
+      'Questions & Answers',
       name: 'homePagePageButtonYourQuestionsAnswered',
       desc: '',
       args: [],
@@ -517,7 +515,7 @@ class S {
 
   String get travelAdviceContainerText {
     return Intl.message(
-      'WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks. It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.',
+      '<p>WHO continues to <b>advise against the application of travel or trade restrictions</b> to countries experiencing COVID-19 outbreaks.</p> <p><b>It is prudent for travellers who are sick to delay or avoid travel to affected areas</b>, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.</p>',
       name: 'travelAdviceContainerText',
       desc: '',
       args: [],
@@ -589,7 +587,7 @@ class S {
 
   String get travelAdvicePageButtonGeneralRecommendations {
     return Intl.message(
-      'General\nRecommendations',
+      'General Recommendations',
       name: 'travelAdvicePageButtonGeneralRecommendations',
       desc: '',
       args: [],
@@ -965,7 +963,7 @@ class S {
     );
   }
 
-  String aboutPageBuiltByCreditText(dynamic copyrightString, dynamic versionString) {
+  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -974,7 +972,7 @@ class S {
     );
   }
 
-  String aboutPageThanksToText(dynamic team) {
+  String aboutPageThanksToText(Object team) {
     return Intl.message(
       'Thanks to: $team',
       name: 'aboutPageThanksToText',
@@ -985,8 +983,62 @@ class S {
 
   String get aboutPageTitle {
     return Intl.message(
-      'About',
+      'About the App',
       name: 'aboutPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageTitle {
+    return Intl.message(
+      'Latest Numbers',
+      name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageGlobalCasesTitle {
+    return Intl.message(
+      'GLOBAL CASES',
+      name: 'latestNumbersPageGlobalCasesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageGlobalDeaths {
+    return Intl.message(
+      'GLOBAL DEATHS',
+      name: 'latestNumbersPageGlobalDeaths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String latestNumbersPageLastUpdated(Object lastUpd) {
+    return Intl.message(
+      'Last updated $lastUpd',
+      name: 'latestNumbersPageLastUpdated',
+      desc: '',
+      args: [lastUpd],
+    );
+  }
+
+  String get latestNumbersPageUpdating {
+    return Intl.message(
+      'Updating…',
+      name: 'latestNumbersPageUpdating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageViewLiveData {
+    return Intl.message(
+      'View live data',
+      name: 'latestNumbersPageViewLiveData',
       desc: '',
       args: [],
     );
@@ -998,7 +1050,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'), Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'), Locale.fromSubtags(languageCode: 'en', countryCode: 'GB'), Locale.fromSubtags(languageCode: 'ar'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'), Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
+      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
     ];
   }
 

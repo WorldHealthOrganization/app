@@ -11,6 +11,7 @@ class PageButton extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
   final TextStyle titleStyle;
+  final Color descriptionColor;
 
   final double verticalPadding;
   final double horizontalPadding;
@@ -21,12 +22,13 @@ class PageButton extends StatelessWidget {
     this.title,
     this.onPressed, {
     this.description = "",
-    this.borderRadius = 25.0,
+    this.borderRadius = 16,
     this.verticalPadding = 15.0,
     this.horizontalPadding = 8.0,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
+        this.descriptionColor,
   });
 
   @override
@@ -49,13 +51,14 @@ class PageButton extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 4),
+              // Makes sure text is centered properly when no description is provided
+              SizedBox(height: description.isNotEmpty ? 4 : 0),
               this.description.isNotEmpty
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
                       textScaleFactor: 0.9 + 0.5 * contentScale(context),
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                      style: TextStyle(fontWeight: FontWeight.w400, color: descriptionColor ?? Color(0xFFC9CDD6)),
                     )
                   : Container()
             ],

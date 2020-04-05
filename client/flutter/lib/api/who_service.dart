@@ -1,12 +1,12 @@
 import 'dart:convert';
+import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
 class WhoService {
-  static final String serviceUrlStaging =
-      'https://staging.whocoronavirus.org/WhoService';
-  static final String serviceUrlProd = 'https://whocoronavirus.org/WhoService';
+  static final String serviceUrlStaging = '${Endpoints.STAGING}/WhoService';
+  static final String serviceUrlProd = '${Endpoints.PROD}/WhoService';
   static final String serviceUrl = serviceUrlProd;
 
   /// Put device token.
@@ -22,9 +22,17 @@ class WhoService {
   }
 
   /// Put location
-  static Future<bool> putLocation({double latitude, double longitude}) async {
+  static Future<bool> putLocation({double latitude, double longitude, String countryCode, String adminArea, String subadminArea, String locality}) async {
     Map<String, String> headers = await _getHeaders();
-    var postBody = jsonEncode({"latitude": latitude, "longitude": longitude});
+    var postBody = jsonEncode({
+      "latitude": latitude,
+      "longitude": longitude,
+      "countryCode": countryCode,
+      "adminArea": adminArea,
+      "subadminArea": subadminArea,
+      "locality": locality,
+    });
+    print(postBody);
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
