@@ -61,6 +61,8 @@
 	<false/>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
+	<key>FirebaseMessagingAutoInitEnabled</key>
+	<false/>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
