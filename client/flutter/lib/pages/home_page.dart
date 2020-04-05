@@ -17,8 +17,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
   HomePage(this.analytics);
@@ -37,6 +35,8 @@ class HomePage extends StatelessWidget {
     final String copyrightString = S
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
+
+    final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
@@ -120,14 +120,25 @@ class HomePage extends StatelessWidget {
                   },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 PageButton(
                   Color(0xff008DC9),
                   S.of(context).homePagePageButtonNewsAndPress,
-                  () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => NewsFeed())),
+                  () {
+                    _logAnalyticsEvent('News');
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (c) => NewsFeed()));
+                  },
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  titleStyle: TextStyle(
+                    fontSize: 11.2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
               mainAxisSpacing: 15.0,
@@ -157,27 +168,33 @@ class HomePage extends StatelessWidget {
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
                   )),
-
-              Divider(height: 1),
+              divider,
               Material(
                 color: Colors.white,
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
-                  leading: Icon(Icons.share, color: Color(0xffCA6B35)),
-                  title: Text(
-                    S.of(context).homePagePageSliverListShareTheApp,
-                    style: TextStyle(
-                      color: Color(0xffCA6B35),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
+                child: InkWell(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.share, color: Color(0xffCA6B35)),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            S.of(context).homePagePageSliverListShareTheApp,
+                            style: TextStyle(
+                              color: Color(0xffCA6B35),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFFC9CDD6),
+                        ),
+
+                      ],
                     ),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Color(0xFFC9CDD6),
                   ),
                   onTap: () {
                     analytics.logShare(
@@ -189,31 +206,43 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              Divider(height: 1),
+              divider,
               Material(
                 color: Colors.white,
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                child: InkWell(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.settings, color: Color(0xffCA6B35)),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            S.of(context).homePagePageSliverListSettings,
+                            style: TextStyle(
+                              color: Color(0xffCA6B35),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Color(0xFFC9CDD6),
+                        ),
+
+                      ],
+                    ),
                   ),
-                  leading: Icon(Icons.settings, color: Color(0xffCA6B35)),
-                  title: Text(
-                    S.of(context).homePagePageSliverListSettings,
-                    style: TextStyle(
-                        color: Color(0xffCA6B35),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Color(0xFFC9CDD6),
-                  ),
-                  onTap: () => Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (c) => SettingsPage())),
+                  onTap: () {
+                    _logAnalyticsEvent('Settings');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => SettingsPage()),
+                    );
+                  },
                 ),
               ),
-              Divider(height: 1),
+              divider,
               Material(
                 color: Colors.white,
                 child: ListTile(
@@ -236,13 +265,13 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              Divider(height: 0),
+              divider,
               Container(
                 height: 25,
               ),
               Text(
                 '${versionString ?? ''}$copyrightString',
-                style: TextStyle(color: Color(0xff26354E)),
+                style: TextStyle(color: Color(0xff26354E).withOpacity(0.75)),
                 textAlign: TextAlign.center,
               ),
               Container(
@@ -252,5 +281,4 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
-
 }
