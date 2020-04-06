@@ -304,7 +304,6 @@ class _MenuButton extends StatelessWidget {
   final String title;
   final String description;
   final Widget page;
-  // TODO Not needed after analytics automatically logs route changes
   final VoidCallback onTap;
   final TextStyle titleStyle;
   final MainAxisAlignment mainAxisAlignment;
