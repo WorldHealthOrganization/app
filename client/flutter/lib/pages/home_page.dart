@@ -339,6 +339,7 @@ class _MenuGrid extends StatelessWidget {
 }
 
 class _MenuButton extends StatelessWidget {
+  static const tileDefaultAspectRatio = (1 / 0.73);
   final double scaleFactor;
   final Color color;
   final String title;
@@ -366,7 +367,10 @@ class _MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: 120 * scaleFactor),
+      constraints: BoxConstraints(
+          minHeight: (MediaQuery.of(context).size.width / 2) *
+              (1 / tileDefaultAspectRatio) *
+              scaleFactor),
       child: PageButton(
         color,
         title,
