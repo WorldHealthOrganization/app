@@ -47,7 +47,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -146,7 +146,7 @@ class S {
 
   String get legalLandingPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'legalLandingPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -173,7 +173,7 @@ class S {
 
   String get legalLandingPagePrivacyPolicyLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'legalLandingPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
@@ -470,7 +470,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem1 {
     return Intl.message(
-      '*Wash your hands* with soap and water for at least 20 seconds',
+      '*Wash your hands* with soap and water to avoid getting sick and spreading infections to others',
       name: 'protectYourselfListOfItemsPageListItem1',
       desc: '',
       args: [],
@@ -929,7 +929,7 @@ class S {
 
   String get aboutPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'aboutPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -947,7 +947,7 @@ class S {
 
   String get aboutPagetermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'aboutPagetermsOfServiceLinkUrl',
       desc: '',
       args: [],
