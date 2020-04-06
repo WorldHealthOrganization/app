@@ -273,7 +273,6 @@ class _MenuGrid extends StatelessWidget {
                     children: <Widget>[
                       IntrinsicHeight(
                         child: _MenuButton(
-                          scaleFactor: 1,
                           onTap: () => _openLatestNumbers(context),
                           color: Color(0xff1A458E),
                           title: S.of(context).homePagePageButtonLatestNumbers,
@@ -284,7 +283,6 @@ class _MenuGrid extends StatelessWidget {
                       IntrinsicHeight(
                         child: _MenuButton(
                           onTap: () => _openQuestionsAndAnswers(context),
-                          scaleFactor: 1,
                           color: Color(0xff3DA7D4),
                           title: S
                               .of(context)
