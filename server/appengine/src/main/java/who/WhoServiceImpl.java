@@ -35,8 +35,8 @@ public class WhoServiceImpl implements WhoService {
       .globalStats(new CaseStats.Builder()
         .cases(1136851L)
         .deaths(62955L)
-        // 2020-05-04 18:00 CET
-        .lastUpdated(1588608000000L)
+        // 2020-04-05 18:00 CET
+        .lastUpdated(1586102400000L)
         // TODO: Unsure whether we can get an efficient query for recoveries in real-time.
         .recoveries(-1L)
         .attribution("WHO")
