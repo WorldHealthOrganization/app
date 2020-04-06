@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "commonWorldHealthOrganizationCoronavirusCopyright" : m3,
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
     "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest \nNumbers"),
-    "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"),
+    "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://who.sprinklr.com"),
     "homePagePageButtonNewsAndPress" : MessageLookupByLibrary.simpleMessage("News & Press"),
     "homePagePageButtonProtectYourself" : MessageLookupByLibrary.simpleMessage("Protect Yourself"),
     "homePagePageButtonQuestions" : MessageLookupByLibrary.simpleMessage("Questions & Answers"),

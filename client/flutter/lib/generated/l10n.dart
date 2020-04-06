@@ -443,7 +443,7 @@ class S {
 
   String get homePagePageButtonLatestNumbersUrl {
     return Intl.message(
-      'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd',
+      'https://who.sprinklr.com',
       name: 'homePagePageButtonLatestNumbersUrl',
       desc: '',
       args: [],
