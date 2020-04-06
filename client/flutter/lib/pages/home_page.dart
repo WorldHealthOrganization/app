@@ -13,7 +13,6 @@ import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,7 +26,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double tileHeightFactor = 0.73;
     final String versionString = packageInfo != null
         ? '${S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(packageInfo.version, packageInfo.buildNumber)}\n'
         : null;
@@ -44,109 +42,9 @@ class HomePage extends StatelessWidget {
         showBackButton: false,
         showLogoInHeader: true,
         body: [
-          SliverPadding(
-            padding: EdgeInsets.all(16),
-            sliver: SliverStaggeredGrid.count(
-              crossAxisCount: 2,
-              staggeredTiles: [
-                StaggeredTile.count(1, 2 * tileHeightFactor),
-                StaggeredTile.count(1, tileHeightFactor),
-                StaggeredTile.count(1, tileHeightFactor),
-                StaggeredTile.count(2, tileHeightFactor),
-                StaggeredTile.count(1, tileHeightFactor),
-                StaggeredTile.count(1, tileHeightFactor),
-              ],
-              children: [
-                PageButton(
-                  Color(0xff008DC9),
-                  S.of(context).homePagePageButtonProtectYourself,
-                  () {
-                    _logAnalyticsEvent('ProtectYourself');
-                    return Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => ProtectYourself()));
-                  },
-                ),
-                PageButton(
-                  Color(0xff1A458E),
-                  S.of(context).homePagePageButtonLatestNumbers,
-                  () {
-                    _logAnalyticsEvent('LatestNumbers');
-                    return Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => LatestNumbers()));
-                  },
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle:
-                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
-                ),
-                PageButton(
-                  Color(0xff3DA7D4),
-                  S.of(context).homePagePageButtonYourQuestionsAnswered,
-                  () {
-                    _logAnalyticsEvent('QuestionsAnswered');
-                    return Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => QuestionIndexPage(
-                              dataSource: QuestionData.yourQuestionsAnswered,
-                              title: S.of(context).homePagePageButtonQuestions,
-                            )));
-                  },
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  titleStyle:
-                      TextStyle(fontSize: 11.2, fontWeight: FontWeight.w700),
-                ),
-                PageButton(
-                  Color(0xff234689),
-                  S.of(context).homePagePageButtonWHOMythBusters,
-                  () {
-                    _logAnalyticsEvent('GetTheFacts');
-                    return Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => QuestionIndexPage(
-                              dataSource: QuestionData.whoMythbusters,
-                              title: S
-                                  .of(context)
-                                  .homePagePageButtonWHOMythBusters,
-                            )));
-                  },
-                  description:
-                      S.of(context).homePagePageButtonWHOMythBustersDescription,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
-                PageButton(
-                  Color(0xff3DA7D4),
-                  S.of(context).homePagePageButtonTravelAdvice,
-                  () {
-                    _logAnalyticsEvent('TravelAdvice');
-                    return Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => TravelAdvice()));
-                  },
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  titleStyle: TextStyle(
-                    fontSize: 11.2,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                PageButton(
-                  Color(0xff008DC9),
-                  S.of(context).homePagePageButtonNewsAndPress,
-                  () {
-                    _logAnalyticsEvent('News');
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (c) => NewsFeed()));
-                  },
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  titleStyle: TextStyle(
-                    fontSize: 11.2,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-              mainAxisSpacing: 15.0,
-              crossAxisSpacing: 15.0,
-            ),
-          ),
           SliverList(
             delegate: SliverChildListDelegate.fixed([
+              _MenuGrid(logAnalyticsEvent: _logAnalyticsEvent),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: Text(
@@ -192,7 +90,6 @@ class HomePage extends StatelessWidget {
                           Icons.arrow_forward_ios,
                           color: Color(0xFFC9CDD6),
                         ),
-
                       ],
                     ),
                   ),
@@ -230,7 +127,6 @@ class HomePage extends StatelessWidget {
                           Icons.arrow_forward_ios,
                           color: Color(0xFFC9CDD6),
                         ),
-
                       ],
                     ),
                   ),
@@ -281,4 +177,216 @@ class HomePage extends StatelessWidget {
           )
         ]);
   }
+}
+
+class _MenuGrid extends StatelessWidget {
+  const _MenuGrid({Key key, @required this.logAnalyticsEvent})
+      : assert(logAnalyticsEvent != null),
+        super(key: key);
+
+  final Function(String) logAnalyticsEvent;
+
+  final TextStyle largeTitleStyle = const TextStyle(
+    fontWeight: FontWeight.w700,
+  );
+
+  final TextStyle mediumTitleStyle = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 11.2,
+  );
+
+  void _openProtectYourself(BuildContext context) {
+    logAnalyticsEvent('ProtectYourself');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (c) => ProtectYourself()),
+    );
+  }
+
+  void _openLatestNumbers(BuildContext context) {
+    logAnalyticsEvent('LatestNumbers');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (c) => LatestNumbers()),
+    );
+  }
+
+  void _openQuestionsAndAnswers(BuildContext context) {
+    logAnalyticsEvent('QuestionsAnswered');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (c) => QuestionIndexPage(
+          dataSource: QuestionData.yourQuestionsAnswered,
+          title: S.of(context).homePagePageButtonQuestions,
+        ),
+      ),
+    );
+  }
+
+  void _openGetTheFacts(BuildContext context) {
+    logAnalyticsEvent('GetTheFacts');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (c) => QuestionIndexPage(
+          dataSource: QuestionData.whoMythbusters,
+          title: S.of(context).homePagePageButtonWHOMythBusters,
+        ),
+      ),
+    );
+  }
+
+  void _openTravelAdvice(BuildContext context) {
+    logAnalyticsEvent('TravelAdvice');
+    Navigator.push(context, MaterialPageRoute(builder: (c) => TravelAdvice()));
+  }
+
+  void _openNewsAndPress(BuildContext context) {
+    logAnalyticsEvent('News');
+    Navigator.push(context, MaterialPageRoute(builder: (c) => NewsFeed()));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: <Widget>[
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  child: _MenuButton(
+                    onTap: () => _openProtectYourself(context),
+                    scaleFactor: 2,
+                    color: Color(0xff008DC9),
+                    title: S.of(context).homePagePageButtonProtectYourself,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    titleStyle: largeTitleStyle,
+                  ),
+                ),
+                _HorizontalSpacer(),
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      IntrinsicHeight(
+                        child: _MenuButton(
+                          onTap: () => _openLatestNumbers(context),
+                          color: Color(0xff1A458E),
+                          title: S.of(context).homePagePageButtonLatestNumbers,
+                          titleStyle: mediumTitleStyle,
+                        ),
+                      ),
+                      _VerticalSpacer(),
+                      IntrinsicHeight(
+                        child: _MenuButton(
+                          onTap: () => _openQuestionsAndAnswers(context),
+                          color: Color(0xff3DA7D4),
+                          title: S
+                              .of(context)
+                              .homePagePageButtonYourQuestionsAnswered,
+                          titleStyle: mediumTitleStyle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          _VerticalSpacer(),
+          _MenuButton(
+            onTap: () => _openGetTheFacts(context),
+            color: Color(0xff234689),
+            title: S.of(context).homePagePageButtonWHOMythBusters,
+            description:
+                S.of(context).homePagePageButtonWHOMythBustersDescription,
+            mainAxisAlignment: MainAxisAlignment.center,
+            titleStyle: largeTitleStyle,
+          ),
+          _VerticalSpacer(),
+          IntrinsicHeight(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: _MenuButton(
+                    onTap: () => _openTravelAdvice(context),
+                    color: Color(0xff3DA7D4),
+                    title: S.of(context).homePagePageButtonTravelAdvice,
+                    titleStyle: mediumTitleStyle,
+                  ),
+                ),
+                _HorizontalSpacer(),
+                Expanded(
+                  child: _MenuButton(
+                    onTap: () => _openNewsAndPress(context),
+                    color: Color(0xff008DC9),
+                    title: S.of(context).homePagePageButtonNewsAndPress,
+                    titleStyle: mediumTitleStyle,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MenuButton extends StatelessWidget {
+  static const tileDefaultAspectRatio = (1 / 0.73);
+  final double scaleFactor;
+  final Color color;
+  final String title;
+  final String description;
+  final VoidCallback onTap;
+  final TextStyle titleStyle;
+  final MainAxisAlignment mainAxisAlignment;
+
+  const _MenuButton({
+    Key key,
+    @required this.onTap,
+    @required this.color,
+    @required this.title,
+    this.scaleFactor = 1,
+    this.titleStyle = const TextStyle(fontWeight: FontWeight.w700),
+    this.description,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+  })  : assert(scaleFactor != null),
+        assert(onTap != null),
+        assert(title != null),
+        assert(titleStyle != null),
+        assert(mainAxisAlignment != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+          minHeight: (MediaQuery.of(context).size.width / 2) *
+              (1 / tileDefaultAspectRatio) *
+              scaleFactor),
+      child: PageButton(
+        color,
+        title,
+        onTap,
+        titleStyle: titleStyle,
+        description: description ?? '',
+        mainAxisAlignment: mainAxisAlignment,
+      ),
+    );
+  }
+}
+
+class _HorizontalSpacer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => const SizedBox(width: 16);
+}
+
+class _VerticalSpacer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => const SizedBox(height: 16);
 }

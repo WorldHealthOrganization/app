@@ -57,17 +57,19 @@ class PermissionRequestPage extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               color: Color(0xff1A458E),
-                              letterSpacing: -0.5,),
-                            textScaleFactor: 2.5,
+                              letterSpacing: -0.5,
+                              fontSize: 30,
+                            ),
                           ),
                           SizedBox(height: 18),
                           Text(
                             this.pageDescription,
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff26354E),
-                                height: 1.2),
-                            textScaleFactor: 1.2,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff26354E),
+                              height: 1.2,
+                              fontSize: 16,
+                            ),
                           )
                         ],
                       ),
@@ -96,8 +98,10 @@ class PermissionRequestPage extends StatelessWidget {
                         padding: EdgeInsets.all(16),
                         child: Text(
                           S.of(context).commonPermissionRequestPageButtonSkip,
-                          style: TextStyle(color: Color(0xffC9CDD6)),
-                          textScaleFactor: 1.3,
+                          style: TextStyle(
+                            color: Color(0xffC9CDD6),
+                            fontSize: 18,
+                          ),
                         ),
                         onPressed: onSkip,
                       ),
