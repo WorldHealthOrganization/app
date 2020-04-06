@@ -32,7 +32,6 @@ class WhoService {
       "subadminArea": subadminArea,
       "locality": locality,
     });
-    print(postBody);
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
