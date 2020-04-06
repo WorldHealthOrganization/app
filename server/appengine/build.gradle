@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.google.appengine:appengine-remote-api:+'
 
     testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.+"
     testCompile 'com.google.appengine:appengine-testing:+'
     testCompile 'com.google.appengine:appengine-api-stubs:+'
     testCompile 'com.google.appengine:appengine-tools-sdk:+'

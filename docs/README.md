@@ -8,7 +8,7 @@ This is the official World Health Organization app.
 
 ## Summary
 
-<img align="right" src="./preview-home.png" alt="In progress mockup" width="200"/>
+<img align="right" src="./screen-loop.gif" alt="In progress mockup" width="300"/>
 
 **Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 
@@ -34,10 +34,10 @@ We want to get this out and working so we can move on to more significant functi
 
 ## Key Goals for Next Release
 
-We are assessing the [feature roadmap](/docs/ROADMAP.md) for the next and subsequent releases.
+We are assessing the [feature roadmap](https://github.com/WorldHealthOrganization/app/blob/master/docs/ROADMAP.md) for the next and subsequent releases.
 
 ## Community
 
-GitHub: https://github.com/WorldHealthOrganization/app
+GitHub: [https://github.com/WorldHealthOrganization/app](https://github.com/WorldHealthOrganization/app)
 
-Slack: https://who-app.slack.com/ _New invitations are currently closed_
+Slack: [https://who-app.slack.com/](https://who-app.slack.com/) _New invitations are currently closed_
