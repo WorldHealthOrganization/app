@@ -1,3 +1,4 @@
+
 import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -45,10 +46,12 @@ class ContentLoading {
             // TODO: Localize
             Dialogs.showAppDialog(
                 context: context,
-                title: S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
+                title:
+                    S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
                 // TODO: Provide the sharing link here?
-                bodyText:
-                    S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
+                bodyText: S
+                    .of(context)
+                    .commonContentLoadingDialogUpdateRequiredBodyText);
           });
         }
       }
@@ -87,15 +90,14 @@ class ContentLoading {
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
-    String body = response.body;
-    return ContentBundle.from(body);
+    return ContentBundle.fromBytes(response.bodyBytes);
   }
 
   /// Load a localized content bundle from local assets, throwing an exception if not found.
   Future<ContentBundle> _loadFromAssets(String name, String suffix) async {
     var path = '$baseAssetPath/${_fileName(name, suffix)}';
     var body = await rootBundle.loadString(path);
-    return ContentBundle.from(body);
+    return ContentBundle.fromString(body);
   }
 
   /// Format the filename. e.g. screen_name.en_US.yaml

@@ -1,5 +1,6 @@
 import './back_arrow.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class PageHeader extends StatelessWidget {
   final String title;
@@ -36,8 +37,9 @@ class PageHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           //Todo: Decide what to do when title text overflow
-          Text(this.title,
+          AutoSizeText(this.title,
               maxLines: 1,
+              minFontSize: 8,
               overflow: TextOverflow.fade,
               softWrap: false,
               style: TextStyle(
@@ -46,8 +48,9 @@ class PageHeader extends StatelessWidget {
                   fontSize: 24,
                   letterSpacing: -0.5)),
           SizedBox(height: 4),
-          Text(this.subtitle,
+          AutoSizeText(this.subtitle,
               maxLines: 1,
+              minFontSize: 8,
               overflow: TextOverflow.ellipsis,
               softWrap: false,
               style: TextStyle(
