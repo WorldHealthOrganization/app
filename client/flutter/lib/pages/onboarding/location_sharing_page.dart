@@ -18,7 +18,7 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   _LocationSharingPageState();
 
   /// True if _complete() has been invoked
-  bool completed = false;
+  bool _completed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +96,8 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   }
 
   void _complete() {
-    if (!completed) {
-      completed = true;
+    if (!_completed) {
+      _completed = true;
       widget.onNext();
     }
   }
