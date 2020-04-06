@@ -569,7 +569,7 @@ class S {
 
   String get travelAdvicePageListItem3Text {
     return Intl.message(
-      'If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
+      'If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
       name: 'travelAdvicePageListItem3Text',
       desc: '',
       args: [],

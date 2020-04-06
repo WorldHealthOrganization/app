@@ -126,7 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "travelAdvicePageListItem2Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/quarantine.png"),
     "travelAdvicePageListItem2Text" : MessageLookupByLibrary.simpleMessage("Some countries may require returning travellers to enter quarantine."),
     "travelAdvicePageListItem3Image" : MessageLookupByLibrary.simpleMessage("assets/travel_advice/doctor.png"),
-    "travelAdvicePageListItem3Text" : MessageLookupByLibrary.simpleMessage("If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history."),
+    "travelAdvicePageListItem3Text" : MessageLookupByLibrary.simpleMessage("If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history."),
     "travelAdvicePageListTitle" : MessageLookupByLibrary.simpleMessage("Travellers returning from affected areas should:"),
     "whoMythBustersListOfItemsPageListItem1" : MessageLookupByLibrary.simpleMessage("There is a lot of false information around. These are the facts"),
     "whoMythBustersListOfItemsPageListItem10" : MessageLookupByLibrary.simpleMessage("Thermal scanners CAN detect if people have a fever but CANNOT detect whether or not someone has the coronavirus"),

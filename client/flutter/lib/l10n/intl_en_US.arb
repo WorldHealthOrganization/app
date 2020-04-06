@@ -66,7 +66,7 @@
   "travelAdvicePageListItem1Image": "assets/travel_advice/self-monitor.png",
   "travelAdvicePageListItem2Text": "Some countries may require returning travellers to enter quarantine.",
   "travelAdvicePageListItem2Image": "assets/travel_advice/quarantine.png",
-  "travelAdvicePageListItem3Text": "If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.",
+  "travelAdvicePageListItem3Text": "If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.",
   "travelAdvicePageListItem3Image": "assets/travel_advice/doctor.png",
   "travelAdvicePageButtonGeneralRecommendations": "General Recommendations",
   "travelAdvicePageButtonGeneralRecommendationsLink": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
