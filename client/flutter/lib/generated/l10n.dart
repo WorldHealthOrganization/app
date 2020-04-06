@@ -47,7 +47,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -146,7 +146,7 @@ class S {
 
   String get legalLandingPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'legalLandingPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -173,7 +173,7 @@ class S {
 
   String get legalLandingPagePrivacyPolicyLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'legalLandingPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
@@ -218,7 +218,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
-      'Stay up to date on the Coronavirus',
+      'Stay up to date on COVID-19',
       name: 'notificationsPagePermissionRequestPageTitle',
       desc: '',
       args: [],
@@ -227,7 +227,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageDescription {
     return Intl.message(
-      'To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.',
+      'To stay up to date with COVID-19 news, turn on app notifications from the World Health Organization.',
       name: 'notificationsPagePermissionRequestPageDescription',
       desc: '',
       args: [],
@@ -263,7 +263,7 @@ class S {
 
   String get homePagePageSubTitle {
     return Intl.message(
-      'Virus response & tools',
+      'Information & tools',
       name: 'homePagePageSubTitle',
       desc: '',
       args: [],
@@ -326,7 +326,7 @@ class S {
 
   String get homePagePageButtonWHOMythBustersDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'homePagePageButtonWHOMythBustersDescription',
       desc: '',
       args: [],
@@ -425,7 +425,7 @@ class S {
 
   String get homePagePageSliverListDonate {
     return Intl.message(
-      'Donate here',
+      'Donate Here',
       name: 'homePagePageSliverListDonate',
       desc: '',
       args: [],
@@ -470,7 +470,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem1 {
     return Intl.message(
-      '*Wash your hands* with soap and water for at least 20 seconds',
+      '*Wash your hands* with soap and water to avoid getting sick and spreading infections to others',
       name: 'protectYourselfListOfItemsPageListItem1',
       desc: '',
       args: [],
@@ -929,7 +929,7 @@ class S {
 
   String get aboutPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'aboutPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -947,7 +947,7 @@ class S {
 
   String get aboutPagetermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'aboutPagetermsOfServiceLinkUrl',
       desc: '',
       args: [],

@@ -23,6 +23,10 @@ message PutDeviceTokenRequest {
 message PutLocationRequest {
   double latitude = 2;
   double longitude = 3;
+  string countryCode = 4;
+  string adminArea = 5;
+  string subadminArea = 6;
+  string locality = 7;
 }
 
 message GetCaseStatsResponse {
