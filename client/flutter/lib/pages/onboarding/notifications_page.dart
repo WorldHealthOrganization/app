@@ -54,10 +54,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _registerFCMToken() async {
-    print("FCM Token registration called");
-    await _firebaseMessaging.getToken().then((String token) {
-      UserPreferences().setFCMToken(token);
-      WhoService.putDeviceToken(token);
-    });
+    final token = await _firebaseMessaging.getToken();
+    await WhoService.putDeviceToken(token);
+    await UserPreferences().setFCMToken(token);
   }
 }
