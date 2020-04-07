@@ -40,6 +40,7 @@ message GetCaseStatsResponse {
 
 // Statistics in a single or aggregate jurisdiction.
 message CaseStats {
+  JurisdictionType jurisdictionType = 7;
   // empty for global stats
   string jurisdiction = 1;
 
@@ -51,6 +52,12 @@ message CaseStats {
   int64 recoveries = 5;
 
   string attribution = 6;
+}
+
+enum JurisdictionType {
+  GLOBAL = 0;
+  WHO_REGION = 1;
+  COUNTRY = 2;
 }
 
 enum Platform {
