@@ -24,7 +24,7 @@ class NewsFeedItem extends StatelessWidget {
             Text(
               this.title,
               textAlign: TextAlign.start,
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 56),
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
             ),
             SizedBox(height: 14),
             Row(
