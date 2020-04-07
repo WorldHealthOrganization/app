@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
 
     if (notificationsEnabled) {
       final token = await _firebaseMessaging.getToken();
-      String storedToken = await UserPreferences().getFCMToken();
+      final storedToken = await UserPreferences().getFCMToken();
       if (token != storedToken) {
         await WhoService.putDeviceToken(token);
         await UserPreferences().setFCMToken(token);
