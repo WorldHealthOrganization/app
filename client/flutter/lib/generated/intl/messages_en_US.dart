@@ -50,7 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "commonWorldHealthOrganizationCoronavirusAppVersion" : m2,
     "commonWorldHealthOrganizationCoronavirusCopyright" : m3,
     "healthCheckTitle" : MessageLookupByLibrary.simpleMessage("Health Check"),
-    "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest \nNumbers"),
+    "homePagePageButtonLatestNumbers" : MessageLookupByLibrary.simpleMessage("Latest Numbers"),
     "homePagePageButtonLatestNumbersUrl" : MessageLookupByLibrary.simpleMessage("https://who.sprinklr.com"),
     "homePagePageButtonNewsAndPress" : MessageLookupByLibrary.simpleMessage("News & Press"),
     "homePagePageButtonProtectYourself" : MessageLookupByLibrary.simpleMessage("Protect Yourself"),

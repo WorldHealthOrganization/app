@@ -108,9 +108,12 @@ class ProtectYourself extends StatelessWidget {
               delegate: SliverChildListDelegate([
             Padding(
               padding: const EdgeInsets.only(left: 26, top: 20),
-              child: Text(
-                localized.protectYourselfHeader,
-                style: header,
+              child: Semantics(
+                header: true,
+                child: Text(
+                  localized.protectYourselfHeader,
+                  style: header,
+                ),
               ),
             ),
             ProtectYourselfCard(
