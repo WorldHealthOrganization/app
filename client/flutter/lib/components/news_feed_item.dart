@@ -21,14 +21,10 @@ class NewsFeedItem extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text(
-                  this.title,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
-                ),
-              ],
+            Text(
+              this.title,
+              textAlign: TextAlign.start,
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
             ),
             SizedBox(height: 14),
             Row(
