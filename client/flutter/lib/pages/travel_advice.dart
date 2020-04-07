@@ -28,9 +28,12 @@ class TravelAdvice extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-              child: Text(
-                S.of(context).travelAdvicePageListTitle,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+              child: Semantics(
+                header: true,
+                  child: Text(
+                  S.of(context).travelAdvicePageListTitle,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+                ),
               ),
             ),
             TravelAdviceListItem(

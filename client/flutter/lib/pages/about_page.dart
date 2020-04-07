@@ -26,6 +26,7 @@ class AboutPage extends StatelessWidget {
               color: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: RichText(
+                textScaleFactor: MediaQuery.textScaleFactorOf(context),
                 textAlign: TextAlign.center,
                 text:
                     TextSpan(style: TextStyle(color: Colors.black), children: [
