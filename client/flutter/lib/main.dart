@@ -85,13 +85,12 @@ class _MyAppState extends State<MyApp> {
         await UserPreferences().getNotificationsEnabled();
 
     if (notificationsEnabled) {
-      await _firebaseMessaging.getToken().then((String token) async {
-        String storedToken = await UserPreferences().getFCMToken();
-        if (token != storedToken) {
-          await UserPreferences().setFCMToken(token);
-          await WhoService.putDeviceToken(token);
-        }
-      });
+      final token = await _firebaseMessaging.getToken();
+      String storedToken = await UserPreferences().getFCMToken();
+      if (token != storedToken) {
+        await WhoService.putDeviceToken(token);
+        await UserPreferences().setFCMToken(token);
+      }
     }
   }
 
@@ -118,7 +117,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  // TODO: This is not essential for basic operation but we should implement
+  // TODO: Issue #902 This is not essential for basic operation but we should implement
   // Fires if notification settings change.
   // Modify user opt-in if they do.
   // _firebaseMessaging.onIosSettingsRegistered
