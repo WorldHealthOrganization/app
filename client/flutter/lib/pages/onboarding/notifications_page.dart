@@ -40,7 +40,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
     }
     
     await UserPreferences().setNotificationsEnabled(true);
-    await _firebaseMessaging.setAutoInitEnabled(true);
     await _registerFCMToken();
     _complete();
   }
