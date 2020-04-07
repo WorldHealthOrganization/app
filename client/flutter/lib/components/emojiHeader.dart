@@ -10,6 +10,7 @@ class EmojiHeader extends StatelessWidget {
     return Center(
       child: Text(
         this.emoji,
+        // TODO remove use of text scale factor if this widget is used (#822)
         textScaleFactor: 6,
       ),
     );

@@ -47,7 +47,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 app from the World Health Organization https://whocoronavirus.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -146,7 +146,7 @@ class S {
 
   String get legalLandingPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'legalLandingPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -173,7 +173,7 @@ class S {
 
   String get legalLandingPagePrivacyPolicyLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'legalLandingPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
@@ -218,7 +218,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
-      'Stay up to date on the Coronavirus',
+      'Stay up to date on COVID-19',
       name: 'notificationsPagePermissionRequestPageTitle',
       desc: '',
       args: [],
@@ -227,7 +227,7 @@ class S {
 
   String get notificationsPagePermissionRequestPageDescription {
     return Intl.message(
-      'To stay up to date with Coronavirus news, turn on app notifications from the World Health Organization.',
+      'To stay up to date with COVID-19 news, turn on app notifications from the World Health Organization.',
       name: 'notificationsPagePermissionRequestPageDescription',
       desc: '',
       args: [],
@@ -263,7 +263,7 @@ class S {
 
   String get homePagePageSubTitle {
     return Intl.message(
-      'Virus response & tools',
+      'Information & tools',
       name: 'homePagePageSubTitle',
       desc: '',
       args: [],
@@ -326,7 +326,7 @@ class S {
 
   String get homePagePageButtonWHOMythBustersDescription {
     return Intl.message(
-      'Learn the facts about Coronavirus and how to prevent the spread',
+      'Learn the facts about COVID-19 and how to prevent the spread',
       name: 'homePagePageButtonWHOMythBustersDescription',
       desc: '',
       args: [],
@@ -425,7 +425,7 @@ class S {
 
   String get homePagePageSliverListDonate {
     return Intl.message(
-      'Donate here',
+      'Donate Here',
       name: 'homePagePageSliverListDonate',
       desc: '',
       args: [],
@@ -443,7 +443,7 @@ class S {
 
   String get homePagePageButtonLatestNumbersUrl {
     return Intl.message(
-      'https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd',
+      'https://who.sprinklr.com',
       name: 'homePagePageButtonLatestNumbersUrl',
       desc: '',
       args: [],
@@ -470,7 +470,7 @@ class S {
 
   String get protectYourselfListOfItemsPageListItem1 {
     return Intl.message(
-      '*Wash your hands* with soap and water for at least 20 seconds',
+      '*Wash your hands* with soap and water to avoid getting sick and spreading infections to others',
       name: 'protectYourselfListOfItemsPageListItem1',
       desc: '',
       args: [],
@@ -515,7 +515,7 @@ class S {
 
   String get travelAdviceContainerText {
     return Intl.message(
-      '<p>WHO continues to <b>advise against the application of travel or trade restrictions</b> to countries experiencing COVID-19 outbreaks.</p> <p><b>It is prudent for travellers who are sick to delay or avoid travel to affected areas</b>, in particular for elderly travellers and people with chronic diseases or underlying healh conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.</p>',
+      '<p>WHO continues to <b>advise against the application of travel or trade restrictions</b> to countries experiencing COVID-19 outbreaks.</p> <p><b>It is prudent for travellers who are sick to delay or avoid travel to affected areas</b>, in particular for elderly travellers and people with chronic diseases or underlying health conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contract to areas reporting only imported cases.</p>',
       name: 'travelAdviceContainerText',
       desc: '',
       args: [],
@@ -569,7 +569,7 @@ class S {
 
   String get travelAdvicePageListItem3Text {
     return Intl.message(
-      'If symptoms occur, travellers are advsed to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
+      'If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
       name: 'travelAdvicePageListItem3Text',
       desc: '',
       args: [],
@@ -929,7 +929,7 @@ class S {
 
   String get aboutPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/terms',
+      'https://whoapp.org/terms',
       name: 'aboutPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -947,7 +947,7 @@ class S {
 
   String get aboutPagetermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whocoronavirus.org/privacy',
+      'https://whoapp.org/privacy',
       name: 'aboutPagetermsOfServiceLinkUrl',
       desc: '',
       args: [],
