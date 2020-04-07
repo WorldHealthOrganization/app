@@ -54,7 +54,7 @@ class UserPreferences {
   Future<String> getFCMToken() async {
     return (await SharedPreferences.getInstance())
             .getString(UserPreferenceKey.FCMToken.toString()) ??
-        "None";
+        "";
   }
 
   Future<bool> setFCMToken(String value) async {
