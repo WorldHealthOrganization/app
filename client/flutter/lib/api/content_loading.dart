@@ -95,7 +95,7 @@ class ContentLoading {
     if (file == null) {
       throw Exception("File not retrieved from network or cache: $url");
     }
-    return ContentBundle.fromBytes(file.readAsBytesSync());
+    return ContentBundle.fromBytes(await file.readAsBytes());
   }
 
   /// Load a localized content bundle from local assets, throwing an exception if not found.
