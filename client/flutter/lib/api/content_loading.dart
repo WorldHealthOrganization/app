@@ -135,7 +135,12 @@ class WhoCacheManager extends BaseCacheManager {
     if (cacheFile != null) {
       if (cacheFile.validTill.isBefore(DateTime.now())) {
         // Wait for the refreshed file.
-        await webHelper.downloadFile(url, authHeaders: headers);
+        try {
+          await webHelper.downloadFile(url, authHeaders: headers);
+        } catch (err) {
+          print(
+              "Error refreshing expired file, returning cached version: $url");
+        }
       }
       return cacheFile.file;
     }
