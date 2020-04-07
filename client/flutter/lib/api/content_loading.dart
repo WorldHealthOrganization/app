@@ -4,7 +4,6 @@ import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -89,7 +88,7 @@ class ContentLoading {
   /// Load a localized content bundle from the network, throwing an exception if not found.
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
-    var headers = {"Accept": "application/yaml"};
+    final headers = {"Accept": "application/yaml"};
     File file = await WhoCacheManager()
         .getSingleFile(url, headers: headers)
         .timeout(networkTimeout);
@@ -132,7 +131,7 @@ class WhoCacheManager extends BaseCacheManager {
   // expired file before returning, rather than favoring the cached version.
   @override
   Future<File> getSingleFile(String url, {Map<String, String> headers}) async {
-    var cacheFile = await getFileFromCache(url);
+    final cacheFile = await getFileFromCache(url);
     if (cacheFile != null) {
       if (cacheFile.validTill.isBefore(DateTime.now())) {
         // Wait for the refreshed file.
@@ -142,7 +141,7 @@ class WhoCacheManager extends BaseCacheManager {
     }
     try {
       print("Downloading file: $url");
-      var download = await webHelper.downloadFile(url, authHeaders: headers);
+      final download = await webHelper.downloadFile(url, authHeaders: headers);
       return download.file;
     } catch (e) {
       print("Error downloading file: $url, $e");
