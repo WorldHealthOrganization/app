@@ -45,4 +45,8 @@
     </user-data-constraint>
   </security-constraint>
 
+  <mime-mapping>
+    <extension>yaml</extension>
+    <mime-type>application/x-yaml</mime-type>
+  </mime-mapping>
 </web-app>

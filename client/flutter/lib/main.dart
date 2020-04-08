@@ -13,6 +13,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:WHOFlutter/api/who_service.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -73,6 +74,24 @@ class _MyAppState extends State<MyApp> {
       },
     );
 
+    updateFCMToken();
+  }
+
+  // Ask firebase for a token on every launch.
+  // If the token is different from what we have stored...update it.
+  updateFCMToken() async {
+    // Only check if notifications are enabled. 
+    bool notificationsEnabled =
+        await UserPreferences().getNotificationsEnabled();
+
+    if (notificationsEnabled) {
+      final token = await _firebaseMessaging.getToken();
+      final storedToken = await UserPreferences().getFCMToken();
+      if (token != storedToken) {
+        await WhoService.putDeviceToken(token);
+        await UserPreferences().setFCMToken(token);
+      }
+    }
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -98,13 +117,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-    // TODO: This is not essential for basic operation but we should implement 
-    // Fires if notification settings change. 
-    // Modify user opt-in if they do. 
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    // });
-
+  // TODO: Issue #902 This is not essential for basic operation but we should implement
+  // Fires if notification settings change.
+  // Modify user opt-in if they do.
+  // _firebaseMessaging.onIosSettingsRegistered
+  //     .listen((IosNotificationSettings settings) {
+  // });
 
   @override
   Widget build(BuildContext context) {
