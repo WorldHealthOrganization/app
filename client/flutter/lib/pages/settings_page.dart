@@ -125,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
     );
   }
 
-  Semantics switchItem({BuildContext context, String header, String info, bool isToggled, Function(bool) onToggle}) {
+  Widget switchItem({BuildContext context, String header, String info, bool isToggled, Function(bool) onToggle}) {
     return Semantics(
       toggled: isToggled,
       child: InkWell(
