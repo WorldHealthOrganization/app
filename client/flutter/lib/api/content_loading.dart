@@ -1,11 +1,14 @@
+import 'dart:io';
 
 import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'content_bundle.dart';
+import 'package:path/path.dart' as paths;
 
 class ContentLoading {
   static final networkLoadingEnabled = true;
@@ -85,12 +88,14 @@ class ContentLoading {
   /// Load a localized content bundle from the network, throwing an exception if not found.
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
-    var response = await http.get(url,
-        headers: {"Accept": "application/yaml"}).timeout(networkTimeout);
-    if (response.statusCode != 200) {
-      throw Exception("Error status code: ${response.statusCode}");
+    final headers = {"Accept": "application/yaml"};
+    File file = await WhoCacheManager()
+        .getSingleFile(url, headers: headers)
+        .timeout(networkTimeout);
+    if (file == null) {
+      throw Exception("File not retrieved from network or cache: $url");
     }
-    return ContentBundle.fromBytes(response.bodyBytes);
+    return ContentBundle.fromBytes(await file.readAsBytes());
   }
 
   /// Load a localized content bundle from local assets, throwing an exception if not found.
@@ -103,5 +108,55 @@ class ContentLoading {
   /// Format the filename. e.g. screen_name.en_US.yaml
   String _fileName(String name, String suffix) {
     return '${name}.$suffix.yaml';
+  }
+}
+
+class WhoCacheManager extends BaseCacheManager {
+  static const key = "whoCache";
+
+  static WhoCacheManager _instance;
+
+  // Attempting to change the maxAgeCacheObject parameter here has no effect
+  // on http content, for which the manager uses the cache control max-age header.
+  WhoCacheManager._init() : super(key);
+
+  factory WhoCacheManager() {
+    if (_instance == null) {
+      _instance = WhoCacheManager._init();
+    }
+    return _instance;
+  }
+
+  // This changes the behavior of the base method to wait for an update of the
+  // expired file before returning, rather than favoring the cached version.
+  @override
+  Future<File> getSingleFile(String url, {Map<String, String> headers}) async {
+    final cacheFile = await getFileFromCache(url);
+    if (cacheFile != null) {
+      if (cacheFile.validTill.isBefore(DateTime.now())) {
+        // Wait for the refreshed file.
+        try {
+          await webHelper.downloadFile(url, authHeaders: headers);
+        } catch (err) {
+          print(
+              "Error refreshing expired file, returning cached version: $url");
+        }
+      }
+      return cacheFile.file;
+    }
+    try {
+      print("Downloading file: $url");
+      final download = await webHelper.downloadFile(url, authHeaders: headers);
+      return download.file;
+    } catch (e) {
+      print("Error downloading file: $url, $e");
+      return null;
+    }
+  }
+
+  // Store files in the temporary system path (default behavior)
+  Future<String> getFilePath() async {
+    var directory = await getTemporaryDirectory();
+    return paths.join(directory.path, key);
   }
 }
