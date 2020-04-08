@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/notifications.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
@@ -55,7 +56,9 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
   _toggleNotifications(bool setEnabled) async {
     var enabled;
     if (setEnabled) {
-      enabled = await _notifications.attemptEnableNotifications(context: context);
+      enabled = await _notifications.attemptEnableNotifications(
+          context: context,
+          showSettingsPrompt: ({showSettings}) => {Dialogs.showDialogToLaunchNotificationSettings(context, showSettings)});
     } else {
       await _notifications.disableNotifications();
       enabled = false;
@@ -81,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
 
   void _attemptEnableNotifications() async {
     _attemptEnableNotificationsOnResume = false;
-    var enabled = await _notifications.attemptEnableNotifications(context: context, launchSettingsIfDenied: false);
+    var enabled = await _notifications.attemptEnableNotifications(context: context);
 
     if (enabled != _notificationsEnabled) {
       setState(() {

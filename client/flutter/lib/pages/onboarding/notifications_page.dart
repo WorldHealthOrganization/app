@@ -28,7 +28,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _allowNotifications() async {
-    await _notifications.attemptEnableNotifications(context: context, launchSettingsIfDenied: false);
+    await _notifications.attemptEnableNotifications(context: context);
     _complete();
   }
 

@@ -1,5 +1,6 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/api/who_service.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Notifications {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final UserPreferences _userPrefs = UserPreferences();
 
-  Future<bool> attemptEnableNotifications({BuildContext context, bool launchSettingsIfDenied = true}) async {
+  Future<bool> attemptEnableNotifications({BuildContext context, Function({@required Function showSettings}) showSettingsPrompt}) async {
     var permissionStatus = await NotificationPermissions.getNotificationPermissionStatus();
     var granted;
     switch (permissionStatus) {
@@ -28,9 +29,9 @@ class Notifications {
         granted = true;
         break;
       case PermissionStatus.denied:
-        if (launchSettingsIfDenied == true) {
+        if (showSettingsPrompt != null) {
           // 'denied' means the permission has been refused before or manually switched off via settings
-          await showDialogToLaunchSettings(context);
+          await showSettingsPrompt(showSettings: requestNotificationPermissions);
           // we're opening the settings, which is a different app, so there's no state to return
           granted = null;
         } else {
@@ -100,37 +101,4 @@ class Notifications {
     }
   }
 
-  /// UI behaviour, perhaps should be extracted to a separate class
-
-  Future showDialogToLaunchSettings(BuildContext context) async {
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(S.of(context).notificationsEnableDialogHeader),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [Text(S.of(context).notificationsEnableDialogText)],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text(S.of(context).notificationsEnableDialogOptionLater),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            FlatButton(
-              child: Text(S.of(context).notificationsEnableDialogOptionOpenSettings),
-              onPressed: () {
-                requestNotificationPermissions();
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }
