@@ -28,7 +28,7 @@ class PageButton extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
-        this.descriptionColor,
+    this.descriptionColor,
   });
 
   @override
@@ -48,7 +48,8 @@ class PageButton extends StatelessWidget {
               Text(
                 this.title,
                 // textScaleFactorOf is for the device font size
-                textScaleFactor: 1.0 + contentScale(context) * MediaQuery.textScaleFactorOf(context),
+                textScaleFactor: (1.0 + contentScale(context)) *
+                    MediaQuery.textScaleFactorOf(context),
                 textAlign: TextAlign.left,
                 style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
               ),
@@ -67,5 +68,4 @@ class PageButton extends StatelessWidget {
       onPressed: this.onPressed,
     );
   }
-  
 }

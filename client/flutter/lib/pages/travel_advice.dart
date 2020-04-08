@@ -20,7 +20,9 @@ class TravelAdvice extends StatelessWidget {
                 data: S.of(context).travelAdviceContainerText,
                 defaultTextStyle: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  // The Html widget isn't using the textScaleFactor so here's
+                  // the next best place to incorporate it
+                  fontSize: 18 * MediaQuery.textScaleFactorOf(context),
                   height: 1.2,
                 ),
               ),
