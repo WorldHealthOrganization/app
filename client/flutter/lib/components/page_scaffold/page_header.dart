@@ -1,6 +1,8 @@
 import './back_arrow.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+// Used to get latest AppBar features while remaining on Flutter's stable branch
+import 'package:WHOFlutter/components/updated_app_bar.dart' as uab;
 
 class PageHeader extends StatelessWidget {
   final String title;
@@ -20,7 +22,7 @@ class PageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
+    return uab.SliverAppBar(
       leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
