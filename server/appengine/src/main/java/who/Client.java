@@ -25,6 +25,15 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
   public Double latitude;
   public Double longitude;
 
+  // Store denormalized location info.
+  public String countryCode;
+  public String adminArea1;
+  public String adminArea2;
+  public String adminArea3;
+  public String adminArea4;
+  public String adminArea5;
+  public String locality;
+
   public static Client getOrCreate(String uuid, Platform platform) {
     Client client = ofy().load().type(Client.class).id(uuid).now();
     if (client != null) return client;
