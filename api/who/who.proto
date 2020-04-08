@@ -43,6 +43,18 @@ message GetCaseStatsResponse {
   uint64 ttl = 2;
 }
 
+message StatSnapshot {
+  uint64 epochMsec = 1;
+
+  int64 dailyCases = 2;
+  int64 dailyDeaths = 3;
+  int64 dailyRecoveries = 4;
+
+  int64 totalCases = 5;
+  int64 totalDeaths = 6;
+  int64 totalRecoveries = 7;
+}
+
 // Statistics in a single or aggregate jurisdiction.
 message CaseStats {
   JurisdictionType jurisdictionType = 7;
@@ -57,6 +69,8 @@ message CaseStats {
   int64 recoveries = 5;
 
   string attribution = 6;
+
+  StatSnapshot[] timeseries = 8;
 }
 
 enum JurisdictionType {
