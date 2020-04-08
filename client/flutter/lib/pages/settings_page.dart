@@ -106,7 +106,7 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
                     header: S.of(context).homePagePageSliverListSettingsHeader1,
                     info: S.of(context).homePagePageSliverListSettingsDataCollection,
                     isToggled: _analyticsEnabled ?? false,
-                    onToggle: (val) => _toggleAnalytics(val)),
+                    onToggle: _toggleAnalytics),
                 switchItem(
                     context: context,
                     header: S.of(context).homePagePageSliverListSettingsNotificationsHeader,
