@@ -12,12 +12,6 @@ git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
 cd app
 ```
 
-## Set up Firebase
-
-The default Firebase configuration files are using the staging Firebase project. Before building, you must add in the configuration files for the prod Firebase project.
-
-Copy `google-services.json` to `client/flutter/android/app` and copy `GoogleService-Info.plist` to `client/flutter/ios/Runner`.
-
 ## iOS
 
 These instructions assume that an app record has already been added to the App Store Connect account. If you haven't done so already, you can follow [these instructions](https://help.apple.com/app-store-connect/#/dev2cd126805).
@@ -51,6 +45,10 @@ _Note: if you are on Xcode version 8.2 or earlier, you will need to close and re
 Follow Apple's instructions to [create an archive](https://help.apple.com/xcode/mac/current/#/devf37a1db04), [validate the app](https://help.apple.com/xcode/mac/current/#/dev37441e273), and [upload it to App Store Connect](https://help.apple.com/xcode/mac/current/#/dev442d7f2ca).
 
 You should receive an email within 30 minutes notifying you that your build has been validated.
+
+### Production vs Development Push Settings
+In file Runner.entitlements change 'aps-environment' to either 'development' or 'production' to select either the 
+Sandbox or Production Apple Push Notification Service. 
 
 ### Submit For Review
 

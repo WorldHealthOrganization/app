@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:yaml/yaml.dart';
 
 /// A localized YAML file loaded preferentially from the network, falling back
@@ -6,7 +9,18 @@ class ContentBundle {
   static int maxSupportedSchemaVersion = 1;
   dynamic yaml;
 
-  ContentBundle.from(String yamlString) {
+  /// Construct a bundle from utf-8 bytes containing YAML
+  ContentBundle.fromBytes(Uint8List bytes) {
+    String yamlString = Encoding.getByName('utf-8').decode(bytes);
+    _init(yamlString);
+  }
+
+  /// Construct a bundle from a utf-8 string containing YAML
+  ContentBundle.fromString(String yamlString) {
+    _init(yamlString);
+  }
+
+  void _init(String yamlString) {
     this.yaml = loadYaml(yamlString);
     if (schemaVersion > maxSupportedSchemaVersion) {
       throw ContentBundleVersionException();
@@ -42,4 +56,4 @@ class ContentBundle {
   }
 }
 
-class ContentBundleVersionException implements Exception { }
+class ContentBundleVersionException implements Exception {}

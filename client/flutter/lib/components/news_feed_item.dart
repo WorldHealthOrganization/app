@@ -20,15 +20,12 @@ class NewsFeedItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text(
-                  this.title,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
-                ),
-              ],
+            Text(
+              this.title,
+              textAlign: TextAlign.start,
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
             ),
             SizedBox(height: 14),
             Row(
@@ -49,7 +46,7 @@ class NewsFeedItem extends StatelessWidget {
                   this.description,
                   style: TextStyle(fontSize: 18),
                 )),
-                Center(child: Icon(Icons.arrow_forward_ios)),
+                Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffC9CDD6),)),
               ],
             ),
             Divider()
