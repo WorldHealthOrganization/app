@@ -78,8 +78,7 @@ class PageHeader extends StatelessWidget {
         Image.asset(
           'assets/images/mark.png',
           width: 70,
-          // TODO check if this is the right label
-          semanticLabel: 'World Health Organisation Logo',
+          excludeFromSemantics: true,
         )
     ];
     return Material(
