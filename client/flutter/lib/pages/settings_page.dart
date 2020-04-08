@@ -112,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
                     header: S.of(context).homePagePageSliverListSettingsNotificationsHeader,
                     info: S.of(context).homePagePageSliverListSettingsNotificationsInfo,
                     isToggled: _notificationsEnabled ?? false,
-                    onToggle: (val) => _toggleNotifications(val)),
+                    onToggle: _toggleNotifications),
 
                 /// TODO: Implement UI:-
                 /// TODO:   selection of language preferences already created PR for it (#654)
