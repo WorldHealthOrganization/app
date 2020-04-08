@@ -5,7 +5,6 @@ import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pedantic/pedantic.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -58,7 +57,7 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
     if (setEnabled) {
       enabled = await _notifications.attemptEnableNotifications(context: context);
     } else {
-      unawaited(_notifications.disableNotifications());
+      await _notifications.disableNotifications();
       enabled = false;
     }
 

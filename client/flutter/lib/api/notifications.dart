@@ -5,7 +5,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:notification_permissions/notification_permissions.dart';
-import 'package:pedantic/pedantic.dart';
 
 class Notifications {
   static final Notifications _singleton = Notifications._internal();
@@ -31,7 +30,7 @@ class Notifications {
       case PermissionStatus.denied:
         if (launchSettingsIfDenied == true) {
           // 'denied' means the permission has been refused before or manually switched off via settings
-          unawaited(showDialogToLaunchSettings(context));
+          await showDialogToLaunchSettings(context);
           // we're opening the settings, which is a different app, so there's no state to return
           granted = null;
         } else {
