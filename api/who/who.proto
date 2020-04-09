@@ -70,7 +70,7 @@ message CaseStats {
 
   string attribution = 6;
 
-  StatSnapshot[] timeseries = 8;
+  repeated StatSnapshot timeseries = 8;
 }
 
 enum JurisdictionType {
