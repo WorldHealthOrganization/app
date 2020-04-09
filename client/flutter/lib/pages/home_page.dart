@@ -2,6 +2,7 @@ import 'package:WHOFlutter/api/question_data.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/components/swipeable_open_container.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
@@ -11,7 +12,6 @@ import 'package:WHOFlutter/pages/protect_yourself.dart';
 import 'package:WHOFlutter/pages/question_index.dart';
 import 'package:WHOFlutter/pages/settings_page.dart';
 import 'package:WHOFlutter/pages/travel_advice.dart';
-import 'package:animations/animations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -331,7 +331,7 @@ class _MenuButton extends StatelessWidget {
         (1 / tileDefaultAspectRatio) *
         scaleFactor;
 
-    return OpenContainer(
+    return SwipeableOpenContainer(
       tappable: false,
       closedElevation: 0,
       closedShape: RoundedRectangleBorder(
