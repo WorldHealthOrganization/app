@@ -107,9 +107,10 @@ class _CarouselSlideState extends State<CarouselSlide> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
+            AnimatedContainer(
+                duration: Duration(milliseconds: 300),
                 alignment: Alignment.centerRight,
-                height: screenSize.height * 0.25,
+                height: _showDetails ? 0.0 : screenSize.height * 0.25,
                 child: widget.graphic),
             Html(
               data: widget.title,
