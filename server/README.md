@@ -51,9 +51,9 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 
     $ gcloud auth login
     
-### Install the App Engine Component
+### Install the most up-to-date App Engine Component
 
-    $  gcloud components install app-engine-java
+    $  gcloud components install app-engine-java && gcloud components update
 
 ### Install IntelliJ IDE (Optional)
 

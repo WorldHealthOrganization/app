@@ -28,8 +28,8 @@ class WhoService {
       "latitude": latitude,
       "longitude": longitude,
       "countryCode": countryCode,
-      "adminArea": adminArea,
-      "subadminArea": subadminArea,
+      "adminArea1": adminArea,
+      "adminArea2": subadminArea,
       "locality": locality,
     });
     var url = '$serviceUrl/putLocation';

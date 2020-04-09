@@ -1,10 +1,11 @@
-import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/api/content/dynamic_content.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
+import 'package:WHOFlutter/pages/facts_carousel_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
@@ -18,6 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
+
   HomePage(this.analytics);
 
   _logAnalyticsEvent(String name) async {
@@ -217,7 +219,7 @@ class _MenuGrid extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (c) => QuestionIndexPage(
-          dataSource: QuestionData.yourQuestionsAnswered,
+          dataSource: DynamicContent.yourQuestionsAnswered,
           title: S.of(context).homePagePageButtonQuestions,
         ),
       ),
@@ -229,8 +231,9 @@ class _MenuGrid extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (c) => QuestionIndexPage(
-          dataSource: QuestionData.whoMythbusters,
+        builder: (c) => FactsCarouselPage(
+          dataSource: DynamicContent.getTheFacts,
+          // TODO: Rename these keys in the ARB files
           title: S.of(context).homePagePageButtonWHOMythBusters,
         ),
       ),

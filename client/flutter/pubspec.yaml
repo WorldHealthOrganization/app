@@ -34,6 +34,7 @@ dependencies:
   auto_size_text: 2.1.0
   flutter_cache_manager: ^1.1.3
   path_provider: ^1.6.5
+  fl_chart: ^0.8.7
 
   intl: ^0.16.0
   flutter_localizations:
