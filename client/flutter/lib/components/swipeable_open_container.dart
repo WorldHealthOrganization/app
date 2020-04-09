@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:io';
 
 ///  This code is taken from the official Flutter animations package
 ///  at https://pub.dev/packages/animations
