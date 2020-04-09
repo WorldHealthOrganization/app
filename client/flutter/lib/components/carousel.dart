@@ -130,10 +130,13 @@ class _CarouselSlideState extends State<CarouselSlide> {
             if (!_showDetails)
               _buildLearnMore(titleStyle)
             else
-              Html(
-                data: widget.body,
-                defaultTextStyle: bodyStyle,
-                customTextStyle: _titleHtmlStyle,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 64.0),
+                child: Html(
+                  data: widget.body,
+                  defaultTextStyle: bodyStyle,
+                  customTextStyle: _titleHtmlStyle,
+                ),
               ),
           ],
         ),
