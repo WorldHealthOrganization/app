@@ -3,10 +3,12 @@ name: Server Tests
 on:
   push:
     paths:
+      - 'api/**'
       - 'server/**'
   pull_request:
     branches: [ master ]
     paths:
+      - 'api/**'
       - 'server/**'
 
 jobs:

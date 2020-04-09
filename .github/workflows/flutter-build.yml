@@ -3,11 +3,13 @@ on:
   push:
     paths:
       - '.github/workflows/**'
+      - 'api/**'
       - 'client/flutter/**'
   pull_request:
     branches: [ master ]
     paths:
       - '.github/workflows/**'
+      - 'api/**'
       - 'client/flutter/pubspec.yaml'
       - 'client/flutter/pubspec.lock'
       - 'client/flutter/ios/**'
