@@ -6,7 +6,7 @@ For release: v1.0
 
 ## Introduction
 
-The idea of this The Test Plan is to communicate the test approach to team members. 
+The idea of this Test Plan is to communicate the test approach to team members. 
 
 As the team works with the product, they will define the needs for the vNext.
 
