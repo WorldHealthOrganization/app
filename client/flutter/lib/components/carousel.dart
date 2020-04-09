@@ -20,10 +20,19 @@ class CarouselView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        PageView(
-          controller: pageController,
-          onPageChanged: (i) => pageIndexNotifier.value = i,
-          children: this.items,
+        ShaderMask(
+          shaderCallback: (Rect bounds) {
+            return LinearGradient(
+                begin: Alignment(0.0, 0.0),
+                end: Alignment(0.0, 1.0),
+                colors: <Color>[Colors.white, Colors.white, Colors.transparent],
+                stops: [0.0, 0.5, 0.6]).createShader(bounds);
+          },
+          child: PageView(
+            controller: pageController,
+            onPageChanged: (i) => pageIndexNotifier.value = i,
+            children: this.items,
+          ),
         ),
         Align(
           alignment: FractionalOffset.bottomCenter,
