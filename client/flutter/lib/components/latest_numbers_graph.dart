@@ -1,37 +1,20 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LatestNumbersGraph extends StatelessWidget {
-  final lineChartBarData = LineChartBarData(
-    aboveBarData: BarAreaData(
-      colors: [Color(0xFF008DC9)],
-      show: true,
-    ),
-    barWidth: 0,
-    belowBarData: BarAreaData(
-      colors: [Color(0xFF6AC7FA)],
-      show: true,
-    ),
-    colors: [Color(0xFF6AC7FA)],
-    dotData: FlDotData(show: false),
-    isCurved: true,
-    spots: [
-      FlSpot(0, 11656),
-      FlSpot(1, 4764),
-      FlSpot(2, 16894),
-      FlSpot(3, 18093),
-      FlSpot(4, 19332),
-      FlSpot(5, 17987),
-      FlSpot(6, 22559),
-      FlSpot(7, 24103),
-      FlSpot(8, 26298),
-      FlSpot(9, 28103),
-      FlSpot(10, 32105),
-      FlSpot(11, 33510),
-      FlSpot(12, 26493),
-      FlSpot(13, 29510),
-    ],
-  );
+class LatestNumbersGraph extends StatefulWidget {
+  const LatestNumbersGraph({
+    Key key,
+    this.timeseries,
+  }) : super(key: key);
+
+  final List timeseries;
+
+  @override
+  _LatestNumbersGraphState createState() => _LatestNumbersGraphState();
+}
+
+class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
+  var _showData = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +25,45 @@ class LatestNumbersGraph extends StatelessWidget {
       clipToBorder: true,
       gridData: FlGridData(show: false),
       lineBarsData: [
-        lineChartBarData,
+        LineChartBarData(
+          aboveBarData: BarAreaData(
+            colors: [Color(0xFF008DC9)],
+            show: true,
+          ),
+          barWidth: 0,
+          belowBarData: BarAreaData(
+            colors: [Color(0xFF6AC7FA)],
+            show: true,
+          ),
+          colors: [Color(0xFF6AC7FA)],
+          dotData: FlDotData(show: false),
+          isCurved: true,
+          spots: _buildSpots(),
+        ),
       ],
       lineTouchData: LineTouchData(enabled: false),
       titlesData: FlTitlesData(show: false),
     ));
+  }
+
+  List<FlSpot> _buildSpots() {
+    var spots = <FlSpot>[];
+    double xAxis = 0.0;
+    if (_showData && widget.timeseries != null) {
+      for (var cases in widget.timeseries) {
+        spots.add(FlSpot(xAxis, cases));
+        xAxis += 1.0;
+      }
+    } else {
+      for (; xAxis < 14.0; xAxis += 1.0) {
+        spots.add(FlSpot(xAxis, 0.0));
+      }
+      if (!_showData && widget.timeseries != null) {
+        setState(() {
+          _showData = true;
+        });
+      }
+    }
+    return spots;
   }
 }

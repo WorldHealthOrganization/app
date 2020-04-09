@@ -53,7 +53,26 @@ class LatestNumbers extends StatelessWidget {
                 return SliverList(
                     delegate: SliverChildListDelegate([
                   StatCard(
-                      background: LatestNumbersGraph(),
+                      background: LatestNumbersGraph(
+                        timeseries: hasGlobalStats
+                            ? [
+                                11656.0,
+                                4764.0,
+                                16894.0,
+                                18093.0,
+                                19332.0,
+                                17987.0,
+                                22559.0,
+                                24103.0,
+                                26298.0,
+                                28103.0,
+                                32105.0,
+                                33510.0,
+                                26493.0,
+                                29510.0,
+                              ]
+                            : null,
+                      ),
                       title: Text(
                         S.of(context).latestNumbersPageGlobalCasesTitle,
                         style: name,
@@ -69,7 +88,26 @@ class LatestNumbers extends StatelessWidget {
                         textAlign: TextAlign.left,
                       )),
                   StatCard(
-                    background: LatestNumbersGraph(),
+                    background: LatestNumbersGraph(
+                      timeseries: hasGlobalStats
+                          ? [
+                              11656.0,
+                              4764.0,
+                              16894.0,
+                              18093.0,
+                              19332.0,
+                              17987.0,
+                              22559.0,
+                              24103.0,
+                              26298.0,
+                              28103.0,
+                              32105.0,
+                              33510.0,
+                              26493.0,
+                              100000.0,
+                            ]
+                          : null,
+                    ),
                     title: Text(S.of(context).latestNumbersPageGlobalDeaths,
                         style: name),
                     content: Text(
