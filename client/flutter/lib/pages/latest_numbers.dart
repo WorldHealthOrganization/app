@@ -1,6 +1,7 @@
 import 'package:WHOFlutter/api/who_service.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/components/latest_numbers_graph.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,11 +9,8 @@ import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const number = TextStyle(
-  color: Colors.white,
-  fontSize: 36,
-  fontWeight: FontWeight.bold
-);
+const number =
+    TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold);
 const loadingStyle = TextStyle(
   color: Colors.white,
   fontSize: 36,
@@ -55,6 +53,11 @@ class LatestNumbers extends StatelessWidget {
                 return SliverList(
                     delegate: SliverChildListDelegate([
                   StatCard(
+                      background: LatestNumbersGraph(
+                        timeseries:
+                            hasGlobalStats ? globalStats['timeseries'] : null,
+                        timeseriesKey: 'dailyCases',
+                      ),
                       title: Text(
                         S.of(context).latestNumbersPageGlobalCasesTitle,
                         style: name,
@@ -70,7 +73,13 @@ class LatestNumbers extends StatelessWidget {
                         textAlign: TextAlign.left,
                       )),
                   StatCard(
-                    title: Text(S.of(context).latestNumbersPageGlobalDeaths, style: name),
+                    background: LatestNumbersGraph(
+                      timeseries:
+                          hasGlobalStats ? globalStats['timeseries'] : null,
+                      timeseriesKey: 'dailyDeaths',
+                    ),
+                    title: Text(S.of(context).latestNumbersPageGlobalDeaths,
+                        style: name),
                     content: Text(
                       hasGlobalStats && globalStats['deaths'] != null
                           ? numFmt.format(globalStats['deaths'])
@@ -86,7 +95,9 @@ class LatestNumbers extends StatelessWidget {
                     height: 25,
                   ),
                   Text(
-                    snapshot.hasData ? S.of(context).latestNumbersPageLastUpdated(lastUpd) : S.of(context).latestNumbersPageUpdating,
+                    snapshot.hasData
+                        ? S.of(context).latestNumbersPageLastUpdated(lastUpd)
+                        : S.of(context).latestNumbersPageUpdating,
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
                   ),
@@ -121,47 +132,55 @@ class StatCard extends StatelessWidget {
   const StatCard({
     @required this.title,
     @required this.content,
+    @required this.background,
   });
   final Text title;
   final Widget content;
+  final Widget background;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 24,
-        left: 24,
-        right: 24,
-        bottom: 6
-      ),
-      child: Card(
-        elevation: 0,
-        color: Color(0xFF3D8AC4),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 5,
+        padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 6),
+        child: Card(
+            clipBehavior: Clip.antiAlias,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
               ),
-              child: title,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 5,
-              ),
-              child: content,
-            ),
-          ],
-        ),
-      ),
-    );
+            child: Stack(
+              children: <Widget>[
+                Positioned.fill(
+                  child: background,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 4,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 8,
+                        ),
+                        child: title,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 5,
+                        ),
+                        child: content,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )));
   }
 }
