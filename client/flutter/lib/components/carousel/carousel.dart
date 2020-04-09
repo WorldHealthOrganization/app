@@ -31,7 +31,7 @@ class CarouselView extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 60,
+          bottom: 30,
           right: 20,
           child: SafeArea(
                       child: FlatButton(
