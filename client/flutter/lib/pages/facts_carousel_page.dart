@@ -1,8 +1,6 @@
 import 'package:WHOFlutter/api/content/dynamic_content.dart';
 import 'package:WHOFlutter/components/carousel.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_header.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,9 +59,11 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
     List<CarouselSlide> items = [
       CarouselSlide(
-        title: 'This is the title',
+        title: 'Cold weather and snow <em>Cannot</em> kill the new coronavirus.',
         graphic: SvgPicture.asset("assets/svg/snowflake.svg"),
-        body: 'Cold weather and snow <b>Cannot</b> kill the new coronavirus.',
+        body:
+        '<b>There is no reason to believe that cold weather can kill the new coronavirus or other diseases.</b> The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.\nThere is no reason to believe that cold weather can kill the new coronavirus or other diseases. The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.'
+            +'<b>There is no reason to believe that cold weather can kill the new coronavirus or other diseases.</b> The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.\nThere is no reason to believe that cold weather can kill the new coronavirus or other diseases. The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.'
       )
     ];
     // TESTING
