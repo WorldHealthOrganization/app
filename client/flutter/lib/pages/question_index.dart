@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/api/content/dynamic_content.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
