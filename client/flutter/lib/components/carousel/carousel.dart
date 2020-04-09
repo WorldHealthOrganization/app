@@ -33,12 +33,14 @@ class CarouselView extends StatelessWidget {
         Positioned(
           bottom: 60,
           right: 20,
-          child: FlatButton(
-            child: Text("Next fact", style: TextStyle(color: Color(0xff008DC9), fontSize: 18, fontWeight: FontWeight.w600)),
-            color: Colors.white,
-            padding: EdgeInsets.symmetric(vertical:14, horizontal:29),
-            shape: StadiumBorder(),
-            onPressed: ()=>pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
+          child: SafeArea(
+                      child: FlatButton(
+              child: Text("Next fact", style: TextStyle(color: Color(0xff008DC9), fontSize: 18, fontWeight: FontWeight.w600)),
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(vertical:14, horizontal:29),
+              shape: StadiumBorder(),
+              onPressed: ()=>(this.pageController.hasClients ?this.pageController.page:0) < this.items.length-1?pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut):pageController.animateToPage(0,duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
+            ),
           ),
         ),
         Align(
