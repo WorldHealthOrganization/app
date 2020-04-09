@@ -819,7 +819,7 @@ class _OpenContainerRoute extends ModalRoute<void> {
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation, Widget child) {
-    if (!Platform.isIOS) {
+    if (Theme.of(context).platform != TargetPlatform.iOS) {
       return child;
     }
 
