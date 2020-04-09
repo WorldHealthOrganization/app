@@ -55,10 +55,13 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
   List<FlSpot> _buildSpots() {
     var spots = <FlSpot>[];
     double xAxis = 0.0;
-    if (_showData && widget.timeseries != null && widget.timeseries.isNotEmpty) {
+    if (_showData &&
+        widget.timeseries != null &&
+        widget.timeseries.isNotEmpty) {
       // TODO: do not assume that there is 1 snapshot per day; group snapshots by epochMsec
       // Throw out last day's data since it appears to be partial and adds a misleading downslope
-      for (var snapshot in widget.timeseries.sublist(0, widget.timeseries.length - 1)) {
+      for (var snapshot
+          in widget.timeseries.sublist(0, widget.timeseries.length - 1)) {
         var yAxis = 0.0;
         try {
           yAxis = snapshot[widget.timeseriesKey].toDouble();
