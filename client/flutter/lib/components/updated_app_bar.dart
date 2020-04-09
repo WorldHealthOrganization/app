@@ -1,4 +1,4 @@
-// Copyright 2014 The Flutter Authors. All rights reserved.
+// Copyright 2015 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -55,7 +55,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 ///
 /// App bars are typically used in the [Scaffold.appBar] property, which places
 /// the app bar as a fixed-height widget at the top of the screen. For a scrollable
-/// app bar, see [SliverAppBar], which embeds an [UpdatedAppBar] in a sliver for use in
+/// app bar, see [SliverAppBar], which embeds an [AppBar] in a sliver for use in
 /// a [CustomScrollView].
 ///
 /// When not used as [Scaffold.appBar], or when wrapped in a [Hero], place the app
@@ -73,7 +73,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 /// the title is between them. The bottom is, naturally, at the bottom, and the
 /// flexibleSpace is behind all of them.](https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png)
 ///
-/// If the [leading] widget is omitted, but the [UpdatedAppBar] is in a [Scaffold] with
+/// If the [leading] widget is omitted, but the [AppBar] is in a [Scaffold] with
 /// a [Drawer], then a button will be inserted to open the drawer. Otherwise, if
 /// the nearest [Navigator] has any previous routes, a [BackButton] is inserted
 /// instead. This behavior can be turned off by setting the [automaticallyImplyLeading]
@@ -82,7 +82,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 ///
 /// {@tool dartpad --template=stateless_widget_material}
 ///
-/// This sample shows an [UpdatedAppBar] with two simple actions. The first action
+/// This sample shows an [AppBar] with two simple actions. The first action
 /// opens a [SnackBar], while the second action navigates to a new page.
 ///
 /// ```dart preamble
@@ -144,17 +144,17 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 ///
 /// See also:
 ///
-///  * [Scaffold], which displays the [UpdatedAppBar] in its [Scaffold.appBar] slot.
-///  * [SliverAppBar], which uses [UpdatedAppBar] to provide a flexible app bar that
+///  * [Scaffold], which displays the [AppBar] in its [Scaffold.appBar] slot.
+///  * [SliverAppBar], which uses [AppBar] to provide a flexible app bar that
 ///    can be used in a [CustomScrollView].
-///  * [TabBar], which is typically placed in the [bottom] slot of the [UpdatedAppBar]
+///  * [TabBar], which is typically placed in the [bottom] slot of the [AppBar]
 ///    if the screen has multiple pages arranged in tabs.
 ///  * [IconButton], which is used with [actions] to show buttons on the app bar.
 ///  * [PopupMenuButton], to show a popup menu on the app bar, via [actions].
 ///  * [FlexibleSpaceBar], which is used with [flexibleSpace] when the app bar
 ///    can expand and collapse.
 ///  * <https://material.io/design/components/app-bars-top.html>
-class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
+class AppBar extends StatefulWidget implements PreferredSizeWidget {
   /// Creates a material design app bar.
   ///
   /// The arguments [primary], [toolbarOpacity], [bottomOpacity]
@@ -167,7 +167,7 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// then the default specified in the property's documentation will be used.
   ///
   /// Typically used in the [Scaffold.appBar] property.
-  UpdatedAppBar({
+  AppBar({
     Key key,
     this.leading,
     this.automaticallyImplyLeading = true,
@@ -184,10 +184,10 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.textTheme,
     this.primary = true,
     this.centerTitle,
-    this.excludeHeaderSemantics = false,
     this.titleSpacing = NavigationToolbar.kMiddleSpacing,
     this.toolbarOpacity = 1.0,
     this.bottomOpacity = 1.0,
+    this.excludeHeaderSemantics = false,
   })  : assert(automaticallyImplyLeading != null),
         assert(elevation == null || elevation >= 0.0),
         assert(primary != null),
@@ -200,20 +200,14 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   /// A widget to display before the [title].
   ///
-  /// Typically the [leading] widget is an [Icon] or an [IconButton].
-  ///
-  /// Becomes the leading component of the [NavigationToolBar] built
-  /// by this widget. The [leading] widget's width and height are constrained to
-  /// be no bigger than toolbar's height, which is [kToolbarHeight].
-  ///
   /// If this is null and [automaticallyImplyLeading] is set to true, the
-  /// [UpdatedAppBar] will imply an appropriate widget. For example, if the [UpdatedAppBar] is
+  /// [AppBar] will imply an appropriate widget. For example, if the [AppBar] is
   /// in a [Scaffold] that also has a [Drawer], the [Scaffold] will fill this
   /// widget with an [IconButton] that opens the drawer (using [Icons.menu]). If
-  /// there's no [Drawer] and the parent [Navigator] can go back, the [UpdatedAppBar]
+  /// there's no [Drawer] and the parent [Navigator] can go back, the [AppBar]
   /// will use a [BackButton] that calls [Navigator.maybePop].
   ///
-  /// {@tool snippet}
+  /// {@tool sample}
   ///
   /// The following code shows how the drawer button could be manually specified
   /// instead of relying on [automaticallyImplyLeading]:
@@ -241,7 +235,7 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
   ///
   /// See also:
   ///
-  ///  * [Scaffold.appBar], in which an [UpdatedAppBar] is usually placed.
+  ///  * [Scaffold.appBar], in which an [AppBar] is usually placed.
   ///  * [Scaffold.drawer], in which the [Drawer] is usually placed.
   final Widget leading;
 
@@ -254,52 +248,23 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   /// The primary widget displayed in the app bar.
   ///
-  /// Typically a [Text] widget that contains a description of the current
-  /// contents of the app.
-  ///
-  /// Becomes the middle component of the [NavigationToolBar] built by this widget.
-  /// The [title]'s width is constrained to fit within the remaining space
-  /// between the toolbar's [leading] and [actions] widgets. Its height is
-  /// _not_ constrained. The [title] is vertically centered and clipped to fit
-  /// within the toolbar, whose height is [kToolbarHeight]. Typically this
-  /// isn't noticeable because a simple [Text] [title] will fit within the
-  /// toolbar by default. On the other hand, it is noticeable when a
-  /// widget with an intrinsic height that is greater than [kToolbarHeight]
-  /// is used as the [title]. For example, when the height of an Image used
-  /// as the [title] exceeds [kToolbarHeight], it will be centered and
-  /// clipped (top and bottom), which may be undesirable. In cases like this
-  /// the height of the [title] widget can be constrained. For example:
-  ///
-  /// ```dart
-  /// MaterialApp(
-  ///   home: Scaffold(
-  ///     appBar: AppBar(
-  ///        title: SizedBox(
-  ///        height: kToolbarHeight,
-  ///          child: child: Image.asset(logoAsset),
-  ///      ),
-  ///   ),
-  /// )
-  /// ```
+  /// Typically a [Text] widget containing a description of the current contents
+  /// of the app.
   final Widget title;
 
-  /// Widgets to display in a row after the [title] widget.
+  /// Widgets to display after the [title] widget.
   ///
   /// Typically these widgets are [IconButton]s representing common operations.
   /// For less common operations, consider using a [PopupMenuButton] as the
   /// last action.
-  ///
-  /// The [actions] become the trailing component of the [NavigationToolBar] built
-  /// by this widget. The height of each action is constrained to be no bigger
-  /// than the toolbar's height, which is [kToolbarHeight].
   final List<Widget> actions;
 
   /// This widget is stacked behind the toolbar and the tab bar. It's height will
   /// be the same as the app bar's overall height.
   ///
-  /// A flexible space isn't actually flexible unless the [UpdatedAppBar]'s container
-  /// changes the [UpdatedAppBar]'s size. A [SliverAppBar] in a [CustomScrollView]
-  /// changes the [UpdatedAppBar]'s height when scrolled.
+  /// A flexible space isn't actually flexible unless the [AppBar]'s container
+  /// changes the [AppBar]'s size. A [SliverAppBar] in a [CustomScrollView]
+  /// changes the [AppBar]'s height when scrolled.
   ///
   /// Typically a [FlexibleSpaceBar]. See [FlexibleSpaceBar] for details.
   final Widget flexibleSpace;
@@ -423,21 +388,18 @@ class UpdatedAppBar extends StatefulWidget implements PreferredSizeWidget {
     switch (theme.platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
-      case TargetPlatform.linux:
-      case TargetPlatform.windows:
         return false;
       case TargetPlatform.iOS:
-      case TargetPlatform.macOS:
         return actions == null || actions.length < 2;
     }
     return null;
   }
 
   @override
-  _UpdatedAppBarState createState() => _UpdatedAppBarState();
+  _AppBarState createState() => _AppBarState();
 }
 
-class _UpdatedAppBarState extends State<UpdatedAppBar> {
+class _AppBarState extends State<AppBar> {
   static const double _defaultElevation = 4.0;
 
   void _handleDrawerButton() {
@@ -468,12 +430,12 @@ class _UpdatedAppBarState extends State<UpdatedAppBar> {
     IconThemeData actionsIconTheme = widget.actionsIconTheme ??
         appBarTheme.actionsIconTheme ??
         overallIconTheme;
-    TextStyle centerStyle = widget.textTheme?.headline6 ??
-        appBarTheme.textTheme?.headline6 ??
-        theme.primaryTextTheme.headline6;
-    TextStyle sideStyle = widget.textTheme?.bodyText2 ??
-        appBarTheme.textTheme?.bodyText2 ??
-        theme.primaryTextTheme.bodyText2;
+    TextStyle centerStyle = widget.textTheme?.title ??
+        appBarTheme.textTheme?.title ??
+        theme.primaryTextTheme.title;
+    TextStyle sideStyle = widget.textTheme?.body1 ??
+        appBarTheme.textTheme?.body1 ??
+        theme.primaryTextTheme.body1;
 
     if (widget.toolbarOpacity != 1.0) {
       final double opacity =
@@ -520,12 +482,9 @@ class _UpdatedAppBarState extends State<UpdatedAppBar> {
       switch (theme.platform) {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-        case TargetPlatform.linux:
-        case TargetPlatform.windows:
           namesRoute = true;
           break;
         case TargetPlatform.iOS:
-        case TargetPlatform.macOS:
           break;
       }
 
@@ -616,7 +575,6 @@ class _UpdatedAppBarState extends State<UpdatedAppBar> {
     // The padding applies to the toolbar and tabbar, not the flexible space.
     if (widget.primary) {
       appBar = SafeArea(
-        bottom: false,
         top: true,
         child: appBar,
       );
@@ -737,7 +695,6 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     @required this.textTheme,
     @required this.primary,
     @required this.centerTitle,
-    @required this.excludeHeaderSemantics,
     @required this.titleSpacing,
     @required this.expandedHeight,
     @required this.collapsedHeight,
@@ -747,6 +704,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     @required this.snapConfiguration,
     @required this.stretchConfiguration,
     @required this.shape,
+    @required this.excludeHeaderSemantics,
   })  : assert(primary || topPadding == 0.0),
         _bottomHeight = bottom?.preferredSize?.height ?? 0.0;
 
@@ -809,7 +767,6 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     //    1   |    1     |        1       ||  fade
     final double toolbarOpacity = !pinned || (floating && bottom != null)
         ? ((visibleMainHeight - _bottomHeight) / kToolbarHeight).clamp(0.0, 1.0)
-            as double
         : 1.0;
 
     final Widget appBar = FlexibleSpaceBar.createSettings(
@@ -817,7 +774,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
       maxExtent: maxExtent,
       currentExtent: math.max(minExtent, maxExtent - shrinkOffset),
       toolbarOpacity: toolbarOpacity,
-      child: UpdatedAppBar(
+      child: AppBar(
         leading: leading,
         automaticallyImplyLeading: automaticallyImplyLeading,
         title: title,
@@ -843,9 +800,8 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         titleSpacing: titleSpacing,
         shape: shape,
         toolbarOpacity: toolbarOpacity,
-        bottomOpacity: pinned
-            ? 1.0
-            : ((visibleMainHeight / _bottomHeight).clamp(0.0, 1.0) as double),
+        bottomOpacity:
+            pinned ? 1.0 : (visibleMainHeight / _bottomHeight).clamp(0.0, 1.0),
       ),
     );
     return floating ? _FloatingAppBar(child: appBar) : appBar;
@@ -896,13 +852,13 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 /// [CustomScrollView], which lets the app bar integrate with the scroll view so
 /// that it can vary in height according to the scroll offset or float above the
 /// other content in the scroll view. For a fixed-height app bar at the top of
-/// the screen see [UpdatedAppBar], which is used in the [Scaffold.appBar] slot.
+/// the screen see [AppBar], which is used in the [Scaffold.appBar] slot.
 ///
 /// The AppBar displays the toolbar widgets, [leading], [title], and
 /// [actions], above the [bottom] (if any). If a [flexibleSpace] widget is
 /// specified then it is stacked behind the toolbar and the bottom widget.
 ///
-/// {@tool snippet}
+/// {@tool sample}
 ///
 /// This is an example that could be included in a [CustomScrollView]'s
 /// [CustomScrollView.slivers] list:
@@ -953,8 +909,8 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 ///
 ///  * [CustomScrollView], which integrates the [SliverAppBar] into its
 ///    scrolling.
-///  * [UpdatedAppBar], which is a fixed-height app bar for use in [Scaffold.appBar].
-///  * [TabBar], which is typically placed in the [bottom] slot of the [UpdatedAppBar]
+///  * [AppBar], which is a fixed-height app bar for use in [Scaffold.appBar].
+///  * [TabBar], which is typically placed in the [bottom] slot of the [AppBar]
 ///    if the screen has multiple pages arranged in tabs.
 ///  * [IconButton], which is used with [actions] to show buttons on the app bar.
 ///  * [PopupMenuButton], to show a popup menu on the app bar, via [actions].
@@ -1008,11 +964,11 @@ class SliverAppBar extends StatefulWidget {
 
   /// A widget to display before the [title].
   ///
-  /// If this is null and [automaticallyImplyLeading] is set to true, the [UpdatedAppBar] will
-  /// imply an appropriate widget. For example, if the [UpdatedAppBar] is in a [Scaffold]
+  /// If this is null and [automaticallyImplyLeading] is set to true, the [AppBar] will
+  /// imply an appropriate widget. For example, if the [AppBar] is in a [Scaffold]
   /// that also has a [Drawer], the [Scaffold] will fill this widget with an
   /// [IconButton] that opens the drawer. If there's no [Drawer] and the parent
-  /// [Navigator] can go back, the [UpdatedAppBar] will use a [BackButton] that calls
+  /// [Navigator] can go back, the [AppBar] will use a [BackButton] that calls
   /// [Navigator.maybePop].
   final Widget leading;
 
@@ -1035,7 +991,7 @@ class SliverAppBar extends StatefulWidget {
   /// For less common operations, consider using a [PopupMenuButton] as the
   /// last action.
   ///
-  /// {@tool snippet}
+  /// {@tool sample}
   ///
   /// ```dart
   /// Scaffold(
@@ -1092,10 +1048,10 @@ class SliverAppBar extends StatefulWidget {
   final double elevation;
 
   /// Whether to show the shadow appropriate for the [elevation] even if the
-  /// content is not scrolled under the [UpdatedAppBar].
+  /// content is not scrolled under the [AppBar].
   ///
   /// Defaults to false, meaning that the [elevation] is only applied when the
-  /// [UpdatedAppBar] is being displayed over content that is scrolled under it.
+  /// [AppBar] is being displayed over content that is scrolled under it.
   ///
   /// When set to true, the [elevation] is applied regardless.
   ///
@@ -1310,7 +1266,6 @@ class _SliverAppBarState extends State<SliverAppBar>
   void didUpdateWidget(SliverAppBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.snap != oldWidget.snap || widget.floating != oldWidget.floating)
-
       // ignore: curly_braces_in_flow_control_structures
       _updateSnapConfiguration();
     if (widget.stretch != oldWidget.stretch) _updateStretchConfiguration();
@@ -1397,7 +1352,6 @@ class _RenderAppBarTitleBox extends RenderAligningShiftedBox {
 
   @override
   void performLayout() {
-    final BoxConstraints constraints = this.constraints;
     final BoxConstraints innerConstraints =
         constraints.copyWith(maxHeight: double.infinity);
     child.layout(innerConstraints, parentUsesSize: true);
