@@ -1,6 +1,4 @@
-import 'package:WHOFlutter/components/page_scaffold/page_header.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,14 +50,14 @@ class CarouselView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
-          constraints: BoxConstraints(maxWidth: width * 0.75),
+          constraints: BoxConstraints(maxWidth: width * 0.5),
           child: FittedBox(
             child: PageViewIndicator(
               pageIndexNotifier: pageIndexNotifier,
               length: this.items.length,
               normalBuilder: (animationController, index) => Circle(
-                size: 8.0,
-                color: Colors.grey,
+                size: 20.0,
+                color: Color(0x99FFFFFF),
               ),
               highlightedBuilder: (animationController, index) =>
                   ScaleTransition(
@@ -68,8 +66,8 @@ class CarouselView extends StatelessWidget {
                   curve: Curves.ease,
                 ),
                 child: Circle(
-                  size: 10.0,
-                  color: Constants.primaryColor,
+                  size: 28.0,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -104,12 +102,12 @@ class _CarouselSlideState extends State<CarouselSlide> {
     var screenSize = MediaQuery.of(context).size;
 
     var titleStyle = TextStyle(
-      color: PageHeader.textColor,
+      color: Colors.white,
       fontSize: 36.0,
       fontWeight: FontWeight.w600,
     );
     var bodyStyle = TextStyle(
-      color: Colors.black,
+      color: Colors.white,
       fontSize: 20.0,
       fontWeight: FontWeight.w600,
     );
@@ -153,6 +151,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
         behavior: HitTestBehavior.translucent,
         child: Row(
           children: <Widget>[
+            SizedBox(width: 4.0),
             Text("Learn More", style: titleStyle.copyWith(fontSize: 18.0)),
             SizedBox(width: 6.0),
             Icon(Icons.lightbulb_outline, color: titleStyle.color)
@@ -173,7 +172,9 @@ class _CarouselSlideState extends State<CarouselSlide> {
               fontStyle: FontStyle.normal,
               decoration: TextDecoration.underline));
         case "b":
-          return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
+          return baseStyle.merge(TextStyle(fontWeight: FontWeight.w900));
+        case "u":
+          return baseStyle.merge(TextStyle(decoration: TextDecoration.underline));
       }
     }
     return baseStyle;
