@@ -1,0 +1,19 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: fact
+  items:
+    -
+      title_html: |
+        Hot and humid climates do not make it easier for COVID-19 to spread.
+      body_html: |
+        <p>COVID-19 can spread in any climate, regardless of whether the temperature is hot and humid or cold and dry.</p>
+        <p>No matter where you live, the best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.</p>
+      image_name: snowflake
+    -
+      title_html: |
+        COVID-19 is not transmitted by mosquitos.
+      body_html: |
+        <p>There's no evidence that people can get the virus from mosquitoes or household pets.</p>
+        <p>COVID-19 is a respiratory virus that spreads through the small amounts of liquid that an infected person sneezes or coughs into the air. To protect yourself, avoid contact with anyone who is coughing or sneezing.</p>
+      image_name: snowflake

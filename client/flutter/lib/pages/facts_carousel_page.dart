@@ -46,20 +46,20 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO:
-    /*
     List items = (_factsData ?? [])
         .map((fact) => CarouselSlide(
+              key: UniqueKey(),
               title: fact.title,
               graphic: SvgPicture.asset("assets/svg/${fact.imageName}.svg"),
               body: fact.body,
             ))
         .toList();
-     */
 
     // Begin: TESTING
+    /*
     List<CarouselSlide> items = [
       CarouselSlide(
+        key: UniqueKey(),
         title: 'Cold weather and snow <em>Cannot</em> kill the new coronavirus.',
         graphic: SvgPicture.asset("assets/svg/snowflake.svg"),
         body:
@@ -71,6 +71,7 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
     items += items;
     items += items;
     items += items;
+     */
     // End: TESTING
 
     return Scaffold(
@@ -83,7 +84,9 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
         title: PageHeader.buildTitle("Get the Facts"),
         elevation: 0,
       ),
-      body: Container(color: Colors.white, child: CarouselView(items: items)),
+      body: Container(
+          color: Colors.white,
+          child: items.isNotEmpty ? CarouselView(items: items) : Container()),
     );
   }
 }

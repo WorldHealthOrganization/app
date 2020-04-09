@@ -86,7 +86,12 @@ class CarouselSlide extends StatefulWidget {
   final String title;
   final String body;
 
-  CarouselSlide({@required this.title, @required this.body, this.graphic});
+  CarouselSlide(
+      {@required Key key,
+      @required this.title,
+      @required this.body,
+      this.graphic})
+      : super(key: key);
 
   @override
   _CarouselSlideState createState() => _CarouselSlideState();
@@ -120,7 +125,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
                 duration: Duration(milliseconds: 300),
                 alignment: Alignment.centerRight,
                 height: _showDetails ? 0.0 : screenSize.height * 0.25,
-                child: widget.graphic),
+                child: widget.graphic ?? Container()),
             Html(
               data: widget.title,
               defaultTextStyle: titleStyle,
