@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class NewsFeedItem extends StatelessWidget {
   final String title;
   final String description;
   final ImageProvider imageProvider;
   final String url;
+  final FirebaseAnalytics analytics;
 
   NewsFeedItem({
     @required this.title,
     @required this.description,
     @required this.imageProvider,
     @required this.url,
+    @required this.analytics,
   });
 
   @override
   Widget build(BuildContext context) {
     return Material(
         child: InkWell(
-      onTap: () => launch(this.url),
+      onTap: () => {
+        analytics.logEvent(name: 'NewsFeedItem', parameters: {'url': url});
+        launch(this.url);
+      },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
