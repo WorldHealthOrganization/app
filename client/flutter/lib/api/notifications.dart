@@ -1,7 +1,5 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/api/who_service.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
