@@ -53,8 +53,7 @@ class CarouselView extends StatelessWidget {
       children: <Widget>[
         Container(
           constraints: BoxConstraints(maxWidth: width * 0.75),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
+          child: FittedBox(
             child: PageViewIndicator(
               pageIndexNotifier: pageIndexNotifier,
               length: this.items.length,
