@@ -8,7 +8,7 @@ This is the official World Health Organization app.
 
 ## Summary
 
-<img align="right" src="./preview-home.png" alt="In progress mockup" width="200"/>
+<img align="right" src="./screen-loop.gif" alt="In progress mockup" width="300"/>
 
 **Summary:** There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
 

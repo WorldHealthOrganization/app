@@ -28,11 +28,10 @@ class WhoService {
       "latitude": latitude,
       "longitude": longitude,
       "countryCode": countryCode,
-      "adminArea": adminArea,
-      "subadminArea": subadminArea,
+      "adminArea1": adminArea,
+      "adminArea2": subadminArea,
       "locality": locality,
     });
-    print(postBody);
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
