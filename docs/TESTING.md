@@ -23,7 +23,7 @@ App milestones for 1.0:
 
 ### Application architecture
 
-Application is build using Flutter framework. We need to have this in mind and choose appropriate tools and approach.
+Application is built using Flutter framework. We need to have this in mind and choose appropriate tools and approach.
 
 We're supporting Android and iOS mobile operating systems.
 
