@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
 ///  This code is taken from the official Flutter animations package
 ///  at https://pub.dev/packages/animations
 
@@ -534,21 +533,11 @@ class _OpenContainerRoute extends ModalRoute<void> {
   final _FlippableTweenSequence<double> _openOpacityTween;
   final _FlippableTweenSequence<Color> _colorTween;
 
-  static final TweenSequence<Color> _scrimFadeInTween = TweenSequence<Color>(
-    <TweenSequenceItem<Color>>[
-      TweenSequenceItem<Color>(
-        tween: ColorTween(begin: Colors.transparent, end: Colors.black54),
-        weight: 1 / 5,
-      ),
-      TweenSequenceItem<Color>(
-        tween: ConstantTween<Color>(Colors.black54),
-        weight: 4 / 5,
-      ),
-    ],
-  );
-  static final Tween<Color> _scrimFadeOutTween = ColorTween(
+  static const _scrimColor = Colors.black54;
+
+  static final Tween<Color> _scrimTween = ColorTween(
     begin: Colors.transparent,
-    end: Colors.black54,
+    end: _scrimColor,
   );
 
   // Key used for the widget returned by [OpenContainer.openBuilder] to keep
@@ -716,20 +705,20 @@ class _OpenContainerRoute extends ModalRoute<void> {
               closedOpacityTween = _closedOpacityTween;
               openOpacityTween = _openOpacityTween;
               colorTween = _colorTween;
-              scrimTween = _scrimFadeInTween;
+              scrimTween = _scrimTween;
               break;
             case AnimationStatus.reverse:
               if (_transitionWasInterrupted) {
                 closedOpacityTween = _closedOpacityTween;
                 openOpacityTween = _openOpacityTween;
                 colorTween = _colorTween;
-                scrimTween = _scrimFadeInTween;
+                scrimTween = _scrimTween;
                 break;
               }
               closedOpacityTween = _closedOpacityTween.flipped;
               openOpacityTween = _openOpacityTween.flipped;
               colorTween = _colorTween.flipped;
-              scrimTween = _scrimFadeOutTween;
+              scrimTween = _scrimTween;
               break;
             case AnimationStatus.completed:
               assert(false); // Unreachable.
