@@ -209,7 +209,7 @@ class _MenuGrid extends StatelessWidget {
                 Expanded(
                   child: _MenuButton(
                     onTap: () => logAnalyticsEvent('ProtectYourself'),
-                    page: ProtectYourself(),
+                    pageBuilder: () => ProtectYourself(),
                     scaleFactor: 2,
                     color: Color(0xff008DC9),
                     title: S.of(context).homePagePageButtonProtectYourself,
@@ -224,7 +224,7 @@ class _MenuGrid extends StatelessWidget {
                       IntrinsicHeight(
                         child: _MenuButton(
                           onTap: () => logAnalyticsEvent('LatestNumbers'),
-                          page: LatestNumbers(),
+                          pageBuilder: () => LatestNumbers(),
                           color: Color(0xff1A458E),
                           title: S.of(context).homePagePageButtonLatestNumbers,
                           titleStyle: mediumTitleStyle,
@@ -234,7 +234,7 @@ class _MenuGrid extends StatelessWidget {
                       IntrinsicHeight(
                         child: _MenuButton(
                           onTap: () => logAnalyticsEvent('QuestionsAnswered'),
-                          page: QuestionIndexPage(
+                          pageBuilder: () => QuestionIndexPage(
                             dataSource: QuestionData.yourQuestionsAnswered,
                             title: S.of(context).homePagePageButtonQuestions,
                           ),
@@ -254,7 +254,7 @@ class _MenuGrid extends StatelessWidget {
           _VerticalSpacer(),
           _MenuButton(
             onTap: () => logAnalyticsEvent('GetTheFacts'),
-            page: QuestionIndexPage(
+            pageBuilder: () => QuestionIndexPage(
               dataSource: QuestionData.whoMythbusters,
               title: S.of(context).homePagePageButtonWHOMythBusters,
             ),
@@ -272,7 +272,7 @@ class _MenuGrid extends StatelessWidget {
                 Expanded(
                   child: _MenuButton(
                     onTap: () => logAnalyticsEvent('TravelAdvice'),
-                    page: TravelAdvice(),
+                    pageBuilder: () => TravelAdvice(),
                     color: Color(0xff3DA7D4),
                     title: S.of(context).homePagePageButtonTravelAdvice,
                     titleStyle: mediumTitleStyle,
@@ -282,7 +282,7 @@ class _MenuGrid extends StatelessWidget {
                 Expanded(
                   child: _MenuButton(
                     onTap: () => logAnalyticsEvent('News'),
-                    page: NewsFeed(),
+                    pageBuilder: () => NewsFeed(),
                     color: Color(0xff008DC9),
                     title: S.of(context).homePagePageButtonNewsAndPress,
                     titleStyle: mediumTitleStyle,
@@ -303,14 +303,14 @@ class _MenuButton extends StatelessWidget {
   final Color color;
   final String title;
   final String description;
-  final Widget page;
+  final Widget Function() pageBuilder;
   final VoidCallback onTap;
   final TextStyle titleStyle;
   final MainAxisAlignment mainAxisAlignment;
 
   const _MenuButton({
     Key key,
-    @required this.page,
+    @required this.pageBuilder,
     @required this.color,
     @required this.title,
     @required this.onTap,
@@ -319,7 +319,7 @@ class _MenuButton extends StatelessWidget {
     this.description,
     this.mainAxisAlignment = MainAxisAlignment.start,
   })  : assert(scaleFactor != null),
-        assert(page != null),
+        assert(pageBuilder != null),
         assert(title != null),
         assert(titleStyle != null),
         assert(mainAxisAlignment != null),
@@ -339,7 +339,7 @@ class _MenuButton extends StatelessWidget {
       ),
       closedColor: color,
       openBuilder: (BuildContext context, VoidCallback close) {
-        return page;
+        return pageBuilder();
       },
       closedBuilder: (BuildContext context, VoidCallback open) {
         return ConstrainedBox(

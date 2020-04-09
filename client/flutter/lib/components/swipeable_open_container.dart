@@ -233,20 +233,39 @@ class _OpenContainerState extends State<SwipeableOpenContainer> {
   final GlobalKey _closedBuilderKey = GlobalKey();
 
   void openContainer() {
-    Navigator.of(context).push(_OpenContainerRoute(
-        closedColor: widget.closedColor,
-        openColor: widget.openColor,
-        closedElevation: widget.closedElevation,
-        openElevation: widget.openElevation,
-        closedShape: widget.closedShape,
-        openShape: widget.openShape,
-        closedBuilder: widget.closedBuilder,
-        openBuilder: widget.openBuilder,
-        hideableKey: _hideableKey,
-        closedBuilderKey: _closedBuilderKey,
-        transitionDuration: widget.transitionDuration,
-        transitionType: widget.transitionType,
-        settings: widget.routeSettings));
+    if (_shouldDisableAnimation()) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => widget.openBuilder(context, null),
+        ),
+      );
+    } else {
+      Navigator.of(context).push(
+        _OpenContainerRoute(
+          closedColor: widget.closedColor,
+          openColor: widget.openColor,
+          closedElevation: widget.closedElevation,
+          openElevation: widget.openElevation,
+          closedShape: widget.closedShape,
+          openShape: widget.openShape,
+          closedBuilder: widget.closedBuilder,
+          openBuilder: widget.openBuilder,
+          hideableKey: _hideableKey,
+          closedBuilderKey: _closedBuilderKey,
+          transitionDuration: widget.transitionDuration,
+          transitionType: widget.transitionType,
+          settings: widget.routeSettings,
+        ),
+      );
+    }
+  }
+
+  static bool _shouldDisableAnimation() {
+    final AccessibilityFeatures accessibilityFeatures =
+        WidgetsBinding.instance.window.accessibilityFeatures;
+
+    return (accessibilityFeatures.disableAnimations ||
+        accessibilityFeatures.reduceMotion);
   }
 
   @override
@@ -596,8 +615,6 @@ class _OpenContainerRoute extends ModalRoute<void> {
         return;
       }
       _rectTween.begin = _getRect(hideableKey, navigator);
-
-      // BUG
       hideableKey.currentState.placeholderSize = _rectTween.begin.size;
     }
 
@@ -806,20 +823,24 @@ class _OpenContainerRoute extends ModalRoute<void> {
       return child;
     }
 
-    return _OpenContainerBackGestureDetector<dynamic>(
-      child: child,
-      enabledCallback: () => true,
-      onStartPopGesture: () {
-        _takeMeasurements(
-          navigatorContext: subtreeContext,
-          delayForSourceRoute: true,
-        );
+    return Semantics(
+      scopesRoute: true,
+      explicitChildNodes: true,
+      child: _OpenContainerBackGestureDetector<dynamic>(
+        child: child,
+        enabledCallback: () => true,
+        onStartPopGesture: () {
+          _takeMeasurements(
+            navigatorContext: subtreeContext,
+            delayForSourceRoute: true,
+          );
 
-        return _OpenContainerBackGestureController<dynamic>(
-          navigator: navigator,
-          controller: controller,
-        );
-      },
+          return _OpenContainerBackGestureController<dynamic>(
+            navigator: navigator,
+            controller: controller,
+          );
+        },
+      ),
     );
   }
 
@@ -1019,7 +1040,7 @@ class _OpenContainerBackGestureController<T> {
   /// drag should be 0.0 to 1.0.
   void dragUpdate(double delta) {
     // Adjust the delta to make the swiping feel more immediate
-    final double newValue = controller.value - (delta * 2.0);
+    final double newValue = controller.value - (delta * 1.9);
     // Clamp values so animation doesn't complete during swipe
     controller.value = newValue.clamp(0.01, 0.99).toDouble();
   }
