@@ -54,24 +54,9 @@ class LatestNumbers extends StatelessWidget {
                     delegate: SliverChildListDelegate([
                   StatCard(
                       background: LatestNumbersGraph(
-                        timeseries: hasGlobalStats
-                            ? [
-                                11656.0,
-                                4764.0,
-                                16894.0,
-                                18093.0,
-                                19332.0,
-                                17987.0,
-                                22559.0,
-                                24103.0,
-                                26298.0,
-                                28103.0,
-                                32105.0,
-                                33510.0,
-                                26493.0,
-                                29510.0,
-                              ]
-                            : null,
+                        timeseries:
+                            hasGlobalStats ? globalStats['timeseries'] : null,
+                        timeseriesKey: 'dailyCases',
                       ),
                       title: Text(
                         S.of(context).latestNumbersPageGlobalCasesTitle,
@@ -89,24 +74,9 @@ class LatestNumbers extends StatelessWidget {
                       )),
                   StatCard(
                     background: LatestNumbersGraph(
-                      timeseries: hasGlobalStats
-                          ? [
-                              11656.0,
-                              4764.0,
-                              16894.0,
-                              18093.0,
-                              19332.0,
-                              17987.0,
-                              22559.0,
-                              24103.0,
-                              26298.0,
-                              28103.0,
-                              32105.0,
-                              33510.0,
-                              26493.0,
-                              100000.0,
-                            ]
-                          : null,
+                      timeseries:
+                          hasGlobalStats ? globalStats['timeseries'] : null,
+                      timeseriesKey: 'dailyDeaths',
                     ),
                     title: Text(S.of(context).latestNumbersPageGlobalDeaths,
                         style: name),
@@ -214,47 +184,3 @@ class StatCard extends StatelessWidget {
             )));
   }
 }
-
-// class StatCard extends StatelessWidget {
-//   const StatCard({
-//     @required this.title,
-//     @required this.content,
-//   });
-//   final Text title;
-//   final Widget content;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 6),
-//       child: Card(
-//         elevation: 0,
-//         color: Color(0xFF3D8AC4),
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.all(
-//             Radius.circular(15),
-//           ),
-//         ),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: <Widget>[
-//             Padding(
-//               padding: const EdgeInsets.symmetric(
-//                 horizontal: 15,
-//                 vertical: 5,
-//               ),
-//               child: title,
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.symmetric(
-//                 horizontal: 15,
-//                 vertical: 5,
-//               ),
-//               child: content,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
