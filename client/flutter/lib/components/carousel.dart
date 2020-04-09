@@ -151,6 +151,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
 
   GestureDetector _buildLearnMore(TextStyle titleStyle) {
     return GestureDetector(
+        behavior: HitTestBehavior.translucent,
         child: Row(
           children: <Widget>[
             Text("Learn More", style: titleStyle.copyWith(fontSize: 18.0)),

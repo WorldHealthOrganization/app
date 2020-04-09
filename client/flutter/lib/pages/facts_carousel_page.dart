@@ -55,25 +55,6 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
             ))
         .toList();
 
-    // Begin: TESTING
-    /*
-    List<CarouselSlide> items = [
-      CarouselSlide(
-        key: UniqueKey(),
-        title: 'Cold weather and snow <em>Cannot</em> kill the new coronavirus.',
-        graphic: SvgPicture.asset("assets/svg/snowflake.svg"),
-        body:
-        '<b>There is no reason to believe that cold weather can kill the new coronavirus or other diseases.</b> The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.\nThere is no reason to believe that cold weather can kill the new coronavirus or other diseases. The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.'
-            +'<b>There is no reason to believe that cold weather can kill the new coronavirus or other diseases.</b> The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.\nThere is no reason to believe that cold weather can kill the new coronavirus or other diseases. The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.'
-            +'<b>There is no reason to believe that cold weather can kill the new coronavirus or other diseases.</b> The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.\nThere is no reason to believe that cold weather can kill the new coronavirus or other diseases. The normal human body temperature remains around 36.5°C to 37°C, regardless of the external temperature or weather.'
-      )
-    ];
-    items += items;
-    items += items;
-    items += items;
-     */
-    // End: TESTING
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
