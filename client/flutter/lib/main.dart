@@ -138,7 +138,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
-        accentColor: Constants.textColor,
+        accentColor: Colors.white,
         brightness: Brightness.light,
         appBarTheme: AppBarTheme(brightness: Brightness.light),
         dividerColor: Color(0xffC9CDD6),

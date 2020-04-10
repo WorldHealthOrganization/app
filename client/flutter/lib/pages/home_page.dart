@@ -190,11 +190,12 @@ class _MenuGrid extends StatelessWidget {
 
   final TextStyle largeTitleStyle = const TextStyle(
     fontWeight: FontWeight.w700,
+    fontSize: 28
   );
 
   final TextStyle mediumTitleStyle = const TextStyle(
     fontWeight: FontWeight.w700,
-    fontSize: 11.2,
+    fontSize: 24,
   );
 
   void _openProtectYourself(BuildContext context) {
@@ -306,7 +307,7 @@ class _MenuGrid extends StatelessWidget {
             title: S.of(context).homePagePageButtonWHOMythBusters,
             description:
                 S.of(context).homePagePageButtonWHOMythBustersDescription,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             titleStyle: largeTitleStyle,
           ),
           _VerticalSpacer(),
@@ -372,13 +373,16 @@ class _MenuButton extends StatelessWidget {
           minHeight: (MediaQuery.of(context).size.width / 2) *
               (1 / tileDefaultAspectRatio) *
               scaleFactor),
+          
       child: PageButton(
         color,
         title,
         onTap,
         titleStyle: titleStyle,
+        verticalPadding: 16,
+        horizontalPadding: 8,
         description: description ?? '',
-        mainAxisAlignment: mainAxisAlignment,
+        mainAxisAlignment: this.mainAxisAlignment,
       ),
     );
   }
