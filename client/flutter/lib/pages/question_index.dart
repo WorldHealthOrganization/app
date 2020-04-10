@@ -63,7 +63,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         .toList();
 
     return PageScaffold(
-      context,
       body: [
         items.isNotEmpty
             ? SliverList(

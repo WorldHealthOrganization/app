@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
 
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,

@@ -43,7 +43,6 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      context,
       body: [
         SliverList(
             delegate: SliverChildListDelegate(

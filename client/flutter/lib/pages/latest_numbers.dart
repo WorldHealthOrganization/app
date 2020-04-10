@@ -33,7 +33,7 @@ class LatestNumbers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
         showShareBottomBar: false,
         body: [
