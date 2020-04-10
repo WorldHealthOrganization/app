@@ -1,6 +1,9 @@
 name: Client build
 on:
   push:
+    branches:
+      - master
+      - 'release/*'
     paths:
       - '.github/workflows/**'
       - 'api/**'
