@@ -14,3 +14,9 @@ double contentScale(BuildContext context) {
   const short = 480.0;
   return ((height - short) / (tall - short)).clamp(0.0, 1.0);
 }
+
+// Return a value between low and high for screens heights ranging
+// from a fixed short to tall range.
+double contentScaleFrom(BuildContext context, double low, double high) {
+  return low + contentScale(context) * (high-low);
+}

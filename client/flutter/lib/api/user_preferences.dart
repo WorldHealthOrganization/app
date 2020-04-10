@@ -50,6 +50,17 @@ class UserPreferences {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
+  
+  Future<String> getFCMToken() async {
+    return (await SharedPreferences.getInstance())
+            .getString(UserPreferenceKey.FCMToken.toString()) ??
+        "";
+  }
+
+  Future<bool> setFCMToken(String value) async {
+    return (await SharedPreferences.getInstance())
+        .setString(UserPreferenceKey.FCMToken.toString(), value);
+  }
 
   Future<String> getClientUuid() async {
     var prefs = await SharedPreferences.getInstance();
@@ -64,4 +75,4 @@ class UserPreferences {
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID }
+enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID, FCMToken }

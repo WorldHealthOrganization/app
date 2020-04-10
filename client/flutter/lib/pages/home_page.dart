@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/question_data.dart';
+import 'package:WHOFlutter/api/content/dynamic_content.dart';
 import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
@@ -6,6 +6,7 @@ import 'package:WHOFlutter/components/swipeable_open_container.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
+import 'package:WHOFlutter/pages/facts_carousel_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
@@ -19,6 +20,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
+
   HomePage(this.analytics);
 
   _logAnalyticsEvent(String name) async {
@@ -235,7 +237,7 @@ class _MenuGrid extends StatelessWidget {
                         child: _MenuButton(
                           onTap: () => logAnalyticsEvent('QuestionsAnswered'),
                           pageBuilder: () => QuestionIndexPage(
-                            dataSource: QuestionData.yourQuestionsAnswered,
+                            dataSource: DynamicContent.yourQuestionsAnswered,
                             title: S.of(context).homePagePageButtonQuestions,
                           ),
                           color: Color(0xff3DA7D4),
@@ -254,8 +256,9 @@ class _MenuGrid extends StatelessWidget {
           _VerticalSpacer(),
           _MenuButton(
             onTap: () => logAnalyticsEvent('GetTheFacts'),
-            pageBuilder: () => QuestionIndexPage(
-              dataSource: QuestionData.whoMythbusters,
+            pageBuilder: () => FactsCarouselPage(
+              dataSource: DynamicContent.getTheFacts,
+              // TODO: Rename these keys in the ARB files
               title: S.of(context).homePagePageButtonWHOMythBusters,
             ),
             color: Color(0xff234689),

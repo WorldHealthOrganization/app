@@ -99,7 +99,7 @@ class PermissionRequestPage extends StatelessWidget {
                         child: Text(
                           S.of(context).commonPermissionRequestPageButtonSkip,
                           style: TextStyle(
-                            color: Color(0xffC9CDD6),
+                            color: Color(0xFF6E7691),
                             fontSize: 18,
                           ),
                         ),

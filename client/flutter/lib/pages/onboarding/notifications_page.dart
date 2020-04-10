@@ -40,7 +40,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
     }
     
     await UserPreferences().setNotificationsEnabled(true);
-    await _registerFCMToken();
+    _registerFCMToken();
     _complete();
   }
 
@@ -54,8 +54,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _registerFCMToken() async {
-    await _firebaseMessaging.getToken().then((String token) {
-      WhoService.putDeviceToken(token);
-    });
+    final token = await _firebaseMessaging.getToken();
+    await WhoService.putDeviceToken(token);
+    await UserPreferences().setFCMToken(token);
   }
 }
