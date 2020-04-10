@@ -11,15 +11,16 @@ class ArrowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      shape: StadiumBorder(),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
       padding: EdgeInsets.symmetric(vertical: 24, horizontal: 23),
       color: this.color,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          Expanded(
+            child: Text(
+              title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
           ),
           Icon(Icons.arrow_forward_ios)
         ],
