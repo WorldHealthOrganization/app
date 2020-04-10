@@ -33,6 +33,10 @@ jobs:
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
       - run: git diff --exit-code
+      - uses: actions/upload-artifact@v1
+      - with:
+          name: ios
+          path: ./client/flutter/build/ios/iphoneos/Runner.app
   buildandroid:
     name: Build Android
     runs-on: ubuntu-latest
@@ -48,3 +52,6 @@ jobs:
       - run: flutter build appbundle
         working-directory: ./client/flutter
       - run: git diff --exit-code
+      - with:
+          name: android
+          path: ./client/flutter/build/app/outputs/bundle/release/app-release.aab
