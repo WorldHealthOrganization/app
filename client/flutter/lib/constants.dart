@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static Color backgroundColor = Colors.white;
+  static Color backgroundColor = Colors.white; // WHITE
   static Color primaryColor = Color(0xff0093CE); // WHO BLUE
-  static Color textColor = Color(0xff3C4245);
+  static Color textColor = Color(0xff3C4245); //GREY
   static Color primaryDark = Color(0xff1A458E); // NAVY
+  static Color accent = Color(0xffD86422); // ORANGE
   static double buttonTextSpacing = -.4;
 }
 
