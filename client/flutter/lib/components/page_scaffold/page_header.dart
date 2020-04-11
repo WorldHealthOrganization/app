@@ -55,7 +55,12 @@ class PageHeader extends StatelessWidget {
           ],
         ),
       ),
-      if (this.showLogo) Image.asset('assets/images/mark.png', width: 70)
+      if (this.showLogo)
+        Image.asset(
+          'assets/images/mark.png',
+          width: 70,
+          excludeFromSemantics: true,
+        )
     ];
     return Material(
       color: Colors.white,
