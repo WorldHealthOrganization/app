@@ -106,7 +106,7 @@ class ProtectYourself extends StatelessWidget {
     return PageScaffold(
         title: S.of(context).protectYourselfTitle,
         showShareBottomBar: false,
-        usedNavigator: false,
+        announceRouteManually: true,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([

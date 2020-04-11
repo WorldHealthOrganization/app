@@ -12,7 +12,7 @@ class PageScaffold extends StatelessWidget {
   final bool showBackButton;
   final bool showShareBottomBar;
   final bool showLogoInHeader;
-  final bool usedNavigator;
+  final bool announceRouteManually;
 
   PageScaffold({
     @required this.body,
@@ -22,7 +22,7 @@ class PageScaffold extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
     this.showLogoInHeader = false,
-    this.usedNavigator = true,
+    this.announceRouteManually = false,
   });
 
   @override
@@ -40,7 +40,7 @@ class PageScaffold extends StatelessWidget {
                   padding: this.padding,
                   showBackButton: this.showBackButton,
                   showLogo: this.showLogoInHeader,
-                  usedNavigator: usedNavigator,
+                  announceRouteManually: announceRouteManually,
                 ),
                 ...this.body,
                 SliverToBoxAdapter(

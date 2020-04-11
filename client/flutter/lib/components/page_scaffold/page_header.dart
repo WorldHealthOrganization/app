@@ -11,7 +11,11 @@ class PageHeader extends StatelessWidget {
   final EdgeInsets padding;
   final bool showBackButton;
   final bool showLogo;
-  final bool usedNavigator;
+
+  /// True if [PageHeader] wouldn't be announced via the screen reader if it wasn't
+  /// wrapped in a [Semantics] widget. E.g. when opening a page with
+  /// [SwipeableOpenContainer]
+  final bool announceRouteManually;
 
   PageHeader({
     @required this.title,
@@ -19,7 +23,7 @@ class PageHeader extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
     this.showLogo = false,
-    this.usedNavigator = true,
+    this.announceRouteManually = false,
   });
 
   @override
@@ -36,7 +40,7 @@ class PageHeader extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     Widget child = BackArrow();
 
-    if (!usedNavigator) {
+    if (announceRouteManually) {
       child = Semantics(focused: true, label: title, child: child);
     }
 

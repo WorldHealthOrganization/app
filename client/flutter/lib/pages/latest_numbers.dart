@@ -36,7 +36,7 @@ class LatestNumbers extends StatelessWidget {
     return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
         showShareBottomBar: false,
-        usedNavigator: false,
+        announceRouteManually: true,
         body: [
           FutureBuilder(
               future: WhoService.getCaseStats(),
