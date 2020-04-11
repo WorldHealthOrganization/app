@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
     final DebugChangeNotifier debugChangeNotifier =
-        context.watch<DebugChangeNotifier>();
+        Provider.of<DebugChangeNotifier>(context);
 
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: _textScaleFactor),
@@ -427,7 +427,7 @@ class _MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DebugChangeNotifier debugChangeNotifier =
-        context.watch<DebugChangeNotifier>();
+        Provider.of<DebugChangeNotifier>(context);
     final int extraCharacters = debugChangeNotifier.extraCharacters;
 
     final int firstWordCharacters = debugChangeNotifier.firstWordCharacters;
@@ -479,7 +479,7 @@ class HomePageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AutoSizeGroup autoSizeGroup =
-        context.watch<DebugChangeNotifier>().homeAutoSizeGroup;
+        Provider.of<DebugChangeNotifier>(context).homeAutoSizeGroup;
     return FlatButton(
       onPressed: onPressed,
       shape: RoundedRectangleBorder(
@@ -501,6 +501,8 @@ class HomePageButton extends StatelessWidget {
                 maxLines: 2,
                 textAlign: TextAlign.left,
                 group: autoSizeGroup,
+                // Default is 12
+                minFontSize: 12,
                 style: titleStyle?.copyWith(
                       letterSpacing: Constants.buttonTextSpacing,
                     ) ??
