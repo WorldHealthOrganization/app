@@ -1,0 +1,1 @@
+# Add one entry per lines of hash of line to ignore in policy checks.
