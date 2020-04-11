@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install profanity-check
+        pip install profanity-check==1.0.3
     - name: Lint with profanity-check
       run: |
         # Every file in the repo that is treated as text

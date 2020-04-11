@@ -1,4 +1,4 @@
-#!/bin/python3.7
+#!/bin/python
 
 import hashlib
 import sys
