@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    name: Check source code for policy violations
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
