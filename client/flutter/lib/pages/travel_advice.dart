@@ -10,6 +10,7 @@ class TravelAdvice extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
         showShareBottomBar: false,
+        usedNavigator: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([

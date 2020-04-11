@@ -11,6 +11,7 @@ class PageHeader extends StatelessWidget {
   final EdgeInsets padding;
   final bool showBackButton;
   final bool showLogo;
+  final bool usedNavigator;
 
   PageHeader({
     @required this.title,
@@ -18,6 +19,7 @@ class PageHeader extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
     this.showLogo = false,
+    this.usedNavigator = true,
   });
 
   @override
@@ -32,9 +34,18 @@ class PageHeader extends StatelessWidget {
   }
 
   Widget _buildHeader(BuildContext context) {
+    Widget child = BackArrow();
+
+    if (!usedNavigator) {
+      child = Semantics(focused: true, label: title, child: child);
+    }
+
     List<Widget> headerItems = [
-      if (this.showBackButton)
-        Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
+      if (showBackButton)
+        Transform.translate(
+          offset: Offset(-12, 0),
+          child: child,
+        ),
       Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
