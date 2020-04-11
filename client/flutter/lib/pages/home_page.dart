@@ -1,7 +1,7 @@
 import 'package:WHOFlutter/api/content/dynamic_content.dart';
-import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/components/swipeable_open_container.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
 
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,
@@ -48,27 +48,39 @@ class HomePage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate.fixed([
               _MenuGrid(logAnalyticsEvent: _logAnalyticsEvent),
+              SizedBox(
+                height: 12,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: Text(
                   S.of(context).homePagePageSliverListSupport,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffCA6B35)),
+                    fontSize: 30,
+                    letterSpacing: -.5,
+                    fontWeight: FontWeight.bold,
+                    color: Constants.accent,
+                  ),
                 ),
               ),
               Padding(
                   padding: EdgeInsets.all(15),
-                  child: ArrowButton(
-                    title: S.of(context).homePagePageSliverListDonate,
-                    color: Color(0xffCA6B35),
-                    onPressed: () {
+                  child: PageButton(
+                    Constants.accent,
+                    S.of(context).homePagePageSliverListDonate,
+                    () {
                       _logAnalyticsEvent('Donate');
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
+                    borderRadius: 36,
+                    verticalPadding: 20,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                   )),
+              SizedBox(
+                height: 20,
+              ),
               divider,
               Material(
                 color: Colors.white,
@@ -77,13 +89,13 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.share, color: Color(0xffCA6B35)),
+                        Icon(Icons.share, color: Constants.accent),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             S.of(context).homePagePageSliverListShareTheApp,
                             style: TextStyle(
-                              color: Color(0xffCA6B35),
+                              color: Constants.accent,
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
                             ),
@@ -114,13 +126,13 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.settings, color: Color(0xffCA6B35)),
+                        Icon(Icons.settings, color: Constants.accent),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             S.of(context).homePagePageSliverListSettings,
                             style: TextStyle(
-                              color: Color(0xffCA6B35),
+                              color: Constants.accent,
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
                             ),
@@ -189,19 +201,18 @@ class _MenuGrid extends StatelessWidget {
 
   final Function(String) logAnalyticsEvent;
 
-  final TextStyle largeTitleStyle = const TextStyle(
-    fontWeight: FontWeight.w700,
-  );
+  final TextStyle largeTitleStyle =
+      const TextStyle(fontWeight: FontWeight.w700, fontSize: 28);
 
   final TextStyle mediumTitleStyle = const TextStyle(
     fontWeight: FontWeight.w700,
-    fontSize: 11.2,
+    fontSize: 24,
   );
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal:20, vertical: 16),
       child: Column(
         children: <Widget>[
           IntrinsicHeight(
@@ -265,7 +276,7 @@ class _MenuGrid extends StatelessWidget {
             title: S.of(context).homePagePageButtonWHOMythBusters,
             description:
                 S.of(context).homePagePageButtonWHOMythBustersDescription,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             titleStyle: largeTitleStyle,
           ),
           _VerticalSpacer(),

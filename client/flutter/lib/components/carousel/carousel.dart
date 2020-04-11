@@ -1,4 +1,5 @@
 import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
@@ -35,8 +36,8 @@ class CarouselView extends StatelessWidget {
           right: 20,
           child: SafeArea(
                       child: FlatButton(
-              child: Text("Next fact", style: TextStyle(color: Color(0xff008DC9), fontSize: 18, fontWeight: FontWeight.w600)),
-              color: Colors.white,
+              child: Text("Next fact", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600)),
+              color: Color(0xff008DC9),
               padding: EdgeInsets.symmetric(vertical:14, horizontal:29),
               shape: StadiumBorder(),
               onPressed: ()=>(this.pageController.hasClients ?this.pageController.page:0) < this.items.length-1?pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut):pageController.animateToPage(0,duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
@@ -60,29 +61,34 @@ class CarouselView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          constraints: BoxConstraints(maxWidth: width * 0.5),
-          child: FittedBox(
-            child: PageViewIndicator(
-              pageIndexNotifier: pageIndexNotifier,
-              length: this.items.length,
-              normalBuilder: (animationController, index) => Circle(
-                size: 20.0,
-                color: Color(0x99FFFFFF),
-              ),
-              highlightedBuilder: (animationController, index) =>
-                  ScaleTransition(
-                scale: CurvedAnimation(
-                  parent: animationController,
-                  curve: Curves.ease,
-                ),
-                child: Circle(
-                  size: 28.0,
-                  color: Colors.white,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              constraints: BoxConstraints(maxWidth: width * 0.5),
+              child: FittedBox(
+                child: PageViewIndicator(
+                  pageIndexNotifier: pageIndexNotifier,
+                  length: this.items.length,
+                  normalBuilder: (animationController, index) => Circle(
+                    size: 20.0,
+                    color: Constants.primaryDark.withOpacity(.75),
+                  ),
+                  highlightedBuilder: (animationController, index) =>
+                      ScaleTransition(
+                    scale: CurvedAnimation(
+                      parent: animationController,
+                      curve: Curves.ease,
+                    ),
+                    child: Circle(
+                      size: 28.0,
+                      color:  Constants.primaryDark,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ],
     );

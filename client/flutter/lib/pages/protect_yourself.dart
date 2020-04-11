@@ -1,24 +1,27 @@
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 
 const whoBlue = Color(0xFF3D8BCC);
-const normal = TextStyle(
-  color: Colors.black,
-  fontSize: 16,
-);
-const bold = TextStyle(
-  color: Colors.black,
-  fontSize: 16,
-  fontWeight: FontWeight.w700,
-);
+
 const header =
     TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
 Text _message(String input) {
+  final TextStyle normal = TextStyle(
+    color: Constants.textColor,
+    fontSize: 16,
+    height: 1.4,
+  );
+  final TextStyle bold = TextStyle(
+    color: Constants.textColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+  );
   // Make sections delineated by asterisk * bold. For example:
   // String text = '*This is bold* this is not';
 
@@ -100,19 +103,13 @@ class ProtectYourself extends StatelessWidget {
   Widget build(BuildContext context) {
     final localized = S.of(context);
 
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).protectYourselfTitle,
         showShareBottomBar: false,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
-            Padding(
-              padding: const EdgeInsets.only(left: 26, top: 20),
-              child: Text(
-                localized.protectYourselfHeader,
-                style: header,
-              ),
-            ),
+            
             ProtectYourselfCard(
               message:
                   _message(localized.protectYourselfListOfItemsPageListItem1),

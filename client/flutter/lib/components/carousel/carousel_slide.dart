@@ -1,7 +1,9 @@
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:html/dom.dart' as dom;
+
 class CarouselSlide extends StatefulWidget {
   final SvgPicture graphic;
   final String title;
@@ -23,20 +25,22 @@ class _CarouselSlideState extends State<CarouselSlide> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final Size screenSize = MediaQuery.of(context).size;
 
-    var titleStyle = TextStyle(
-      color: Colors.white,
+    final TextStyle titleStyle = TextStyle(
+      color: Constants.primaryDark,
       fontSize: 36.0,
       fontWeight: FontWeight.w600,
+      letterSpacing: -.5,
     );
-    var bodyStyle = TextStyle(
-      color: Colors.white,
-      fontSize: 20.0,
-      fontWeight: FontWeight.w600,
+    final TextStyle bodyStyle = TextStyle(
+      color: Constants.textColor,
+      fontSize: 16.0,
+      height: 1.4,
     );
 
     return SingleChildScrollView(
+      physics: AlwaysScrollableScrollPhysics(),
       child: Container(
         padding: EdgeInsets.all(24),
         child: Column(
@@ -96,9 +100,10 @@ class _CarouselSlideState extends State<CarouselSlide> {
               fontStyle: FontStyle.normal,
               decoration: TextDecoration.underline));
         case "b":
-          return baseStyle.merge(TextStyle(fontWeight: FontWeight.w900));
+          return baseStyle.merge(TextStyle(fontWeight: FontWeight.w800));
         case "u":
-          return baseStyle.merge(TextStyle(decoration: TextDecoration.underline));
+          return baseStyle
+              .merge(TextStyle(decoration: TextDecoration.underline));
       }
     }
     return baseStyle;

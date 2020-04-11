@@ -15,7 +15,7 @@ class LegalLandingPage extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -29,7 +29,7 @@ class LegalLandingPage extends StatelessWidget {
                     S.of(context).legalLandingPageTitle,
                     style: TextStyle(
                       color: Color(0xff008DC9),
-                      fontSize: 15,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
@@ -55,8 +55,10 @@ class LegalLandingPage extends StatelessWidget {
                   ),
                   RichText(
                     textAlign: TextAlign.center,
+                    
                     text: TextSpan(
-                        style: TextStyle(color: Colors.grey),
+                      
+                        style: TextStyle(color: Colors.grey[600], height: 1.4),
                         children: [
                           TextSpan(
                               text: S.of(context).legalLandingPageButtonAgree

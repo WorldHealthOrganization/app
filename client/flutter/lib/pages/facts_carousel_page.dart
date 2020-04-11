@@ -68,7 +68,6 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
         elevation: 0,
       ),
       body: Container(
-          color: Color(0xff008ED2),
           child: items.isNotEmpty ? CarouselView(items: items) : Container()),
     );
   }
