@@ -92,6 +92,10 @@ Unlike Alpha testing, Beta testing lets you share a public link to invite tester
 1. [ ] Publish beta testing URLs for both Android and iOS to Slack.
 1. [ ] Collect beta test feedback in a Google doc.
 
+## :construction: Firebase App Distribution
+
+We are looking to move our alpha / beta testing phase to Firebase App Distribution, because it allows us to publish versions of the app to testers without having to go through the app stores' approval processes or have production credentials to build development versions of the app. We will add documentation for this step once we have ironed out the process.
+
 ## Release to production
 
 1. [ ] Once the App Store review approval has been granted, WHO should manually release the new version.
