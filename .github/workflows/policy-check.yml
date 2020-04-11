@@ -10,15 +10,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.8
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -28,4 +25,4 @@ jobs:
         # Every file in the repo that is treated as text
         FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
-        python3.7 -W ignore ./scripts/policycheck.py 0.5 $FILES2CHECK
+        python3.8 -W ignore ./scripts/policycheck.py 0.5 $FILES2CHECK
