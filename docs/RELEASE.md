@@ -84,7 +84,7 @@ Alpha testing lets you share the app with a known list of email addresses.
 1. [ ] Ask them to perform basic testing, ensure that app does not crash or have serious problems.
 1. [ ] If a serious issue is detected, fix the issue and restart the release process.
 
-## :construction: Beta testing
+## Beta testing
 
 Unlike Alpha testing, Beta testing lets you share a public link to invite testers.
 
