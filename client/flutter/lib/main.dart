@@ -1,10 +1,12 @@
 import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:WHOFlutter/change_notifiers/debug_change_notifier.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -80,7 +82,7 @@ class _MyAppState extends State<MyApp> {
   // Ask firebase for a token on every launch.
   // If the token is different from what we have stored...update it.
   updateFCMToken() async {
-    // Only check if notifications are enabled. 
+    // Only check if notifications are enabled.
     bool notificationsEnabled =
         await UserPreferences().getNotificationsEnabled();
 
@@ -147,13 +149,16 @@ class _MyAppState extends State<MyApp> {
           textTheme: ButtonTextTheme.accent,
         ),
       ),
-      home: Directionality(
-        child: widget.showOnboarding
-            ? OnboardingPage(analytics)
-            : HomePage(analytics),
-        textDirection: GlobalWidgetsLocalizations(
-          Locale(Intl.getCurrentLocale()),
-        ).textDirection,
+      home: ChangeNotifierProvider(
+        create: (_) => DebugChangeNotifier(),
+        child: Directionality(
+          child: widget.showOnboarding
+              ? OnboardingPage(analytics)
+              : HomePage(analytics),
+          textDirection: GlobalWidgetsLocalizations(
+            Locale(Intl.getCurrentLocale()),
+          ).textDirection,
+        ),
       ),
     );
   }
