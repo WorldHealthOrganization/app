@@ -1,5 +1,7 @@
 import 'package:WHOFlutter/api/content/dynamic_content.dart';
-import 'package:WHOFlutter/components/carousel.dart';
+import 'package:WHOFlutter/components/carousel/carousel.dart';
+import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
+
 import 'package:WHOFlutter/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +68,6 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
         elevation: 0,
       ),
       body: Container(
-          color: Color(0xff008ED2),
           child: items.isNotEmpty ? CarouselView(items: items) : Container()),
     );
   }

@@ -18,7 +18,7 @@ class AboutPage extends StatelessWidget {
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
-    return PageScaffold(context,
+    return PageScaffold(
         body: [
           SliverList(
               delegate: SliverChildListDelegate([

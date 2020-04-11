@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:WHOFlutter/api/content/dynamic_content.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -63,7 +64,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         .toList();
 
     return PageScaffold(
-      context,
       body: [
         items.isNotEmpty
             ? SliverList(
@@ -116,6 +116,7 @@ class _QuestionTileState extends State<QuestionTile>
       child: Stack(children: <Widget>[
         Divider(height: 1, thickness: 1,),
         ExpansionTile(
+          
           onExpansionChanged: (expanded) {
             if (expanded) {
               rotationController.forward();
@@ -124,15 +125,20 @@ class _QuestionTileState extends State<QuestionTile>
             }
           },
           key: PageStorageKey<String>(widget.questionItem.title),
-          trailing: AnimatedBuilder(
-            animation: rotationController,
-            child: Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
-            builder: (context, child) {
-              return Transform.rotate(
-                angle: rotationController.value,
-                child: child,
-              );
-            },
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              AnimatedBuilder(
+                animation: rotationController,
+                child: Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
+                builder: (context, child) {
+                  return Transform.rotate(
+                    angle: rotationController.value,
+                    child: child,
+                  );
+                },
+              ),
+            ],
           ),
           title: Padding(
             padding: EdgeInsets.symmetric(vertical: 12),
@@ -145,7 +151,7 @@ class _QuestionTileState extends State<QuestionTile>
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 32, bottom: 32),
+                  left: 16, right: 16, bottom: 32),
               child: html(widget.questionItem.body),
             )
           ],
@@ -169,9 +175,25 @@ class _QuestionTileState extends State<QuestionTile>
       },
       onImageTap: (src) {},
       // This is our css :)
+      customEdgeInsets: (dom.Node node){
+        if (node is dom.Element) {
+          switch (node.localName) {
+            case "p":
+              return EdgeInsets.only(
+                bottom: 8
+              );
+              break;
+            default:
+              return EdgeInsets.zero;
+          }
+        }else{
+          return EdgeInsets.zero;
+        }
+      },
       customTextStyle: (dom.Node node, TextStyle baseStyle) {
         if (node is dom.Element) {
           switch (node.localName) {
+            
             case "h2":
               return baseStyle.merge(TextStyle(
                   fontSize: 20,
@@ -187,8 +209,8 @@ class _QuestionTileState extends State<QuestionTile>
   }
 
   final _bodyStyle =
-      TextStyle(color: Color(0xff3C4245), fontWeight: FontWeight.w400);
+      TextStyle(color: Constants.textColor, fontWeight: FontWeight.w400, height: 1.5);
 
   final _titleStyle =
-      TextStyle(color: Color(0xff3C4245), fontWeight: FontWeight.w700);
+      TextStyle(color: Color(0xff3C4245), fontWeight: FontWeight.w600, height: 1.3);//TODO: ON OPEN MAKE TEXT DARKER
 }

@@ -8,14 +8,13 @@ class PageScaffold extends StatelessWidget {
 
   final List<Widget> body;
 
-  final BuildContext context; // TODO: Remove this
   final EdgeInsets padding;
   final bool showBackButton;
   final bool showShareBottomBar;
   final bool showLogoInHeader;
 
   PageScaffold(
-    this.context, {
+    {
     @required this.body,
     @required this.title,
     this.showShareBottomBar = false,
