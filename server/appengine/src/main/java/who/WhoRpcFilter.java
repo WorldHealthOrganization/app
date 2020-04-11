@@ -13,14 +13,19 @@ import present.rpc.RpcInterceptorChain;
  */
 @Singleton public class WhoRpcFilter extends RpcFilter  {
 
-  @Inject WhoRpcFilter(EchoServiceImpl service) {
+  @Inject WhoRpcFilter(WhoServiceImpl service) {
     RpcInterceptorChain chain = new RpcInterceptorChain()
-        .add(new LoggingInterceptor());
+        .add(new ClientInterceptor());
+    
+    if (!Environment.isProduction()) {
+      chain = chain.add(new LoggingInterceptor());
+    }
 
-    service(EchoService.class, service, chain);
+    service(WhoService.class, service, chain);
 
-    allowHost("localhost");
-
-    if (!Environment.isProduction()) allowAll();
+    if (!Environment.isProduction()) {
+      allowHost("localhost");
+      allowAll();
+    }
   }
 }

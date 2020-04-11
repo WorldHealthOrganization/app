@@ -1,61 +1,105 @@
-import 'package:WHOFlutter/listViewPage.dart';
+import 'package:WHOFlutter/components/page_button.dart';
+import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListOfItemsPage([
-      ListItem(
-        message: "WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks…"
+    return PageScaffold(
+        showShareBottomBar: false,
+        body: [
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Container(
+              color: Color(0xffD82037),
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: Html(
+                data: S.of(context).travelAdviceContainerText,
+                defaultTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  height: 1.2,
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+              child: Text(
+                S.of(context).travelAdvicePageListTitle,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+              ),
+            ),
+            TravelAdviceListItem(
+              imageSrc: S.of(context).travelAdvicePageListItem1Image,
+              description:
+                  S.of(context).travelAdvicePageListItem1Text,
+            ),
+            TravelAdviceListItem(
+              imageSrc: S.of(context).travelAdvicePageListItem2Image,
+              description:
+                  S.of(context).travelAdvicePageListItem2Text,
+            ),
+            TravelAdviceListItem(
+              imageSrc: S.of(context).travelAdvicePageListItem3Image,
+              description:
+                  S.of(context).travelAdvicePageListItem3Text,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              child: PageButton(
+                Color(0xff008DC9),
+                S.of(context).travelAdvicePageButtonGeneralRecommendations,
+                () => launch(S.of(context).travelAdvicePageButtonGeneralRecommendationsLink),
+                description:
+                    S.of(context).travelAdvicePageButtonGeneralRecommendationsDescription,
+                verticalPadding: 16,
+                titleStyle:
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                descriptionColor: Colors.white,
+              ),
+            )
+          ])),
+        ],
+        title: S.of(context).homePagePageButtonTravelAdvice);
+  }
+}
+
+class TravelAdviceListItem extends StatelessWidget {
+  final String description;
+  final String imageSrc;
+  TravelAdviceListItem({@required this.description, @required this.imageSrc});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              this.imageSrc,
+              height: 109,
+              width: 109,
+            ),
+          ),
+          SizedBox(
+            width: 16,
+          ),
+          Flexible(
+              child: Text(
+            this.description,
+            style: TextStyle(fontSize: 18, color: Color(0xff3C4245)),
+          )),
+        ],
       ),
-      ListItem(
-        message: "It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions…"
-      ),
-      ListItem(
-        message: "“Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases…"
-      ),
-      ListItem(
-        message: "General recommendations for all travellers include…"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("🧼"),
-        message: "Wash your hands frequently"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("👄"),
-        message: "Avoid touching your eyes, mouth and nose"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("💪"),
-        message: "Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("↔️"),
-        message: "Stay more than 1 meter (3 feet) away from a person who is sick"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("🍗"),
-        message: "Follow proper food hygiene practices"
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("😷"),
-        message: "Only wear a mask if you are ill with COVID-19 symptoms (especially coughing) or looking after someone who may have COVID-19"
-      ),
-      ListItem(
-        message: "Travellers returning from affected areas should:",
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("🌡"),
-        message: "Self-monitor for symptoms for 14 days and follow national protocols of receiving countries. Some countries may require returning travellers to enter quarantine",
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("🌡️"),
-        message: "Thermal scanners CAN detect if people have a fever but CANNOT detect whether or not someone has the coronavirus",
-      ),
-      ListItem(
-        titleWidget: EmojiHeader("🤒"),
-        message: "If symptoms occur, such as fever, or cough or difficulty breathing, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and their travel history",
-      ),
-    ]);
+    );
   }
 }
