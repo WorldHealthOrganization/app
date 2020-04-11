@@ -28,6 +28,4 @@ jobs:
         # Every file in the repo that is treated as text
         FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
-        for fn in $FILES2CHECK; do
-            echo $fn
-        done
+        python3.7 -W ignore ./scripts/policycheck.py 0.5 $FILES2CHECK
