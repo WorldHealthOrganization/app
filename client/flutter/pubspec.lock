@@ -50,7 +50,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.11"
-    color:
+  color:
     dependency: transitive
     description:
       name: color
