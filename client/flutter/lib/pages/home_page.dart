@@ -1,5 +1,4 @@
 import 'package:WHOFlutter/api/content/dynamic_content.dart';
-import 'package:WHOFlutter/components/arrow_button.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';

@@ -186,6 +186,8 @@ class _QuestionTileState extends State<QuestionTile>
             default:
               return EdgeInsets.zero;
           }
+        }else{
+          return EdgeInsets.zero;
         }
       },
       customTextStyle: (dom.Node node, TextStyle baseStyle) {
