@@ -73,7 +73,10 @@ class HomePage extends StatelessWidget {
                       _logAnalyticsEvent('Donate');
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
-                    borderRadius: 24,
+                    borderRadius: 36,
+                    verticalPadding: 20,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                   )),
               SizedBox(
                 height: 20,
