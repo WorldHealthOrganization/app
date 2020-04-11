@@ -77,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "latestNumbersPageLastUpdated" : m4,
     "latestNumbersPageTitle" : MessageLookupByLibrary.simpleMessage("Latest Numbers"),
     "latestNumbersPageUpdating" : MessageLookupByLibrary.simpleMessage("Updating…"),
-    "latestNumbersPageViewLiveData" : MessageLookupByLibrary.simpleMessage("View live data"),
+    "latestNumbersPageViewLiveData" : MessageLookupByLibrary.simpleMessage("View Live Data"),
     "legalLandingPageAnd" : MessageLookupByLibrary.simpleMessage(" and "),
     "legalLandingPageButtonAgree" : MessageLookupByLibrary.simpleMessage("By proceeding, you agree to our\n"),
     "legalLandingPageButtonGetStarted" : MessageLookupByLibrary.simpleMessage("Get Started"),

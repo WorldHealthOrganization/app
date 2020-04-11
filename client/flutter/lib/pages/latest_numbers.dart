@@ -1,5 +1,5 @@
 import 'package:WHOFlutter/api/who_service.dart';
-import 'package:WHOFlutter/components/arrow_button.dart';
+import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/components/latest_numbers_graph.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,7 +33,7 @@ class LatestNumbers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
         showShareBottomBar: false,
         body: [
@@ -117,10 +117,16 @@ class LatestNumbers extends StatelessWidget {
                       left: 24,
                       right: 24,
                     ),
-                    child: ArrowButton(
-                        title: S.of(context).latestNumbersPageViewLiveData,
-                        color: Color(0xFF3D8AC4),
-                        onPressed: () => _launchStatsDashboard(context)),
+                    child: PageButton(
+                        Color(0xFF3D8AC4),
+                        S.of(context).latestNumbersPageViewLiveData,
+                        () => _launchStatsDashboard(context),
+                        verticalPadding: 24,
+                        borderRadius: 36,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        ),
+                        
                   )
                 ]));
               }),

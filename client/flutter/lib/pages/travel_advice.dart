@@ -8,7 +8,7 @@ import 'package:flutter_html/flutter_html.dart';
 class TravelAdvice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(context,
+    return PageScaffold(
         showShareBottomBar: false,
         body: [
           SliverList(
