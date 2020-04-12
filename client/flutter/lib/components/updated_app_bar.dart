@@ -12,7 +12,7 @@ import 'package:flutter/widgets.dart';
 
 // COPIED FROM flutter/lib/src/material/app_bar.dart to add excludeHeaderSemantics
 // as it's only available on flutter's beta branch (12th April 2020)
-// https://github.com/flutter/flutter/blob/e2610a450c5c4aa41db01dae5dc0f4be6cd53aff/packages/flutter/lib/src/material/app_bar.dart
+// https://github.com/flutter/flutter/blob/a60bf8e23a2ff683fee2c521f01cc2bb814a6749/packages/flutter/lib/src/material/app_bar.dart
 
 const double _kLeadingWidth =
     kToolbarHeight; // So the leading button is square.
