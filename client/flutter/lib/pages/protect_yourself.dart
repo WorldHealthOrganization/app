@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/content/fact_content.dart';
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';

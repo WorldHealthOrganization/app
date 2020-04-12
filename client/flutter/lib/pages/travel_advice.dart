@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/content/advice_content.dart';
+import 'package:WHOFlutter/api/content/schema/advice_content.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';

@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/content/fact_content.dart';
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
 import 'package:WHOFlutter/components/carousel/carousel.dart';
 import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
