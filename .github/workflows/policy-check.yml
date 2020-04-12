@@ -1,4 +1,4 @@
-name: Policy check
+name: Source code policy check
 
 on:
   push:
