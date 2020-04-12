@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:WHOFlutter/api/endpoints.dart';
+import 'package:WHOFlutter/api/who_service.dart';
 import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -88,7 +89,11 @@ class ContentLoading {
   /// Load a localized content bundle from the network, throwing an exception if not found.
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
-    final headers = {"Accept": "application/yaml"};
+    final headers = {
+      "Accept": "application/yaml",
+      "Accept-Encoding": "gzip",
+      "User-Agent": WhoService.userAgent,
+    };
     File file = await WhoCacheManager()
         .getSingleFile(url, headers: headers)
         .timeout(networkTimeout);
