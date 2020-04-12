@@ -290,7 +290,7 @@ class S {
 
   String get homePagePageButtonLatestNumbers {
     return Intl.message(
-      'Latest \nNumbers',
+      'Latest Numbers',
       name: 'homePagePageButtonLatestNumbers',
       desc: '',
       args: [],

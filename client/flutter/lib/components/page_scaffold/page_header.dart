@@ -1,6 +1,8 @@
 import './back_arrow.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+// Used to get latest AppBar features while remaining on Flutter's stable branch
+import 'package:WHOFlutter/components/updated_app_bar.dart' as uab;
 
 class PageHeader extends StatelessWidget {
   final String title;
@@ -10,28 +12,44 @@ class PageHeader extends StatelessWidget {
   final bool showBackButton;
   final bool showLogo;
 
+  /// True if [PageHeader] wouldn't be announced via the screen reader if it wasn't
+  /// wrapped in a [Semantics] widget. E.g. when opening a page with
+  /// [SwipeableOpenContainer]
+  final bool announceRouteManually;
+
   PageHeader({
     @required this.title,
     this.subtitle = "",
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
     this.showLogo = false,
+    this.announceRouteManually = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
+    return uab.SliverAppBar(
       leading: Container(),
       expandedHeight: 120,
       backgroundColor: Colors.white,
+      excludeHeaderSemantics: true,
       flexibleSpace: FlexibleSpaceBar(background: _buildHeader(context)),
     );
   }
 
   Widget _buildHeader(BuildContext context) {
+    Widget child = BackArrow();
+
+    if (announceRouteManually) {
+      child = Semantics(focused: true, label: title, child: child);
+    }
+
     List<Widget> headerItems = [
-      if (this.showBackButton)
-        Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
+      if (showBackButton)
+        Transform.translate(
+          offset: Offset(-12, 0),
+          child: child,
+        ),
       Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +70,12 @@ class PageHeader extends StatelessWidget {
           ],
         ),
       ),
-      if (this.showLogo) Image.asset('assets/images/mark.png', width: 70)
+      if (this.showLogo)
+        Image.asset(
+          'assets/images/mark.png',
+          width: 70,
+          excludeFromSemantics: true,
+        )
     ];
     return Material(
       color: Colors.white,
@@ -83,16 +106,20 @@ class PageHeader extends StatelessWidget {
 
   static const textColor = Color(0xff1A458E);
 
-  static AutoSizeText buildTitle(String title) {
-    return AutoSizeText(title,
-        maxLines: 1,
-        minFontSize: 8,
-        overflow: TextOverflow.fade,
-        softWrap: false,
-        style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.w900,
-            fontSize: 24,
-            letterSpacing: -0.5));
+  static Widget buildTitle(String title) {
+    return Semantics(
+      header: true,
+      namesRoute: true,
+      child: AutoSizeText(title,
+          maxLines: 1,
+          minFontSize: 8,
+          overflow: TextOverflow.fade,
+          softWrap: false,
+          style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.w900,
+              fontSize: 24,
+              letterSpacing: -0.5)),
+    );
   }
 }

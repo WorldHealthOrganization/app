@@ -25,17 +25,14 @@ class AboutPage extends StatelessWidget {
             Container(
               color: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text:
-                    TextSpan(style: TextStyle(color: Colors.black), children: [
+              child: Text.rich(
+                TextSpan(style: TextStyle(color: Colors.black), children: [
                   LinkTextSpan(
                       text: S.of(context).aboutPageTermsOfServiceLinkText,
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue),
-                      url:
-                          S.of(context).aboutPageTermsOfServiceLinkUrl,
+                      url: S.of(context).aboutPageTermsOfServiceLinkUrl,
                       onLinkTap: (v) => launch(v)),
                   TextSpan(text: "  —  "),
                   LinkTextSpan(
@@ -43,8 +40,7 @@ class AboutPage extends StatelessWidget {
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Colors.blue),
-                      url:
-                          S.of(context).aboutPagetermsOfServiceLinkUrl,
+                      url: S.of(context).aboutPagetermsOfServiceLinkUrl,
                       onLinkTap: (v) => launch(v)),
                   TextSpan(text: "  —  "),
                   LinkTextSpan(
@@ -54,6 +50,7 @@ class AboutPage extends StatelessWidget {
                           color: Colors.blue),
                       onLinkTap: (v) => showLicensePage(context: context)),
                 ]),
+                textAlign: TextAlign.center,
               ),
             ),
             Container(

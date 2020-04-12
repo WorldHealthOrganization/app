@@ -10,6 +10,7 @@ class TravelAdvice extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
         showShareBottomBar: false,
+        announceRouteManually: true,
         body: [
           SliverList(
               delegate: SliverChildListDelegate([
@@ -20,7 +21,9 @@ class TravelAdvice extends StatelessWidget {
                 data: S.of(context).travelAdviceContainerText,
                 defaultTextStyle: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  // The Html widget isn't using the textScaleFactor so here's
+                  // the next best place to incorporate it
+                  fontSize: 18 * MediaQuery.textScaleFactorOf(context),
                   height: 1.2,
                 ),
               ),
@@ -28,9 +31,12 @@ class TravelAdvice extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-              child: Text(
-                S.of(context).travelAdvicePageListTitle,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+              child: Semantics(
+                header: true,
+                  child: Text(
+                  S.of(context).travelAdvicePageListTitle,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xff050C1D)),
+                ),
               ),
             ),
             TravelAdviceListItem(
