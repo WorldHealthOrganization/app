@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:yaml/yaml.dart';
 
 /// A localized YAML file loaded preferentially from the network, falling back
@@ -9,30 +9,40 @@ class ContentBundle {
   static int maxSupportedSchemaVersion = 1;
   dynamic yaml;
 
+  // If true indicates that a version of this content is available in a schema
+  // version newer than is supported by the loader.
+  bool unsupportedSchemaVersionAvailable = false;
+
   /// Construct a bundle from utf-8 bytes containing YAML
-  ContentBundle.fromBytes(Uint8List bytes) {
+  ContentBundle.fromBytes(Uint8List bytes,
+      {bool unsupportedSchemaVersionAvailable}) {
     String yamlString = Encoding.getByName('utf-8').decode(bytes);
-    _init(yamlString);
+    _init(yamlString,
+        unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }
 
   /// Construct a bundle from a utf-8 string containing YAML
-  ContentBundle.fromString(String yamlString) {
-    _init(yamlString);
+  ContentBundle.fromString(String yamlString,
+      {bool unsupportedSchemaVersionAvailable}) {
+    _init(yamlString,
+        unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }
 
-  void _init(String yamlString) {
+  void _init(String yamlString,
+      {bool unsupportedSchemaVersionAvailable = false}) {
     this.yaml = loadYaml(yamlString);
+    this.unsupportedSchemaVersionAvailable = unsupportedSchemaVersionAvailable;
     if (schemaVersion > maxSupportedSchemaVersion) {
-      throw ContentBundleVersionException();
+      throw ContentBundleSchemaVersionException();
     }
   }
 
   int get schemaVersion {
-    return _getInt('schema_version');
+    return getInt('schema_version');
   }
 
   int get contentVersion {
-    return _getInt('content_version');
+    return getInt('content_version');
   }
 
   String get contentType {
@@ -43,7 +53,7 @@ class ContentBundle {
     }
   }
 
-  YamlList get contents {
+  YamlList get contentItems {
     try {
       return yaml['contents']['items'];
     } catch (err) {
@@ -51,9 +61,38 @@ class ContentBundle {
     }
   }
 
-  int _getInt(String key, {int orDefault = -1}) {
-    return yaml[key];
+  String getString(String key) {
+    try {
+      return (yaml['contents'][key]).trim();
+    } catch (err) {
+      return null;
+    }
+  }
+
+  int getInt(String key, {int orDefault = -1}) {
+    try {
+      return yaml[key];
+    }catch(err) {
+      return orDefault;
+    }
   }
 }
 
-class ContentBundleVersionException implements Exception {}
+/// Base class for classes that interpret content bundle localized data
+/// according to specific schema types.
+class ContentBase {
+  ContentBundle bundle;
+
+  ContentBase(this.bundle, {@required String schemaName}) {
+    if (bundle.contentType != schemaName) {
+      throw Exception(
+          "Unsupported content type: ${bundle.contentType}");
+    }
+  }
+}
+
+/// Indicates an error in the expected content bundle schema version.
+class ContentBundleSchemaVersionException implements Exception {}
+
+/// Indicates an error interpreting the content bundle data according to the expected schema.
+class ContentBundleDataException implements Exception {}
