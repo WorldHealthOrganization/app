@@ -5,6 +5,7 @@ import '../content_loading.dart';
 typedef QuestionIndexDataSource = Future<QuestionContent> Function(Locale);
 
 /// Interpret a content bundle as Question data.
+/// Question data contains a series of text-only title and body pairs.
 class QuestionContent extends ContentBase {
   List<QuestionItem> items;
 

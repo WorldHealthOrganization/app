@@ -5,6 +5,8 @@ import '../content_loading.dart';
 typedef FactsDataSource = Future<FactContent> Function(Locale);
 
 /// Interpret a content bundle as Fact data.
+/// Fact data contains a series of title and body pairs each with an associated
+/// image or animation.
 class FactContent extends ContentBase {
   List<FactItem> items;
 

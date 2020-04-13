@@ -5,6 +5,8 @@ import '../content_loading.dart';
 typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 
 /// Interpret a content bundle as Advice data.
+/// Advice data contains banner text, a recommendation link and text,
+/// and a series of advice items comprising text and image pairs.
 class AdviceContent extends ContentBase {
   String banner;
   String recommendations;
@@ -36,6 +38,8 @@ class AdviceContent extends ContentBase {
   }
 }
 
+/// Advice ('advice' schema) items including body text and an image name
+/// referencing a local asset.
 class AdviceItem {
   final String imageName;
   final String body;
