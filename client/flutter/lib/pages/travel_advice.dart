@@ -48,7 +48,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
         showShareBottomBar: false,
         announceRouteManually: true,
         body: [
-          _adviceContent != null ? _buildBody(context) : _buidLoading(),
+          _adviceContent != null ? _buildBody(context) : _buildLoading(),
         ],
         title: S.of(context).homePagePageButtonTravelAdvice);
   }
@@ -60,7 +60,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
         color: Color(0xffD82037),
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Html(
-          //data: S.of(context).travelAdviceContainerText,
           data: _adviceContent?.banner ?? "",
           defaultTextStyle: TextStyle(
             color: Colors.white,
@@ -88,23 +87,27 @@ class _TravelAdviceState extends State<TravelAdvice> {
       SizedBox(
         height: 30,
       ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-        child: PageButton(
-          Color(0xff008DC9),
-          S.of(context).travelAdvicePageButtonGeneralRecommendations,
-          () => launch(
-              _adviceContent?.recommendationsLink ?? 'https://www.who.int'),
-          description: _adviceContent?.recommendations ?? "",
-          verticalPadding: 16,
-          titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          descriptionColor: Colors.white,
-        ),
-      )
+      if (_adviceContent?.recommendationsLink != null) _buildLinkButton(context)
     ]));
   }
 
-  SliverToBoxAdapter _buidLoading() {
+  Padding _buildLinkButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+      child: PageButton(
+        Color(0xff008DC9),
+        S.of(context).travelAdvicePageButtonGeneralRecommendations,
+        () => launch(
+            _adviceContent?.recommendationsLink ?? 'https://www.who.int'),
+        description: _adviceContent?.recommendations ?? "",
+        verticalPadding: 16,
+        titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        descriptionColor: Colors.white,
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildLoading() {
     return SliverToBoxAdapter(
         child: Padding(
       padding: const EdgeInsets.all(48.0),
