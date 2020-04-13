@@ -65,7 +65,8 @@ dependencies {
 
     // Not sure why this didn't come in with present-engine...
     implementation 'com.google.appengine:appengine-remote-api:+'
-    implementation 'com.google.appengine:appengine-remote-api:+'
+
+    implementation 'com.google.firebase:firebase-admin:6.12.2'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.+"

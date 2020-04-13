@@ -18,6 +18,8 @@ public class WhoServletModule extends ServletModule {
   private static final Logger logger = LoggerFactory.getLogger(WhoServletModule.class);
 
   @Override protected void configureServlets() {
+    install(new FirebaseModule());
+  
     // App Engine Remote API
     serve("/remote_api").with(new RemoteApiServlet());
 
@@ -33,10 +35,13 @@ public class WhoServletModule extends ServletModule {
     ObjectifyService.register(Client.class);
     ObjectifyService.register(StoredCaseStats.class);
 
+    bind(NotificationsManager.class).asEagerSingleton();
+
     // Internal cron jobs using Objectify but not requiring Clients.
     serve("/internal/cron/refreshCaseStats").with(new RefreshCaseStatsServlet());
 
     // Set up Present RPC
     filter("/*").through(WhoRpcFilter.class);
   }
+
 }
