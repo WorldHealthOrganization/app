@@ -97,8 +97,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
       child: PageButton(
         Color(0xff008DC9),
         S.of(context).travelAdvicePageButtonGeneralRecommendations,
-        () => launch(
-            _adviceContent?.recommendationsLink ?? 'https://www.who.int'),
+        () => launch(_adviceContent.recommendationsLink),
         description: _adviceContent?.recommendations ?? "",
         verticalPadding: 16,
         titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
