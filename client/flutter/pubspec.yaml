@@ -37,6 +37,7 @@ dependencies:
   fl_chart: ^0.8.7
 
   intl: ^0.16.0
+  intl_utils: ^1.2.2
   flutter_localizations:
     sdk: flutter
 
