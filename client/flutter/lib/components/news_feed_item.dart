@@ -15,42 +15,45 @@ class NewsFeedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => launch(this.url),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              this.title,
-              textAlign: TextAlign.start,
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
-            ),
-            SizedBox(height: 14),
-            Row(
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image(
-                    height: 109,
-                    width: 109,
-                    image: this.imageProvider,
+    return Material(
+      type:MaterialType.transparency,
+      child: InkWell(
+        onTap: () => launch(this.url),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text(
+                this.title,
+                textAlign: TextAlign.start,
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
+              ),
+              SizedBox(height: 14),
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image(
+                      height: 109,
+                      width: 109,
+                      image: this.imageProvider,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Flexible(
-                    child: Text(
-                  this.description,
-                  style: TextStyle(fontSize: 18),
-                )),
-                Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffC9CDD6),)),
-              ],
-            ),
-            Divider()
-          ],
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Flexible(
+                      child: Text(
+                    this.description,
+                    style: TextStyle(fontSize: 18),
+                  )),
+                  Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffC9CDD6),)),
+                ],
+              ),
+              Divider()
+            ],
+          ),
         ),
       ),
     );
