@@ -133,7 +133,8 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         S.delegate
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      // FIXME Issue #1012 - disabled supported languages for P0
+      //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
