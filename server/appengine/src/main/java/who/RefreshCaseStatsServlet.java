@@ -7,6 +7,10 @@ import com.google.gson.JsonObject;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -38,22 +42,49 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     String jsonString = getDashboardContents();
     JsonObject root = new JsonParser().parse(jsonString).getAsJsonObject();
     JsonArray rows = root.getAsJsonArray("rows");
-    long cases = 0L, deaths = 0L;
+    long globalTotalCases = 0L, globalTotalDeaths = 0L;
+    Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
     // Given that each row has heterogeneous elements, not sure there is much benefit
     // to using gson with reflection here.
     for (JsonElement country : rows) {
       JsonArray row = country.getAsJsonArray();
-      cases += row.get(5).getAsLong();
-      deaths += row.get(3).getAsLong();
+      long timestamp = row.get(0).getAsLong();
+      long dailyDeaths = row.get(3).getAsLong();
+      long totalDeaths = row.get(4).getAsLong();
+      long dailyCases = row.get(5).getAsLong();
+      long totalCases = row.get(6).getAsLong();
+      globalTotalCases += dailyCases;
+      globalTotalDeaths += dailyDeaths;
+
+      StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(timestamp);
+      if (snapshot == null) {
+        snapshot = new StoredCaseStats.StoredStatSnapshot();
+        snapshot.epochMsec = timestamp;
+        snapshot.dailyCases = 0L;
+        snapshot.dailyDeaths = 0L;
+        snapshot.totalCases = 0L;
+        snapshot.totalDeaths = 0L;
+        globalSnapshots.put(timestamp, snapshot);
+      }
+      snapshot.dailyCases += dailyCases;
+      snapshot.dailyDeaths += dailyDeaths;
+      snapshot.totalCases += totalCases;
+      snapshot.totalDeaths += totalDeaths;
     }
 
     CaseStats.Builder global = new CaseStats.Builder()
         .jurisdictionType(JurisdictionType.GLOBAL)
         .jurisdiction("")
-        .cases(cases)
-        .deaths(deaths)
+        .cases(globalTotalCases)
+        .deaths(globalTotalDeaths)
         .lastUpdated(root.getAsJsonPrimitive("createdTime").getAsLong())
         .recoveries(-1L)
+        .timeseries(
+            globalSnapshots.entrySet().stream()
+            .sorted(Comparator.comparing(Map.Entry::getKey))
+            .map(Map.Entry::getValue)
+            .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
+            .collect(Collectors.toList()))
         .attribution("WHO");
 
     StoredCaseStats.save(global.build());

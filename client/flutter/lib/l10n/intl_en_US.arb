@@ -33,7 +33,7 @@
   "homePagePageSubTitle": "Information & tools",
   "homePagePageButtonQuestions": "Questions & Answers",
   "homePagePageButtonProtectYourself": "Protect Yourself",
-  "homePagePageButtonLatestNumbers": "Latest \nNumbers",
+  "homePagePageButtonLatestNumbers": "Latest Numbers",
   "homePagePageButtonYourQuestionsAnswered": "Questions & Answers",
   "homePagePageButtonWHOMythBusters": "Get the Facts",
   "homePagePageButtonNewsAndPress": "News & Press",
@@ -125,7 +125,7 @@
   "latestNumbersPageGlobalDeaths": "GLOBAL DEATHS",
   "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
   "latestNumbersPageUpdating": "Updating…",
-  "latestNumbersPageViewLiveData": "View live data",
+  "latestNumbersPageViewLiveData": "View Live Data"
   "notificationsEnableDialogHeader": "Enable notifications",
   "notificationsEnableDialogText":  "As you've previously disabled notifications, we'll need you to manually re-enable notifications via the system settings for the app",
   "notificationsEnableDialogOptionOpenSettings": "Open Settings",
