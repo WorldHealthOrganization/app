@@ -55,12 +55,8 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
   List<FlSpot> _buildSpots() {
     var spots = <FlSpot>[];
     final startDate = DateTime.utc(2020, 1, 9);
-    if (_showData &&
-        widget.timeseries != null &&
-        widget.timeseries.isNotEmpty) {
-      // Throw out last day's data since it appears to be partial and adds a misleading downslope
-      for (var snapshot
-          in widget.timeseries.sublist(0, widget.timeseries.length - 1)) {
+    if (_showData && widget.timeseries != null) {
+      for (var snapshot in widget.timeseries) {
         try {
           var xAxis = DateTime.fromMillisecondsSinceEpoch(snapshot['epochMsec'],
                   isUtc: true)
