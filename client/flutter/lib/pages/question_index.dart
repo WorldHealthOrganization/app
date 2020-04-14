@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/content/dynamic_content.dart';
+import 'package:WHOFlutter/api/content/schema/question_content.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,9 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
-
-typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(
-    BuildContext);
 
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends StatefulWidget {
@@ -25,7 +23,7 @@ class QuestionIndexPage extends StatefulWidget {
 }
 
 class _QuestionIndexPageState extends State<QuestionIndexPage> {
-  List<QuestionItem> _questions;
+  QuestionContent _questionContent;
 
   @override
   void initState() {
@@ -42,15 +40,19 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   Future _loadQuestionData() async {
-    // Fetch the question data.
-    if (_questions != null) {
+    if (_questionContent != null) {
       return;
     }
-    _questions = await widget.dataSource(context);
-    if (!mounted) {
-      return;
+    Locale locale = Localizations.localeOf(context);
+    try {
+      _questionContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _questionContent);
+    } catch (err) {
+      print("Error loading question data: $err");
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -59,7 +61,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   Widget _buildPage() {
-    List items = (_questions ?? [])
+    List items = (_questionContent?.items ?? [])
         .map((questionData) => QuestionTile(
               questionItem: questionData,
             ))

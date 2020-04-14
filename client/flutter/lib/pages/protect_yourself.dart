@@ -1,80 +1,78 @@
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/components/rive_animation.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 
-const whoBlue = Color(0xFF3D8BCC);
+class ProtectYourself extends StatefulWidget {
+  final FactsDataSource dataSource;
 
-const header =
-    TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
+  const ProtectYourself({Key key, @required this.dataSource}) : super(key: key);
 
-Text _message(String input) {
-  final TextStyle normal = TextStyle(
-    color: Constants.textColor,
-    fontSize: 16,
-    height: 1.4,
-  );
-  final TextStyle bold = TextStyle(
-    color: Constants.textColor,
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-  );
-  // Make sections delineated by asterisk * bold. For example:
-  // String text = '*This is bold* this is not';
-
-  var regex = RegExp(r'\*([^,*]+)\*');
-
-  var matched = regex.allMatches(input);
-
-  var spans = <TextSpan>[];
-  var before = 0;
-  for (var match in matched) {
-    var value = match.group(1);
-    if (before < match.start) {
-      spans.add(
-        TextSpan(
-          text: input.substring(before, match.start),
-        ),
-      );
-    }
-
-    spans.add(
-      TextSpan(text: value, style: bold),
-    );
-    before = match.end;
-  }
-
-  spans.add(
-    TextSpan(
-      text: input.substring(before),
-    ),
-  );
-  return Text.rich(
-    TextSpan(style: normal, children: spans),
-  );
+  @override
+  _ProtectYourselfState createState() => _ProtectYourselfState();
 }
 
-class ProtectYourself extends StatelessWidget {
-  Widget _getImage(String svgAssetName) => AspectRatio(
+class _ProtectYourselfState extends State<ProtectYourself> {
+  final whoBlue = Color(0xFF3D8BCC);
+  final header =
+      TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
+  FactContent _factContent;
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    await _loadFacts();
+  }
+
+  // TODO: Move to a base class for "facts" based pages?
+  Future _loadFacts() async {
+    if (_factContent != null) {
+      return;
+    }
+    Locale locale = Localizations.localeOf(context);
+    try {
+      _factContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
+    } catch (err) {
+      print("Error loading fact data: $err");
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageScaffold(
+        title: S.of(context).protectYourselfTitle,
+        showShareBottomBar: false,
+        announceRouteManually: true,
+        body: [SliverList(delegate: SliverChildListDelegate(_buildCards()))]);
+  }
+
+  List<Widget> _buildCards() {
+    return (_factContent?.items ?? []).map((fact) {
+      print("fact body = ${fact.body}, image = ${fact.imageName}");
+      return _ProtectYourselfCard(
+        message: _message(fact.body),
+        child: fact.animationName != null
+            ? _getAnimation(fact.animationName)
+            : _getSVG('assets/svg/${fact.imageName}.svg'),
+      );
+    }).toList();
+  }
+
+  Widget _getSVG(String svgAssetName) => AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
           color: whoBlue,
           child: SvgPicture.asset(svgAssetName),
         ),
       );
-
-  // Widget get _washHandsImage => _getImage('assets/svg/wash_hands.svg');
-
-  Widget get _elbowImage => _getImage('assets/svg/elbow.svg');
-
-  Widget get _avoidTouchImage => _getImage('assets/svg/avoid_touch.svg');
-
-  Widget get _maskImage => _getImage('assets/svg/mask.svg');
-
-  Widget get _distanceImage => _getImage('assets/svg/social_distance.svg');
 
   Widget _getAnimation(String animationName) => AspectRatio(
         aspectRatio: 16 / 9,
@@ -89,62 +87,60 @@ class ProtectYourself extends StatelessWidget {
         ),
       );
 
-  // Widget get _washHandsAnimation => _getAnimation('Hands');
+  // TODO: Change this to use HTML content styling like the other pages?
+  Text _message(String input) {
+    final TextStyle normal = TextStyle(
+      color: Constants.textColor,
+      fontSize: 16,
+      height: 1.4,
+    );
+    final TextStyle bold = TextStyle(
+      color: Constants.textColor,
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+    );
+    // Make sections delineated by asterisk * bold. For example:
+    // String text = '*This is bold* this is not';
 
-  // Widget get _coverMouthAnimation => _getAnimation('Cover');
+    var regex = RegExp(r'\*([^,*]+)\*');
 
-  // Widget get _avoidTouchAnimation => _getAnimation('Face');
+    var matched = regex.allMatches(input);
 
-  // Widget get _protectAnimation => _getAnimation('Mask');
+    var spans = <TextSpan>[];
+    var before = 0;
+    for (var match in matched) {
+      var value = match.group(1);
+      if (before < match.start) {
+        spans.add(
+          TextSpan(
+            text: input.substring(before, match.start),
+          ),
+        );
+      }
 
-  // Widget get _distanceAnimation => _getAnimation('Stay');
+      spans.add(
+        TextSpan(text: value, style: bold),
+      );
+      before = match.end;
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    final localized = S.of(context);
-
-    return PageScaffold(
-        title: S.of(context).protectYourselfTitle,
-        showShareBottomBar: false,
-        announceRouteManually: true,
-        body: [
-          SliverList(
-              delegate: SliverChildListDelegate([
-            ProtectYourselfCard(
-              message:
-                  _message(localized.protectYourselfListOfItemsPageListItem1),
-              child: _getAnimation('wash_hands'),
-            ),
-            ProtectYourselfCard(
-              message:
-                  _message(localized.protectYourselfListOfItemsPageListItem2),
-              child: _avoidTouchImage,
-            ),
-            ProtectYourselfCard(
-              message:
-                  _message(localized.protectYourselfListOfItemsPageListItem3),
-              child: _elbowImage,
-            ),
-            ProtectYourselfCard(
-              message:
-                  _message(localized.protectYourselfListOfItemsPageListItem4),
-              child: _distanceImage,
-            ),
-            ProtectYourselfCard(
-              message:
-                  _message(localized.protectYourselfListOfItemsPageListItem5),
-              child: _maskImage,
-            ),
-          ]))
-        ]);
+    spans.add(
+      TextSpan(
+        text: input.substring(before),
+      ),
+    );
+    return Text.rich(
+      TextSpan(style: normal, children: spans),
+    );
   }
 }
 
-class ProtectYourselfCard extends StatelessWidget {
-  const ProtectYourselfCard({
+class _ProtectYourselfCard extends StatelessWidget {
+  const _ProtectYourselfCard({
     @required this.message,
     @required this.child,
   });
+
   final Text message;
   final Widget child;
 
