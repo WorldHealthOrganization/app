@@ -4,10 +4,6 @@ MAJOR CAVEAT: This is a WORK IN PROGRESS with many items TBD. We will want weigh
 
 All deadlines are in Pacific (US West Coast) time.
 
-### Summary
-
-There is an urgent, global need for an official WHO App to help contain and mitigate COVID-19. The app should support the WHO efforts and be available on a worldwide basis, with information tailored to the user’s location, culture and language. The app should also be sensitive to national needs and respect privacy. Once established, the system can be leveraged to proactively detect, respond early and prevent future pandemics.
-
 ## Milestones
 
 Version numbering terminology:
