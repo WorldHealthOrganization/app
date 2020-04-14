@@ -80,14 +80,14 @@ class Notifications {
   // Ask firebase for a token on every launch.
   // If the token is different from what we have stored...update it.
   void updateFirebaseToken() async {
-    var notificationsEnabled = await _userPrefs.getNotificationsEnabled();
+    var notificationsEnabled = await isEnabled();
 
-    if (notificationsEnabled) {
-      final token = await _firebaseMessaging.getToken();
-      final storedToken = await _userPrefs.getFirebaseToken();
-      if (token != storedToken) {
-        await setFirebaseToken(token);
-      }
+    // if notifications are disabled in OS or via user pref, ensure it's disabled on BE as well by removing token
+    final tokenToSet = notificationsEnabled ? await _firebaseMessaging.getToken() : null;
+
+    final storedToken = await _userPrefs.getFirebaseToken();
+    if (tokenToSet != storedToken) {
+      await setFirebaseToken(tokenToSet);
     }
   }
 
