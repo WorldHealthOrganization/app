@@ -1,7 +1,7 @@
 name: WHOFlutter
 description: WHO Flutter app
 
-version: 0.1.1+2
+version: 0.7.0+13
 
 # If the flutter sdk version in pubspec.lock changes,
 # you must update /.github/workflows/flutter-*.yml to use same min Flutter version
