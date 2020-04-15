@@ -38,6 +38,8 @@ class HomePage extends StatelessWidget {
 
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
+    final Size size = MediaQuery.of(context).size;
+
     return PageScaffold(context,
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
@@ -202,7 +204,9 @@ class HomePage extends StatelessWidget {
                         itemId: null,
                         method: 'Website link');
                     Share.share(
-                        S.of(context).commonWhoAppShareIconButtonDescription);
+                        S.of(context).commonWhoAppShareIconButtonDescription,
+                        sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                        );
                   },
                 ),
               ),
