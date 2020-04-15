@@ -31,30 +31,39 @@ class CarouselView extends StatelessWidget {
             children: this.items,
           ),
         ),
-        Positioned(
-          bottom: 30,
-          right: 20,
-          child: SafeArea(
-                      child: FlatButton(
-              child: Text("Next fact", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600)),
-              color: Color(0xff008DC9),
-              padding: EdgeInsets.symmetric(vertical:14, horizontal:29),
-              shape: StadiumBorder(),
-              onPressed: ()=>(this.pageController.hasClients ?this.pageController.page:0) < this.items.length-1?pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut):pageController.animateToPage(0,duration: Duration(milliseconds: 500), curve: Curves.easeInOut),
-            ),
-          ),
-        ),
+        
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: SafeArea(
-            child: Container(
-                padding: EdgeInsets.only(bottom: 8),
-                child: _buildPageViewIndicator(context)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: ()=>pageController.page>0?goToPreviousPage():goToLastPage(),
+                ),
+                Container(
+                    padding: EdgeInsets.only(bottom: 8),
+                    child: _buildPageViewIndicator(context)),
+                IconButton(
+                  icon: Icon(Icons.arrow_forward_ios),
+                  onPressed: ()=>pageController.page<this.items.length-1?goToNextPage():goToFirstPage(),
+                ),
+              ],
+            ),
           ),
         ),
       ],
     );
   }
+
+  Future<void> goToLastPage() => pageController.animateToPage(this.items.length-1,duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToFirstPage() => pageController.animateToPage(0,duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+
+  Future<void> goToNextPage() => pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+
+  Future<void> goToPreviousPage() => pageController.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
   Widget _buildPageViewIndicator(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
