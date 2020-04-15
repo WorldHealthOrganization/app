@@ -23,10 +23,10 @@ class WhoService {
   }
 
   /// Put location
-  static Future<bool> putLocation({int s2CellId}) async {
+  static Future<bool> putLocation({String s2CellIdToken}) async {
     Map<String, String> headers = await _getHeaders();
     var postBody = jsonEncode({
-      "s2CellId": s2CellId,
+      "s2CellIdToken": s2CellIdToken,
     });
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);

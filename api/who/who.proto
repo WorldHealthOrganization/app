@@ -21,11 +21,10 @@ message PutDeviceTokenRequest {
 }
 
 message PutLocationRequest {
-  // While an S2 Cell id is a 64-bit unsigned integer, it is
-  // treated as a (signed) long in Java and a (signed)
-  // int in Dart.
-  // In addition, such id encodes the cell's level of granularity.
-  int64 s2CellId = 11;
+  // A token is a hex representation of the 64-bit S2CellId
+  // in string format that will also survive JSON (which
+  // lacks 64-bit number precision).
+  string s2CellIdToken = 11;
 }
 
 message GetCaseStatsResponse {

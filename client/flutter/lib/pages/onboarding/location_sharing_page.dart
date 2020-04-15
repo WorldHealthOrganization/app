@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:s2geometry/s2geometry.dart';
 
+import 'dart:io';
+
 class LocationSharingPage extends StatefulWidget {
   final VoidCallback onNext;
 
@@ -16,6 +18,8 @@ class LocationSharingPage extends StatefulWidget {
 
 class _LocationSharingPageState extends State<LocationSharingPage> {
   _LocationSharingPageState();
+
+  static const MAX_S2_CELL_LEVEL = 9;
 
   /// True if _complete() has been invoked
   bool _completed = false;
@@ -34,21 +38,30 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
 
   Future<void> _allowLocationSharing() async {
     try {
+      if (Platform.isIOS) {
+        // This does not work on Android - the later getLocation call hangs
+        // forever or causes an OS-level crash.  On Android, instead,
+        // we request coarse location only at the manifest permission
+        // level (instead of fine).
+        await Location().changeSettings(accuracy: LocationAccuracy.low);
+      }
       await Location().requestPermission();
+
       final bool locationReady =
           await Location().hasPermission() == PermissionStatus.granted &&
               await Location().requestService();
 
       _complete();
       if (locationReady) {
-        LocationData location = await Location().getLocation();
+        final location = await Location().getLocation();
 
-        S2LatLng latLng = new S2LatLng.fromDegrees(location.latitude, location.longitude);
-        S2CellId cellId = new S2CellId.fromLatLng(latLng);
+        final latLng = S2LatLng.fromDegrees(location.latitude, location.longitude);
 
-        await WhoService.putLocation(s2CellId: cellId.id());
+        final cellId = S2CellId.fromLatLng(latLng).parent(MAX_S2_CELL_LEVEL);
+
+        await WhoService.putLocation(s2CellIdToken: cellId.toToken());
       }
-    } catch (_) {
+    } catch (e) {
       _complete();
       // TODO: #876 tracks errors with analytics.
     }

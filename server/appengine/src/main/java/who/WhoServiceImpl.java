@@ -3,6 +3,7 @@ package who;
 import com.google.common.base.Strings;
 import com.google.common.geometry.S2CellId;
 import com.google.common.geometry.S2LatLng;
+import present.rpc.ClientException;
 import java.io.IOException;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -18,16 +19,16 @@ public class WhoServiceImpl implements WhoService {
 
   @Override public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
-    final location = new S2CellId(request.s2CellId);
+    S2CellId location = S2CellId.fromToken(request.s2CellIdToken);
     if (!location.isValid()) {
       throw new ClientException("Invalid s2CellId");
     }
     if (location.level() > Client.MAX_S2_CELL_LEVEL) {
       throw new ClientException("s2CellId level too high");
     }
-    client.location = location;
+    client.location = location.id();
     // Center of the cell.
-    S2LatLng point = client.location.toLatLng();
+    S2LatLng point = location.toLatLng();
     client.latitude = point.latDegrees();
     client.longitude = point.lngDegrees();
     ofy().save().entities(client);
