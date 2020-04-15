@@ -15,8 +15,11 @@ import present.rpc.RpcInterceptorChain;
 
   @Inject WhoRpcFilter(WhoServiceImpl service) {
     RpcInterceptorChain chain = new RpcInterceptorChain()
-        .add(new ClientInterceptor())
-        .add(new LoggingInterceptor());
+        .add(new ClientInterceptor());
+    
+    if (!Environment.isProduction()) {
+      chain = chain.add(new LoggingInterceptor());
+    }
 
     service(WhoService.class, service, chain);
 

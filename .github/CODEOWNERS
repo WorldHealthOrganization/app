@@ -39,6 +39,6 @@
 
 # ***** Security-sensitive - always keep these at the end. *****
 
-# CI and CD, Repo admins who can access secrets.
-/.github/workflows/ @brunobowden @crazybob @sammousa
-/.github/CODEOWNERS @brunobowden @crazybob @sammousa
+# CI and CD; Note no secrets shall be stored in this GitHub repo.
+/.github/workflows/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+/.github/CODEOWNERS @advaydev1 @brunobowden @crazybob @hspinks @sammousa
