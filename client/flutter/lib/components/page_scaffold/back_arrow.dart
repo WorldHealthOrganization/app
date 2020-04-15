@@ -22,11 +22,15 @@ final _icon = parseSvgPathData(
   '23.3939 10.3296C23.0136 9.86163 22.4635 9.56335 21.8638 9.50004Z',
 );
 
-final _paint = Paint()..color = const Color(0x8026354E);
+final _paint = Paint()..color = const Color(0xFF646C77);
 
 /// Draws an arrow.
 class BackArrow extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      IconButton(icon: PathWidget(path: _icon, paint: _paint), onPressed: ()=>Navigator.pop(context),);
+  Widget build(BuildContext context) => IconButton(
+        // TODO make sure this is localised properly
+        tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+        icon: PathWidget(path: _icon, paint: _paint),
+        onPressed: () => Navigator.pop(context),
+      );
 }

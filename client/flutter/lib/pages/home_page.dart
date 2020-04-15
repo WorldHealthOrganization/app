@@ -1,10 +1,14 @@
-import 'package:WHOFlutter/api/question_data.dart';
-import 'package:WHOFlutter/components/arrow_button.dart';
+import 'package:WHOFlutter/api/content/schema/advice_content.dart';
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
+import 'package:WHOFlutter/api/content/schema/question_content.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
+import 'package:WHOFlutter/constants.dart';
+import 'package:WHOFlutter/components/swipeable_open_container.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/pages/about_page.dart';
+import 'package:WHOFlutter/pages/facts_carousel_page.dart';
 import 'package:WHOFlutter/pages/latest_numbers.dart';
 import 'package:WHOFlutter/pages/news_feed.dart';
 import 'package:WHOFlutter/pages/protect_yourself.dart';
@@ -18,6 +22,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   final FirebaseAnalytics analytics;
+
   HomePage(this.analytics);
 
   _logAnalyticsEvent(String name) async {
@@ -36,7 +41,7 @@ class HomePage extends StatelessWidget {
 
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
 
-    return PageScaffold(context,
+    return PageScaffold(
         title: S.of(context).homePagePageTitle,
         subtitle: S.of(context).homePagePageSubTitle,
         showBackButton: false,
@@ -45,27 +50,39 @@ class HomePage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate.fixed([
               _MenuGrid(logAnalyticsEvent: _logAnalyticsEvent),
+              SizedBox(
+                height: 12,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 38.0),
                 child: Text(
                   S.of(context).homePagePageSliverListSupport,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffCA6B35)),
+                    fontSize: 30,
+                    letterSpacing: -.5,
+                    fontWeight: FontWeight.bold,
+                    color: Constants.accent,
+                  ),
                 ),
               ),
               Padding(
                   padding: EdgeInsets.all(15),
-                  child: ArrowButton(
-                    title: S.of(context).homePagePageSliverListDonate,
-                    color: Color(0xffCA6B35),
-                    onPressed: () {
+                  child: PageButton(
+                    Constants.accent,
+                    S.of(context).homePagePageSliverListDonate,
+                    () {
                       _logAnalyticsEvent('Donate');
                       launch(S.of(context).homePagePageSliverListDonateUrl);
                     },
+                    borderRadius: 36,
+                    verticalPadding: 20,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                   )),
+              SizedBox(
+                height: 20,
+              ),
               divider,
               Material(
                 color: Colors.white,
@@ -74,13 +91,13 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.share, color: Color(0xffCA6B35)),
+                        Icon(Icons.share, color: Constants.accent),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             S.of(context).homePagePageSliverListShareTheApp,
                             style: TextStyle(
-                              color: Color(0xffCA6B35),
+                              color: Constants.accent,
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
                             ),
@@ -111,13 +128,13 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.settings, color: Color(0xffCA6B35)),
+                        Icon(Icons.settings, color: Constants.accent),
                         SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             S.of(context).homePagePageSliverListSettings,
                             style: TextStyle(
-                              color: Color(0xffCA6B35),
+                              color: Constants.accent,
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
                             ),
@@ -186,66 +203,13 @@ class _MenuGrid extends StatelessWidget {
 
   final Function(String) logAnalyticsEvent;
 
-  final TextStyle largeTitleStyle = const TextStyle(
-    fontWeight: FontWeight.w700,
-  );
+  final TextStyle largeTitleStyle =
+      const TextStyle(fontWeight: FontWeight.w700, fontSize: 28);
 
   final TextStyle mediumTitleStyle = const TextStyle(
     fontWeight: FontWeight.w700,
-    fontSize: 11.2,
+    fontSize: 24,
   );
-
-  void _openProtectYourself(BuildContext context) {
-    logAnalyticsEvent('ProtectYourself');
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (c) => ProtectYourself()),
-    );
-  }
-
-  void _openLatestNumbers(BuildContext context) {
-    logAnalyticsEvent('LatestNumbers');
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (c) => LatestNumbers()),
-    );
-  }
-
-  void _openQuestionsAndAnswers(BuildContext context) {
-    logAnalyticsEvent('QuestionsAnswered');
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (c) => QuestionIndexPage(
-          dataSource: QuestionData.yourQuestionsAnswered,
-          title: S.of(context).homePagePageButtonQuestions,
-        ),
-      ),
-    );
-  }
-
-  void _openGetTheFacts(BuildContext context) {
-    logAnalyticsEvent('GetTheFacts');
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (c) => QuestionIndexPage(
-          dataSource: QuestionData.whoMythbusters,
-          title: S.of(context).homePagePageButtonWHOMythBusters,
-        ),
-      ),
-    );
-  }
-
-  void _openTravelAdvice(BuildContext context) {
-    logAnalyticsEvent('TravelAdvice');
-    Navigator.push(context, MaterialPageRoute(builder: (c) => TravelAdvice()));
-  }
-
-  void _openNewsAndPress(BuildContext context) {
-    logAnalyticsEvent('News');
-    Navigator.push(context, MaterialPageRoute(builder: (c) => NewsFeed()));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +223,10 @@ class _MenuGrid extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: _MenuButton(
-                    onTap: () => _openProtectYourself(context),
+                    onTap: () => logAnalyticsEvent('ProtectYourself'),
+                    pageBuilder: () => ProtectYourself(
+                      dataSource: FactContent.protectYourself,
+                    ),
                     scaleFactor: 2,
                     color: Color(0xff008DC9),
                     title: S.of(context).homePagePageButtonProtectYourself,
@@ -273,7 +240,8 @@ class _MenuGrid extends StatelessWidget {
                     children: <Widget>[
                       IntrinsicHeight(
                         child: _MenuButton(
-                          onTap: () => _openLatestNumbers(context),
+                          onTap: () => logAnalyticsEvent('LatestNumbers'),
+                          pageBuilder: () => LatestNumbers(),
                           color: Color(0xff1A458E),
                           title: S.of(context).homePagePageButtonLatestNumbers,
                           titleStyle: mediumTitleStyle,
@@ -282,7 +250,11 @@ class _MenuGrid extends StatelessWidget {
                       _VerticalSpacer(),
                       IntrinsicHeight(
                         child: _MenuButton(
-                          onTap: () => _openQuestionsAndAnswers(context),
+                          onTap: () => logAnalyticsEvent('QuestionsAnswered'),
+                          pageBuilder: () => QuestionIndexPage(
+                            dataSource: QuestionContent.yourQuestionsAnswered,
+                            title: S.of(context).homePagePageButtonQuestions,
+                          ),
                           color: Color(0xff3DA7D4),
                           title: S
                               .of(context)
@@ -298,12 +270,17 @@ class _MenuGrid extends StatelessWidget {
           ),
           _VerticalSpacer(),
           _MenuButton(
-            onTap: () => _openGetTheFacts(context),
+            onTap: () => logAnalyticsEvent('GetTheFacts'),
+            pageBuilder: () => FactsCarouselPage(
+              dataSource: FactContent.getTheFacts,
+              // TODO: Rename these keys in the ARB files
+              title: S.of(context).homePagePageButtonWHOMythBusters,
+            ),
             color: Color(0xff234689),
             title: S.of(context).homePagePageButtonWHOMythBusters,
             description:
                 S.of(context).homePagePageButtonWHOMythBustersDescription,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             titleStyle: largeTitleStyle,
           ),
           _VerticalSpacer(),
@@ -312,7 +289,9 @@ class _MenuGrid extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: _MenuButton(
-                    onTap: () => _openTravelAdvice(context),
+                    onTap: () => logAnalyticsEvent('TravelAdvice'),
+                    pageBuilder: () =>
+                        TravelAdvice(dataSource: AdviceContent.travelAdvice),
                     color: Color(0xff3DA7D4),
                     title: S.of(context).homePagePageButtonTravelAdvice,
                     titleStyle: mediumTitleStyle,
@@ -321,7 +300,8 @@ class _MenuGrid extends StatelessWidget {
                 _HorizontalSpacer(),
                 Expanded(
                   child: _MenuButton(
-                    onTap: () => _openNewsAndPress(context),
+                    onTap: () => logAnalyticsEvent('News'),
+                    pageBuilder: () => NewsFeed(),
                     color: Color(0xff008DC9),
                     title: S.of(context).homePagePageButtonNewsAndPress,
                     titleStyle: mediumTitleStyle,
@@ -342,21 +322,23 @@ class _MenuButton extends StatelessWidget {
   final Color color;
   final String title;
   final String description;
+  final Widget Function() pageBuilder;
   final VoidCallback onTap;
   final TextStyle titleStyle;
   final MainAxisAlignment mainAxisAlignment;
 
   const _MenuButton({
     Key key,
-    @required this.onTap,
+    @required this.pageBuilder,
     @required this.color,
     @required this.title,
+    @required this.onTap,
     this.scaleFactor = 1,
     this.titleStyle = const TextStyle(fontWeight: FontWeight.w700),
     this.description,
     this.mainAxisAlignment = MainAxisAlignment.start,
   })  : assert(scaleFactor != null),
-        assert(onTap != null),
+        assert(pageBuilder != null),
         assert(title != null),
         assert(titleStyle != null),
         assert(mainAxisAlignment != null),
@@ -364,19 +346,37 @@ class _MenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-          minHeight: (MediaQuery.of(context).size.width / 2) *
-              (1 / tileDefaultAspectRatio) *
-              scaleFactor),
-      child: PageButton(
-        color,
-        title,
-        onTap,
-        titleStyle: titleStyle,
-        description: description ?? '',
-        mainAxisAlignment: mainAxisAlignment,
+    final minHeight = (MediaQuery.of(context).size.width / 2) *
+        (1 / tileDefaultAspectRatio) *
+        scaleFactor;
+
+    return SwipeableOpenContainer(
+      tappable: false,
+      closedElevation: 0,
+      closedShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
       ),
+      closedColor: color,
+      openBuilder: (BuildContext context, VoidCallback close) {
+        return pageBuilder();
+      },
+      closedBuilder: (BuildContext context, VoidCallback open) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(minHeight: minHeight),
+          child: PageButton(
+            color,
+            title,
+            () {
+              open();
+              onTap();
+            },
+            titleStyle: titleStyle,
+            description: description ?? '',
+            mainAxisAlignment: mainAxisAlignment,
+            borderRadius: 16,
+          ),
+        );
+      },
     );
   }
 }

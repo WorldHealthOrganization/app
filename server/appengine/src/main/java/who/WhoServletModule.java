@@ -31,6 +31,10 @@ public class WhoServletModule extends ServletModule {
 
     // Register Objectify entities
     ObjectifyService.register(Client.class);
+    ObjectifyService.register(StoredCaseStats.class);
+
+    // Internal cron jobs using Objectify but not requiring Clients.
+    serve("/internal/cron/refreshCaseStats").with(new RefreshCaseStatsServlet());
 
     // Set up Present RPC
     filter("/*").through(WhoRpcFilter.class);

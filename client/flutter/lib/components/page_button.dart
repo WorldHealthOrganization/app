@@ -47,10 +47,9 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                // textScaleFactorOf is for the device font size
-                textScaleFactor: 1.0 + contentScale(context) * MediaQuery.textScaleFactorOf(context),
+                
                 textAlign: TextAlign.left,
-                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
+                style: titleStyle?.copyWith(letterSpacing: Constants.buttonTextSpacing) ?? TextStyle(fontWeight: FontWeight.w600, letterSpacing: Constants.buttonTextSpacing, fontSize: 18),
               ),
               // Makes sure text is centered properly when no description is provided
               SizedBox(height: description.isNotEmpty ? 4 : 0),

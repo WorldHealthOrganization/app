@@ -33,7 +33,7 @@
   "homePagePageSubTitle": "Information & tools",
   "homePagePageButtonQuestions": "Questions & Answers",
   "homePagePageButtonProtectYourself": "Protect Yourself",
-  "homePagePageButtonLatestNumbers": "Latest \nNumbers",
+  "homePagePageButtonLatestNumbers": "Latest Numbers",
   "homePagePageButtonYourQuestionsAnswered": "Questions & Answers",
   "homePagePageButtonWHOMythBusters": "Get the Facts",
   "homePagePageButtonNewsAndPress": "News & Press",
@@ -123,5 +123,5 @@
   "latestNumbersPageGlobalDeaths": "GLOBAL DEATHS",
   "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
   "latestNumbersPageUpdating": "Updating…",
-  "latestNumbersPageViewLiveData": "View live data"
+  "latestNumbersPageViewLiveData": "View Live Data"
 }

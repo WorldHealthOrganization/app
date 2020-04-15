@@ -9,7 +9,7 @@ class NewsFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      context,
+      announceRouteManually: true,
       body: [
         SliverList(
             delegate: SliverChildListDelegate([

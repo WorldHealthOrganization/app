@@ -290,7 +290,7 @@ class S {
 
   String get homePagePageButtonLatestNumbers {
     return Intl.message(
-      'Latest \nNumbers',
+      'Latest Numbers',
       name: 'homePagePageButtonLatestNumbers',
       desc: '',
       args: [],
@@ -1037,7 +1037,7 @@ class S {
 
   String get latestNumbersPageViewLiveData {
     return Intl.message(
-      'View live data',
+      'View Live Data',
       name: 'latestNumbersPageViewLiveData',
       desc: '',
       args: [],
