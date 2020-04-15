@@ -21,17 +21,11 @@ message PutDeviceTokenRequest {
 }
 
 message PutLocationRequest {
-  double latitude = 2;
-  double longitude = 3;
-  // ISO 3166 Alpha-2 country code
-  string countryCode = 4;
-  // In all cases, a short name in English or a standardized code is preferred.
-  string adminArea1 = 5;
-  string adminArea2 = 6;
-  string adminArea3 = 7;
-  string adminArea4 = 8;
-  string adminArea5 = 9;
-  string locality = 10;
+  // While an S2 Cell id is a 64-bit unsigned integer, it is
+  // treated as a (signed) long in Java and a (signed)
+  // int in Dart.
+  // In addition, such id encodes the cell's level of granularity.
+  int64 s2CellId = 11;
 }
 
 message GetCaseStatsResponse {

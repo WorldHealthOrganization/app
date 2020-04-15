@@ -18,17 +18,18 @@ public class WhoServiceImpl implements WhoService {
 
   @Override public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
-    client.latitude = request.latitude;
-    client.longitude = request.longitude;
-    client.countryCode = Strings.emptyToNull(request.countryCode);
-    client.adminArea1 = Strings.emptyToNull(request.adminArea1);
-    client.adminArea2 = Strings.emptyToNull(request.adminArea2);
-    client.adminArea3 = Strings.emptyToNull(request.adminArea3);
-    client.adminArea4 = Strings.emptyToNull(request.adminArea4);
-    client.adminArea5 = Strings.emptyToNull(request.adminArea5);
-    client.locality = Strings.emptyToNull(request.locality);
-    S2LatLng coordinates = S2LatLng.fromDegrees(request.latitude, request.longitude);
-    client.location = S2CellId.fromLatLng(coordinates).id();
+    final location = new S2CellId(request.s2CellId);
+    if (!location.isValid()) {
+      throw new ClientException("Invalid s2CellId");
+    }
+    if (location.level() > Client.MAX_S2_CELL_LEVEL) {
+      throw new ClientException("s2CellId level too high");
+    }
+    client.location = location;
+    // Center of the cell.
+    S2LatLng point = client.location.toLatLng();
+    client.latitude = point.latDegrees();
+    client.longitude = point.lngDegrees();
     ofy().save().entities(client);
     return new Void();
   }
