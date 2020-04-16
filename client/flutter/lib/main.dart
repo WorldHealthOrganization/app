@@ -33,21 +33,25 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
+  if (onboardingComplete) {
   // Set `enableInDevMode` to true to see reports while in debug mode
-  // This is only to be used for confirming that reports are being
-  // submitted as expected. It is not intended to be used for everyday
-  // development.
-  Crashlytics.instance.enableInDevMode = false;
+    // This is only to be used for confirming that reports are being
+    // submitted as expected. It is not intended to be used for everyday
+    // development.
+    Crashlytics.instance.enableInDevMode = false;
 
-  // Pass all uncaught errors from the framework to Crashlytics.
-  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+    // Pass all uncaught errors from the framework to Crashlytics.
+    FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
-  await runZoned<Future<void>>(
-    () async {
-      runApp(MyApp(showOnboarding: !onboardingComplete));
-    },
-    onError: Crashlytics.instance.recordError,
-  );
+    await runZoned<Future<void>>(
+      () async {
+        runApp(MyApp(showOnboarding: !onboardingComplete));
+      },
+      onError: Crashlytics.instance.recordError,
+    );
+  } else {
+    runApp(MyApp(showOnboarding: false));
+  }
 }
 
 class MyApp extends StatefulWidget {
