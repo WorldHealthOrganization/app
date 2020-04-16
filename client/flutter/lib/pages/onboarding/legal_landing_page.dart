@@ -3,6 +3,7 @@ import 'package:WHOFlutter/constants.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LegalLandingPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class LegalLandingPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset("assets/WHO.jpg"),
+                  SvgPicture.asset('assets/svg/logo_banner.svg'),
                   SizedBox(height: 20),
                   Semantics(
                     container: true,
