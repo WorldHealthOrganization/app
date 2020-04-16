@@ -1,4 +1,6 @@
-import 'package:WHOFlutter/api/content/dynamic_content.dart';
+import 'package:WHOFlutter/api/content/schema/advice_content.dart';
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
+import 'package:WHOFlutter/api/content/schema/question_content.dart';
 import 'package:WHOFlutter/components/page_button.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
@@ -222,7 +224,9 @@ class _MenuGrid extends StatelessWidget {
                 Expanded(
                   child: _MenuButton(
                     onTap: () => logAnalyticsEvent('ProtectYourself'),
-                    pageBuilder: () => ProtectYourself(),
+                    pageBuilder: () => ProtectYourself(
+                      dataSource: FactContent.protectYourself,
+                    ),
                     scaleFactor: 2,
                     color: Color(0xff008DC9),
                     title: S.of(context).homePagePageButtonProtectYourself,
@@ -248,7 +252,7 @@ class _MenuGrid extends StatelessWidget {
                         child: _MenuButton(
                           onTap: () => logAnalyticsEvent('QuestionsAnswered'),
                           pageBuilder: () => QuestionIndexPage(
-                            dataSource: DynamicContent.yourQuestionsAnswered,
+                            dataSource: QuestionContent.yourQuestionsAnswered,
                             title: S.of(context).homePagePageButtonQuestions,
                           ),
                           color: Color(0xff3DA7D4),
@@ -268,7 +272,7 @@ class _MenuGrid extends StatelessWidget {
           _MenuButton(
             onTap: () => logAnalyticsEvent('GetTheFacts'),
             pageBuilder: () => FactsCarouselPage(
-              dataSource: DynamicContent.getTheFacts,
+              dataSource: FactContent.getTheFacts,
               // TODO: Rename these keys in the ARB files
               title: S.of(context).homePagePageButtonWHOMythBusters,
             ),
@@ -286,7 +290,8 @@ class _MenuGrid extends StatelessWidget {
                 Expanded(
                   child: _MenuButton(
                     onTap: () => logAnalyticsEvent('TravelAdvice'),
-                    pageBuilder: () => TravelAdvice(),
+                    pageBuilder: () =>
+                        TravelAdvice(dataSource: AdviceContent.travelAdvice),
                     color: Color(0xff3DA7D4),
                     title: S.of(context).homePagePageButtonTravelAdvice,
                     titleStyle: mediumTitleStyle,
