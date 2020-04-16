@@ -38,7 +38,6 @@ dependencies:
   s2geometry: 0.1.1
 
   intl: ^0.16.0
-  intl_utils: ^1.2.2
   flutter_localizations:
     sdk: flutter
 
@@ -46,6 +45,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.8.0
+  intl_utils: ^1.2.2
 
 flutter:
   uses-material-design: true
