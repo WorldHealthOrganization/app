@@ -41,7 +41,7 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
             ),
             colors: [Color(0xFF6AC7FA)],
             dotData: FlDotData(show: false),
-            isCurved: true,
+            isCurved: false,
             spots: _buildSpots(),
           ),
         ],
@@ -54,32 +54,29 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
 
   List<FlSpot> _buildSpots() {
     var spots = <FlSpot>[];
-    double xAxis = 0.0;
-    if (_showData &&
-        widget.timeseries != null &&
-        widget.timeseries.isNotEmpty) {
-      // TODO: do not assume that there is 1 snapshot per day; group snapshots by epochMsec
-      // Throw out last day's data since it appears to be partial and adds a misleading downslope
-      for (var snapshot
-          in widget.timeseries.sublist(0, widget.timeseries.length - 1)) {
-        var yAxis = 0.0;
+    final startDate = DateTime.utc(2020, 1, 9);
+    if (_showData && widget.timeseries != null) {
+      for (var snapshot in widget.timeseries) {
         try {
-          yAxis = snapshot[widget.timeseriesKey].toDouble();
+          var xAxis = DateTime.fromMillisecondsSinceEpoch(snapshot['epochMsec'],
+                  isUtc: true)
+              .difference(startDate)
+              .inHours
+              .toDouble();
+          var yAxis = snapshot[widget.timeseriesKey].toDouble();
+          spots.add(FlSpot(xAxis, yAxis));
         } catch (e) {
-          print('Exception casting to double: $e');
+          print('Error adding point for snapshot: $e');
         }
-        spots.add(FlSpot(xAxis, yAxis));
-        xAxis += 1.0;
       }
     } else {
       // TODO: fix animation
       // This attempts to create the line with the same number of data points as the real data for the animation.
       // But, the animation still goes from right to left as if it's starting with no data points...
       final daysSinceStart =
-          DateTime.now().difference(DateTime(2020, 1, 9)).inDays;
-      for (int i = 0; i < daysSinceStart; i++) {
-        spots.add(FlSpot(xAxis, 0.0));
-        xAxis += 1.0;
+          DateTime.now().toUtc().difference(startDate).inDays;
+      for (double i = 0.0; i < daysSinceStart; i += 1.0) {
+        spots.add(FlSpot(i, 0.0));
       }
     }
     if (!_showData && widget.timeseries != null) {

@@ -57,7 +57,7 @@ class LatestNumbers extends StatelessWidget {
                       background: LatestNumbersGraph(
                         timeseries:
                             hasGlobalStats ? globalStats['timeseries'] : null,
-                        timeseriesKey: 'dailyCases',
+                        timeseriesKey: 'totalCases',
                       ),
                       title: Text(
                         S.of(context).latestNumbersPageGlobalCasesTitle,
@@ -77,7 +77,7 @@ class LatestNumbers extends StatelessWidget {
                     background: LatestNumbersGraph(
                       timeseries:
                           hasGlobalStats ? globalStats['timeseries'] : null,
-                      timeseriesKey: 'dailyDeaths',
+                      timeseriesKey: 'totalDeaths',
                     ),
                     title: Text(S.of(context).latestNumbersPageGlobalDeaths,
                         style: name),
