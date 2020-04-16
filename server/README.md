@@ -12,13 +12,13 @@ Services:
 
 - Staging App Engine
 - Staging Cloud Datastore
-- Staging FCM
+- Staging Firebase Project
 
 ### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-production)
 
 Services:
 
-- Production FCM
+- Production Firebase Project
 
 ### [`who-myhealth-europe`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-europe)
 
