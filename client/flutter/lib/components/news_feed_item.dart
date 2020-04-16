@@ -22,7 +22,7 @@ class NewsFeedItem extends StatelessWidget {
     return Material(
         child: InkWell(
       onTap: () => {
-        analytics.logEvent(name: 'NewsFeedItem', parameters: {'url': url});
+        analytics.logEvent(name: 'NewsFeedItem', parameters: {'url': this.url});
         launch(this.url);
       },
       child: Padding(
