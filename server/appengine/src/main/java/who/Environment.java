@@ -11,7 +11,7 @@ public enum Environment {
   DEVELOPMENT("http://localhost:3000"),
   STAGING("https://staging.whocoronavirus.org"),
   HACKER_ONE("https://hackerone.whocoronavirus.org"),
-  PRODUCTION("https://whocoronavirus.org");
+  PRODUCTION("https://whoapp.org");
 
   private final String url;
 
@@ -28,10 +28,15 @@ public enum Environment {
   public static Environment current() {
     String applicationId = AppEngine.applicationId();
     if (applicationId == null) return TEST;
+
     switch (applicationId) {
       case "who-myhealth-staging": return STAGING;
       case "who-myhealth-hackerone": return HACKER_ONE;
-      case "who-myhealth-production": return PRODUCTION;
+      case "who-myhealth-europe": return PRODUCTION;
+
+      // Workaround for bug in App Engine. Not sure where those 2 chars at the beginning come from.
+      case "o~who-myhealth-europe": return PRODUCTION;
+
       case "test": return TEST;
       case AppEngine.DEVELOPMENT_ID: return DEVELOPMENT;
       default: throw new RuntimeException("Unrecognized application ID: " + applicationId);
