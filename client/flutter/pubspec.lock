@@ -71,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -154,20 +147,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  geolocator:
-    dependency: "direct main"
-    description:
-      name: geolocator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.3.1"
-  google_api_availability:
-    dependency: transitive
-    description:
-      name: google_api_availability
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
   html:
     dependency: transitive
     description:
@@ -217,13 +196,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  location_permissions:
-    dependency: transitive
-    description:
-      name: location_permissions
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
   location_platform_interface:
     dependency: transitive
     description:
@@ -343,6 +315,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  s2geometry:
+    dependency: "direct main"
+    description:
+      name: s2geometry
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   share:
     dependency: "direct main"
     description:

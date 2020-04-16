@@ -20,12 +20,21 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
   public Platform platform;
 
-  /** S2 leaf cell ID for last known location. See S2CellId. */
+
+  /** S2 cell ID for last known location. See S2CellId. */
   @Index(IfNotNull.class) public Long location;
+  // No locations of greater level (specificity) than this will be
+  // stored and indexed.  This prevents us from storing precise
+  // locations and protects the database index size.
+  // See: https://s2geometry.io/resources/s2cell_statistics.html
+  public static final int MAX_S2_CELL_LEVEL = 9;
+
+  // Lat/lng representative of the cell, not neccessarily
+  // of the device.
   public Double latitude;
   public Double longitude;
 
-  // Store denormalized location info.
+  // TODO: Store denormalized location info if/when needed.
   public String countryCode;
   public String adminArea1;
   public String adminArea2;
