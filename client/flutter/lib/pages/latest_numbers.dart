@@ -48,25 +48,6 @@ class _LatestNumbersState extends State<LatestNumbers> {
     initStats();
   }
 
-  StatCard initStatsCard() {
-    return StatCard(
-      background: LatestNumbersGraph(
-        timeseries: null,
-        timeseriesKey: 'dailyCases',
-      ),
-      title: Text(
-        S.of(context).latestNumbersPageGlobalCasesTitle,
-        style: name,
-      ),
-      content: Text(
-        '-',
-        softWrap: true,
-        style: loadingStyle,
-        textAlign: TextAlign.left,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
@@ -75,7 +56,35 @@ class _LatestNumbersState extends State<LatestNumbers> {
         announceRouteManually: true,
         body: [
           CupertinoSliverRefreshControl(
-            
+            refreshIndicatorExtent: 100,
+            refreshTriggerPullDistance: 100,
+            builder:
+                (context, RefreshIndicatorMode refreshIndicatorMode, a, b, c) {
+              double topPadding = a > 25 ? a : 25.0;
+              var loadingIndicator = Padding(
+                padding: EdgeInsets.only(top: topPadding - 25),
+                child: CupertinoActivityIndicator(),
+              );
+              switch (refreshIndicatorMode.index) {
+                case 1:
+                  return a > 10
+                      ? Padding(
+                          padding: EdgeInsets.only(top: topPadding - 25),
+                          child: Icon(
+                            Icons.arrow_downward,
+                            color: CupertinoColors.systemGrey,
+                          ),
+                        )
+                      : Container();
+                  break;
+                case 2:
+                  return loadingIndicator;
+                case 3:
+                  return loadingIndicator;
+                default:
+                  return Container();
+              }
+            },
             onRefresh: () async {
               await initStats();
             },
