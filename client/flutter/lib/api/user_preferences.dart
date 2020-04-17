@@ -70,7 +70,7 @@ class UserPreferences {
 
     // Create if not found
     if (uuid == null) {
-      uuid = new Uuid(options: {
+      uuid = Uuid(options: {
         'grng': UuidUtil.cryptoRNG
       }).v4();
       await prefs.setString(UserPreferenceKey.ClientUUID.toString(), uuid);
