@@ -27,6 +27,7 @@ List each added dependency and justifications (see the Guidelines)
 * [ ] Android Emulator
 * [ ] iOS Device
 * [ ] Android Device
+* [ ] `curl` to a dev App Engine server 
 -->
 
 <!-- FILL OUT THE CHECKLIST BELOW -->
