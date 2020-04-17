@@ -124,7 +124,7 @@ class _QuestionTileState extends State<QuestionTile>
           thickness: 1,
         ),
         Material(
-          type:MaterialType.transparency,
+          type: MaterialType.transparency,
           child: ExpansionTile(
             onExpansionChanged: (expanded) {
               if (expanded) {
