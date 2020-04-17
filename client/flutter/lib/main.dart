@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +33,25 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  runApp(MyApp(showOnboarding: !onboardingComplete));
+  if (onboardingComplete) {
+  // Set `enableInDevMode` to true to see reports while in debug mode
+    // This is only to be used for confirming that reports are being
+    // submitted as expected. It is not intended to be used for everyday
+    // development.
+    Crashlytics.instance.enableInDevMode = false;
+
+    // Pass all uncaught errors from the framework to Crashlytics.
+    FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
+    await runZoned<Future<void>>(
+      () async {
+        runApp(MyApp(showOnboarding: !onboardingComplete));
+      },
+      onError: Crashlytics.instance.recordError,
+    );
+  } else {
+    runApp(MyApp(showOnboarding: false));
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -133,7 +154,8 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         S.delegate
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      // FIXME Issue #1012 - disabled supported languages for P0
+      //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,

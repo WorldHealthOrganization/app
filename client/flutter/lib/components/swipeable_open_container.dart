@@ -750,38 +750,41 @@ class _OpenContainerRoute extends ModalRoute<void> {
                         fit: StackFit.passthrough,
                         children: <Widget>[
                           // Closed child fading out.
-                          FittedBox(
-                            fit: BoxFit.fitWidth,
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              width: _rectTween.begin.width,
-                              height: _rectTween.begin.height,
-                              child: hideableKey.currentState.isInTree
-                                  ? null
-                                  : Opacity(
-                                      opacity: closedOpacityTween
-                                          .evaluate(animation),
-                                      child: Builder(
-                                        key: closedBuilderKey,
-                                        builder: (BuildContext context) {
-                                          // Use dummy "open container" callback
-                                          // since we are in the process of opening.
-                                          return closedBuilder(context, () {});
-                                        },
-                                      ),
-                                    ),
+                          Opacity(
+                            opacity: closedOpacityTween.evaluate(animation),
+                            child: Container(
+                              color: closedColor,
+                              child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.topLeft,
+                                child: SizedBox(
+                                  width: _rectTween.begin.width,
+                                  height: _rectTween.begin.height,
+                                  child: hideableKey.currentState.isInTree
+                                      ? null
+                                      : Builder(
+                                          key: closedBuilderKey,
+                                          builder: (BuildContext context) {
+                                            // Use dummy "open container" callback
+                                            // since we are in the process of opening.
+                                            return closedBuilder(
+                                                context, () {});
+                                          },
+                                        ),
+                                ),
+                              ),
                             ),
                           ),
 
                           // Open child fading in.
-                          FittedBox(
-                            fit: BoxFit.fitWidth,
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              width: _rectTween.end.width,
-                              height: _rectTween.end.height,
-                              child: Opacity(
-                                opacity: openOpacityTween.evaluate(animation),
+                          Opacity(
+                            opacity: openOpacityTween.evaluate(animation),
+                            child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              alignment: Alignment.topLeft,
+                              child: SizedBox(
+                                width: _rectTween.end.width,
+                                height: _rectTween.end.height,
                                 child: Builder(
                                   key: _openBuilderKey,
                                   builder: (BuildContext context) {

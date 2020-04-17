@@ -1,13 +1,11 @@
-import 'package:WHOFlutter/api/content/dynamic_content.dart';
+import 'package:WHOFlutter/api/content/schema/fact_content.dart';
 import 'package:WHOFlutter/components/carousel/carousel.dart';
 import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
-
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-typedef FactsDataSource = Future<List<FactItem>> Function(BuildContext);
 
 /// A Data driven series of questions and answers using HTML fragments.
 class FactsCarouselPage extends StatefulWidget {
@@ -23,7 +21,7 @@ class FactsCarouselPage extends StatefulWidget {
 }
 
 class _FactsCarouselPageState extends State<FactsCarouselPage> {
-  List<FactItem> _factsData;
+  FactContent _factContent;
 
   @override
   void didChangeDependencies() async {
@@ -31,28 +29,33 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
     // Note: this depends on the build context for the locale and hence is not
     // Note: available at the usual initState() time.
-    await _loadData();
+    await _loadFacts();
   }
 
-  Future _loadData() async {
-    // Fetch the facts data.
-    if (_factsData != null) {
+  // TODO: Move to a base class for "facts" based pages?
+  Future<void> _loadFacts() async {
+    if (_factContent != null) {
       return;
     }
-    _factsData = await widget.dataSource(context);
-    if (!mounted) {
-      return;
+    Locale locale = Localizations.localeOf(context);
+    try {
+      _factContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
+    } catch (err) {
+      print("Error loading fact data: $err");
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    List items = (_factsData ?? [])
+    List items = (_factContent?.items ?? [])
         .map((fact) => CarouselSlide(
               key: UniqueKey(),
               title: fact.title,
-              graphic: SvgPicture.asset("assets/svg/${fact.imageName}.svg"),
+              graphic: _getSVG(fact.imageName),
               body: fact.body,
             ))
         .toList();
@@ -70,5 +73,11 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
       body: Container(
           child: items.isNotEmpty ? CarouselView(items: items) : Container()),
     );
+  }
+
+  SvgPicture _getSVG(String imageName) {
+    return imageName != null
+        ? SvgPicture.asset("assets/svg/${imageName}.svg")
+        : null;
   }
 }

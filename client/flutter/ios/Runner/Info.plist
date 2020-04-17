@@ -65,12 +65,15 @@
 	<false/>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
+	<key>FirebaseMessagingAutoInitEnabled</key>
+	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
-		<string>fr</string>
 	</array>
+	<key>firebase_crashlytics_collection_enabled</key>
+	<false/>
 </dict>
 </plist>
