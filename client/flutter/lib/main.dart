@@ -80,9 +80,6 @@ class _MyAppState extends State<MyApp> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _registerLicenses();
 
-    // onMessage: Fires when app is foreground
-    // onLaunch: Fires when user taps and app is in background.
-    // onResume: Fires when user taps and app is terminated
     _notifications.configure();
     _notifications.updateFirebaseToken();
   }

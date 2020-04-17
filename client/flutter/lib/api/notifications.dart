@@ -64,6 +64,9 @@ class Notifications {
       await NotificationPermissions.getNotificationPermissionStatus() == PermissionStatus.granted;
 
   void configure() {
+    // onMessage: Fires when app is foreground
+    // onLaunch: Fires when user taps and app is in background.
+    // onResume: Fires when user taps and app is terminated
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print('onMessage: $message');
