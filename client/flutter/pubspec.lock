@@ -225,7 +225,7 @@ packages:
     source: hosted
     version: "0.17.9"
   intl_utils:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: intl_utils
       url: "https://pub.dartlang.org"
