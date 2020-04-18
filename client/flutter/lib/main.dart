@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +16,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:WHOFlutter/api/who_service.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -29,7 +33,25 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  runApp(MyApp(showOnboarding: !onboardingComplete));
+  if (onboardingComplete) {
+  // Set `enableInDevMode` to true to see reports while in debug mode
+    // This is only to be used for confirming that reports are being
+    // submitted as expected. It is not intended to be used for everyday
+    // development.
+    Crashlytics.instance.enableInDevMode = false;
+
+    // Pass all uncaught errors from the framework to Crashlytics.
+    FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
+    await runZoned<Future<void>>(
+      () async {
+        runApp(MyApp(showOnboarding: !onboardingComplete));
+      },
+      onError: Crashlytics.instance.recordError,
+    );
+  } else {
+    runApp(MyApp(showOnboarding: false));
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -73,6 +95,24 @@ class _MyAppState extends State<MyApp> {
       },
     );
 
+    updateFCMToken();
+  }
+
+  // Ask firebase for a token on every launch.
+  // If the token is different from what we have stored...update it.
+  updateFCMToken() async {
+    // Only check if notifications are enabled. 
+    bool notificationsEnabled =
+        await UserPreferences().getNotificationsEnabled();
+
+    if (notificationsEnabled) {
+      final token = await _firebaseMessaging.getToken();
+      final storedToken = await UserPreferences().getFCMToken();
+      if (token != storedToken) {
+        await WhoService.putDeviceToken(token);
+        await UserPreferences().setFCMToken(token);
+      }
+    }
   }
 
   Future<LicenseEntry> _loadLicense() async {
@@ -98,13 +138,12 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-    // TODO: This is not essential for basic operation but we should implement 
-    // Fires if notification settings change. 
-    // Modify user opt-in if they do. 
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    // });
-
+  // TODO: Issue #902 This is not essential for basic operation but we should implement
+  // Fires if notification settings change.
+  // Modify user opt-in if they do.
+  // _firebaseMessaging.onIosSettingsRegistered
+  //     .listen((IosNotificationSettings settings) {
+  // });
 
   @override
   Widget build(BuildContext context) {
@@ -115,12 +154,13 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         S.delegate
       ],
-      supportedLocales: S.delegate.supportedLocales,
+      // FIXME Issue #1012 - disabled supported languages for P0
+      //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
       theme: ThemeData(
         scaffoldBackgroundColor: Constants.backgroundColor,
         primaryColor: Constants.primaryColor,
-        accentColor: Constants.textColor,
+        accentColor: Colors.white,
         brightness: Brightness.light,
         appBarTheme: AppBarTheme(brightness: Brightness.light),
         dividerColor: Color(0xffC9CDD6),

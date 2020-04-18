@@ -1,9 +1,11 @@
-import 'package:WHOFlutter/api/jitter_location.dart';
 import 'package:WHOFlutter/api/who_service.dart';
 import 'package:WHOFlutter/generated/l10n.dart';
 import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:s2geometry/s2geometry.dart';
+
+import 'dart:io';
 
 class LocationSharingPage extends StatefulWidget {
   final VoidCallback onNext;
@@ -16,6 +18,11 @@ class LocationSharingPage extends StatefulWidget {
 
 class _LocationSharingPageState extends State<LocationSharingPage> {
   _LocationSharingPageState();
+
+  static const MAX_S2_CELL_LEVEL = 9;
+
+  /// True if _complete() has been invoked
+  bool _completed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +38,32 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
 
   Future<void> _allowLocationSharing() async {
     try {
-      await Location().requestPermission();
-      if (await Location().hasPermission() == PermissionStatus.granted) {
-        if (await Location().requestService()) {
-          LocationData location = await Location().getLocation();
-          Map jitteredLocationData = JitterLocation().jitter(
-              location.latitude, location.longitude,
-              5 /*kms refers to kilometers*/);
-
-          await WhoService.putLocation(
-              latitude: jitteredLocationData['lat'],
-              longitude: jitteredLocationData['lng']);
-        }
+      if (Platform.isIOS) {
+        // This does not work on Android - the later getLocation call hangs
+        // forever or causes an OS-level crash.  On Android, instead,
+        // we request coarse location only at the manifest permission
+        // level (instead of fine).
+        await Location().changeSettings(accuracy: LocationAccuracy.low);
       }
-    } catch(_) {
-      // ignore for now.
-    } finally {
+      await Location().requestPermission();
+
+      final bool locationReady =
+          await Location().hasPermission() == PermissionStatus.granted &&
+              await Location().requestService();
+
       _complete();
+      if (locationReady) {
+        final location = await Location().getLocation();
+
+        final latLng = S2LatLng.fromDegrees(location.latitude, location.longitude);
+
+        final cellId = S2CellId.fromLatLng(latLng).parent(MAX_S2_CELL_LEVEL);
+
+        await WhoService.putLocation(s2CellIdToken: cellId.toToken());
+      }
+    } catch (e) {
+      _complete();
+      // TODO: #876 tracks errors with analytics.
     }
   }
 
@@ -56,6 +72,9 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
   }
 
   void _complete() {
-    widget.onNext();
+    if (!_completed) {
+      _completed = true;
+      widget.onNext();
+    }
   }
 }

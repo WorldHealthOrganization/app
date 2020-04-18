@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class WhoMythBusters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(context,
+    return PageScaffold(
         showShareBottomBar: true,
         body: [
           SliverList(

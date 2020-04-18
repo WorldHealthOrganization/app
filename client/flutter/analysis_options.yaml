@@ -1,1 +1,7 @@
 include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  # If the exclusion does not work in your IDE, see https://github.com/dart-lang/sdk/issues/25551.
+  # This does, however, work with `flutter analyze`, which is relevant for CI.
+  exclude:
+    - lib/generated/** # Generated code should not be checked.
