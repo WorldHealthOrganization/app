@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 
 class Constants {
   static final Color backgroundColor = Colors.white; // WHITE
@@ -7,6 +8,11 @@ class Constants {
   static final Color primaryDark = Color(0xff1A458E); // NAVY
   static final Color accent = Color(0xffD86422); // ORANGE
   static final double buttonTextSpacing = -.4;
+
+  // check if the current locale is RTL.
+  static bool isDirectionRTL(BuildContext context){
+    return intl.Bidi.isRtlLanguage( Localizations.localeOf(context).languageCode);
+  }
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging

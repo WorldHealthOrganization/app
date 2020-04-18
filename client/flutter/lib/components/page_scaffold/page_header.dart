@@ -1,3 +1,4 @@
+import '../../constants.dart';
 import './back_arrow.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -47,7 +48,10 @@ class PageHeader extends StatelessWidget {
     List<Widget> headerItems = [
       if (showBackButton)
         Transform.translate(
-          offset: Offset(-12, 0),
+          // RTL languages need more space to right.
+          offset: Constants.isDirectionRTL(context)
+              ? Offset(12, 0)
+              : Offset(-12, 0),
           child: child,
         ),
       Expanded(
