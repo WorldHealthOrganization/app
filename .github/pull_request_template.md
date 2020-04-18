@@ -3,7 +3,7 @@
 <!-- Title should be a short phrase, e.g. "Add survey functionality". Detailed description should include any design decisions you want reviewers to take note of -->
 
 <!--
-Add the Issue number assigned to you that this PR fully resolves
+Add the Issue number(s) assigned to you that this PR fully resolves, if any
 Closes #0 
 -->
 
