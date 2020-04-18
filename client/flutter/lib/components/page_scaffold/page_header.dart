@@ -1,6 +1,8 @@
-import './back_arrow.dart';
-import 'package:flutter/material.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+
+import './back_arrow.dart';
 
 class PageHeader extends StatelessWidget {
   final String title;
@@ -31,7 +33,12 @@ class PageHeader extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     List<Widget> headerItems = [
       if (this.showBackButton)
-        Transform.translate(offset: Offset(-12, 0), child: BackArrow()),
+        Transform.translate(
+            // RTL languages need more space to right.
+            offset: Constants.isDirectionRTL(context)
+                ? Offset(12, 0)
+                : Offset(-12, 0),
+            child: BackArrow()),
       Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

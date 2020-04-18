@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 
 class Constants {
   static Color backgroundColor = Color(0xffffffff);
   static Color primaryColor = Color(0xff0093CE);
   static Color textColor = Color(0xffffffff);
+
+ // check if the current locale is RTL.
+ static bool isDirectionRTL(BuildContext context){
+    return intl.Bidi.isRtlLanguage( Localizations.localeOf(context).languageCode);
+  }
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging

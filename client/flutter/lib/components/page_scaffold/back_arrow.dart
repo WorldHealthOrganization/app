@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:WHOFlutter/components/path_widget.dart';
+import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
 
@@ -28,5 +31,8 @@ final _paint = Paint()..color = const Color(0x8026354E);
 class BackArrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
-      IconButton(icon: PathWidget(path: _icon, paint: _paint), onPressed: ()=>Navigator.pop(context),);
+      Transform.rotate(
+          // back arrow need to point right in the RTL languages.
+          angle: Constants.isDirectionRTL(context) ? 180 * pi/180 : 0,
+          child: IconButton(icon: PathWidget(path: _icon, paint: _paint), onPressed: ()=>Navigator.pop(context),));
 }
