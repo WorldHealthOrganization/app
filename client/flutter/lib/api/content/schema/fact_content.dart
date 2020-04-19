@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/api/content/content_bundle.dart';
+import 'package:who_app/api/content/content_bundle.dart';
 import 'package:flutter/cupertino.dart';
 import '../content_loading.dart';
 

@@ -1,4 +1,4 @@
-# WHOFlutter
+# who_app
 
 A new Flutter project.
 

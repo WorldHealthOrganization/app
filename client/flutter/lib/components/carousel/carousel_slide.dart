@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';

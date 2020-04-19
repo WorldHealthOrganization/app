@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:WHOFlutter/api/user_preferences.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
+import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:WHOFlutter/api/who_service.dart';
+import 'package:who_app/api/who_service.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;

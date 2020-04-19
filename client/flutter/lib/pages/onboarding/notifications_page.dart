@@ -1,9 +1,9 @@
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
-import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:WHOFlutter/api/who_service.dart';
+import 'package:who_app/api/who_service.dart';
 import 'dart:io';
 
 class NotificationsPage extends StatefulWidget {
