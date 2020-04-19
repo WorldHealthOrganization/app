@@ -65,8 +65,8 @@ class _LatestNumbersState extends State<LatestNumbers> {
                 padding: EdgeInsets.only(top: topPadding - 25),
                 child: CupertinoActivityIndicator(),
               );
-              switch (refreshIndicatorMode.index) {
-                case 1:
+              switch (refreshIndicatorMode) {
+                case RefreshIndicatorMode.drag:
                   return a > 10
                       ? Padding(
                           padding: EdgeInsets.only(top: topPadding - 25),
@@ -77,9 +77,9 @@ class _LatestNumbersState extends State<LatestNumbers> {
                         )
                       : Container();
                   break;
-                case 2:
+                case RefreshIndicatorMode.refresh:
                   return loadingIndicator;
-                case 3:
+                case RefreshIndicatorMode.armed:
                   return loadingIndicator;
                 default:
                   return Container();
