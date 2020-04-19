@@ -1,5 +1,5 @@
-import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/components/carousel/carousel_slide.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';

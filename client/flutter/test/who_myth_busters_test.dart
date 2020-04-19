@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/who_myth_busters.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/pages/who_myth_busters.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =

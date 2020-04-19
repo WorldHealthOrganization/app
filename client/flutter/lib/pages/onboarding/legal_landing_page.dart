@@ -1,6 +1,6 @@
-import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/constants.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/components/page_button.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:flutter_svg/flutter_svg.dart';
