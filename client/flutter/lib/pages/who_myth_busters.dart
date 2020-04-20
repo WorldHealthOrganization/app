@@ -1,7 +1,7 @@
-import 'package:WHOFlutter/components/emojiHeader.dart';
-import 'package:WHOFlutter/components/listItem.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/components/emojiHeader.dart';
+import 'package:who_app/components/listItem.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class WhoMythBusters extends StatelessWidget {

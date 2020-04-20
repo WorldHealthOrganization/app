@@ -1,8 +1,8 @@
-import 'package:WHOFlutter/api/content/schema/fact_content.dart';
-import 'package:WHOFlutter/components/carousel/carousel.dart';
-import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_header.dart';
+import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/components/carousel/carousel.dart';
+import 'package:who_app/components/carousel/carousel_slide.dart';
+import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

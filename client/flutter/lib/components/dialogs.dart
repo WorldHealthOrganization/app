@@ -1,5 +1,5 @@
-import 'package:WHOFlutter/api/content/content_bundle.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/api/content/content_bundle.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {

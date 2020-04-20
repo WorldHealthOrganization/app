@@ -1,7 +1,18 @@
-name: WHOFlutter
-description: WHO Flutter app
+name: who_app
+description: The official World Health Organization COVID-19 app
 
-version: 0.1.1+2
+# This app is published as a mobile app, not to pub.dev.
+publish_to: none
+
+# Prior to an official release, this version is the
+# next expected version, and the `-git` suffix is a
+# pre-release indicator.
+# https://dart.dev/tools/pub/pubspec#version
+version: 0.8.0+15-git
+
+repository: https://github.com/WorldHealthOrganization/app
+
+issue_tracker: https://github.com/WorldHealthOrganization/app/issues
 
 # If the flutter sdk version in pubspec.lock changes,
 # you must update /.github/workflows/flutter-*.yml to use same min Flutter version

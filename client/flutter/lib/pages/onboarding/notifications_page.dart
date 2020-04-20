@@ -1,7 +1,7 @@
-import 'package:WHOFlutter/api/notifications.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/api/notifications.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/pages/onboarding/permission_request_page.dart';
 
 class NotificationsPage extends StatefulWidget {
   final VoidCallback onNext;
