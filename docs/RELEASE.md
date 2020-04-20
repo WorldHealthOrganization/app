@@ -18,26 +18,10 @@ Items that are still under discussion / not ready to be used for v1.0 currently 
 \* Sometimes, engineering slightly changes the mockups for ease of implementation/scalability or runs into unforeseen issues on various devices, etc. — issues not generally caught by unit and integration tests. A release preview (whether URL or TestFlight release) should be provided to the design team with enough time to provide light feedback and discuss any implementation trade-offs. We imagine a few hours to be ideal for this, but more time is always welcome.
 
 ### Compliance checks
-#### Security checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/269), [details](release/security_check_details.md))
-- [ ] System Boundary
-- [ ] APIs and Interconnection (external systems and services)
-- [ ] Infrastructure
-- [ ] Data Flow
-- [ ] Cryptography
-#### Privacy checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/280), [details](release/privacy_check_details.md))
-Check how we stack up against these principles (qualitative evaluation):
-- [ ] Collection Limitation Principle
-- [ ] Data Quality Principle
-- [ ] Purpose Specification Principle
-- [ ] Use Limitation Principle
-- [ ] Security Safeguards Principle
-- [ ] Openness Principle
-- [ ] Individual Participation Principle
-- [ ] Accountability Principle
-#### Legal checks ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
-- [ ] 3rd party libraries / dependency license review
-- [ ] CLA / developer license review
-- [ ] Verify that our app meets the requirements of the [current privacy policy](https://github.com/WorldHealthOrganization/app/issues/58)
+- Medical Review ([discussion](https://github.com/WorldHealthOrganization/app/issues/18))
+- Legal Review ([discussion](https://github.com/WorldHealthOrganization/app/issues/17))
+- Security Review ([discussion](https://github.com/WorldHealthOrganization/app/issues/16))
+- WHO Asset Clearance ([discussion](https://github.com/WorldHealthOrganization/app/issues/97))
 
 
 ### Store material check ([details](release/store_asset_checks.md))
