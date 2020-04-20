@@ -1,0 +1,18 @@
+name: 'Issue Checklist Checker'
+description: 'Checks Issues to make sure checklists are checked'
+inputs:
+  incomplete-checklist-pattern:
+    description: 'Pattern to match for open checklist items'
+    required: true
+  incomplete-comment:
+    description: 'Comment to leave replying to an issue with an incomplete checklist'
+    required: false
+  incomplete-label:
+    description: 'Label to use for an issue with an incomplete checklist'
+    required: true
+  repo-token:
+    description: 'GitHub secret token'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
