@@ -59,26 +59,16 @@ Items that are still under discussion / not ready to be used for v1.0 currently 
 1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.
 1. [ ] Double check that WHO has uploaded and updated the text / image assets that we want.
 
-## Alpha testing
+## QA and testing
 
-Alpha testing lets you share the app with a known list of email addresses.
+We use Firebase App Distribution, TestFlight beta, and the Google Play Alpha channel for testing.
 
-1. [ ] Recruit a small sample of < 25 users from Slack with a variety of different phone models.
-1. [ ] Send these testing users' emails to the WHO so they can invite them for Alpha testing (Android) or TestFlight (iOS).
-1. [ ] Ask them to perform basic testing, ensure that app does not crash or have serious problems.
-1. [ ] If a serious issue is detected, fix the issue and restart the release process.
-
-## Beta testing
-
-Unlike Alpha testing, Beta testing lets you share a public link to invite testers.
-
-1. [ ] WHO will promote the app to the "Beta" track on Google Play, and updates TestFlight Beta testing with the latest build.
+1. [ ] Set up a new release on TestFlight beta with an open link for testing iOS with QA.
+1. [ ] Upload the release apk to Firebase App Distribution -- we use an open link with Firebase App Distribution for testing Android with QA.
 1. [ ] Publish beta testing URLs for both Android and iOS to Slack.
-1. [ ] Collect beta test feedback in a Google doc.
-
-## :construction: Firebase App Distribution
-
-We are looking to move our alpha / beta testing phase to Firebase App Distribution, because it allows us to publish versions of the app to testers without having to go through the app stores' approval processes or have production credentials to build development versions of the app. We will add documentation for this step once we have ironed out the process.
+1. [ ] Promote the apk on the Play Store to the Alpha channel -- we use closed Alpha testing for non-QA testing for Android.
+1. [ ] QA testers will fill out any issues they find on a Bug Bash form.
+1. [ ] We will triage these issues as needed. If a serious issue is detected, fix the issue and restart the release process.
 
 ## Release to production
 
