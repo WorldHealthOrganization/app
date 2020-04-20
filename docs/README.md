@@ -1,6 +1,6 @@
 # World Health Organization COVID-19 App
 
-![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Builds/badge.svg)
+![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Build/badge.svg)
 ![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
 ![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
 
