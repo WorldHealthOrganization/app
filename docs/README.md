@@ -1,7 +1,8 @@
 # World Health Organization COVID-19 App
 
+![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Builds/badge.svg)
+![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
 ![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
-![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Flutter%20Test/badge.svg)
 
 This is the official World Health Organization COVID-19 app. 
 
