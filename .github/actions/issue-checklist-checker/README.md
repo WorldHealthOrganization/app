@@ -6,7 +6,9 @@ GitHub Action for making sure that checklists are checked when a new Issue is op
 
 ```yaml
 name: Check Issue Checklist
-on: [issues]
+on:
+  issues:
+    types: [opened, edited, reopened]
 
 jobs:
   check-checklist:
@@ -19,10 +21,9 @@ jobs:
       continue-on-error: true
       with:
         incomplete-checklist-pattern: '^- \[ ]'
-        incomplete-comment: 'Please ensure you have filled out the checklist'
-        incomplete-label: 'incomplete'
+        incomplete-comment: 'Please make sure you have filled out the checklist in the Issue template'
+        incomplete-label: 'resolved:missing-checklist'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-
 ```
 
 ### Inputs

@@ -1,0 +1,19 @@
+name: Check Issue Checklist
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+jobs:
+  check-checklist:
+    name: Check that an Issue's checklist has been filled out
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Require issue checklist
+      uses: ./.github/actions/issue-checklist-checker
+      continue-on-error: true
+      with:
+        incomplete-checklist-pattern: '^- \[ ]'
+        incomplete-comment: 'Please make sure you have filled out the checklist in the Issue template'
+        incomplete-label: 'resolved:missing-checklist'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
