@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:WHOFlutter/main.dart';
 import 'package:WHOFlutter/api/endpoints.dart';
 import 'package:WHOFlutter/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -57,9 +58,15 @@ class WhoService {
     var headers = {
       'Content-Type': 'application/json',
       'Who-Client-ID': clientId,
-      'Who-Platform': _platform
+      'Who-Platform': _platform,
+      'User-Agent': userAgent,
+      'Accept-Encoding': 'gzip',
     };
     return headers;
+  }
+
+  static String get userAgent {
+    return 'WHO-App/${_platform}/${packageInfo != null ? packageInfo.version : ''}/${packageInfo != null ? packageInfo.buildNumber : ''} (gzip)';
   }
 
   static String get _platform {

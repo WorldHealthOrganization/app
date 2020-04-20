@@ -36,6 +36,7 @@ class LatestNumbers extends StatelessWidget {
     return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
         showShareBottomBar: false,
+        announceRouteManually: true,
         body: [
           FutureBuilder(
               future: WhoService.getCaseStats(),
@@ -118,15 +119,14 @@ class LatestNumbers extends StatelessWidget {
                       right: 24,
                     ),
                     child: PageButton(
-                        Color(0xFF3D8AC4),
-                        S.of(context).latestNumbersPageViewLiveData,
-                        () => _launchStatsDashboard(context),
-                        verticalPadding: 24,
-                        borderRadius: 36,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        ),
-                        
+                      Color(0xFF3D8AC4),
+                      S.of(context).latestNumbersPageViewLiveData,
+                      () => _launchStatsDashboard(context),
+                      verticalPadding: 24,
+                      borderRadius: 36,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                    ),
                   )
                 ]));
               }),

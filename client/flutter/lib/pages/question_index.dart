@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/content/dynamic_content.dart';
+import 'package:WHOFlutter/api/content/schema/question_content.dart';
+import 'package:WHOFlutter/components/dialogs.dart';
 import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
 import 'package:WHOFlutter/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,9 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
-
-typedef QuestionIndexDataSource = Future<List<QuestionItem>> Function(
-    BuildContext);
 
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends StatefulWidget {
@@ -25,7 +23,7 @@ class QuestionIndexPage extends StatefulWidget {
 }
 
 class _QuestionIndexPageState extends State<QuestionIndexPage> {
-  List<QuestionItem> _questions;
+  QuestionContent _questionContent;
 
   @override
   void initState() {
@@ -42,13 +40,19 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   Future _loadQuestionData() async {
-    // Fetch the question data.
-    if (_questions != null) {
+    if (_questionContent != null) {
       return;
     }
-    _questions = await widget.dataSource(context);
-    if (!mounted) { return; }
-    setState(() {});
+    Locale locale = Localizations.localeOf(context);
+    try {
+      _questionContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _questionContent);
+    } catch (err) {
+      print("Error loading question data: $err");
+    }
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -57,13 +61,14 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
   }
 
   Widget _buildPage() {
-    List items = (_questions ?? [])
+    List items = (_questionContent?.items ?? [])
         .map((questionData) => QuestionTile(
               questionItem: questionData,
             ))
         .toList();
 
     return PageScaffold(
+      announceRouteManually: true,
       body: [
         items.isNotEmpty
             ? SliverList(
@@ -114,9 +119,11 @@ class _QuestionTileState extends State<QuestionTile>
     return Container(
       color: Colors.white,
       child: Stack(children: <Widget>[
-        Divider(height: 1, thickness: 1,),
+        Divider(
+          height: 1,
+          thickness: 1,
+        ),
         ExpansionTile(
-          
           onExpansionChanged: (expanded) {
             if (expanded) {
               rotationController.forward();
@@ -143,15 +150,15 @@ class _QuestionTileState extends State<QuestionTile>
           title: Padding(
             padding: EdgeInsets.symmetric(vertical: 12),
             child: Html(
-            data: widget.questionItem.title,
-            defaultTextStyle: _titleStyle.copyWith(
-              fontSize: 16 * MediaQuery.of(context).textScaleFactor,
-            ),),
+              data: widget.questionItem.title,
+              defaultTextStyle: _titleStyle.copyWith(
+                fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+              ),
+            ),
           ),
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 32),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
               child: html(widget.questionItem.body),
             )
           ],
@@ -175,25 +182,22 @@ class _QuestionTileState extends State<QuestionTile>
       },
       onImageTap: (src) {},
       // This is our css :)
-      customEdgeInsets: (dom.Node node){
+      customEdgeInsets: (dom.Node node) {
         if (node is dom.Element) {
           switch (node.localName) {
             case "p":
-              return EdgeInsets.only(
-                bottom: 8
-              );
+              return EdgeInsets.only(bottom: 8);
               break;
             default:
               return EdgeInsets.zero;
           }
-        }else{
+        } else {
           return EdgeInsets.zero;
         }
       },
       customTextStyle: (dom.Node node, TextStyle baseStyle) {
         if (node is dom.Element) {
           switch (node.localName) {
-            
             case "h2":
               return baseStyle.merge(TextStyle(
                   fontSize: 20,
@@ -208,9 +212,11 @@ class _QuestionTileState extends State<QuestionTile>
     );
   }
 
-  final _bodyStyle =
-      TextStyle(color: Constants.textColor, fontWeight: FontWeight.w400, height: 1.5);
+  final _bodyStyle = TextStyle(
+      color: Constants.textColor, fontWeight: FontWeight.w400, height: 1.5);
 
-  final _titleStyle =
-      TextStyle(color: Color(0xff3C4245), fontWeight: FontWeight.w600, height: 1.3);//TODO: ON OPEN MAKE TEXT DARKER
+  final _titleStyle = TextStyle(
+      color: Color(0xff3C4245),
+      fontWeight: FontWeight.w600,
+      height: 1.3); //TODO: ON OPEN MAKE TEXT DARKER
 }
