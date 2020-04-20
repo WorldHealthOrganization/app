@@ -1,9 +1,9 @@
-# World Health Organization App
+# World Health Organization COVID-19 App
 
 ![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
 ![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Flutter%20Test/badge.svg)
 
-This is the official World Health Organization app. 
+This is the official World Health Organization COVID-19 app. 
 
 **This repository is a work in progress and has not yet been medically reviewed.  Until the app is ready, the general public should consult the [WHO's COVID-19 website](https://www.who.int/emergencies/diseases/novel-coronavirus-2019).**
 
