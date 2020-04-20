@@ -18,22 +18,10 @@ async function run(): Promise<void> {
         } = getInputs();
         
         const octokit = new github.GitHub(repoToken);
-        const issueNumber = github.context.issue.number;
-        core.debug('Testing Issue #' + issueNumber);
+        const issue = await fetchIssue(octokit);
+        core.debug('Testing Issue #' + issue.number);
 
-        const {data: issue} = await octokit.issues.get({
-            owner: github.context.repo.owner,
-            repo: github.context.repo.repo,
-            issue_number: issueNumber
-        });
-
-        const issueLines = issue.body.split(/\r?\n/);
-        var foundPattern = false;
-
-        issueLines.some((line: string) => {
-            foundPattern = incompleteChecklistRegex.test(line.trim());
-            return foundPattern;
-        });
+        const foundPattern = checkIssueForPattern(issue.body, incompleteChecklistRegex);
 
         const issueLabelNames = issue.labels.map(labelItem => labelItem.name);
         const hasLabel = issueLabelNames.includes(incompleteLabel);
@@ -93,6 +81,32 @@ function getInputs(): RequireIssueChecklistInputs {
         incompleteLabel,
         repoToken
     };
+}
+
+async function fetchIssue(client: github.GitHub) {
+    if (!github.context.issue) {
+        throw new Error('Action must be triggered by an Issue event');
+    }
+
+    const {data: issue} = await client.issues.get({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        issue_number: github.context.issue.number
+    });
+
+    return issue;
+}
+
+function checkIssueForPattern(issueBody: string, pattern: RegExp): boolean {
+    const issueLines = issueBody.split(/\r?\n/);
+    var foundPattern = false;
+
+    issueLines.some((line: string) => {
+        foundPattern = pattern.test(line.trim());
+        return foundPattern;
+    });
+
+    return foundPattern;
 }
 
 run()
