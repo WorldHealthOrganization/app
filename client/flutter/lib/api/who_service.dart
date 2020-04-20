@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:WHOFlutter/main.dart';
-import 'package:WHOFlutter/api/endpoints.dart';
-import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:who_app/main.dart';
+import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 

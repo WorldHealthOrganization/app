@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:WHOFlutter/api/user_preferences.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
+import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:WHOFlutter/api/who_service.dart';
+import 'package:who_app/api/who_service.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -78,7 +78,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _registerLicenses();
 
     // onMessage: Fires when app is foreground
     // onLaunch: Fires when user taps and app is in background.
@@ -113,29 +112,6 @@ class _MyAppState extends State<MyApp> {
         await UserPreferences().setFCMToken(token);
       }
     }
-  }
-
-  Future<LicenseEntry> _loadLicense() async {
-    final licenseText = await rootBundle.loadString('assets/REPO_LICENSE');
-    return LicenseEntryWithLineBreaks(
-        ["https://github.com/WorldHealthOrganization/app"], licenseText);
-  }
-
-  Future<LicenseEntry> _load3pLicense() async {
-    final licenseText =
-        await rootBundle.loadString('assets/THIRD_PARTY_LICENSE');
-    return LicenseEntryWithLineBreaks([
-      "https://github.com/WorldHealthOrganization/app - THIRD_PARTY_LICENSE"
-    ], licenseText);
-  }
-
-  _registerLicenses() {
-    LicenseRegistry.addLicense(() {
-      return Stream<LicenseEntry>.fromFutures(<Future<LicenseEntry>>[
-        _loadLicense(),
-        _load3pLicense(),
-      ]);
-    });
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement

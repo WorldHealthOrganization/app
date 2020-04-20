@@ -1,9 +1,9 @@
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:WHOFlutter/main.dart';
+import 'package:who_app/main.dart';
 import 'package:yaml/yaml.dart';
 
 class AboutPage extends StatelessWidget {

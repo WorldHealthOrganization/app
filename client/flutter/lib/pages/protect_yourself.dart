@@ -1,11 +1,11 @@
-import 'package:WHOFlutter/api/content/schema/fact_content.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/components/rive_animation.dart';
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/rive_animation.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/generated/l10n.dart';
 
 class ProtectYourself extends StatefulWidget {
   final FactsDataSource dataSource;

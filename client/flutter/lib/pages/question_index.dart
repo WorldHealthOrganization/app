@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/content/schema/question_content.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
