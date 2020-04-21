@@ -52,4 +52,3 @@ class WhoCacheManager extends BaseCacheManager {
     return paths.join(directory.path, key);
   }
 }
-

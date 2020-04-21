@@ -72,7 +72,7 @@ class ContentBundle {
   int getInt(String key, {int orDefault = -1}) {
     try {
       return yaml[key];
-    }catch(err) {
+    } catch (err) {
       return orDefault;
     }
   }
@@ -85,8 +85,7 @@ class ContentBase {
 
   ContentBase(this.bundle, {@required String schemaName}) {
     if (bundle.contentType != schemaName) {
-      throw Exception(
-          "Unsupported content type: ${bundle.contentType}");
+      throw Exception("Unsupported content type: ${bundle.contentType}");
     }
   }
 }

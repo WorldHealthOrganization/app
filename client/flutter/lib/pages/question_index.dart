@@ -139,7 +139,8 @@ class _QuestionTileState extends State<QuestionTile>
               children: <Widget>[
                 AnimatedBuilder(
                   animation: rotationController,
-                  child: Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
+                  child:
+                      Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
                   builder: (context, child) {
                     return Transform.rotate(
                       angle: rotationController.value,

@@ -36,8 +36,7 @@ class WhoService {
     return true;
   }
 
-
-  static Future<Map<String,dynamic>> getCaseStats() async {
+  static Future<Map<String, dynamic>> getCaseStats() async {
     Map<String, String> headers = await _getHeaders();
     var url = '$serviceUrl/getCaseStats';
     var response = await http.post(url, headers: headers, body: '');
@@ -74,4 +73,3 @@ class WhoService {
     return "WEB";
   }
 }
-

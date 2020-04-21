@@ -10,7 +10,7 @@ class NotificationsPage extends StatefulWidget {
   final VoidCallback onNext;
 
   const NotificationsPage({@required this.onNext}) : assert(onNext != null);
-  
+
   @override
   _NotificationsPageState createState() => _NotificationsPageState();
 }
@@ -22,9 +22,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return PermissionRequestPage(
       pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
-      pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
+      pageDescription:
+          S.of(context).notificationsPagePermissionRequestPageDescription,
       buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
-      backgroundImageSrc: S.of(context).notificationsPagePermissionRequestBackgroundImage,
+      backgroundImageSrc:
+          S.of(context).notificationsPagePermissionRequestBackgroundImage,
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
     );
@@ -35,10 +37,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
     // If the user opts-out on Android we just don't register the device token.
     if (Platform.isIOS) {
       await _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-        sound: true, badge: true, alert: true, provisional: false));
+          const IosNotificationSettings(
+              sound: true, badge: true, alert: true, provisional: false));
     }
-    
+
     await UserPreferences().setNotificationsEnabled(true);
     _registerFCMToken();
     _complete();
