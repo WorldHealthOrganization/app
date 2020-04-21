@@ -10,7 +10,7 @@ class LoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
         child: Padding(
-          padding: const EdgeInsets.all(48.0),
+          padding: const EdgeInsets.only(top: 48.0),
           child: CupertinoActivityIndicator(),
         ));
   }
