@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m4(lastUpd) => "Last updated ${lastUpd}";
 
+  static m5(attribution) => "Source: ${attribution}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function>{
         "LegalLandingPageTermsOfServiceLinkText":
@@ -117,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestNumbersPageGlobalDeaths":
             MessageLookupByLibrary.simpleMessage("GLOBAL DEATHS"),
         "latestNumbersPageLastUpdated": m4,
+        "latestNumbersPageSourceGlobalStatsAttribution": m5,
         "latestNumbersPageTitle":
             MessageLookupByLibrary.simpleMessage("Latest Numbers"),
         "latestNumbersPageUpdating":

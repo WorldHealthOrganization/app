@@ -1046,6 +1046,15 @@ class S {
       args: [],
     );
   }
+
+  String latestNumbersPageSourceGlobalStatsAttribution(Object attribution) {
+    return Intl.message(
+      'Source: $attribution',
+      name: 'latestNumbersPageSourceGlobalStatsAttribution',
+      desc: '',
+      args: [attribution],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
