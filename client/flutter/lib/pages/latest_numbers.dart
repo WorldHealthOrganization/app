@@ -107,7 +107,10 @@ class LatestNumbers extends StatelessWidget {
                   ),
                   Text(
                     hasGlobalStats && globalStats['attribution'] != null
-                        ? S.of(context).latestNumbersPageSourceGlobalStatsAttribution(globalStats['attribution'])
+                        ? S
+                            .of(context)
+                            .latestNumbersPageSourceGlobalStatsAttribution(
+                                globalStats['attribution'])
                         : '',
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
