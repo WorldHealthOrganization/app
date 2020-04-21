@@ -1,4 +1,4 @@
-name: Client Tests
+name: Client Format
 on:
   push:
     paths:
