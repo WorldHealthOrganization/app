@@ -1062,6 +1062,15 @@ class S {
     );
   }
 
+  String latestNumbersPageSourceGlobalStatsAttribution(Object attribution) {
+    return Intl.message(
+      'Source: $attribution',
+      name: 'latestNumbersPageSourceGlobalStatsAttribution',
+      desc: '',
+      args: [attribution],
+    );
+  }
+
   String get notificationsEnableDialogHeader {
     return Intl.message(
       'Enable notifications',

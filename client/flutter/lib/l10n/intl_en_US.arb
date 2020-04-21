@@ -125,7 +125,8 @@
   "latestNumbersPageGlobalDeaths": "GLOBAL DEATHS",
   "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
   "latestNumbersPageUpdating": "Updating…",
-  "latestNumbersPageViewLiveData": "View Live Data"
+  "latestNumbersPageViewLiveData": "View Live Data",
+  "latestNumbersPageSourceGlobalStatsAttribution": "Source: {attribution}",
   "notificationsEnableDialogHeader": "Enable notifications",
   "notificationsEnableDialogText":  "As you've previously disabled notifications, we'll need you to manually re-enable notifications via the system settings for the app",
   "notificationsEnableDialogOptionOpenSettings": "Open Settings",
