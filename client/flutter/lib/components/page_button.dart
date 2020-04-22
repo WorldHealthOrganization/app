@@ -11,6 +11,7 @@ class PageButton extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
   final TextStyle titleStyle;
+  final Color descriptionColor;
 
   final double verticalPadding;
   final double horizontalPadding;
@@ -27,6 +28,7 @@ class PageButton extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
+    this.descriptionColor,
   });
 
   @override
@@ -45,9 +47,13 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                textScaleFactor: 1.0 + 1.0 * contentScale(context),
                 textAlign: TextAlign.left,
-                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
+                style: titleStyle?.copyWith(
+                        letterSpacing: Constants.buttonTextSpacing) ??
+                    TextStyle(
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: Constants.buttonTextSpacing,
+                        fontSize: 18),
               ),
               // Makes sure text is centered properly when no description is provided
               SizedBox(height: description.isNotEmpty ? 4 : 0),
@@ -55,8 +61,11 @@ class PageButton extends StatelessWidget {
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
-                      textScaleFactor: 0.9 + 0.5 * contentScale(context),
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                      textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
+                          MediaQuery.textScaleFactorOf(context),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: descriptionColor ?? Color(0xFFC9CDD6)),
                     )
                   : Container()
             ],
@@ -64,5 +73,4 @@ class PageButton extends StatelessWidget {
       onPressed: this.onPressed,
     );
   }
-  
 }
