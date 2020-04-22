@@ -35,7 +35,6 @@ class LatestNumbers extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
-        showShareBottomBar: false,
         announceRouteManually: true,
         body: [
           FutureBuilder(

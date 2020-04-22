@@ -49,7 +49,6 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   Widget build(BuildContext context) {
     return PageScaffold(
         title: S.of(context).protectYourselfTitle,
-        showShareBottomBar: false,
         announceRouteManually: true,
         body: [SliverList(delegate: SliverChildListDelegate(_buildCards()))]);
   }
