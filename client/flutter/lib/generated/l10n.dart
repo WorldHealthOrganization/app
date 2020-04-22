@@ -10,18 +10,19 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       return S();
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -54,7 +55,8 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(
+      Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -290,7 +292,7 @@ class S {
 
   String get homePagePageButtonLatestNumbers {
     return Intl.message(
-      'Latest \nNumbers',
+      'Latest Numbers',
       name: 'homePagePageButtonLatestNumbers',
       desc: '',
       args: [],
@@ -963,7 +965,8 @@ class S {
     );
   }
 
-  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
+  String aboutPageBuiltByCreditText(
+      Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -1037,10 +1040,19 @@ class S {
 
   String get latestNumbersPageViewLiveData {
     return Intl.message(
-      'View live data',
+      'View Live Data',
       name: 'latestNumbersPageViewLiveData',
       desc: '',
       args: [],
+    );
+  }
+
+  String latestNumbersPageSourceGlobalStatsAttribution(Object attribution) {
+    return Intl.message(
+      'Source: $attribution',
+      name: 'latestNumbersPageSourceGlobalStatsAttribution',
+      desc: '',
+      args: [attribution],
     );
   }
 }
@@ -1050,7 +1062,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
+      Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
     ];
   }
 

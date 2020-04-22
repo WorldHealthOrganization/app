@@ -1,4 +1,5 @@
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/api/content/content_bundle.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
@@ -28,5 +29,21 @@ class Dialogs {
         );
       },
     );
+  }
+
+  static Future<void> showUpgradeDialogIfNeededFor(
+      BuildContext context, ContentBase content) async {
+    if (content.bundle.unsupportedSchemaVersionAvailable) {
+      return Dialogs.showUpgradeDialog(context);
+    }
+  }
+
+  static Future<void> showUpgradeDialog(BuildContext context) {
+    return showAppDialog(
+        context: context,
+        title: S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
+        // TODO: Provide the sharing link here?
+        bodyText:
+            S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
   }
 }

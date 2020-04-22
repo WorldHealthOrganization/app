@@ -21,17 +21,12 @@ message PutDeviceTokenRequest {
 }
 
 message PutLocationRequest {
-  double latitude = 2;
-  double longitude = 3;
-  // ISO 3166 Alpha-2 country code
-  string countryCode = 4;
-  // In all cases, a short name in English or a standardized code is preferred.
-  string adminArea1 = 5;
-  string adminArea2 = 6;
-  string adminArea3 = 7;
-  string adminArea4 = 8;
-  string adminArea5 = 9;
-  string locality = 10;
+  // A token is a hex representation of the 64-bit S2CellId
+  // in string format that will also survive JSON (which
+  // lacks 64-bit number precision).
+  // The level (specificity) of the S2CellId must not exceed
+  // who.Client.MAX_S2_CELL_LEVEL.
+  string s2CellIdToken = 11;
 }
 
 message GetCaseStatsResponse {
