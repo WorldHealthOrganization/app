@@ -15,7 +15,9 @@ class TravelAdvice extends StatefulWidget {
 
   final FirebaseAnalytics analytics;
 
-  const TravelAdvice({Key key, @required this.dataSource, @required this.analytics}) : super(key: key);
+  const TravelAdvice(
+      {Key key, @required this.dataSource, @required this.analytics})
+      : super(key: key);
 
   @override
   _TravelAdviceState createState() => _TravelAdviceState();
