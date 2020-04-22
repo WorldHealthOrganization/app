@@ -53,7 +53,9 @@ class _ProtectYourselfState extends State<ProtectYourself> {
     return PageScaffold(
       title: S.of(context).protectYourselfTitle,
       announceRouteManually: true,
-      body: [_factContent != null ? _buildBody() : LoadingIndicator()],
+      body: [
+        _factContent != null ? _buildBody() : LoadingIndicator(),
+      ],
     );
   }
 

@@ -73,7 +73,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       body: [
         items.isNotEmpty
             ? SliverList(delegate: SliverChildListDelegate(items))
-            : LoadingIndicator()
+            : LoadingIndicator(),
       ],
       title: widget.title,
     );

@@ -46,7 +46,9 @@ class _TravelAdviceState extends State<TravelAdvice> {
   Widget build(BuildContext context) {
     return PageScaffold(
         announceRouteManually: true,
-        body: [_adviceContent != null ? _buildBody() : LoadingIndicator()],
+        body: [
+          _adviceContent != null ? _buildBody() : LoadingIndicator(),
+        ],
         title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
