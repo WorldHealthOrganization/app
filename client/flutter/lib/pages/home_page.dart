@@ -118,9 +118,10 @@ class HomePage extends StatelessWidget {
                         itemId: null,
                         method: 'Website link');
                     Share.share(
-                        S.of(context).commonWhoAppShareIconButtonDescription,
-                        sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2),
-                        );
+                      S.of(context).commonWhoAppShareIconButtonDescription,
+                      sharePositionOrigin:
+                          Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                    );
                   },
                 ),
               ),

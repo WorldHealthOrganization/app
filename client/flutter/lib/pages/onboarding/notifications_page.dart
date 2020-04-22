@@ -19,9 +19,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return PermissionRequestPage(
       pageTitle: S.of(context).notificationsPagePermissionRequestPageTitle,
-      pageDescription: S.of(context).notificationsPagePermissionRequestPageDescription,
+      pageDescription:
+          S.of(context).notificationsPagePermissionRequestPageDescription,
       buttonTitle: S.of(context).notificationsPagePermissionRequestPageButton,
-      backgroundImageSrc: S.of(context).notificationsPagePermissionRequestBackgroundImage,
+      backgroundImageSrc:
+          S.of(context).notificationsPagePermissionRequestBackgroundImage,
       onGrantPermission: _allowNotifications,
       onSkip: _skipNotifications,
     );

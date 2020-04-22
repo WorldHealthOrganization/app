@@ -35,7 +35,6 @@ class LatestNumbers extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
-        showShareBottomBar: false,
         announceRouteManually: true,
         body: [
           FutureBuilder(
@@ -107,7 +106,10 @@ class LatestNumbers extends StatelessWidget {
                   ),
                   Text(
                     hasGlobalStats && globalStats['attribution'] != null
-                        ? S.of(context).latestNumbersPageSourceGlobalStatsAttribution(globalStats['attribution'])
+                        ? S
+                            .of(context)
+                            .latestNumbersPageSourceGlobalStatsAttribution(
+                                globalStats['attribution'])
                         : '',
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,
