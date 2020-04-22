@@ -18,7 +18,8 @@ class SettingsPage extends StatefulWidget {
   _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver {
+class _SettingsPageState extends State<SettingsPage>
+    with WidgetsBindingObserver {
   Notifications _notifications = Notifications();
 
   bool _analyticsEnabled;
@@ -58,7 +59,10 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
     if (setEnabled) {
       enabled = await _notifications.attemptEnableNotifications(
           context: context,
-          showSettingsPrompt: ({showSettings}) => {Dialogs.showDialogToLaunchNotificationSettings(context, showSettings)});
+          showSettingsPrompt: ({showSettings}) => {
+                Dialogs.showDialogToLaunchNotificationSettings(
+                    context, showSettings)
+              });
     } else {
       await _notifications.disableNotifications();
       enabled = false;
@@ -77,14 +81,16 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed && _attemptEnableNotificationsOnResume) {
+    if (state == AppLifecycleState.resumed &&
+        _attemptEnableNotificationsOnResume) {
       _attemptEnableNotifications();
     }
   }
 
   void _attemptEnableNotifications() async {
     _attemptEnableNotificationsOnResume = false;
-    var enabled = await _notifications.attemptEnableNotifications(context: context);
+    var enabled =
+        await _notifications.attemptEnableNotifications(context: context);
 
     if (enabled != _notificationsEnabled) {
       setState(() {
@@ -106,13 +112,19 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
                 switchItem(
                     context: context,
                     header: S.of(context).homePagePageSliverListSettingsHeader1,
-                    info: S.of(context).homePagePageSliverListSettingsDataCollection,
+                    info: S
+                        .of(context)
+                        .homePagePageSliverListSettingsDataCollection,
                     isToggled: _analyticsEnabled ?? false,
                     onToggle: _toggleAnalytics),
                 switchItem(
                     context: context,
-                    header: S.of(context).homePagePageSliverListSettingsNotificationsHeader,
-                    info: S.of(context).homePagePageSliverListSettingsNotificationsInfo,
+                    header: S
+                        .of(context)
+                        .homePagePageSliverListSettingsNotificationsHeader,
+                    info: S
+                        .of(context)
+                        .homePagePageSliverListSettingsNotificationsInfo,
                     isToggled: _notificationsEnabled ?? false,
                     onToggle: _toggleNotifications),
 
@@ -127,7 +139,12 @@ class _SettingsPageState extends State<SettingsPage> with WidgetsBindingObserver
     );
   }
 
-  Widget switchItem({BuildContext context, String header, String info, bool isToggled, Function(bool) onToggle}) {
+  Widget switchItem(
+      {BuildContext context,
+      String header,
+      String info,
+      bool isToggled,
+      Function(bool) onToggle}) {
     return Semantics(
       toggled: isToggled,
       child: InkWell(

@@ -47,7 +47,8 @@ class Dialogs {
             S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
   }
 
-  static Future<void> showDialogToLaunchNotificationSettings(BuildContext context, Function requestNotificationPermissions) async {
+  static Future<void> showDialogToLaunchNotificationSettings(
+      BuildContext context, Function requestNotificationPermissions) async {
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -67,7 +68,8 @@ class Dialogs {
               },
             ),
             FlatButton(
-              child: Text(S.of(context).notificationsEnableDialogOptionOpenSettings),
+              child: Text(
+                  S.of(context).notificationsEnableDialogOptionOpenSettings),
               onPressed: () {
                 requestNotificationPermissions();
                 Navigator.pop(context);

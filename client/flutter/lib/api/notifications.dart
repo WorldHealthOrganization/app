@@ -15,13 +15,17 @@ class Notifications {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final UserPreferences _userPrefs = UserPreferences();
 
-  Future<bool> attemptEnableNotifications({BuildContext context, Function({@required Function showSettings}) showSettingsPrompt}) async {
-    var permissionStatus = await NotificationPermissions.getNotificationPermissionStatus();
+  Future<bool> attemptEnableNotifications(
+      {BuildContext context,
+      Function({@required Function showSettings}) showSettingsPrompt}) async {
+    var permissionStatus =
+        await NotificationPermissions.getNotificationPermissionStatus();
     var granted;
     switch (permissionStatus) {
       case PermissionStatus.unknown:
         // if a status is 'unknown' it means we're on iOS and we haven't requested the permission before
-        granted = await requestNotificationPermissions() == PermissionStatus.granted;
+        granted =
+            await requestNotificationPermissions() == PermissionStatus.granted;
         break;
       case PermissionStatus.granted:
         granted = true;
@@ -29,7 +33,8 @@ class Notifications {
       case PermissionStatus.denied:
         if (showSettingsPrompt != null) {
           // 'denied' means the permission has been refused before or manually switched off via settings
-          await showSettingsPrompt(showSettings: requestNotificationPermissions);
+          await showSettingsPrompt(
+              showSettings: requestNotificationPermissions);
           // we're opening the settings, which is a different app, so there's no state to return
           granted = null;
         } else {
@@ -47,7 +52,8 @@ class Notifications {
     if (granted) _registerFCMToken();
   }
 
-  Future<PermissionStatus> requestNotificationPermissions() => NotificationPermissions.requestNotificationPermissions();
+  Future<PermissionStatus> requestNotificationPermissions() =>
+      NotificationPermissions.requestNotificationPermissions();
 
   void _registerFCMToken() async {
     final token = await _firebaseMessaging.getToken();
@@ -61,7 +67,8 @@ class Notifications {
 
   Future<bool> isEnabled() async =>
       await _userPrefs.getNotificationsEnabled() &&
-      await NotificationPermissions.getNotificationPermissionStatus() == PermissionStatus.granted;
+      await NotificationPermissions.getNotificationPermissionStatus() ==
+          PermissionStatus.granted;
 
   void configure() {
     // onMessage: Fires when app is foreground
@@ -86,7 +93,8 @@ class Notifications {
     var notificationsEnabled = await isEnabled();
 
     // if notifications are disabled in OS or via user pref, ensure it's disabled on BE as well by removing token
-    final tokenToSet = notificationsEnabled ? await _firebaseMessaging.getToken() : null;
+    final tokenToSet =
+        notificationsEnabled ? await _firebaseMessaging.getToken() : null;
 
     final storedToken = await _userPrefs.getFirebaseToken();
     if (tokenToSet != storedToken) {
@@ -101,5 +109,4 @@ class Notifications {
       await _userPrefs.setFirebaseToken(newToken);
     }
   }
-
 }
