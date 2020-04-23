@@ -1,6 +1,6 @@
 # who_app
 
-A new Flutter project.
+WHO COVID-19 app.
 
 ## Getting Started
 
