@@ -2,9 +2,9 @@ name: Source Code Policy Check
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, ui-refresh/prototype ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, ui-refresh/prototype ]
 
 jobs:
   build:

@@ -6,7 +6,7 @@ on:
       - 'api/**'
       - 'server/**'
   pull_request:
-    branches: [ master ]
+    branches: [ master, ui-refresh/prototype ]
     paths:
       - 'api/**'
       - 'server/**'
