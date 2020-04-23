@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:WHOFlutter/api/content/schema/question_content.dart';
-import 'package:WHOFlutter/components/dialogs.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -123,45 +123,49 @@ class _QuestionTileState extends State<QuestionTile>
           height: 1,
           thickness: 1,
         ),
-        ExpansionTile(
-          onExpansionChanged: (expanded) {
-            if (expanded) {
-              rotationController.forward();
-            } else {
-              rotationController.reverse();
-            }
-          },
-          key: PageStorageKey<String>(widget.questionItem.title),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              AnimatedBuilder(
-                animation: rotationController,
-                child: Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: rotationController.value,
-                    child: child,
-                  );
-                },
-              ),
-            ],
-          ),
-          title: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12),
-            child: Html(
-              data: widget.questionItem.title,
-              defaultTextStyle: _titleStyle.copyWith(
-                fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+        Material(
+          type: MaterialType.transparency,
+          child: ExpansionTile(
+            onExpansionChanged: (expanded) {
+              if (expanded) {
+                rotationController.forward();
+              } else {
+                rotationController.reverse();
+              }
+            },
+            key: PageStorageKey<String>(widget.questionItem.title),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                AnimatedBuilder(
+                  animation: rotationController,
+                  child:
+                      Icon(Icons.add_circle_outline, color: Color(0xff3C4245)),
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: rotationController.value,
+                      child: child,
+                    );
+                  },
+                ),
+              ],
+            ),
+            title: Padding(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              child: Html(
+                data: widget.questionItem.title,
+                defaultTextStyle: _titleStyle.copyWith(
+                  fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+                ),
               ),
             ),
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
+                child: html(widget.questionItem.body),
+              )
+            ],
           ),
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
-              child: html(widget.questionItem.body),
-            )
-          ],
         ),
       ]),
     );

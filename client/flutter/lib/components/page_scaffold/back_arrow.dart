@@ -1,4 +1,4 @@
-import 'package:WHOFlutter/components/path_widget.dart';
+import 'package:who_app/components/path_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:path_drawing/path_drawing.dart';
 

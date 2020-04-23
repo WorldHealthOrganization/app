@@ -1,5 +1,5 @@
-import 'package:WHOFlutter/components/carousel/carousel_slide.dart';
-import 'package:WHOFlutter/constants.dart';
+import 'package:who_app/components/carousel/carousel_slide.dart';
+import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
@@ -31,7 +31,6 @@ class CarouselView extends StatelessWidget {
             children: this.items,
           ),
         ),
-        
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: SafeArea(
@@ -41,14 +40,18 @@ class CarouselView extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.arrow_back_ios),
-                  onPressed: ()=>pageController.page>0?goToPreviousPage():goToLastPage(),
+                  onPressed: () => pageController.page > 0
+                      ? goToPreviousPage()
+                      : goToLastPage(),
                 ),
                 Container(
                     padding: EdgeInsets.only(bottom: 8),
                     child: _buildPageViewIndicator(context)),
                 IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
-                  onPressed: ()=>pageController.page<this.items.length-1?goToNextPage():goToFirstPage(),
+                  onPressed: () => pageController.page < this.items.length - 1
+                      ? goToNextPage()
+                      : goToFirstPage(),
                 ),
               ],
             ),
@@ -58,12 +61,17 @@ class CarouselView extends StatelessWidget {
     );
   }
 
-  Future<void> goToLastPage() => pageController.animateToPage(this.items.length-1,duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
-  Future<void> goToFirstPage() => pageController.animateToPage(0,duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToLastPage() =>
+      pageController.animateToPage(this.items.length - 1,
+          duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToFirstPage() => pageController.animateToPage(0,
+      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
-  Future<void> goToNextPage() => pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToNextPage() => pageController.nextPage(
+      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
-  Future<void> goToPreviousPage() => pageController.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToPreviousPage() => pageController.previousPage(
+      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
   Widget _buildPageViewIndicator(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -91,7 +99,7 @@ class CarouselView extends StatelessWidget {
                     ),
                     child: Circle(
                       size: 28.0,
-                      color:  Constants.primaryDark,
+                      color: Constants.primaryDark,
                     ),
                   ),
                 ),

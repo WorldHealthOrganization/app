@@ -1,20 +1,20 @@
-import 'package:WHOFlutter/api/content/schema/advice_content.dart';
-import 'package:WHOFlutter/api/content/schema/fact_content.dart';
-import 'package:WHOFlutter/api/content/schema/question_content.dart';
-import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/constants.dart';
-import 'package:WHOFlutter/components/swipeable_open_container.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/main.dart';
-import 'package:WHOFlutter/pages/about_page.dart';
-import 'package:WHOFlutter/pages/facts_carousel_page.dart';
-import 'package:WHOFlutter/pages/latest_numbers.dart';
-import 'package:WHOFlutter/pages/news_feed.dart';
-import 'package:WHOFlutter/pages/protect_yourself.dart';
-import 'package:WHOFlutter/pages/question_index.dart';
-import 'package:WHOFlutter/pages/settings_page.dart';
-import 'package:WHOFlutter/pages/travel_advice.dart';
+import 'package:who_app/api/content/schema/advice_content.dart';
+import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/components/swipeable_open_container.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/main.dart';
+import 'package:who_app/pages/about_page.dart';
+import 'package:who_app/pages/facts_carousel_page.dart';
+import 'package:who_app/pages/latest_numbers.dart';
+import 'package:who_app/pages/news_feed.dart';
+import 'package:who_app/pages/protect_yourself.dart';
+import 'package:who_app/pages/question_index.dart';
+import 'package:who_app/pages/settings_page.dart';
+import 'package:who_app/pages/travel_advice.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -40,6 +40,8 @@ class HomePage extends StatelessWidget {
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
+
+    final Size size = MediaQuery.of(context).size;
 
     return PageScaffold(
         title: S.of(context).homePagePageTitle,
@@ -116,7 +118,10 @@ class HomePage extends StatelessWidget {
                         itemId: null,
                         method: 'Website link');
                     Share.share(
-                        S.of(context).commonWhoAppShareIconButtonDescription);
+                      S.of(context).commonWhoAppShareIconButtonDescription,
+                      sharePositionOrigin:
+                          Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                    );
                   },
                 ),
               ),

@@ -1,6 +1,6 @@
-import 'package:WHOFlutter/api/who_service.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:WHOFlutter/pages/onboarding/permission_request_page.dart';
+import 'package:who_app/api/who_service.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/pages/onboarding/permission_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:s2geometry/s2geometry.dart';
@@ -55,7 +55,8 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
       if (locationReady) {
         final location = await Location().getLocation();
 
-        final latLng = S2LatLng.fromDegrees(location.latitude, location.longitude);
+        final latLng =
+            S2LatLng.fromDegrees(location.latitude, location.longitude);
 
         final cellId = S2CellId.fromLatLng(latLng).parent(MAX_S2_CELL_LEVEL);
 

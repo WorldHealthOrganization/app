@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid_util.dart';
 
 class UserPreferences {
   static final UserPreferences _singleton = UserPreferences._internal();
@@ -50,7 +52,7 @@ class UserPreferences {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
-  
+
   Future<String> getFCMToken() async {
     return (await SharedPreferences.getInstance())
             .getString(UserPreferenceKey.FCMToken.toString()) ??
@@ -68,11 +70,17 @@ class UserPreferences {
 
     // Create if not found
     if (uuid == null) {
-      uuid = Uuid().v4();
+      uuid = Uuid(options: {'grng': UuidUtil.cryptoRNG}).v4();
       await prefs.setString(UserPreferenceKey.ClientUUID.toString(), uuid);
     }
     return uuid;
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID, FCMToken }
+enum UserPreferenceKey {
+  OnboardingCompleted,
+  AnalyticsEnabled,
+  NotificationsEnabled,
+  ClientUUID,
+  FCMToken
+}

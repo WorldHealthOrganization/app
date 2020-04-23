@@ -1,4 +1,4 @@
-name: Source code policy check
+name: Source Code Policy Check
 
 on:
   push:
@@ -24,4 +24,4 @@ jobs:
         # Every file in the repo that is treated as text
         FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
-        python3.8 -W ignore ./scripts/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
+        python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK

@@ -1,11 +1,11 @@
-import 'package:WHOFlutter/api/who_service.dart';
-import 'package:WHOFlutter/components/page_button.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/components/latest_numbers_graph.dart';
+import 'package:who_app/api/who_service.dart';
+import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/latest_numbers_graph.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:WHOFlutter/generated/l10n.dart';
+import 'package:who_app/generated/l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,7 +35,6 @@ class LatestNumbers extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
         title: S.of(context).latestNumbersPageTitle,
-        showShareBottomBar: false,
         announceRouteManually: true,
         body: [
           FutureBuilder(
@@ -107,7 +106,10 @@ class LatestNumbers extends StatelessWidget {
                   ),
                   Text(
                     hasGlobalStats && globalStats['attribution'] != null
-                        ? 'Source: ${globalStats['attribution']}'
+                        ? S
+                            .of(context)
+                            .latestNumbersPageSourceGlobalStatsAttribution(
+                                globalStats['attribution'])
                         : '',
                     style: TextStyle(color: Color(0xff26354E)),
                     textAlign: TextAlign.center,

@@ -1,5 +1,4 @@
 import './page_header.dart';
-import './share_bar.dart';
 import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
@@ -10,14 +9,12 @@ class PageScaffold extends StatelessWidget {
 
   final EdgeInsets padding;
   final bool showBackButton;
-  final bool showShareBottomBar;
   final bool showLogoInHeader;
   final bool announceRouteManually;
 
   PageScaffold({
     @required this.body,
     @required this.title,
-    this.showShareBottomBar = false,
     this.subtitle = "COVID-19",
     this.padding = EdgeInsets.zero,
     this.showBackButton = true,
@@ -47,7 +44,6 @@ class PageScaffold extends StatelessWidget {
                   child: SizedBox(height: 70),
                 ),
               ]),
-              if (this.showShareBottomBar) ShareBar()
             ],
           ),
         ));

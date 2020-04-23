@@ -123,5 +123,6 @@
   "latestNumbersPageGlobalDeaths": "GLOBAL DEATHS",
   "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
   "latestNumbersPageUpdating": "Updating…",
-  "latestNumbersPageViewLiveData": "View Live Data"
+  "latestNumbersPageViewLiveData": "View Live Data",
+  "latestNumbersPageSourceGlobalStatsAttribution": "Source: {attribution}"
 }

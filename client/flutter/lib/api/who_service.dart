@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:WHOFlutter/main.dart';
-import 'package:WHOFlutter/api/endpoints.dart';
-import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:who_app/main.dart';
+import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
@@ -36,8 +36,7 @@ class WhoService {
     return true;
   }
 
-
-  static Future<Map<String,dynamic>> getCaseStats() async {
+  static Future<Map<String, dynamic>> getCaseStats() async {
     Map<String, String> headers = await _getHeaders();
     var url = '$serviceUrl/getCaseStats';
     var response = await http.post(url, headers: headers, body: '');
@@ -74,4 +73,3 @@ class WhoService {
     return "WEB";
   }
 }
-
