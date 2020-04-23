@@ -6,7 +6,7 @@ on:
       - 'api/**'
       - 'client/flutter/**'
   pull_request:
-    branches: [ master ]
+    branches: [ master, ui-refresh/prototype ]
     paths:
       - '.github/workflows/**'
       - 'api/**'
