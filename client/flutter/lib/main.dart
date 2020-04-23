@@ -135,6 +135,7 @@ class _MyAppState extends State<MyApp> {
       //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
       theme: CupertinoThemeData(
+        brightness: Brightness.light,
         primaryColor: Constants.primaryColor,
       ),
       home: Directionality(
