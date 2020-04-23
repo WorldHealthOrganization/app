@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:who_app/constants.dart';
 
 class PageHeader extends StatelessWidget {
 
@@ -8,7 +10,9 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSliverNavigationBar(
-      largeTitle: Text(this.title),
+      backgroundColor: Colors.white,
+      largeTitle: Text(this.title, style: TextStyle(color: Constants.primaryDark),),
+      
     );
   }
 }
