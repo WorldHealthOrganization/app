@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:who_app/pages/about_page.dart';
+import 'package:who_app/pages/main_pages/about_page.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
