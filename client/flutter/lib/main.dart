@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/pages/main_pages/home_page_router.dart';
 import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -8,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
-import 'pages/home_page.dart';
 import './constants.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -123,7 +124,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       title: "WHO COVID-19",
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -133,22 +134,14 @@ class _MyAppState extends State<MyApp> {
       // FIXME Issue #1012 - disabled supported languages for P0
       //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
-      theme: ThemeData(
-        scaffoldBackgroundColor: Constants.backgroundColor,
-        primaryColor: Constants.primaryColor,
-        accentColor: Colors.white,
+      theme: CupertinoThemeData(
         brightness: Brightness.light,
-        appBarTheme: AppBarTheme(brightness: Brightness.light),
-        dividerColor: Color(0xffC9CDD6),
-        buttonTheme: ButtonThemeData(
-          buttonColor: Constants.primaryColor,
-          textTheme: ButtonTextTheme.accent,
-        ),
+        primaryColor: Constants.primaryColor,
       ),
       home: Directionality(
         child: widget.showOnboarding
             ? OnboardingPage(analytics)
-            : HomePage(analytics),
+            : HomePageRouter(analytics),
         textDirection: GlobalWidgetsLocalizations(
           Locale(Intl.getCurrentLocale()),
         ).textDirection,
