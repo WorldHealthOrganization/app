@@ -21,7 +21,7 @@ jobs:
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
-      - run: flutter pub run intl_utils:generate
+      - run: sh ./helper-scripts/generate-l10n-code.sh
         working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
