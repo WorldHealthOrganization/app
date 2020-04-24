@@ -1,7 +1,12 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/pages/main_pages/check_up_page.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
+import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/main_pages/settings_page.dart';
+import 'package:who_app/pages/main_pages/stats_page.dart';
 
 class HomePageRouter extends StatelessWidget {
   final FirebaseAnalytics analytics;
@@ -20,12 +25,11 @@ class HomePageRouter extends StatelessWidget {
           case 0:
             return HomePage();
           case 1:
-            return HomePage();
+            return StatsPage();
           case 2:
-            return HomePage();
-
+            return LearnPage();
           case 3:
-            return HomePage();
+            return CheckUpPage();
           case 4:
             return SettingsPage();
 
@@ -34,6 +38,9 @@ class HomePageRouter extends StatelessWidget {
         }
       },
       tabBar: CupertinoTabBar(
+        inactiveColor: Colors.black,
+        activeColor: Constants.accent,
+
         items: [
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home), title: Text("Home")),
