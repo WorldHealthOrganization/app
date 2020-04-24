@@ -1,0 +1,9 @@
+{
+  "name": "app-dev-tools",
+  "private": true,
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7"
+  },
+  "dependencies": {}
+}
