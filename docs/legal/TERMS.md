@@ -8,7 +8,7 @@ We grant you a non-exclusive, non-transferable, revocable licence to use the App
 
 ## Trademarks
 
-The WHO name and logo, and other trademarks, service marks, graphics and logos used in connection with the App are trademarks of the WHO (collectively “WHO Trademarks”). Other trademarks, service marks, graphics and logos used in connection with the App are the trademarks of their respective owners (collectively “Third Party Trademarks”). The App is protected by applicable intellectual property and proprietary rights.
+The WHO name and logo, and other trademarks, service marks, graphics and logos used in connection with the App are trademarks of the WHO (collectively “WHO Trademarks”). Other trademarks, service marks, graphics and logos used in connection with the App are the trademarks of their respective owners (collectively “Third-Party Trademarks”). The App is protected by applicable intellectual property and proprietary rights.
 
 ## Prohibited Uses
 
