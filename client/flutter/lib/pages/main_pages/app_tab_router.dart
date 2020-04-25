@@ -43,6 +43,7 @@ class AppTabRouter extends StatelessWidget {
 
         items: [
           BottomNavigationBarItem(
+              // TODO: localize title strings
               icon: Icon(CupertinoIcons.home), title: Text("Home")),
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
