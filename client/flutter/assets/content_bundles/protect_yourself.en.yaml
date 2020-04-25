@@ -6,19 +6,19 @@ contents:
     -
       animation_name: wash_hands
       body_html: |
-        *Wash your hands* with soap and water to avoid getting sick and spreading infections to others.
+        <b>Wash your hands</b> with soap and water to avoid getting sick and spreading infections to others.
     -
       image_name: avoid_touch
       body_html: |
-        *Avoid touching* your eyes, mouth, and nose.
+        <b>Avoid touching</b> your eyes, mouth, and nose.
     -
       image_name: elbow
       body_html: |
-        *Cover your mouth and nose* with your bent elbow or tissue when you cough or sneeze.
+        <b>Cover your mouth and nose</b> with your bent elbow or tissue when you cough or sneeze.
     -
       image_name: social_distance
       body_html: |
-        *Stay more than* 1 meter (>3 feet) away from a person who is sick.
+        <b>Stay more than</b> 1 meter (>3 feet) away from a person who is sick.
     -
       image_name: mask
       body_html: |

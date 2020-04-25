@@ -45,6 +45,8 @@
   "homePagePageSliverListSettingsHeader2": "Language",
   "homePagePageSliverListSettings": "Settings",
   "homePagePageSliverListSettingsDataCollection": "Allow WHO to collect analytics for product improvement using Google Analytics",
+  "homePagePageSliverListSettingsNotificationsHeader": "Notifications",
+  "homePagePageSliverListSettingsNotificationsInfo": "Allow WHO to send you notifications to inform you of updates",
   "homePagePageSliverListAboutTheApp": "About the App",
   "homePagePageSliverListAboutTheAppDialog": "The official World Health Organization COVID-19 App.",
   "homePagePageSliverListSupport": "Help support the\nrelief effort",
@@ -124,5 +126,9 @@
   "latestNumbersPageLastUpdated": "Last updated {lastUpd}",
   "latestNumbersPageUpdating": "Updating…",
   "latestNumbersPageViewLiveData": "View Live Data",
-  "latestNumbersPageSourceGlobalStatsAttribution": "Source: {attribution}"
+  "latestNumbersPageSourceGlobalStatsAttribution": "Source: {attribution}",
+  "notificationsEnableDialogHeader": "Enable notifications",
+  "notificationsEnableDialogText":  "As you've previously disabled notifications, we'll need you to manually re-enable notifications via the system settings for the app",
+  "notificationsEnableDialogOptionOpenSettings": "Open Settings",
+  "notificationsEnableDialogOptionLater": "Maybe later"
 }

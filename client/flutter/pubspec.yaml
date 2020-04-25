@@ -47,6 +47,7 @@ dependencies:
   path_provider: ^1.6.5
   fl_chart: ^0.8.7
   s2geometry: 0.1.1
+  notification_permissions: ^0.4.4
 
   intl: ^0.16.0
   flutter_localizations:
