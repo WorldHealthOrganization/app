@@ -50,7 +50,7 @@ void main() async {
       onError: Crashlytics.instance.recordError,
     );
   } else {
-    runApp(MyApp(showOnboarding: false));
+    runApp(MyApp(showOnboarding: true));
   }
 }
 
