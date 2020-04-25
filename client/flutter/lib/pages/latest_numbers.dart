@@ -23,7 +23,7 @@ const name = TextStyle(
 const header =
     TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
-class LatestNumbers extends StatelessWidget {
+class LatestNumbersPage extends StatelessWidget {
   _launchStatsDashboard(BuildContext context) async {
     var url = S.of(context).homePagePageButtonLatestNumbersUrl;
     if (await canLaunch(url)) {
