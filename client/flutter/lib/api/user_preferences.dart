@@ -52,7 +52,7 @@ class UserPreferences {
     return (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
-  
+
   Future<String> getFCMToken() async {
     return (await SharedPreferences.getInstance())
             .getString(UserPreferenceKey.FCMToken.toString()) ??
@@ -70,13 +70,17 @@ class UserPreferences {
 
     // Create if not found
     if (uuid == null) {
-      uuid = Uuid(options: {
-        'grng': UuidUtil.cryptoRNG
-      }).v4();
+      uuid = Uuid(options: {'grng': UuidUtil.cryptoRNG}).v4();
       await prefs.setString(UserPreferenceKey.ClientUUID.toString(), uuid);
     }
     return uuid;
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID, FCMToken }
+enum UserPreferenceKey {
+  OnboardingCompleted,
+  AnalyticsEnabled,
+  NotificationsEnabled,
+  ClientUUID,
+  FCMToken
+}

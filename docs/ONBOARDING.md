@@ -42,19 +42,17 @@ Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any co
 
 This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/flutter` directory is used).
 
+## Initial Setup
+
+Clone the repo and run from the root of the local clone:
+```
+./dev-setup.sh
+```
+
 ## Client
 
-Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
-
-Clone the repo and from the  `client/flutter` directory, run 
-```
-flutter run
-```
-
-### Troubleshooting
-
-* If you built the Ionic client previously and see a warning about husky (git hooks), we no longer use husky git hooks. As long as you have no personal git hooks, run: `pushd .git/hooks && ( ls | grep \.sample -v | xargs rm ) && popd` from repo root after you sync.
+See [client/flutter/README.md](client/flutter/README.md).
 
 ## Server
 
-TODO(crazybob)
+See [server/README.md](server/README.md).

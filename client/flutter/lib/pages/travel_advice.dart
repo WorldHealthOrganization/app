@@ -45,7 +45,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-        showShareBottomBar: false,
         announceRouteManually: true,
         body: [
           _adviceContent != null ? _buildBody(context) : _buildLoading(),

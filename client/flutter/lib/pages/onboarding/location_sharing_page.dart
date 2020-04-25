@@ -55,7 +55,8 @@ class _LocationSharingPageState extends State<LocationSharingPage> {
       if (locationReady) {
         final location = await Location().getLocation();
 
-        final latLng = S2LatLng.fromDegrees(location.latitude, location.longitude);
+        final latLng =
+            S2LatLng.fromDegrees(location.latitude, location.longitude);
 
         final cellId = S2CellId.fromLatLng(latLng).parent(MAX_S2_CELL_LEVEL);
 
