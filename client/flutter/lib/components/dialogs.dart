@@ -46,4 +46,38 @@ class Dialogs {
         bodyText:
             S.of(context).commonContentLoadingDialogUpdateRequiredBodyText);
   }
+
+  static Future<void> showDialogToLaunchNotificationSettings(
+      BuildContext context, Function requestNotificationPermissions) async {
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(S.of(context).notificationsEnableDialogHeader),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [Text(S.of(context).notificationsEnableDialogText)],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(S.of(context).notificationsEnableDialogOptionLater),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            FlatButton(
+              child: Text(
+                  S.of(context).notificationsEnableDialogOptionOpenSettings),
+              onPressed: () {
+                requestNotificationPermissions();
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

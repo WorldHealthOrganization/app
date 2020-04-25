@@ -1,10 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:who_app/api/notifications.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/onboarding/permission_request_page.dart';
-import 'package:flutter/material.dart';
-import 'package:who_app/api/user_preferences.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:who_app/api/who_service.dart';
-import 'dart:io';
 
 class NotificationsPage extends StatefulWidget {
   final VoidCallback onNext;
@@ -16,7 +13,7 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final Notifications _notifications = Notifications();
 
   @override
   Widget build(BuildContext context) {
@@ -33,31 +30,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   void _allowNotifications() async {
-    // iOS needs a call for permissions but Android doesn't.
-    // If the user opts-out on Android we just don't register the device token.
-    if (Platform.isIOS) {
-      await _firebaseMessaging.requestNotificationPermissions(
-          const IosNotificationSettings(
-              sound: true, badge: true, alert: true, provisional: false));
-    }
-
-    await UserPreferences().setNotificationsEnabled(true);
-    _registerFCMToken();
+    await _notifications.attemptEnableNotifications(context: context);
     _complete();
   }
 
   void _skipNotifications() async {
-    await UserPreferences().setNotificationsEnabled(false);
+    await _notifications.disableNotifications();
     _complete();
   }
 
   void _complete() {
     widget.onNext();
-  }
-
-  void _registerFCMToken() async {
-    final token = await _firebaseMessaging.getToken();
-    await WhoService.putDeviceToken(token);
-    await UserPreferences().setFCMToken(token);
   }
 }

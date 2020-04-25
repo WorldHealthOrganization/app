@@ -106,6 +106,8 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - notification_permissions (0.4.4):
+    - Flutter
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
@@ -139,6 +141,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - location (from `.symlinks/plugins/location/ios`)
   - location_web (from `.symlinks/plugins/location_web/ios`)
+  - notification_permissions (from `.symlinks/plugins/notification_permissions/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
@@ -186,6 +189,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/location/ios"
   location_web:
     :path: ".symlinks/plugins/location_web/ios"
+  notification_permissions:
+    :path: ".symlinks/plugins/notification_permissions/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
@@ -233,6 +238,7 @@ SPEC CHECKSUMS:
   location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   location_web: b94e7433cfe28c0f7c8923c2ee482824b32e55a7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  notification_permissions: b74860c2967c1579243a675e63cd55e0ae75cef7
   package_info: 48b108e75b8802c2d5e126f208ef540561c98aef
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0

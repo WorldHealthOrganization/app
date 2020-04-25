@@ -107,6 +107,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Analytics"),
         "homePagePageSliverListSettingsHeader2":
             MessageLookupByLibrary.simpleMessage("Language"),
+        "homePagePageSliverListSettingsNotificationsHeader":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "homePagePageSliverListSettingsNotificationsInfo":
+            MessageLookupByLibrary.simpleMessage(
+                "Allow WHO to send you notifications to inform you of updates"),
         "homePagePageSliverListShareTheApp":
             MessageLookupByLibrary.simpleMessage("Share the App"),
         "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
@@ -189,6 +194,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsFeedSliverListNewsFeedItemUrl4": MessageLookupByLibrary.simpleMessage(
             "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings"),
         "newsFeedTitle": MessageLookupByLibrary.simpleMessage("News & Press"),
+        "notificationsEnableDialogHeader":
+            MessageLookupByLibrary.simpleMessage("Enable notifications"),
+        "notificationsEnableDialogOptionLater":
+            MessageLookupByLibrary.simpleMessage("Maybe later"),
+        "notificationsEnableDialogOptionOpenSettings":
+            MessageLookupByLibrary.simpleMessage("Open Settings"),
+        "notificationsEnableDialogText": MessageLookupByLibrary.simpleMessage(
+            "As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app"),
         "notificationsPagePermissionRequestBackgroundImage":
             MessageLookupByLibrary.simpleMessage(
                 "assets/onboarding/onboarding_notifications.png"),
