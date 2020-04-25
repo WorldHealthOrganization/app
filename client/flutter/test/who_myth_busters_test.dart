@@ -30,8 +30,7 @@ void main() {
     await tester.pumpWidget(testableWidget(child: AboutPage()));
     await tester.pumpAndSettle();
     expect(
-      find.text(
-         "About the App"),
+      find.text("About the App"),
       findsOneWidget,
     );
   });
