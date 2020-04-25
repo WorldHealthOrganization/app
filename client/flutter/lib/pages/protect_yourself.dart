@@ -1,3 +1,4 @@
+import 'package:flutter_html/flutter_html.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -6,6 +7,7 @@ import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/generated/l10n.dart';
+import 'package:html/dom.dart' as dom;
 
 class ProtectYourself extends StatefulWidget {
   final FactsDataSource dataSource;
@@ -54,10 +56,26 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   }
 
   List<Widget> _buildCards() {
+    final TextStyle normalText = TextStyle(
+      color: Constants.textColor,
+      fontSize: 16 * MediaQuery.textScaleFactorOf(context),
+      height: 1.4,
+    );
+    final TextStyle boldText = normalText.copyWith(fontWeight: FontWeight.w700);
     return (_factContent?.items ?? []).map((fact) {
-      print("fact body = ${fact.body}, image = ${fact.imageName}");
       return _ProtectYourselfCard(
-        message: _message(fact.body),
+        message: Html(
+            data: fact.body ?? "",
+            defaultTextStyle: normalText,
+            customTextStyle: (dom.Node node, TextStyle baseStyle) {
+              if (node is dom.Element) {
+                switch (node.localName) {
+                  case "b":
+                    return baseStyle.merge(boldText);
+                }
+              }
+              return baseStyle.merge(normalText);
+            }),
         child: fact.animationName != null
             ? _getAnimation(fact.animationName)
             : _getSVG('assets/svg/${fact.imageName}.svg'),
@@ -85,53 +103,6 @@ class _ProtectYourselfState extends State<ProtectYourself> {
           ),
         ),
       );
-
-  // TODO: Change this to use HTML content styling like the other pages?
-  Text _message(String input) {
-    final TextStyle normal = TextStyle(
-      color: Constants.textColor,
-      fontSize: 16,
-      height: 1.4,
-    );
-    final TextStyle bold = TextStyle(
-      color: Constants.textColor,
-      fontSize: 16,
-      fontWeight: FontWeight.w700,
-    );
-    // Make sections delineated by asterisk * bold. For example:
-    // String text = '*This is bold* this is not';
-
-    var regex = RegExp(r'\*([^,*]+)\*');
-
-    var matched = regex.allMatches(input);
-
-    var spans = <TextSpan>[];
-    var before = 0;
-    for (var match in matched) {
-      var value = match.group(1);
-      if (before < match.start) {
-        spans.add(
-          TextSpan(
-            text: input.substring(before, match.start),
-          ),
-        );
-      }
-
-      spans.add(
-        TextSpan(text: value, style: bold),
-      );
-      before = match.end;
-    }
-
-    spans.add(
-      TextSpan(
-        text: input.substring(before),
-      ),
-    );
-    return Text.rich(
-      TextSpan(style: normal, children: spans),
-    );
-  }
 }
 
 class _ProtectYourselfCard extends StatelessWidget {
@@ -140,7 +111,7 @@ class _ProtectYourselfCard extends StatelessWidget {
     @required this.child,
   });
 
-  final Text message;
+  final Html message;
   final Widget child;
 
   @override

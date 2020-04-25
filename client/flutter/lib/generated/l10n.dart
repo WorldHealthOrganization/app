@@ -398,6 +398,24 @@ class S {
     );
   }
 
+  String get homePagePageSliverListSettingsNotificationsHeader {
+    return Intl.message(
+      'Notifications',
+      name: 'homePagePageSliverListSettingsNotificationsHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettingsNotificationsInfo {
+    return Intl.message(
+      'Allow WHO to send you notifications to inform you of updates',
+      name: 'homePagePageSliverListSettingsNotificationsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
       'About the App',
@@ -1053,6 +1071,42 @@ class S {
       name: 'latestNumbersPageSourceGlobalStatsAttribution',
       desc: '',
       args: [attribution],
+    );
+  }
+
+  String get notificationsEnableDialogHeader {
+    return Intl.message(
+      'Enable notifications',
+      name: 'notificationsEnableDialogHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogText {
+    return Intl.message(
+      'As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app',
+      name: 'notificationsEnableDialogText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionOpenSettings {
+    return Intl.message(
+      'Open Settings',
+      name: 'notificationsEnableDialogOptionOpenSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionLater {
+    return Intl.message(
+      'Maybe later',
+      name: 'notificationsEnableDialogOptionLater',
+      desc: '',
+      args: [],
     );
   }
 }

@@ -1,22 +1,22 @@
 import 'dart:async';
 
-import 'package:who_app/api/user_preferences.dart';
-import 'package:who_app/pages/onboarding/onboarding_page.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import 'package:package_info/package_info.dart';
-import 'pages/home_page.dart';
-import './constants.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'generated/l10n.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:who_app/api/who_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+import 'package:package_info/package_info.dart';
+import 'package:who_app/api/notifications.dart';
+import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/pages/onboarding/onboarding_page.dart';
+
+import './constants.dart';
+import 'generated/l10n.dart';
+import 'pages/home_page.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -67,7 +67,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final Notifications _notifications = Notifications();
 
   _MyAppState(this.analytics, this.observer);
   final FirebaseAnalytics analytics;
@@ -79,39 +79,8 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    // onMessage: Fires when app is foreground
-    // onLaunch: Fires when user taps and app is in background.
-    // onResume: Fires when user taps and app is terminated
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-      },
-    );
-
-    updateFCMToken();
-  }
-
-  // Ask firebase for a token on every launch.
-  // If the token is different from what we have stored...update it.
-  updateFCMToken() async {
-    // Only check if notifications are enabled.
-    bool notificationsEnabled =
-        await UserPreferences().getNotificationsEnabled();
-
-    if (notificationsEnabled) {
-      final token = await _firebaseMessaging.getToken();
-      final storedToken = await UserPreferences().getFCMToken();
-      if (token != storedToken) {
-        await WhoService.putDeviceToken(token);
-        await UserPreferences().setFCMToken(token);
-      }
-    }
+    _notifications.configure();
+    _notifications.updateFirebaseToken();
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement

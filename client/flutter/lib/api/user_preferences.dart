@@ -53,15 +53,15 @@ class UserPreferences {
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
 
-  Future<String> getFCMToken() async {
+  Future<String> getFirebaseToken() async {
     return (await SharedPreferences.getInstance())
-            .getString(UserPreferenceKey.FCMToken.toString()) ??
-        "";
+        .getString(UserPreferenceKey.FirebaseToken.toString());
   }
 
-  Future<bool> setFCMToken(String value) async {
+  // Firebase
+  Future<bool> setFirebaseToken(String value) async {
     return (await SharedPreferences.getInstance())
-        .setString(UserPreferenceKey.FCMToken.toString(), value);
+        .setString(UserPreferenceKey.FirebaseToken.toString(), value);
   }
 
   Future<String> getClientUuid() async {
@@ -82,5 +82,5 @@ enum UserPreferenceKey {
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,
-  FCMToken
+  FirebaseToken
 }
