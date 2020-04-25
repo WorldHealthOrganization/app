@@ -9,8 +9,7 @@ typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 /// and a series of advice items comprising text and image pairs.
 class AdviceContent extends ContentBase {
   String banner;
-  String recommendations;
-  String recommendationsLink;
+  String body;
   List<AdviceItem> items;
 
   static Future<AdviceContent> travelAdvice(Locale locale) async {
@@ -20,15 +19,12 @@ class AdviceContent extends ContentBase {
 
   AdviceContent(ContentBundle bundle) : super(bundle, schemaName: "advice") {
     try {
-      this.banner = bundle.getString('banner_html') ?? "";
-      this.recommendations = bundle.getString('recommendations_html') ?? "";
-      this.recommendationsLink =
-          bundle.getString('recommendations_link') ?? "https://www.who.int";
+      this.banner = bundle.getString('banner') ?? "";
+      this.body = bundle.getString('body') ?? "";
       this.items = bundle.contentItems
           .map((item) => AdviceItem(
-                imageName: item['image_name'],
-                body:
-                    (item['body_html'] ?? "").trim(), // remove trailing newline
+                title: (item['title'] ?? "").trim(),
+                body: (item['body'] ?? "").trim(), // remove trailing newline
               ))
           .toList();
     } catch (err) {
@@ -38,14 +34,13 @@ class AdviceContent extends ContentBase {
   }
 }
 
-/// Advice ('advice' schema) items including body text and an image name
-/// referencing a local asset.
+/// Advice ('advice' schema) items including title and body text.
 class AdviceItem {
-  final String imageName;
+  final String title;
   final String body;
 
   AdviceItem({
+    @required this.title,
     @required this.body,
-    this.imageName,
   });
 }
