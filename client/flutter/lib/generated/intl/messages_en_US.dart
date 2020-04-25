@@ -88,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePagePageButtonYourQuestionsAnswered":
             MessageLookupByLibrary.simpleMessage("Questions & Answers"),
         "homePagePageSliverListAboutTheApp":
-            MessageLookupByLibrary.simpleMessage("About the App"),
+            MessageLookupByLibrary.simpleMessage("About the app"),
         "homePagePageSliverListAboutTheAppDialog":
             MessageLookupByLibrary.simpleMessage(
                 "The official World Health Organization COVID-19 App."),
@@ -113,7 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Allow WHO to send you notifications to inform you of updates"),
         "homePagePageSliverListShareTheApp":
-            MessageLookupByLibrary.simpleMessage("Share the App"),
+            MessageLookupByLibrary.simpleMessage("Share the app"),
         "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
             "Help support the\nrelief effort"),
         "homePagePageSubTitle":
