@@ -1,5 +1,7 @@
 # who_app
 
+WHO COVID-19 app.
+
 ## Getting Started
 
 Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
