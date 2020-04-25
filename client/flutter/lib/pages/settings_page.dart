@@ -1,11 +1,14 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
+import 'package:who_app/pages/about_page.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -102,6 +105,7 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      showBackButton: false,
       body: [
         SliverList(
             delegate: SliverChildListDelegate(
@@ -127,6 +131,13 @@ class _SettingsPageState extends State<SettingsPage>
                         .homePagePageSliverListSettingsNotificationsInfo,
                     isToggled: _notificationsEnabled ?? false,
                     onToggle: _toggleNotifications),
+                SizedBox(
+                  height: 20,
+                ),
+                menu(context),
+                Container(
+                  height: 24,
+                ),
 
                 /// TODO: Implement UI:-
                 /// TODO:   selection of language preferences already created PR for it (#654)
@@ -136,6 +147,65 @@ class _SettingsPageState extends State<SettingsPage>
         ))
       ],
       title: S.of(context).homePagePageSliverListSettings,
+    );
+  }
+
+  Widget menu(BuildContext context) {
+    final divider = Container(height: 1, color: Color(0xffC9CDD6));
+    final Size size = MediaQuery.of(context).size;
+    return Column(children: <Widget>[
+      divider,
+      menuItem(
+        title: S.of(context).homePagePageSliverListShareTheApp,
+        onTap: () {
+          FirebaseAnalytics().logShare(
+              contentType: 'App', itemId: null, method: 'Website link');
+          Share.share(
+            S.of(context).commonWhoAppShareIconButtonDescription,
+            sharePositionOrigin:
+                Rect.fromLTWH(0, 0, size.width, size.height / 2),
+          );
+        },
+      ),
+      divider,
+      // TODO: Localize
+      menuItem(
+          title: 'Provide app feedback',
+          onTap: () {
+            FirebaseAnalytics().logEvent(name: 'Feedback');
+            // TODO: Implement feedback #989 #1015
+          }),
+      divider,
+      menuItem(
+        title: S.of(context).homePagePageSliverListAboutTheApp,
+        onTap: () {
+          FirebaseAnalytics().logEvent(name: 'About');
+          return Navigator.of(context)
+              .push(MaterialPageRoute(builder: (c) => AboutPage()));
+        },
+      ),
+      divider,
+    ]);
+  }
+
+  Widget menuItem({BuildContext context, String title, Function() onTap}) {
+    return Material(
+      color: Colors.white,
+      child: ListTile(
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 8,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
+        trailing: Icon(
+          Icons.arrow_forward_ios,
+          color: Color(0xFFC9CDD6),
+        ),
+        onTap: onTap,
+      ),
     );
   }
 
