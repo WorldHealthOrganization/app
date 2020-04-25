@@ -21,8 +21,6 @@ jobs:
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/flutter
-      - run: sh ./helper-scripts/generate-l10n-code.sh
-        working-directory: ./client/flutter
       - run: flutter build ios --no-codesign
         working-directory: ./client/flutter
       - run: git diff --exit-code
@@ -37,8 +35,6 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/flutter
-      - run: sh ./helper-scripts/generate-l10n-code.sh
         working-directory: ./client/flutter
       - run: flutter build appbundle
         working-directory: ./client/flutter
