@@ -1,4 +1,4 @@
-name: Source Code Policy Check
+name: Policy Check
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  policy_check:
     name: Check source code for policy violations
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +25,15 @@ jobs:
         FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
         python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
+  doc_formatting:
+    name: Documentation formatting
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: npm install
+      working-directory: ./tools
+    - run: npx prettier -c '../**/*.md'
+      working-directory: ./tools
