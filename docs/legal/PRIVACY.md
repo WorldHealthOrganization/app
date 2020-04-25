@@ -17,9 +17,9 @@ Our Apps are not intended to be used by or to solicit information of any kind fr
 
 The use of data described in the WHO Privacy Policy applies to the Service. Additionally, we use Usage Data to enable participation in interactive features of our Service and to provide you with information if you opt into receiving information through the Service or engage with interactive features.
 
-## Third Party Apps and Services
+## Third-Party Apps and Services
 
-Third party applications and/or services linked to or embedded in the App governed by those third party security and privacy policies (see [third party tools][8]). If you consent to receiving push notifications, a third party provider may collect device and regional location information, but your identity or Personal Data will not be revealed to us as a result of enabling such notifications. You may stop push notifications by adjusting your device settings.
+Third-party applications and/or services linked to or embedded in the App governed by those third-party security and privacy policies (see [third-party tools][8]). If you consent to receiving push notifications, a third-party provider may collect device and regional location information, but your identity or Personal Data will not be revealed to us as a result of enabling such notifications. You may stop push notifications by adjusting your device settings.
 
 ## Disclaimer
 
