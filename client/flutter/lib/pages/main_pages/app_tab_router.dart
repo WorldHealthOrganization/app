@@ -13,9 +13,9 @@ class AppTabRouter extends StatelessWidget {
 
   AppTabRouter(this.analytics);
 
-  _logAnalyticsEvent(String name) async {
-    await analytics.logEvent(name: name);
-  }
+  // _logAnalyticsEvent(String name) async {
+  //   await analytics.logEvent(name: name);
+  // }
 
   @override
   Widget build(BuildContext context) {
