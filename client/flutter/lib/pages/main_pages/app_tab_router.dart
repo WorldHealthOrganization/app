@@ -8,10 +8,10 @@ import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/main_pages/settings_page.dart';
 import 'package:who_app/pages/main_pages/stats_page.dart';
 
-class HomePageRouter extends StatelessWidget {
+class AppTabRouter extends StatelessWidget {
   final FirebaseAnalytics analytics;
 
-  HomePageRouter(this.analytics);
+  AppTabRouter(this.analytics);
 
   _logAnalyticsEvent(String name) async {
     await analytics.logEvent(name: name);

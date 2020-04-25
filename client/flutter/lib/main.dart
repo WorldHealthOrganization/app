@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
-import 'package:who_app/pages/main_pages/home_page_router.dart';
+import 'package:who_app/pages/main_pages/app_tab_router.dart';
 import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -141,7 +141,7 @@ class _MyAppState extends State<MyApp> {
       home: Directionality(
         child: widget.showOnboarding
             ? OnboardingPage(analytics)
-            : HomePageRouter(analytics),
+            : AppTabRouter(analytics),
         textDirection: GlobalWidgetsLocalizations(
           Locale(Intl.getCurrentLocale()),
         ).textDirection,
