@@ -24,7 +24,7 @@ class PermissionRequestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-          child: Stack(
+      child: Stack(
         children: <Widget>[
           Align(
             alignment: Alignment(1, -0.3),

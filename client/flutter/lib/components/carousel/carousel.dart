@@ -22,8 +22,16 @@ class CarouselView extends StatelessWidget {
             return LinearGradient(
                 begin: Alignment(0.0, 0.0),
                 end: Alignment(0.0, 1.0),
-                colors: <Color>[CupertinoColors.white, CupertinoColors.white, Color(0xf).withOpacity(0)],
-                stops: [0.0, 0.5, 0.6]).createShader(bounds);
+                colors: <Color>[
+                  CupertinoColors.white,
+                  CupertinoColors.white,
+                  Color(0xf).withOpacity(0)
+                ],
+                stops: [
+                  0.0,
+                  0.5,
+                  0.6
+                ]).createShader(bounds);
           },
           child: PageView(
             controller: pageController,

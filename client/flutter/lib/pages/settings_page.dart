@@ -218,7 +218,7 @@ class _SettingsPageState extends State<SettingsPage>
     return Semantics(
       toggled: isToggled,
       child: Material(
-              child: InkWell(
+        child: InkWell(
           onTap: () => onToggle(!isToggled),
           child: Padding(
             padding: const EdgeInsets.symmetric(

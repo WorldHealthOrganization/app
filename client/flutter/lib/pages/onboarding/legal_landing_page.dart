@@ -54,7 +54,8 @@ class LegalLandingPage extends StatelessWidget {
                 SizedBox(height: 17),
                 Text.rich(
                   TextSpan(
-                    style: TextStyle(color: CupertinoColors.systemGrey, height: 1.4),
+                    style: TextStyle(
+                        color: CupertinoColors.systemGrey, height: 1.4),
                     children: [
                       TextSpan(text: S.of(context).legalLandingPageButtonAgree),
                       LinkTextSpan(

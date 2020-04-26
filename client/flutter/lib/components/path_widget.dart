@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+
 /// Draws a path with custom paint and a nudge property.
 class PathWidget extends LeafRenderObjectWidget {
   /// The path that will be drawn inside this widget.

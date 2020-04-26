@@ -61,7 +61,7 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,   
+        backgroundColor: CupertinoColors.white,
         middle: PageHeader.buildTitle("Get the Facts"),
       ),
       child: Container(
