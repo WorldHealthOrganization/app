@@ -346,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share the App',
+      'Share the app',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -418,7 +418,7 @@ class S {
 
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the App',
+      'About the app',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
