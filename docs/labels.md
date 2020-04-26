@@ -1,3 +1,5 @@
+## GitHub Labels
+
 We use labels liberally for our issues and pull requests.
 Labels have prefixes as follow:
 

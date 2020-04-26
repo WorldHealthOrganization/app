@@ -12,8 +12,6 @@ Where to find answers to your questions:
 
 - GitHub Issues: https://github.com/WorldHealthOrganization/app/issues
 - Slack: _We apologize, but the Slack is closed to new contributors until initial app release_
-- Rough engineering backlog: https://github.com/WorldHealthOrganization/app/projects/1
-- Most up-to-date preview of app in development: _Will be re-added soon_
 
 ### Slack
 
