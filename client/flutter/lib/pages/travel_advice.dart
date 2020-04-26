@@ -55,7 +55,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
-          padding: const EdgeInsets.all(26.0),
+          padding: const EdgeInsets.all(28.0),
           child: Column(children: <Widget>[
             if (_adviceContent?.banner != null)
               Column(
@@ -94,7 +94,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
           ])),
       ..._getItems(context),
       SizedBox(
-        height: 26,
+        height: 28,
       ),
     ]));
   }
@@ -124,7 +124,7 @@ class TravelAdviceListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(26.0),
+      padding: const EdgeInsets.all(28.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
