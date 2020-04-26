@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -10,7 +9,7 @@ void main() {
       TestWidgetsFlutterBinding.ensureInitialized();
 
   Widget testableWidget({Widget child}) {
-    return MaterialApp(
+    return CupertinoApp(
       title: "WHO",
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

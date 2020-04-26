@@ -1,6 +1,5 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/latest_numbers.dart';
 import 'package:who_app/pages/main_pages/check_up_page.dart';
@@ -38,7 +37,7 @@ class AppTabRouter extends StatelessWidget {
         }
       },
       tabBar: CupertinoTabBar(
-        inactiveColor: Colors.black,
+        inactiveColor: CupertinoColors.black,
         activeColor: Constants.accent,
         items: [
           BottomNavigationBarItem(

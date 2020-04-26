@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class ListItem extends StatelessWidget {
   final Widget titleWidget;
@@ -12,7 +12,7 @@ class ListItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          this.titleWidget ?? Divider(),
+          this.titleWidget ?? Container(),
           Text(
             this.message,
             style: TextStyle(fontSize: 21),

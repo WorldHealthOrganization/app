@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
@@ -22,45 +23,49 @@ class AboutPage extends StatelessWidget {
       SliverList(
           delegate: SliverChildListDelegate([
         Container(
-          color: Colors.white,
+          color: CupertinoColors.white,
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: Text.rich(
-            TextSpan(style: TextStyle(color: Colors.black), children: [
+            TextSpan(style: TextStyle(color: CupertinoColors.black), children: [
               LinkTextSpan(
                   text: S.of(context).aboutPageTermsOfServiceLinkText,
                   style: TextStyle(
-                      decoration: TextDecoration.underline, color: Colors.blue),
+                      decoration: TextDecoration.underline,
+                      color: CupertinoColors.activeBlue),
                   url: S.of(context).aboutPageTermsOfServiceLinkUrl,
                   onLinkTap: (v) => launch(v)),
               TextSpan(text: "  —  "),
               LinkTextSpan(
                   text: S.of(context).aboutPagePrivacyPolicyLinkText,
                   style: TextStyle(
-                      decoration: TextDecoration.underline, color: Colors.blue),
+                      decoration: TextDecoration.underline,
+                      color: CupertinoColors.activeBlue),
                   url: S.of(context).aboutPagetermsOfServiceLinkUrl,
                   onLinkTap: (v) => launch(v)),
               TextSpan(text: "  —  "),
               LinkTextSpan(
-                  text: S.of(context).aboutPageViewLicensesLinkText,
-                  style: TextStyle(
-                      decoration: TextDecoration.underline, color: Colors.blue),
-                  onLinkTap: (v) => showLicensePage(context: context)),
+                text: S.of(context).aboutPageViewLicensesLinkText,
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: CupertinoColors.activeBlue),
+                onLinkTap: (v) => showLicensePage(context: context),
+              ),
             ]),
             textAlign: TextAlign.center,
           ),
         ),
         Container(
-          color: Colors.white,
+          color: CupertinoColors.white,
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: Text(
             S
                 .of(context)
                 .aboutPageBuiltByCreditText(copyrightString, versionString),
-            style: TextStyle(color: Colors.black, fontSize: 16),
+            style: TextStyle(color: CupertinoColors.black, fontSize: 16),
           ),
         ),
         Container(
-            color: Colors.white,
+            color: CupertinoColors.white,
             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             child: FutureBuilder(
                 future: DefaultAssetBundle.of(context)
@@ -83,7 +88,8 @@ class AboutPage extends StatelessWidget {
                   return Text(
                     teamNames,
                     softWrap: true,
-                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    style:
+                        TextStyle(color: CupertinoColors.black, fontSize: 16),
                   );
                 })),
       ])),

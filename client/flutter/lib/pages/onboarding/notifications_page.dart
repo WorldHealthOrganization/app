@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/onboarding/permission_request_page.dart';

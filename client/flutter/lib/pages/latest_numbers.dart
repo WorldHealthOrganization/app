@@ -3,25 +3,24 @@ import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/latest_numbers_graph.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import 'package:who_app/generated/l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const number =
-    TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold);
+const number = TextStyle(
+    color: CupertinoColors.white, fontSize: 36, fontWeight: FontWeight.bold);
 const loadingStyle = TextStyle(
-  color: Colors.white,
+  color: CupertinoColors.white,
   fontSize: 36,
 );
 const name = TextStyle(
-  color: Colors.white,
+  color: CupertinoColors.white,
   fontSize: 16,
   fontWeight: FontWeight.w700,
 );
-const header =
-    TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
+const header = TextStyle(
+    color: CupertinoColors.black, fontSize: 24, fontWeight: FontWeight.w800);
 
 class LatestNumbersPage extends StatelessWidget {
   _launchStatsDashboard(BuildContext context) async {
@@ -124,7 +123,7 @@ class LatestNumbersPage extends StatelessWidget {
                       Color(0xFF3D8AC4),
                       S.of(context).latestNumbersPageViewLiveData,
                       () => _launchStatsDashboard(context),
-                      verticalPadding: 24,
+                      verticalPadding: 12,
                       borderRadius: 36,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,13 +149,10 @@ class StatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 6),
-        child: Card(
+        child: ClipRRect(
             clipBehavior: Clip.antiAlias,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
             ),
             child: Stack(
               children: <Widget>[

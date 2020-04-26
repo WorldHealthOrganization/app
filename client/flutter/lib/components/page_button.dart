@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PageButton extends StatelessWidget {
@@ -33,9 +32,8 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(this.borderRadius)),
+    return CupertinoButton(
+      borderRadius: BorderRadius.circular(this.borderRadius),
       color: backgroundColor,
       child: Padding(
           padding: EdgeInsets.symmetric(
@@ -49,11 +47,13 @@ class PageButton extends StatelessWidget {
                 this.title,
                 textAlign: TextAlign.left,
                 style: titleStyle?.copyWith(
-                        letterSpacing: Constants.buttonTextSpacing) ??
+                      letterSpacing: Constants.buttonTextSpacing,
+                    ) ??
                     TextStyle(
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: Constants.buttonTextSpacing,
-                        fontSize: 18),
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: Constants.buttonTextSpacing,
+                      fontSize: 18,
+                    ),
               ),
               // Makes sure text is centered properly when no description is provided
               SizedBox(height: description.isNotEmpty ? 4 : 0),
@@ -64,8 +64,9 @@ class PageButton extends StatelessWidget {
                       textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
                           MediaQuery.textScaleFactorOf(context),
                       style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: descriptionColor ?? Color(0xFFC9CDD6)),
+                        fontWeight: FontWeight.w400,
+                        color: descriptionColor ?? Color(0xFFC9CDD6),
+                      ),
                     )
                   : Container()
             ],

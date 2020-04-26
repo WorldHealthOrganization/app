@@ -5,7 +5,7 @@ import 'package:who_app/pages/onboarding/location_sharing_page.dart';
 import 'package:who_app/pages/onboarding/notifications_page.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage(this.analytics, {Key key}) : super(key: key);
@@ -75,7 +75,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await UserPreferences().setAnalyticsEnabled(true);
     await Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
+      CupertinoPageRoute(
         builder: (BuildContext context) => AppTabRouter(widget.analytics),
       ),
     );
