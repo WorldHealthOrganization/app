@@ -2,10 +2,10 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/latest_numbers.dart';
-import 'package:who_app/pages/main_pages/check_up_page.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
+import 'package:who_app/pages/symptom_checker/symptom_checker_page.dart';
 
 class AppTabRouter extends StatelessWidget {
   final FirebaseAnalytics analytics;
@@ -28,7 +28,7 @@ class AppTabRouter extends StatelessWidget {
           case 2:
             return LearnPage();
           case 3:
-            return CheckUpPage();
+            return SymptomCheckerPage();
           case 4:
             return SettingsPage();
 
