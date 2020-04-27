@@ -21,6 +21,7 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSliverNavigationBar(
+      heroTag: this.title,
       leading: this.disableBackButton ? Container() : null,
       largeTitle: buildTitle(this.title),
     );
