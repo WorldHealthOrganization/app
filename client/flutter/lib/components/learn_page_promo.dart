@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/constants.dart';
 
-class LearnPageHeader extends StatelessWidget {
+class LearnPagePromo extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String buttonText;
+  final RouteLink link;
+
+  const LearnPagePromo(
+      {Key key, this.title, this.subtitle, this.buttonText, this.link})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Container(
+    return Container(
       padding: EdgeInsets.all(20),
       color: Color(0xffD5F5FD),
       child: SafeArea(
@@ -13,7 +22,7 @@ class LearnPageHeader extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Get the Facts",
+              title,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Constants.primaryDark,
@@ -22,7 +31,7 @@ class LearnPageHeader extends StatelessWidget {
               ),
             ),
             Text(
-              "Busting myths about COVID-19",
+              subtitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Constants.textColor,
@@ -40,17 +49,20 @@ class LearnPageHeader extends StatelessWidget {
                 vertical: 8,
               ),
               child: Text(
-                "View",
+                buttonText,
                 style: TextStyle(
                   color: Constants.primaryColor,
                   fontSize: 18,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                return Navigator.of(context, rootNavigator: true)
+                    .pushNamed(link.route, arguments: link.args);
+              },
             ),
           ],
         ),
       ),
-    ));
+    );
   }
 }

@@ -1,16 +1,13 @@
 import 'package:who_app/api/user_preferences.dart';
-import 'package:who_app/pages/main_pages/app_tab_router.dart';
 import 'package:who_app/pages/onboarding/legal_landing_page.dart';
 import 'package:who_app/pages/onboarding/location_sharing_page.dart';
 import 'package:who_app/pages/onboarding/notifications_page.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage(this.analytics, {Key key}) : super(key: key);
+  const OnboardingPage({Key key}) : super(key: key);
 
-  final FirebaseAnalytics analytics;
 
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -73,11 +70,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _onDone() async {
     await UserPreferences().setOnboardingCompleted(true);
     await UserPreferences().setAnalyticsEnabled(true);
-    await Navigator.pushReplacement(
-      context,
-      CupertinoPageRoute(
-        builder: (BuildContext context) => AppTabRouter(widget.analytics),
-      ),
+    await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
+      '/',
     );
   }
 }
