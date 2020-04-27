@@ -8,7 +8,7 @@ import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:who_app/pages/about_page.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -105,6 +105,9 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      disableBackButton: true,
+      color: Constants.greyBackgroundColor,
+      heroTag: HeroTags.settings,
       body: [
         SliverList(
             delegate: SliverChildListDelegate(
@@ -178,9 +181,7 @@ class _SettingsPageState extends State<SettingsPage>
       menuItem(
         title: S.of(context).homePagePageSliverListAboutTheApp,
         onTap: () {
-          FirebaseAnalytics().logEvent(name: 'About');
-          return Navigator.of(context)
-              .push(CupertinoPageRoute(builder: (c) => AboutPage()));
+          return Navigator.of(context, rootNavigator: true).pushNamed('/about');
         },
       ),
       divider,
@@ -217,6 +218,7 @@ class _SettingsPageState extends State<SettingsPage>
     return Semantics(
       toggled: isToggled,
       child: Material(
+        color: Constants.greyBackgroundColor,
         child: InkWell(
           onTap: () => onToggle(!isToggled),
           child: Padding(

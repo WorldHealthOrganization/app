@@ -3,10 +3,12 @@ import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/latest_numbers_graph.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/constants.dart';
 
 import 'package:who_app/generated/l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 const number = TextStyle(
     color: CupertinoColors.white, fontSize: 36, fontWeight: FontWeight.bold);
@@ -32,7 +34,12 @@ class LatestNumbersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(title: S.of(context).latestNumbersPageTitle, body: [
+    return PageScaffold(
+      color: Constants.greyBackgroundColor,
+      disableBackButton: true,
+      title: S.of(context).latestNumbersPageTitle,
+      heroTag: HeroTags.stats,
+      body: [
       FutureBuilder(
           future: WhoService.getCaseStats(),
           builder: (context, snapshot) {
