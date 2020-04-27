@@ -105,7 +105,6 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      showBackButton: false,
       body: [
         SliverList(
             delegate: SliverChildListDelegate(

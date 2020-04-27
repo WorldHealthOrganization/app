@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
-  final String subtitle;
 
   final List<Widget> body;
 
@@ -11,15 +10,16 @@ class PageScaffold extends StatelessWidget {
   final bool showBackButton;
   final bool showLogoInHeader;
   final bool announceRouteManually;
+  final Color dividerColor;
 
   PageScaffold({
     @required this.body,
     @required this.title,
-    this.subtitle = "COVID-19",
     this.padding = EdgeInsets.zero,
-    this.showBackButton = true,
+    this.showBackButton = false,
     this.showLogoInHeader = false,
     this.announceRouteManually = false,
+    this.dividerColor = const Color(0xffC9CDD6),
   });
 
   @override
@@ -33,11 +33,11 @@ class PageScaffold extends StatelessWidget {
               CustomScrollView(slivers: [
                 PageHeader(
                   title: this.title,
-                  subtitle: this.subtitle,
                   padding: this.padding,
                   showBackButton: this.showBackButton,
                   showLogo: this.showLogoInHeader,
                   announceRouteManually: announceRouteManually,
+                  dividerColor: this.dividerColor,
                 ),
                 ...this.body,
                 SliverToBoxAdapter(

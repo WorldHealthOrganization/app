@@ -31,6 +31,9 @@ class _TravelAdviceState extends State<TravelAdvice> {
       return;
     }
     Locale locale = Localizations.localeOf(context);
+    print(context);
+    print(locale);
+    print(widget);
     try {
       _adviceContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _adviceContent);
@@ -45,6 +48,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+        dividerColor: Constants.emergencyRed,
         announceRouteManually: true,
         body: [
           _adviceContent != null ? _buildBody() : LoadingIndicator(),

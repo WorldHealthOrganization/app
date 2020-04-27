@@ -6,11 +6,11 @@ import 'package:who_app/components/updated_app_bar.dart' as uab;
 
 class PageHeader extends StatelessWidget {
   final String title;
-  final String subtitle;
 
   final EdgeInsets padding;
   final bool showBackButton;
   final bool showLogo;
+  final Color dividerColor;
 
   /// True if [PageHeader] wouldn't be announced via the screen reader if it wasn't
   /// wrapped in a [Semantics] widget. E.g. when opening a page with
@@ -19,18 +19,18 @@ class PageHeader extends StatelessWidget {
 
   PageHeader({
     @required this.title,
-    this.subtitle = "",
     this.padding = EdgeInsets.zero,
-    this.showBackButton = true,
+    this.showBackButton = false,
     this.showLogo = false,
     this.announceRouteManually = false,
+    this.dividerColor = const Color(0xffC9CDD6),
   });
 
   @override
   Widget build(BuildContext context) {
     return uab.SliverAppBar(
       leading: Container(),
-      expandedHeight: 120,
+      expandedHeight: 88,
       backgroundColor: Colors.white,
       excludeHeaderSemantics: true,
       flexibleSpace: FlexibleSpaceBar(background: _buildHeader(context)),
@@ -57,16 +57,6 @@ class PageHeader extends StatelessWidget {
           children: <Widget>[
             //Todo: Decide what to do when title text overflow
             buildTitle(this.title),
-            SizedBox(height: 4),
-            AutoSizeText(this.subtitle,
-                maxLines: 1,
-                minFontSize: 8,
-                overflow: TextOverflow.ellipsis,
-                softWrap: false,
-                style: TextStyle(
-                    color: Color(0xff3C4245),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700)),
           ],
         ),
       ),
@@ -95,7 +85,7 @@ class PageHeader extends StatelessWidget {
                 height: 1,
                 child: Container(
                   height: 1,
-                  color: Color(0xffC9CDD6),
+                  color: dividerColor,
                   width: MediaQuery.of(context).size.width,
                 ))
           ],
@@ -118,7 +108,7 @@ class PageHeader extends StatelessWidget {
           style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.w900,
-              fontSize: 24,
+              fontSize: 40,
               letterSpacing: -0.5)),
     );
   }

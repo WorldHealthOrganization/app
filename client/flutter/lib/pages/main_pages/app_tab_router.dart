@@ -1,12 +1,14 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/api/content/schema/advice_content.dart';
+import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/latest_numbers.dart';
-import 'package:who_app/pages/main_pages/check_up_page.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
-import 'package:who_app/pages/main_pages/learn_page.dart';
+import 'package:who_app/pages/protect_yourself.dart';
 import 'package:who_app/pages/settings_page.dart';
+import 'package:who_app/pages/travel_advice.dart';
 
 class AppTabRouter extends StatelessWidget {
   final FirebaseAnalytics analytics;
@@ -27,9 +29,9 @@ class AppTabRouter extends StatelessWidget {
           case 1:
             return LatestNumbersPage();
           case 2:
-            return LearnPage();
+            return ProtectYourself(dataSource: FactContent.protectYourself);
           case 3:
-            return CheckUpPage();
+            return TravelAdvice(dataSource: AdviceContent.travelAdvice);
           case 4:
             return SettingsPage();
 
