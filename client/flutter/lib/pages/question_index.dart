@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:who_app/api/content/schema/question_content.dart';
 import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,14 +72,8 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
       announceRouteManually: true,
       body: [
         items.isNotEmpty
-            ? SliverList(
-                delegate: SliverChildListDelegate(items),
-              )
-            : SliverToBoxAdapter(
-                child: Padding(
-                padding: const EdgeInsets.all(48.0),
-                child: CupertinoActivityIndicator(),
-              ))
+            ? SliverList(delegate: SliverChildListDelegate(items))
+            : LoadingIndicator(),
       ],
       title: widget.title,
     );
