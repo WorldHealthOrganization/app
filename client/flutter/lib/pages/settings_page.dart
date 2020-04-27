@@ -180,7 +180,7 @@ class _SettingsPageState extends State<SettingsPage>
         onTap: () {
           FirebaseAnalytics().logEvent(name: 'About');
           return Navigator.of(context)
-              .push(MaterialPageRoute(builder: (c) => AboutPage()));
+              .push(CupertinoPageRoute(builder: (c) => AboutPage()));
         },
       ),
       divider,
