@@ -51,8 +51,8 @@ Clone the repo and run from the root of the local clone:
 
 ## Client
 
-See [client/flutter/README.md](client/flutter/README.md).
+See [client/flutter/README.md](../client/flutter/README.md).
 
 ## Server
 
-See [server/README.md](server/README.md).
+See [server/README.md](../server/README.md).
