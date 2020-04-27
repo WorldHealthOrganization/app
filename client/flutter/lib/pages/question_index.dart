@@ -69,7 +69,6 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         .toList();
 
     return PageScaffold(
-      announceRouteManually: true,
       body: [
         items.isNotEmpty
             ? SliverList(delegate: SliverChildListDelegate(items))

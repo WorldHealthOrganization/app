@@ -105,7 +105,6 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      showBackButton: false,
       body: [
         SliverList(
             delegate: SliverChildListDelegate(
@@ -181,7 +180,7 @@ class _SettingsPageState extends State<SettingsPage>
         onTap: () {
           FirebaseAnalytics().logEvent(name: 'About');
           return Navigator.of(context)
-              .push(MaterialPageRoute(builder: (c) => AboutPage()));
+              .push(CupertinoPageRoute(builder: (c) => AboutPage()));
         },
       ),
       divider,
@@ -217,43 +216,45 @@ class _SettingsPageState extends State<SettingsPage>
       Function(bool) onToggle}) {
     return Semantics(
       toggled: isToggled,
-      child: InkWell(
-        onTap: () => onToggle(!isToggled),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 16,
-          ),
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      header,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w700,
+      child: Material(
+        child: InkWell(
+          onTap: () => onToggle(!isToggled),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 16,
+            ),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        header,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                  Semantics(
-                    excludeSemantics: true,
-                    child: CupertinoSwitch(
-                      activeColor: Constants.primaryColor,
-                      value: isToggled,
-                      onChanged: (newVal) => {onToggle(newVal)},
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                info,
-                style: Theme.of(context).textTheme.subhead,
-              )
-            ],
+                    Semantics(
+                      excludeSemantics: true,
+                      child: CupertinoSwitch(
+                        activeColor: Constants.primaryColor,
+                        value: isToggled,
+                        onChanged: (newVal) => {onToggle(newVal)},
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  info,
+                  style: Theme.of(context).textTheme.subhead,
+                )
+              ],
+            ),
           ),
         ),
       ),

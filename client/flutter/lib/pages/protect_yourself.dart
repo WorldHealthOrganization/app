@@ -5,7 +5,7 @@ import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/rive_animation.dart';
 import 'package:who_app/constants.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:html/dom.dart' as dom;
@@ -21,8 +21,8 @@ class ProtectYourself extends StatefulWidget {
 
 class _ProtectYourselfState extends State<ProtectYourself> {
   final whoBlue = Color(0xFF3D8BCC);
-  final header =
-      TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
+  final header = TextStyle(
+      color: CupertinoColors.black, fontSize: 24, fontWeight: FontWeight.w800);
   FactContent _factContent;
 
   @override
@@ -52,7 +52,6 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: S.of(context).protectYourselfTitle,
-      announceRouteManually: true,
       body: [
         _factContent != null ? _buildBody() : LoadingIndicator(),
       ],
@@ -129,31 +128,30 @@ class _ProtectYourselfCard extends StatelessWidget {
         left: 24,
         right: 24,
       ),
-      child: Card(
-        elevation: 0,
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
         ),
-        child: Column(
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+        child: Container(
+          color: CupertinoColors.white,
+          child: Column(
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                child: child,
               ),
-              child: child,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 20,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 20,
+                ),
+                child: message,
               ),
-              child: message,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

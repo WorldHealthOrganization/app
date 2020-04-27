@@ -6,7 +6,6 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class TravelAdvice extends StatefulWidget {
   final AdviceDataSource dataSource;
@@ -44,12 +43,9 @@ class _TravelAdviceState extends State<TravelAdvice> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-        announceRouteManually: true,
-        body: [
-          _adviceContent != null ? _buildBody() : LoadingIndicator(),
-        ],
-        title: S.of(context).homePagePageButtonTravelAdvice);
+    return PageScaffold(body: [
+      _adviceContent != null ? _buildBody() : LoadingIndicator(),
+    ], title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
   SliverList _buildBody() {

@@ -64,8 +64,8 @@ class SwipeableOpenContainer extends StatefulWidget {
   /// [closedBuilder] and [closedBuilder] are required.
   const SwipeableOpenContainer(
       {Key key,
-      this.closedColor = Colors.white,
-      this.openColor = Colors.white,
+      this.closedColor = CupertinoColors.white,
+      this.openColor = CupertinoColors.white,
       this.closedElevation = 1.0,
       this.openElevation = 4.0,
       this.closedShape = const RoundedRectangleBorder(
@@ -233,7 +233,7 @@ class _OpenContainerState extends State<SwipeableOpenContainer> {
   void openContainer() {
     if (_shouldDisableAnimation()) {
       Navigator.of(context).push(
-        MaterialPageRoute(
+        CupertinoPageRoute(
           builder: (context) => widget.openBuilder(context, null),
         ),
       );

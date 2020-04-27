@@ -1,8 +1,8 @@
 import 'package:who_app/components/carousel/carousel_slide.dart';
 import 'package:who_app/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+import 'package:flutter/cupertino.dart';
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
@@ -22,8 +22,16 @@ class CarouselView extends StatelessWidget {
             return LinearGradient(
                 begin: Alignment(0.0, 0.0),
                 end: Alignment(0.0, 1.0),
-                colors: <Color>[Colors.white, Colors.white, Colors.transparent],
-                stops: [0.0, 0.5, 0.6]).createShader(bounds);
+                colors: <Color>[
+                  CupertinoColors.white,
+                  CupertinoColors.white,
+                  Color(0xf).withOpacity(0)
+                ],
+                stops: [
+                  0.0,
+                  0.5,
+                  0.6
+                ]).createShader(bounds);
           },
           child: PageView(
             controller: pageController,
@@ -38,8 +46,8 @@ class CarouselView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.arrow_back_ios),
+                CupertinoButton(
+                  child: Icon(CupertinoIcons.back),
                   onPressed: () => pageController.page > 0
                       ? goToPreviousPage()
                       : goToLastPage(),
@@ -47,8 +55,8 @@ class CarouselView extends StatelessWidget {
                 Container(
                     padding: EdgeInsets.only(bottom: 8),
                     child: _buildPageViewIndicator(context)),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
+                CupertinoButton(
+                  child: Icon(CupertinoIcons.forward),
                   onPressed: () => pageController.page < this.items.length - 1
                       ? goToNextPage()
                       : goToFirstPage(),

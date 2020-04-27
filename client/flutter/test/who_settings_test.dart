@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:who_app/pages/about_page.dart';
+import 'package:who_app/pages/settings_page.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
       TestWidgetsFlutterBinding.ensureInitialized();
 
   Widget testableWidget({Widget child}) {
-    return MaterialApp(
+    return CupertinoApp(
       title: "WHO",
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -23,15 +23,12 @@ void main() {
     );
   }
 
-  testWidgets('WHO About Page is rendering its PageHeader properly',
+  testWidgets('WHO Settings Page is rendering its PageHeader properly',
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(testableWidget(child: AboutPage()));
+    await tester.pumpWidget(testableWidget(child: SettingsPage()));
     await tester.pumpAndSettle();
-    expect(
-      find.text("About the App"),
-      findsOneWidget,
-    );
+    expect(find.text("Settings"), findsWidgets);
   });
 }
