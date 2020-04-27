@@ -3,23 +3,16 @@ import 'package:flutter/cupertino.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
-  final String subtitle;
-
+  final String heroTag;
   final List<Widget> body;
 
   final EdgeInsets padding;
-  final bool showBackButton;
-  final bool showLogoInHeader;
-  final bool announceRouteManually;
 
   PageScaffold({
     @required this.body,
     @required this.title,
-    this.subtitle = "COVID-19",
+    this.heroTag,
     this.padding = EdgeInsets.zero,
-    this.showBackButton = true,
-    this.showLogoInHeader = false,
-    this.announceRouteManually = false,
   });
 
   @override
@@ -31,7 +24,7 @@ class PageScaffold extends StatelessWidget {
           CustomScrollView(slivers: [
             PageHeader(
               title: this.title,
-              announceRouteManually: announceRouteManually,
+              heroTag: this.heroTag ?? this.title,
             ),
             ...this.body,
             SliverToBoxAdapter(

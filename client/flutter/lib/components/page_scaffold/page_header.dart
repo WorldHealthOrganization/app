@@ -4,24 +4,24 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 class PageHeader extends StatelessWidget {
   final String title;
+  final String heroTag;
 
   final bool disableBackButton;
 
   /// True if [PageHeader] wouldn't be announced via the screen reader if it wasn't
   /// wrapped in a [Semantics] widget. E.g. when opening a page with
   /// [SwipeableOpenContainer]
-  final bool announceRouteManually;
 
   PageHeader({
     @required this.title,
+    this.heroTag,
     this.disableBackButton = false,
-    this.announceRouteManually = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return CupertinoSliverNavigationBar(
-      heroTag: this.title,
+      heroTag: this.heroTag ?? this.title,
       leading: this.disableBackButton ? Container() : null,
       largeTitle: buildTitle(this.title),
     );

@@ -19,80 +19,90 @@ class AboutPage extends StatelessWidget {
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
-    return PageScaffold(body: [
-      SliverList(
-          delegate: SliverChildListDelegate([
-        Container(
-          color: CupertinoColors.white,
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: Text.rich(
-            TextSpan(style: TextStyle(color: CupertinoColors.black), children: [
-              LinkTextSpan(
-                  text: S.of(context).aboutPageTermsOfServiceLinkText,
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: CupertinoColors.activeBlue),
-                  url: S.of(context).aboutPageTermsOfServiceLinkUrl,
-                  onLinkTap: (v) => launch(v)),
-              TextSpan(text: "  —  "),
-              LinkTextSpan(
-                  text: S.of(context).aboutPagePrivacyPolicyLinkText,
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: CupertinoColors.activeBlue),
-                  url: S.of(context).aboutPagetermsOfServiceLinkUrl,
-                  onLinkTap: (v) => launch(v)),
-              TextSpan(text: "  —  "),
-              LinkTextSpan(
-                text: S.of(context).aboutPageViewLicensesLinkText,
-                style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: CupertinoColors.activeBlue),
-                onLinkTap: (v) => showLicensePage(context: context),
+    return PageScaffold(
+      body: [
+        SliverList(
+          delegate: SliverChildListDelegate.fixed(
+            [
+              Container(
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                child: Text.rich(
+                  TextSpan(
+                      style: TextStyle(color: CupertinoColors.black),
+                      children: [
+                        LinkTextSpan(
+                            text: S.of(context).aboutPageTermsOfServiceLinkText,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: CupertinoColors.activeBlue),
+                            url: S.of(context).aboutPageTermsOfServiceLinkUrl,
+                            onLinkTap: (v) => launch(v)),
+                        TextSpan(text: "  —  "),
+                        LinkTextSpan(
+                            text: S.of(context).aboutPagePrivacyPolicyLinkText,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: CupertinoColors.activeBlue),
+                            url: S.of(context).aboutPagetermsOfServiceLinkUrl,
+                            onLinkTap: (v) => launch(v)),
+                        TextSpan(text: "  —  "),
+                        LinkTextSpan(
+                          text: S.of(context).aboutPageViewLicensesLinkText,
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: CupertinoColors.activeBlue),
+                          onLinkTap: (v) => showLicensePage(context: context),
+                        ),
+                      ]),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ]),
-            textAlign: TextAlign.center,
+              Container(
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                child: Text(
+                  S.of(context).aboutPageBuiltByCreditText(
+                      copyrightString, versionString),
+                  style: TextStyle(color: CupertinoColors.black, fontSize: 16),
+                ),
+              ),
+              Container(
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                child: FutureBuilder(
+                  future: DefaultAssetBundle.of(context)
+                      .loadString('assets/credits.yaml'),
+                  builder: (context, snapshot) {
+                    dynamic yaml =
+                        loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
+                    var team = List<String>.from(yaml['team'] as YamlList);
+                    team.sort(
+                        (x, y) => (x.toLowerCase().compareTo(y.toLowerCase())));
+                    final founders = [
+                      "Bruno Bowden",
+                      "Daniel Kraft",
+                      "Dean Hachamovitch"
+                    ];
+                    founders.forEach((x) => team.remove(x));
+                    team.insertAll(0, founders);
+                    var teamNames =
+                        S.of(context).aboutPageThanksToText(team.join(", "));
+                    return Text(
+                      teamNames,
+                      softWrap: true,
+                      style:
+                          TextStyle(color: CupertinoColors.black, fontSize: 16),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
-        Container(
-          color: CupertinoColors.white,
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          child: Text(
-            S
-                .of(context)
-                .aboutPageBuiltByCreditText(copyrightString, versionString),
-            style: TextStyle(color: CupertinoColors.black, fontSize: 16),
-          ),
-        ),
-        Container(
-            color: CupertinoColors.white,
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            child: FutureBuilder(
-                future: DefaultAssetBundle.of(context)
-                    .loadString('assets/credits.yaml'),
-                builder: (context, snapshot) {
-                  dynamic yaml =
-                      loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
-                  var team = List<String>.from(yaml['team'] as YamlList);
-                  team.sort(
-                      (x, y) => (x.toLowerCase().compareTo(y.toLowerCase())));
-                  final founders = [
-                    "Bruno Bowden",
-                    "Daniel Kraft",
-                    "Dean Hachamovitch"
-                  ];
-                  founders.forEach((x) => team.remove(x));
-                  team.insertAll(0, founders);
-                  var teamNames =
-                      S.of(context).aboutPageThanksToText(team.join(", "));
-                  return Text(
-                    teamNames,
-                    softWrap: true,
-                    style:
-                        TextStyle(color: CupertinoColors.black, fontSize: 16),
-                  );
-                })),
-      ])),
-    ], title: S.of(context).aboutPageTitle);
+      ],
+      heroTag: S.of(context).homePagePageSliverListSettings,
+      title: S.of(context).aboutPageTitle,
+    );
   }
 }

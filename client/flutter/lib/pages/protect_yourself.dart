@@ -52,7 +52,6 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: S.of(context).protectYourselfTitle,
-      announceRouteManually: true,
       body: [
         _factContent != null ? _buildBody() : LoadingIndicator(),
       ],
