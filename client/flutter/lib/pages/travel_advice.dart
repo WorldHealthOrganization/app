@@ -43,11 +43,9 @@ class _TravelAdviceState extends State<TravelAdvice> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-        body: [
-          _adviceContent != null ? _buildBody() : LoadingIndicator(),
-        ],
-        title: S.of(context).homePagePageButtonTravelAdvice);
+    return PageScaffold(body: [
+      _adviceContent != null ? _buildBody() : LoadingIndicator(),
+    ], title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
   SliverList _buildBody() {

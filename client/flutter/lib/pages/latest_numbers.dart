@@ -32,105 +32,102 @@ class LatestNumbersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-        title: S.of(context).latestNumbersPageTitle,
-        body: [
-          FutureBuilder(
-              future: WhoService.getCaseStats(),
-              builder: (context, snapshot) {
-                final hasGlobalStats =
-                    snapshot.hasData && snapshot.data['globalStats'] != null;
-                final globalStats =
-                    hasGlobalStats ? snapshot.data['globalStats'] : null;
-                final ts = hasGlobalStats
-                    ? DateTime.fromMillisecondsSinceEpoch(
-                        globalStats['lastUpdated'])
-                    : DateTime.now();
-                final numFmt = NumberFormat.decimalPattern();
-                final lastUpd = DateFormat.MMMMEEEEd().add_jm().format(ts);
-                return SliverList(
-                    delegate: SliverChildListDelegate([
-                  StatCard(
-                      background: LatestNumbersGraph(
-                        timeseries:
-                            hasGlobalStats ? globalStats['timeseries'] : null,
-                        timeseriesKey: 'totalCases',
-                      ),
-                      title: Text(
-                        S.of(context).latestNumbersPageGlobalCasesTitle,
-                        style: name,
-                      ),
-                      content: Text(
-                        hasGlobalStats && globalStats['cases'] != null
-                            ? numFmt.format(globalStats['cases'])
-                            : '-',
-                        softWrap: true,
-                        style: hasGlobalStats && globalStats['cases'] != null
-                            ? number
-                            : loadingStyle,
-                        textAlign: TextAlign.left,
-                      )),
-                  StatCard(
-                    background: LatestNumbersGraph(
-                      timeseries:
-                          hasGlobalStats ? globalStats['timeseries'] : null,
-                      timeseriesKey: 'totalDeaths',
-                    ),
-                    title: Text(S.of(context).latestNumbersPageGlobalDeaths,
-                        style: name),
-                    content: Text(
-                      hasGlobalStats && globalStats['deaths'] != null
-                          ? numFmt.format(globalStats['deaths'])
-                          : '-',
-                      softWrap: true,
-                      style: hasGlobalStats && globalStats['deaths'] != null
-                          ? number
-                          : loadingStyle,
-                      textAlign: TextAlign.left,
-                    ),
+    return PageScaffold(title: S.of(context).latestNumbersPageTitle, body: [
+      FutureBuilder(
+          future: WhoService.getCaseStats(),
+          builder: (context, snapshot) {
+            final hasGlobalStats =
+                snapshot.hasData && snapshot.data['globalStats'] != null;
+            final globalStats =
+                hasGlobalStats ? snapshot.data['globalStats'] : null;
+            final ts = hasGlobalStats
+                ? DateTime.fromMillisecondsSinceEpoch(
+                    globalStats['lastUpdated'])
+                : DateTime.now();
+            final numFmt = NumberFormat.decimalPattern();
+            final lastUpd = DateFormat.MMMMEEEEd().add_jm().format(ts);
+            return SliverList(
+                delegate: SliverChildListDelegate([
+              StatCard(
+                  background: LatestNumbersGraph(
+                    timeseries:
+                        hasGlobalStats ? globalStats['timeseries'] : null,
+                    timeseriesKey: 'totalCases',
                   ),
-                  Container(
-                    height: 25,
+                  title: Text(
+                    S.of(context).latestNumbersPageGlobalCasesTitle,
+                    style: name,
                   ),
-                  Text(
-                    snapshot.hasData
-                        ? S.of(context).latestNumbersPageLastUpdated(lastUpd)
-                        : S.of(context).latestNumbersPageUpdating,
-                    style: TextStyle(color: Color(0xff26354E)),
-                    textAlign: TextAlign.center,
-                  ),
-                  Container(
-                    height: 10,
-                  ),
-                  Text(
-                    hasGlobalStats && globalStats['attribution'] != null
-                        ? S
-                            .of(context)
-                            .latestNumbersPageSourceGlobalStatsAttribution(
-                                globalStats['attribution'])
-                        : '',
-                    style: TextStyle(color: Color(0xff26354E)),
-                    textAlign: TextAlign.center,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
-                      left: 24,
-                      right: 24,
-                    ),
-                    child: PageButton(
-                      Color(0xFF3D8AC4),
-                      S.of(context).latestNumbersPageViewLiveData,
-                      () => _launchStatsDashboard(context),
-                      verticalPadding: 12,
-                      borderRadius: 36,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                    ),
-                  )
-                ]));
-              }),
-        ]);
+                  content: Text(
+                    hasGlobalStats && globalStats['cases'] != null
+                        ? numFmt.format(globalStats['cases'])
+                        : '-',
+                    softWrap: true,
+                    style: hasGlobalStats && globalStats['cases'] != null
+                        ? number
+                        : loadingStyle,
+                    textAlign: TextAlign.left,
+                  )),
+              StatCard(
+                background: LatestNumbersGraph(
+                  timeseries: hasGlobalStats ? globalStats['timeseries'] : null,
+                  timeseriesKey: 'totalDeaths',
+                ),
+                title: Text(S.of(context).latestNumbersPageGlobalDeaths,
+                    style: name),
+                content: Text(
+                  hasGlobalStats && globalStats['deaths'] != null
+                      ? numFmt.format(globalStats['deaths'])
+                      : '-',
+                  softWrap: true,
+                  style: hasGlobalStats && globalStats['deaths'] != null
+                      ? number
+                      : loadingStyle,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Container(
+                height: 25,
+              ),
+              Text(
+                snapshot.hasData
+                    ? S.of(context).latestNumbersPageLastUpdated(lastUpd)
+                    : S.of(context).latestNumbersPageUpdating,
+                style: TextStyle(color: Color(0xff26354E)),
+                textAlign: TextAlign.center,
+              ),
+              Container(
+                height: 10,
+              ),
+              Text(
+                hasGlobalStats && globalStats['attribution'] != null
+                    ? S
+                        .of(context)
+                        .latestNumbersPageSourceGlobalStatsAttribution(
+                            globalStats['attribution'])
+                    : '',
+                style: TextStyle(color: Color(0xff26354E)),
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 24,
+                  left: 24,
+                  right: 24,
+                ),
+                child: PageButton(
+                  Color(0xFF3D8AC4),
+                  S.of(context).latestNumbersPageViewLiveData,
+                  () => _launchStatsDashboard(context),
+                  verticalPadding: 12,
+                  borderRadius: 36,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                ),
+              )
+            ]));
+          }),
+    ]);
   }
 }
 
