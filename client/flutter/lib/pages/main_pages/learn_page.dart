@@ -8,7 +8,7 @@ class LearnPage extends StatelessWidget {
     return PageScaffold(
       showHeader: false,
       body: [
-        LearnPageHeader()
+        LearnPageHeader(),
       ],
     );
   }
