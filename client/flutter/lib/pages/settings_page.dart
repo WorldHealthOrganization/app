@@ -252,7 +252,7 @@ class _SettingsPageState extends State<SettingsPage>
                 const SizedBox(height: 16),
                 Text(
                   info,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.subhead,
                 )
               ],
             ),

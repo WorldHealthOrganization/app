@@ -43,11 +43,11 @@ void main() async {
     // Pass all uncaught errors from the framework to Crashlytics.
     FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
-    await runZonedGuarded<Future<void>>(
+    await runZoned<Future<void>>(
       () async {
         runApp(MyApp(showOnboarding: !onboardingComplete));
       },
-      Crashlytics.instance.recordError,
+      onError: Crashlytics.instance.recordError,
     );
   } else {
     runApp(MyApp(showOnboarding: true));
