@@ -25,10 +25,14 @@ class SymptomCheckerContent extends ContentBase {
   }
 
   SymptomCheckerQuestion _questionFromContent(dynamic item) {
-    // Sigh.
-    SymptomCheckerQuestionType type = SymptomCheckerQuestionType.values
-        .firstWhere((e) =>
-            e.toString() == "${SymptomCheckerQuestionType}.${item['type']}");
+    SymptomCheckerQuestionType type;
+    switch (item['type']) {
+      case "yes_no":
+        type = SymptomCheckerQuestionType.YesNo;
+        break;
+      default:
+        throw Exception("unreognized question type");
+    }
     return SymptomCheckerQuestion(
         type: type,
         id: item['id'],

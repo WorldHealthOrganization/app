@@ -5,17 +5,17 @@ contents:
   items:
     -
       id:  question_1
-      type: YesNo
+      type: yes_no
       question_html: |
         <p>Yes/No auestion 1</p>
     -
       id:  question_2
-      type: YesNo
+      type: yes_no
       question_html: |
         <p>Yes/No auestion 2</p>
     -
       id:  question_3
-      type: YesNo
+      type: yes_no
       question_html: |
         <p>Yes/No auestion 3</p>
 

@@ -42,7 +42,7 @@ class _SymptomCheckerPageState extends State<SymptomCheckerPage>
     // TODO: Present the model using a PageView or or other view allowing for
     // TODO: page transitions and appropriate back gestures if allowed.
     // TODO: Map the list of page models (or at least the current page) by their
-    // TODO: page model questino type field to the desired implementation Widgets.
+    // TODO: page model question type field to the desired implementation Widgets.
     if (_model == null) {
       return Center(child: Text("loading..."));
     }
