@@ -6,13 +6,16 @@ class PageScaffold extends StatelessWidget {
   final String heroTag;
   final List<Widget> body;
 
+  final bool showHeader;
+
   final EdgeInsets padding;
 
   PageScaffold({
     @required this.body,
-    @required this.title,
+    this.title,
     this.heroTag,
     this.padding = EdgeInsets.zero,
+    this.showHeader = true,
   });
 
   @override
@@ -22,10 +25,11 @@ class PageScaffold extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           CustomScrollView(slivers: [
-            PageHeader(
-              title: this.title,
-              heroTag: this.heroTag ?? this.title,
-            ),
+            if (this.showHeader)
+              PageHeader(
+                title: this.title,
+                heroTag: this.heroTag ?? this.title,
+              ),
             ...this.body,
             SliverToBoxAdapter(
               child: SizedBox(height: 70),
