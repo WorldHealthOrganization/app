@@ -10,19 +10,18 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-
-  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
+  
+  static const AppLocalizationDelegate delegate =
+    AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       return S();
     });
-  }
+  } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -55,8 +54,7 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusAppVersion(
-      Object version, Object buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -983,8 +981,7 @@ class S {
     );
   }
 
-  String aboutPageBuiltByCreditText(
-      Object copyrightString, Object versionString) {
+  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -1013,8 +1010,35 @@ class S {
 
   String get latestNumbersPageTitle {
     return Intl.message(
-      'Latest Numbers',
+      'Recent Numbers',
       name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageCasesDimension {
+    return Intl.message(
+      'Global Cases',
+      name: 'latestNumbersPageCasesDimension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDailyToggle {
+    return Intl.message(
+      'New',
+      name: 'latestNumbersPageDailyToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDeathsDimension {
+    return Intl.message(
+      'Global Deaths',
+      name: 'latestNumbersPageDeathsDimension',
       desc: '',
       args: [],
     );
@@ -1044,6 +1068,15 @@ class S {
       name: 'latestNumbersPageLastUpdated',
       desc: '',
       args: [lastUpd],
+    );
+  }
+
+  String get latestNumbersPageTotalToggle {
+    return Intl.message(
+      'Total',
+      name: 'latestNumbersPageTotalToggle',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1117,8 +1150,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
     ];
   }
 

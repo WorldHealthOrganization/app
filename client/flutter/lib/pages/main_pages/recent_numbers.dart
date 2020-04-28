@@ -93,7 +93,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 children: <Widget>[
                   CupertinoSlidingSegmentedControl(
                     backgroundColor: Color(0xffEFEFEF),
-                    children: _buildSegmentControlChildren(this.aggregation),
+                    children: _buildSegmentControlChildren(context, this.aggregation),
                     groupValue: this.aggregation,
                     onValueChanged: (value) {
                       setState(() {
@@ -119,9 +119,9 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
             Container(height: 28.0),
-            _buildTappableStatCard(DataDimension.cases),
+            _buildTappableStatCard(context, DataDimension.cases),
             Container(height: 16.0),
-            _buildTappableStatCard(DataDimension.deaths),
+            _buildTappableStatCard(context, DataDimension.deaths),
           ]),
         )
       ],
@@ -142,11 +142,10 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Map<DataAggregation, Widget> _buildSegmentControlChildren(selectedValue) {
+  Map<DataAggregation, Widget> _buildSegmentControlChildren(BuildContext context, DataAggregation selectedValue) {
     Map<DataAggregation, String> valueToDisplayText = {
-      // TODO: localize display text
-      DataAggregation.total: 'Total',
-      DataAggregation.daily: 'New',
+      DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
+      DataAggregation.daily: S.of(context).latestNumbersPageDailyToggle,
     };
     return valueToDisplayText.map((value, displayText) {
       return MapEntry<DataAggregation, Widget>(
@@ -168,19 +167,17 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Widget _buildTappableStatCard(DataDimension dimension) {
+  Widget _buildTappableStatCard(BuildContext context, DataDimension dimension) {
     String statKey;
     String title;
     switch (dimension) {
       case DataDimension.cases:
         statKey = 'cases';
-        // TODO: localize
-        title = 'Cases';
+        title = S.of(context).latestNumbersPageCasesDimension;
         break;
       case DataDimension.deaths:
         statKey = 'deaths';
-        // TODO: localize
-        title = 'Deaths';
+        title = S.of(context).latestNumbersPageDeathsDimension;
         break;
       default:
         statKey = '';
