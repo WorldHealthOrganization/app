@@ -1,11 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class Constants {
-  static final Color backgroundColor = Colors.white; // WHITE
+  static final Color backgroundColor = CupertinoColors.white; // WHITE
   static final Color primaryColor = Color(0xff0093CE); // WHO BLUE
   static final Color textColor = Color(0xff3C4245); //GREY
   static final Color primaryDark = Color(0xff1A458E); // NAVY
   static final Color accent = Color(0xffD86422); // ORANGE
+
+  static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
+  static final Color emergencyRed = Color(0xffD82037);
   static final double buttonTextSpacing = -.4;
 }
 

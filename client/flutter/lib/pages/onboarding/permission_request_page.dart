@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 class PermissionRequestPage extends StatelessWidget {
   final String pageTitle;
@@ -23,8 +23,7 @@ class PermissionRequestPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
+    return CupertinoPageScaffold(
       child: Stack(
         children: <Widget>[
           Align(
@@ -89,25 +88,21 @@ class PermissionRequestPage extends StatelessWidget {
                   flex: 1,
                   child: Column(
                     children: <Widget>[
-                      Material(
-                        shape: StadiumBorder(),
-                        clipBehavior: Clip.antiAlias,
-                        child: PageButton(
-                          Constants.primaryColor,
-                          buttonTitle,
-                          onGrantPermission,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          verticalPadding: 24,
-                          borderRadius: 35,
-                        ),
+                      PageButton(
+                        Constants.primaryColor,
+                        buttonTitle,
+                        onGrantPermission,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        verticalPadding: 12,
+                        borderRadius: 35,
                       ),
-                      FlatButton(
+                      CupertinoButton(
                         padding: EdgeInsets.all(16),
                         child: Text(
                           S.of(context).commonPermissionRequestPageButtonSkip,
                           style: TextStyle(
-                              color: Colors.grey,
+                              color: CupertinoColors.systemGrey,
                               fontSize: 18,
                               letterSpacing: Constants.buttonTextSpacing),
                         ),

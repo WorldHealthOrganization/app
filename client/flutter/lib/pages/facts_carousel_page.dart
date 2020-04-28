@@ -4,7 +4,6 @@ import 'package:who_app/components/carousel/carousel_slide.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
@@ -60,17 +59,12 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
             ))
         .toList();
 
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: PageHeader.textColor, //change your color here
-        ),
-        backgroundColor: Colors.white,
-        centerTitle: false,
-        title: PageHeader.buildTitle("Get the Facts"),
-        elevation: 0,
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        backgroundColor: CupertinoColors.white,
+        middle: PageHeader.buildTitle("Get the Facts"),
       ),
-      body: Container(
+      child: Container(
           child: items.isNotEmpty ? CarouselView(items: items) : Container()),
     );
   }

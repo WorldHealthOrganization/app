@@ -1,4 +1,7 @@
 {
+  "../**/*.md": [
+    "prettier --write"
+  ],
   "../client/**/*.dart": [
     "flutter format"
   ],
