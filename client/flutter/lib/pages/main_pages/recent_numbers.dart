@@ -248,7 +248,9 @@ class TappableStatCard extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: this.isSelected ? Color(0xff008DC9) : CupertinoColors.white,
+                      color: this.isSelected
+                          ? Color(0xff008DC9)
+                          : CupertinoColors.white,
                       width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
                   color: CupertinoColors.white,
