@@ -1,5 +1,4 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/cupertino.dart';
 
 class RecentNumbersGraph extends StatefulWidget {
