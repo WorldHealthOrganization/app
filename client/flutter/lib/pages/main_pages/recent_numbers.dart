@@ -93,7 +93,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 children: <Widget>[
                   CupertinoSlidingSegmentedControl(
                     backgroundColor: Color(0xffEFEFEF),
-                    children: _buildSegmentControlChildren(context, this.aggregation),
+                    children:
+                        _buildSegmentControlChildren(context, this.aggregation),
                     groupValue: this.aggregation,
                     onValueChanged: (value) {
                       setState(() {
@@ -142,7 +143,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Map<DataAggregation, Widget> _buildSegmentControlChildren(BuildContext context, DataAggregation selectedValue) {
+  Map<DataAggregation, Widget> _buildSegmentControlChildren(
+      BuildContext context, DataAggregation selectedValue) {
     Map<DataAggregation, String> valueToDisplayText = {
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
       DataAggregation.daily: S.of(context).latestNumbersPageDailyToggle,
