@@ -34,13 +34,12 @@ class PageHeader extends StatelessWidget {
       header: true,
       namesRoute: true,
       child: AutoSizeThemedText(title,
-          variant: TypographyVariant.title,
+          variant: TypographyVariant.h1,
           maxLines: 1,
           minFontSize: 8,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style:
-              TextStyle(color: textColor, fontSize: 24, letterSpacing: -0.5)),
+          style: TextStyle(color: textColor, letterSpacing: -0.5)),
     );
   }
 }
