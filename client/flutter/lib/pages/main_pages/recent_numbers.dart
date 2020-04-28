@@ -7,17 +7,46 @@ import 'package:who_app/components/recent_numbers_graph.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/api/who_service.dart';
 
+enum DataAggregation { daily, total }
+enum DataDimension { cases, deaths }
+
 class RecentNumbersPage extends StatefulWidget {
   @override
   _RecentNumbersPageState createState() => _RecentNumbersPageState();
 }
 
 class _RecentNumbersPageState extends State<RecentNumbersPage> {
-  var dataTime = 'total';
-  var dataType = 'Cases';
+  var aggregation = DataAggregation.total;
+  var dimension = DataDimension.cases;
 
   Map globalStats = Map();
   DateTime lastUpdated;
+
+  String get timeseriesKey {
+    String aggregationPart;
+    String dimensionPart;
+    switch (this.aggregation) {
+      case DataAggregation.daily:
+        aggregationPart = 'daily';
+        break;
+      case DataAggregation.total:
+        aggregationPart = 'total';
+        break;
+      default:
+        aggregationPart = '';
+    }
+    switch (this.dimension) {
+      case DataDimension.cases:
+        dimensionPart = 'Cases';
+        break;
+      case DataDimension.deaths:
+        dimensionPart = 'Deaths';
+        break;
+      default:
+        dimensionPart = '';
+    }
+    return '${aggregationPart}${dimensionPart}';
+  }
 
   @override
   void initState() {
@@ -64,11 +93,11 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 children: <Widget>[
                   CupertinoSlidingSegmentedControl(
                     backgroundColor: Color(0xffEFEFEF),
-                    children: _buildSegmentControlChildren(this.dataTime),
-                    groupValue: this.dataTime,
+                    children: _buildSegmentControlChildren(this.aggregation),
+                    groupValue: this.aggregation,
                     onValueChanged: (value) {
                       setState(() {
-                        this.dataTime = value;
+                        this.aggregation = value;
                       });
                     },
                     padding:
@@ -79,7 +108,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   ConstrainedBox(
                     child: RecentNumbersGraph(
                       timeseries: this.globalStats['timeseries'],
-                      timeseriesKey: '${this.dataTime}${this.dataType}',
+                      timeseriesKey: this.timeseriesKey,
                     ),
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
@@ -90,9 +119,9 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
             Container(height: 28.0),
-            _buildTappableStatCard('Cases'),
+            _buildTappableStatCard(DataDimension.cases),
             Container(height: 16.0),
-            _buildTappableStatCard('Deaths'),
+            _buildTappableStatCard(DataDimension.deaths),
           ]),
         )
       ],
@@ -113,14 +142,14 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Map<String, Widget> _buildSegmentControlChildren(selectedValue) {
-    Map<String, String> valueToDisplayText = {
+  Map<DataAggregation, Widget> _buildSegmentControlChildren(selectedValue) {
+    Map<DataAggregation, String> valueToDisplayText = {
       // TODO: localize display text
-      'total': 'Total',
-      'daily': 'New',
+      DataAggregation.total: 'Total',
+      DataAggregation.daily: 'New',
     };
     return valueToDisplayText.map((value, displayText) {
-      return MapEntry<String, Widget>(
+      return MapEntry<DataAggregation, Widget>(
           value,
           Padding(
             child: Text(
@@ -139,23 +168,37 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Widget _buildTappableStatCard(String dataType) {
-    final statKey = dataType.toLowerCase();
+  Widget _buildTappableStatCard(DataDimension dimension) {
+    String statKey;
+    String title;
+    switch (dimension) {
+      case DataDimension.cases:
+        statKey = 'cases';
+        // TODO: localize
+        title = 'Cases';
+        break;
+      case DataDimension.deaths:
+        statKey = 'deaths';
+        // TODO: localize
+        title = 'Deaths';
+        break;
+      default:
+        statKey = '';
+    }
     final numFmt = NumberFormat.decimalPattern();
     final stat = this.globalStats != null && this.globalStats[statKey] != null
         ? numFmt.format(globalStats[statKey])
         : '-';
     return Padding(
       child: TappableStatCard(
-          isSelected: dataType == this.dataType,
+          isSelected: dimension == this.dimension,
           onTap: () {
             setState(() {
-              this.dataType = dataType;
+              this.dimension = dimension;
             });
           },
           stat: stat,
-          // TODO: localize title
-          title: dataType),
+          title: title),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
     );
   }
