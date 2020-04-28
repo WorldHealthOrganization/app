@@ -6,6 +6,7 @@ import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/about_page.dart';
@@ -229,14 +230,12 @@ class _SettingsPageState extends State<SettingsPage>
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Text(
-                        header,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                      child: ThemedText(header,
+                          variant: TypographyVariant.h3,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Constants.neutral1,
+                          )),
                     ),
                     Semantics(
                       excludeSemantics: true,
@@ -249,9 +248,12 @@ class _SettingsPageState extends State<SettingsPage>
                   ],
                 ),
                 const SizedBox(height: 16),
-                Text(
+                ThemedText(
                   info,
-                  style: Theme.of(context).textTheme.subhead,
+                  variant: TypographyVariant.body,
+                  style: TextStyle(
+                    color: Constants.neutral2,
+                  ),
                 )
               ],
             ),

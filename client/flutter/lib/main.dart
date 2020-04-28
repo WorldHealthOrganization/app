@@ -4,6 +4,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/pages/main_pages/app_tab_router.dart';
 import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -103,9 +104,11 @@ class _MyAppState extends State<MyApp> {
       //supportedLocales: S.delegate.supportedLocales,
       navigatorObservers: <NavigatorObserver>[observer],
       theme: CupertinoThemeData(
-        brightness: Brightness.light,
-        primaryColor: Constants.primaryColor,
-      ),
+          brightness: Brightness.light,
+          primaryColor: Constants.primaryColor,
+          textTheme: CupertinoTextThemeData(
+            textStyle: ThemedText.variantStyles[TypographyVariant.body],
+          )),
       home: Directionality(
         child: widget.showOnboarding
             ? OnboardingPage(analytics)

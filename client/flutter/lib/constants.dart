@@ -7,9 +7,16 @@ class Constants {
   static final Color primaryDark = Color(0xff1A458E); // NAVY
   static final Color accent = Color(0xffD86422); // ORANGE
 
-  static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
   static final Color emergencyRed = Color(0xffD82037);
   static final double buttonTextSpacing = -.4;
+
+  // Typography Colors
+  static final Color typographyColor = Color(0xffC4C4C4);
+  static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
+
+  // Neutral Colors
+  static final Color neutral1 = Color(0xff050C1D);
+  static final Color neutral2 = Color(0xff26354E);
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging
