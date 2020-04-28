@@ -119,6 +119,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePagePageSubTitle":
             MessageLookupByLibrary.simpleMessage("Information & tools"),
         "homePagePageTitle": MessageLookupByLibrary.simpleMessage("COVID-19"),
+        "latestNumbersPageCasesDimension":
+            MessageLookupByLibrary.simpleMessage("Global Cases"),
+        "latestNumbersPageDailyToggle":
+            MessageLookupByLibrary.simpleMessage("New"),
+        "latestNumbersPageDeathsDimension":
+            MessageLookupByLibrary.simpleMessage("Global Deaths"),
         "latestNumbersPageGlobalCasesTitle":
             MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
         "latestNumbersPageGlobalDeaths":
@@ -126,7 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestNumbersPageLastUpdated": m4,
         "latestNumbersPageSourceGlobalStatsAttribution": m5,
         "latestNumbersPageTitle":
-            MessageLookupByLibrary.simpleMessage("Latest Numbers"),
+            MessageLookupByLibrary.simpleMessage("Recent Numbers"),
+        "latestNumbersPageTotalToggle":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "latestNumbersPageUpdating":
             MessageLookupByLibrary.simpleMessage("Updating…"),
         "latestNumbersPageViewLiveData":

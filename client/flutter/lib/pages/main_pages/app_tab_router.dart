@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/constants.dart';
-import 'package:who_app/pages/latest_numbers.dart';
+import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/main_pages/check_up_page.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
@@ -24,7 +24,7 @@ class AppTabRouter extends StatelessWidget {
           case 0:
             return HomePage();
           case 1:
-            return LatestNumbersPage();
+            return RecentNumbersPage();
           case 2:
             return LearnPage();
           case 3:

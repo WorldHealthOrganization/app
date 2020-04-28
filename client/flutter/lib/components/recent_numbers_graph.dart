@@ -1,9 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/cupertino.dart';
 
-class LatestNumbersGraph extends StatefulWidget {
-  const LatestNumbersGraph({
+class RecentNumbersGraph extends StatefulWidget {
+  const RecentNumbersGraph({
     Key key,
     this.timeseries,
     this.timeseriesKey,
@@ -13,12 +12,10 @@ class LatestNumbersGraph extends StatefulWidget {
   final String timeseriesKey;
 
   @override
-  _LatestNumbersGraphState createState() => _LatestNumbersGraphState();
+  _RecentNumbersGraphState createState() => _RecentNumbersGraphState();
 }
 
-class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
-  var _showData = false;
-
+class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
   @override
   Widget build(BuildContext context) {
     return LineChart(
@@ -54,8 +51,8 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
 
   List<FlSpot> _buildSpots() {
     var spots = <FlSpot>[];
-    final startDate = DateTime.utc(2020, 1, 9);
-    if (_showData && widget.timeseries != null) {
+    final startDate = DateTime.utc(2020, 1, 1);
+    if (widget.timeseries != null) {
       for (var snapshot in widget.timeseries) {
         try {
           var xAxis = DateTime.fromMillisecondsSinceEpoch(snapshot['epochMsec'],
@@ -70,23 +67,11 @@ class _LatestNumbersGraphState extends State<LatestNumbersGraph> {
         }
       }
     } else {
-      // TODO: fix animation
-      // This attempts to create the line with the same number of data points as the real data for the animation.
-      // But, the animation still goes from right to left as if it's starting with no data points...
       final daysSinceStart =
           DateTime.now().toUtc().difference(startDate).inDays;
-      for (double i = 0.0; i < daysSinceStart; i += 1.0) {
-        spots.add(FlSpot(i, 0.0));
+      for (int i = 0; i < daysSinceStart; i++) {
+        spots.add(FlSpot((i * 24).toDouble(), 0.0));
       }
-    }
-    if (!_showData && widget.timeseries != null) {
-      // TODO: find less hacky way to do this
-      SchedulerBinding.instance.addPostFrameCallback((timestamp) async {
-        await Future.delayed(Duration(milliseconds: 100));
-        setState(() {
-          _showData = true;
-        });
-      });
     }
     return spots;
   }
