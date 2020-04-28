@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
@@ -66,7 +65,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 return pulledExtent > 10
                     ? Padding(
                         padding: EdgeInsets.only(top: topPadding),
-                        child: Icon(Icons.arrow_downward,
+                        child: Icon(CupertinoIcons.down_arrow,
                             color: CupertinoColors.systemGrey))
                     : Container();
                 break;
@@ -116,7 +115,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 ],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
               ),
-              color: Colors.white,
+              color: CupertinoColors.white,
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
             Container(height: 28.0),
@@ -249,10 +248,10 @@ class TappableStatCard extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: this.isSelected ? Color(0xff008DC9) : Colors.white,
+                      color: this.isSelected ? Color(0xff008DC9) : CupertinoColors.white,
                       width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                  color: Colors.white,
+                  color: CupertinoColors.white,
                 ),
                 padding: EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
               )),
