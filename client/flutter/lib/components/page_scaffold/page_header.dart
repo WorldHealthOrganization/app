@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:who_app/components/themed_text.dart';
 // Used to get latest AppBar features while remaining on Flutter's stable branch
 
 class PageHeader extends StatelessWidget {
@@ -33,16 +33,14 @@ class PageHeader extends StatelessWidget {
     return Semantics(
       header: true,
       namesRoute: true,
-      child: AutoSizeText(title,
+      child: AutoSizeThemedText(title,
+          variant: TypographyVariant.title,
           maxLines: 1,
           minFontSize: 8,
           overflow: TextOverflow.fade,
           softWrap: false,
-          style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.w900,
-              fontSize: 24,
-              letterSpacing: -0.5)),
+          style:
+              TextStyle(color: textColor, fontSize: 24, letterSpacing: -0.5)),
     );
   }
 }
