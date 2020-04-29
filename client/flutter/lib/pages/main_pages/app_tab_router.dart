@@ -1,5 +1,5 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/main_pages/check_up_page.dart';
@@ -8,13 +8,11 @@ import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 
 class AppTabRouter extends StatelessWidget {
-  final FirebaseAnalytics analytics;
-
-  AppTabRouter(this.analytics);
-
-  // _logAnalyticsEvent(String name) async {
-  //   await analytics.logEvent(name: name);
-  // }
+  CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
+    return CupertinoTabView(
+      builder: builder,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +20,17 @@ class AppTabRouter extends StatelessWidget {
       tabBuilder: (BuildContext context, int index) {
         switch (index) {
           case 0:
-            return HomePage();
+            return wrapTabView((context) => HomePage());
           case 1:
-            return RecentNumbersPage();
+            return wrapTabView((context) => RecentNumbersPage());
           case 2:
-            return LearnPage();
+            return wrapTabView((context) => LearnPage(
+                  dataSource: IndexContent.learnIndex,
+                ));
           case 3:
-            return CheckUpPage();
+            return wrapTabView((context) => CheckUpPage());
           case 4:
-            return SettingsPage();
+            return wrapTabView((context) => SettingsPage());
 
           default:
             return null;

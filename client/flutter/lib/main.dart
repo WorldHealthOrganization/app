@@ -5,8 +5,6 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:who_app/pages/main_pages/app_tab_router.dart';
-import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -15,9 +13,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
-
-import './constants.dart';
-import 'generated/l10n.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -34,24 +32,32 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  if (onboardingComplete) {
-    // Set `enableInDevMode` to true to see reports while in debug mode
-    // This is only to be used for confirming that reports are being
-    // submitted as expected. It is not intended to be used for everyday
-    // development.
-    Crashlytics.instance.enableInDevMode = false;
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  // Crashlytics.instance.enableInDevMode = true;
 
+  FlutterError.onError = _onFlutterError;
+
+  await runZoned<Future<void>>(
+    () async {
+      runApp(MyApp(showOnboarding: !onboardingComplete));
+    },
+    onError: _onError,
+  );
+}
+
+Future<void> _onFlutterError(FlutterErrorDetails details) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
     // Pass all uncaught errors from the framework to Crashlytics.
-    FlutterError.onError = Crashlytics.instance.recordFlutterError;
+    await Crashlytics.instance.recordFlutterError(details);
+  }
+}
 
-    await runZoned<Future<void>>(
-      () async {
-        runApp(MyApp(showOnboarding: !onboardingComplete));
-      },
-      onError: Crashlytics.instance.recordError,
-    );
-  } else {
-    runApp(MyApp(showOnboarding: true));
+Future<void> _onError(Object error, StackTrace stack) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
+    await Crashlytics.instance.recordError(error, stack);
   }
 }
 
@@ -93,29 +99,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: "WHO COVID-19",
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        S.delegate
-      ],
-      // FIXME Issue #1012 - disabled supported languages for P0
-      //supportedLocales: S.delegate.supportedLocales,
-      navigatorObservers: <NavigatorObserver>[observer],
-      theme: CupertinoThemeData(
-          brightness: Brightness.light,
-          primaryColor: Constants.primaryColor,
-          textTheme: CupertinoTextThemeData(
-            textStyle: ThemedText.styleForVariant(TypographyVariant.body),
-          )),
-      home: Directionality(
-        child: widget.showOnboarding
-            ? OnboardingPage(analytics)
-            : AppTabRouter(analytics),
-        textDirection: GlobalWidgetsLocalizations(
-          Locale(Intl.getCurrentLocale()),
-        ).textDirection,
+    return Directionality(
+      textDirection: GlobalWidgetsLocalizations(
+        Locale(Intl.getCurrentLocale()),
+      ).textDirection,
+      child: CupertinoApp(
+        title: "WHO COVID-19",
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          S.delegate
+        ],
+        routes: Routes.map,
+        // FIXME Issue #1012 - disabled supported languages for P0
+        //supportedLocales: S.delegate.supportedLocales,
+        initialRoute: widget.showOnboarding ? '/onboarding' : '/',
+        navigatorObservers: <NavigatorObserver>[observer],
+        theme: CupertinoThemeData(
+            brightness: Brightness.light,
+            primaryColor: Constants.primaryDarkColor,
+            textTheme: CupertinoTextThemeData(
+              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+            )),
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:who_app/pages/main_pages/routes.dart';
 
 class ProtectYourself extends StatefulWidget {
   final FactsDataSource dataSource;
@@ -51,6 +52,8 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      heroTag: HeroTags.learn,
+      color: Constants.greyBackgroundColor,
       title: S.of(context).protectYourselfTitle,
       body: [
         _factContent != null ? _buildBody() : LoadingIndicator(),
