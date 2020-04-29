@@ -45,12 +45,13 @@ class _TravelAdviceState extends State<TravelAdvice> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      heroTag: HeroTags.learn,
-      color: Constants.greyBackgroundColor,
-      headingBorderColor: Constants.emergencyRed,
-      body: [
-      _adviceContent != null ? _buildBody() : LoadingIndicator(),
-    ], title: S.of(context).homePagePageButtonTravelAdvice);
+        heroTag: HeroTags.learn,
+        color: Constants.greyBackgroundColor,
+        headingBorderColor: Constants.emergencyRed,
+        body: [
+          _adviceContent != null ? _buildBody() : LoadingIndicator(),
+        ],
+        title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
   SliverList _buildBody() {

@@ -8,8 +8,7 @@ class CheckUpPage extends StatelessWidget {
       disableBackButton: true,
       headingBorderColor: Color(0x0),
       title: "Check-Up",
-      body: <Widget>[
-      ],
+      body: <Widget>[],
     );
   }
 }

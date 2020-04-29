@@ -8,9 +8,10 @@ import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 
 class AppTabRouter extends StatelessWidget {
-
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
-    return CupertinoTabView(builder: builder,);
+    return CupertinoTabView(
+      builder: builder,
+    );
   }
 
   @override
@@ -23,7 +24,9 @@ class AppTabRouter extends StatelessWidget {
           case 1:
             return wrapTabView((context) => RecentNumbersPage());
           case 2:
-            return wrapTabView((context) => LearnPage(dataSource: IndexContent.learnIndex,));
+            return wrapTabView((context) => LearnPage(
+                  dataSource: IndexContent.learnIndex,
+                ));
           case 3:
             return wrapTabView((context) => CheckUpPage());
           case 4:

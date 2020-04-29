@@ -8,7 +8,6 @@ import 'package:flutter/cupertino.dart';
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key key}) : super(key: key);
 
-
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
 }
