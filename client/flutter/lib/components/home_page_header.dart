@@ -153,9 +153,10 @@ class HomePageHeader extends StatelessWidget {
                     ),
                   ],
                 ),
-                if(this.svgAssetName == null) Container(
-                  height: 40,
-                ),
+                if (this.svgAssetName == null)
+                  Container(
+                    height: 40,
+                  ),
               ],
             ),
           ),
