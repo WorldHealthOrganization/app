@@ -1,4 +1,4 @@
-import './page_header.dart';
+import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 
 class PageScaffold extends StatelessWidget {
@@ -9,7 +9,7 @@ class PageScaffold extends StatelessWidget {
   final Color color;
   final Color headingBorderColor;
   final bool disableBackButton;
-  final double headerFontSize;
+  final TextStyle headerTitleStyle;
   final Widget header;
 
   final bool showHeader;
@@ -27,7 +27,7 @@ class PageScaffold extends StatelessWidget {
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.disableBackButton = false,
-    this.headerFontSize = 34,
+    this.headerTitleStyle = const TextStyle(fontSize: 34),
   });
 
   @override
@@ -49,7 +49,7 @@ class PageScaffold extends StatelessWidget {
                           heroTag: this.heroTag ?? this.title,
                           borderColor: headingBorderColor,
                           disableBackButton: disableBackButton,
-                          fontSize: headerFontSize,
+                          titleStyle: headerTitleStyle,
                         )),
                   ...this.body,
                   SliverToBoxAdapter(

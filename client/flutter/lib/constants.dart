@@ -10,6 +10,7 @@ class Constants {
 
   static const Color bodyTextColor = Color(0xff272626); // CHARCOAL
   static const Color emergencyRed = Color(0xffD82037);
+  static const Color menuButtonColor = Color(0xCC1694BE);
   static const double buttonTextSpacing = -.4;
 }
 

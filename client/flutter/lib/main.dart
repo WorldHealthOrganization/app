@@ -13,9 +13,8 @@ import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
-
-import './constants.dart';
-import 'generated/l10n.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;

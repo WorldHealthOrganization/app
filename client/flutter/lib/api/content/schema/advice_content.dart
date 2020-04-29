@@ -1,7 +1,7 @@
 import 'package:who_app/api/content/content_bundle.dart';
+import 'package:who_app/api/content/content_loading.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
-import '../content_loading.dart';
 
 typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 

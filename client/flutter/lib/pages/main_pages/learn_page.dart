@@ -7,6 +7,7 @@ import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
 class LearnPage extends StatefulWidget {
@@ -19,12 +20,9 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  final whoBlue = Color(0xFF3D8BCC);
   final header =
       TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
   IndexContent _content;
-
-  static const _bigItemColor = Color(0xCC1694BE);
 
   @override
   void didChangeDependencies() async {
@@ -54,13 +52,16 @@ class _LearnPageState extends State<LearnPage> {
       disableBackButton: true,
       headingBorderColor: Color(0x0),
       heroTag: HeroTags.learn,
+      // TODO: localize
       title: "Learn",
       showHeader: _content != null,
       header: SliverToBoxAdapter(
           child: Padding(
               padding:
                   EdgeInsets.only(left: 16, right: 16, top: 36, bottom: 12),
-              child: PageHeader.buildTitle("Learn", fontSize: 40))),
+              // TODO: localize
+              child: PageHeader.buildTitle("Learn",
+                  textStyle: TextStyle(fontSize: 40)))),
       beforeHeader: <Widget>[
         _buildPromos(),
       ],
@@ -99,7 +100,7 @@ class _LearnPageState extends State<LearnPage> {
         title: entry.value.title,
         subtitle: entry.value.subtitle,
         link: entry.value.link,
-        color: _bigItemColor,
+        color: Constants.menuButtonColor,
       );
     }).toList();
   }
