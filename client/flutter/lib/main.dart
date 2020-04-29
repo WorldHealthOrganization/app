@@ -33,24 +33,32 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  if (onboardingComplete) {
-    // Set `enableInDevMode` to true to see reports while in debug mode
-    // This is only to be used for confirming that reports are being
-    // submitted as expected. It is not intended to be used for everyday
-    // development.
-    Crashlytics.instance.enableInDevMode = false;
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  // Crashlytics.instance.enableInDevMode = true;
 
+  FlutterError.onError = _onFlutterError;
+
+  await runZoned<Future<void>>(
+    () async {
+      runApp(MyApp(showOnboarding: !onboardingComplete));
+    },
+    onError: _onError,
+  );
+}
+
+Future<void> _onFlutterError(FlutterErrorDetails details) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
     // Pass all uncaught errors from the framework to Crashlytics.
-    FlutterError.onError = Crashlytics.instance.recordFlutterError;
+    await Crashlytics.instance.recordFlutterError(details);
+  }
+}
 
-    await runZoned<Future<void>>(
-      () async {
-        runApp(MyApp(showOnboarding: !onboardingComplete));
-      },
-      onError: Crashlytics.instance.recordError,
-    );
-  } else {
-    runApp(MyApp(showOnboarding: true));
+Future<void> _onError(Object error, StackTrace stack) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
+    await Crashlytics.instance.recordError(error, stack);
   }
 }
 
