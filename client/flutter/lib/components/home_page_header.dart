@@ -174,7 +174,6 @@ class HeaderClipper extends CustomClipper<Path> {
     path.lineTo(0, size.height);
     path.arcToPoint(Offset(size.width, size.height - 20),
         radius: Radius.elliptical(size.width, 240));
-    path.lineTo(size.width, size.height / 2);
     path.lineTo(size.width, 0);
 
     path.close();
