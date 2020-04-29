@@ -8,13 +8,10 @@ class Constants {
   static final Color accentColor = Color(0xffD86422); // ORANGE
   static final Color whoBackgroundBlueColor = Color(0xff007EB4); // WHO BLUE 2
   static final Color whoAccentYellowColor = Color(0xffFFCC00); // YELLOW
+  static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
 
   static final Color emergencyRedColor = Color(0xffD82037);
   static final double buttonTextSpacing = -.4;
-
-  // Typography Colors
-  static final Color typographyColor = Color(0xffC4C4C4);
-  static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
 
   // Neutral Colors
   static final Color neutral1Color = Color(0xff050C1D);

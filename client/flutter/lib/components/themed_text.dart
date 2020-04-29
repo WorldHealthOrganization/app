@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
-
-// import '../constants.dart';
+import 'package:who_app/constants.dart';
 
 enum TypographyVariant { title, h1, h2, h3, h4, body, button, bodySmall }
 
@@ -40,52 +39,52 @@ class ThemedText extends StatelessWidget {
 
   static final Map<TypographyVariant, TextStyle> variantStyles = {
     TypographyVariant.title: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.primaryDarkColor,
       fontWeight: FontWeight.w900,
       fontSize: 48,
       height: 1.0,
     ),
     TypographyVariant.h1: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.primaryDarkColor,
       fontWeight: FontWeight.w900,
       fontSize: 40,
       height: 1.0,
     ),
     TypographyVariant.h2: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.primaryDarkColor,
       fontWeight: FontWeight.bold,
       fontSize: 30,
       height: 1.2,
       letterSpacing: -0.0011,
     ),
     TypographyVariant.h3: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.neutralTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 24,
       height: 1.167,
     ),
     TypographyVariant.h4: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.neutralTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 18,
       height: 1.333,
       letterSpacing: 0.18,
     ),
     TypographyVariant.body: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.bodyTextColor,
       fontWeight: FontWeight.normal,
       fontSize: 16,
       height: 1.375,
       letterSpacing: -0.32,
     ),
     TypographyVariant.button: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.neutral2Color,
       fontWeight: FontWeight.w600,
       fontSize: 18,
       height: 1.222,
     ),
     TypographyVariant.bodySmall: TextStyle(
-      // color: Constants.typographyColor,
+      color: Constants.neutral2Color,
       fontWeight: FontWeight.normal,
       fontSize: 14,
       height: 1.43,
