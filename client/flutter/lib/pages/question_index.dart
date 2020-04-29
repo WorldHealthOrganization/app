@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:who_app/pages/main_pages/routes.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends StatefulWidget {
@@ -69,6 +70,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
         .toList();
 
     return PageScaffold(
+      heroTag: HeroTags.learn,
       body: [
         items.isNotEmpty
             ? SliverList(delegate: SliverChildListDelegate(items))
@@ -149,7 +151,7 @@ class _QuestionTileState extends State<QuestionTile>
               child: Html(
                 data: widget.questionItem.title,
                 defaultTextStyle: _titleStyle.copyWith(
-                  fontSize: 16 * MediaQuery.of(context).textScaleFactor,
+                  fontSize: 18 * MediaQuery.of(context).textScaleFactor,
                 ),
               ),
             ),

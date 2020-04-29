@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:yaml/yaml.dart';
 
 class AboutPage extends StatelessWidget {
@@ -101,8 +102,8 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ],
-      heroTag: S.of(context).homePagePageSliverListSettings,
       title: S.of(context).aboutPageTitle,
+      heroTag: HeroTags.settings,
     );
   }
 }

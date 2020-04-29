@@ -6,6 +6,7 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 class TravelAdvice extends StatefulWidget {
   final AdviceDataSource dataSource;
@@ -43,9 +44,14 @@ class _TravelAdviceState extends State<TravelAdvice> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(body: [
-      _adviceContent != null ? _buildBody() : LoadingIndicator(),
-    ], title: S.of(context).homePagePageButtonTravelAdvice);
+    return PageScaffold(
+        heroTag: HeroTags.learn,
+        color: Constants.greyBackgroundColor,
+        headingBorderColor: Constants.emergencyRed,
+        body: [
+          _adviceContent != null ? _buildBody() : LoadingIndicator(),
+        ],
+        title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
   SliverList _buildBody() {

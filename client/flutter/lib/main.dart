@@ -4,8 +4,6 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
-import 'package:who_app/pages/main_pages/app_tab_router.dart';
-import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -14,9 +12,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
-
-import './constants.dart';
-import 'generated/l10n.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
@@ -100,27 +98,26 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: "WHO COVID-19",
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        S.delegate
-      ],
-      // FIXME Issue #1012 - disabled supported languages for P0
-      //supportedLocales: S.delegate.supportedLocales,
-      navigatorObservers: <NavigatorObserver>[observer],
-      theme: CupertinoThemeData(
-        brightness: Brightness.light,
-        primaryColor: Constants.primaryColor,
-      ),
-      home: Directionality(
-        child: widget.showOnboarding
-            ? OnboardingPage(analytics)
-            : AppTabRouter(analytics),
-        textDirection: GlobalWidgetsLocalizations(
-          Locale(Intl.getCurrentLocale()),
-        ).textDirection,
+    return Directionality(
+      textDirection: GlobalWidgetsLocalizations(
+        Locale(Intl.getCurrentLocale()),
+      ).textDirection,
+      child: CupertinoApp(
+        title: "WHO COVID-19",
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          S.delegate
+        ],
+        routes: Routes.map,
+        // FIXME Issue #1012 - disabled supported languages for P0
+        //supportedLocales: S.delegate.supportedLocales,
+        initialRoute: widget.showOnboarding ? '/onboarding' : '/',
+        navigatorObservers: <NavigatorObserver>[observer],
+        theme: CupertinoThemeData(
+          brightness: Brightness.light,
+          primaryColor: Constants.primaryDark,
+        ),
       ),
     );
   }
