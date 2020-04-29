@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.light,
           primaryColor: Constants.primaryColor,
           textTheme: CupertinoTextThemeData(
-            textStyle: ThemedText.variantStyles[TypographyVariant.body],
+            textStyle: ThemedText.styleForVariant(TypographyVariant.body),
           )),
       home: Directionality(
         child: widget.showOnboarding

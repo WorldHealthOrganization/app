@@ -37,63 +37,84 @@ class ThemedText extends StatelessWidget {
     this.textWidthBasis,
   }) : super(key: key);
 
-  static final Map<TypographyVariant, TextStyle> variantStyles = {
-    TypographyVariant.title: TextStyle(
-      color: Constants.primaryDarkColor,
-      fontWeight: FontWeight.w900,
-      fontSize: 48,
-      height: 1.0,
-    ),
-    TypographyVariant.h1: TextStyle(
-      color: Constants.primaryDarkColor,
-      fontWeight: FontWeight.w900,
-      fontSize: 40,
-      height: 1.0,
-    ),
-    TypographyVariant.h2: TextStyle(
-      color: Constants.primaryDarkColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 30,
-      height: 1.2,
-      letterSpacing: -0.0011,
-    ),
-    TypographyVariant.h3: TextStyle(
-      color: Constants.neutralTextColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 24,
-      height: 1.167,
-    ),
-    TypographyVariant.h4: TextStyle(
-      color: Constants.neutralTextColor,
-      fontWeight: FontWeight.bold,
-      fontSize: 18,
-      height: 1.333,
-      letterSpacing: 0.18,
-    ),
-    TypographyVariant.body: TextStyle(
-      color: Constants.bodyTextColor,
-      fontWeight: FontWeight.normal,
-      fontSize: 16,
-      height: 1.375,
-      letterSpacing: -0.32,
-    ),
-    TypographyVariant.button: TextStyle(
-      color: Constants.neutral2Color,
-      fontWeight: FontWeight.w600,
-      fontSize: 18,
-      height: 1.222,
-    ),
-    TypographyVariant.bodySmall: TextStyle(
-      color: Constants.neutral2Color,
-      fontWeight: FontWeight.normal,
-      fontSize: 14,
-      height: 1.43,
-    ),
-  };
+  static TextStyle styleForVariant(TypographyVariant variant) {
+    switch (variant) {
+      case TypographyVariant.title:
+        return TextStyle(
+          color: Constants.primaryDarkColor,
+          fontWeight: FontWeight.w900,
+          fontSize: 48,
+          height: 1.0,
+        );
+        break;
+      case TypographyVariant.h1:
+        return TextStyle(
+          color: Constants.primaryDarkColor,
+          fontWeight: FontWeight.w900,
+          fontSize: 40,
+          height: 1.0,
+        );
+        break;
+      case TypographyVariant.h2:
+        return TextStyle(
+          color: Constants.primaryDarkColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          height: 1.2,
+          letterSpacing: -0.0011,
+        );
+        break;
+      case TypographyVariant.h3:
+        return TextStyle(
+          color: Constants.neutralTextColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+          height: 1.167,
+        );
+        break;
+      case TypographyVariant.h4:
+        return TextStyle(
+          color: Constants.neutralTextColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          height: 1.333,
+          letterSpacing: 0.18,
+        );
+        break;
+      case TypographyVariant.body:
+        return TextStyle(
+          color: Constants.bodyTextColor,
+          fontWeight: FontWeight.normal,
+          fontSize: 16,
+          height: 1.375,
+          letterSpacing: -0.32,
+        );
+        break;
+      case TypographyVariant.button:
+        return TextStyle(
+          color: Constants.neutral2Color,
+          fontWeight: FontWeight.w600,
+          fontSize: 18,
+          height: 1.222,
+        );
+        break;
+      case TypographyVariant.bodySmall:
+        return TextStyle(
+          color: Constants.neutral2Color,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          height: 1.43,
+        );
+        break;
+      default:
+        return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style = ThemedText.variantStyles[this.variant].merge(this.style);
+    TextStyle style =
+        ThemedText.styleForVariant(this.variant).merge(this.style);
     return Text(
       this.data,
       locale: this.locale,
@@ -161,7 +182,8 @@ class AutoSizeThemedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style = ThemedText.variantStyles[this.variant].merge(this.style);
+    TextStyle style =
+        ThemedText.styleForVariant(this.variant).merge(this.style);
     return AutoSizeText(
       this.data,
       group: this.group,
