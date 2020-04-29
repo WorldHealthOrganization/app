@@ -234,7 +234,7 @@ class _SettingsPageState extends State<SettingsPage>
                           variant: TypographyVariant.h3,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            color: Constants.neutral1,
+                            color: Constants.neutral1Color,
                           )),
                     ),
                     Semantics(
@@ -252,7 +252,7 @@ class _SettingsPageState extends State<SettingsPage>
                   info,
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    color: Constants.neutral2,
+                    color: Constants.neutral2Color,
                   ),
                 )
               ],

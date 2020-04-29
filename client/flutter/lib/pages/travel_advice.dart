@@ -60,7 +60,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 children: <Widget>[
                   FaIcon(
                     FontAwesomeIcons.exclamationTriangle,
-                    color: Constants.emergencyRed,
+                    color: Constants.emergencyRedColor,
                   ),
                   SizedBox(
                     height: 10,
@@ -70,7 +70,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: Constants.emergencyRed,
+                      color: Constants.emergencyRedColor,
                       height: 1.37,
                     ),
                   ),

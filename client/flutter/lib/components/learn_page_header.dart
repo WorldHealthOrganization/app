@@ -16,7 +16,7 @@ class LearnPageHeader extends StatelessWidget {
               "Get the Facts",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Constants.primaryDark,
+                color: Constants.primaryDarkColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
               ),

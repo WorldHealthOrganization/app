@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 
 class Constants {
   static final Color backgroundColor = CupertinoColors.white; // WHITE
-  static final Color primaryColor = Color(0xff0093CE); // WHO BLUE
+  static final Color primaryColor = Color(0xff008DC9); // WHO BLUE
   static final Color textColor = Color(0xff3C4245); //GREY
-  static final Color primaryDark = Color(0xff1A458E); // NAVY
-  static final Color accent = Color(0xffD86422); // ORANGE
+  static final Color primaryDarkColor = Color(0xff1A458E); // NAVY
+  static final Color accentColor = Color(0xffD86422); // ORANGE
+  static final Color whoBackgroundBlueColor = Color(0xff007EB4); // WHO BLUE 2
+  static final Color whoAccentYellowColor = Color(0xffFFCC00); // YELLOW
 
-  static final Color emergencyRed = Color(0xffD82037);
+  static final Color emergencyRedColor = Color(0xffD82037);
   static final double buttonTextSpacing = -.4;
 
   // Typography Colors
@@ -15,8 +17,11 @@ class Constants {
   static final Color bodyTextColor = Color(0xff272626); // CHARCOAL
 
   // Neutral Colors
-  static final Color neutral1 = Color(0xff050C1D);
-  static final Color neutral2 = Color(0xff26354E);
+  static final Color neutral1Color = Color(0xff050C1D);
+  static final Color neutral2Color = Color(0xff26354E);
+  static final Color neutralTextColor = Color(0xff3C4245);
+  static final Color neutralTextLightColor = Color(0xff5C6164);
+  static final Color neutralTextDarkColor = Color(0xff1C1E1F);
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging
