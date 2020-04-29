@@ -33,12 +33,12 @@ class HomePageHeader extends StatelessWidget {
 
   String get svgAssetName {
     switch (this.headerType) {
-      case HeaderType.CheckYourSymptoms:
-        return "assets/svg/home_page_header/check_your_symptoms.svg";
-      case HeaderType.ProtectYourself:
-        return "assets/svg/home_page_header/protect_yourself.svg";
+      // case HeaderType.CheckYourSymptoms:
+      //   return "assets/svg/home_page_header/check_your_symptoms.svg";
+      // case HeaderType.ProtectYourself:
+      //   return "assets/svg/home_page_header/protect_yourself.svg";
       default:
-        return "assets/svg/home_page_header/check_your_symptoms.svg";
+        return null;
     }
   }
 
@@ -130,7 +130,9 @@ class HomePageHeader extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(this.svgAssetName),
+                    this.svgAssetName != null
+                        ? SvgPicture.asset(this.svgAssetName)
+                        : Container(),
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 12,
@@ -150,7 +152,10 @@ class HomePageHeader extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
+                if(this.svgAssetName == null) Container(
+                  height: 40,
+                ),
               ],
             ),
           ),

@@ -7,7 +7,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
-      body: [HomePageHeader(HeaderType.ProtectYourself)],
+      body: [
+        HomePageHeader(HeaderType.ProtectYourself),
+      ],
     );
   }
 }
