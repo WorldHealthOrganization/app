@@ -45,11 +45,11 @@ class HomePageHeader extends StatelessWidget {
   Color get backgroundColor {
     switch (this.headerType) {
       case HeaderType.CheckYourSymptoms:
-        return Constants.primaryDark;
+        return Constants.primaryDarkColor;
       case HeaderType.ProtectYourself:
         return Color(0xff4ACA8C);
       default:
-        return Constants.primaryDark;
+        return Constants.primaryDarkColor;
     }
   }
 
