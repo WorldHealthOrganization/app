@@ -67,7 +67,6 @@ flutter:
     - assets/
     - assets/images/
     - assets/svg/
-    - assets/svg/home_page_header/
     - assets/animations/
     - assets/news_press/
     - assets/onboarding/
