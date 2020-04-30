@@ -15,9 +15,9 @@ class PageHeader extends StatelessWidget {
     @required this.title,
     this.heroTag,
     this.disableBackButton = false,
-    this.titleStyle = const TextStyle(fontSize: 34),
+    this.titleStyle,
     this.borderColor,
-    this.titleTypographyVariant = TypographyVariant.h2,
+    this.titleTypographyVariant = TypographyVariant.header,
   });
 
   @override
@@ -42,8 +42,8 @@ class PageHeader extends StatelessWidget {
   static const textColor = Color(0xff1A458E);
 
   static Widget buildTitle(String title,
-      {TextStyle textStyle = const TextStyle(fontSize: 34),
-      TypographyVariant variant = TypographyVariant.h2}) {
+      {TextStyle textStyle,
+      TypographyVariant variant = TypographyVariant.header}) {
     return Semantics(
       header: true,
       namesRoute: true,
@@ -55,11 +55,7 @@ class PageHeader extends StatelessWidget {
               minFontSize: 8,
               overflow: TextOverflow.fade,
               softWrap: false,
-              style: TextStyle(
-                      color: textColor,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.5)
-                  .merge(textStyle))),
+              style: textStyle)),
     );
   }
 }

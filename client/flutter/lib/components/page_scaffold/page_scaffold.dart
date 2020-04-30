@@ -29,8 +29,8 @@ class PageScaffold extends StatelessWidget {
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.disableBackButton = false,
-    this.headerTitleStyle = const TextStyle(fontSize: 34),
-    this.headerTypographyVariant = TypographyVariant.h2,
+    this.headerTitleStyle,
+    this.headerTypographyVariant = TypographyVariant.header,
   });
 
   @override

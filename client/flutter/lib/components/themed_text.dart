@@ -2,7 +2,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/constants.dart';
 
-enum TypographyVariant { title, h1, h2, h3, h4, body, button, bodySmall }
+enum TypographyVariant {
+  title,
+  header,
+  h1,
+  h2,
+  h3,
+  h4,
+  body,
+  button,
+  bodySmall
+}
 
 class ThemedText extends StatelessWidget {
   final String data;
@@ -45,6 +55,15 @@ class ThemedText extends StatelessWidget {
           fontWeight: FontWeight.w900,
           fontSize: 48,
           height: 1.0,
+        );
+        break;
+      case TypographyVariant.header:
+        return TextStyle(
+          color: Constants.primaryDarkColor,
+          fontWeight: FontWeight.w800,
+          fontSize: 34,
+          height: 0.88,
+          letterSpacing: -0.5,
         );
         break;
       case TypographyVariant.h1:
@@ -106,9 +125,8 @@ class ThemedText extends StatelessWidget {
           height: 1.43,
         );
         break;
-      default:
-        return null;
     }
+    return null;
   }
 
   @override
