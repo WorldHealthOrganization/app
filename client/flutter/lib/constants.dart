@@ -14,6 +14,7 @@ class Constants {
   static const Color emergencyRedColor = Color(0xffD82037);
   static const double buttonTextSpacing = -.4;
   static const Color menuButtonColor = Color(0xCC1694BE);
+  static const Color greenColor = Color(0xFF00CE86);
 
   // Neutral Colors
   static const Color neutral1Color = Color(0xff050C1D);

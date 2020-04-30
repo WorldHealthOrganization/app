@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:who_app/api/notifications.dart';
+import 'package:who_app/api/symptoms.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -182,6 +183,13 @@ class _SettingsPageState extends State<SettingsPage>
         title: S.of(context).homePagePageSliverListAboutTheApp,
         onTap: () {
           return Navigator.of(context, rootNavigator: true).pushNamed('/about');
+        },
+      ),
+      divider,
+      menuItem(
+        title: "Clear symptoms dashboard",
+        onTap: () {
+          return SymptomTimeseries().clearAll();
         },
       ),
       divider,

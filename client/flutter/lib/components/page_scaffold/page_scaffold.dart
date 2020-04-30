@@ -14,6 +14,7 @@ class PageScaffold extends StatelessWidget {
   final TextStyle headerTitleStyle;
   final TypographyVariant headerTypographyVariant;
   final Widget header;
+  final Widget headerTrailingWidget;
 
   final bool showHeader;
 
@@ -32,6 +33,7 @@ class PageScaffold extends StatelessWidget {
     this.disableBackButton = false,
     this.headerTitleStyle,
     this.headerTypographyVariant = TypographyVariant.header,
+    this.headerTrailingWidget,
   });
 
   @override
@@ -55,6 +57,7 @@ class PageScaffold extends StatelessWidget {
                           disableBackButton: disableBackButton,
                           titleStyle: headerTitleStyle,
                           titleTypographyVariant: this.headerTypographyVariant,
+                          trailingWidget: headerTrailingWidget,
                         )),
                   ...this.body,
                   SliverToBoxAdapter(
