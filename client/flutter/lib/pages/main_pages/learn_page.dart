@@ -128,52 +128,48 @@ class _MenuItem extends StatelessWidget {
         left: 24,
         right: 24,
       ),
-      child: Card(
-        margin: EdgeInsets.zero,
-        elevation: 0,
-        color: color,
+      child: FlatButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
         ),
-        child: FlatButton(
-          padding: const EdgeInsets.all(24),
-          onPressed: () {
-            return Navigator.of(context, rootNavigator: true)
-                .pushNamed(link.route, arguments: link.args);
-          },
-          child: Column(
-            mainAxisAlignment: subtitle != null
-                ? MainAxisAlignment.end
-                : MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              if (title != null)
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: subtitle != null ? 24 : 0,
-                  ),
-                  child: ThemedText(
-                    title,
-                    variant: TypographyVariant.h3,
-                    style: TextStyle(color: CupertinoColors.white),
-                  ),
+        color: color,
+        padding: const EdgeInsets.all(24),
+        onPressed: () {
+          return Navigator.of(context, rootNavigator: true)
+              .pushNamed(link.route, arguments: link.args);
+        },
+        child: Column(
+          mainAxisAlignment: subtitle != null
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            if (title != null)
+              Padding(
+                padding: EdgeInsets.only(
+                  top: subtitle != null ? 24 : 0,
                 ),
-              if (subtitle != null)
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 4,
-                  ),
-                  child: ThemedText(
-                    subtitle,
-                    variant: TypographyVariant.body,
-                    style: TextStyle(color: Color(0xD5FFFFFF)),
-                  ),
+                child: ThemedText(
+                  title,
+                  variant: TypographyVariant.h3,
+                  style: TextStyle(color: CupertinoColors.white),
                 ),
-            ],
-          ),
+              ),
+            if (subtitle != null)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 4,
+                ),
+                child: ThemedText(
+                  subtitle,
+                  variant: TypographyVariant.body,
+                  style: TextStyle(color: Color(0xD5FFFFFF)),
+                ),
+              ),
+          ],
         ),
       ),
     );
