@@ -4,6 +4,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -115,9 +116,11 @@ class _MyAppState extends State<MyApp> {
         initialRoute: widget.showOnboarding ? '/onboarding' : '/',
         navigatorObservers: <NavigatorObserver>[observer],
         theme: CupertinoThemeData(
-          brightness: Brightness.light,
-          primaryColor: Constants.primaryDark,
-        ),
+            brightness: Brightness.light,
+            primaryColor: Constants.primaryDarkColor,
+            textTheme: CupertinoTextThemeData(
+              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+            )),
       ),
     );
   }

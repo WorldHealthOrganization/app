@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
@@ -45,11 +46,11 @@ class HomePageHeader extends StatelessWidget {
   Color get backgroundColor {
     switch (this.headerType) {
       case HeaderType.CheckYourSymptoms:
-        return Constants.primaryDark;
+        return Constants.primaryDarkColor;
       case HeaderType.ProtectYourself:
         return Color(0xff4ACA8C);
       default:
-        return Constants.primaryDark;
+        return Constants.primaryDarkColor;
     }
   }
 
@@ -107,21 +108,19 @@ class HomePageHeader extends StatelessWidget {
                 SizedBox(
                   height: 32,
                 ),
-                Text(
+                ThemedText(
                   this.title(context),
+                  variant: TypographyVariant.title,
                   style: TextStyle(
                     color: CupertinoColors.white,
-                    fontSize: 48,
-                    fontWeight: FontWeight.w900,
                   ),
                   textAlign: TextAlign.left,
                 ),
-                Text(
+                ThemedText(
                   "See what your symptoms could mean and what you can do to move forward.",
+                  variant: TypographyVariant.body,
                   style: TextStyle(
                     color: CupertinoColors.white,
-                    fontSize: 16,
-                    height: 1.37,
                   ),
                 ),
                 Container(
@@ -144,8 +143,9 @@ class HomePageHeader extends StatelessWidget {
                           vertical: 8,
                         ),
                         color: CupertinoColors.white,
-                        child: Text(
+                        child: ThemedText(
                           this.buttonText(context),
+                          variant: TypographyVariant.button,
                           style: TextStyle(color: Constants.primaryColor),
                         ),
                         onPressed: () {},

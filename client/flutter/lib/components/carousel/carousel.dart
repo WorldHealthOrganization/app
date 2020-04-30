@@ -97,7 +97,7 @@ class CarouselView extends StatelessWidget {
                   length: this.items.length,
                   normalBuilder: (animationController, index) => Circle(
                     size: 20.0,
-                    color: Constants.primaryDark.withOpacity(.75),
+                    color: Constants.primaryDarkColor.withOpacity(.75),
                   ),
                   highlightedBuilder: (animationController, index) =>
                       ScaleTransition(
@@ -107,7 +107,7 @@ class CarouselView extends StatelessWidget {
                     ),
                     child: Circle(
                       size: 28.0,
-                      color: Constants.primaryDark,
+                      color: Constants.primaryDarkColor,
                     ),
                   ),
                 ),

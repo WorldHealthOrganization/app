@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 class LearnPagePromo extends StatelessWidget {
@@ -21,21 +22,20 @@ class LearnPagePromo extends StatelessWidget {
         bottom: false,
         child: Column(
           children: [
-            Text(
+            ThemedText(
               title,
+              variant: TypographyVariant.h3,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Constants.primaryDark,
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
+                color: Constants.primaryDarkColor,
               ),
             ),
-            Text(
+            ThemedText(
               subtitle,
+              variant: TypographyVariant.body,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Constants.textColor,
-                fontSize: 16,
               ),
             ),
             SizedBox(
@@ -48,11 +48,11 @@ class LearnPagePromo extends StatelessWidget {
                 horizontal: 32,
                 vertical: 8,
               ),
-              child: Text(
+              child: ThemedText(
                 buttonText,
+                variant: TypographyVariant.button,
                 style: TextStyle(
                   color: Constants.primaryColor,
-                  fontSize: 18,
                 ),
               ),
               onPressed: () {
