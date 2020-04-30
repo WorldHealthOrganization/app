@@ -22,8 +22,8 @@ class ThemedText extends StatelessWidget {
 
   ThemedText(
     this.data, {
-    Key key,
     @required this.variant,
+    Key key,
     this.locale,
     this.maxLines,
     this.overflow,
@@ -158,8 +158,8 @@ class AutoSizeThemedText extends StatelessWidget {
 
   AutoSizeThemedText(
     this.data, {
-    Key key,
     @required this.variant,
+    Key key,
     this.group,
     this.locale,
     this.maxFontSize = double.infinity,
