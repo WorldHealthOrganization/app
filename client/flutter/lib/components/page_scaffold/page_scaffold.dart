@@ -25,7 +25,7 @@ class PageScaffold extends StatelessWidget {
     this.header,
     this.showHeader = true,
     this.padding = EdgeInsets.zero,
-    this.color = CupertinoColors.white,
+    this.color = CupertinoColors.systemGrey6,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.disableBackButton = false,
