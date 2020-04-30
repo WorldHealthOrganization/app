@@ -30,21 +30,23 @@ class SymptomCheckerModel with ChangeNotifier {
     return pages.last;
   }
 
-  /// Set the answer for the current page, advancing as needed.
-  /// If additional questions remain the next page will be added to the the
-  /// pages list. If the series is complete the isComplete flag will be set.
+  /// Set the answer for the current page, advancing to the next question if
+  /// needed. If additional questions remain the next page will be added to
+  /// the pages list. If the series is complete the isComplete flag will be set.
   /// In both cases the change notifier will fire to indicate the update.
-  void answerQuestion(String answerId) {
-    pages[pages.length - 1] = SymptomCheckerPageModel(
-        question: currentPage.question, selectedAnswerId: answerId);
+  void answerQuestion(Set<String> answerIds) {
+    pages[pages.length - 1] = currentPage.withAnswers(answerIds);
+
     // TODO: Toy implementation - always add the next page if it exists
+    // Add the next question
     if (_content.questions.length > pages.length) {
       pages.add(
           SymptomCheckerPageModel(question: _content.questions[pages.length]));
     }
     // TODO: Toy implementation - assume all pages are shown
+    // No more questions, series complete.
     if (_content.questions.length == pages.length &&
-        currentPage.selectedAnswerId != null) {
+        currentPage.selectedAnswers.isNotEmpty) {
       isComplete = true;
     }
     notifyListeners();
@@ -53,7 +55,7 @@ class SymptomCheckerModel with ChangeNotifier {
   /// Indicate that the user has driven the UI back to the previous page or
   /// wishes to drive the UI back to the previous page. The model will truncate
   /// the last page and the change notifier will fire.
-  void goBack() {
+  void previousQuestion() {
     pages.removeLast();
     notifyListeners();
   }
@@ -62,20 +64,26 @@ class SymptomCheckerModel with ChangeNotifier {
 /// Represents a single page in the series of question pages, possibly with
 /// a selected answer.
 class SymptomCheckerPageModel {
-  // The question for this page.
+  /// The question for this page.
   final SymptomCheckerQuestion question;
 
-  // The selected answer, if any, or null if no selection has been made.
-  final String selectedAnswerId;
+  /// The set of selected answers or an empty set if no selection has been made.
+  final Set<String> selectedAnswers;
 
-  SymptomCheckerPageModel({@required this.question, this.selectedAnswerId});
+  SymptomCheckerPageModel(
+      {@required this.question, this.selectedAnswers = const {}});
+
+  SymptomCheckerPageModel withAnswers(Set<String> answerIds) {
+    return SymptomCheckerPageModel(
+        question: question, selectedAnswers: answerIds);
+  }
 }
 
 /// Interface for the UI that hosts a symptom checker page to receive user actions.
 /// The UI applies these results to the model and observe the changes.
 abstract class SymptomCheckerPageDelegate {
-  // Provide the answer for the current page.
-  void answerQuestion(String answerId);
+  // Provide answers for the current page.
+  void answerQuestion(Set<String> answerIds);
 
   // Indicate that the user wishes to go back to the previous page using an
   // affordance on the page.
