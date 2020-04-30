@@ -45,10 +45,7 @@ class AppTabRouter extends StatelessWidget {
               icon: Icon(CupertinoIcons.home),
               title: Text("Home")),
           BottomNavigationBarItem(
-              icon: Icon(IconData(0xF38C,
-                  fontFamily: 'CupertinoIcons',
-                  fontPackage: 'cupertino_icons')),
-              title: Text("Stats")),
+              icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.search), title: Text("Learn")),
           BottomNavigationBarItem(
