@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/home_page_donate.dart';
 import 'package:who_app/components/home_page_header.dart';
 import 'package:who_app/components/home_page_information_card.dart';
 import 'package:who_app/components/home_page_protect_yourself.dart';
@@ -16,10 +17,22 @@ class HomePage extends StatelessWidget {
       color: Constants.greyBackgroundColor,
       body: [
         HomePageHeader(HeaderType.ProtectYourself),
+        SliverToBoxAdapter(
+            child: Container(
+          height: 32.0,
+        )),
         HomePageRecentNumbers(),
+        SliverToBoxAdapter(
+            child: Container(
+          height: 20.0,
+        )),
         HomePageProtectYourself(
           dataSource: FactContent.protectYourself,
         ),
+        SliverToBoxAdapter(
+            child: Container(
+          height: 48.0,
+        )),
         SliverToBoxAdapter(
           // TODO: drive this dynamically
           child: Padding(
@@ -33,6 +46,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
+        SliverToBoxAdapter(
+            child: Container(
+          height: 40.0,
+        )),
+        HomePageDonate(),
       ],
     );
   }
