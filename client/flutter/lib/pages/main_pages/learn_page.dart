@@ -7,6 +7,7 @@ import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
@@ -154,12 +155,10 @@ class _MenuItem extends StatelessWidget {
                   padding: EdgeInsets.only(
                     top: subtitle != null ? 24 : 0,
                   ),
-                  child: Text(
+                  child: ThemedText(
                     title,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: CupertinoColors.white),
+                    variant: TypographyVariant.h3,
+                    style: TextStyle(color: CupertinoColors.white),
                   ),
                 ),
               if (subtitle != null)
@@ -167,10 +166,10 @@ class _MenuItem extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     top: 4,
                   ),
-                  child: Text(
+                  child: ThemedText(
                     subtitle,
-                    style: TextStyle(
-                        fontSize: 16, height: 1.37, color: Color(0xD5FFFFFF)),
+                    variant: TypographyVariant.body,
+                    style: TextStyle(color: Color(0xD5FFFFFF)),
                   ),
                 ),
             ],

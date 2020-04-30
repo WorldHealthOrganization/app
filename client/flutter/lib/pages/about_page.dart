@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
@@ -62,10 +63,10 @@ class AboutPage extends StatelessWidget {
               Container(
                 color: CupertinoColors.white,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                child: Text(
+                child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
-                  style: TextStyle(color: CupertinoColors.black, fontSize: 16),
+                  variant: TypographyVariant.body,
                 ),
               ),
               Container(
@@ -89,11 +90,10 @@ class AboutPage extends StatelessWidget {
                     team.insertAll(0, founders);
                     var teamNames =
                         S.of(context).aboutPageThanksToText(team.join(", "));
-                    return Text(
+                    return ThemedText(
                       teamNames,
+                      variant: TypographyVariant.body,
                       softWrap: true,
-                      style:
-                          TextStyle(color: CupertinoColors.black, fontSize: 16),
                     );
                   },
                 ),

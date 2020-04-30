@@ -197,9 +197,9 @@ class _SettingsPageState extends State<SettingsPage>
           horizontal: 24,
           vertical: 8,
         ),
-        title: Text(
+        title: ThemedText(
           title,
-          style: TextStyle(fontWeight: FontWeight.w600),
+          variant: TypographyVariant.button,
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,

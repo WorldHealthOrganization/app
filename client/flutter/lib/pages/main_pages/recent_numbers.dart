@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
+import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/api/who_service.dart';
 
@@ -102,7 +104,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                     },
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-                    thumbColor: Color(0xffF9F8F7),
+                    thumbColor: Constants.greyBackgroundColor,
                   ),
                   Container(height: 16.0),
                   ConstrainedBox(
@@ -156,8 +158,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               displayText,
               style: TextStyle(
                 color: value == selectedValue
-                    ? Color(0xff008DC9)
-                    : Color(0xff5C6164),
+                    ? Constants.primaryColor
+                    : Constants.neutralTextLightColor,
                 fontWeight: FontWeight.w600,
                 fontSize: 18,
                 height: 1.222,
@@ -228,19 +230,18 @@ class TappableStatCard extends StatelessWidget {
                     Text(
                       this.title.toUpperCase(),
                       style: TextStyle(
-                        color: Color(0xff5C6164),
+                        color: Constants.neutralTextLightColor,
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                         height: 2.13,
                       ),
                     ),
                     Container(height: 8.0),
-                    Text(this.stat,
+                    ThemedText(this.stat,
+                        variant: TypographyVariant.h2,
                         softWrap: true,
                         style: TextStyle(
-                          color: Color(0xff008DC9),
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
+                          color: Constants.primaryColor,
                           letterSpacing: -1,
                         ))
                   ],
@@ -249,7 +250,7 @@ class TappableStatCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: this.isSelected
-                          ? Color(0xff008DC9)
+                          ? Constants.primaryColor
                           : CupertinoColors.white,
                       width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),

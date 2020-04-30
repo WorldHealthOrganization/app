@@ -7,6 +7,7 @@ class PageHeader extends StatelessWidget {
   final String heroTag;
   final Color borderColor;
   final TextStyle titleStyle;
+  final TypographyVariant titleTypographyVariant;
 
   final bool disableBackButton;
 
@@ -16,6 +17,7 @@ class PageHeader extends StatelessWidget {
     this.disableBackButton = false,
     this.titleStyle = const TextStyle(fontSize: 34),
     this.borderColor,
+    this.titleTypographyVariant = TypographyVariant.h2,
   });
 
   @override
@@ -32,26 +34,31 @@ class PageHeader extends StatelessWidget {
       backgroundColor: CupertinoColors.white.withOpacity(0.85),
       heroTag: this.heroTag ?? this.title,
       leading: this.disableBackButton ? Container() : null,
-      largeTitle: buildTitle(this.title, textStyle: titleStyle),
+      largeTitle: buildTitle(this.title,
+          textStyle: titleStyle, variant: this.titleTypographyVariant),
     );
   }
 
   static const textColor = Color(0xff1A458E);
 
   static Widget buildTitle(String title,
-      {TextStyle textStyle = const TextStyle(fontSize: 34)}) {
+      {TextStyle textStyle = const TextStyle(fontSize: 34),
+      TypographyVariant variant = TypographyVariant.h2}) {
     return Semantics(
       header: true,
       namesRoute: true,
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: AutoSizeThemedText(title,
-              variant: TypographyVariant.h1,
+              variant: variant,
               maxLines: 1,
               minFontSize: 8,
               overflow: TextOverflow.fade,
               softWrap: false,
-              style: TextStyle(color: textColor, letterSpacing: -0.5)
+              style: TextStyle(
+                      color: textColor,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.5)
                   .merge(textStyle))),
     );
   }
