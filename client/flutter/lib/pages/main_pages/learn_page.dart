@@ -6,7 +6,6 @@ import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
-import 'package:flutter/material.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
@@ -21,8 +20,8 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  final header =
-      TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
+  final header = TextStyle(
+      color: CupertinoColors.black, fontSize: 24, fontWeight: FontWeight.w800);
   IndexContent _content;
 
   @override
@@ -128,16 +127,12 @@ class _MenuItem extends StatelessWidget {
         left: 24,
         right: 24,
       ),
-      child: Card(
-        margin: EdgeInsets.zero,
-        elevation: 0,
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
         ),
-        child: FlatButton(
+        child: CupertinoButton(
+          color: color,
           padding: const EdgeInsets.all(24),
           onPressed: () {
             return Navigator.of(context, rootNavigator: true)
