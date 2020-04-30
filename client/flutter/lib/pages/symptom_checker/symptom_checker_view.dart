@@ -83,11 +83,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       case SymptomCheckerQuestionType.YesNo:
         return YesNoQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.ShortListSingleSelection:
-        return ShortListQuestionView(
-            pageDelegate: this, pageModel: model, multipleSelection: false);
+        return ShortListQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.ShortListMultipleSelection:
-        return ShortListQuestionView(
-            pageDelegate: this, pageModel: model, multipleSelection: true);
+        return ShortListQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.LongListSingleSelection:
         // TODO:
         return Container();

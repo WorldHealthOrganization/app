@@ -102,6 +102,18 @@ class SymptomCheckerQuestion {
   /// The list of possible answers.
   final List<SymptomCheckerAnswer> answers;
 
+  bool get allowsMultipleSelection {
+    switch (type) {
+      case SymptomCheckerQuestionType.YesNo:
+      case SymptomCheckerQuestionType.ShortListSingleSelection:
+      case SymptomCheckerQuestionType.LongListSingleSelection:
+        return false;
+      case SymptomCheckerQuestionType.ShortListMultipleSelection:
+        return true;
+    }
+    throw Exception("should be unreachable");
+  }
+
   SymptomCheckerQuestion(
       {@required this.type,
       @required this.id,

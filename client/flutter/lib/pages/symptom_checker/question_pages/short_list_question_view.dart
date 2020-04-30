@@ -8,17 +8,15 @@ import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 class ShortListQuestionView extends StatefulWidget {
   // Call back to set our answer
   final SymptomCheckerPageDelegate pageDelegate;
-  final bool multipleSelection;
 
   // Model for our question
   final SymptomCheckerPageModel pageModel;
 
-  const ShortListQuestionView(
-      {Key key,
-      @required this.pageDelegate,
-      @required this.pageModel,
-      @required this.multipleSelection})
-      : super(key: key);
+  const ShortListQuestionView({
+    Key key,
+    @required this.pageDelegate,
+    @required this.pageModel,
+  }) : super(key: key);
 
   @override
   _ShortListQuestionViewState createState() => _ShortListQuestionViewState();
@@ -28,11 +26,15 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   String _singleSelection;
   Set<String> _multipleSelections = {};
 
+  bool get _allowsMultipleSelection {
+    return widget.pageModel.question.allowsMultipleSelection;
+  }
+
   @override
   void initState() {
     super.initState();
     if (widget.pageModel.selectedAnswers.isNotEmpty) {
-      if (widget.multipleSelection) {
+      if (_allowsMultipleSelection) {
         _multipleSelections = widget.pageModel.selectedAnswers;
       } else {
         _singleSelection = widget.pageModel.selectedAnswers.first;
@@ -82,7 +84,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
         children: <Widget>[
           Material(
             color: Colors.white,
-            child: widget.multipleSelection
+            child: _allowsMultipleSelection
                 ? Checkbox(
                     value: _multipleSelections.contains(answer.id),
                     onChanged: (bool value) {
@@ -103,7 +105,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   }
 
   void _next() {
-    if (widget.multipleSelection) {
+    if (_allowsMultipleSelection) {
       widget.pageDelegate.answerQuestion(_multipleSelections);
     } else {
       widget.pageDelegate.answerQuestion({_singleSelection});
@@ -111,12 +113,12 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   }
 
   bool _isComplete() {
-    return (widget.multipleSelection && _multipleSelections.isNotEmpty) ||
-        (!widget.multipleSelection && _singleSelection != null);
+    return (_allowsMultipleSelection && _multipleSelections.isNotEmpty) ||
+        (!_allowsMultipleSelection && _singleSelection != null);
   }
 
   void _selected(String answerId) {
-    if (widget.multipleSelection) {
+    if (_allowsMultipleSelection) {
       // toggle
       if (_multipleSelections.contains(answerId)) {
         _multipleSelections.remove(answerId);
