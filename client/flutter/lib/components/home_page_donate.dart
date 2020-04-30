@@ -37,7 +37,7 @@ class HomePageDonate extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50.0),
                       color: CupertinoColors.white,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+                          EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
                       child: ThemedText(
                         'Donate now',
                         variant: TypographyVariant.button,

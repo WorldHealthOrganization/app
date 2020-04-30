@@ -44,7 +44,7 @@ class HomePageInformationCard extends StatelessWidget {
               ),
             ),
             Container(
-              height: 12.0,
+              height: 16.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
