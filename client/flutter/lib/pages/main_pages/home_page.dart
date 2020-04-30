@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/components/home_page_ad_card.dart';
 import 'package:who_app/components/home_page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 
@@ -9,6 +10,7 @@ class HomePage extends StatelessWidget {
       showHeader: false,
       body: [
         HomePageHeader(HeaderType.ProtectYourself),
+        HomePageAdCard(HomePageAdType.GettheFacts)
       ],
     );
   }
