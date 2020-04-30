@@ -22,6 +22,16 @@ class YesNoQuestionView extends StatefulWidget {
 }
 
 class _YesNoQuestionViewState extends State<YesNoQuestionView> {
+  String _selection;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.pageModel.selectedAnswers.isNotEmpty) {
+      _selection = widget.pageModel.selectedAnswers.first;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,31 +49,42 @@ class _YesNoQuestionViewState extends State<YesNoQuestionView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FlatButton(
-                    color: Colors.green,
+                    color: _selection == YesNoQuestionView.YES
+                        ? Colors.green
+                        : Colors.grey,
                     child: Text("Yes"),
                     onPressed: () {
-                      widget.pageDelegate
-                          .answerQuestion({YesNoQuestionView.YES});
+                      setState(() {
+                        _selection = YesNoQuestionView.YES;
+                      });
                     }),
                 SizedBox(width: 24),
                 FlatButton(
-                    color: Colors.red,
+                    color: _selection == YesNoQuestionView.NO
+                        ? Colors.red
+                        : Colors.grey,
                     child: Text("No"),
                     onPressed: () {
-                      widget.pageDelegate
-                          .answerQuestion({YesNoQuestionView.NO});
+                      setState(() {
+                        _selection = YesNoQuestionView.NO;
+                      });
                     }),
               ],
             ),
             Spacer(flex: 3),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                if (widget.pageModel.questionIndex > 0)
-                  FlatButton(
-                      color: Colors.grey,
-                      child: Text("Previous"),
-                      onPressed: _previous),
+                widget.pageModel.questionIndex > 0
+                    ? FlatButton(
+                        color: Colors.grey,
+                        child: Text("Previous"),
+                        onPressed: _previous)
+                    : Container(),
+                FlatButton(
+                    color: Colors.grey,
+                    child: Text("Next"),
+                    onPressed: _selection != null ? _next : null)
               ],
             ),
             Spacer()
@@ -71,6 +92,10 @@ class _YesNoQuestionViewState extends State<YesNoQuestionView> {
         ),
       ),
     );
+  }
+
+  void _next() {
+    widget.pageDelegate.answerQuestion({_selection});
   }
 
   void _previous() {

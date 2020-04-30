@@ -66,7 +66,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
                 FlatButton(
                     color: Colors.grey,
                     child: Text("Next"),
-                    onPressed: isComplete() ? _next : null),
+                    onPressed: _isComplete() ? _next : null),
               ],
             ),
             Spacer()
@@ -110,7 +110,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
     }
   }
 
-  bool isComplete() {
+  bool _isComplete() {
     return (widget.multipleSelection && _multipleSelections.isNotEmpty) ||
         (!widget.multipleSelection && _singleSelection != null);
   }
