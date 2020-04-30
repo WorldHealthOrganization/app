@@ -82,10 +82,17 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
         children: <Widget>[
           Material(
             color: Colors.white,
-            child: Radio<String>(
-                groupValue: _singleSelection == answer.id ? answer.id : "",
-                value: answer.id,
-                onChanged: _onSelection),
+            child: widget.multipleSelection
+                ? Checkbox(
+                    value: _multipleSelections.contains(answer.id),
+                    onChanged: (bool value) {
+                      _selected(answer.id);
+                    },
+                  )
+                : Radio<String>(
+                    groupValue: _singleSelection == answer.id ? answer.id : "",
+                    value: answer.id,
+                    onChanged: _selected),
           ),
           Flexible(child: Html(data: answer.answerHtml))
         ]);
@@ -108,9 +115,17 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
         (!widget.multipleSelection && _singleSelection != null);
   }
 
-  void _onSelection(String answerId) {
-    setState(() {
+  void _selected(String answerId) {
+    if (widget.multipleSelection) {
+      // toggle
+      if (_multipleSelections.contains(answerId)) {
+        _multipleSelections.remove(answerId);
+      } else {
+        _multipleSelections.add(answerId);
+      }
+    } else {
       _singleSelection = answerId;
-    });
+    }
+    setState(() {});
   }
 }
