@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/home_page_header.dart';
 import 'package:who_app/components/home_page_information_card.dart';
+import 'package:who_app/components/home_page_protect_yourself.dart';
 import 'package:who_app/components/home_page_recent_numbers.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
@@ -15,6 +17,9 @@ class HomePage extends StatelessWidget {
       body: [
         HomePageHeader(HeaderType.ProtectYourself),
         HomePageRecentNumbers(),
+        HomePageProtectYourself(
+          dataSource: FactContent.protectYourself,
+        ),
         SliverToBoxAdapter(
           // TODO: drive this dynamically
           child: Padding(
@@ -27,7 +32,7 @@ class HomePage extends StatelessWidget {
               title: 'Get the Facts',
             ),
           ),
-        )
+        ),
       ],
     );
   }

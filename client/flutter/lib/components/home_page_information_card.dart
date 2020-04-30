@@ -21,7 +21,7 @@ class HomePageInformationCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Container(
-        color: Constants.illustrationBlue1,
+        color: Constants.illustrationBlue1Color,
         padding: EdgeInsets.fromLTRB(16.0, 36.0, 12.0, 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

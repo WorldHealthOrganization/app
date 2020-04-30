@@ -5,6 +5,7 @@ contents:
   items:
     -
       animation_name: wash_hands
+      image_name: wash_hands
       body_html: |
         <b>Wash your hands</b> with soap and water to avoid getting sick and spreading infections to others.
     -

@@ -23,7 +23,7 @@ class Constants {
   static const Color neutralTextDarkColor = Color(0xff1C1E1F);
 
   // Illustration Colors
-  static const Color illustrationBlue1 = Color(0xffD5F5FD);
+  static const Color illustrationBlue1Color = Color(0xffD5F5FD);
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging
