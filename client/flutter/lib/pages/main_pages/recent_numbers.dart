@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
-import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/components/stat_card.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/api/who_service.dart';
@@ -190,7 +190,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
         ? numFmt.format(globalStats[statKey])
         : '-';
     return Padding(
-      child: TappableStatCard(
+      child: _TappableStatCard(
           isSelected: dimension == this.dimension,
           onTap: () {
             setState(() {
@@ -204,8 +204,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   }
 }
 
-class TappableStatCard extends StatelessWidget {
-  const TappableStatCard({
+class _TappableStatCard extends StatelessWidget {
+  const _TappableStatCard({
     @required this.isSelected,
     @required this.onTap,
     @required this.stat,
@@ -222,42 +222,20 @@ class TappableStatCard extends StatelessWidget {
     return Semantics(
       button: true,
       child: GestureDetector(
-          child: ClipRRect(
+          child: Container(
+            child: StatCard(
+              stat: this.stat,
+              title: this.title,
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: this.isSelected
+                      ? Constants.primaryColor
+                      : CupertinoColors.white,
+                  width: 2.0),
               borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      this.title.toUpperCase(),
-                      style: TextStyle(
-                        color: Constants.neutralTextLightColor,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        height: 2.13,
-                      ),
-                    ),
-                    Container(height: 8.0),
-                    ThemedText(this.stat,
-                        variant: TypographyVariant.h2,
-                        softWrap: true,
-                        style: TextStyle(
-                          color: Constants.primaryColor,
-                          letterSpacing: -1,
-                        ))
-                  ],
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: this.isSelected
-                          ? Constants.primaryColor
-                          : CupertinoColors.white,
-                      width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                  color: CupertinoColors.white,
-                ),
-                padding: EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
-              )),
+            ),
+          ),
           onTap: this.onTap),
       label: this.title,
     );
