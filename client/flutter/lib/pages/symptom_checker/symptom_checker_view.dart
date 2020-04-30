@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/dialogs.dart';
-import 'package:who_app/pages/symptom_checker/question_pages/yes_no_question_page.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/yes_no_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
 /// This view is the container for the series of symptom checker questions.
@@ -80,16 +81,13 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   Widget _viewForPageModel(SymptomCheckerPageModel model) {
     switch (model.question.type) {
       case SymptomCheckerQuestionType.YesNo:
-        return YesNoQuestionPage(pageDelegate: this, pageModel: model);
-        break;
+        return YesNoQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.ShortListSingleSelection:
-        // TODO:
-        return Container();
-        break;
+        return ShortListQuestionView(
+            pageDelegate: this, pageModel: model, multipleSelection: false);
       case SymptomCheckerQuestionType.ShortListMultipleSelection:
-        // TODO:
-        return Container();
-        break;
+        return ShortListQuestionView(
+            pageDelegate: this, pageModel: model, multipleSelection: true);
       case SymptomCheckerQuestionType.LongListSingleSelection:
         // TODO:
         return Container();
@@ -105,11 +103,18 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     _nextPage();
   }
 
-  Future<void> _nextPage() => _controller.nextPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  void _nextPage() {
+    if (!_controller.hasClients) {
+      return;
+    }
+    if (_controller.page < _model.pages.length) {
+      _controller.animateToPage(_model.pages.length - 1,
+          duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    }
+  }
 
-  //Future<void> _previousPage() => _controller.previousPage(
-  //duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> _previousPage() => _controller.previousPage(
+      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
   /// Receive answers from the page and update the model.
   @override
@@ -119,7 +124,8 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   /// Receive back indication from the page and update the model.
   @override
-  void goBack() {
+  void goBack() async {
+    await _previousPage();
     _model.previousQuestion();
   }
 }

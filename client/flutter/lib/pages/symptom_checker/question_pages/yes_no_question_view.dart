@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
-class YesNoQuestionPage extends StatefulWidget {
+class YesNoQuestionView extends StatefulWidget {
   static final YES = "yes";
   static final NO = "no";
 
@@ -13,15 +13,15 @@ class YesNoQuestionPage extends StatefulWidget {
   // Model for our question
   final SymptomCheckerPageModel pageModel;
 
-  const YesNoQuestionPage(
+  const YesNoQuestionView(
       {Key key, @required this.pageDelegate, @required this.pageModel})
       : super(key: key);
 
   @override
-  _YesNoQuestionPageState createState() => _YesNoQuestionPageState();
+  _YesNoQuestionViewState createState() => _YesNoQuestionViewState();
 }
 
-class _YesNoQuestionPageState extends State<YesNoQuestionPage> {
+class _YesNoQuestionViewState extends State<YesNoQuestionView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,7 +43,7 @@ class _YesNoQuestionPageState extends State<YesNoQuestionPage> {
                     child: Text("Yes"),
                     onPressed: () {
                       widget.pageDelegate
-                          .answerQuestion({YesNoQuestionPage.YES});
+                          .answerQuestion({YesNoQuestionView.YES});
                     }),
                 SizedBox(width: 24),
                 FlatButton(
@@ -51,14 +51,29 @@ class _YesNoQuestionPageState extends State<YesNoQuestionPage> {
                     child: Text("No"),
                     onPressed: () {
                       widget.pageDelegate
-                          .answerQuestion({YesNoQuestionPage.NO});
+                          .answerQuestion({YesNoQuestionView.NO});
                     }),
               ],
             ),
-            Spacer(flex: 3)
+            Spacer(flex: 3),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                if (widget.pageModel.questionIndex > 0)
+                  FlatButton(
+                      color: Colors.grey,
+                      child: Text("Previous"),
+                      onPressed: _previous),
+              ],
+            ),
+            Spacer()
           ],
         ),
       ),
     );
+  }
+
+  void _previous() {
+    widget.pageDelegate.goBack();
   }
 }

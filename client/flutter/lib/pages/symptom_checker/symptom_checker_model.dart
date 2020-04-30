@@ -10,7 +10,10 @@ class SymptomCheckerModel with ChangeNotifier {
   /// Create the symptom checker model with content from a content bundle.
   SymptomCheckerModel(this._content) {
     // Add the first page
-    pages.add(SymptomCheckerPageModel(question: _content.questions.first));
+    pages.add(SymptomCheckerPageModel(
+        question: _content.questions.first,
+        questionCount: _content.questions.length,
+        questionIndex: 0));
   }
 
   /// True when the question series is complete and ready for analysis.
@@ -40,8 +43,10 @@ class SymptomCheckerModel with ChangeNotifier {
     // TODO: Toy implementation - always add the next page if it exists
     // Add the next question
     if (_content.questions.length > pages.length) {
-      pages.add(
-          SymptomCheckerPageModel(question: _content.questions[pages.length]));
+      pages.add(SymptomCheckerPageModel(
+          question: _content.questions[pages.length],
+          questionCount: _content.questions.length,
+          questionIndex: pages.length));
     }
     // TODO: Toy implementation - assume all pages are shown
     // No more questions, series complete.
@@ -67,15 +72,28 @@ class SymptomCheckerPageModel {
   /// The question for this page.
   final SymptomCheckerQuestion question;
 
+  /// The total number of questions
+  final int questionCount;
+
+  /// The index of this question
+  final int questionIndex;
+
   /// The set of selected answers or an empty set if no selection has been made.
   final Set<String> selectedAnswers;
 
-  SymptomCheckerPageModel(
-      {@required this.question, this.selectedAnswers = const {}});
+  SymptomCheckerPageModel({
+    @required this.question,
+    @required this.questionCount,
+    @required this.questionIndex,
+    this.selectedAnswers = const {},
+  });
 
   SymptomCheckerPageModel withAnswers(Set<String> answerIds) {
     return SymptomCheckerPageModel(
-        question: question, selectedAnswers: answerIds);
+        question: question,
+        selectedAnswers: answerIds,
+        questionCount: questionCount,
+        questionIndex: questionIndex);
   }
 }
 

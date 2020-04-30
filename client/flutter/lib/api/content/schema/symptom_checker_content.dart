@@ -30,6 +30,15 @@ class SymptomCheckerContent extends ContentBase {
       case "yes_no":
         type = SymptomCheckerQuestionType.YesNo;
         break;
+      case "short_list_single_selection":
+        type = SymptomCheckerQuestionType.ShortListSingleSelection;
+        break;
+      case "short_list_multiple_selection":
+        type = SymptomCheckerQuestionType.ShortListMultipleSelection;
+        break;
+      case "long_list_single_selection":
+        type = SymptomCheckerQuestionType.LongListSingleSelection;
+        break;
       default:
         throw Exception("unreognized question type");
     }
@@ -47,7 +56,7 @@ class SymptomCheckerContent extends ContentBase {
     if (answers == null) {
       return null;
     }
-    return answers.map(_answerFromContent).toList();
+    return List<SymptomCheckerAnswer>.from(answers.map(_answerFromContent));
   }
 
   SymptomCheckerAnswer _answerFromContent(dynamic item) {
