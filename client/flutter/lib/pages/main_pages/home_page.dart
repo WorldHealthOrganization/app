@@ -114,7 +114,7 @@ class _HomePageSectionHeader extends StatelessWidget {
             variant: TypographyVariant.h3,
           ),
           CupertinoButton(
-            padding: EdgeInsets.all(0.0),
+            padding: EdgeInsets.zero,
             child: ThemedText(
               this.linkText,
               variant: TypographyVariant.button,

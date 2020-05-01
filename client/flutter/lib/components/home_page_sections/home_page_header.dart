@@ -8,7 +8,7 @@ import 'package:who_app/generated/l10n.dart';
 class HomePageHeader extends StatelessWidget {
   final HeaderType headerType;
 
-  HomePageHeader(this.headerType);
+  const HomePageHeader(this.headerType);
 
   String title(BuildContext context) {
     switch (this.headerType) {
