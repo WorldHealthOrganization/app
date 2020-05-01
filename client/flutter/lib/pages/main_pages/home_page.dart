@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/linking.dart';
-import 'package:who_app/components/home_page_donate.dart';
-import 'package:who_app/components/home_page_header.dart';
-import 'package:who_app/components/home_page_information_card.dart';
-import 'package:who_app/components/home_page_protect_yourself.dart';
-import 'package:who_app/components/home_page_recent_numbers.dart';
+import 'package:who_app/components/home_page_sections/home_page_donate.dart';
+import 'package:who_app/components/home_page_sections/home_page_header.dart';
+import 'package:who_app/components/home_page_sections/home_page_information_card.dart';
+import 'package:who_app/components/home_page_sections/home_page_protect_yourself.dart';
+import 'package:who_app/components/home_page_sections/home_page_recent_numbers.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
