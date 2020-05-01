@@ -81,9 +81,7 @@ class _LongListQuestionViewState extends State<LongListQuestionView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Radio<String>(
-                  groupValue: _selection,
-                  value: answer.id,
-                  onChanged: (_) {}),
+                  groupValue: _selection, value: answer.id, onChanged: (_) {}),
               Flexible(child: Html(data: answer.answerHtml))
             ]),
       ),
