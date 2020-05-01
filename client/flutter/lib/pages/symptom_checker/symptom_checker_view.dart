@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/long_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/yes_no_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
@@ -54,7 +55,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   Widget _buildPage(BuildContext context) {
     if (_model == null) {
-      return _buildMessage("Loading...");
+      return _buildMessage("Loading...", loading: true);
     }
     if (_model.isComplete) {
       return _buildMessage("Complete!");
@@ -68,11 +69,21 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         children: _pages ?? []);
   }
 
-  Widget _buildMessage(String text) {
+  Widget _buildMessage(String text, {bool loading = false}) {
     return Column(
       children: <Widget>[
         Spacer(),
-        Center(child: Text(text)),
+        Center(
+            child: Column(
+          children: <Widget>[
+            Text(text),
+            if (loading)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: CupertinoActivityIndicator(),
+              ),
+          ],
+        )),
         Spacer(flex: 3),
       ],
     );
@@ -87,9 +98,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       case SymptomCheckerQuestionType.ShortListMultipleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.LongListSingleSelection:
-        // TODO:
-        return Container();
-        break;
+        return LongListQuestionView(pageDelegate: this, pageModel: model);
     }
     throw Exception("can't reach here");
   }

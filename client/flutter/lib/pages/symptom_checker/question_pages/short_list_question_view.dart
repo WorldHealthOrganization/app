@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/previous_next_buttons.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
 // A short list question supporting either single or multiple selection modes.
@@ -52,25 +53,16 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
           children: <Widget>[
             Spacer(),
             Container(
-                width: 200,
+                width: 300,
                 child: Html(data: widget.pageModel.question.questionHtml)),
             SizedBox(height: 24),
             ...widget.pageModel.question.answers.map(_buildAnswerRow).toList(),
             Spacer(flex: 3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                if (widget.pageModel.questionIndex > 0)
-                  FlatButton(
-                      color: Colors.grey,
-                      child: Text("Previous"),
-                      onPressed: _previous),
-                FlatButton(
-                    color: Colors.grey,
-                    child: Text("Next"),
-                    onPressed: _isComplete() ? _next : null),
-              ],
-            ),
+            PreviousNextButtons(
+                showPrevious: widget.pageModel.questionIndex > 0,
+                enableNext: _isComplete,
+                onPrevious: _previous,
+                onNext: _next),
             Spacer()
           ],
         ),
@@ -79,25 +71,29 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   }
 
   Widget _buildAnswerRow(SymptomCheckerAnswer answer) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Material(
-            color: Colors.white,
-            child: _allowsMultipleSelection
-                ? Checkbox(
-                    value: _multipleSelections.contains(answer.id),
-                    onChanged: (bool value) {
-                      _selected(answer.id);
-                    },
-                  )
-                : Radio<String>(
-                    groupValue: _singleSelection == answer.id ? answer.id : "",
-                    value: answer.id,
-                    onChanged: _selected),
-          ),
-          Flexible(child: Html(data: answer.answerHtml))
-        ]);
+    return GestureDetector(
+      onTap: () {
+        _selected(answer.id);
+      },
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Material(
+              color: Colors.white,
+              child: _allowsMultipleSelection
+                  ? Checkbox(
+                      value: _multipleSelections.contains(answer.id),
+                      onChanged: (_) {},
+                    )
+                  : Radio<String>(
+                      groupValue:
+                          _singleSelection == answer.id ? answer.id : "",
+                      value: answer.id,
+                      onChanged: _selected),
+            ),
+            Flexible(child: Html(data: answer.answerHtml))
+          ]),
+    );
   }
 
   void _previous() {
@@ -112,7 +108,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
     }
   }
 
-  bool _isComplete() {
+  bool get _isComplete {
     return (_allowsMultipleSelection && _multipleSelections.isNotEmpty) ||
         (!_allowsMultipleSelection && _singleSelection != null);
   }
