@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/long_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/yes_no_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
+import 'package:who_app/pages/symptom_checker/symptom_checker_summary.dart';
 
 /// This view is the container for the series of symptom checker questions.
 class SymptomCheckerView extends StatefulWidget {
@@ -58,7 +60,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       return _buildMessage("Loading...", loading: true);
     }
     if (_model.isComplete) {
-      return _buildMessage("Complete!");
+      return _buildComplete();
     }
     if (_model.seekMedicalAttention) {
       return _buildMessage("Seek Medical Attention!");
@@ -67,6 +69,37 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         children: _pages ?? []);
+  }
+
+  Widget _viewForPageModel(SymptomCheckerPageModel model) {
+    switch (model.question.type) {
+      case SymptomCheckerQuestionType.YesNo:
+        return YesNoQuestionView(pageDelegate: this, pageModel: model);
+      case SymptomCheckerQuestionType.ShortListSingleSelection:
+        return ShortListQuestionView(pageDelegate: this, pageModel: model);
+      case SymptomCheckerQuestionType.ShortListMultipleSelection:
+        return ShortListQuestionView(pageDelegate: this, pageModel: model);
+      case SymptomCheckerQuestionType.LongListSingleSelection:
+        return LongListQuestionView(pageDelegate: this, pageModel: model);
+    }
+    throw Exception("can't reach here");
+  }
+
+  Widget _buildComplete() {
+    return Column(
+      children: <Widget>[
+        Spacer(),
+        Center(child: SymptomCheckerSummary(model: _model)),
+        SizedBox(height: 24),
+        FlatButton(
+            color: Colors.grey,
+            child: Text("Dismiss"),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        Spacer(flex: 3),
+      ],
+    );
   }
 
   Widget _buildMessage(String text, {bool loading = false}) {
@@ -87,20 +120,6 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         Spacer(flex: 3),
       ],
     );
-  }
-
-  Widget _viewForPageModel(SymptomCheckerPageModel model) {
-    switch (model.question.type) {
-      case SymptomCheckerQuestionType.YesNo:
-        return YesNoQuestionView(pageDelegate: this, pageModel: model);
-      case SymptomCheckerQuestionType.ShortListSingleSelection:
-        return ShortListQuestionView(pageDelegate: this, pageModel: model);
-      case SymptomCheckerQuestionType.ShortListMultipleSelection:
-        return ShortListQuestionView(pageDelegate: this, pageModel: model);
-      case SymptomCheckerQuestionType.LongListSingleSelection:
-        return LongListQuestionView(pageDelegate: this, pageModel: model);
-    }
-    throw Exception("can't reach here");
   }
 
   void _modelChanged() {

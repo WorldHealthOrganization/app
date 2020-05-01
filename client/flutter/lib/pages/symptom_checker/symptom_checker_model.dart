@@ -41,6 +41,7 @@ class SymptomCheckerModel with ChangeNotifier {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
     // TODO: Toy implementation - always add the next page if it exists
+    // TODO: This should check the display conditions.
     // Add the next question
     if (_content.questions.length > pages.length) {
       pages.add(SymptomCheckerPageModel(
@@ -49,6 +50,7 @@ class SymptomCheckerModel with ChangeNotifier {
           questionIndex: pages.length));
     }
     // TODO: Toy implementation - assume all pages are shown
+    // TODO: This should check the display conditions.
     // No more questions, series complete.
     if (_content.questions.length == pages.length &&
         currentPage.selectedAnswers.isNotEmpty) {
@@ -63,6 +65,14 @@ class SymptomCheckerModel with ChangeNotifier {
   void previousQuestion() {
     pages.removeLast();
     notifyListeners();
+  }
+
+  /// Get the selected answers for a question id.
+  /// If the question id is not found an StateError is thrown.
+  ModelQueryResult operator [](String questionId) {
+    return ModelQueryResult(pages
+        .firstWhere((page) => page.question.id == questionId)
+        .selectedAnswers);
   }
 }
 
@@ -106,4 +116,23 @@ abstract class SymptomCheckerPageDelegate {
   // Indicate that the user wishes to go back to the previous page using an
   // affordance on the page.
   void goBack();
+}
+
+/// A convenience wrapper for the set of selected answers returned by the model.
+class ModelQueryResult {
+  final Set<String> selectedAnswers;
+
+  ModelQueryResult(this.selectedAnswers);
+
+  bool answered(String answerId) {
+    return selectedAnswers.contains(answerId);
+  }
+
+  bool answeredAny(Set<String> answerIds) {
+    return answerIds.intersection(selectedAnswers).isNotEmpty;
+  }
+
+  bool answeredAll(Set<String> answerIds) {
+    return selectedAnswers.containsAll(answerIds);
+  }
 }
