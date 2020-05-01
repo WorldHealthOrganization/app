@@ -9,7 +9,6 @@ class HomePageDonate extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        // height: 363.0,
         child: Stack(
           children: <Widget>[
             Positioned.fill(
@@ -25,6 +24,7 @@ class HomePageDonate extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 72.0, vertical: 20.0),
                       child: ThemedText(
+                        // TODO: localize
                         'Help support the relief effort',
                         variant: TypographyVariant.h2,
                         style: TextStyle(
@@ -39,6 +39,7 @@ class HomePageDonate extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
                       child: ThemedText(
+                        // TODO: localize
                         'Donate now',
                         variant: TypographyVariant.button,
                         style: TextStyle(

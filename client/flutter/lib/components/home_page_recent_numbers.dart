@@ -45,6 +45,7 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
                 CupertinoButton(
                   padding: EdgeInsets.all(0.0),
                   child: ThemedText(
+                    // TODO: localize
                     'See all ›',
                     variant: TypographyVariant.button,
                   ),
