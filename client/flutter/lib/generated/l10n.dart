@@ -1,7 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'intl/messages_all.dart';
-import 'package:flutter/cupertino.dart';
+
 // **************************************************************************
 // Generator: Flutter Intl IDE plugin
 // Made by Localizely
@@ -1012,8 +1013,35 @@ class S {
 
   String get latestNumbersPageTitle {
     return Intl.message(
-      'Latest Numbers',
+      'Recent Numbers',
       name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageCasesDimension {
+    return Intl.message(
+      'Global Cases',
+      name: 'latestNumbersPageCasesDimension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDailyToggle {
+    return Intl.message(
+      'New',
+      name: 'latestNumbersPageDailyToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDeathsDimension {
+    return Intl.message(
+      'Global Deaths',
+      name: 'latestNumbersPageDeathsDimension',
       desc: '',
       args: [],
     );
@@ -1043,6 +1071,15 @@ class S {
       name: 'latestNumbersPageLastUpdated',
       desc: '',
       args: [lastUpd],
+    );
+  }
+
+  String get latestNumbersPageTotalToggle {
+    return Intl.message(
+      'Total',
+      name: 'latestNumbersPageTotalToggle',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1116,8 +1153,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
     ];
   }
 

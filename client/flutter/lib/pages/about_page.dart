@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:yaml/yaml.dart';
 
 class AboutPage extends StatelessWidget {
@@ -61,10 +63,10 @@ class AboutPage extends StatelessWidget {
               Container(
                 color: CupertinoColors.white,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                child: Text(
+                child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
-                  style: TextStyle(color: CupertinoColors.black, fontSize: 16),
+                  variant: TypographyVariant.body,
                 ),
               ),
               Container(
@@ -88,11 +90,10 @@ class AboutPage extends StatelessWidget {
                     team.insertAll(0, founders);
                     var teamNames =
                         S.of(context).aboutPageThanksToText(team.join(", "));
-                    return Text(
+                    return ThemedText(
                       teamNames,
+                      variant: TypographyVariant.body,
                       softWrap: true,
-                      style:
-                          TextStyle(color: CupertinoColors.black, fontSize: 16),
                     );
                   },
                 ),
@@ -101,8 +102,8 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ],
-      heroTag: S.of(context).homePagePageSliverListSettings,
       title: S.of(context).aboutPageTitle,
+      heroTag: HeroTags.settings,
     );
   }
 }

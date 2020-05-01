@@ -1,0 +1,24 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: index
+  promo:
+    title: Get the Facts
+    subtitle: Busting myths about COVID-19
+    button_text: View
+    href: /get-the-facts
+  items:
+    -
+      title: Protect Yourself
+      subtitle: 8 simple steps to stay safe
+      href: /protect-yourself
+    -
+      title: Travel Advice
+      subtitle: If you have to travel, travel smart
+      href: /travel-advice
+    -
+      title: Questions & Answers
+      href: /qa
+    -
+      title: News
+      href: /news

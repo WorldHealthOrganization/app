@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../constants.dart';
+import 'package:who_app/constants.dart';
 
 class PageButton extends StatelessWidget {
   final Color backgroundColor;

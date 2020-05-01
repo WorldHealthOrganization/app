@@ -3,9 +3,11 @@ import 'package:who_app/api/content/schema/advice_content.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 class TravelAdvice extends StatefulWidget {
   final AdviceDataSource dataSource;
@@ -43,9 +45,14 @@ class _TravelAdviceState extends State<TravelAdvice> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(body: [
-      _adviceContent != null ? _buildBody() : LoadingIndicator(),
-    ], title: S.of(context).homePagePageButtonTravelAdvice);
+    return PageScaffold(
+        heroTag: HeroTags.learn,
+        color: Constants.greyBackgroundColor,
+        headingBorderColor: Constants.emergencyRedColor,
+        body: [
+          _adviceContent != null ? _buildBody() : LoadingIndicator(),
+        ],
+        title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
   SliverList _buildBody() {
@@ -60,17 +67,16 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 children: <Widget>[
                   FaIcon(
                     FontAwesomeIcons.exclamationTriangle,
-                    color: Constants.emergencyRed,
+                    color: Constants.emergencyRedColor,
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  ThemedText(
                     _adviceContent.banner,
+                    variant: TypographyVariant.h4,
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Constants.emergencyRed,
+                      color: Constants.emergencyRedColor,
                       height: 1.37,
                     ),
                   ),
@@ -80,12 +86,12 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 ],
               ),
             if (_adviceContent?.body != null)
-              Text(
+              ThemedText(
                 _adviceContent.body,
+                variant: TypographyVariant.body,
                 style: TextStyle(
                   fontSize: 18,
                   color: Constants.textColor,
-                  height: 1.37,
                 ),
               ),
           ])),
@@ -128,20 +134,17 @@ class TravelAdviceListItem extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                Text(
+                ThemedText(
                   this.title,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      height: 1.37,
-                      color: Constants.bodyTextColor),
+                  variant: TypographyVariant.h4,
+                  style:
+                      TextStyle(height: 1.37, color: Constants.bodyTextColor),
                 ),
-                Text(
+                ThemedText(
                   this.description,
-                  style: TextStyle(
-                      fontSize: 18,
-                      height: 1.37,
-                      color: Constants.bodyTextColor),
+                  variant: TypographyVariant.body,
+                  style:
+                      TextStyle(fontSize: 18, color: Constants.bodyTextColor),
                 ),
               ])),
         ],
