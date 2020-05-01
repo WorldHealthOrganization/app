@@ -88,7 +88,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
                   : Radio<String>(
                       groupValue:  _singleSelection,
                       value: answer.id,
-                      onChanged: _selected),
+                      onChanged: (_) {},),
             ),
             Flexible(child: Html(data: answer.answerHtml))
           ]),
