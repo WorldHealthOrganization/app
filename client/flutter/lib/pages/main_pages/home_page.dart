@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
           content: HomePageHeader(HeaderType.ProtectYourself),
         ),
         _HomePageSection(
-          padding: EdgeInsets.only(top: 56.0, bottom: 24.0),
+          padding: EdgeInsets.only(top: 56.0),
           header: _HomePageSectionHeader(
             // TODO: localize
             title: 'Recent Numbers',
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
           content: HomePageRecentNumbers(),
         ),
         _HomePageSection(
-          padding: EdgeInsets.only(top: 20.0),
+          padding: EdgeInsets.only(top: 44.0),
           header: _HomePageSectionHeader(
             // TODO: Localize
             title: 'Protect Yourself',
