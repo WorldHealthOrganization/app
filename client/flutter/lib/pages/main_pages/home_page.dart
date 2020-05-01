@@ -118,6 +118,9 @@ class _HomePageSectionHeader extends StatelessWidget {
             child: ThemedText(
               this.linkText,
               variant: TypographyVariant.button,
+              style: TextStyle(
+                color: Constants.neutralTextLightColor,
+              ),
             ),
             onPressed: () {
               return Navigator.of(context, rootNavigator: true)
