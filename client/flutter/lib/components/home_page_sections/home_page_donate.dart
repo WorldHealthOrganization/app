@@ -14,7 +14,7 @@ class HomePageDonate extends StatelessWidget {
         ),
         IntrinsicHeight(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 72.0, 0.0, 60.0),
+            padding: EdgeInsets.only(top: 72.0, bottom: 60.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
