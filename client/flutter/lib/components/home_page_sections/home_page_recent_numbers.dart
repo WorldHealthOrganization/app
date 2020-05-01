@@ -9,8 +9,8 @@ class HomePageRecentNumbers extends StatefulWidget {
 }
 
 class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
-  int globalCaseCount;
-  int globalDeathCount;
+  int _globalCaseCount;
+  int _globalDeathCount;
 
   @override
   void initState() {
@@ -28,8 +28,8 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           StatCard(
-            stat: this.globalCaseCount != null && this.globalCaseCount > 0
-                ? numFmt.format(this.globalCaseCount)
+            stat: _globalCaseCount != null && _globalCaseCount > 0
+                ? numFmt.format(_globalCaseCount)
                 : '-',
             // TODO: localize
             title: 'Global Cases',
@@ -38,8 +38,8 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
             height: 12.0,
           ),
           StatCard(
-            stat: this.globalDeathCount != null && this.globalDeathCount > 0
-                ? numFmt.format(this.globalDeathCount)
+            stat: _globalDeathCount != null && _globalDeathCount > 0
+                ? numFmt.format(_globalDeathCount)
                 : '-',
             // TODO: localize
             title: 'Global Deaths',
@@ -50,13 +50,13 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
   }
 
   void fetchStats() async {
-    Map statsResponse = await WhoService.getCaseStats();
+    final statsResponse = await WhoService.getCaseStats();
     final globalStats = statsResponse['globalStats'];
 
     if (globalStats != null) {
       setState(() {
-        this.globalCaseCount = globalStats['cases'];
-        this.globalDeathCount = globalStats['deaths'];
+        _globalCaseCount = globalStats['cases'];
+        _globalDeathCount = globalStats['deaths'];
       });
     }
   }
