@@ -17,8 +17,8 @@ class SymptomCheckerPage extends StatelessWidget {
               color: Colors.grey,
               child: Text("Begin the questions"),
               onPressed: () {
-                return Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (_) => SymptomCheckerView()));
+                return Navigator.of(context, rootNavigator: true)
+                    .pushNamed('/symptom-checker');
               }),
           Spacer(flex: 3),
         ],
