@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:who_app/pages/symptom_checker/symptom_checker_view.dart';
 
 /// This page introduces the symptom checker and presents the symptom checker view
 /// to display the series of questions.
