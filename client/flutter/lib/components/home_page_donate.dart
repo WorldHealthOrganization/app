@@ -7,56 +7,52 @@ import 'package:who_app/generated/l10n.dart';
 class HomePageDonate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Container(
-        child: Stack(
-          children: <Widget>[
-            Positioned.fill(
-              child: _DonateBackground(),
-            ),
-            IntrinsicHeight(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0.0, 72.0, 0.0, 60.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 72.0, vertical: 20.0),
-                      child: ThemedText(
-                        // TODO: localize
-                        'Help support the relief effort',
-                        variant: TypographyVariant.h2,
-                        style: TextStyle(
-                          color: CupertinoColors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    CupertinoButton(
-                      borderRadius: BorderRadius.circular(50.0),
-                      color: CupertinoColors.white,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
-                      child: ThemedText(
-                        // TODO: localize
-                        'Donate now',
-                        variant: TypographyVariant.button,
-                        style: TextStyle(
-                          color: Constants.accentColor,
-                        ),
-                      ),
-                      onPressed: () {
-                        launch(S.of(context).homePagePageSliverListDonateUrl);
-                      },
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
+    return Stack(
+      children: <Widget>[
+        Positioned.fill(
+          child: _DonateBackground(),
         ),
-      ),
+        IntrinsicHeight(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0.0, 72.0, 0.0, 60.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 72.0, vertical: 20.0),
+                  child: ThemedText(
+                    // TODO: localize
+                    'Help support the relief effort',
+                    variant: TypographyVariant.h2,
+                    style: TextStyle(
+                      color: CupertinoColors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                CupertinoButton(
+                  borderRadius: BorderRadius.circular(50.0),
+                  color: CupertinoColors.white,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
+                  child: ThemedText(
+                    // TODO: localize
+                    'Donate now',
+                    variant: TypographyVariant.button,
+                    style: TextStyle(
+                      color: Constants.accentColor,
+                    ),
+                  ),
+                  onPressed: () {
+                    launch(S.of(context).homePagePageSliverListDonateUrl);
+                  },
+                )
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 }

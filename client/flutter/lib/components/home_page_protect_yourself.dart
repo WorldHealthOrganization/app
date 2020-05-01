@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 ///========================================================
@@ -62,52 +61,16 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
       return null;
     }
 
-    return SliverToBoxAdapter(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 0.0),
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 16.0,
-              children: <Widget>[
-                ThemedText(
-                  // TODO: localize
-                  'Protect Yourself',
-                  variant: TypographyVariant.h3,
-                ),
-                CupertinoButton(
-                  padding: EdgeInsets.all(0.0),
-                  child: ThemedText(
-                    // TODO: localize
-                    'Learn more ›',
-                    variant: TypographyVariant.button,
-                  ),
-                  onPressed: () {
-                    return Navigator.of(context, rootNavigator: true)
-                        .pushNamed('/protect-yourself');
-                  },
-                ),
-              ],
-            ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: _buildCards(),
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
-              child: IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: _buildCards(),
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
