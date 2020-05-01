@@ -86,8 +86,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
                       onChanged: (_) {},
                     )
                   : Radio<String>(
-                      groupValue:
-                          _singleSelection == answer.id ? answer.id : "",
+                      groupValue:  _singleSelection,
                       value: answer.id,
                       onChanged: _selected),
             ),
