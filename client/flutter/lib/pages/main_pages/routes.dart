@@ -6,6 +6,7 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/about_page.dart';
 import 'package:who_app/pages/facts_carousel_page.dart';
 import 'package:who_app/pages/main_pages/app_tab_router.dart';
+import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/news_feed.dart';
 import 'package:who_app/pages/onboarding/onboarding_page.dart';
 import 'package:who_app/pages/protect_yourself.dart';
@@ -32,6 +33,7 @@ class Routes {
           dataSource: FactContent.getTheFacts,
           title: S.of(context).homePagePageButtonWHOMythBusters,
         ),
+    '/recent-numbers': (context) => RecentNumbersPage(),
   };
 }
 
