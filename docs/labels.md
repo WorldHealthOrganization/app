@@ -15,4 +15,4 @@ Labels have prefixes as follow:
 We also use some standard labels without prefixes:
 
 - `blocked` - this issue or PR should not be worked on or merged; consult the person applying the label or a team lead. Items with this label ideally also have a `needs:` label.
-- `help wanted` - we'd love to have a community member work on this. Items with this label should be fairly stand-alone and of well-defined scope.
+- `help-wanted` - we'd love to have a community member work on this. Items with this label should be fairly stand-alone and of well-defined scope.
