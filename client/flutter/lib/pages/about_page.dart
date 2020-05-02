@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
+import 'package:who_app/pages/license_page.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:yaml/yaml.dart';
 
@@ -31,32 +32,38 @@ class AboutPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 child: Text.rich(
                   TextSpan(
-                      style: TextStyle(color: CupertinoColors.black),
-                      children: [
-                        LinkTextSpan(
-                            text: S.of(context).aboutPageTermsOfServiceLinkText,
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: CupertinoColors.activeBlue),
-                            url: S.of(context).aboutPageTermsOfServiceLinkUrl,
-                            onLinkTap: (v) => launch(v)),
-                        TextSpan(text: "  —  "),
-                        LinkTextSpan(
-                            text: S.of(context).aboutPagePrivacyPolicyLinkText,
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: CupertinoColors.activeBlue),
-                            url: S.of(context).aboutPagetermsOfServiceLinkUrl,
-                            onLinkTap: (v) => launch(v)),
-                        TextSpan(text: "  —  "),
-                        LinkTextSpan(
-                          text: S.of(context).aboutPageViewLicensesLinkText,
+                    style: TextStyle(color: CupertinoColors.black),
+                    children: [
+                      LinkTextSpan(
+                          text: S.of(context).aboutPageTermsOfServiceLinkText,
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: CupertinoColors.activeBlue),
-                          onLinkTap: (v) => showLicensePage(context: context),
+                          url: S.of(context).aboutPageTermsOfServiceLinkUrl,
+                          onLinkTap: (v) => launch(v)),
+                      TextSpan(text: "  —  "),
+                      LinkTextSpan(
+                          text: S.of(context).aboutPagePrivacyPolicyLinkText,
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: CupertinoColors.activeBlue),
+                          url: S.of(context).aboutPagetermsOfServiceLinkUrl,
+                          onLinkTap: (v) => launch(v)),
+                      TextSpan(text: "  —  "),
+                      LinkTextSpan(
+                        text: S.of(context).aboutPageViewLicensesLinkText,
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: CupertinoColors.activeBlue,
                         ),
-                      ]),
+                        onLinkTap: (v) => Navigator.of(context).push(
+                          CupertinoPageRoute(
+                            builder: (c) => WHOLicensePage(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
