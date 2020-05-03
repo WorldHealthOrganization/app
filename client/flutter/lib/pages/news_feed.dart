@@ -21,6 +21,7 @@ class NewsFeed extends StatelessWidget {
             imageProvider: AssetImage(
                 S.of(context).newsFeedSliverListNewsFeedItemImagePath1),
             url: S.of(context).newsFeedSliverListNewsFeedItemUrl1,
+            index: 0,
           ),
           NewsFeedItem(
             title: S.of(context).newsFeedSliverListNewsFeedItemTitle2,
@@ -29,6 +30,7 @@ class NewsFeed extends StatelessWidget {
             imageProvider: AssetImage(
                 S.of(context).newsFeedSliverListNewsFeedItemImagePath2),
             url: S.of(context).newsFeedSliverListNewsFeedItemUrl2,
+            index: 1,
           ),
           NewsFeedItem(
             title: S.of(context).newsFeedSliverListNewsFeedItemTitle3,
@@ -37,6 +39,7 @@ class NewsFeed extends StatelessWidget {
             imageProvider: AssetImage(
                 S.of(context).newsFeedSliverListNewsFeedItemImagePath3),
             url: S.of(context).newsFeedSliverListNewsFeedItemUrl3,
+            index: 2,
           ),
           NewsFeedItem(
             title: S.of(context).newsFeedSliverListNewsFeedItemTitle4,
@@ -45,6 +48,7 @@ class NewsFeed extends StatelessWidget {
             imageProvider: AssetImage(
                 S.of(context).newsFeedSliverListNewsFeedItemImagePath4),
             url: S.of(context).newsFeedSliverListNewsFeedItemUrl4,
+            index: 3,
           )
         ]))
       ],
