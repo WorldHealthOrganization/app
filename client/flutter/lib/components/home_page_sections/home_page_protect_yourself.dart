@@ -77,7 +77,7 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
     final screenWidth = MediaQuery.of(context).size.width;
     final TextStyle normalText = TextStyle(
       color: isLight(context)
-          ? Constants.neutralTextDarkColor
+          ? AppTheme(context).neutralTextDarkColor
           : CupertinoColors.white,
       fontSize: 12 * MediaQuery.textScaleFactorOf(context),
       height: 1.33,
@@ -94,7 +94,7 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
                   defaultTextStyle: normalText,
                   shouldAnimate: false,
                   borderRadius: BorderRadius.circular(8.0),
-                  childBackgroundColor: Constants.illustrationBlue1Color,
+                  childBackgroundColor: AppTheme(context).illustrationBlue1Color,
                 ),
               ),
             ))

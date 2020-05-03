@@ -116,9 +116,9 @@ class _MyAppState extends State<MyApp> {
         initialRoute: widget.showOnboarding ? '/onboarding' : '/',
         navigatorObservers: <NavigatorObserver>[observer],
         theme: CupertinoThemeData(
-            primaryColor: Constants.primaryDarkColor,
+            primaryColor: AppTheme(context).primaryDarkColor,
             textTheme: CupertinoTextThemeData(
-              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+              textStyle: ThemedText.styleForVariant(TypographyVariant.body, context),
             )),
       ),
     );

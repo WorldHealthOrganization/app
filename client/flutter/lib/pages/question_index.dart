@@ -213,15 +213,15 @@ class _QuestionTileState extends State<QuestionTile>
 
   TextStyle bodyStyle(BuildContext context) => TextStyle(
         color: isLight(context)
-            ? Constants.textColor
-            : Constants.darkModeTextColor,
+            ? AppTheme(context).textColor
+            : AppTheme(context).darkModeTextColor,
         fontWeight: FontWeight.w400,
         height: 1.5,
       );
 
   TextStyle titleStyle(BuildContext context) => TextStyle(
         color:
-            isLight(context) ? Color(0xff3C4245) : Constants.darkModeTextColor,
+            isLight(context) ? Color(0xff3C4245) : AppTheme(context).darkModeTextColor,
         fontWeight: FontWeight.w600,
         height: 1.3,
       ); //TODO: ON OPEN MAKE TEXT DARKER

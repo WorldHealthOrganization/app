@@ -43,7 +43,7 @@ class LegalLandingPage extends StatelessWidget {
               flex: 1,
               child: Column(children: <Widget>[
                 PageButton(
-                  Constants.primaryColor,
+                  AppTheme(context).primaryColor,
                   S.of(context).legalLandingPageButtonGetStarted,
                   onNext,
                   verticalPadding: 12,

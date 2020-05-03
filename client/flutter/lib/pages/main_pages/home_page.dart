@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       showHeader: false,
       body: [
         _HomePageSection(
-          content: HomePageHeader(HeaderType.ProtectYourself),
+          content: HomePageHeader(HeaderType.ProtectYourself, context),
         ),
         _HomePageSection(
           padding: EdgeInsets.only(top: 56.0),
@@ -118,7 +118,7 @@ class _HomePageSectionHeader extends StatelessWidget {
               this.linkText,
               variant: TypographyVariant.button,
               style: TextStyle(
-                color: Constants.neutralTextLightColor,
+                color: AppTheme(context).neutralTextLightColor,
               ),
             ),
             onPressed: () {

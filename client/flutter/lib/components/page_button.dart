@@ -47,11 +47,11 @@ class PageButton extends StatelessWidget {
                 this.title,
                 textAlign: TextAlign.left,
                 style: titleStyle?.copyWith(
-                      letterSpacing: Constants.buttonTextSpacing,
+                      letterSpacing: AppTheme(context).buttonTextSpacing,
                     ) ??
                     TextStyle(
                       fontWeight: FontWeight.w600,
-                      letterSpacing: Constants.buttonTextSpacing,
+                      letterSpacing: AppTheme(context).buttonTextSpacing,
                       fontSize: 18,
                     ),
               ),

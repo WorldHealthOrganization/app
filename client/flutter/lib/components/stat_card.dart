@@ -27,7 +27,7 @@ class StatCard extends StatelessWidget {
             Text(
               this.title.toUpperCase(),
               style: TextStyle(
-                color: Constants.neutralTextLightColor,
+                color: AppTheme(context).neutralTextLightColor,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
                 height: 2.13,
@@ -41,7 +41,7 @@ class StatCard extends StatelessWidget {
               variant: TypographyVariant.h2,
               softWrap: true,
               style: TextStyle(
-                color: Constants.primaryColor,
+                color: AppTheme(context).primaryColor,
                 letterSpacing: -1,
               ),
             ),

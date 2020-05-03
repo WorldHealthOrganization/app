@@ -43,7 +43,7 @@ class HomePageDonate extends StatelessWidget {
                     'Donate now',
                     variant: TypographyVariant.button,
                     style: TextStyle(
-                      color: Constants.accentColor,
+                      color: AppTheme(context).accentColor,
                     ),
                   ),
                   onPressed: () {
@@ -66,7 +66,7 @@ class _DonateBackground extends StatelessWidget {
       clipper: _BackgroundClipper(),
       child: Container(
         color: isLight(context)
-            ? Constants.accentColor
+            ? AppTheme(context).accentColor
             : CupertinoColors.darkBackgroundGray,
       ),
     );

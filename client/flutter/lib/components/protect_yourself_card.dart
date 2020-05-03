@@ -22,7 +22,7 @@ class ProtectYourselfCard extends StatelessWidget {
     FactItem fact,
     BuildContext context, {
     bool shouldAnimate = true,
-    Color childBackgroundColor = Constants.primaryColor,
+    Color childBackgroundColor,
     BorderRadius borderRadius = const BorderRadius.all(
       Radius.circular(
         16.0,
@@ -50,7 +50,7 @@ class ProtectYourselfCard extends StatelessWidget {
         aspectRatio: 16 / 9,
         child: Container(
           color: isLight(context)
-              ? childBackgroundColor
+              ? childBackgroundColor ??  AppTheme(context).primaryColor
               : CupertinoColors.systemGrey,
           child: media,
         ),

@@ -47,11 +47,11 @@ class ThemedText extends StatelessWidget {
     this.textWidthBasis,
   }) : super(key: key);
 
-  static TextStyle styleForVariant(TypographyVariant variant) {
+  static TextStyle styleForVariant(TypographyVariant variant, BuildContext context) {
     switch (variant) {
       case TypographyVariant.title:
         return TextStyle(
-          color: Constants.primaryDarkColor,
+          color: AppTheme(context).primaryDarkColor,
           fontWeight: FontWeight.w900,
           fontSize: 48,
           height: 1.0,
@@ -59,7 +59,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.header:
         return TextStyle(
-          color: Constants.primaryDarkColor,
+          color: AppTheme(context).primaryDarkColor,
           fontWeight: FontWeight.w800,
           fontSize: 34,
           height: 0.88,
@@ -68,7 +68,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.h1:
         return TextStyle(
-          color: Constants.primaryDarkColor,
+          color: AppTheme(context).primaryDarkColor,
           fontWeight: FontWeight.w900,
           fontSize: 40,
           height: 1.0,
@@ -76,7 +76,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.h2:
         return TextStyle(
-          color: Constants.primaryDarkColor,
+          color: AppTheme(context).primaryDarkColor,
           fontWeight: FontWeight.bold,
           fontSize: 30,
           height: 1.2,
@@ -85,7 +85,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.h3:
         return TextStyle(
-          color: Constants.neutralTextColor,
+          color: AppTheme(context).neutralTextColor,
           fontWeight: FontWeight.bold,
           fontSize: 24,
           height: 1.167,
@@ -93,7 +93,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.h4:
         return TextStyle(
-          color: Constants.neutralTextColor,
+          color: AppTheme(context).neutralTextColor,
           fontWeight: FontWeight.bold,
           fontSize: 18,
           height: 1.333,
@@ -102,7 +102,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.body:
         return TextStyle(
-          color: Constants.bodyTextColor,
+          color: AppTheme(context).bodyTextColor,
           fontWeight: FontWeight.normal,
           fontSize: 16,
           height: 1.375,
@@ -111,7 +111,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.button:
         return TextStyle(
-          color: Constants.neutral2Color,
+          color: AppTheme(context).neutral2Color,
           fontWeight: FontWeight.w600,
           fontSize: 18,
           height: 1.222,
@@ -119,7 +119,7 @@ class ThemedText extends StatelessWidget {
         break;
       case TypographyVariant.bodySmall:
         return TextStyle(
-          color: Constants.neutral2Color,
+          color: AppTheme(context).neutral2Color,
           fontWeight: FontWeight.normal,
           fontSize: 14,
           height: 1.43,
@@ -132,7 +132,7 @@ class ThemedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle style =
-        ThemedText.styleForVariant(this.variant).merge(this.style);
+        ThemedText.styleForVariant(this.variant, context).merge(this.style);
     return Text(
       this.data,
       locale: this.locale,
@@ -201,7 +201,7 @@ class AutoSizeThemedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle style =
-        ThemedText.styleForVariant(this.variant).merge(this.style);
+        ThemedText.styleForVariant(this.variant, context).merge(this.style);
     return AutoSizeText(
       this.data,
       group: this.group,

@@ -101,7 +101,7 @@ class _LearnPageState extends State<LearnPage> {
         title: entry.value.title,
         subtitle: entry.value.subtitle,
         link: entry.value.link,
-        color: Constants.menuButtonColor,
+        color: AppTheme(context).menuButtonColor,
       );
     }).toList();
   }

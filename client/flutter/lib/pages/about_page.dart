@@ -37,7 +37,7 @@ class AboutPage extends StatelessWidget {
                       style: TextStyle(
                           color: isLight(context)
                               ? CupertinoColors.black
-                              : Constants.darkModeTextColor),
+                              : AppTheme(context).darkModeTextColor),
                       children: [
                         LinkTextSpan(
                             text: S.of(context).aboutPageTermsOfServiceLinkText,
@@ -78,7 +78,7 @@ class AboutPage extends StatelessWidget {
                   style: TextStyle(
                     color: isLight(context)
                         ? CupertinoColors.black
-                        : Constants.darkModeTextColor,
+                        : AppTheme(context).darkModeTextColor,
                   ),
                 ),
               ),
@@ -111,7 +111,7 @@ class AboutPage extends StatelessWidget {
                       style: TextStyle(
                         color: isLight(context)
                             ? CupertinoColors.black
-                            : Constants.darkModeTextColor,
+                            : AppTheme(context).darkModeTextColor,
                       ),
                       softWrap: true,
                     );

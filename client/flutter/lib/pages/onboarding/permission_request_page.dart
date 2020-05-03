@@ -73,7 +73,7 @@ class PermissionRequestPage extends StatelessWidget {
                             child: Text(
                               this.pageDescription,
                               style: TextStyle(
-                                color: Constants.textColor,
+                                color: AppTheme(context).textColor,
                                 height: 1.4,
                                 fontSize: 16,
                               ),
@@ -89,7 +89,7 @@ class PermissionRequestPage extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       PageButton(
-                        Constants.primaryColor,
+                        AppTheme(context).primaryColor,
                         buttonTitle,
                         onGrantPermission,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +104,7 @@ class PermissionRequestPage extends StatelessWidget {
                           style: TextStyle(
                               color: CupertinoColors.systemGrey,
                               fontSize: 18,
-                              letterSpacing: Constants.buttonTextSpacing),
+                              letterSpacing: AppTheme(context).buttonTextSpacing),
                         ),
                         onPressed: onSkip,
                       ),

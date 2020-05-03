@@ -40,7 +40,7 @@ class AppTabRouter extends StatelessWidget {
         inactiveColor: isLight(context)
             ? CupertinoColors.black
             : CupertinoColors.systemGrey,
-        activeColor: Constants.accentColor,
+        activeColor: AppTheme(context).accentColor,
         items: [
           BottomNavigationBarItem(
             // TODO: localize title strings

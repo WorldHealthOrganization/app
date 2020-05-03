@@ -29,13 +29,13 @@ class _CarouselSlideState extends State<CarouselSlide> {
     final Size screenSize = MediaQuery.of(context).size;
 
     final TextStyle titleStyle = TextStyle(
-      color: Constants.primaryDarkColor,
+      color: AppTheme(context).primaryDarkColor,
       fontSize: 36.0,
       fontWeight: FontWeight.w600,
       letterSpacing: -.5,
     );
     final TextStyle bodyStyle = TextStyle(
-      color: Constants.textColor,
+      color: AppTheme(context).textColor,
       fontSize: 16.0,
       height: 1.4,
     );

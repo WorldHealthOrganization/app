@@ -160,8 +160,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               displayText,
               style: TextStyle(
                 color: value == selectedValue
-                    ? Constants.primaryColor
-                    : Constants.neutralTextLightColor,
+                    ? AppTheme(context).primaryColor
+                    : AppTheme(context).neutralTextLightColor,
                 fontWeight: FontWeight.w600,
                 fontSize: 18,
                 height: 1.222,
@@ -232,7 +232,7 @@ class _TappableStatCard extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(
                   color: this.isSelected
-                      ? Constants.primaryColor
+                      ? AppTheme(context).primaryColor
                       : CupertinoColors.white,
                   width: 2.0),
               borderRadius: BorderRadius.all(Radius.circular(12.0)),

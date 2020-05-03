@@ -24,7 +24,7 @@ class HomePageInformationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
           color: isLight(context)
-              ? Constants.illustrationBlue1Color
+              ? AppTheme(context).illustrationBlue1Color
               : CupertinoColors.darkBackgroundGray,
           padding: EdgeInsets.fromLTRB(16.0, 36.0, 12.0, 16.0),
           child: Column(
@@ -34,7 +34,7 @@ class HomePageInformationCard extends StatelessWidget {
                 this.title,
                 variant: TypographyVariant.h3,
                 style: TextStyle(
-                  color: Constants.primaryDarkColor,
+                  color: AppTheme(context).primaryDarkColor,
                 ),
               ),
               Container(
@@ -45,7 +45,7 @@ class HomePageInformationCard extends StatelessWidget {
                 variant: TypographyVariant.body,
                 style: TextStyle(
                   color: isLight(context)
-                      ? Constants.neutralTextDarkColor
+                      ? AppTheme(context).neutralTextDarkColor
                       : CupertinoColors.systemGrey2,
                 ),
               ),
@@ -66,7 +66,7 @@ class HomePageInformationCard extends StatelessWidget {
                       this.buttonText,
                       variant: TypographyVariant.button,
                       style: TextStyle(
-                        color: Constants.primaryColor,
+                        color: AppTheme(context).primaryColor,
                       ),
                     ),
                     onPressed: () {

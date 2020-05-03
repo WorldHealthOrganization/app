@@ -31,8 +31,8 @@ class NewsFeedItem extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     color: isLight(context)
-                        ? Constants.textColor
-                        : Constants.darkModeTextColor,
+                        ? AppTheme(context).textColor
+                        : AppTheme(context).darkModeTextColor,
                     fontWeight: FontWeight.w800,
                     fontSize: 28,
                   ),
@@ -57,8 +57,8 @@ class NewsFeedItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           color: isLight(context)
-                              ? Constants.textColor
-                              : Constants.darkModeTextColor,
+                              ? AppTheme(context).textColor
+                              : AppTheme(context).darkModeTextColor,
                         ),
                       ),
                     ),

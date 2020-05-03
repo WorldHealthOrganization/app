@@ -29,7 +29,7 @@ class LearnPagePromo extends StatelessWidget {
               variant: TypographyVariant.h3,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Constants.primaryDarkColor,
+                color: AppTheme(context).primaryDarkColor,
               ),
             ),
             ThemedText(
@@ -38,8 +38,8 @@ class LearnPagePromo extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: isLight(context)
-                    ? Constants.textColor
-                    : Constants.darkModeTextColor,
+                    ? AppTheme(context).textColor
+                    : AppTheme(context).darkModeTextColor,
               ),
             ),
             SizedBox(
@@ -58,7 +58,7 @@ class LearnPagePromo extends StatelessWidget {
                 buttonText,
                 variant: TypographyVariant.button,
                 style: TextStyle(
-                  color: Constants.primaryColor,
+                  color: AppTheme(context).primaryColor,
                 ),
               ),
               onPressed: () {

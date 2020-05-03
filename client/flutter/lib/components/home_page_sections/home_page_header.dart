@@ -7,8 +7,9 @@ import 'package:who_app/generated/l10n.dart';
 
 class HomePageHeader extends StatelessWidget {
   final HeaderType headerType;
+  final BuildContext context;
 
-  const HomePageHeader(this.headerType);
+  const HomePageHeader(this.headerType, this.context);
 
   String title(BuildContext context) {
     switch (this.headerType) {
@@ -46,11 +47,11 @@ class HomePageHeader extends StatelessWidget {
   Color get backgroundColor {
     switch (this.headerType) {
       case HeaderType.CheckYourSymptoms:
-        return Constants.primaryDarkColor;
+        return AppTheme(context).primaryDarkColor;
       case HeaderType.ProtectYourself:
         return Color(0xff4ACA8C);
       default:
-        return Constants.primaryDarkColor;
+        return AppTheme(context).primaryDarkColor;
     }
   }
 
@@ -149,7 +150,7 @@ class HomePageHeader extends StatelessWidget {
                       child: ThemedText(
                         this.buttonText(context),
                         variant: TypographyVariant.button,
-                        style: TextStyle(color: Constants.primaryColor),
+                        style: TextStyle(color: AppTheme(context).primaryColor),
                       ),
                       onPressed: () {},
                     ),

@@ -47,7 +47,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
   Widget build(BuildContext context) {
     return PageScaffold(
         heroTag: HeroTags.learn,
-        headingBorderColor: Constants.emergencyRedColor,
+        headingBorderColor: AppTheme(context).emergencyRedColor,
         body: [
           _adviceContent != null ? _buildBody() : LoadingIndicator(),
         ],
@@ -66,7 +66,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 children: <Widget>[
                   FaIcon(
                     FontAwesomeIcons.exclamationTriangle,
-                    color: Constants.emergencyRedColor,
+                    color: AppTheme(context).emergencyRedColor,
                   ),
                   SizedBox(
                     height: 10,
@@ -75,7 +75,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
                     _adviceContent.banner,
                     variant: TypographyVariant.h4,
                     style: TextStyle(
-                      color: Constants.emergencyRedColor,
+                      color: AppTheme(context).emergencyRedColor,
                       height: 1.37,
                     ),
                   ),
@@ -91,8 +91,8 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 style: TextStyle(
                   fontSize: 18,
                   color: isLight(context)
-                      ? Constants.textColor
-                      : Constants.darkModeTextColor,
+                      ? AppTheme(context).textColor
+                      : AppTheme(context).darkModeTextColor,
                 ),
               ),
           ])),
@@ -126,7 +126,7 @@ class TravelAdviceListItem extends StatelessWidget {
         children: <Widget>[
           FaIcon(
             FontAwesomeIcons.solidCheckCircle,
-            color: Constants.primaryColor,
+            color: AppTheme(context).primaryColor,
           ),
           SizedBox(
             width: 12,
@@ -141,8 +141,8 @@ class TravelAdviceListItem extends StatelessWidget {
                   style: TextStyle(
                     height: 1.37,
                     color: isLight(context)
-                        ? Constants.bodyTextColor
-                        : Constants.darkModeTextColor,
+                        ? AppTheme(context).bodyTextColor
+                        : AppTheme(context).darkModeTextColor,
                   ),
                 ),
                 ThemedText(
@@ -151,8 +151,8 @@ class TravelAdviceListItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     color: isLight(context)
-                        ? Constants.bodyTextColor
-                        : Constants.darkModeTextColor,
+                        ? AppTheme(context).bodyTextColor
+                        : AppTheme(context).darkModeTextColor,
                   ),
                 ),
               ])),

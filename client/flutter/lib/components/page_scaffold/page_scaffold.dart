@@ -36,7 +36,7 @@ class PageScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: isLight(context)
-          ? Constants.greyBackgroundColor
+          ? AppTheme(context).greyBackgroundColor
           : CupertinoColors.black,
       child: Padding(
         padding: this.padding,
