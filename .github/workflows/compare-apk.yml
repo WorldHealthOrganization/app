@@ -1,0 +1,72 @@
+name: Compare APK
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/flutter/**'
+jobs:
+  build-master:
+    name: Build master Android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: master
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/flutter
+      - run: |
+            flutter build apk
+            mv build/app/outputs/apk/release/app-release.apk build/app/outputs/apk/release/app-master.apk
+        working-directory: ./client/flutter
+      - name: Upload master apk
+        uses: actions/upload-artifact@v1
+        with:
+          name: apk
+          path: client/flutter/build/app/outputs/apk/release/app-master.apk
+  build-pr:
+    name: Build incoming Android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/flutter
+      - run: |
+            flutter build apk
+            mv build/app/outputs/apk/release/app-release.apk build/app/outputs/apk/release/app-pr.apk
+        working-directory: ./client/flutter
+      - name: Upload pr apk
+        uses: actions/upload-artifact@v1
+        with:
+          name: apk
+          path: client/flutter/build/app/outputs/apk/release/app-pr.apk
+  diffuse:
+    needs: [build-master, build-pr]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download App bundles
+        uses: actions/download-artifact@v1
+        with:
+          name: apk
+      - name: Change diffuse permissions
+        run: chmod +x ./diffuse
+      - name: Execute Diffuse
+        run: |
+            ./diffuse diff apk/app-master.apk apk/app-pr.apk
