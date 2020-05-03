@@ -1,17 +1,21 @@
-import 'package:meta/meta.dart';
-
 class RouteLink {
-  String route;
-  Map<String, String> args;
+  Uri _url;
 
-  RouteLink({
-    @required this.route,
-    @required this.args,
-  });
+  String get route => _url.path;
+  Map<String, String> get args => _url.queryParameters ?? {};
+  bool get isExternal {
+    try {
+      return _url.origin != null;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  String get url => _url.toString();
+
+  RouteLink();
 
   RouteLink.fromUri(String uri) {
-    final url = Uri.parse(uri);
-    route = url.path;
-    args = url.queryParameters ?? {};
+    _url = Uri.parse(uri);
   }
 }
