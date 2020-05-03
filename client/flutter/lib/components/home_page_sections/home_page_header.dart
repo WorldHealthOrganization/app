@@ -180,7 +180,7 @@ class HeaderClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> path) {
-    return true;
+    return false;
   }
 }
 
