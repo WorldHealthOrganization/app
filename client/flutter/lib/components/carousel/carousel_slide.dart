@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:who_app/api/analytics_util.dart';
 import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ class CarouselSlide extends StatefulWidget {
   final SvgPicture graphic;
   final String title;
   final String body;
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
 
   CarouselSlide(
       {@required Key key,
@@ -23,6 +26,14 @@ class CarouselSlide extends StatefulWidget {
 
 class _CarouselSlideState extends State<CarouselSlide> {
   bool _showDetails = false;
+
+  @override
+  void initState() {
+    widget.analytics.logEvent(
+        name: 'CarouselSlideLoad',
+        parameters: {'title': AnalyticsUtil.cleanValue(widget.title)});
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +98,9 @@ class _CarouselSlideState extends State<CarouselSlide> {
           ],
         ),
         onTap: () {
+          widget.analytics.logEvent(
+              name: 'CarouselSlideLearnMore',
+              parameters: {'title': AnalyticsUtil.cleanValue(widget.title)});
           setState(() {
             _showDetails = true;
           });

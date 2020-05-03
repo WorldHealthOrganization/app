@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:who_app/api/analytics_util.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
@@ -124,6 +126,10 @@ class _QuestionTileState extends State<QuestionTile>
           child: ExpansionTile(
             onExpansionChanged: (expanded) {
               if (expanded) {
+                FirebaseAnalytics()
+                    .logEvent(name: 'QuestionExpanded', parameters: {
+                  'title': AnalyticsUtil.cleanValue(widget.questionItem.title)
+                });
                 rotationController.forward();
               } else {
                 rotationController.reverse();

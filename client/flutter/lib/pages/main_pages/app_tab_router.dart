@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
@@ -55,6 +56,10 @@ class AppTabRouter extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person), title: Text("Settings")),
         ],
+        onTap: (index) {
+          FirebaseAnalytics()
+              .logEvent(name: 'TabChanged', parameters: {'index': index});
+        },
       ),
     );
   }

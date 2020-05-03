@@ -8,16 +8,11 @@ import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
 class TravelAdvice extends StatefulWidget {
   final AdviceDataSource dataSource;
 
-  final FirebaseAnalytics analytics;
-
-  const TravelAdvice(
-      {Key key, @required this.dataSource, @required this.analytics})
-      : super(key: key);
+  const TravelAdvice({Key key, @required this.dataSource}) : super(key: key);
 
   @override
   _TravelAdviceState createState() => _TravelAdviceState();
@@ -38,7 +33,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
-      await widget.analytics.logEvent(name: 'TravelAdviceLink');
       _adviceContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _adviceContent);
     } catch (err) {
