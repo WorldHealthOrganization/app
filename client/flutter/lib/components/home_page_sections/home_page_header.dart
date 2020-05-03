@@ -138,9 +138,7 @@ class HomePageHeader extends StatelessWidget {
                         style: TextStyle(color: Constants.primaryColor),
                       ),
                       onPressed: () {
-                        return Navigator.of(context, rootNavigator: true)
-                            .pushNamed(this.link.route,
-                                arguments: this.link.args);
+                        return this.link.open(context);
                       },
                     ),
                   ),

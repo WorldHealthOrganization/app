@@ -208,8 +208,7 @@ class _HomePageSectionHeader extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              return Navigator.of(context, rootNavigator: true)
-                  .pushNamed(this.link.route, arguments: this.link.args);
+              return this.link.open(context);
             },
           ),
         ],

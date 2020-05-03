@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -65,10 +64,7 @@ class HomePageInformationCard extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      return this.link.isExternal
-                          ? launch(this.link.url)
-                          : Navigator.of(context, rootNavigator: true)
-                              .pushNamed(this.link.route, arguments: link.args);
+                      return this.link.open(context);
                     },
                   )
                 ],
