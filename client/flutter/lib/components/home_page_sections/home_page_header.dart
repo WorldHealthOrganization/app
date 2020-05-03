@@ -60,7 +60,9 @@ class HomePageHeader extends StatelessWidget {
       clipper: HeaderClipper(),
       child: Container(
         padding: EdgeInsets.all(24),
-        color: this.backgroundColor,
+        color: isLight(context)
+            ? this.backgroundColor
+            : CupertinoColors.darkBackgroundGray,
         child: SafeArea(
           bottom: false,
           child: Column(
@@ -141,7 +143,9 @@ class HomePageHeader extends StatelessWidget {
                         horizontal: 32,
                         vertical: 8,
                       ),
-                      color: CupertinoColors.white,
+                      color: isLight(context)
+                          ? CupertinoColors.white
+                          : CupertinoColors.systemGrey4,
                       child: ThemedText(
                         this.buttonText(context),
                         variant: TypographyVariant.button,

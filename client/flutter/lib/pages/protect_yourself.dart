@@ -50,27 +50,26 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   Widget build(BuildContext context) {
     return PageScaffold(
       heroTag: HeroTags.learn,
-      color: Constants.greyBackgroundColor,
       title: S.of(context).protectYourselfTitle,
       body: [
-        _factContent != null ? _buildBody() : LoadingIndicator(),
+        _factContent != null ? _buildBody(context) : LoadingIndicator(),
       ],
     );
   }
 
-  SliverList _buildBody() =>
-      SliverList(delegate: SliverChildListDelegate(_buildCards()));
+  SliverList _buildBody(BuildContext context) =>
+      SliverList(delegate: SliverChildListDelegate(_buildCards(context)));
 
-  List<Widget> _buildCards() {
+  List<Widget> _buildCards(BuildContext context) {
     final TextStyle normalText = TextStyle(
-      color: Constants.textColor,
+      color: isLight(context) ? Constants.textColor : CupertinoColors.white,
       fontSize: 16 * MediaQuery.textScaleFactorOf(context),
       height: 1.4,
     );
     return (_factContent?.items ?? [])
         .map((fact) => Padding(
               padding: EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0),
-              child: ProtectYourselfCard.fromFact(fact,
+              child: ProtectYourselfCard.fromFact(fact, context,
                   defaultTextStyle: normalText),
             ))
         .toList();

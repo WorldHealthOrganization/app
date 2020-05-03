@@ -18,12 +18,21 @@ class ProtectYourselfCard extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  static ProtectYourselfCard fromFact(FactItem fact,
-      {bool shouldAnimate = true,
-      Color childBackgroundColor = Constants.primaryColor,
-      BorderRadius borderRadius = const BorderRadius.all(Radius.circular(16.0)),
-      TextStyle defaultTextStyle = const TextStyle(
-          color: Constants.textColor, fontSize: 16, height: 1.4)}) {
+  static ProtectYourselfCard fromFact(
+    FactItem fact,
+    BuildContext context, {
+    bool shouldAnimate = true,
+    Color childBackgroundColor = Constants.primaryColor,
+    BorderRadius borderRadius = const BorderRadius.all(
+      Radius.circular(
+        16.0,
+      ),
+    ),
+    TextStyle defaultTextStyle = const TextStyle(
+      fontSize: 16,
+      height: 1.4,
+    ),
+  }) {
     Widget media = shouldAnimate && fact.animationName != null
         ? RiveAnimation(
             'assets/animations/${fact.animationName}.flr',
@@ -32,13 +41,17 @@ class ProtectYourselfCard extends StatelessWidget {
             animation: fact.animationName,
           )
         : SvgPicture.asset('assets/svg/${fact.imageName}.svg');
-    final TextStyle boldTextStyle =
-        defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+    final TextStyle boldTextStyle = defaultTextStyle.copyWith(
+      fontWeight: FontWeight.w700,
+    );
+
     return ProtectYourselfCard(
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: childBackgroundColor,
+          color: isLight(context)
+              ? childBackgroundColor
+              : CupertinoColors.systemGrey,
           child: media,
         ),
       ),
@@ -64,7 +77,9 @@ class ProtectYourselfCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: this.borderRadius,
       child: Container(
-        color: CupertinoColors.white,
+        color: isLight(context)
+            ? CupertinoColors.white
+            : CupertinoColors.darkBackgroundGray,
         child: Column(
           children: <Widget>[
             this.child,

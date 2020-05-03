@@ -17,7 +17,9 @@ class LearnPagePromo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
-      color: Color(0xffD5F5FD),
+      color: isLight(context)
+          ? Color(0xffD5F5FD)
+          : CupertinoColors.darkBackgroundGray,
       child: SafeArea(
         bottom: false,
         child: Column(
@@ -35,14 +37,18 @@ class LearnPagePromo extends StatelessWidget {
               variant: TypographyVariant.body,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Constants.textColor,
+                color: isLight(context)
+                    ? Constants.textColor
+                    : Constants.darkModeTextColor,
               ),
             ),
             SizedBox(
               height: 8,
             ),
             CupertinoButton(
-              color: CupertinoColors.white,
+              color: isLight(context)
+                  ? CupertinoColors.white
+                  : CupertinoColors.systemGrey3,
               borderRadius: BorderRadius.circular(50),
               padding: EdgeInsets.symmetric(
                 horizontal: 32,

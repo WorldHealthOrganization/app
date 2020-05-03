@@ -33,7 +33,9 @@ class HomePageDonate extends StatelessWidget {
                 ),
                 CupertinoButton(
                   borderRadius: BorderRadius.circular(50.0),
-                  color: CupertinoColors.white,
+                  color: isLight(context)
+                      ? CupertinoColors.white
+                      : CupertinoColors.systemGrey4,
                   padding:
                       EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
                   child: ThemedText(
@@ -63,7 +65,9 @@ class _DonateBackground extends StatelessWidget {
     return ClipPath(
       clipper: _BackgroundClipper(),
       child: Container(
-        color: Constants.accentColor,
+        color: isLight(context)
+            ? Constants.accentColor
+            : CupertinoColors.darkBackgroundGray,
       ),
     );
   }

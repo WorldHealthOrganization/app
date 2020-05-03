@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
@@ -27,11 +28,16 @@ class AboutPage extends StatelessWidget {
           delegate: SliverChildListDelegate.fixed(
             [
               Container(
-                color: CupertinoColors.white,
+                color: isLight(context)
+                    ? CupertinoColors.white
+                    : CupertinoColors.darkBackgroundGray,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 child: Text.rich(
                   TextSpan(
-                      style: TextStyle(color: CupertinoColors.black),
+                      style: TextStyle(
+                          color: isLight(context)
+                              ? CupertinoColors.black
+                              : Constants.darkModeTextColor),
                       children: [
                         LinkTextSpan(
                             text: S.of(context).aboutPageTermsOfServiceLinkText,
@@ -61,16 +67,25 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                color: CupertinoColors.white,
+                color: isLight(context)
+                    ? CupertinoColors.white
+                    : CupertinoColors.darkBackgroundGray,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
                   variant: TypographyVariant.body,
+                  style: TextStyle(
+                    color: isLight(context)
+                        ? CupertinoColors.black
+                        : Constants.darkModeTextColor,
+                  ),
                 ),
               ),
               Container(
-                color: CupertinoColors.white,
+                color: isLight(context)
+                    ? CupertinoColors.white
+                    : CupertinoColors.darkBackgroundGray,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
@@ -93,6 +108,11 @@ class AboutPage extends StatelessWidget {
                     return ThemedText(
                       teamNames,
                       variant: TypographyVariant.body,
+                      style: TextStyle(
+                        color: isLight(context)
+                            ? CupertinoColors.black
+                            : Constants.darkModeTextColor,
+                      ),
                       softWrap: true,
                     );
                   },

@@ -1,13 +1,13 @@
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
   final String heroTag;
   final List<Widget> body;
   final List<Widget> beforeHeader;
-  final Color color;
   final Color headingBorderColor;
   final bool disableBackButton;
   final TextStyle headerTitleStyle;
@@ -25,7 +25,6 @@ class PageScaffold extends StatelessWidget {
     this.header,
     this.showHeader = true,
     this.padding = EdgeInsets.zero,
-    this.color = CupertinoColors.white,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.disableBackButton = false,
@@ -36,7 +35,9 @@ class PageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: this.color,
+      color: isLight(context)
+          ? Constants.greyBackgroundColor
+          : CupertinoColors.black,
       child: Padding(
         padding: this.padding,
         child: Stack(

@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
-      color: Constants.greyBackgroundColor,
       body: [
         _HomePageSection(
           content: HomePageHeader(HeaderType.ProtectYourself),

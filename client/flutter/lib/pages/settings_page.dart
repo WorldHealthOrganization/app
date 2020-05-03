@@ -107,7 +107,6 @@ class _SettingsPageState extends State<SettingsPage>
   Widget build(BuildContext context) {
     return PageScaffold(
       disableBackButton: true,
-      color: Constants.greyBackgroundColor,
       heroTag: HeroTags.settings,
       body: [
         SliverList(
@@ -154,10 +153,18 @@ class _SettingsPageState extends State<SettingsPage>
   }
 
   Widget menu(BuildContext context) {
-    final divider = Container(height: 1, color: Color(0xffC9CDD6));
+    Color backgroundColor = isLight(context)
+        ? CupertinoColors.white
+        : CupertinoColors.darkBackgroundGray;
+    Color textColor = isLight(context) ? null : Constants.darkModeTextColor;
+
+    Container divider(BuildContext context) => Container(
+        height: 1,
+        color:
+            isLight(context) ? Color(0xffC9CDD6) : CupertinoColors.systemGrey);
     final Size size = MediaQuery.of(context).size;
     return Column(children: <Widget>[
-      divider,
+      divider(context),
       menuItem(
         title: S.of(context).homePagePageSliverListShareTheApp,
         onTap: () {
@@ -169,29 +176,41 @@ class _SettingsPageState extends State<SettingsPage>
                 Rect.fromLTWH(0, 0, size.width, size.height / 2),
           );
         },
+        backgroundColor: backgroundColor,
+        textColor: textColor,
       ),
-      divider,
+      divider(context),
       // TODO: Localize
       menuItem(
-          title: 'Provide app feedback',
-          onTap: () {
-            FirebaseAnalytics().logEvent(name: 'Feedback');
-            // TODO: Implement feedback #989 #1015
-          }),
-      divider,
+        title: 'Provide app feedback',
+        onTap: () {
+          FirebaseAnalytics().logEvent(name: 'Feedback');
+          // TODO: Implement feedback #989 #1015
+        },
+        backgroundColor: backgroundColor,
+        textColor: textColor,
+      ),
+      divider(context),
       menuItem(
         title: S.of(context).homePagePageSliverListAboutTheApp,
         onTap: () {
           return Navigator.of(context, rootNavigator: true).pushNamed('/about');
         },
+        backgroundColor: backgroundColor,
+        textColor: textColor,
       ),
-      divider,
+      divider(context),
     ]);
   }
 
-  Widget menuItem({BuildContext context, String title, Function() onTap}) {
+  Widget menuItem(
+      {BuildContext context,
+      String title,
+      Function() onTap,
+      Color backgroundColor,
+      Color textColor}) {
     return Material(
-      color: Colors.white,
+      color: backgroundColor,
       child: ListTile(
         contentPadding: EdgeInsets.symmetric(
           horizontal: 24,
@@ -200,6 +219,7 @@ class _SettingsPageState extends State<SettingsPage>
         title: ThemedText(
           title,
           variant: TypographyVariant.button,
+          style: TextStyle(color: textColor),
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
@@ -219,7 +239,7 @@ class _SettingsPageState extends State<SettingsPage>
     return Semantics(
       toggled: isToggled,
       child: Material(
-        color: Constants.greyBackgroundColor,
+        type: MaterialType.transparency,
         child: InkWell(
           onTap: () => onToggle(!isToggled),
           child: Padding(
@@ -236,7 +256,9 @@ class _SettingsPageState extends State<SettingsPage>
                           variant: TypographyVariant.h3,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            color: Constants.neutral1Color,
+                            color: isLight(context)
+                                ? Constants.neutral1Color
+                                : Constants.darkModeTextColor,
                           )),
                     ),
                     Semantics(
@@ -254,7 +276,9 @@ class _SettingsPageState extends State<SettingsPage>
                   info,
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    color: Constants.neutral2Color,
+                    color: isLight(context)
+                        ? Constants.neutral2Color
+                        : Constants.darkModeTextColor,
                   ),
                 )
               ],

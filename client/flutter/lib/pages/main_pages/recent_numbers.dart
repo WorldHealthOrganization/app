@@ -93,7 +93,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               child: Column(
                 children: <Widget>[
                   CupertinoSlidingSegmentedControl(
-                    backgroundColor: Color(0xffEFEFEF),
                     children:
                         _buildSegmentControlChildren(context, this.aggregation),
                     groupValue: this.aggregation,
@@ -104,7 +103,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                     },
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-                    thumbColor: Constants.greyBackgroundColor,
                   ),
                   Container(height: 16.0),
                   ConstrainedBox(
@@ -112,12 +110,16 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                       timeseries: this.globalStats['timeseries'],
                       timeseriesKey: this.timeseriesKey,
                     ),
-                    constraints: BoxConstraints(maxHeight: 224.0),
+                    constraints: BoxConstraints(
+                      maxHeight: 224.0,
+                    ),
                   ),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
               ),
-              color: CupertinoColors.white,
+              color: isLight(context)
+                  ? CupertinoColors.white
+                  : CupertinoColors.darkBackgroundGray,
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
             Container(height: 28.0),

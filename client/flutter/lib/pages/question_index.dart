@@ -113,7 +113,6 @@ class _QuestionTileState extends State<QuestionTile>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       child: Stack(children: <Widget>[
         Divider(
           height: 1,
@@ -150,7 +149,7 @@ class _QuestionTileState extends State<QuestionTile>
               padding: EdgeInsets.symmetric(vertical: 12),
               child: Html(
                 data: widget.questionItem.title,
-                defaultTextStyle: _titleStyle.copyWith(
+                defaultTextStyle: titleStyle(context).copyWith(
                   fontSize: 18 * MediaQuery.of(context).textScaleFactor,
                 ),
               ),
@@ -207,16 +206,23 @@ class _QuestionTileState extends State<QuestionTile>
               return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
           }
         }
-        return baseStyle.merge(_bodyStyle);
+        return baseStyle.merge(bodyStyle(context));
       },
     );
   }
 
-  final _bodyStyle = TextStyle(
-      color: Constants.textColor, fontWeight: FontWeight.w400, height: 1.5);
+  TextStyle bodyStyle(BuildContext context) => TextStyle(
+        color: isLight(context)
+            ? Constants.textColor
+            : Constants.darkModeTextColor,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+      );
 
-  final _titleStyle = TextStyle(
-      color: Color(0xff3C4245),
-      fontWeight: FontWeight.w600,
-      height: 1.3); //TODO: ON OPEN MAKE TEXT DARKER
+  TextStyle titleStyle(BuildContext context) => TextStyle(
+        color:
+            isLight(context) ? Color(0xff3C4245) : Constants.darkModeTextColor,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
+      ); //TODO: ON OPEN MAKE TEXT DARKER
 }

@@ -17,7 +17,9 @@ class StatCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(12.0)),
       child: Container(
-        color: CupertinoColors.white,
+        color: isLight(context)
+            ? CupertinoColors.white
+            : CupertinoColors.darkBackgroundGray,
         padding: EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

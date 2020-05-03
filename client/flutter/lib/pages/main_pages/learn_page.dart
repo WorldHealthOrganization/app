@@ -131,7 +131,7 @@ class _MenuItem extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         elevation: 0,
-        color: color,
+        color: isLight(context) ? color : CupertinoColors.darkBackgroundGray,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(8),

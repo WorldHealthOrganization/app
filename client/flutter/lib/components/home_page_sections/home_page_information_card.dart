@@ -23,7 +23,9 @@ class HomePageInformationCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
-          color: Constants.illustrationBlue1Color,
+          color: isLight(context)
+              ? Constants.illustrationBlue1Color
+              : CupertinoColors.darkBackgroundGray,
           padding: EdgeInsets.fromLTRB(16.0, 36.0, 12.0, 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -42,7 +44,9 @@ class HomePageInformationCard extends StatelessWidget {
                 this.subtitle,
                 variant: TypographyVariant.body,
                 style: TextStyle(
-                  color: Constants.neutralTextDarkColor,
+                  color: isLight(context)
+                      ? Constants.neutralTextDarkColor
+                      : CupertinoColors.systemGrey2,
                 ),
               ),
               Container(
@@ -52,7 +56,9 @@ class HomePageInformationCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   CupertinoButton(
-                    color: CupertinoColors.white,
+                    color: isLight(context)
+                        ? CupertinoColors.white
+                        : CupertinoColors.systemGrey4,
                     borderRadius: BorderRadius.circular(50.0),
                     padding:
                         EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),

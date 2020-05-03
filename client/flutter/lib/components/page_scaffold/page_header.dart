@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 // Used to get latest AppBar features while remaining on Flutter's stable branch
 
 class PageHeader extends StatelessWidget {
@@ -31,7 +32,8 @@ class PageHeader extends StatelessWidget {
         ),
       ),
       transitionBetweenRoutes: true,
-      backgroundColor: CupertinoColors.white.withOpacity(0.85),
+      backgroundColor:
+          isLight(context) ? CupertinoColors.white.withOpacity(0.85) : null,
       heroTag: this.heroTag ?? this.title,
       leading: this.disableBackButton ? Container() : null,
       largeTitle: buildTitle(this.title,

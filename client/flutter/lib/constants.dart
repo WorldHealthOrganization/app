@@ -5,6 +5,8 @@ class Constants {
   static const Color greyBackgroundColor = Color(0xFFF9F8F7); // GREY
   static const Color primaryColor = Color(0xff008DC9); // WHO BLUE
   static const Color textColor = Color(0xff3C4245); //GREY
+  static const Color darkModeTextColor =
+      CupertinoColors.systemGrey4; //TODO: GET ACTUAL COLOR
   static const Color primaryDarkColor = Color(0xff1A458E); // NAVY
   static const Color accentColor = Color(0xffD86422); // ORANGE
   static const Color whoBackgroundBlueColor = Color(0xff007EB4); // WHO BLUE 2
@@ -33,6 +35,10 @@ double contentScale(BuildContext context) {
   const tall = 896.0;
   const short = 480.0;
   return ((height - short) / (tall - short)).clamp(0.0, 1.0);
+}
+
+bool isLight(BuildContext context) {
+  return CupertinoTheme.brightnessOf(context) == Brightness.light;
 }
 
 // Return a value between low and high for screens heights ranging

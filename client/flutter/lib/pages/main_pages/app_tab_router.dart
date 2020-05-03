@@ -37,21 +37,32 @@ class AppTabRouter extends StatelessWidget {
         }
       },
       tabBar: CupertinoTabBar(
-        inactiveColor: CupertinoColors.black,
+        inactiveColor: isLight(context)
+            ? CupertinoColors.black
+            : CupertinoColors.systemGrey,
         activeColor: Constants.accentColor,
         items: [
           BottomNavigationBarItem(
-              // TODO: localize title strings
-              icon: Icon(CupertinoIcons.home),
-              title: Text("Home")),
+            // TODO: localize title strings
+            icon: Icon(CupertinoIcons.home),
+            title: Text("Home"),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
+            icon: Icon(CupertinoIcons.circle),
+            title: Text("Stats"),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.search), title: Text("Learn")),
+            icon: Icon(CupertinoIcons.search),
+            title: Text("Learn"),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.lab_flask), title: Text("Check-Up")),
+            icon: Icon(CupertinoIcons.lab_flask),
+            title: Text("Check-Up"),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person), title: Text("Settings")),
+            icon: Icon(CupertinoIcons.person),
+            title: Text("Settings"),
+          ),
         ],
       ),
     );

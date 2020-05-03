@@ -76,20 +76,26 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
   List<Widget> _buildCards() {
     final screenWidth = MediaQuery.of(context).size.width;
     final TextStyle normalText = TextStyle(
-      color: Constants.neutralTextDarkColor,
+      color: isLight(context)
+          ? Constants.neutralTextDarkColor
+          : CupertinoColors.white,
       fontSize: 12 * MediaQuery.textScaleFactorOf(context),
       height: 1.33,
     );
+
     return (_factContent?.items ?? [])
         .map((fact) => SizedBox(
               width: screenWidth * 0.75,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6.0),
-                child: ProtectYourselfCard.fromFact(fact,
-                    defaultTextStyle: normalText,
-                    shouldAnimate: false,
-                    borderRadius: BorderRadius.circular(8.0),
-                    childBackgroundColor: Constants.illustrationBlue1Color),
+                child: ProtectYourselfCard.fromFact(
+                  fact,
+                  context,
+                  defaultTextStyle: normalText,
+                  shouldAnimate: false,
+                  borderRadius: BorderRadius.circular(8.0),
+                  childBackgroundColor: Constants.illustrationBlue1Color,
+                ),
               ),
             ))
         .toList();

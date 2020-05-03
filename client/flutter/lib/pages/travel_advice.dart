@@ -47,7 +47,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
   Widget build(BuildContext context) {
     return PageScaffold(
         heroTag: HeroTags.learn,
-        color: Constants.greyBackgroundColor,
         headingBorderColor: Constants.emergencyRedColor,
         body: [
           _adviceContent != null ? _buildBody() : LoadingIndicator(),
@@ -91,7 +90,9 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 variant: TypographyVariant.body,
                 style: TextStyle(
                   fontSize: 18,
-                  color: Constants.textColor,
+                  color: isLight(context)
+                      ? Constants.textColor
+                      : Constants.darkModeTextColor,
                 ),
               ),
           ])),
@@ -137,14 +138,22 @@ class TravelAdviceListItem extends StatelessWidget {
                 ThemedText(
                   this.title,
                   variant: TypographyVariant.h4,
-                  style:
-                      TextStyle(height: 1.37, color: Constants.bodyTextColor),
+                  style: TextStyle(
+                    height: 1.37,
+                    color: isLight(context)
+                        ? Constants.bodyTextColor
+                        : Constants.darkModeTextColor,
+                  ),
                 ),
                 ThemedText(
                   this.description,
                   variant: TypographyVariant.body,
-                  style:
-                      TextStyle(fontSize: 18, color: Constants.bodyTextColor),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: isLight(context)
+                        ? Constants.bodyTextColor
+                        : Constants.darkModeTextColor,
+                  ),
                 ),
               ])),
         ],
