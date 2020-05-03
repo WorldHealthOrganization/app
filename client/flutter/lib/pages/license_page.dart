@@ -3,6 +3,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Originally from:
+// https://github.com/flutter/flutter/blob/fef2d6ccd6050298e498ea77a11d820aaeb4d087/packages/flutter/lib/src/material/about.dart
+
 import 'dart:async';
 import 'dart:developer' show Timeline, Flow;
 
