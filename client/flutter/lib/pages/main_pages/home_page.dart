@@ -90,16 +90,12 @@ class _HomePageState extends State<HomePage> {
     switch (item.type) {
       case IndexItemType.information_card:
         return _buildInfoCard(item);
-        break;
       case IndexItemType.protect_yourself:
         return _buildProtectYourself(item);
-        break;
       case IndexItemType.recent_numbers:
         return _buildRecentNumbers(item);
-        break;
       case IndexItemType.unknown:
         return null;
-        break;
     }
     return null;
   }

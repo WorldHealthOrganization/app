@@ -73,10 +73,8 @@ class IndexPromo {
     switch (this.promoType) {
       case 'check_your_symptoms':
         return IndexPromoType.CheckYourSymptoms;
-        break;
       case 'protect_yourself':
         return IndexPromoType.ProtectYourself;
-        break;
     }
     return IndexPromoType.DefaultType;
   }
@@ -108,13 +106,10 @@ class IndexItem {
     switch (this.itemType) {
       case 'recent_numbers':
         return IndexItemType.recent_numbers;
-        break;
       case 'protect_yourself':
         return IndexItemType.protect_yourself;
-        break;
       case 'information_card':
         return IndexItemType.information_card;
-        break;
     }
     return IndexItemType.unknown;
   }
