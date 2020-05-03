@@ -95,7 +95,7 @@ class ContentLoading {
   Future<ContentBundle> _loadFromAssets(String name, String suffix,
       bool unsupportedSchemaVersionAvailable) async {
     var path = '$baseAssetPath/${_fileName(name, suffix)}';
-    var body = await rootBundle.loadString(path);
+    var body = await rootBundle.loadString(path, cache: false);
     return ContentBundle.fromString(body,
         unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }

@@ -5,7 +5,6 @@
 
 import 'dart:async';
 import 'dart:developer' show Timeline, Flow;
-import 'dart:io' show Platform;
 
 import 'package:flutter/cupertino.dart' hide Flow;
 import 'package:flutter/foundation.dart';
