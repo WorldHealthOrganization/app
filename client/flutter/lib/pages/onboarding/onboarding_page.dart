@@ -1,4 +1,6 @@
+import 'package:instabug_flutter/Instabug.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/pages/onboarding/legal_landing_page.dart';
 import 'package:who_app/pages/onboarding/location_sharing_page.dart';
 import 'package:who_app/pages/onboarding/notifications_page.dart';
@@ -56,6 +58,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Future<void> _onLegalDone() async {
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
+    await Instabug.start(
+        Constants.instabugTokenBeta, [InvocationEvent.screenshot]);
     await _toNextPage();
   }
 

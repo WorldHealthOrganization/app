@@ -1,6 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instabug_flutter/Instabug.dart';
 import 'package:share/share.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -177,6 +178,7 @@ class _SettingsPageState extends State<SettingsPage>
           onTap: () {
             FirebaseAnalytics().logEvent(name: 'Feedback');
             // TODO: Implement feedback #989 #1015
+            Instabug.show();
           }),
       divider,
       menuItem(

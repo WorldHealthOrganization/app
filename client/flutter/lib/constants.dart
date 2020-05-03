@@ -24,6 +24,9 @@ class Constants {
 
   // Illustration Colors
   static const Color illustrationBlue1Color = Color(0xffD5F5FD);
+
+  // Instabug
+  static const String instabugTokenBeta = 'd887d0316f04a7845bd0656d83650568';
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging

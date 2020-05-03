@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:instabug_flutter/Instabug.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -88,6 +89,10 @@ class _MyAppState extends State<MyApp> {
 
     _notifications.configure();
     _notifications.updateFirebaseToken();
+
+    if (!this.widget.showOnboarding) {
+      Instabug.start(Constants.instabugTokenBeta, [InvocationEvent.screenshot]);
+    }
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement

@@ -97,6 +97,10 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.5.2):
     - GoogleUtilities/Logger
+  - Instabug (9.1)
+  - instabug_flutter (0.0.1):
+    - Flutter
+    - Instabug (= 9.1)
   - location (0.0.1):
     - Flutter
   - location_web (0.0.1):
@@ -139,6 +143,7 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - instabug_flutter (from `.symlinks/plugins/instabug_flutter/ios`)
   - location (from `.symlinks/plugins/location/ios`)
   - location_web (from `.symlinks/plugins/location_web/ios`)
   - notification_permissions (from `.symlinks/plugins/notification_permissions/ios`)
@@ -172,6 +177,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - Instabug
     - nanopb
     - PromisesObjC
     - Protobuf
@@ -185,6 +191,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  instabug_flutter:
+    :path: ".symlinks/plugins/instabug_flutter/ios"
   location:
     :path: ".symlinks/plugins/location/ios"
   location_web:
@@ -235,6 +243,8 @@ SPEC CHECKSUMS:
   GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
   GoogleDataTransportCCTSupport: 6f15a89b0ca35d6fa523e1f752ef818588885988
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  Instabug: d2510b312611d954a47ddae7a7e950d38111342b
+  instabug_flutter: 866b03bf6633cbb183f73d651426c379f98c289d
   location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   location_web: b94e7433cfe28c0f7c8923c2ee482824b32e55a7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
@@ -253,6 +263,6 @@ SPEC CHECKSUMS:
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
 
-PODFILE CHECKSUM: 083258d7f5e80b42ea9bfee905fe93049bc04c64
+PODFILE CHECKSUM: a2b0bf7fe93e4e6b732ab20a6fda201dc8a23f90
 
 COCOAPODS: 1.9.1
