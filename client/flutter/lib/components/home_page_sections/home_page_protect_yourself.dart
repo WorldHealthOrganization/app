@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/protect_yourself_card.dart';
 import 'package:who_app/constants.dart';
 
@@ -51,7 +50,12 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
   @override
   Widget build(BuildContext context) {
     if (_factContent == null) {
-      return LoadingIndicator();
+      return Padding(
+        padding: EdgeInsets.all(64.0),
+        child: Center(
+          child: CupertinoActivityIndicator(),
+        ),
+      );
     }
 
     // TODO: better handle schema version changes
