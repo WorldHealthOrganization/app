@@ -1,62 +1,147 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/home_page_sections/home_page_donate.dart';
 import 'package:who_app/components/home_page_sections/home_page_header.dart';
 import 'package:who_app/components/home_page_sections/home_page_information_card.dart';
 import 'package:who_app/components/home_page_sections/home_page_protect_yourself.dart';
 import 'package:who_app/components/home_page_sections/home_page_recent_numbers.dart';
+import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  final IndexDataSource dataSource;
+
+  const HomePage({@required this.dataSource, Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  IndexContent _content;
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    await _loadIndex();
+  }
+
+  Future _loadIndex() async {
+    if (_content != null) {
+      return;
+    }
+    Locale locale = Localizations.localeOf(context);
+    try {
+      _content = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
+    } catch (err) {
+      print("Error loading home index data: $err");
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
       color: Constants.greyBackgroundColor,
-      body: [
-        _HomePageSection(
-          content: HomePageHeader(HeaderType.ProtectYourself),
+      beforeHeader: _buildPromo(),
+      body: _buildBody(),
+    );
+  }
+
+  List<Widget> _buildPromo() {
+    List<Widget> preHeader = [];
+    IndexPromo p = _content?.promo;
+    if (p != null) {
+      preHeader.add(_HomePageSection(
+        content: HomePageHeader(
+          headerType: p.type,
+          title: p.title,
+          subtitle: p.subtitle,
+          buttonText: p.buttonText,
+          link: p.link,
         ),
-        _HomePageSection(
-          padding: EdgeInsets.only(top: 56.0),
-          header: _HomePageSectionHeader(
-            // TODO: localize
-            title: 'Recent Numbers',
-            linkText: 'See all ›',
-            link: RouteLink.fromUri('/recent-numbers'),
-          ),
-          content: HomePageRecentNumbers(),
-        ),
-        _HomePageSection(
-          padding: EdgeInsets.only(top: 44.0),
-          header: _HomePageSectionHeader(
-            // TODO: Localize
-            title: 'Protect Yourself',
-            linkText: 'Learn more ›',
-            link: RouteLink.fromUri('/protect-yourself'),
-          ),
-          content: HomePageProtectYourself(
-            dataSource: FactContent.protectYourself,
-          ),
-        ),
-        _HomePageSection(
-          padding: EdgeInsets.only(top: 72.0),
-          content: HomePageInformationCard(
-            title: 'Get the Facts',
-            subtitle:
-                'Spraying alcohol or chlorine all over your body does not kill the new coronavirus.',
-            buttonText: 'Learn more',
-            link: RouteLink.fromUri('/get-the-facts'),
-          ),
-        ),
-        _HomePageSection(
-          padding: EdgeInsets.only(top: 64.0),
-          content: HomePageDonate(),
-        ),
-      ],
+      ));
+    }
+    return preHeader;
+  }
+
+  List<Widget> _buildBody() {
+    List<IndexItem> items = _content?.items;
+    if (items == null) {
+      return [LoadingIndicator()];
+    }
+    List<Widget> bundleWidgets = items.map((item) => _buildItem(item)).toList();
+    return [
+      ...bundleWidgets,
+      _buildDonate(),
+    ];
+  }
+
+  Widget _buildItem(IndexItem item) {
+    switch (item.type) {
+      case IndexItemType.information_card:
+        return _buildInfoCard(item);
+      case IndexItemType.protect_yourself:
+        return _buildProtectYourself(item);
+      case IndexItemType.recent_numbers:
+        return _buildRecentNumbers(item);
+      case IndexItemType.unknown:
+        return null;
+    }
+    return null;
+  }
+
+  Widget _buildInfoCard(IndexItem item) {
+    return _HomePageSection(
+      padding: EdgeInsets.only(top: 72.0),
+      content: HomePageInformationCard(
+        title: item.title,
+        subtitle: item.subtitle,
+        buttonText: item.buttonText,
+        link: item.link,
+      ),
+    );
+  }
+
+  Widget _buildProtectYourself(IndexItem item) {
+    return _HomePageSection(
+      padding: EdgeInsets.only(top: 44.0),
+      header: _HomePageSectionHeader(
+        title: item.title,
+        linkText: item.buttonText,
+        link: item.link,
+      ),
+      content: HomePageProtectYourself(
+        dataSource: FactContent.protectYourself,
+      ),
+    );
+  }
+
+  Widget _buildRecentNumbers(IndexItem item) {
+    return _HomePageSection(
+      padding: EdgeInsets.only(top: 56.0),
+      header: _HomePageSectionHeader(
+        title: item.title,
+        linkText: item.buttonText,
+        link: item.link,
+      ),
+      content: HomePageRecentNumbers(),
+    );
+  }
+
+  Widget _buildDonate() {
+    return _HomePageSection(
+      padding: EdgeInsets.only(top: 64.0),
+      content: HomePageDonate(),
     );
   }
 }
@@ -123,8 +208,7 @@ class _HomePageSectionHeader extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              return Navigator.of(context, rootNavigator: true)
-                  .pushNamed(this.link.route, arguments: this.link.args);
+              return this.link.open(context);
             },
           ),
         ],

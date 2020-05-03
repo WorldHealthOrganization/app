@@ -20,7 +20,9 @@ class AppTabRouter extends StatelessWidget {
       tabBuilder: (BuildContext context, int index) {
         switch (index) {
           case 0:
-            return wrapTabView((context) => HomePage());
+            return wrapTabView((context) => HomePage(
+                  dataSource: IndexContent.homeIndex,
+                ));
           case 1:
             return wrapTabView((context) => RecentNumbersPage());
           case 2:
