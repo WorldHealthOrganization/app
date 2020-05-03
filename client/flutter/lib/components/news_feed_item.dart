@@ -16,7 +16,8 @@ class NewsFeedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Material(
+        child: InkWell(
       onTap: () => launch(this.url),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -63,6 +64,6 @@ class NewsFeedItem extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

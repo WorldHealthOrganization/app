@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'caching.dart';
 import 'content_bundle.dart';
 
@@ -95,7 +95,7 @@ class ContentLoading {
   Future<ContentBundle> _loadFromAssets(String name, String suffix,
       bool unsupportedSchemaVersionAvailable) async {
     var path = '$baseAssetPath/${_fileName(name, suffix)}';
-    var body = await rootBundle.loadString(path);
+    var body = await rootBundle.loadString(path, cache: false);
     return ContentBundle.fromString(body,
         unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }

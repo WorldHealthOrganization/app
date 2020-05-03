@@ -346,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share the App',
+      'Share the app',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -398,9 +398,27 @@ class S {
     );
   }
 
+  String get homePagePageSliverListSettingsNotificationsHeader {
+    return Intl.message(
+      'Notifications',
+      name: 'homePagePageSliverListSettingsNotificationsHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettingsNotificationsInfo {
+    return Intl.message(
+      'Allow WHO to send you notifications to inform you of updates',
+      name: 'homePagePageSliverListSettingsNotificationsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the App',
+      'About the app',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
@@ -995,8 +1013,35 @@ class S {
 
   String get latestNumbersPageTitle {
     return Intl.message(
-      'Latest Numbers',
+      'Recent Numbers',
       name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageCasesDimension {
+    return Intl.message(
+      'Global Cases',
+      name: 'latestNumbersPageCasesDimension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDailyToggle {
+    return Intl.message(
+      'New',
+      name: 'latestNumbersPageDailyToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDeathsDimension {
+    return Intl.message(
+      'Global Deaths',
+      name: 'latestNumbersPageDeathsDimension',
       desc: '',
       args: [],
     );
@@ -1029,6 +1074,15 @@ class S {
     );
   }
 
+  String get latestNumbersPageTotalToggle {
+    return Intl.message(
+      'Total',
+      name: 'latestNumbersPageTotalToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get latestNumbersPageUpdating {
     return Intl.message(
       'Updating…',
@@ -1055,6 +1109,42 @@ class S {
       args: [attribution],
     );
   }
+
+  String get notificationsEnableDialogHeader {
+    return Intl.message(
+      'Enable notifications',
+      name: 'notificationsEnableDialogHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogText {
+    return Intl.message(
+      'As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app',
+      name: 'notificationsEnableDialogText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionOpenSettings {
+    return Intl.message(
+      'Open Settings',
+      name: 'notificationsEnableDialogOptionOpenSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionLater {
+    return Intl.message(
+      'Maybe later',
+      name: 'notificationsEnableDialogOptionLater',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1063,9 +1153,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
       Locale.fromSubtags(languageCode: 'fr'),
+      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
     ];
   }
 

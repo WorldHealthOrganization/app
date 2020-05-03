@@ -88,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePagePageButtonYourQuestionsAnswered":
             MessageLookupByLibrary.simpleMessage("Questions & Answers"),
         "homePagePageSliverListAboutTheApp":
-            MessageLookupByLibrary.simpleMessage("About the App"),
+            MessageLookupByLibrary.simpleMessage("About the app"),
         "homePagePageSliverListAboutTheAppDialog":
             MessageLookupByLibrary.simpleMessage(
                 "The official World Health Organization COVID-19 App."),
@@ -107,13 +107,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Analytics"),
         "homePagePageSliverListSettingsHeader2":
             MessageLookupByLibrary.simpleMessage("Language"),
+        "homePagePageSliverListSettingsNotificationsHeader":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "homePagePageSliverListSettingsNotificationsInfo":
+            MessageLookupByLibrary.simpleMessage(
+                "Allow WHO to send you notifications to inform you of updates"),
         "homePagePageSliverListShareTheApp":
-            MessageLookupByLibrary.simpleMessage("Share the App"),
+            MessageLookupByLibrary.simpleMessage("Share the app"),
         "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
             "Help support the\nrelief effort"),
         "homePagePageSubTitle":
             MessageLookupByLibrary.simpleMessage("Information & tools"),
         "homePagePageTitle": MessageLookupByLibrary.simpleMessage("COVID-19"),
+        "latestNumbersPageCasesDimension":
+            MessageLookupByLibrary.simpleMessage("Global Cases"),
+        "latestNumbersPageDailyToggle":
+            MessageLookupByLibrary.simpleMessage("New"),
+        "latestNumbersPageDeathsDimension":
+            MessageLookupByLibrary.simpleMessage("Global Deaths"),
         "latestNumbersPageGlobalCasesTitle":
             MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
         "latestNumbersPageGlobalDeaths":
@@ -121,7 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestNumbersPageLastUpdated": m4,
         "latestNumbersPageSourceGlobalStatsAttribution": m5,
         "latestNumbersPageTitle":
-            MessageLookupByLibrary.simpleMessage("Latest Numbers"),
+            MessageLookupByLibrary.simpleMessage("Recent Numbers"),
+        "latestNumbersPageTotalToggle":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "latestNumbersPageUpdating":
             MessageLookupByLibrary.simpleMessage("Updating…"),
         "latestNumbersPageViewLiveData":
@@ -189,6 +202,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsFeedSliverListNewsFeedItemUrl4": MessageLookupByLibrary.simpleMessage(
             "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings"),
         "newsFeedTitle": MessageLookupByLibrary.simpleMessage("News & Press"),
+        "notificationsEnableDialogHeader":
+            MessageLookupByLibrary.simpleMessage("Enable notifications"),
+        "notificationsEnableDialogOptionLater":
+            MessageLookupByLibrary.simpleMessage("Maybe later"),
+        "notificationsEnableDialogOptionOpenSettings":
+            MessageLookupByLibrary.simpleMessage("Open Settings"),
+        "notificationsEnableDialogText": MessageLookupByLibrary.simpleMessage(
+            "As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app"),
         "notificationsPagePermissionRequestBackgroundImage":
             MessageLookupByLibrary.simpleMessage(
                 "assets/onboarding/onboarding_notifications.png"),

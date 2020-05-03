@@ -53,7 +53,7 @@ curl -i \
 
 ## Building and Deploying
 
-*Note:* The deployment scripts run the build automatically.
+_Note:_ The deployment scripts run the build automatically.
 
 ### Build Only
 
@@ -68,7 +68,7 @@ Then open [http://localhost:8080/]().
 ### Deploy to Staging
 
     $ ./bin/deploy-staging.sh
-    
+
 Then open [https://who-app-staging.appspot.com/]().
 
 ### Deploy to Production
@@ -101,7 +101,7 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 ### Log In
 
     $ gcloud auth login
-    
+
 ### Install the most up-to-date App Engine Component
 
     $  gcloud components install app-engine-java && gcloud components update
@@ -109,7 +109,7 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 ### Install IntelliJ IDE (Optional)
 
     $ brew cask install intellij-idea-ce
-    
+
 Open the project in IntelliJ:
-    
-    $ open -a /Applications/IntelliJ\ IDEA\ CE.app/ .
+
+\$ open -a /Applications/IntelliJ\ IDEA\ CE.app/ .
