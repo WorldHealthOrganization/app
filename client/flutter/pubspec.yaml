@@ -77,8 +77,10 @@ flutter:
 flutter_intl:
   enabled: true
 
-# To update the splash screen run the following command:
-# flutter pub pub run flutter_native_splash:create
+# To update the splash screen run the
+# flutter_native_splash update build task in VSCode via Terimal > Run Task...
+# or run the following command
+# flutter pub run flutter_native_splash:create
 flutter_native_splash:
   image: assets/images/splash_screen/splash.png
   color: "ffffff"
