@@ -59,6 +59,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   pedantic: ^1.8.0
+  flutter_native_splash: ^0.1.9
 
 flutter:
   uses-material-design: true
@@ -75,3 +76,10 @@ flutter:
 
 flutter_intl:
   enabled: true
+
+# To update the splash screen run the following command:
+# flutter pub pub run flutter_native_splash:create
+flutter_native_splash:
+  image: assets/images/splash_screen/splash.png
+  color: "ffffff"
+  android_disable_fullscreen: true

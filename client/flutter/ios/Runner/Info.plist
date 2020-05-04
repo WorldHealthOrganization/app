@@ -75,5 +75,8 @@
 	</array>
 	<key>firebase_crashlytics_collection_enabled</key>
 	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
+
 </dict>
 </plist>
