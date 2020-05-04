@@ -4,10 +4,10 @@
 
 <!--
 Add the Issue number(s) assigned to you that this PR fully resolves, if any
-Closes #0 
+Closes #0
 -->
 
-<!-- 
+<!--
 #### Screenshots
 <details>
 <summary>Screenshots</summary>
@@ -27,7 +27,7 @@ List each added dependency and justifications (see the Guidelines)
 * [ ] Android Emulator
 * [ ] iOS Device
 * [ ] Android Device
-* [ ] `curl` to a dev App Engine server 
+* [ ] `curl` to a dev App Engine server
 -->
 
 <!-- FILL OUT THE CHECKLIST BELOW -->
@@ -35,7 +35,8 @@ List each added dependency and justifications (see the Guidelines)
 ---
 
 #### Please follow this checklist. Please check each appropriate box (put an 'x' or check it after creating the PR).
-- [ ] REQUIRED: Do you have an Issue **assigned to you** for this PR? 
+
+- [ ] REQUIRED: Do you have an Issue **assigned to you** for this PR?
 - [ ] Provided detailed pull request description and a succinct title
 - [ ] Tested your changes, especially after any code review iterations.
 - [ ] Included any relevant screenshots of UI updates.

@@ -346,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share the App',
+      'Share the app',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -418,7 +418,7 @@ class S {
 
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the App',
+      'About the app',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
@@ -1013,8 +1013,35 @@ class S {
 
   String get latestNumbersPageTitle {
     return Intl.message(
-      'Latest Numbers',
+      'Recent Numbers',
       name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageCasesDimension {
+    return Intl.message(
+      'Global Cases',
+      name: 'latestNumbersPageCasesDimension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDailyToggle {
+    return Intl.message(
+      'New',
+      name: 'latestNumbersPageDailyToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDeathsDimension {
+    return Intl.message(
+      'Global Deaths',
+      name: 'latestNumbersPageDeathsDimension',
       desc: '',
       args: [],
     );
@@ -1044,6 +1071,15 @@ class S {
       name: 'latestNumbersPageLastUpdated',
       desc: '',
       args: [lastUpd],
+    );
+  }
+
+  String get latestNumbersPageTotalToggle {
+    return Intl.message(
+      'Total',
+      name: 'latestNumbersPageTotalToggle',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1118,6 +1154,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
     ];
   }

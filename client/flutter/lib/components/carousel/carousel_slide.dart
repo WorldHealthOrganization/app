@@ -1,4 +1,5 @@
 import 'package:who_app/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +29,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
     final Size screenSize = MediaQuery.of(context).size;
 
     final TextStyle titleStyle = TextStyle(
-      color: Constants.primaryDark,
+      color: Constants.primaryDarkColor,
       fontSize: 36.0,
       fontWeight: FontWeight.w600,
       letterSpacing: -.5,

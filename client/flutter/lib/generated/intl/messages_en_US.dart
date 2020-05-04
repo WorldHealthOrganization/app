@@ -88,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePagePageButtonYourQuestionsAnswered":
             MessageLookupByLibrary.simpleMessage("Questions & Answers"),
         "homePagePageSliverListAboutTheApp":
-            MessageLookupByLibrary.simpleMessage("About the App"),
+            MessageLookupByLibrary.simpleMessage("About the app"),
         "homePagePageSliverListAboutTheAppDialog":
             MessageLookupByLibrary.simpleMessage(
                 "The official World Health Organization COVID-19 App."),
@@ -113,12 +113,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Allow WHO to send you notifications to inform you of updates"),
         "homePagePageSliverListShareTheApp":
-            MessageLookupByLibrary.simpleMessage("Share the App"),
+            MessageLookupByLibrary.simpleMessage("Share the app"),
         "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
             "Help support the\nrelief effort"),
         "homePagePageSubTitle":
             MessageLookupByLibrary.simpleMessage("Information & tools"),
         "homePagePageTitle": MessageLookupByLibrary.simpleMessage("COVID-19"),
+        "latestNumbersPageCasesDimension":
+            MessageLookupByLibrary.simpleMessage("Global Cases"),
+        "latestNumbersPageDailyToggle":
+            MessageLookupByLibrary.simpleMessage("New"),
+        "latestNumbersPageDeathsDimension":
+            MessageLookupByLibrary.simpleMessage("Global Deaths"),
         "latestNumbersPageGlobalCasesTitle":
             MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
         "latestNumbersPageGlobalDeaths":
@@ -126,7 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestNumbersPageLastUpdated": m4,
         "latestNumbersPageSourceGlobalStatsAttribution": m5,
         "latestNumbersPageTitle":
-            MessageLookupByLibrary.simpleMessage("Latest Numbers"),
+            MessageLookupByLibrary.simpleMessage("Recent Numbers"),
+        "latestNumbersPageTotalToggle":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "latestNumbersPageUpdating":
             MessageLookupByLibrary.simpleMessage("Updating…"),
         "latestNumbersPageViewLiveData":

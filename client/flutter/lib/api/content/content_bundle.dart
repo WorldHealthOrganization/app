@@ -61,6 +61,14 @@ class ContentBundle {
     }
   }
 
+  YamlMap get contentPromo {
+    try {
+      return yaml['contents']['promo'];
+    } catch (err) {
+      return YamlMap();
+    }
+  }
+
   String getString(String key) {
     try {
       return (yaml['contents'][key]).trim();

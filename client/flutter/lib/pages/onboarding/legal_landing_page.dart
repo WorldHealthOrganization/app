@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,8 +13,7 @@ class LegalLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
+    return CupertinoPageScaffold(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -47,7 +46,7 @@ class LegalLandingPage extends StatelessWidget {
                   Constants.primaryColor,
                   S.of(context).legalLandingPageButtonGetStarted,
                   onNext,
-                  verticalPadding: 24,
+                  verticalPadding: 12,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   borderRadius: 60,
@@ -55,7 +54,8 @@ class LegalLandingPage extends StatelessWidget {
                 SizedBox(height: 17),
                 Text.rich(
                   TextSpan(
-                    style: TextStyle(color: Colors.grey[600], height: 1.4),
+                    style: TextStyle(
+                        color: CupertinoColors.systemGrey, height: 1.4),
                     children: [
                       TextSpan(text: S.of(context).legalLandingPageButtonAgree),
                       LinkTextSpan(
