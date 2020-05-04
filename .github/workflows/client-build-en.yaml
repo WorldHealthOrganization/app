@@ -5,18 +5,16 @@ on:
       - '.github/workflows/**'
       - 'api/**'
       - 'client/exposure_notifications/**'
-      - 'client/app/**'
       - 'client/app_en/**'
-      - 'client/flutter/**'
+      - 'client/flutter/pubspec.*'
   pull_request:
     branches: [ master ]
     paths:
       - '.github/workflows/**'
       - 'api/**'
       - 'client/exposure_notifications/**'
-      - 'client/app/**'
       - 'client/app_en/**'
-      - 'client/flutter/**'
+      - 'client/flutter/pubspec.*'
 jobs:
   buildios:
     name: Build iOS app with Exposure Notifications
