@@ -43,3 +43,4 @@ jobs:
       - run: flutter build appbundle
         working-directory: ./client/app_en
       - run: git diff --exit-code
+
