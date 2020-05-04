@@ -6,6 +6,12 @@
 
     The `.arb` files externalize strings from the app and `flutter_intl` takes care of generating the messages in
      [client/flutter/lib/generated/intl](../client/flutter/lib/generated/intl) 
+     
+     Application Resource Bundle (abbr. `ARB`) is a localization resource format that is simple (based on `JSON`).
+     
+     Read the [Application Resource Bundle Specification](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification)
+     to find out more about the `ARB` syntax and learn more about `ICU` messages and play with examples, 
+       or your own using [this project on GitHub](https://format-message.github.io/icu-message-format-for-translators/)
    
     Versions packaged in the app are not updated dynamically.
 
@@ -61,6 +67,7 @@
 * [x] Use placeholder variables in the string when appropriate, with meaningful names to allow the translator to
  understand the placeholder's role
 * [x] Annotate the key-value pairs (with or without placeholders) to provide valuable context to the translators.
+    Annotation such as `description`, `type` & `placeholders` are visible to the translators in the CAT tool.
 * [x] When writing ICUs such as plural forms, include the entire segment in each option, to allow the translator to
  work on a full translation unit, not a fragment of text.
 
@@ -99,8 +106,6 @@
   }
 }
 ```
-
-Learn more about ICUs and play with examples, or your own using [this project on GitHub](https://format-message.github.io/icu-message-format-for-translators/)
 
 ### YAML content bundles
 
