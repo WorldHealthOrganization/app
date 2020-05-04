@@ -21,12 +21,12 @@ message PutDeviceTokenRequest {
 }
 
 message PutLocationRequest {
-  double latitude = 2;
-  double longitude = 3;
-  string countryCode = 4;
-  string adminArea = 5;
-  string subadminArea = 6;
-  string locality = 7;
+  // A token is a hex representation of the 64-bit S2CellId
+  // in string format that will also survive JSON (which
+  // lacks 64-bit number precision).
+  // The level (specificity) of the S2CellId must not exceed
+  // who.Client.MAX_S2_CELL_LEVEL.
+  string s2CellIdToken = 11;
 }
 
 message GetCaseStatsResponse {
@@ -38,8 +38,21 @@ message GetCaseStatsResponse {
   uint64 ttl = 2;
 }
 
+message StatSnapshot {
+  uint64 epochMsec = 1;
+
+  int64 dailyCases = 2;
+  int64 dailyDeaths = 3;
+  int64 dailyRecoveries = 4;
+
+  int64 totalCases = 5;
+  int64 totalDeaths = 6;
+  int64 totalRecoveries = 7;
+}
+
 // Statistics in a single or aggregate jurisdiction.
 message CaseStats {
+  JurisdictionType jurisdictionType = 7;
   // empty for global stats
   string jurisdiction = 1;
 
@@ -51,6 +64,14 @@ message CaseStats {
   int64 recoveries = 5;
 
   string attribution = 6;
+
+  repeated StatSnapshot timeseries = 8;
+}
+
+enum JurisdictionType {
+  GLOBAL = 0;
+  WHO_REGION = 1;
+  COUNTRY = 2;
 }
 
 enum Platform {

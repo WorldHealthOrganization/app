@@ -1,0 +1,14 @@
+{
+  "../**/*.md": [
+    "prettier --write"
+  ],
+  "../client/**/*.dart": [
+    "flutter format"
+  ],
+  "../client/**": [
+    "./verify-client.sh"
+  ],
+  "../server/**": [
+    "./verify-server.sh"
+  ]
+}

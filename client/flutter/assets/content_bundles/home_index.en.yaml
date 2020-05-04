@@ -1,0 +1,28 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: index
+  promo:
+    promo_type: protect_yourself
+    title: Protect Yourself
+    subtitle: See what your symptoms could mean and what you can do to move forward.
+    button_text: Learn more
+    href: /protect-yourself
+  items:
+    -
+      item_type: recent_numbers
+      title: Recent Numbers
+      button_text: 'See all ›'
+      href: /recent-numbers
+    -
+      item_type: protect_yourself
+      title: Protect Yourself
+      button_text: 'Learn more ›'
+      href: /protect-yourself
+    -
+      item_type: information_card
+      title: Get the Facts
+      subtitle: Spraying alcohol or chlorine all over your body does not kill the new coronavirus.
+      href: /get-the-facts
+      button_text: Learn more
+

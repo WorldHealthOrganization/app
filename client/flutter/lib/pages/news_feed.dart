@@ -1,15 +1,16 @@
 //TODO: ENTER CORRECT URL FOR EACH ITEM
 
-import 'package:WHOFlutter/components/news_feed_item.dart';
-import 'package:WHOFlutter/components/page_scaffold/page_scaffold.dart';
-import 'package:WHOFlutter/generated/l10n.dart';
-import 'package:flutter/material.dart';
+import 'package:who_app/components/news_feed_item.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/generated/l10n.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 class NewsFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      context,
+      heroTag: HeroTags.learn,
       body: [
         SliverList(
             delegate: SliverChildListDelegate([

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:who_app/constants.dart';
 
 class PageButton extends StatelessWidget {
   final Color backgroundColor;
@@ -28,14 +27,13 @@ class PageButton extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
-        this.descriptionColor,
+    this.descriptionColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(this.borderRadius)),
+    return CupertinoButton(
+      borderRadius: BorderRadius.circular(this.borderRadius),
       color: backgroundColor,
       child: Padding(
           padding: EdgeInsets.symmetric(
@@ -47,10 +45,15 @@ class PageButton extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title,
-                // textScaleFactorOf is for the device font size
-                textScaleFactor: 1.0 + contentScale(context) * MediaQuery.textScaleFactorOf(context),
                 textAlign: TextAlign.left,
-                style: titleStyle ?? TextStyle(fontWeight: FontWeight.w700),
+                style: titleStyle?.copyWith(
+                      letterSpacing: Constants.buttonTextSpacing,
+                    ) ??
+                    TextStyle(
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: Constants.buttonTextSpacing,
+                      fontSize: 18,
+                    ),
               ),
               // Makes sure text is centered properly when no description is provided
               SizedBox(height: description.isNotEmpty ? 4 : 0),
@@ -58,8 +61,12 @@ class PageButton extends StatelessWidget {
                   ? Text(
                       this.description,
                       textAlign: TextAlign.left,
-                      textScaleFactor: (0.9 + 0.5 * contentScale(context)) * MediaQuery.textScaleFactorOf(context),
-                      style: TextStyle(fontWeight: FontWeight.w400, color: descriptionColor ?? Color(0xFFC9CDD6)),
+                      textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
+                          MediaQuery.textScaleFactorOf(context),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: descriptionColor ?? Color(0xFFC9CDD6),
+                      ),
                     )
                   : Container()
             ],
@@ -67,5 +74,4 @@ class PageButton extends StatelessWidget {
       onPressed: this.onPressed,
     );
   }
-  
 }

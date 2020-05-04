@@ -7,15 +7,17 @@ class NewsFeedItem extends StatelessWidget {
   final ImageProvider imageProvider;
   final String url;
 
-  NewsFeedItem(
-      {@required this.title,
-      @required this.description,
-      @required this.imageProvider,
-      @required this.url});
+  NewsFeedItem({
+    @required this.title,
+    @required this.description,
+    @required this.imageProvider,
+    @required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return Material(
+        child: InkWell(
       onTap: () => launch(this.url),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -25,7 +27,10 @@ class NewsFeedItem extends StatelessWidget {
             Text(
               this.title,
               textAlign: TextAlign.start,
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 28,
+              ),
             ),
             SizedBox(height: 14),
             Row(
@@ -42,17 +47,23 @@ class NewsFeedItem extends StatelessWidget {
                   width: 10,
                 ),
                 Flexible(
-                    child: Text(
-                  this.description,
-                  style: TextStyle(fontSize: 18),
-                )),
-                Center(child: Icon(Icons.arrow_forward_ios, color: Color(0xffC9CDD6),)),
+                  child: Text(
+                    this.description,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                Center(
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xffC9CDD6),
+                  ),
+                ),
               ],
             ),
-            Divider()
+            Divider(),
           ],
         ),
       ),
-    );
+    ));
   }
 }

@@ -1,15 +1,12 @@
-import 'package:WHOFlutter/api/user_preferences.dart';
-import 'package:WHOFlutter/pages/home_page.dart';
-import 'package:WHOFlutter/pages/onboarding/legal_landing_page.dart';
-import 'package:WHOFlutter/pages/onboarding/location_sharing_page.dart';
-import 'package:WHOFlutter/pages/onboarding/notifications_page.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter/material.dart';
+import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/pages/onboarding/legal_landing_page.dart';
+import 'package:who_app/pages/onboarding/location_sharing_page.dart';
+import 'package:who_app/pages/onboarding/notifications_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage(this.analytics, {Key key}) : super(key: key);
-
-  final FirebaseAnalytics analytics;
+  const OnboardingPage({Key key}) : super(key: key);
 
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -19,6 +16,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   static const _animationDuration = Duration(milliseconds: 500);
   static const _animationCurve = Curves.easeInOut;
 
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final PageController _pageController = PageController();
 
   @override
@@ -47,12 +45,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
         children: <Widget>[
-          LegalLandingPage(onNext: _toNextPage),
+          LegalLandingPage(onNext: _onLegalDone),
           NotificationsPage(onNext: _toNextPage),
           LocationSharingPage(onNext: _onDone),
         ],
       ),
     );
+  }
+
+  Future<void> _onLegalDone() async {
+    // Enable auto init so that analytics will work
+    await _firebaseMessaging.setAutoInitEnabled(true);
+    await _toNextPage();
   }
 
   Future<void> _toNextPage() async {
@@ -65,11 +69,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _onDone() async {
     await UserPreferences().setOnboardingCompleted(true);
     await UserPreferences().setAnalyticsEnabled(true);
-    await Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => HomePage(widget.analytics),
-      ),
+    await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
+      '/',
     );
   }
 }

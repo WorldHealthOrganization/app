@@ -10,18 +10,19 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       return S();
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -54,7 +55,8 @@ class S {
     );
   }
 
-  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(
+      Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -290,7 +292,7 @@ class S {
 
   String get homePagePageButtonLatestNumbers {
     return Intl.message(
-      'Latest \nNumbers',
+      'Latest Numbers',
       name: 'homePagePageButtonLatestNumbers',
       desc: '',
       args: [],
@@ -344,7 +346,7 @@ class S {
 
   String get homePagePageSliverListShareTheApp {
     return Intl.message(
-      'Share the App',
+      'Share the app',
       name: 'homePagePageSliverListShareTheApp',
       desc: '',
       args: [],
@@ -396,9 +398,27 @@ class S {
     );
   }
 
+  String get homePagePageSliverListSettingsNotificationsHeader {
+    return Intl.message(
+      'Notifications',
+      name: 'homePagePageSliverListSettingsNotificationsHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homePagePageSliverListSettingsNotificationsInfo {
+    return Intl.message(
+      'Allow WHO to send you notifications to inform you of updates',
+      name: 'homePagePageSliverListSettingsNotificationsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get homePagePageSliverListAboutTheApp {
     return Intl.message(
-      'About the App',
+      'About the app',
       name: 'homePagePageSliverListAboutTheApp',
       desc: '',
       args: [],
@@ -963,7 +983,8 @@ class S {
     );
   }
 
-  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
+  String aboutPageBuiltByCreditText(
+      Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -992,8 +1013,35 @@ class S {
 
   String get latestNumbersPageTitle {
     return Intl.message(
-      'Latest Numbers',
+      'Recent Numbers',
       name: 'latestNumbersPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageCasesDimension {
+    return Intl.message(
+      'Global Cases',
+      name: 'latestNumbersPageCasesDimension',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDailyToggle {
+    return Intl.message(
+      'New',
+      name: 'latestNumbersPageDailyToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get latestNumbersPageDeathsDimension {
+    return Intl.message(
+      'Global Deaths',
+      name: 'latestNumbersPageDeathsDimension',
       desc: '',
       args: [],
     );
@@ -1026,6 +1074,15 @@ class S {
     );
   }
 
+  String get latestNumbersPageTotalToggle {
+    return Intl.message(
+      'Total',
+      name: 'latestNumbersPageTotalToggle',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get latestNumbersPageUpdating {
     return Intl.message(
       'Updating…',
@@ -1037,8 +1094,53 @@ class S {
 
   String get latestNumbersPageViewLiveData {
     return Intl.message(
-      'View live data',
+      'View Live Data',
       name: 'latestNumbersPageViewLiveData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String latestNumbersPageSourceGlobalStatsAttribution(Object attribution) {
+    return Intl.message(
+      'Source: $attribution',
+      name: 'latestNumbersPageSourceGlobalStatsAttribution',
+      desc: '',
+      args: [attribution],
+    );
+  }
+
+  String get notificationsEnableDialogHeader {
+    return Intl.message(
+      'Enable notifications',
+      name: 'notificationsEnableDialogHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogText {
+    return Intl.message(
+      'As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app',
+      name: 'notificationsEnableDialogText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionOpenSettings {
+    return Intl.message(
+      'Open Settings',
+      name: 'notificationsEnableDialogOptionOpenSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get notificationsEnableDialogOptionLater {
+    return Intl.message(
+      'Maybe later',
+      name: 'notificationsEnableDialogOptionLater',
       desc: '',
       args: [],
     );
@@ -1050,7 +1152,10 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'), Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'fr'),
+      Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
     ];
   }
 
