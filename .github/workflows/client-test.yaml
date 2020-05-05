@@ -4,12 +4,14 @@ on:
     paths:
       - '.github/workflows/**'
       - 'api/**'
+      - 'client/app/**'
       - 'client/flutter/**'
   pull_request:
     branches: [ master ]
     paths:
       - '.github/workflows/**'
       - 'api/**'
+      - 'client/app/**'
       - 'client/flutter/**'
 jobs:
   test:
@@ -23,11 +25,11 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/flutter
+        working-directory: ./client/app
       - run: flutter analyze --no-pub
-        working-directory: ./client/flutter
+        working-directory: ./client/app
       - run: flutter format lib/** --set-exit-if-changed 
-        working-directory: ./client/flutter
+        working-directory: ./client/app
       - run: flutter test --no-pub
-        working-directory: ./client/flutter
+        working-directory: ./client/app
 
