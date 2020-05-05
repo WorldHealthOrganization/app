@@ -43,9 +43,7 @@ class HomePageInformationCard extends StatelessWidget {
               ThemedText(
                 this.subtitle,
                 variant: TypographyVariant.body,
-                style: TextStyle(
-                  color: AppTheme(context).neutralTextDarkColor
-                ),
+                style: TextStyle(color: AppTheme(context).neutralTextDarkColor),
               ),
               Container(
                 height: 16.0,

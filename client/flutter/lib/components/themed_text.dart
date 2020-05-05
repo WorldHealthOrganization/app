@@ -47,7 +47,8 @@ class ThemedText extends StatelessWidget {
     this.textWidthBasis,
   }) : super(key: key);
 
-  static TextStyle styleForVariant(TypographyVariant variant, BuildContext context) {
+  static TextStyle styleForVariant(
+      TypographyVariant variant, BuildContext context) {
     switch (variant) {
       case TypographyVariant.title:
         return TextStyle(

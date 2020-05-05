@@ -256,8 +256,7 @@ class _SettingsPageState extends State<SettingsPage>
                           variant: TypographyVariant.h3,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            color: AppTheme(context).neutral1Color
-                          )),
+                              color: AppTheme(context).neutral1Color)),
                     ),
                     Semantics(
                       excludeSemantics: true,
@@ -273,9 +272,7 @@ class _SettingsPageState extends State<SettingsPage>
                 ThemedText(
                   info,
                   variant: TypographyVariant.body,
-                  style: TextStyle(
-                    color: AppTheme(context).neutral2Color
-                  ),
+                  style: TextStyle(color: AppTheme(context).neutral2Color),
                 )
               ],
             ),

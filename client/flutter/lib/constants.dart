@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class AppTheme extends AppThemeData{
-  factory AppTheme(BuildContext context){
-    return isLight(context)?LightTheme():DarkTheme();
-
+class AppTheme extends AppThemeData {
+  factory AppTheme(BuildContext context) {
+    return isLight(context) ? LightTheme() : DarkTheme();
   }
-  
 }
 
 class LightTheme extends AppThemeData {
@@ -37,7 +35,6 @@ class LightTheme extends AppThemeData {
         illustrationBlue1Color: Color(0xffD5F5FD),
       );
 }
-
 
 class DarkTheme extends AppThemeData {
   factory() => AppThemeData(

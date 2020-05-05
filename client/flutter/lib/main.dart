@@ -118,7 +118,8 @@ class _MyAppState extends State<MyApp> {
         theme: CupertinoThemeData(
             primaryColor: AppTheme(context).primaryColor,
             textTheme: CupertinoTextThemeData(
-              textStyle: ThemedText.styleForVariant(TypographyVariant.body, context),
+              textStyle:
+                  ThemedText.styleForVariant(TypographyVariant.body, context),
             )),
       ),
     );

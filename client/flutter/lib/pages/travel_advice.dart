@@ -88,11 +88,8 @@ class _TravelAdviceState extends State<TravelAdvice> {
               ThemedText(
                 _adviceContent.body,
                 variant: TypographyVariant.body,
-                style: TextStyle(
-                  fontSize: 18,
-                  color:AppTheme(context).textColor
-                     
-                ),
+                style:
+                    TextStyle(fontSize: 18, color: AppTheme(context).textColor),
               ),
           ])),
       ..._getItems(context),
@@ -140,17 +137,13 @@ class TravelAdviceListItem extends StatelessWidget {
                   style: TextStyle(
                     height: 1.37,
                     color: AppTheme(context).bodyTextColor,
-                        
                   ),
                 ),
                 ThemedText(
                   this.description,
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    fontSize: 18,
-                    color: AppTheme(context).bodyTextColor
-                        
-                  ),
+                      fontSize: 18, color: AppTheme(context).bodyTextColor),
                 ),
               ])),
         ],

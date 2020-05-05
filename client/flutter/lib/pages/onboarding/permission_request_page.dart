@@ -104,7 +104,8 @@ class PermissionRequestPage extends StatelessWidget {
                           style: TextStyle(
                               color: CupertinoColors.systemGrey,
                               fontSize: 18,
-                              letterSpacing: AppTheme(context).buttonTextSpacing),
+                              letterSpacing:
+                                  AppTheme(context).buttonTextSpacing),
                         ),
                         onPressed: onSkip,
                       ),
