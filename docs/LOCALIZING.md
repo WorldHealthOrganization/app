@@ -4,23 +4,23 @@
 
 - [Flutter Application Resource Bundles (client/flutter/lib/l10n)](../client/flutter/lib/l10n)
 
-    The `.arb` files externalize strings from the app and `flutter_intl` takes care of generating the messages in
-     [client/flutter/lib/generated/intl](../client/flutter/lib/generated/intl) 
-     
-     Application Resource Bundle (abbr. `ARB`) is a localization resource format that is simple (based on `JSON`).
-     
-     Read the [Application Resource Bundle Specification](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification)
-     to find out more about the `ARB` syntax and learn more about `ICU` messages and play with examples, 
-       or your own using [this project on GitHub](https://format-message.github.io/icu-message-format-for-translators/)
-   
-    Versions packaged in the app are not updated dynamically.
+  The `.arb` files externalize strings from the app and `flutter_intl` takes care of generating the messages in
+  [client/flutter/lib/generated/intl](../client/flutter/lib/generated/intl)
+
+  Application Resource Bundle (abbr. `ARB`) is a localization resource format that is simple (based on `JSON`).
+
+  Read the [Application Resource Bundle Specification](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification)
+  to find out more about the `ARB` syntax and learn more about `ICU` messages and play with examples,
+  or your own using [this project on GitHub](https://format-message.github.io/icu-message-format-for-translators/)
+
+  Versions packaged in the app are not updated dynamically.
 
 - [Dynamic Assets: content_bundles (client/flutter/assets/content_bundles)](../client/flutter/assets/content_bundles)
 
-    The `.yaml` files in this folder packaged in the app for users without internet connectivity, but the app
-     attempts to fetch updated versions online if available.
-     
-    This means the translation of the `.yaml` files doesn't technically have to be complete for the app to be released. 
+  The `.yaml` files in this folder packaged in the app for users without internet connectivity, but the app
+  attempts to fetch updated versions online if available.
+
+  This means the translation of the `.yaml` files doesn't technically have to be complete for the app to be released.
 
 ## Translation Process:
 
@@ -32,7 +32,7 @@
 6. In country reviewers / WHO staff approve the translations in the [CAT tool](https://coach.lingo24.com)
 7. The localization manager(s) or tech lead(s) are notified the translations are ready to download
 8. The localization manager(s) or tech lead(s) copy the files in the repo, overwriting any existing files, and commit
- them.
+   them.
 
 > API integration to come at a later stage
 
@@ -40,38 +40,38 @@
 
 ### Common requirement
 
-* [x] Keep the file encoding consistent: `UTF-8` with `LF` line endings.
+- [x] Keep the file encoding consistent: `UTF-8` with `LF` line endings.
 
 ### ARB files
 
-*Externalize by default*
+_Externalize by default_
 
-* [ ] Never commit "magic" strings inline in dart files. Those won't be localised.
+- [ ] Never commit "magic" strings inline in dart files. Those won't be localised.
 
-*Structure the content*
+_Structure the content_
 
-* [ ] Never re-use key-value pairs in different area of the app, even if the value is the same.
-* [x] Group key names that are used in the same area
-* [x] Pre-fix your key names to help identify where the key is used.
-* [x] Use signposting in the arb files using the `@section` key name.
+- [ ] Never re-use key-value pairs in different area of the app, even if the value is the same.
+- [x] Group key names that are used in the same area
+- [x] Pre-fix your key names to help identify where the key is used.
+- [x] Use signposting in the arb files using the `@section` key name.
 
-*Author strings with translation in mind*
+_Author strings with translation in mind_
 
-* [ ] Avoid large blocks in key-value pairs, and if you do use them, make sure you use valid HTML to style and
- segment the content.
-* [ ] Do not rely on new lines (`\n`) to structure or style text. If the element that uses the key relies on this it
-'ll most likely break the style when translated.
-* [x] Keep in mind almost all languages expand from English. Text displayed in a foreign language will
- most likely be longer than in English.
-* [x] Do not concatenate keys in code, fragmentation of the content can be a blocker for translation.
-* [x] Use placeholder variables in the string when appropriate, with meaningful names to allow the translator to
- understand the placeholder's role
-* [x] Annotate the key-value pairs (with or without placeholders) to provide valuable context to the translators.
-    Annotation such as `description`, `type` & `placeholders` are visible to the translators in the CAT tool.
-* [x] When writing ICUs such as plural forms, include the entire segment in each option, to allow the translator to
- work on a full translation unit, not a fragment of text.
+- [ ] Avoid large blocks in key-value pairs, and if you do use them, make sure you use valid HTML to style and
+      segment the content.
+- [ ] Do not rely on new lines (`\n`) to structure or style text. If the element that uses the key relies on this it
+      'll most likely break the style when translated.
+- [x] Keep in mind almost all languages expand from English. Text displayed in a foreign language will
+      most likely be longer than in English.
+- [x] Do not concatenate keys in code, fragmentation of the content can be a blocker for translation.
+- [x] Use placeholder variables in the string when appropriate, with meaningful names to allow the translator to
+      understand the placeholder's role
+- [x] Annotate the key-value pairs (with or without placeholders) to provide valuable context to the translators.
+      Annotation such as `description`, `type` & `placeholders` are visible to the translators in the CAT tool.
+- [x] When writing ICUs such as plural forms, include the entire segment in each option, to allow the translator to
+      work on a full translation unit, not a fragment of text.
 
-*Example*
+_Example_
 
 ```json
 {
@@ -109,17 +109,16 @@
 
 ### YAML content bundles
 
-*Structure the content*
+_Structure the content_
 
-* [x] Name the file with a meaningful name
-* [x] Inform the localization manager(s) when you add new schema. File filtering configuration needs to be
- updated when new key names need to be added to the whitelist of keys included for translation:
+- [x] Name the file with a meaningful name
+- [x] Inform the localization manager(s) when you add new schema. File filtering configuration needs to be
+      updated when new key names need to be added to the whitelist of keys included for translation:
 
-    * `title_html`
-    * `body_html`
-    * `title`
-    * `subtitle`
-    * `button_text`
-    * `banner`
-    * `body`
-
+  - `title_html`
+  - `body_html`
+  - `title`
+  - `subtitle`
+  - `button_text`
+  - `banner`
+  - `body`
