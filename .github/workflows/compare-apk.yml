@@ -35,7 +35,7 @@ jobs:
         with:
           name: apk
           path: client/flutter/build/app/outputs/apk/release/app-master.apk
-  build-pr:
+  build-new:
     name: Build incoming Android app
     runs-on: ubuntu-latest
     steps:
@@ -57,7 +57,7 @@ jobs:
           name: apk
           path: client/flutter/build/app/outputs/apk/release/app-pr.apk
   diffuse:
-    needs: [build-master, build-pr]
+    needs: [build-master, build-new]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
