@@ -7,7 +7,7 @@ contents:
       id:  question_1
       type: yes_no
       question_html: |
-        <p>Yes - No auestion 1</p>
+        <p>Yes - No question 1</p>
     -
       id:  question_2
       type: short_list_single_selection
@@ -91,5 +91,4 @@ contents:
       type: yes_no
       question_html: |
         <p>Final Yes - No auestion 5</p>
-
 
