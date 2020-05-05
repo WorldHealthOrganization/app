@@ -90,9 +90,8 @@ class _TravelAdviceState extends State<TravelAdvice> {
                 variant: TypographyVariant.body,
                 style: TextStyle(
                   fontSize: 18,
-                  color: isLight(context)
-                      ? AppTheme(context).textColor
-                      : AppTheme(context).darkModeTextColor,
+                  color:AppTheme(context).textColor
+                     
                 ),
               ),
           ])),
@@ -140,9 +139,8 @@ class TravelAdviceListItem extends StatelessWidget {
                   variant: TypographyVariant.h4,
                   style: TextStyle(
                     height: 1.37,
-                    color: isLight(context)
-                        ? AppTheme(context).bodyTextColor
-                        : AppTheme(context).darkModeTextColor,
+                    color: AppTheme(context).bodyTextColor,
+                        
                   ),
                 ),
                 ThemedText(
@@ -150,9 +148,8 @@ class TravelAdviceListItem extends StatelessWidget {
                   variant: TypographyVariant.body,
                   style: TextStyle(
                     fontSize: 18,
-                    color: isLight(context)
-                        ? AppTheme(context).bodyTextColor
-                        : AppTheme(context).darkModeTextColor,
+                    color: AppTheme(context).bodyTextColor
+                        
                   ),
                 ),
               ])),

@@ -1,35 +1,120 @@
 import 'package:flutter/cupertino.dart';
 
-class AppTheme {
-  final BuildContext context;
-  AppTheme(this.context);
-  Color get backgroundColor =>
-      isLight(context) ? CupertinoColors.white : CupertinoColors.black;
+class AppTheme extends AppThemeData{
+  factory AppTheme(BuildContext context){
+    return isLight(context)?LightTheme():DarkTheme();
 
-  Color get greyBackgroundColor => Color(0xFFF9F8F7); // GREY
-  Color get primaryColor => Color(0xff008DC9); // WHO BLUE
-  Color get textColor => Color(0xff3C4245); //GREY
-  Color get darkModeTextColor =>
-      CupertinoColors.systemGrey4; //TODO: GET ACTUAL COLOR
-  Color get primaryDarkColor => Color(0xff1A458E); // NAVY
-  Color get accentColor => Color(0xffD86422); // ORANGE
-  Color get whoBackgroundBlueColor => Color(0xff007EB4); // WHO BLUE 2
-  Color get whoAccentYellowColor => Color(0xffFFCC00); // YELLOW
-  Color get bodyTextColor => Color(0xff272626); // CHARCOAL
+  }
+  
+}
 
-  Color get emergencyRedColor => Color(0xffD82037);
-  double get buttonTextSpacing => -.4;
-  Color get menuButtonColor => Color(0xCC1694BE);
+class LightTheme extends AppThemeData {
+  factory() => AppThemeData(
+        backgroundColor: CupertinoColors.white,
+        greyBackgroundColor: Color(0xFFF9F8F7), // GREY
+        primaryColor: Color(0xff008DC9), // WHO BLUE
+        textColor: Color(0xff3C4245), //GREY
+        darkModeTextColor: CupertinoColors.systemGrey4, //TODO: ACTUAL COLOR
+        primaryDarkColor: Color(0xff1A458E), // NAVY
+        accentColor: Color(0xffD86422), // ORANGE
+        whoBackgroundBlueColor: Color(0xff007EB4), // WHO BLUE 2
+        whoAccentYellowColor: Color(0xffFFCC00), // YELLOW
+        bodyTextColor: Color(0xff272626), // CHARCOAL
+
+        emergencyRedColor: Color(0xffD82037),
+        menuButtonColor: Color(0xCC1694BE),
+
+        // Neutral Colors
+
+        neutral1Color: Color(0xff050C1D),
+        neutral2Color: Color(0xff26354E),
+        neutralTextColor: Color(0xff3C4245),
+        neutralTextLightColor: Color(0xff5C6164),
+        neutralTextDarkColor: Color(0xff1C1E1F),
+
+        // Illustration Colors
+
+        illustrationBlue1Color: Color(0xffD5F5FD),
+      );
+}
+
+
+class DarkTheme extends AppThemeData {
+  factory() => AppThemeData(
+        backgroundColor: CupertinoColors.white,
+        greyBackgroundColor: Color(0xFFF9F8F7), // GREY
+        primaryColor: Color(0xff008DC9), // WHO BLUE
+        textColor: Color(0xff3C4245), //GREY
+        darkModeTextColor: CupertinoColors.systemGrey4, //TODO: ACTUAL COLOR
+        primaryDarkColor: Color(0xff1A458E), // NAVY
+        accentColor: Color(0xffD86422), // ORANGE
+        whoBackgroundBlueColor: Color(0xff007EB4), // WHO BLUE 2
+        whoAccentYellowColor: Color(0xffFFCC00), // YELLOW
+        bodyTextColor: Color(0xff272626), // CHARCOAL
+
+        emergencyRedColor: Color(0xffD82037),
+        menuButtonColor: Color(0xCC1694BE),
+
+        // Neutral Colors
+
+        neutral1Color: Color(0xff050C1D),
+        neutral2Color: Color(0xff26354E),
+        neutralTextColor: Color(0xff3C4245),
+        neutralTextLightColor: Color(0xff5C6164),
+        neutralTextDarkColor: Color(0xff1C1E1F),
+
+        // Illustration Colors
+
+        illustrationBlue1Color: Color(0xffD5F5FD),
+      );
+}
+
+class AppThemeData {
+  AppThemeData({
+    @required this.backgroundColor,
+    @required this.greyBackgroundColor,
+    @required this.primaryColor,
+    @required this.textColor,
+    @required this.darkModeTextColor,
+    @required this.primaryDarkColor,
+    @required this.accentColor,
+    @required this.whoBackgroundBlueColor,
+    @required this.whoAccentYellowColor,
+    @required this.bodyTextColor,
+    @required this.emergencyRedColor,
+    @required this.menuButtonColor,
+    @required this.neutral1Color,
+    @required this.neutral2Color,
+    @required this.neutralTextColor,
+    @required this.neutralTextLightColor,
+    @required this.neutralTextDarkColor,
+    @required this.illustrationBlue1Color,
+  });
+  final Color backgroundColor;
+
+  final Color greyBackgroundColor;
+  final Color primaryColor;
+  final Color textColor;
+  final Color darkModeTextColor;
+  final Color primaryDarkColor;
+  final Color accentColor;
+  final Color whoBackgroundBlueColor;
+  final Color whoAccentYellowColor;
+  final Color bodyTextColor;
+
+  final Color emergencyRedColor;
+  final double buttonTextSpacing = -.4;
+  final Color menuButtonColor;
 
   // Neutral Colors
-  Color get neutral1Color => Color(0xff050C1D);
-  Color get neutral2Color => Color(0xff26354E);
-  Color get neutralTextColor => Color(0xff3C4245);
-  Color get neutralTextLightColor => Color(0xff5C6164);
-  Color get neutralTextDarkColor => Color(0xff1C1E1F);
+  final Color neutral1Color;
+  final Color neutral2Color;
+  final Color neutralTextColor;
+  final Color neutralTextLightColor;
+  final Color neutralTextDarkColor;
 
   // Illustration Colors
-  Color get illustrationBlue1Color => Color(0xffD5F5FD);
+  final Color illustrationBlue1Color;
 }
 
 // Return a scaling factor between 0.0 and 1.0 for screens heights ranging
@@ -50,3 +135,7 @@ bool isLight(BuildContext context) {
 double contentScaleFrom(BuildContext context, double low, double high) {
   return low + contentScale(context) * (high - low);
 }
+
+/*
+
+ */

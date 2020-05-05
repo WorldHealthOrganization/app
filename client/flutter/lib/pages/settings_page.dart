@@ -156,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage>
     Color backgroundColor = isLight(context)
         ? CupertinoColors.white
         : CupertinoColors.darkBackgroundGray;
-    Color textColor = isLight(context) ? null : AppTheme(context).darkModeTextColor;
+    Color textColor = AppTheme(context).darkModeTextColor;
 
     Container divider(BuildContext context) => Container(
         height: 1,
@@ -256,9 +256,7 @@ class _SettingsPageState extends State<SettingsPage>
                           variant: TypographyVariant.h3,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            color: isLight(context)
-                                ? AppTheme(context).neutral1Color
-                                : AppTheme(context).darkModeTextColor,
+                            color: AppTheme(context).neutral1Color
                           )),
                     ),
                     Semantics(
@@ -276,9 +274,7 @@ class _SettingsPageState extends State<SettingsPage>
                   info,
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    color: isLight(context)
-                        ? AppTheme(context).neutral2Color
-                        : AppTheme(context).darkModeTextColor,
+                    color: AppTheme(context).neutral2Color
                   ),
                 )
               ],

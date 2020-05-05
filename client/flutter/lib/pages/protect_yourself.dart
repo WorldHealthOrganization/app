@@ -62,7 +62,7 @@ class _ProtectYourselfState extends State<ProtectYourself> {
 
   List<Widget> _buildCards(BuildContext context) {
     final TextStyle normalText = TextStyle(
-      color: isLight(context) ? AppTheme(context).textColor : CupertinoColors.white,
+      color: AppTheme(context).textColor,
       fontSize: 16 * MediaQuery.textScaleFactorOf(context),
       height: 1.4,
     );

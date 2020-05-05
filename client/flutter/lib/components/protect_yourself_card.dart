@@ -49,9 +49,7 @@ class ProtectYourselfCard extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: isLight(context)
-              ? childBackgroundColor ??  AppTheme(context).primaryColor
-              : CupertinoColors.systemGrey,
+          color: childBackgroundColor ?? AppTheme(context).primaryColor,
           child: media,
         ),
       ),

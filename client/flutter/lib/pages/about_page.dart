@@ -35,9 +35,8 @@ class AboutPage extends StatelessWidget {
                 child: Text.rich(
                   TextSpan(
                       style: TextStyle(
-                          color: isLight(context)
-                              ? CupertinoColors.black
-                              : AppTheme(context).darkModeTextColor),
+                        color: AppTheme(context).textColor,
+                      ),
                       children: [
                         LinkTextSpan(
                             text: S.of(context).aboutPageTermsOfServiceLinkText,
@@ -76,9 +75,7 @@ class AboutPage extends StatelessWidget {
                       copyrightString, versionString),
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    color: isLight(context)
-                        ? CupertinoColors.black
-                        : AppTheme(context).darkModeTextColor,
+                    color: AppTheme(context).textColor,
                   ),
                 ),
               ),
@@ -109,9 +106,7 @@ class AboutPage extends StatelessWidget {
                       teamNames,
                       variant: TypographyVariant.body,
                       style: TextStyle(
-                        color: isLight(context)
-                            ? CupertinoColors.black
-                            : AppTheme(context).darkModeTextColor,
+                        color: AppTheme(context).textColor,
                       ),
                       softWrap: true,
                     );

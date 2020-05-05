@@ -44,9 +44,7 @@ class HomePageInformationCard extends StatelessWidget {
                 this.subtitle,
                 variant: TypographyVariant.body,
                 style: TextStyle(
-                  color: isLight(context)
-                      ? AppTheme(context).neutralTextDarkColor
-                      : CupertinoColors.systemGrey2,
+                  color: AppTheme(context).neutralTextDarkColor
                 ),
               ),
               Container(
