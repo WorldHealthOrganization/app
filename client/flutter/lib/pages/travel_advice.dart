@@ -47,7 +47,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
   Widget build(BuildContext context) {
     return PageScaffold(
         heroTag: HeroTags.learn,
-        color: Constants.greyBackgroundColor,
         headingBorderColor: Constants.emergencyRedColor,
         body: [
           _adviceContent != null ? _buildBody() : LoadingIndicator(),
