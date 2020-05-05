@@ -21,6 +21,10 @@ PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
 
 void main() async {
+  await mainImpl(routes: Routes.map);
+}
+
+void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   // Asyncronous code that runs before the splash screen is hidden goes before
   // runApp()
   if (!kIsWeb) {
@@ -42,7 +46,7 @@ void main() async {
 
   await runZoned<Future<void>>(
     () async {
-      runApp(MyApp(showOnboarding: !onboardingComplete));
+      runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
     },
     onError: _onError,
   );
@@ -62,8 +66,10 @@ Future<void> _onError(Object error, StackTrace stack) async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key, @required this.showOnboarding}) : super(key: key);
+  const MyApp({Key key, @required this.showOnboarding, @required this.routes})
+      : super(key: key);
   final bool showOnboarding;
+  final Map<String, WidgetBuilder> routes;
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
@@ -110,7 +116,7 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           S.delegate
         ],
-        routes: Routes.map,
+        routes: widget.routes,
         // FIXME Issue #1012 - disabled supported languages for P0
         //supportedLocales: S.delegate.supportedLocales,
         initialRoute: widget.showOnboarding ? '/onboarding' : '/',

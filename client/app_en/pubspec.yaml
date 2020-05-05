@@ -1,0 +1,49 @@
+name: who_app_en
+description: Experimental version of COVID-19 app including exposure notifications
+
+# This app is published as a mobile app, not to pub.dev.
+publish_to: none
+
+# Prior to an official release, this version is the
+# next expected version, and the `-git` suffix is a
+# pre-release indicator.
+# https://dart.dev/tools/pub/pubspec#version
+version: 0.0.1+1-git
+
+repository: https://github.com/WorldHealthOrganization/app
+
+issue_tracker: https://github.com/WorldHealthOrganization/app/issues
+
+# Env must match ../app/pubspec.yaml
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.8 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  exposure_notifications:
+    path: ../exposure_notifications
+  who_app:
+    path: ../app
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  pedantic: ^1.8.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/svg/
+    - assets/animations/
+    - assets/news_press/
+    - assets/onboarding/
+    - assets/travel_advice/
+    - assets/content_bundles/
+
+flutter_intl:
+  enabled: true
