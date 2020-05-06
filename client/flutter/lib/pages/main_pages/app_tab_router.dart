@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
@@ -22,18 +23,48 @@ class AppTabRouter extends StatelessWidget {
 
   static final List<BottomNavigationBarItem> defaultNavItems = [
     BottomNavigationBarItem(
-        // TODO: localize title strings
-        icon: Icon(CupertinoIcons.home),
+        icon: SvgPicture.asset('assets/svg/bottom_icons/house.svg'),
+        activeIcon: SvgPicture.asset(
+          "assets/svg/bottom_icons/house.svg",
+          color: Constants.accentColor,
+        ),
         title: Text("Home")),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
+        icon: SvgPicture.asset('assets/svg/bottom_icons/earth-model.svg'),
+        activeIcon: SvgPicture.asset(
+          "assets/svg/bottom_icons/earth-model.svg",
+          color: Constants.accentColor,
+        ),
+        title: Text("Stats")),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.search), title: Text("Learn")),
+        icon: SvgPicture.asset('assets/svg/bottom_icons/search.svg'),
+        activeIcon: SvgPicture.asset(
+          "assets/svg/bottom_icons/search.svg",
+          color: Constants.accentColor,
+        ),
+        title: Text("Learn")),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.lab_flask), title: Text("Check-Up")),
+      icon: SvgPicture.asset('assets/svg/bottom_icons/medical.svg'),
+      activeIcon: SvgPicture.asset(
+        "assets/svg/bottom_icons/medical.svg",
+        color: Constants.accentColor,
+      ),
+      title: Text("Settings"),
+    ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.person), title: Text("Settings")),
+      icon: SvgPicture.asset(
+        "assets/svg/bottom_icons/settings.svg",
+      ),
+      activeIcon: SvgPicture.asset(
+        "assets/svg/bottom_icons/settings.svg",
+        color: Constants.accentColor,
+      ),
+      title: Text("Settings"),
+    ),
   ];
+
+  BottomNavigationBarItem tabBarItem(
+      {@required String title, @required String iconPath}) {}
 
   final List<Widget Function(BuildContext)> tabs;
   final List<BottomNavigationBarItem> navItems;
@@ -42,6 +73,7 @@ class AppTabRouter extends StatelessWidget {
 
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(
+      navigatorObservers: [],
       builder: builder,
     );
   }
