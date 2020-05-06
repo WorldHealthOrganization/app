@@ -52,10 +52,10 @@ class _AppTabRouterState extends State<AppTabRouter> {
   void initState() {
     _controller = CupertinoTabController();
     _controller.addListener(() {
-      // FirebaseAnalytics _analytics = FirebaseAnalytics();
-      // _analytics.logEvent(name: _controller.index.toString());
+      FirebaseAnalytics _analytics = FirebaseAnalytics();
       Text txt = AppTabRouter.defaultNavItems[_controller.index].title;
-      print(txt.data);
+      String data = txt.data;
+      _analytics.logEvent(name: data);
     });
     super.initState();
   }
