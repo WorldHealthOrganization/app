@@ -1,0 +1,97 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: symptom_checker
+  items:
+    -
+      id:  question_1
+      type: yes_no
+      question_html: |
+        <p>Yes - No question 1</p>
+    -
+      id:  question_2
+      type: short_list_single_selection
+      question_html: |
+        <p>Short list single selection question 2</p>
+      answers:
+        -
+          id: answer_1
+          icon_name: snowflake
+          body_html: |
+            <p>Answer 1</p>
+        -
+          id: answer_2
+          icon_name: snowflake
+          body_html: |
+            <p>Answer 2</p>
+        -
+          id: answer_3
+          icon_name: snowflake
+          body_html: |
+            <p>Answer 3</p>
+    -
+      id:  question_3
+      type: short_list_multiple_selection
+      question_html: |
+        <p>Short list multiple selection question 3</p>
+      answers:
+        -
+          id: answer_1
+          body_html: |
+            <p>Answer 1</p>
+        -
+          id: answer_2
+          body_html: |
+            <p>Answer 2</p>
+        -
+          id: answer_3
+          body_html: |
+            <p>Answer 3</p>
+    -
+      id:  question_4
+      type: long_list_single_selection
+      question_html: |
+        <p>Long list multiple selection question 4</p>
+      answers:
+        -
+          id: answer_1
+          body_html: |
+            <p>Answer 1</p>
+        -
+          id: answer_2
+          body_html: |
+            <p>Answer 2</p>
+        -
+          id: answer_4
+          body_html: |
+            <p>Answer 4</p>
+        -
+          id: answer_5
+          body_html: |
+            <p>Answer 5</p>
+        -
+          id: answer_6
+          body_html: |
+            <p>Answer 6</p>
+        -
+          id: answer_7
+          body_html: |
+            <p>Answer 7</p>
+        -
+          id: answer_8
+          body_html: |
+            <p>Answer 8</p>
+        -
+          id: answer_9
+          body_html: |
+            <p>Answer 9</p>
+        -
+          id: answer_10
+          body_html: |
+            <p>Answer 10</p>
+    -
+      id:  question_5
+      type: yes_no
+      question_html: |
+        <p>Final Yes - No auestion 5</p>
+
