@@ -117,13 +117,16 @@ class SymptomCheckerQuestion {
     throw Exception("should be unreachable");
   }
 
-  SymptomCheckerQuestion(
-      {@required this.type,
-      @required this.id,
-      @required this.questionHtml,
-      @required this.imageName,
-      @required this.displayCondition,
-      this.answers});
+  SymptomCheckerQuestion({
+    @required this.type,
+    @required this.id,
+    @required this.questionHtml,
+    @required this.imageName,
+    @required this.displayCondition,
+    this.answers,
+  }) {
+    assert(displayCondition == null, "Display conditions unimplemented.");
+  }
 }
 
 class SymptomCheckerAnswer {
