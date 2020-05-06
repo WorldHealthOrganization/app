@@ -7,7 +7,12 @@ import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 
-class AppTabRouter extends StatelessWidget {
+class AppTabRouter extends StatefulWidget {
+  @override
+  _AppTabRouterState createState() => _AppTabRouterState();
+}
+
+class _AppTabRouterState extends State<AppTabRouter> {
   static final List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
           dataSource: IndexContent.homeIndex,
