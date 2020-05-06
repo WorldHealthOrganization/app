@@ -47,17 +47,17 @@ class AppTabRouter extends StatefulWidget {
 
 class _AppTabRouterState extends State<AppTabRouter> {
   CupertinoTabController _controller;
-
+  FirebaseAnalytics _analytics;
   @override
   void initState() {
+    _analytics = FirebaseAnalytics();
     _controller = CupertinoTabController();
     _controller.addListener(() async {
-      FirebaseAnalytics _analytics = FirebaseAnalytics();
-
       Text txt = AppTabRouter.defaultNavItems[_controller.index].title;
       String data = txt.data;
 
-      await _analytics.logEvent(name: 'changed_tabs', parameters: {'tab_name':data});
+      await _analytics
+          .logEvent(name: 'changed_tabs', parameters: {'tab_name': data});
     });
     super.initState();
   }
