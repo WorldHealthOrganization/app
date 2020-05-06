@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
@@ -50,6 +51,12 @@ class _AppTabRouterState extends State<AppTabRouter> {
   @override
   void initState() {
     _controller = CupertinoTabController();
+    _controller.addListener(() {
+      // FirebaseAnalytics _analytics = FirebaseAnalytics();
+      // _analytics.logEvent(name: _controller.index.toString());
+      Text txt = AppTabRouter.defaultNavItems[_controller.index].title;
+      print(txt.data);
+    });
     super.initState();
   }
 
