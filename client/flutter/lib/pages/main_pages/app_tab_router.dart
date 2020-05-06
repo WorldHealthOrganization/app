@@ -8,11 +8,6 @@ import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 
 class AppTabRouter extends StatefulWidget {
-  @override
-  _AppTabRouterState createState() => _AppTabRouterState();
-}
-
-class _AppTabRouterState extends State<AppTabRouter> {
   static final List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
           dataSource: IndexContent.homeIndex,
@@ -45,6 +40,24 @@ class _AppTabRouterState extends State<AppTabRouter> {
 
   AppTabRouter(this.tabs, this.navItems);
 
+  @override
+  _AppTabRouterState createState() => _AppTabRouterState(tabs, navItems);
+}
+
+class _AppTabRouterState extends State<AppTabRouter> {
+  CupertinoTabController _controller;
+
+  @override
+  void initState() {
+    _controller = CupertinoTabController();
+    super.initState();
+  }
+
+  final List<Widget Function(BuildContext)> tabs;
+  final List<BottomNavigationBarItem> navItems;
+
+  _AppTabRouterState(this.tabs, this.navItems);
+
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(
       builder: builder,
@@ -54,6 +67,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
+      controller: _controller,
       tabBuilder: (BuildContext context, int index) {
         if (index < tabs.length) {
           return wrapTabView(tabs[index]);
