@@ -57,7 +57,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
       Text txt = AppTabRouter.defaultNavItems[_controller.index].title;
       String data = txt.data;
 
-      await _analytics.logEvent(name: data);
+      await _analytics.logEvent(name: 'changed_tabs', parameters: {'tab_name':data});
     });
     super.initState();
   }
