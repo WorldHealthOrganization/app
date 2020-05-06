@@ -3,15 +3,21 @@ name: Server Tests
 on:
   push:
     paths:
+      - 'api/**'
       - 'server/**'
   pull_request:
     branches: [ master ]
     paths:
+      - 'api/**'
       - 'server/**'
 
 jobs:
-  junit:
-    runs-on: ubuntu-latest
+  test:
+    name: Test server on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1

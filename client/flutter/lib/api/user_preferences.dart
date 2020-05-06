@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid_util.dart';
 
 class UserPreferences {
   static final UserPreferences _singleton = UserPreferences._internal();
@@ -51,17 +53,34 @@ class UserPreferences {
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
   }
 
+  Future<String> getFirebaseToken() async {
+    return (await SharedPreferences.getInstance())
+        .getString(UserPreferenceKey.FirebaseToken.toString());
+  }
+
+  // Firebase
+  Future<bool> setFirebaseToken(String value) async {
+    return (await SharedPreferences.getInstance())
+        .setString(UserPreferenceKey.FirebaseToken.toString(), value);
+  }
+
   Future<String> getClientUuid() async {
     var prefs = await SharedPreferences.getInstance();
     var uuid = prefs.getString(UserPreferenceKey.ClientUUID.toString());
 
     // Create if not found
     if (uuid == null) {
-      uuid = Uuid().v4();
+      uuid = Uuid(options: {'grng': UuidUtil.cryptoRNG}).v4();
       await prefs.setString(UserPreferenceKey.ClientUUID.toString(), uuid);
     }
     return uuid;
   }
 }
 
-enum UserPreferenceKey { OnboardingCompleted, AnalyticsEnabled, NotificationsEnabled, ClientUUID }
+enum UserPreferenceKey {
+  OnboardingCompleted,
+  AnalyticsEnabled,
+  NotificationsEnabled,
+  ClientUUID,
+  FirebaseToken
+}

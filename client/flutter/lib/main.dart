@@ -1,23 +1,30 @@
-import 'package:WHOFlutter/api/user_preferences.dart';
-import 'package:WHOFlutter/pages/onboarding/onboarding_page.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import 'package:package_info/package_info.dart';
-import 'pages/home_page.dart';
-import './constants.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'generated/l10n.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:async';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/components/themed_text.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+import 'package:package_info/package_info.dart';
+import 'package:who_app/api/notifications.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 PackageInfo _packageInfo;
 PackageInfo get packageInfo => _packageInfo;
 
 void main() async {
+  await mainImpl(routes: Routes.map);
+}
+
+void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   // Asyncronous code that runs before the splash screen is hidden goes before
   // runApp()
   if (!kIsWeb) {
@@ -29,12 +36,40 @@ void main() async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
-  runApp(MyApp(showOnboarding: !onboardingComplete));
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  // Crashlytics.instance.enableInDevMode = true;
+
+  FlutterError.onError = _onFlutterError;
+
+  await runZoned<Future<void>>(
+    () async {
+      runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
+    },
+    onError: _onError,
+  );
+}
+
+Future<void> _onFlutterError(FlutterErrorDetails details) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
+    // Pass all uncaught errors from the framework to Crashlytics.
+    await Crashlytics.instance.recordFlutterError(details);
+  }
+}
+
+Future<void> _onError(Object error, StackTrace stack) async {
+  if (await UserPreferences().getOnboardingCompleted()) {
+    await Crashlytics.instance.recordError(error, stack);
+  }
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key, @required this.showOnboarding}) : super(key: key);
+  const MyApp({Key key, @required this.showOnboarding, @required this.routes})
+      : super(key: key);
   final bool showOnboarding;
+  final Map<String, WidgetBuilder> routes;
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
@@ -45,7 +80,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final Notifications _notifications = Notifications();
 
   _MyAppState(this.analytics, this.observer);
   final FirebaseAnalytics analytics;
@@ -56,86 +91,42 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _registerLicenses();
 
-    // onMessage: Fires when app is foreground
-    // onLaunch: Fires when user taps and app is in background.
-    // onResume: Fires when user taps and app is terminated
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-      },
-    );
-
+    _notifications.configure();
+    _notifications.updateFirebaseToken();
   }
 
-  Future<LicenseEntry> _loadLicense() async {
-    final licenseText = await rootBundle.loadString('assets/REPO_LICENSE');
-    return LicenseEntryWithLineBreaks(
-        ["https://github.com/WorldHealthOrganization/app"], licenseText);
-  }
-
-  Future<LicenseEntry> _load3pLicense() async {
-    final licenseText =
-        await rootBundle.loadString('assets/THIRD_PARTY_LICENSE');
-    return LicenseEntryWithLineBreaks([
-      "https://github.com/WorldHealthOrganization/app - THIRD_PARTY_LICENSE"
-    ], licenseText);
-  }
-
-  _registerLicenses() {
-    LicenseRegistry.addLicense(() {
-      return Stream<LicenseEntry>.fromFutures(<Future<LicenseEntry>>[
-        _loadLicense(),
-        _load3pLicense(),
-      ]);
-    });
-  }
-
-    // TODO: This is not essential for basic operation but we should implement 
-    // Fires if notification settings change. 
-    // Modify user opt-in if they do. 
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    // });
-
+  // TODO: Issue #902 This is not essential for basic operation but we should implement
+  // Fires if notification settings change.
+  // Modify user opt-in if they do.
+  // _firebaseMessaging.onIosSettingsRegistered
+  //     .listen((IosNotificationSettings settings) {
+  // });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "WHO COVID-19",
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        S.delegate
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      navigatorObservers: <NavigatorObserver>[observer],
-      theme: ThemeData(
-        scaffoldBackgroundColor: Constants.backgroundColor,
-        primaryColor: Constants.primaryColor,
-        accentColor: Constants.textColor,
-        brightness: Brightness.light,
-        appBarTheme: AppBarTheme(brightness: Brightness.light),
-        dividerColor: Color(0xffC9CDD6),
-        buttonTheme: ButtonThemeData(
-          buttonColor: Constants.primaryColor,
-          textTheme: ButtonTextTheme.accent,
-        ),
-      ),
-      home: Directionality(
-        child: widget.showOnboarding
-            ? OnboardingPage(analytics)
-            : HomePage(analytics),
-        textDirection: GlobalWidgetsLocalizations(
-          Locale(Intl.getCurrentLocale()),
-        ).textDirection,
+    return Directionality(
+      textDirection: GlobalWidgetsLocalizations(
+        Locale(Intl.getCurrentLocale()),
+      ).textDirection,
+      child: CupertinoApp(
+        title: "WHO COVID-19",
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          S.delegate
+        ],
+        routes: widget.routes,
+        // FIXME Issue #1012 - disabled supported languages for P0
+        //supportedLocales: S.delegate.supportedLocales,
+        initialRoute: widget.showOnboarding ? '/onboarding' : '/',
+        navigatorObservers: <NavigatorObserver>[observer],
+        theme: CupertinoThemeData(
+            brightness: Brightness.light,
+            primaryColor: Constants.primaryDarkColor,
+            textTheme: CupertinoTextThemeData(
+              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+            )),
       ),
     );
   }
