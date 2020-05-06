@@ -63,9 +63,6 @@ class AppTabRouter extends StatelessWidget {
     ),
   ];
 
-  BottomNavigationBarItem tabBarItem(
-      {@required String title, @required String iconPath}) {}
-
   final List<Widget Function(BuildContext)> tabs;
   final List<BottomNavigationBarItem> navItems;
 
