@@ -1,10 +1,5 @@
 name: Compare APK
 on:
-  push:
-    paths:
-      - '.github/workflows/**'
-      - 'api/**'
-      - 'client/flutter/**'
   pull_request:
     branches: [ master ]
     paths:
@@ -56,17 +51,40 @@ jobs:
         with:
           name: apk
           path: client/flutter/build/app/outputs/apk/release/app-pr.apk
+  setup-diffuse:
+    name: Setup diffuse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/JakeWharton/diffuse.git
+      - name: generate diffuse
+        run: ./gradlew assemble
+        working-directory: diffuse
+      - name: Upload diffuse executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: diff
+          path: diffuse/diffuse/build/diffuse
   diffuse:
     needs: [build-master, build-new]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Download App bundles
+      - name: Download APKs
         uses: actions/download-artifact@v1
         with:
           name: apk
+      - name: Download diffuse executable
+        uses: actions/download-artifact@v1
+        with:
+          name: diff
       - name: Change diffuse permissions
-        run: chmod +x ./diffuse
-      - name: Execute Diffuse
         run: |
-            ./diffuse diff apk/app-master.apk apk/app-pr.apk
+            ls
+            chmod +x ./diffuse
+        working-directory: diff
+      - name: Execute Diffuse
+        run: ./diff/diffuse diff apk/app-master.apk apk/app-pr.apk
