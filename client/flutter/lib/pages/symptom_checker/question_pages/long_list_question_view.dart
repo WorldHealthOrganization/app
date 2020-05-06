@@ -72,6 +72,7 @@ class _LongListQuestionViewState extends State<LongListQuestionView> {
 
   Widget _buildAnswerRow(SymptomCheckerAnswer answer, int index) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () {
         _selected(answer.id);
       },

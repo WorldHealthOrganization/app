@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/previous_next_buttons.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
@@ -72,12 +73,15 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
 
   Widget _buildAnswerRow(SymptomCheckerAnswer answer) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () {
         _selected(answer.id);
       },
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            if (answer.iconName != null)
+              SvgPicture.asset("assets/svg/${answer.iconName}.svg", height: 24),
             Material(
               color: Colors.white,
               child: _allowsMultipleSelection

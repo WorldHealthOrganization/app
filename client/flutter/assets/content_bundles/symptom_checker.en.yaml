@@ -16,14 +16,17 @@ contents:
       answers:
         -
           id: answer_1
+          icon_name: snowflake
           answer_html: |
             <p>Answer 1</p>
         -
           id: answer_2
+          icon_name: snowflake
           answer_html: |
             <p>Answer 2</p>
         -
           id: answer_3
+          icon_name: snowflake
           answer_html: |
             <p>Answer 3</p>
     -
