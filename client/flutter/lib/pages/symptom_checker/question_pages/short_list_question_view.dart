@@ -95,7 +95,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
                       onChanged: (_) {},
                     ),
             ),
-            Flexible(child: Html(data: answer.answerHtml))
+            Flexible(child: Html(data: answer.bodyHtml))
           ]),
     );
   }

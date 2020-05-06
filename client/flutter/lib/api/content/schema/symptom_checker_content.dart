@@ -62,7 +62,7 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerAnswer _answerFromContent(dynamic item) {
     return SymptomCheckerAnswer(
       id: item['id'],
-      answerHtml: item['answer_html'],
+      bodyHtml: item['body_html'],
       iconName: item['icon_name'],
     );
   }
@@ -134,7 +134,7 @@ class SymptomCheckerAnswer {
   final String displayCondition;
 
   /// The answer
-  final String answerHtml;
+  final String bodyHtml;
 
   /// An icon to display with the answer
   final String iconName;
@@ -142,7 +142,7 @@ class SymptomCheckerAnswer {
   SymptomCheckerAnswer({
     @required this.id,
     this.displayCondition,
-    @required this.answerHtml,
+    @required this.bodyHtml,
     this.iconName,
   });
 }

@@ -17,17 +17,17 @@ contents:
         -
           id: answer_1
           icon_name: snowflake
-          answer_html: |
+          body_html: |
             <p>Answer 1</p>
         -
           id: answer_2
           icon_name: snowflake
-          answer_html: |
+          body_html: |
             <p>Answer 2</p>
         -
           id: answer_3
           icon_name: snowflake
-          answer_html: |
+          body_html: |
             <p>Answer 3</p>
     -
       id:  question_3
@@ -37,15 +37,15 @@ contents:
       answers:
         -
           id: answer_1
-          answer_html: |
+          body_html: |
             <p>Answer 1</p>
         -
           id: answer_2
-          answer_html: |
+          body_html: |
             <p>Answer 2</p>
         -
           id: answer_3
-          answer_html: |
+          body_html: |
             <p>Answer 3</p>
     -
       id:  question_4
@@ -55,39 +55,39 @@ contents:
       answers:
         -
           id: answer_1
-          answer_html: |
+          body_html: |
             <p>Answer 1</p>
         -
           id: answer_2
-          answer_html: |
+          body_html: |
             <p>Answer 2</p>
         -
           id: answer_4
-          answer_html: |
+          body_html: |
             <p>Answer 4</p>
         -
           id: answer_5
-          answer_html: |
+          body_html: |
             <p>Answer 5</p>
         -
           id: answer_6
-          answer_html: |
+          body_html: |
             <p>Answer 6</p>
         -
           id: answer_7
-          answer_html: |
+          body_html: |
             <p>Answer 7</p>
         -
           id: answer_8
-          answer_html: |
+          body_html: |
             <p>Answer 8</p>
         -
           id: answer_9
-          answer_html: |
+          body_html: |
             <p>Answer 9</p>
         -
           id: answer_10
-          answer_html: |
+          body_html: |
             <p>Answer 10</p>
     -
       id:  question_5

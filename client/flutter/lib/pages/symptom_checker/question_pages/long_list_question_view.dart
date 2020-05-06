@@ -83,7 +83,7 @@ class _LongListQuestionViewState extends State<LongListQuestionView> {
             children: <Widget>[
               Radio<String>(
                   groupValue: _selection, value: answer.id, onChanged: (_) {}),
-              Flexible(child: Html(data: answer.answerHtml))
+              Flexible(child: Html(data: answer.bodyHtml))
             ]),
       ),
     );
