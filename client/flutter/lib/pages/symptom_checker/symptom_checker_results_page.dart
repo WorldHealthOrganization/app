@@ -36,7 +36,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
         children: <Widget>[
           Text(
             'Your results',
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           risk < 2
               ? Text(
@@ -44,14 +44,14 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: Constants.primaryColor,
-                      fontSize: 42),
+                      fontSize: 48),
                 )
               : Text(
                   'Unlikely',
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: Constants.primaryColor,
-                      fontSize: 42),
+                      fontSize: 48),
                 ),
         ],
       ),
@@ -70,7 +70,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         verticalPadding: 0,
-        borderRadius: 100,
+        borderRadius: 50,
         titleStyle: TextStyle(
             color: CupertinoColors.white,
             fontSize: 18,
