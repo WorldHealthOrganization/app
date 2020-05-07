@@ -15,14 +15,13 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 
-class WHOLicensePage extends StatefulWidget {
-  const WHOLicensePage();
-
+class LicensePage extends StatefulWidget {
+  const LicensePage();
   @override
-  _WHOLicensePageState createState() => _WHOLicensePageState();
+  _LicensePageState createState() => _LicensePageState();
 }
 
-class _WHOLicensePageState extends State<WHOLicensePage> {
+class _LicensePageState extends State<LicensePage> {
   @override
   void initState() {
     super.initState();
@@ -100,37 +99,33 @@ class _WHOLicensePageState extends State<WHOLicensePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Localizations.override(
-      locale: const Locale('en', 'US'),
-      context: context,
-      child: PageScaffold(
-        title: "Licenses",
-        body: [
-          SliverPadding(
-            padding: EdgeInsets.all(8),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Container(height: 18.0),
-                  Text(
-                    'Powered by Flutter',
-                    textAlign: TextAlign.center,
-                  ),
-                  Container(height: 24.0),
-                  ..._licenses,
-                  if (!_loaded)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 24.0),
-                      child: Center(
-                        child: CupertinoActivityIndicator(),
-                      ),
+    return PageScaffold(
+      title: "Licenses",
+      body: [
+        SliverPadding(
+          padding: EdgeInsets.all(8),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Container(height: 18.0),
+                Text(
+                  'Powered by Flutter',
+                  textAlign: TextAlign.center,
+                ),
+                Container(height: 24.0),
+                ..._licenses,
+                if (!_loaded)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24.0),
+                    child: Center(
+                      child: CupertinoActivityIndicator(),
                     ),
-                ],
-              ),
+                  ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

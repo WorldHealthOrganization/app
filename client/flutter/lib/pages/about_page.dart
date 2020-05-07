@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -58,7 +57,7 @@ class AboutPage extends StatelessWidget {
                         ),
                         onLinkTap: (v) => Navigator.of(context).push(
                           CupertinoPageRoute(
-                            builder: (c) => WHOLicensePage(),
+                            builder: (c) => LicensePage(),
                           ),
                         ),
                       ),
