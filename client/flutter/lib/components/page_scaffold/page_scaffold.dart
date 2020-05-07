@@ -1,6 +1,7 @@
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
@@ -25,7 +26,7 @@ class PageScaffold extends StatelessWidget {
     this.header,
     this.showHeader = true,
     this.padding = EdgeInsets.zero,
-    this.color = CupertinoColors.white,
+    this.color = Constants.greyBackgroundColor,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.disableBackButton = false,
