@@ -48,18 +48,38 @@ class AppTabRouter extends StatefulWidget {
 class _AppTabRouterState extends State<AppTabRouter> {
   CupertinoTabController _controller;
   FirebaseAnalytics _analytics;
+  int lastTabIndex;
   @override
   void initState() {
     _analytics = FirebaseAnalytics();
     _controller = CupertinoTabController();
-    _controller.addListener(() async {
-      Text txt = AppTabRouter.defaultNavItems[_controller.index].title;
-      String data = txt.data;
+    lastTabIndex = _controller.index;
 
-      await _analytics
-          .logEvent(name: 'changed_tabs', parameters: {'tab_name': data});
-    });
+    _controller.addListener(
+      () {
+        int currentIndex = _controller.index;
+
+        String lastTab = tabTitle(lastTabIndex);
+        String currentTab = tabTitle(currentIndex);
+
+        lastTabIndex = currentIndex;
+
+        _analytics.logEvent(
+          name: 'changed_tabs',
+          parameters: {
+            'current_tab': currentTab,
+            'last_tab': lastTab,
+          },
+        );
+      },
+    );
     super.initState();
+  }
+
+  String tabTitle(int index) {
+    Text txt = AppTabRouter.defaultNavItems[index].title;
+    String data = txt.data;
+    return data;
   }
 
   final List<Widget Function(BuildContext)> tabs;
