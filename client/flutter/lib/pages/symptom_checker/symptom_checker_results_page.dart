@@ -26,6 +26,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
           delegate: SliverChildListDelegate([
         SafeArea(child: bodyWidget(context)),
         videoWidget(context),
+        floorWidget(context)
       ]));
 
   Widget bodyWidget(BuildContext context) {
@@ -59,11 +60,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
   Widget videoWidget(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        top: 32,
-        left: 48,
-        right: 48
-      ),
+      padding: EdgeInsets.only(top: 32, left: 48, right: 48),
       child: PageButton(
         Constants.primaryColor,
         "Watch Video",
@@ -83,10 +80,43 @@ class SymptomCheckerResultsPage extends StatelessWidget {
   }
 
   Widget floorWidget(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 32, right: 32),
-      child: Column(
-        children: <Widget>[],
+    return Container(
+      margin: EdgeInsets.only(top: 56),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32)
+        ),
+        color: Constants.primaryColor,
+        elevation: 0,
+        child: Padding(
+          padding: EdgeInsets.only(top: 47, bottom: 42, left: 34, right: 18),
+          child: Column(
+            children: <Widget>[
+              risk < 2
+                  ? Text(
+                      'It is unlikely you have contracted the Coronavirus.',
+                      style: TextStyle(
+                          color: Constants.backgroundColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
+                  : Text(
+                      'It is likely you have contracted the Coronavirus.',
+                      style: TextStyle(
+                          color: Constants.backgroundColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+              Text(
+                'Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website and through your national and local public health authority. Most people who become infected experience mild illness and recover, but it can be more severe for others.',
+                style: TextStyle(
+                  color: Constants.backgroundColor,
+                  fontSize: 16,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
