@@ -50,6 +50,7 @@ class LegalLandingPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   borderRadius: 60,
+                  key: Key('get_started_button'),
                 ),
                 SizedBox(height: 17),
                 Text.rich(

@@ -56,9 +56,13 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
+  test: ^1.5.1
   flutter_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
   pedantic: ^1.8.0
+  screenshots: ^2.1.1
 
 flutter:
   uses-material-design: true

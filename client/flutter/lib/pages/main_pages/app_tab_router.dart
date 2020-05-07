@@ -24,15 +24,19 @@ class AppTabRouter extends StatelessWidget {
     BottomNavigationBarItem(
         // TODO: localize title strings
         icon: Icon(CupertinoIcons.home),
-        title: Text("Home")),
+        title: Text("Home", key: Key("home_tab"))),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
+        icon: Icon(CupertinoIcons.circle),
+        title: Text("Stats", key: Key("stats_tab"))),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.search), title: Text("Learn")),
+        icon: Icon(CupertinoIcons.search),
+        title: Text("Learn", key: Key("learn_tab"))),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.lab_flask), title: Text("Check-Up")),
+        icon: Icon(CupertinoIcons.lab_flask),
+        title: Text("Check-Up", key: Key("check_up_tab"))),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.person), title: Text("Settings")),
+        icon: Icon(CupertinoIcons.person),
+        title: Text("Settings", key: Key("settings_tab"))),
   ];
 
   final List<Widget Function(BuildContext)> tabs;

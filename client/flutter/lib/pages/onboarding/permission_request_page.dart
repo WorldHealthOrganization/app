@@ -96,6 +96,7 @@ class PermissionRequestPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         verticalPadding: 12,
                         borderRadius: 35,
+                        key: Key('grant_button'),
                       ),
                       CupertinoButton(
                         padding: EdgeInsets.all(16),
@@ -107,6 +108,7 @@ class PermissionRequestPage extends StatelessWidget {
                               letterSpacing: Constants.buttonTextSpacing),
                         ),
                         onPressed: onSkip,
+                        key: Key('skip_button'),
                       ),
                     ],
                   ),

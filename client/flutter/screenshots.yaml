@@ -1,0 +1,49 @@
+#
+# INSTALLATION:
+# Install imagemagick (dependency for screenshots)
+# Install and active screenshots from master (fixes some issues with iOS simulators)
+#
+# STEPS:
+# brew update && brew install imagemagick
+# brew tap dart-lang/dart
+# brew install dart
+# pub global activate -s git https://github.com/mmcc007/screenshots.git
+#
+# RUNNING:
+# Run `screenshots`
+# Run `xcrun simctl shutdown all && screenshots` to close all simulators first
+#
+
+# Screen capture tests
+# Note: flutter driver expects a pair of files eg, main.dart and main_test.dart
+tests:
+  - test_driver/main.dart
+
+# Interim location of screenshots from tests before processing
+staging: /tmp/screenshots
+
+# A list of locales supported in app
+locales:
+  - en-US
+#  - fr-FR
+
+# A list of devices to run tests on
+devices:
+  ios:
+    iPhone 11 Pro Max:
+      orientation: Portrait
+    iPhone 11 Pro:
+      orientation: Portrait
+    iPhone 8 Plus:
+      orientation: Portrait
+    iPhone 8:
+      orientation: Portrait
+    iPad Pro (12.9-inch) (3rd generation):
+      orientation: Portrait
+    iPad Pro (12.9-inch) (2nd generation):
+      orientation: Portrait
+  android:
+    Nexus 6P:
+
+# Frame screenshots
+frame: false

@@ -15,6 +15,8 @@ class PageButton extends StatelessWidget {
   final double verticalPadding;
   final double horizontalPadding;
 
+  final Key key;
+
   // TODO: Let's move the positional args to named args.
   const PageButton(
     this.backgroundColor,
@@ -28,6 +30,7 @@ class PageButton extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
     this.descriptionColor,
+    this.key,
   });
 
   @override
