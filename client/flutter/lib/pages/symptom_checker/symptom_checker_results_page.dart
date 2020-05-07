@@ -107,6 +107,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
+              SizedBox(height: 12,),
               Text(
                 'Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website and through your national and local public health authority. Most people who become infected experience mild illness and recover, but it can be more severe for others.',
                 style: TextStyle(
