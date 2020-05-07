@@ -34,6 +34,7 @@ class IndexContent extends ContentBase {
           title: yamlPromo['title'],
           subtitle: yamlPromo['subtitle'],
           link: RouteLink.fromUri(yamlPromo['href']),
+          imageName: yamlPromo['image_name'],
         );
       }
       this.items = bundle.contentItems
@@ -60,12 +61,14 @@ class IndexPromo {
   final String subtitle;
   final RouteLink link;
   final String buttonText;
+  final String imageName;
 
   IndexPromo({
     @required this.title,
     @required this.subtitle,
     @required this.link,
     @required this.buttonText,
+    this.imageName,
     this.promoType,
   });
 

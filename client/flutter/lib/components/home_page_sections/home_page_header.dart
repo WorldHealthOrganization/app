@@ -1,11 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
-import 'package:who_app/generated/l10n.dart';
 
 class HomePageHeader extends StatelessWidget {
   final IndexPromoType headerType;
@@ -13,6 +11,7 @@ class HomePageHeader extends StatelessWidget {
   final String subtitle;
   final String buttonText;
   final RouteLink link;
+  final String imageName;
 
   const HomePageHeader({
     @required this.headerType,
@@ -20,17 +19,11 @@ class HomePageHeader extends StatelessWidget {
     @required this.subtitle,
     @required this.buttonText,
     @required this.link,
+    this.imageName,
   });
 
   String get svgAssetName {
-    switch (this.headerType) {
-      // case IndexPromoType.CheckYourSymptoms:
-      //   return "assets/svg/home_page_header/check_your_symptoms.svg";
-      // case IndexPromoType.ProtectYourself:
-      //   return "assets/svg/home_page_header/protect_yourself.svg";
-      default:
-        return null;
-    }
+    return this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
   }
 
   Color get backgroundColor {
@@ -38,7 +31,7 @@ class HomePageHeader extends StatelessWidget {
       case IndexPromoType.CheckYourSymptoms:
         return Constants.primaryDarkColor;
       case IndexPromoType.ProtectYourself:
-        return Color(0xff4ACA8C);
+        return Constants.accentTealColor;
       default:
         return Constants.primaryDarkColor;
     }
@@ -46,127 +39,157 @@ class HomePageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: HeaderClipper(),
-      child: Container(
-        padding: EdgeInsets.all(24),
-        color: this.backgroundColor,
-        child: SafeArea(
+    return Stack(
+      alignment: Alignment.topLeft,
+      children: <Widget>[
+        Positioned.fill(
+          child: _buildBackground(),
+        ),
+        SafeArea(
           bottom: false,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+          child: _buildForeground(context),
+        )
+      ],
+    );
+  }
+
+  Widget _buildBackground() {
+    return ClipPath(
+      clipper: _BackgroundClipper(),
+      child: Container(
+        color: this.backgroundColor,
+      ),
+    );
+  }
+
+  Widget _buildForeground(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _buildLogoSection(),
+          Stack(
+            alignment: Alignment.topLeft,
+            children: <Widget>[
+              Positioned(
+                bottom: 16.0,
+                right: 0.0,
+                child: this.svgAssetName != null
+                    ? SvgPicture.asset(this.svgAssetName)
+                    : Container(),
+              ),
               Container(
-                height: 48,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      color: CupertinoColors.white,
-                      width: 48,
-                      margin: EdgeInsets.only(right: 8),
-                    ),
-                    Flexible(
-                      child: AutoSizeText(
-                        S.of(context).commonWorldHealthOrganization,
-                        maxLines: 2,
-                        maxFontSize: 18,
+                padding: EdgeInsets.only(left: 24.0, right: 60.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: 28.0),
+                      child: ThemedText(
+                        this.title,
+                        variant: TypographyVariant.title,
                         style: TextStyle(
                           color: CupertinoColors.white,
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 14,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: ThemedText(
+                        this.subtitle,
+                        variant: TypographyVariant.body,
+                        style: TextStyle(
+                          color: CupertinoColors.white,
+                        ),
                       ),
-                      color: Color.fromARGB(127, 250, 232, 169),
-                      width: 1,
                     ),
-                    Text(
-                      "COVID-19 Response",
-                      style: TextStyle(
-                        color: Color(0xffFAE8A9),
-                        fontWeight: FontWeight.w600,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 32.0, bottom: 120.0),
+                      child: CupertinoButton(
+                        borderRadius: BorderRadius.circular(50),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 8,
+                        ),
+                        color: CupertinoColors.white,
+                        child: Container(
+                          constraints: BoxConstraints(
+                            minWidth: 180,
+                            maxWidth: 300,
+                          ),
+                          child: ThemedText(
+                            this.buttonText,
+                            variant: TypographyVariant.button,
+                            style: TextStyle(color: Constants.primaryColor),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        onPressed: () {
+                          return this.link.open(context);
+                        },
                       ),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 32,
-              ),
-              ThemedText(
-                this.title,
-                variant: TypographyVariant.title,
-                style: TextStyle(
-                  color: CupertinoColors.white,
-                ),
-                textAlign: TextAlign.left,
-              ),
-              ThemedText(
-                this.subtitle,
-                variant: TypographyVariant.body,
-                style: TextStyle(
-                  color: CupertinoColors.white,
-                ),
-              ),
-              Container(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  this.svgAssetName != null
-                      ? SvgPicture.asset(this.svgAssetName)
-                      : Container(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    child: CupertinoButton(
-                      borderRadius: BorderRadius.circular(50),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 8,
-                      ),
-                      color: CupertinoColors.white,
-                      child: ThemedText(
-                        this.buttonText,
-                        variant: TypographyVariant.button,
-                        style: TextStyle(color: Constants.primaryColor),
-                      ),
-                      onPressed: () {
-                        return this.link.open(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              if (this.svgAssetName == null)
-                Container(
-                  height: 40,
-                ),
+              )
             ],
           ),
-        ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLogoSection() {
+    return Container(
+      constraints: BoxConstraints(minHeight: 48.0),
+      padding: EdgeInsets.symmetric(
+        horizontal: 24.0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            color: CupertinoColors.white,
+            height: 48.0,
+            width: 48.0,
+            margin: EdgeInsets.only(right: 8),
+            // TODO: Add WHO logo
+            // child: ,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 14.0,
+            ),
+            color: Color.fromARGB(127, 250, 232, 169),
+            height: 48.0,
+            width: 1.0,
+          ),
+          Text(
+            // TODO: Localize
+            'COVID-19 Response',
+            style: TextStyle(
+              color: Color(0xffFAE8A9),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class HeaderClipper extends CustomClipper<Path> {
+class _BackgroundClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
 
-    path.lineTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height - 20),
-        radius: Radius.elliptical(size.width, 240));
+    path.lineTo(0, size.height - 24.0);
+    path.arcToPoint(Offset(size.width, size.height - 50.0),
+        radius: Radius.elliptical(size.width, 240.0));
     path.lineTo(size.width, 0);
-
     path.close();
+
     return path;
   }
 
