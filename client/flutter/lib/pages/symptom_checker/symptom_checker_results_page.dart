@@ -41,14 +41,14 @@ class SymptomCheckerResultsPage extends StatelessWidget {
               ? Text(
                   'Unlikely',
                   style: TextStyle(
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                       color: Constants.primaryColor,
                       fontSize: 42),
                 )
               : Text(
                   'Unlikely',
                   style: TextStyle(
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                       color: Constants.primaryColor,
                       fontSize: 42),
                 ),
@@ -59,22 +59,21 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
   Widget videoWidget(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 52,
-        left: 24,
-        right: 24,
-        bottom: 48,
+      padding: EdgeInsets.only(
+        top: 32,
+        left: 48,
+        right: 48
       ),
       child: PageButton(
         Constants.primaryColor,
         "Watch Video",
         () {
-          return Navigator.of(context, rootNavigator: true).pop();
+          // Go to video
         },
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-        verticalPadding: 12,
-        borderRadius: 500,
+        verticalPadding: 0,
+        borderRadius: 100,
         titleStyle: TextStyle(
             color: CupertinoColors.white,
             fontSize: 18,
