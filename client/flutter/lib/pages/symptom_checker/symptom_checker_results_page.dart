@@ -9,7 +9,8 @@ import 'package:who_app/constants.dart';
 class SymptomCheckerResultsPage extends StatelessWidget {
   final int risk;
 
-  const SymptomCheckerResultsPage({Key key, @required this.risk}) : super(key: key);
+  const SymptomCheckerResultsPage({Key key, @required this.risk})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,59 +24,40 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) => SliverList(
           delegate: SliverChildListDelegate([
-        SafeArea(child: headingWidget(context)),
-        bodyWidget(context),
-        submitWidget(context),
+        SafeArea(child: bodyWidget(context)),
+        videoWidget(context),
       ]));
 
-  Widget headingWidget(BuildContext context) {
+  Widget bodyWidget(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 64, left: 24, right: 24),
       child: Column(
         children: <Widget>[
-          Icon(
-            FontAwesomeIcons.solidCheckCircle,
-            color: risk < 2 ? Colors.green : Constants.primaryColor,
-            size: 48,
+          Text(
+            'Your results',
+            style: TextStyle(fontWeight: FontWeight.w600),
           ),
-          SizedBox(
-            height: 32,
-          ),
-          ThemedText(
-            risk < 2 ? "Thanks for recording!" : "Your symptoms were recorded",
-            variant: TypographyVariant.h3,
-            textAlign: TextAlign.center,
-          ),
+          risk < 2
+              ? Text(
+                  'Unlikely',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: Constants.primaryColor,
+                      fontSize: 42),
+                )
+              : Text(
+                  'Unlikely',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: Constants.primaryColor,
+                      fontSize: 42),
+                ),
         ],
       ),
     );
   }
 
-  static const List<String> bodies = <String>[
-    "We're glad you're feeling well! Regularly tracking your symptoms will help medical professionals give you better advice, if you start to feel sick.",
-    "A medical professional can help you figure out what to do next. Regularly tracking your symptoms will help them give you better advice.",
-    "Some of the symptoms you're experiencing might be caused by COVID-19. They also might be caused by something else. A medical professional can help you figure out what to do next.\n\nFor guidance on whether to get tested, check guidance from your health agency.\n\nRegularly tracking your symptoms will help medical professionals give you better advice.",
-  ];
-
-  Widget bodyWidget(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 32, right: 32),
-      child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 32,
-          ),
-          ThemedText(
-            bodies[risk],
-            variant: TypographyVariant.body,
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget submitWidget(BuildContext context) {
+  Widget videoWidget(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
         top: 52,
@@ -85,7 +67,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
       ),
       child: PageButton(
         Constants.primaryColor,
-        "My Dashboard",
+        "Watch Video",
         () {
           return Navigator.of(context, rootNavigator: true).pop();
         },
@@ -97,6 +79,15 @@ class SymptomCheckerResultsPage extends StatelessWidget {
             color: CupertinoColors.white,
             fontSize: 18,
             fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Widget floorWidget(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 32, right: 32),
+      child: Column(
+        children: <Widget>[],
       ),
     );
   }

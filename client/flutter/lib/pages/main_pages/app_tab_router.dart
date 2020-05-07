@@ -16,7 +16,7 @@ class AppTabRouter extends StatelessWidget {
     (context) => LearnPage(
           dataSource: IndexContent.learnIndex,
         ),
-    (context) => SymptomCheckerResultsPage(risk: 2,),    // SymptomCheckerPage(),
+    (context) => SymptomCheckerResultsPage(risk: 1,),    // SymptomCheckerPage(),
     (context) => SettingsPage(),
   ];
 
