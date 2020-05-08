@@ -15,8 +15,7 @@ import 'package:who_app/pages/travel_advice.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> map = {
-    '/': (context) =>
-        AppTabRouter(AppTabRouter.defaultTabs, AppTabRouter.defaultNavItems),
+    '/': (context) => AppTabRouter(),
     '/about': (context) => AboutPage(),
     '/onboarding': (context) => OnboardingPage(),
     '/travel-advice': (context) => TravelAdvice(

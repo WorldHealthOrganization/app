@@ -9,7 +9,12 @@ import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 
 class AppTabRouter extends StatefulWidget {
-  static final List<Widget Function(BuildContext)> defaultTabs = [
+  @override
+  _AppTabRouterState createState() => _AppTabRouterState();
+}
+
+class _AppTabRouterState extends State<AppTabRouter> {
+  final List<Widget Function(BuildContext)> tabs = [
     (context) => HomePage(
           dataSource: IndexContent.homeIndex,
         ),
@@ -21,7 +26,7 @@ class AppTabRouter extends StatefulWidget {
     (context) => SettingsPage(),
   ];
 
-  static final List<BottomNavigationBarItem> defaultNavItems = [
+  final List<BottomNavigationBarItem> navItems = [
     BottomNavigationBarItem(
         // TODO: localize title strings
         icon: Icon(CupertinoIcons.home),
@@ -36,16 +41,6 @@ class AppTabRouter extends StatefulWidget {
         icon: Icon(CupertinoIcons.person), title: Text("Settings")),
   ];
 
-  final List<Widget Function(BuildContext)> tabs;
-  final List<BottomNavigationBarItem> navItems;
-
-  AppTabRouter(this.tabs, this.navItems);
-
-  @override
-  _AppTabRouterState createState() => _AppTabRouterState();
-}
-
-class _AppTabRouterState extends State<AppTabRouter> {
   CupertinoTabController _controller;
   FirebaseAnalytics _analytics;
   int lastTabIndex;
@@ -77,12 +72,10 @@ class _AppTabRouterState extends State<AppTabRouter> {
   }
 
   String tabTitle(int index) {
-    Text txt = AppTabRouter.defaultNavItems[index].title;
+    Text txt = this.navItems[index].title;
     String data = txt.data;
     return data;
   }
-
-  const _AppTabRouterState();
 
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(
