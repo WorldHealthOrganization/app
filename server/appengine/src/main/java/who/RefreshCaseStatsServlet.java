@@ -32,6 +32,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
 
   @Override protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws IOException {
+
     // App Engine strips all external X-* request headers, so we can trust this is set by App Engine.
     // https://cloud.google.com/appengine/docs/flexible/java/scheduling-jobs-with-cron-yaml#validating_cron_requests
     if (Environment.isProduction() && !"true".equals(request.getHeader("X-Appengine-Cron"))) {
@@ -40,23 +41,43 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     }
 
     String jsonString = getDashboardContents();
+
     JsonObject root = new JsonParser().parse(jsonString).getAsJsonObject();
+
     JsonArray rows = root.getAsJsonArray("features");
+
     long globalTotalCases = 0L, globalTotalDeaths = 0L;
+    long lastUpdated = 0L;
+
     Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
     // Given that each row has heterogeneous elements, not sure there is much benefit
     // to using gson with reflection here.
     for (JsonElement feature : rows) {
-      JsonObject attributes = feature.getAsJsonObject();
+
+      JsonObject featureAsJsonObject = feature.getAsJsonObject();
+      JsonElement attributesElement = featureAsJsonObject.get("attributes");
+
+      JsonObject attributes = attributesElement.getAsJsonObject();
+
       long timestamp = attributes.get("date_epicrv").getAsLong();
+
+      if (timestamp>lastUpdated){
+        lastUpdated = timestamp;
+      }
+
       long dailyDeaths = attributes.get("NewDeath").getAsLong();
+
       long totalDeaths = attributes.get("CumDeath").getAsLong();
+
       long dailyCases = attributes.get("NewCase").getAsLong();
+
       long totalCases = attributes.get("CumCase").getAsLong();
+
       globalTotalCases += dailyCases;
       globalTotalDeaths += dailyDeaths;
 
       StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(timestamp);
+
       if (snapshot == null) {
         snapshot = new StoredCaseStats.StoredStatSnapshot();
         snapshot.epochMsec = timestamp;
@@ -77,7 +98,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         .jurisdiction("")
         .cases(globalTotalCases)
         .deaths(globalTotalDeaths)
-        .lastUpdated(root.getAsJsonPrimitive("createdTime").getAsLong())
+        .lastUpdated(lastUpdated)
         .recoveries(-1L)
         .timeseries(
             globalSnapshots.entrySet().stream()
