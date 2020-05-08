@@ -76,7 +76,8 @@ class SymptomCheckerResultsPage extends StatelessWidget {
         titleStyle: TextStyle(
             color: CupertinoColors.white,
             fontSize: 18,
-            fontWeight: FontWeight.w600),
+            fontWeight: FontWeight.w600,
+       ),
       ),
     );
   }
