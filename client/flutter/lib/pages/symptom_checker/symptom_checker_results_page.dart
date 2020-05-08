@@ -54,7 +54,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                     color: Constants.primaryColor,
                   ),
                   variant: TypographyVariant.h1,
-                )
+                ),
         ],
       ),
     );
