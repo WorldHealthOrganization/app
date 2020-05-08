@@ -82,10 +82,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
     return data;
   }
 
-  final List<Widget Function(BuildContext)> tabs;
-  final List<BottomNavigationBarItem> navItems;
-
-  _AppTabRouterState(this.tabs, this.navItems);
+  const _AppTabRouterState();
 
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(
