@@ -85,6 +85,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1-git"
+  expressions:
+    dependency: transitive
+    description:
+      name: expressions
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
   firebase_analytics:
     dependency: transitive
     description:

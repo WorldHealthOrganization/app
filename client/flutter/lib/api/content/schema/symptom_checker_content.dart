@@ -27,17 +27,11 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerQuestion _questionFromContent(dynamic item) {
     SymptomCheckerQuestionType type;
     switch (item['type']) {
-      case "yes_no":
-        type = SymptomCheckerQuestionType.YesNo;
-        break;
       case "short_list_single_selection":
         type = SymptomCheckerQuestionType.ShortListSingleSelection;
         break;
       case "short_list_multiple_selection":
         type = SymptomCheckerQuestionType.ShortListMultipleSelection;
-        break;
-      case "long_list_single_selection":
-        type = SymptomCheckerQuestionType.LongListSingleSelection;
         break;
       default:
         throw Exception("unreognized question type");
@@ -69,9 +63,6 @@ class SymptomCheckerContent extends ContentBase {
 }
 
 enum SymptomCheckerQuestionType {
-  /// A yes or no question.
-  YesNo,
-
   /// A question with a short list of answers intended to be presented together in
   /// which a single selection is allowed.
   ShortListSingleSelection,
@@ -79,10 +70,6 @@ enum SymptomCheckerQuestionType {
   /// A question with a short list of answers intended to be presented together in
   /// which multiple selections are allowed.
   ShortListMultipleSelection,
-
-  /// A question with a lengthy list of answers intended to be presented in a list
-  /// in which a single selection is allowed.
-  LongListSingleSelection,
 }
 
 /// SymptomChecker ('symptom_checker' schema) question items including question and
@@ -107,9 +94,7 @@ class SymptomCheckerQuestion {
 
   bool get allowsMultipleSelection {
     switch (type) {
-      case SymptomCheckerQuestionType.YesNo:
       case SymptomCheckerQuestionType.ShortListSingleSelection:
-      case SymptomCheckerQuestionType.LongListSingleSelection:
         return false;
       case SymptomCheckerQuestionType.ShortListMultipleSelection:
         return true;
@@ -124,13 +109,11 @@ class SymptomCheckerQuestion {
     @required this.imageName,
     @required this.displayCondition,
     this.answers,
-  }) {
-    assert(displayCondition == null, "Display conditions unimplemented.");
-  }
+  });
 }
 
 class SymptomCheckerAnswer {
-  /// An id for the question that is unique within its question context.
+  /// An id for the answer that is unique within its question context.
   final String id;
 
   /// An expression indicating whether the question should be presented.

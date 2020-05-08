@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/api/symptom_logic.dart';
 
 /// Represents a series of symptom checker pages.
 /// Notifies the listener on page changes or change of status including completion
@@ -19,11 +20,6 @@ class SymptomCheckerModel with ChangeNotifier {
   /// True when the question series is complete and ready for analysis.
   bool isComplete = false;
 
-  /// True if the user should be instructed to seek medical attention immediately.
-  /// If this flag is set in response to a question the series should be considered
-  /// as completed and appropriate instructions should be provided.
-  bool seekMedicalAttention = false;
-
   /// Get the current list of one or more pages including the initial question
   /// page and any subsequently presented question pages.
   List<SymptomCheckerPageModel> pages = [];
@@ -40,20 +36,21 @@ class SymptomCheckerModel with ChangeNotifier {
   void answerQuestion(Set<String> answerIds) {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
-    // TODO: Toy implementation - always add the next page if it exists
-    // TODO: This should check the display conditions.
-    // Add the next question
-    if (_content.questions.length > pages.length) {
-      pages.add(SymptomCheckerPageModel(
-          question: _content.questions[pages.length],
-          questionCount: _content.questions.length,
-          questionIndex: pages.length));
+    bool nextPageFound = false;
+    for (var i = pages.length;
+        !nextPageFound && i < _content.questions.length;
+        i++) {
+      nextPageFound = SymptomLogic().evaluateCondition(
+          condition: _content.questions[i].displayCondition ?? 'true',
+          previousPages: pages);
+      if (nextPageFound) {
+        pages.add(SymptomCheckerPageModel(
+            question: _content.questions[i],
+            questionCount: _content.questions.length,
+            questionIndex: i));
+      }
     }
-    // TODO: Toy implementation - assume all pages are shown
-    // TODO: This should check the display conditions.
-    // No more questions, series complete.
-    if (_content.questions.length == pages.length &&
-        currentPage.selectedAnswers.isNotEmpty) {
+    if (!nextPageFound) {
       isComplete = true;
     }
     notifyListeners();
