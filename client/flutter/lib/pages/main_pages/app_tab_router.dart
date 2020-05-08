@@ -46,6 +46,8 @@ class _AppTabRouterState extends State<AppTabRouter> {
   int lastTabIndex;
   @override
   void initState() {
+    super.initState();
+    
     _analytics = FirebaseAnalytics();
     _controller = CupertinoTabController();
     lastTabIndex = _controller.index;
@@ -68,7 +70,6 @@ class _AppTabRouterState extends State<AppTabRouter> {
         );
       },
     );
-    super.initState();
   }
 
   String tabTitle(int index) {
