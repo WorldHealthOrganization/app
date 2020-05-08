@@ -42,7 +42,7 @@ class AppTabRouter extends StatefulWidget {
   AppTabRouter(this.tabs, this.navItems);
 
   @override
-  _AppTabRouterState createState() => _AppTabRouterState(tabs, navItems);
+  _AppTabRouterState createState() => _AppTabRouterState();
 }
 
 class _AppTabRouterState extends State<AppTabRouter> {
