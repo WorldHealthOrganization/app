@@ -4,94 +4,136 @@ contents:
   type: symptom_checker
   items:
     -
-      id:  question_1
-      type: yes_no
-      question_html: |
-        <p>Yes - No question 1</p>
-    -
-      id:  question_2
+      id:  q1_emergency
       type: short_list_single_selection
       question_html: |
-        <p>Short list single selection question 2</p>
+        <p><b>Is this an emergency?</b></p>
+        <p>Stop and seek immediate medical attention if you are experiencing:<br/>
+        - Difficulty breathing<br/>
+        - Shortness of breath<br/>
+        - Chest pain or pressure<br/>
+        - Loss of speech or movement<br/></p>
       answers:
         -
-          id: answer_1
+          id: a1_emergency
           icon_name: snowflake
           body_html: |
-            <p>Answer 1</p>
+            <p>I am experiencing at least one of these symptoms</p>
         -
-          id: answer_2
+          id: a1_no_emergency
           icon_name: snowflake
           body_html: |
-            <p>Answer 2</p>
-        -
-          id: answer_3
-          icon_name: snowflake
-          body_html: |
-            <p>Answer 3</p>
+            <p>I do not have any of these symptoms</p>
+
     -
-      id:  question_3
+      id:  q2_symptoms
       type: short_list_multiple_selection
       question_html: |
-        <p>Short list multiple selection question 3</p>
+        <p><b>Do you have any of these symptoms?</b></p>
       answers:
         -
-          id: answer_1
+          id: a2_fever
+          icon_name: snowflake
           body_html: |
-            <p>Answer 1</p>
+            <p>Fever</p>
         -
-          id: answer_2
+          id: a2_dry_cough
+          icon_name: snowflake
           body_html: |
-            <p>Answer 2</p>
+            <p>Dry Cough</p>
         -
-          id: answer_3
+          id: a2_shortness_of_breath
+          icon_name: snowflake
           body_html: |
-            <p>Answer 3</p>
+            <p>Shortness of Breath</p>
+        -
+          id: a2_aches_and_pains
+          icon_name: snowflake
+          body_html: |
+            <p>Aches and pains</p>
+        -
+          id: a2_sore_throat
+          icon_name: snowflake
+          body_html: |
+            <p>Sore throat</p>
+        -
+          id: a2_diarrhoea
+          icon_name: snowflake
+          body_html: |
+            <p>Diarrhoea</p>
+        -
+          id: a2_conjunctivitis
+          icon_name: snowflake
+          body_html: |
+            <p>Conjunctivitis</p>
+        -
+          id: a2_headache
+          icon_name: snowflake
+          body_html: |
+            <p>Headache</p>
+        -
+          id: a2_loss_of_taste_or_smell
+          icon_name: snowflake
+          body_html: |
+            <p>Loss of taste or smell</p>
+        -
+          id: a2_rash_or_discolouration
+          icon_name: snowflake
+          body_html: |
+            <p>A rash on the skin, or discolouration of fingers or toes</p>
     -
-      id:  question_4
-      type: long_list_single_selection
+      id:  q3_covid19contact
+      type: short_list_single_selection
       question_html: |
-        <p>Long list multiple selection question 4</p>
+        <p><b>Close contact with COVID-19?</b></p>
+        <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
       answers:
         -
-          id: answer_1
+          id: a3_contact
+          icon_name: snowflake
           body_html: |
-            <p>Answer 1</p>
+            <p>Yes</p>
         -
-          id: answer_2
+          id: a3_no_contact
+          icon_name: snowflake
           body_html: |
-            <p>Answer 2</p>
-        -
-          id: answer_4
-          body_html: |
-            <p>Answer 4</p>
-        -
-          id: answer_5
-          body_html: |
-            <p>Answer 5</p>
-        -
-          id: answer_6
-          body_html: |
-            <p>Answer 6</p>
-        -
-          id: answer_7
-          body_html: |
-            <p>Answer 7</p>
-        -
-          id: answer_8
-          body_html: |
-            <p>Answer 8</p>
-        -
-          id: answer_9
-          body_html: |
-            <p>Answer 9</p>
-        -
-          id: answer_10
-          body_html: |
-            <p>Answer 10</p>
+            <p>No</p>
     -
-      id:  question_5
-      type: yes_no
+      id:  q4_age
+      type: short_list_single_selection
       question_html: |
-        <p>Final Yes - No auestion 5</p>
+        <p><b>How old are you?</b></p>
+      answers:
+        -
+          id: a4_under60
+          icon_name: snowflake
+          body_html: |
+            <p>Under 60</p>
+        -
+          id: a4_over60
+          icon_name: snowflake
+          body_html: |
+            <p>Over 60</p>
 
+    -
+      id:  q5_preexisting_cond
+      type: short_list_single_selection
+      question_html: |
+        <p><b>Pre-existing conditions?</b><p>
+        Do you have any of the following conditions?<br/>
+        - Hypertension<br/>
+        - Diabetes<br/>
+        - Cardiovascular disease<br/>
+        - Chronic respiratory disease<br/>
+        - Immunocompromising conditions</p>
+      answers:
+        -
+          id: a5_preexisting_cond
+          icon_name: snowflake
+          body_html: |
+            <p>Yes</p>
+        -
+          id: a5_no_preexisting_cond
+          icon_name: snowflake
+          body_html: |
+            <p>No</p>

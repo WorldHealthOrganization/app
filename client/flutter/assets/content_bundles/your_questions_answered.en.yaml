@@ -71,7 +71,6 @@ contents:
       title_html: |
         Can I catch COVID-19 from feces, animals or pets?
       body_html: |
-        <p>🚽 <b>Can I catch COVID-19 from the feces of someone with the disease?</b></p>
         <p>The risk of catching COVID-19 from the feces of an infected person appears to be low. While initial investigations suggest the virus may be present in feces in some cases, spread through this route is not a main feature of the outbreak. WHO is assessing ongoing research on the ways COVID-19 is spread and will continue to share new findings. Because this is a risk, however, it is another reason to clean hands regularly, after using the bathroom and before eating.</p>
         
         <p>🐾 <b>Can humans become infected with the COVID-19 from an animal source?</b></p>
@@ -85,8 +84,6 @@ contents:
       title_html: |
         What can I do to protect myself and prevent the spread of disease?
       body_html: |
-        <p><b>What can I do to protect myself and prevent the spread of disease?</b></p>
-
         <p><b>Protection measures for everyone</b></p>
 
         <p>ℹ️ Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website and through your national and local public health authority. Many countries around the world have seen cases of COVID-19 and several have seen outbreaks. Authorities in China and some other countries have succeeded in slowing or stopping their outbreaks. However, the situation is unpredictable so check regularly for the latest news.</p>

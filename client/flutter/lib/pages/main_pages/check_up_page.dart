@@ -240,21 +240,22 @@ class _NoEntries extends StatelessWidget {
         submitWidget(context),
       ]));
 
+
   List<Widget> optionWidgets() {
     return <Widget>[
       _ListItem(
           title:
-              "You’ll answer a few questions about how you're feeling and any symptoms you may have.",
+              "You should know...",
           icon: FontAwesomeIcons.fileMedical),
       _ListItem(
           title:
-              "Your answers will not be shared with the WHO without your permission. ",
+              "Your answers will not be shared with WHO or others without your permission.",
           icon: FontAwesomeIcons.lock),
       _ListItem(
           title:
-              "By using this tool, you agree to its terms and that the WHO will not be liable for any harm relating to your use.",
+              "By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.",
           subtitle:
-              "Recommendations provided by this tool do not constitute medical advice and should not be used to diagnose or treat medical conditions.",
+              "Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.",
           icon: FontAwesomeIcons.solidCheckCircle),
     ];
   }
@@ -272,7 +273,7 @@ class _NoEntries extends StatelessWidget {
         "Get Started",
         () {
           return Navigator.of(context, rootNavigator: true)
-              .pushNamed('/track-symptoms');
+              .pushNamed('/symptom-checker');
         },
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

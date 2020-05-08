@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/long_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/yes_no_question_view.dart';
@@ -46,12 +47,11 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        middle: Text("Symptom Checker"),
-      ),
-      child: Container(child: _buildPage(context)),
+    return PageScaffold(
+      title: "Check-Up",
+      body: <Widget>[
+        SliverToBoxAdapter(child: _buildPage(context),)
+      ],
     );
   }
 
@@ -68,7 +68,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     return PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
-        children: _pages ?? []);
+        children: _pages ?? [SizedBox(height: 50,)]);
   }
 
   Widget _viewForPageModel(SymptomCheckerPageModel model) {

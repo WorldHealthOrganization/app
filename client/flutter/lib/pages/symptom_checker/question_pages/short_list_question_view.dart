@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/components/forms.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/previous_next_buttons.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
@@ -57,7 +58,8 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
                 width: 300,
                 child: Html(data: widget.pageModel.question.questionHtml)),
             SizedBox(height: 24),
-            ...widget.pageModel.question.answers.map(_buildAnswerRow).toList(),
+            _buildAnswers(),
+            //...widget.pageModel.question.answers.map(_buildAnswerRow).toList(),
             Spacer(flex: 3),
             PreviousNextButtons(
                 showPrevious: widget.pageModel.questionIndex > 0,
@@ -69,6 +71,34 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
         ),
       ),
     );
+  }
+
+  Widget _buildAnswers() {
+    List<Map<String, String>> items = <Map<String, String>>[
+      {"title": "Fever", "icon": "🤒"},
+      {"title": "Dry cough", "icon": "😣"},
+      {"title": "Shortness of breath", "icon": "😦"},
+      {"title": "Loss of sense of smell", "icon": "👃"},
+      {"title": "Extreme tiredness/fatigue", "icon": "😴"},
+      {"title": "Chills or sweating", "icon": "😓"},
+      {"title": "Headache", "icon": "🤕"},
+      {"title": "Sore throat", "icon": "😶"},
+      {"title": "Body aches", "icon": "😣"},
+      {"title": "Vomiting/diarrhea", "icon": "🤢"},
+      {"title": "None of the above", "icon": "🙂", "noneOfTheAbove": ""},
+    ];
+    final sel = List<bool>.filled(items.length, false);
+    return 
+      PickOneOrMoreOptionGroup(
+        items: items,
+        onPressed: (idx, s) {
+          setState(() {
+            //answers = List<bool>.unmodifiable(s);
+            //nextPage = answers.contains(true);
+          });
+        },
+        isSelected: sel,
+      );
   }
 
   Widget _buildAnswerRow(SymptomCheckerAnswer answer) {
