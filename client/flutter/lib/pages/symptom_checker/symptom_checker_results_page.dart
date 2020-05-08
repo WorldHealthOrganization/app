@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -24,9 +23,11 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) => SliverList(
           delegate: SliverChildListDelegate([
-        SafeArea(child: bodyWidget(context)),
+        SafeArea(
+          child: bodyWidget(context),
+        ),
         videoWidget(context),
-        floorWidget(context)
+        floorWidget(context),
       ]));
 
   Widget bodyWidget(BuildContext context) {
@@ -75,7 +76,8 @@ class SymptomCheckerResultsPage extends StatelessWidget {
         titleStyle: TextStyle(
             color: CupertinoColors.white,
             fontSize: 18,
-            fontWeight: FontWeight.w600),
+            fontWeight: FontWeight.w600,
+       ),
       ),
     );
   }
