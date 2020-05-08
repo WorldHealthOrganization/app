@@ -1,10 +1,10 @@
-# World Health Organization COVID-19 App
+# COVID-19 App
 
 ![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Build/badge.svg)
 ![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
 ![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
 
-This is the official World Health Organization COVID-19 app.
+COVID-19 app
 
 <!-- This is formatted strangely but automatically by Prettier. -->
 
