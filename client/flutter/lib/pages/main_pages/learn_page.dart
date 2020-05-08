@@ -87,7 +87,7 @@ class _LearnPageState extends State<LearnPage> {
           subtitle: p.subtitle,
           buttonText: p.buttonText,
           link: p.link,
-          color: Color(0xFFD5F5FD),
+          imageName: p.imageName,
         ),
     ];
   }
@@ -186,14 +186,14 @@ class _PromoItem extends StatelessWidget {
     @required this.link,
     @required this.subtitle,
     @required this.buttonText,
-    @required this.color,
+    this.imageName,
   });
 
   final String title;
   final RouteLink link;
   final String subtitle;
   final String buttonText;
-  final Color color;
+  final String imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -202,6 +202,7 @@ class _PromoItem extends StatelessWidget {
       subtitle: subtitle,
       link: link,
       buttonText: buttonText,
+      imageName: imageName,
     ));
   }
 }
