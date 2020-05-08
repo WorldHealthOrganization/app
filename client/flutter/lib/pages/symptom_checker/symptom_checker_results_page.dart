@@ -46,7 +46,8 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: Constants.primaryColor,
-                      fontSize: 48),
+                      fontSize: 48,
+                  ),
                 )
               : Text(
                   'Unlikely',
