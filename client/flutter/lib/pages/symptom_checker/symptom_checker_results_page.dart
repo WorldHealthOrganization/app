@@ -24,7 +24,9 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) => SliverList(
           delegate: SliverChildListDelegate([
-        SafeArea(child: bodyWidget(context)),
+        SafeArea(
+          child: bodyWidget(context),
+        ),
         videoWidget(context),
         floorWidget(context),
       ]));
