@@ -28,17 +28,26 @@ class _AppTabRouterState extends State<AppTabRouter> {
 
   final List<BottomNavigationBarItem> navItems = [
     BottomNavigationBarItem(
-        // TODO: localize title strings
-        icon: Icon(CupertinoIcons.home),
-        title: Text("Home")),
+      // TODO: localize title strings
+      icon: Icon(CupertinoIcons.home),
+      title: Text("Home"),
+    ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.circle), title: Text("Stats")),
+      icon: Icon(CupertinoIcons.circle),
+      title: Text("Stats"),
+    ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.search), title: Text("Learn")),
+      icon: Icon(CupertinoIcons.search),
+      title: Text("Learn"),
+    ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.lab_flask), title: Text("Check-Up")),
+      icon: Icon(CupertinoIcons.lab_flask),
+      title: Text("Check-Up"),
+    ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.person), title: Text("Settings")),
+      icon: Icon(CupertinoIcons.person),
+      title: Text("Settings"),
+    ),
   ];
 
   CupertinoTabController _controller;
@@ -47,7 +56,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
   @override
   void initState() {
     super.initState();
-    
+
     _analytics = FirebaseAnalytics();
     _controller = CupertinoTabController();
     lastTabIndex = _controller.index;
