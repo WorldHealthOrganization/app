@@ -117,7 +117,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                   color: Constants.backgroundColor,
                 ),
                 variant: TypographyVariant.bodySmall,
-              )
+              ),
             ],
           ),
         ),
