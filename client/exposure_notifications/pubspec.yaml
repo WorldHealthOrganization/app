@@ -4,7 +4,7 @@ description: Exposure notifications integration plugin
 # This plugin is published solely within our app.
 publish_to: none
 
-# Prior to an official release, this version is the
+# Prior to a production release, this version is the
 # next expected version, and the `-git` suffix is a
 # pre-release indicator.
 # https://dart.dev/tools/pub/pubspec#version
