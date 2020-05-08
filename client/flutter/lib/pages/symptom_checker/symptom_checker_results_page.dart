@@ -108,7 +108,8 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                       style: TextStyle(
                           color: Constants.backgroundColor,
                           fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                      ),
                     ),
               SizedBox(height: 12,),
               Text(
