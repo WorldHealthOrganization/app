@@ -19,7 +19,7 @@ class Routes {
     '/': (context) =>
         AppTabRouter(AppTabRouter.defaultTabs, AppTabRouter.defaultNavItems),
     '/about': (context) => AboutPage(),
-    '/onboarding': (context) => OnboardingPage(),
+    'onboarding': (context) => OnboardingPage(),
     '/travel-advice': (context) => TravelAdvice(
           dataSource: AdviceContent.travelAdvice,
         ),

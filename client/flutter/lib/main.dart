@@ -119,7 +119,7 @@ class _MyAppState extends State<MyApp> {
         routes: widget.routes,
         // FIXME Issue #1012 - disabled supported languages for P0
         //supportedLocales: S.delegate.supportedLocales,
-        initialRoute: widget.showOnboarding ? '/onboarding' : '/',
+        initialRoute: widget.showOnboarding ? 'onboarding' : '/',
         navigatorObservers: <NavigatorObserver>[observer],
         theme: CupertinoThemeData(
             brightness: Brightness.light,
