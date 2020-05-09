@@ -20,6 +20,9 @@ class SymptomCheckerModel with ChangeNotifier {
   /// True when the question series is complete and ready for analysis.
   bool isComplete = false;
 
+  /// True if the symptom checker cannot continue functioning.
+  bool isFatalError = false;
+
   /// Get the current list of one or more pages including the initial question
   /// page and any subsequently presented question pages.
   List<SymptomCheckerPageModel> pages = [];
@@ -34,6 +37,16 @@ class SymptomCheckerModel with ChangeNotifier {
   /// the pages list. If the series is complete the isComplete flag will be set.
   /// In both cases the change notifier will fire to indicate the update.
   void answerQuestion(Set<String> answerIds) {
+    try {
+      isComplete = _answerQuestionImpl(answerIds);
+    } catch (e) {
+      // Do NOT log these errors to analytics.
+      isFatalError = true;
+    }
+    notifyListeners();
+  }
+
+  bool _answerQuestionImpl(Set<String> answerIds) {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
     bool nextPageFound = false;
@@ -50,10 +63,7 @@ class SymptomCheckerModel with ChangeNotifier {
             questionIndex: i));
       }
     }
-    if (!nextPageFound) {
-      isComplete = true;
-    }
-    notifyListeners();
+    return !nextPageFound;
   }
 
   /// Indicate that the user has driven the UI back to the previous page or

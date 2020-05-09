@@ -57,6 +57,11 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     if (_model == null) {
       return _buildMessage("Loading...", loading: true);
     }
+    if (_model.isFatalError) {
+      return _buildMessage(
+          "Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.",
+          loading: false);
+    }
     if (_model.isComplete) {
       return _buildComplete();
     }
@@ -68,9 +73,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   Widget _viewForPageModel(SymptomCheckerPageModel model) {
     switch (model.question.type) {
-      case SymptomCheckerQuestionType.ShortListSingleSelection:
+      case SymptomCheckerQuestionType.SingleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
-      case SymptomCheckerQuestionType.ShortListMultipleSelection:
+      case SymptomCheckerQuestionType.MultipleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
     }
     throw Exception("Unsupported");

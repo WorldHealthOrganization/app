@@ -5,7 +5,7 @@ contents:
   items:
     -
       id:  q1_emergency
-      type: short_list_single_selection
+      type: single_selection
       question_html: |
         <p><b>Is this an emergency?</b></p>
         <p>Stop and seek immediate medical attention if you are experiencing:<br/>
@@ -27,7 +27,7 @@ contents:
 
     -
       id:  q2_symptoms
-      type: short_list_multiple_selection
+      type: multiple_selection
       display_condition: q1_emergency['no_emergency']
       question_html: |
         <p><b>Do you have any of these symptoms?</b></p>
@@ -84,7 +84,7 @@ contents:
             <p>A rash on the skin, or discolouration of fingers or toes</p>
     -
       id:  q3_covid19contact
-      type: short_list_single_selection
+      type: single_selection
       display_condition: wasDisplayed('q2_symptoms') && !(q2_symptoms['fever'] && q2_symptoms['dry_cough'])
       question_html: |
         <p><b>Close contact with COVID-19?</b></p>
@@ -102,7 +102,7 @@ contents:
             <p>No</p>
     -
       id:  q4_age
-      type: short_list_single_selection
+      type: single_selection
       display_condition: wasDisplayed('q3_covid19contact') && ((selectionCount('q2_symptoms') > 0) || q3_covid19contact['no_contact'])
       question_html: |
         <p><b>How old are you?</b></p>
@@ -120,7 +120,7 @@ contents:
 
     -
       id:  q5_preexisting_cond
-      type: short_list_single_selection
+      type: single_selection
       display_condition: wasDisplayed('q4_age') && q4_age['under60']
       question_html: |
         <p><b>Pre-existing conditions?</b><p>
