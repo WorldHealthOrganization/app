@@ -41,12 +41,12 @@ contents:
           id: dry_cough
           icon_name: snowflake
           body_html: |
-            <p>Dry Cough</p>
+            <p>Dry cough</p>
         -
-          id: shortness_of_breath
+          id: tiredness
           icon_name: snowflake
           body_html: |
-            <p>Shortness of Breath</p>
+            <p>Tiredness</p>
         -
           id: aches_and_pains
           icon_name: snowflake
@@ -103,7 +103,7 @@ contents:
     -
       id:  q4_age
       type: short_list_single_selection
-      display_condition: (selectionCount('q2_symptoms') == 0) && wasDisplayed('q3_covid19contact') && q3_covid19contact['no_contact']
+      display_condition: wasDisplayed('q3_covid19contact') && ((selectionCount('q2_symptoms') > 0) || q3_covid19contact['no_contact'])
       question_html: |
         <p><b>How old are you?</b></p>
       answers:
@@ -129,7 +129,8 @@ contents:
         - Diabetes<br/>
         - Cardiovascular disease<br/>
         - Chronic respiratory disease<br/>
-        - Immunocompromising conditions</p>
+        - Immunocompromising conditions<br/>
+        - Obesity</p>
       answers:
         -
           id: preexisting_cond
