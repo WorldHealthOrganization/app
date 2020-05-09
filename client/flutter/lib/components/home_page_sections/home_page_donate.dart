@@ -61,7 +61,7 @@ class _DonateFooterGraphic extends StatelessWidget {
         _DonateBackground(),
         Container(
           padding: EdgeInsets.only(bottom: 16.0),
-          child: SvgPicture.asset('assets/svg/home-donate.svg'),
+          child: SvgPicture.asset('assets/svg/undraw-home-donate.svg'),
         ),
       ],
     );

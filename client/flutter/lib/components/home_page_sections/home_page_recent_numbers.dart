@@ -83,7 +83,7 @@ class _HomeStatCard extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.cover,
               alignment: Alignment.center,
-              child: SvgPicture.asset('assets/svg/home-statcard-world.svg'),
+              child: SvgPicture.asset('assets/svg/undraw-home-statcard-bg.svg'),
             ),
           ),
           Positioned.fill(

@@ -83,6 +83,7 @@ class _HomePageState extends State<HomePage> {
     List<Widget> bundleWidgets = items.map((item) => _buildItem(item)).toList();
     return [
       ...bundleWidgets,
+      // TODO: do we want to drive donate section via the content bundle too?
       _buildDonate(),
     ];
   }

@@ -8,7 +8,7 @@ contents:
     subtitle: See what your symptoms could mean and what you can do to move forward.
     button_text: Check now
     href: /symptom-checker
-    image_name: home-promo-check-symptoms
+    image_name: undraw-home-promo-symptoms
   items:
     -
       item_type: recent_numbers
