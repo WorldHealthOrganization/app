@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -45,6 +46,7 @@ class HomePageDonate extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
+                    FirebaseAnalytics().logEvent(name: 'Donate');
                     launch(S.of(context).homePagePageSliverListDonateUrl);
                   },
                 )

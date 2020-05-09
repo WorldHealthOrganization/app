@@ -51,14 +51,17 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
   @override
   Widget build(BuildContext context) {
-    List items = (_factContent?.items ?? [])
-        .map((fact) => CarouselSlide(
-              key: UniqueKey(),
-              title: fact.title,
-              graphic: _getSVG(fact.imageName),
-              body: fact.body,
-            ))
-        .toList();
+    List items = (_factContent?.items ?? []).asMap().entries.map((entry) {
+      int index = entry.key;
+      FactItem fact = entry.value;
+      return CarouselSlide(
+        key: UniqueKey(),
+        title: fact.title,
+        graphic: _getSVG(fact.imageName),
+        body: fact.body,
+        index: index,
+      );
+    }).toList();
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
