@@ -70,7 +70,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await UserPreferences().setOnboardingCompleted(true);
     await UserPreferences().setAnalyticsEnabled(true);
     await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
-      '/',
+      '/home',
     );
   }
 }
