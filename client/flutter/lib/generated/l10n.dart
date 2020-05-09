@@ -48,7 +48,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app',
+      'Check out the COVID-19 app https://whoapp.org/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
@@ -112,7 +112,7 @@ class S {
 
   String get legalLandingPageTitle {
     return Intl.message(
-      'Official WHO COVID-19 Information App',
+      'COVID-19 Information App',
       name: 'legalLandingPageTitle',
       desc: '',
       args: [],
@@ -427,7 +427,7 @@ class S {
 
   String get homePagePageSliverListAboutTheAppDialog {
     return Intl.message(
-      'The official World Health Organization COVID-19 App.',
+      'The COVID-19 App.',
       name: 'homePagePageSliverListAboutTheAppDialog',
       desc: '',
       args: [],

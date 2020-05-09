@@ -50,7 +50,6 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   Widget build(BuildContext context) {
     return PageScaffold(
       heroTag: HeroTags.learn,
-      color: Constants.greyBackgroundColor,
       title: S.of(context).protectYourselfTitle,
       body: [
         _factContent != null ? _buildBody() : LoadingIndicator(),
