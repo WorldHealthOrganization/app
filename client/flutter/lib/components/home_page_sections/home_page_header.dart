@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/promo_curved_background.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
@@ -43,22 +44,15 @@ class HomePageHeader extends StatelessWidget {
       alignment: Alignment.topLeft,
       children: <Widget>[
         Positioned.fill(
-          child: _buildBackground(),
+          child: PromoCurvedBackground(
+            color: this.backgroundColor,
+          ),
         ),
         SafeArea(
           bottom: false,
           child: _buildForeground(context),
         )
       ],
-    );
-  }
-
-  Widget _buildBackground() {
-    return ClipPath(
-      clipper: _BackgroundClipper(),
-      child: Container(
-        color: this.backgroundColor,
-      ),
     );
   }
 
@@ -72,14 +66,14 @@ class HomePageHeader extends StatelessWidget {
             alignment: Alignment.topLeft,
             children: <Widget>[
               Positioned(
-                bottom: 16.0,
+                bottom: 0.0,
                 right: 0.0,
                 child: this.svgAssetName != null
                     ? SvgPicture.asset(this.svgAssetName)
                     : Container(),
               ),
               Container(
-                padding: EdgeInsets.only(left: 24.0, right: 60.0),
+                padding: EdgeInsets.only(left: 24.0, right: 72.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -104,7 +98,7 @@ class HomePageHeader extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 32.0, bottom: 120.0),
+                      padding: const EdgeInsets.only(top: 32.0, bottom: 88.0),
                       child: CupertinoButton(
                         borderRadius: BorderRadius.circular(50),
                         padding: EdgeInsets.symmetric(
@@ -176,25 +170,5 @@ class HomePageHeader extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class _BackgroundClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.lineTo(0, size.height - 24.0);
-    path.arcToPoint(Offset(size.width, size.height - 50.0),
-        radius: Radius.elliptical(size.width, 240.0));
-    path.lineTo(size.width, 0);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> path) {
-    return false;
   }
 }

@@ -21,8 +21,8 @@ class _BackgroundClipper extends CustomClipper<Path> {
     Path path = Path();
 
     path.lineTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height - 26.0),
-        radius: Radius.elliptical(size.width, 240.0));
+    path.arcToPoint(Offset(size.width, size.height - 33.0),
+        radius: Radius.elliptical(size.width, 200.0));
     path.lineTo(size.width, 0);
     path.close();
 
