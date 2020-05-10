@@ -141,11 +141,10 @@ class HomePageHeader extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             color: CupertinoColors.white,
-            height: 48.0,
             width: 48.0,
             margin: EdgeInsets.only(right: 8),
             // TODO: Add WHO logo
@@ -156,7 +155,6 @@ class HomePageHeader extends StatelessWidget {
               horizontal: 14.0,
             ),
             color: Color.fromARGB(127, 250, 232, 169),
-            height: 48.0,
             width: 1.0,
           ),
           Text(
@@ -164,7 +162,9 @@ class HomePageHeader extends StatelessWidget {
             'COVID-19 Response',
             style: TextStyle(
               color: Color(0xffFAE8A9),
+              fontSize: 14,
               fontWeight: FontWeight.w600,
+              height: 1.57,
             ),
           ),
         ],
