@@ -58,6 +58,9 @@ class _LicensePageState extends State<LicensePage> {
         return;
       }
       setState(() {
+        _licenses.add(SizedBox(
+          height: 32,
+        ));
         _licenses.add(Container(
           decoration: const BoxDecoration(
               border: Border(bottom: BorderSide(width: 0.0))),
