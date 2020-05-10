@@ -37,8 +37,10 @@ class SymptomCheckerModel with ChangeNotifier {
   /// the pages list. If the series is complete the isComplete flag will be set.
   /// In both cases the change notifier will fire to indicate the update.
   void answerQuestion(Set<String> answerIds) {
+    isFatalError = true;
     try {
       isComplete = _answerQuestionImpl(answerIds);
+      isFatalError = false;
     } catch (e) {
       // Do NOT log these errors to analytics.
       isFatalError = true;
@@ -50,10 +52,11 @@ class SymptomCheckerModel with ChangeNotifier {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
     bool nextPageFound = false;
+    final logic = SymptomLogic();
     for (var i = pages.length;
         !nextPageFound && i < _content.questions.length;
         i++) {
-      nextPageFound = SymptomLogic().evaluateCondition(
+      nextPageFound = logic.evaluateCondition(
           condition: _content.questions[i].displayCondition ?? 'true',
           previousPages: pages);
       if (nextPageFound) {
