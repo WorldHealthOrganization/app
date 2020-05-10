@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.3"
+  expressions:
+    dependency: "direct main"
+    description:
+      name: expressions
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
   firebase_analytics:
     dependency: "direct main"
     description:

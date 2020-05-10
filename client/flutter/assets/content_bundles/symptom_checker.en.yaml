@@ -4,94 +4,141 @@ contents:
   type: symptom_checker
   items:
     -
-      id:  question_1
-      type: yes_no
+      id:  q1_emergency
+      type: single_selection
       question_html: |
-        <p>Yes - No question 1</p>
-    -
-      id:  question_2
-      type: short_list_single_selection
-      question_html: |
-        <p>Short list single selection question 2</p>
+        <p><b>Is this an emergency?</b></p>
+        <p>Stop and seek immediate medical attention if you are experiencing:<br/>
+        - Difficulty breathing<br/>
+        - Shortness of breath<br/>
+        - Chest pain or pressure<br/>
+        - Loss of speech or movement<br/></p>
       answers:
         -
-          id: answer_1
+          id: emergency
           icon_name: snowflake
           body_html: |
-            <p>Answer 1</p>
+            <p>I am experiencing at least one of these symptoms</p>
         -
-          id: answer_2
+          id: no_emergency
           icon_name: snowflake
           body_html: |
-            <p>Answer 2</p>
-        -
-          id: answer_3
-          icon_name: snowflake
-          body_html: |
-            <p>Answer 3</p>
-    -
-      id:  question_3
-      type: short_list_multiple_selection
-      question_html: |
-        <p>Short list multiple selection question 3</p>
-      answers:
-        -
-          id: answer_1
-          body_html: |
-            <p>Answer 1</p>
-        -
-          id: answer_2
-          body_html: |
-            <p>Answer 2</p>
-        -
-          id: answer_3
-          body_html: |
-            <p>Answer 3</p>
-    -
-      id:  question_4
-      type: long_list_single_selection
-      question_html: |
-        <p>Long list multiple selection question 4</p>
-      answers:
-        -
-          id: answer_1
-          body_html: |
-            <p>Answer 1</p>
-        -
-          id: answer_2
-          body_html: |
-            <p>Answer 2</p>
-        -
-          id: answer_4
-          body_html: |
-            <p>Answer 4</p>
-        -
-          id: answer_5
-          body_html: |
-            <p>Answer 5</p>
-        -
-          id: answer_6
-          body_html: |
-            <p>Answer 6</p>
-        -
-          id: answer_7
-          body_html: |
-            <p>Answer 7</p>
-        -
-          id: answer_8
-          body_html: |
-            <p>Answer 8</p>
-        -
-          id: answer_9
-          body_html: |
-            <p>Answer 9</p>
-        -
-          id: answer_10
-          body_html: |
-            <p>Answer 10</p>
-    -
-      id:  question_5
-      type: yes_no
-      question_html: |
-        <p>Final Yes - No auestion 5</p>
+            <p>I do not have any of these symptoms</p>
 
+    -
+      id:  q2_symptoms
+      type: multiple_selection
+      display_condition: q1_emergency['no_emergency']
+      question_html: |
+        <p><b>Do you have any of these symptoms?</b></p>
+      answers:
+        -
+          id: fever
+          icon_name: snowflake
+          body_html: |
+            <p>Fever</p>
+        -
+          id: dry_cough
+          icon_name: snowflake
+          body_html: |
+            <p>Dry cough</p>
+        -
+          id: tiredness
+          icon_name: snowflake
+          body_html: |
+            <p>Tiredness</p>
+        -
+          id: aches_and_pains
+          icon_name: snowflake
+          body_html: |
+            <p>Aches and pains</p>
+        -
+          id: sore_throat
+          icon_name: snowflake
+          body_html: |
+            <p>Sore throat</p>
+        -
+          id: diarrhoea
+          icon_name: snowflake
+          body_html: |
+            <p>Diarrhoea</p>
+        -
+          id: conjunctivitis
+          icon_name: snowflake
+          body_html: |
+            <p>Conjunctivitis</p>
+        -
+          id: headache
+          icon_name: snowflake
+          body_html: |
+            <p>Headache</p>
+        -
+          id: loss_of_taste_or_smell
+          icon_name: snowflake
+          body_html: |
+            <p>Loss of taste or smell</p>
+        -
+          id: rash_or_discolouration
+          icon_name: snowflake
+          body_html: |
+            <p>A rash on the skin, or discolouration of fingers or toes</p>
+    -
+      id:  q3_covid19contact
+      type: single_selection
+      display_condition: wasDisplayed('q2_symptoms') && !(q2_symptoms['fever'] && q2_symptoms['dry_cough'])
+      question_html: |
+        <p><b>Close contact with COVID-19?</b></p>
+        <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
+      answers:
+        -
+          id: contact
+          icon_name: snowflake
+          body_html: |
+            <p>Yes</p>
+        -
+          id: no_contact
+          icon_name: snowflake
+          body_html: |
+            <p>No</p>
+    -
+      id:  q4_age
+      type: single_selection
+      display_condition: wasDisplayed('q3_covid19contact') && ((selectionCount('q2_symptoms') > 0) || q3_covid19contact['no_contact'])
+      question_html: |
+        <p><b>How old are you?</b></p>
+      answers:
+        -
+          id: under60
+          icon_name: snowflake
+          body_html: |
+            <p>Under 60</p>
+        -
+          id: over60
+          icon_name: snowflake
+          body_html: |
+            <p>Over 60</p>
+
+    -
+      id:  q5_preexisting_cond
+      type: single_selection
+      display_condition: wasDisplayed('q4_age') && q4_age['under60']
+      question_html: |
+        <p><b>Pre-existing conditions?</b><p>
+        Do you have any of the following conditions?<br/>
+        - Hypertension<br/>
+        - Diabetes<br/>
+        - Cardiovascular disease<br/>
+        - Chronic respiratory disease<br/>
+        - Immunocompromising conditions<br/>
+        - Obesity</p>
+      answers:
+        -
+          id: preexisting_cond
+          icon_name: snowflake
+          body_html: |
+            <p>Yes</p>
+        -
+          id: no_preexisting_cond
+          icon_name: snowflake
+          body_html: |
+            <p>No</p>

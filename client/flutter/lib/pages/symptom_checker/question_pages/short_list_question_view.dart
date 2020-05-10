@@ -113,7 +113,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   }
 
   bool get _isComplete {
-    return (_allowsMultipleSelection && _multipleSelections.isNotEmpty) ||
+    return (_allowsMultipleSelection) ||
         (!_allowsMultipleSelection && _singleSelection != null);
   }
 

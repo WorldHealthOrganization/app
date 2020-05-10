@@ -50,6 +50,7 @@ dependencies:
   fl_chart: ^0.8.7
   s2geometry: 0.1.1
   notification_permissions: ^0.4.4
+  expressions: 0.1.5
 
   intl: ^0.16.0
   flutter_localizations:
