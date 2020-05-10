@@ -1,13 +1,11 @@
 package who;
 
 import com.google.common.base.Strings;
-import com.google.common.geometry.S2CellId;
-import com.google.common.geometry.S2LatLng;
 import com.google.inject.Inject;
-
 import present.rpc.ClientException;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 import java.util.TreeSet;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -34,38 +32,16 @@ public class WhoServiceImpl implements WhoService {
     return new Void();
   }
 
+  private static final Pattern COUNTRY_CODE = Pattern.compile("^[A-Z][A-Z]$");
+
   @Override public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
-<<<<<<< HEAD
-    S2CellId location = S2CellId.fromToken(request.s2CellIdToken);
-    if (!location.isValid()) {
-      throw new ClientException("Invalid s2CellId");
+    // Don't even run a regex on a very long string.
+    if (request.isoCountryCode == null || request.isoCountryCode.length() != 2
+        || !COUNTRY_CODE.matcher(request.isoCountryCode).matches()) {
+      throw new ClientException("Invalid isoCountryCode");
     }
-    if (location.level() > Client.MAX_S2_CELL_LEVEL) {
-      throw new ClientException("s2CellId level too high");
-    }
-    client.location = location.id();
-    // Center of the cell.
-    S2LatLng point = location.toLatLng();
-    client.latitude = point.latDegrees();
-    client.longitude = point.lngDegrees();
-=======
-    client.latitude = request.latitude;
-    client.longitude = request.longitude;
-    client.countryCode = Strings.emptyToNull(request.countryCode);
-    client.adminArea1 = Strings.emptyToNull(request.adminArea1);
-    client.adminArea2 = Strings.emptyToNull(request.adminArea2);
-    client.adminArea3 = Strings.emptyToNull(request.adminArea3);
-    client.adminArea4 = Strings.emptyToNull(request.adminArea4);
-    client.adminArea5 = Strings.emptyToNull(request.adminArea5);
-    client.locality = Strings.emptyToNull(request.locality);
-    if (request.latitude != null & request.longitude != null) {
-      S2LatLng coordinates = S2LatLng.fromDegrees(request.latitude, request.longitude);
-      client.location = S2CellId.fromLatLng(coordinates).id();
-    } else {
-      client.location = null;
-    }
->>>>>>> 62c08a4... [feat] DRAFT - Subscribe clients to topics based on locations
+    client.isoCountryCode = request.isoCountryCode;
     ofy().save().entities(client);
     nm.updateSubscriptions(client);
     return new Void();

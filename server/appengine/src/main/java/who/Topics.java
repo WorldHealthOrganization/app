@@ -33,55 +33,34 @@ public class Topics {
   }
 
   public static String createTopicName(NotificationType t, Namespace n, String ... scopes) {
-    Preconditions.checkArgument(scopes.length >= 1);
     return t.toString() + SCOPE_SEPARATOR +
-      n.toString() + SCOPE_SEPARATOR +
-      String.join(SCOPE_SEPARATOR,
+      n.toString() + 
+      (scopes.length > 0 ?
+      SCOPE_SEPARATOR + String.join(SCOPE_SEPARATOR,
         Arrays.stream(scopes)
         .map(s -> encodeScope(s))
-        .collect(Collectors.toList()));
+        .collect(Collectors.toList())) : "");
   }
 
   private static ImmutableSortedSet<String> getLocationTopicNames(NotificationType t, Client client) {
     ImmutableSortedSet.Builder<String> topics = new ImmutableSortedSet.Builder<>(Ordering.natural());
-    if (Strings.isNullOrEmpty(client.countryCode)) {
-      return topics.build();
+    // Global
+    topics.add(createTopicName(t, Namespace.LOCATION));
+    
+    if (!Strings.isNullOrEmpty(client.isoCountryCode)) {
+      // Per-country
+      topics.add(createTopicName(t, Namespace.LOCATION, client.isoCountryCode));
     }
-
-    topics.add(createTopicName(t, Namespace.LOCATION, client.countryCode));
-    if (!Strings.isNullOrEmpty(client.adminArea1)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1));
-    }
-    // Intermediate categorizations can legitimately be empty, however we would never target
-    // an empty terminal categorization.
-    if (!Strings.isNullOrEmpty(client.adminArea2)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1, client.adminArea2));
-    }
-    if (!Strings.isNullOrEmpty(client.adminArea3)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1, client.adminArea2, client.adminArea3));
-    }
-    if (!Strings.isNullOrEmpty(client.adminArea4)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1, client.adminArea2, client.adminArea3, client.adminArea4));
-    }
-    if (!Strings.isNullOrEmpty(client.adminArea5)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1, client.adminArea2, client.adminArea3, client.adminArea4, client.adminArea5));
-    }
-    if (!Strings.isNullOrEmpty(client.locality)) {
-      topics.add(createTopicName(t, Namespace.LOCATION,
-        client.countryCode, client.adminArea1, client.adminArea2, client.adminArea3, client.adminArea4, client.adminArea5, client.locality));
-    }
+    
     return topics.build();
   }
 
   public static ImmutableSortedSet<String> getTopicNames(Client client) {
     Preconditions.checkNotNull(client);
     // TODO: Store these user-selected types in the Client and add
-    // an RPC to modify them.
+    // an RPC to modify them.  Some day users may want to register
+    // only for news, testing centers, etc. and we must properly
+    // namespace topic names now to support that in the future.
     NotificationType[] types = {NotificationType.ALL};
 
     ImmutableSortedSet.Builder<String> topics = new ImmutableSortedSet.Builder<>(Ordering.natural());
