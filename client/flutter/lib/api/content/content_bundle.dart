@@ -53,6 +53,7 @@ class ContentBundle {
     }
   }
 
+  /// For content types containing a primary list of items, return the items.
   YamlList get contentItems {
     try {
       return yaml['contents']['items'];

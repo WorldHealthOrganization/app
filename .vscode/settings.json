@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "client/app/**": true,
+    "server/appengine/src/main/webapp/content/bundles/**": true
+  }
+}

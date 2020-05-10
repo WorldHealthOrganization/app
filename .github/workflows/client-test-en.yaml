@@ -1,0 +1,56 @@
+name: Client Tests with EN
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/exposure_notifications/**'
+      - 'client/app/**'
+      - 'client/app_en/**'
+      - 'client/flutter/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/exposure_notifications/**'
+      - 'client/app/**'
+      - 'client/app_en/**'
+      - 'client/flutter/**'
+jobs:
+  test-plugin:
+    name: Test Exposure Notification plugin on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/exposure_notifications
+      - run: flutter analyze --no-pub
+        working-directory: ./client/exposure_notifications
+      - run: flutter format lib/** --set-exit-if-changed 
+        working-directory: ./client/exposure_notifications
+      - run: flutter test --no-pub
+        working-directory: ./client/exposure_notifications
+  test-app:
+    name: Test Exposure Notification client on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/app_en
+      - run: flutter analyze --no-pub
+        working-directory: ./client/app_en
+      - run: flutter format lib/** --set-exit-if-changed 
+        working-directory: ./client/app_en
+      - run: flutter test --no-pub
+        working-directory: ./client/app_en

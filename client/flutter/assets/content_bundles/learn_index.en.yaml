@@ -7,18 +7,21 @@ contents:
     subtitle: Busting myths about COVID-19
     button_text: View
     href: /get-the-facts
+    image_name: undraw-learn-promo
   items:
     -
-      title: Protect Yourself
-      subtitle: 8 simple steps to stay safe
-      href: /protect-yourself
-    -
       title: Travel Advice
-      subtitle: If you have to travel, travel smart
       href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    -
+      title: Protect Yourself
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
     -
       title: Questions & Answers
       href: /qa
+      image_name: undraw-learn-qa
     -
-      title: News
+      title: News & Press
       href: /news
+      image_name: undraw-learn-news-press

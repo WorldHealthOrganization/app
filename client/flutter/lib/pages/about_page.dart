@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -5,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
-import 'package:who_app/pages/license_page.dart';
+import 'package:who_app/pages/license_page.dart' as who;
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:yaml/yaml.dart';
 
@@ -39,28 +41,38 @@ class AboutPage extends StatelessWidget {
                               decoration: TextDecoration.underline,
                               color: CupertinoColors.activeBlue),
                           url: S.of(context).aboutPageTermsOfServiceLinkUrl,
-                          onLinkTap: (v) => launch(v)),
+                          onLinkTap: (v) {
+                            FirebaseAnalytics()
+                                .logEvent(name: 'TermsOfService');
+                            return launch(v);
+                          }),
                       TextSpan(text: "  —  "),
                       LinkTextSpan(
                           text: S.of(context).aboutPagePrivacyPolicyLinkText,
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: CupertinoColors.activeBlue),
-                          url: S.of(context).aboutPagetermsOfServiceLinkUrl,
-                          onLinkTap: (v) => launch(v)),
+                          url: S
+                              .of(context)
+                              .legalLandingPagePrivacyPolicyLinkUrl,
+                          onLinkTap: (v) {
+                            FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
+                            return launch(v);
+                          }),
                       TextSpan(text: "  —  "),
                       LinkTextSpan(
-                        text: S.of(context).aboutPageViewLicensesLinkText,
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: CupertinoColors.activeBlue,
-                        ),
-                        onLinkTap: (v) => Navigator.of(context).push(
-                          CupertinoPageRoute(
-                            builder: (c) => LicensePage(),
+                          text: S.of(context).aboutPageViewLicensesLinkText,
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: CupertinoColors.activeBlue,
                           ),
-                        ),
-                      ),
+                          onLinkTap: (v) {
+                            FirebaseAnalytics().logEvent(name: 'ViewLicenses');
+                            return Navigator.of(context)
+                                .push(CupertinoPageRoute(
+                              builder: (c) => who.LicensePage(),
+                            ));
+                          }),
                     ],
                   ),
                   textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -12,6 +13,8 @@ enum DataAggregation { daily, total }
 enum DataDimension { cases, deaths }
 
 class RecentNumbersPage extends StatefulWidget {
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
+
   @override
   _RecentNumbersPageState createState() => _RecentNumbersPageState();
 }
@@ -82,6 +85,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
             }
           },
           onRefresh: () async {
+            await widget.analytics.logEvent(name: 'RecentNumberRefresh');
             await fetchStats();
           },
           refreshIndicatorExtent: 100,
@@ -98,6 +102,9 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                         _buildSegmentControlChildren(context, this.aggregation),
                     groupValue: this.aggregation,
                     onValueChanged: (value) {
+                      widget.analytics.logEvent(
+                          name: 'RecentNumberAggregation',
+                          parameters: {'index': this.aggregation.index});
                       setState(() {
                         this.aggregation = value;
                       });

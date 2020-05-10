@@ -1,0 +1,46 @@
+name: Client Build with EN
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/exposure_notifications/**'
+      - 'client/app_en/**'
+      - 'client/flutter/pubspec.*'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/exposure_notifications/**'
+      - 'client/app_en/**'
+      - 'client/flutter/pubspec.*'
+jobs:
+  buildios:
+    name: Build iOS app with Exposure Notifications
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/app_en
+      - run: flutter build ios --no-codesign
+        working-directory: ./client/app_en
+      - run: git diff --exit-code
+  buildandroid:
+    name: Build Android app with Exposure Notifications
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.8 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/app_en
+      - run: flutter build appbundle
+        working-directory: ./client/app_en
+      - run: git diff --exit-code
+
