@@ -6,6 +6,18 @@ These instructions will assume that you have the up-to-date [`git`](https://git-
 
 - _Note: this was tested using CocoaPods version `1.9.1`_
 
+## Verify your tool versions
+
+Run `flutter --version` and ensure your output is exactly:
+
+```sh
+> flutter --version
+Flutter 1.12.13+hotfix.9 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision f139b11009 (6 weeks ago) • 2020-03-30 13:57:30 -0700
+Engine • revision af51afceb8
+Tools • Dart 2.7.2
+```
+
 ## Clone the Repo
 
 In order to ensure reproducibility, you will always build from a specified `TAG_NAME` (e.g. `v0.1.0`) and should not change bundle/application ids or version or build numbers that are stored in the git repository.
