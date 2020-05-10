@@ -46,12 +46,14 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        middle: Text("Symptom Checker"),
+    return Material(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          backgroundColor: CupertinoColors.white,
+          middle: Text("Symptom Checker"),
+        ),
+        child: Container(child: _buildPage(context)),
       ),
-      child: Container(child: _buildPage(context)),
     );
   }
 
