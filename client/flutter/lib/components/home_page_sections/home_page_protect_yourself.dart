@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 ///========================================================
@@ -124,13 +125,10 @@ class _HomeProtectYourselfCard extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context, String body) {
-    final TextStyle defaultTextStyle = TextStyle(
-      color: CupertinoColors.white,
-      fontWeight: FontWeight.w500,
-      fontSize: 16 * MediaQuery.textScaleFactorOf(context),
-      height: 1.375,
-      letterSpacing: -0.32,
-    );
+    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+        TypographyVariant.body,
+        textScaleFactor: MediaQuery.textScaleFactorOf(context),
+        overrides: TextStyle(fontWeight: FontWeight.w500));
     final TextStyle boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return Html(
