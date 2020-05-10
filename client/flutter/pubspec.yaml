@@ -18,8 +18,8 @@ issue_tracker: https://github.com/WorldHealthOrganization/app/issues
 # you must update /.github/workflows/flutter-*.yml to use same min Flutter version
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.8 <2.0.0"
+  sdk: ">=2.7.2 <3.0.0"
+  flutter: ">=1.12.13+hotfix.9 <2.0.0"
 
 dependencies:
   flutter:
