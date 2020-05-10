@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Skip"),
         "commonWhoAppShareIconButtonDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app"),
+                "Check out the COVID-19 app https://whoapp.org/app"),
         "commonWorldHealthOrganization":
             MessageLookupByLibrary.simpleMessage("World Health Organization"),
         "commonWorldHealthOrganizationCoronavirusApp":
@@ -90,8 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePagePageSliverListAboutTheApp":
             MessageLookupByLibrary.simpleMessage("About the app"),
         "homePagePageSliverListAboutTheAppDialog":
-            MessageLookupByLibrary.simpleMessage(
-                "The official World Health Organization COVID-19 App."),
+            MessageLookupByLibrary.simpleMessage("The COVID-19 App."),
         "homePagePageSliverListDonate":
             MessageLookupByLibrary.simpleMessage("Donate Here"),
         "homePagePageSliverListDonateUrl": MessageLookupByLibrary.simpleMessage(
@@ -150,8 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("https://whoapp.org/privacy"),
         "legalLandingPageTermsOfServiceLinkUrl":
             MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
-        "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Official WHO COVID-19 Information App"),
+        "legalLandingPageTitle":
+            MessageLookupByLibrary.simpleMessage("COVID-19 Information App"),
         "locationSharingPageBackgroundImage":
             MessageLookupByLibrary.simpleMessage(
                 "assets/onboarding/onboarding_location.png"),

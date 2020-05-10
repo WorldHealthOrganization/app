@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:who_app/components/carousel/carousel_slide.dart';
 import 'package:who_app/constants.dart';
 import 'package:flutter/rendering.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
 
   CarouselView({@required this.items});
 
@@ -69,17 +71,29 @@ class CarouselView extends StatelessWidget {
     );
   }
 
-  Future<void> goToLastPage() =>
-      pageController.animateToPage(this.items.length - 1,
-          duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
-  Future<void> goToFirstPage() => pageController.animateToPage(0,
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToLastPage() {
+    analytics.logEvent(name: 'CarouselLastPage');
+    return pageController.animateToPage(this.items.length - 1,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
-  Future<void> goToNextPage() => pageController.nextPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToFirstPage() {
+    analytics.logEvent(name: 'CarouselFirstPage');
+    return pageController.animateToPage(0,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
-  Future<void> goToPreviousPage() => pageController.previousPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToNextPage() {
+    analytics.logEvent(name: 'CarouselNextPage');
+    return pageController.nextPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
+
+  Future<void> goToPreviousPage() {
+    analytics.logEvent(name: 'CarouselPreviousPage');
+    return pageController.previousPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
   Widget _buildPageViewIndicator(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

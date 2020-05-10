@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -39,7 +40,11 @@ class AboutPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                                 color: CupertinoColors.activeBlue),
                             url: S.of(context).aboutPageTermsOfServiceLinkUrl,
-                            onLinkTap: (v) => launch(v)),
+                            onLinkTap: (v) {
+                              FirebaseAnalytics()
+                                  .logEvent(name: 'TermsOfService');
+                              launch(v);
+                            }),
                         TextSpan(text: "  —  "),
                         LinkTextSpan(
                             text: S.of(context).aboutPagePrivacyPolicyLinkText,
@@ -47,14 +52,21 @@ class AboutPage extends StatelessWidget {
                                 decoration: TextDecoration.underline,
                                 color: CupertinoColors.activeBlue),
                             url: S.of(context).aboutPagetermsOfServiceLinkUrl,
-                            onLinkTap: (v) => launch(v)),
+                            onLinkTap: (v) {
+                              FirebaseAnalytics()
+                                  .logEvent(name: 'PrivacyPolicy');
+                              launch(v);
+                            }),
                         TextSpan(text: "  —  "),
                         LinkTextSpan(
                           text: S.of(context).aboutPageViewLicensesLinkText,
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: CupertinoColors.activeBlue),
-                          onLinkTap: (v) => showLicensePage(context: context),
+                          onLinkTap: (v) {
+                            FirebaseAnalytics().logEvent(name: 'ViewLicenses');
+                            showLicensePage(context: context);
+                          },
                         ),
                       ]),
                   textAlign: TextAlign.center,
