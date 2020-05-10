@@ -23,7 +23,7 @@ public class NotificationsManager {
   FirebaseMessaging fcm;
 
   @Inject
-  public NotificationsManager(FirebaseMessaging fcm) {
+  public NotificationsManager(FirebaseMessaging fcm, Environment env) {
     this.fcm = fcm;
   }
 
@@ -34,12 +34,15 @@ public class NotificationsManager {
     }
     SortedSet<String> finalTopics = Topics.getTopicNames(client);
     Set<String> topicsToRemove = Sets.difference(client.subscribedTopics, finalTopics).immutableCopy();
-    Set<String> topicsToAdd = Sets.difference(finalTopics, client.subscribedTopics).immutableCopy();
+    // We (re-)register for *all* current topics when they change.
+    // This ensures that a client will eventually correct their subscriptions if a prior update
+    // fails.
+    Set<String> topicsToAdd = finalTopics;
     List<String> theToken = ImmutableList.of(client.token);
 
     try {
       // We cannot atomically change subscription sets.  Better to have more subscriptions
-      // as the user moves locations rather than fewer, so subscribe first.
+      // as the user changes properties rather than fewer, so subscribe first.
       for (String topic : topicsToAdd) {
         TopicManagementResponse resp = fcm.subscribeToTopic(theToken, topic);
         if (resp.getSuccessCount() == 1) {

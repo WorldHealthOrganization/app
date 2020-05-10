@@ -23,28 +23,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
   public Platform platform;
 
-
-  /** S2 cell ID for last known location. See S2CellId. */
-  @Index(IfNotNull.class) public Long location;
-  // No locations of greater level (specificity) than this will be
-  // stored and indexed.  This prevents us from storing precise
-  // locations and protects the database index size.
-  // See: https://s2geometry.io/resources/s2cell_statistics.html
-  public static final int MAX_S2_CELL_LEVEL = 9;
-
-  // Lat/lng representative of the cell, not neccessarily
-  // of the device.
-  public Double latitude;
-  public Double longitude;
-
-  // Store denormalized location info.
-  @Index(IfNotNull.class) public String countryCode;
-  @Index(IfNotNull.class) public String adminArea1;
-  @Index(IfNotNull.class) public String adminArea2;
-  @Index(IfNotNull.class) public String adminArea3;
-  @Index(IfNotNull.class) public String adminArea4;
-  @Index(IfNotNull.class) public String adminArea5;
-  @Index(IfNotNull.class) public String locality;
+  @Index(IfNotNull.class) public String isoCountryCode;
 
   // No FCM API exists to list a token's topics, so we
   // must track them explicitly and sub and unsub from
