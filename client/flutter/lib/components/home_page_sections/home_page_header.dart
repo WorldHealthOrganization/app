@@ -139,35 +139,39 @@ class HomePageHeader extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: 24.0,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            color: CupertinoColors.white,
-            width: 48.0,
-            margin: EdgeInsets.only(right: 8),
-            // TODO: Add WHO logo
-            // child: ,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 14.0,
+      child: IntrinsicHeight(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              color: CupertinoColors.white,
+              width: 48.0,
+              margin: EdgeInsets.only(right: 8),
+              // TODO: Add WHO logo
+              // child: ,
             ),
-            color: Color.fromARGB(127, 250, 232, 169),
-            width: 1.0,
-          ),
-          Text(
-            // TODO: Localize
-            'COVID-19 Response',
-            style: TextStyle(
-              color: Color(0xffFAE8A9),
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              height: 1.57,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: 14.0,
+              ),
+              color: Color.fromARGB(127, 250, 232, 169),
+              width: 1.0,
             ),
-          ),
-        ],
+            Center(
+              child: Text(
+                // TODO: Localize
+                'COVID-19 Response',
+                style: TextStyle(
+                  color: Color(0xffFAE8A9),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  height: 1.57,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
