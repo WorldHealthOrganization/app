@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
-      color: Constants.greyBackgroundColor,
+      color: CupertinoColors.white,
       beforeHeader: _buildPromo(),
       body: _buildBody(),
     );
@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           subtitle: p.subtitle,
           buttonText: p.buttonText,
           link: p.link,
+          imageName: p.imageName,
         ),
       ));
     }
@@ -82,6 +83,7 @@ class _HomePageState extends State<HomePage> {
     List<Widget> bundleWidgets = items.map((item) => _buildItem(item)).toList();
     return [
       ...bundleWidgets,
+      // TODO: do we want to drive donate section via the content bundle too?
       _buildDonate(),
     ];
   }

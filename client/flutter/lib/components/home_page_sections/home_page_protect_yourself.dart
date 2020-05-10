@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/components/protect_yourself_card.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 ///========================================================
 /// TODO SUMMARY:
-///   1. DRY between this widget and ProtectYourself
-///   2. Think through data in the content bundle (e.g. requiring image)
-///   3. Localize strings
-///   4. Handle content bundle schema change better
-///   5. Handle error states better
-///   6. Navigate to Protect Yourself page on tap of card, scrolled to tapped card
+///   1. Handle content bundle schema change better
+///   2. Handle error states better
+///   3. Navigate to Protect Yourself page on tap of card, scrolled to tapped card
 ///=========================================================
 
 class HomePageProtectYourself extends StatefulWidget {
@@ -66,7 +66,7 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -79,23 +79,71 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
 
   List<Widget> _buildCards() {
     final screenWidth = MediaQuery.of(context).size.width;
-    final TextStyle normalText = TextStyle(
-      color: Constants.neutralTextDarkColor,
-      fontSize: 12 * MediaQuery.textScaleFactorOf(context),
-      height: 1.33,
-    );
     return (_factContent?.items ?? [])
         .map((fact) => SizedBox(
               width: screenWidth * 0.75,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 6.0),
-                child: ProtectYourselfCard.fromFact(fact,
-                    defaultTextStyle: normalText,
-                    shouldAnimate: false,
-                    borderRadius: BorderRadius.circular(8.0),
-                    childBackgroundColor: Constants.illustrationBlue1Color),
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: _HomeProtectYourselfCard(fact: fact),
               ),
             ))
         .toList();
+  }
+}
+
+class _HomeProtectYourselfCard extends StatelessWidget {
+  final FactItem fact;
+
+  const _HomeProtectYourselfCard({
+    @required this.fact,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16.0),
+      child: Container(
+        color: Constants.primaryDarkColor,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(28.0, 36.0, 28.0, 20.0),
+              child: _buildBody(context, this.fact.body),
+            ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                child:
+                    SvgPicture.asset('assets/svg/${this.fact.imageName}.svg'),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context, String body) {
+    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+        TypographyVariant.body,
+        textScaleFactor: MediaQuery.textScaleFactorOf(context),
+        overrides: TextStyle(
+            color: CupertinoColors.white, fontWeight: FontWeight.w500));
+    final TextStyle boldTextStyle =
+        defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
+    return Html(
+      data: fact.body ?? '',
+      defaultTextStyle: defaultTextStyle,
+      customTextStyle: (dom.Node node, TextStyle baseStyle) {
+        if (node is dom.Element) {
+          switch (node.localName) {
+            case 'b':
+              return baseStyle.merge(boldTextStyle);
+          }
+        }
+        return baseStyle.merge(defaultTextStyle);
+      },
+    );
   }
 }

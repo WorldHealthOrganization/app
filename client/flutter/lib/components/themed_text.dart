@@ -47,10 +47,12 @@ class ThemedText extends StatelessWidget {
     this.textWidthBasis,
   }) : super(key: key);
 
-  static TextStyle styleForVariant(TypographyVariant variant) {
+  static TextStyle styleForVariant(TypographyVariant variant,
+      {TextStyle overrides = const TextStyle()}) {
+    TextStyle style;
     switch (variant) {
       case TypographyVariant.title:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.primaryDarkColor,
           fontWeight: FontWeight.w900,
           fontSize: 48,
@@ -58,7 +60,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.header:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.primaryDarkColor,
           fontWeight: FontWeight.w800,
           fontSize: 34,
@@ -67,7 +69,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.h1:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.primaryDarkColor,
           fontWeight: FontWeight.w900,
           fontSize: 40,
@@ -75,7 +77,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.h2:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.primaryDarkColor,
           fontWeight: FontWeight.bold,
           fontSize: 30,
@@ -84,7 +86,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.h3:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.neutralTextColor,
           fontWeight: FontWeight.bold,
           fontSize: 24,
@@ -92,7 +94,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.h4:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.neutralTextColor,
           fontWeight: FontWeight.bold,
           fontSize: 18,
@@ -101,7 +103,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.body:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.bodyTextColor,
           fontWeight: FontWeight.normal,
           fontSize: 16,
@@ -110,7 +112,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.button:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.neutral2Color,
           fontWeight: FontWeight.w600,
           fontSize: 18,
@@ -118,7 +120,7 @@ class ThemedText extends StatelessWidget {
         );
         break;
       case TypographyVariant.bodySmall:
-        return TextStyle(
+        style = TextStyle(
           color: Constants.neutral2Color,
           fontWeight: FontWeight.normal,
           fontSize: 14,
@@ -126,7 +128,15 @@ class ThemedText extends StatelessWidget {
         );
         break;
     }
-    return null;
+    return style?.merge(overrides);
+  }
+
+  static TextStyle htmlStyleForVariant(TypographyVariant variant,
+      {double textScaleFactor, TextStyle overrides = const TextStyle()}) {
+    TextStyle baseStyle =
+        ThemedText.styleForVariant(variant, overrides: overrides);
+    return baseStyle
+        .merge(TextStyle(fontSize: baseStyle.fontSize * textScaleFactor));
   }
 
   @override

@@ -3,11 +3,12 @@ content_version: 1
 contents:
   type: index
   promo:
-    promo_type: protect_yourself
-    title: Protect Yourself
+    promo_type: check_your_symptoms
+    title: Check Your Symptoms
     subtitle: See what your symptoms could mean and what you can do to move forward.
-    button_text: Learn more
-    href: /protect-yourself
+    button_text: Check now
+    href: /symptom-checker
+    image_name: undraw-home-promo-symptoms
   items:
     -
       item_type: recent_numbers

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/api/who_service.dart';
-import 'package:who_app/components/stat_card.dart';
+import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          StatCard(
+          _HomeStatCard(
             stat: _globalCaseCount != null && _globalCaseCount > 0
                 ? numFmt.format(_globalCaseCount)
                 : '-',
@@ -37,7 +39,7 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
           Container(
             height: 12.0,
           ),
-          StatCard(
+          _HomeStatCard(
             stat: _globalDeathCount != null && _globalDeathCount > 0
                 ? numFmt.format(_globalDeathCount)
                 : '-',
@@ -59,5 +61,66 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
         _globalDeathCount = globalStats['deaths'];
       });
     }
+  }
+}
+
+class _HomeStatCard extends StatelessWidget {
+  final String stat;
+  final String title;
+
+  const _HomeStatCard({
+    @required this.stat,
+    @required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+      child: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              child: SvgPicture.asset('assets/svg/undraw-home-statcard-bg.svg'),
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              color: Constants.primaryDarkColor.withOpacity(0.15),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 18.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                ThemedText(
+                  this.stat,
+                  variant: TypographyVariant.h2,
+                  softWrap: true,
+                  style: TextStyle(
+                    color: Constants.primaryDarkColor,
+                    height: 1,
+                    letterSpacing: -1,
+                  ),
+                ),
+                Container(
+                  height: 8.0,
+                ),
+                ThemedText(
+                  this.title,
+                  variant: TypographyVariant.button,
+                  style: TextStyle(
+                    color: Constants.whoBackgroundBlueColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

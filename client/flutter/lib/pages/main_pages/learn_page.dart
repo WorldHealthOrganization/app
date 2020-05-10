@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/components/learn_page_promo.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
@@ -24,6 +25,24 @@ class _LearnPageState extends State<LearnPage> {
   final header =
       TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
   IndexContent _content;
+  final List<_MenuItemTheme> menuColors = [
+    _MenuItemTheme(
+      backgroundColor: Constants.primaryDarkColor,
+      textColor: CupertinoColors.white,
+    ),
+    _MenuItemTheme(
+      backgroundColor: Constants.accentTealColor,
+      textColor: CupertinoColors.white,
+    ),
+    _MenuItemTheme(
+      backgroundColor: Constants.whoAccentYellowColor,
+      textColor: Constants.neutralTextDarkColor,
+    ),
+    _MenuItemTheme(
+      backgroundColor: Constants.accentColor,
+      textColor: CupertinoColors.white,
+    ),
+  ];
 
   @override
   void didChangeDependencies() async {
@@ -87,7 +106,7 @@ class _LearnPageState extends State<LearnPage> {
           subtitle: p.subtitle,
           buttonText: p.buttonText,
           link: p.link,
-          color: Color(0xFFD5F5FD),
+          imageName: p.imageName,
         ),
     ];
   }
@@ -97,11 +116,14 @@ class _LearnPageState extends State<LearnPage> {
 
   List<Widget> _buildMenu() {
     return (_content?.items ?? []).asMap().entries.map((entry) {
+      final itemTheme = menuColors[entry.key];
       return _MenuItem(
         title: entry.value.title,
         subtitle: entry.value.subtitle,
         link: entry.value.link,
-        color: Constants.menuButtonColor,
+        color: itemTheme.backgroundColor,
+        textColor: itemTheme.textColor,
+        imageName: entry.value.imageName,
       );
     }).toList();
   }
@@ -113,70 +135,67 @@ class _MenuItem extends StatelessWidget {
     @required this.link,
     @required this.subtitle,
     @required this.color,
+    @required this.textColor,
+    this.imageName,
   });
 
   final String title;
   final RouteLink link;
   final String subtitle;
   final Color color;
+  final Color textColor;
+  final String imageName;
+
+  String get assetName {
+    return imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 12,
-        left: 24,
-        right: 24,
-      ),
-      child: Card(
-        margin: EdgeInsets.zero,
-        elevation: 0,
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        child: FlatButton(
-          padding: const EdgeInsets.all(24),
-          onPressed: () {
-            return Navigator.of(context, rootNavigator: true)
-                .pushNamed(link.route, arguments: link.args);
-          },
-          child: Column(
-            mainAxisAlignment: subtitle != null
-                ? MainAxisAlignment.end
-                : MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              if (title != null)
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: subtitle != null ? 24 : 0,
-                  ),
-                  child: ThemedText(
-                    title,
-                    variant: TypographyVariant.h3,
-                    style: TextStyle(color: CupertinoColors.white),
-                  ),
+        padding: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Container(
+            color: this.color,
+            constraints: BoxConstraints(
+              minHeight: 24.0,
+              minWidth: double.infinity,
+            ),
+            child: FlatButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                return this.link.open(context);
+              },
+              child: Container(
+                width: double.infinity,
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: <Widget>[
+                    if (this.assetName != null)
+                      Positioned(
+                        right: 0.0,
+                        top: 0.0,
+                        bottom: 0.0,
+                        child: SvgPicture.asset(this.assetName),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 24.0),
+                      child: ThemedText(
+                        this.title,
+                        variant: TypographyVariant.button,
+                        style: TextStyle(
+                          color: this.textColor,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              if (subtitle != null)
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 4,
-                  ),
-                  child: ThemedText(
-                    subtitle,
-                    variant: TypographyVariant.body,
-                    style: TextStyle(color: Color(0xD5FFFFFF)),
-                  ),
-                ),
-            ],
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -186,14 +205,14 @@ class _PromoItem extends StatelessWidget {
     @required this.link,
     @required this.subtitle,
     @required this.buttonText,
-    @required this.color,
+    this.imageName,
   });
 
   final String title;
   final RouteLink link;
   final String subtitle;
   final String buttonText;
-  final Color color;
+  final String imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -202,6 +221,17 @@ class _PromoItem extends StatelessWidget {
       subtitle: subtitle,
       link: link,
       buttonText: buttonText,
+      imageName: imageName,
     ));
   }
+}
+
+class _MenuItemTheme {
+  final Color backgroundColor;
+  final Color textColor;
+
+  const _MenuItemTheme({
+    @required this.backgroundColor,
+    @required this.textColor,
+  });
 }
