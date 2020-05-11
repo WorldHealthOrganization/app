@@ -114,8 +114,11 @@ class _HomeProtectYourselfCard extends StatelessWidget {
             Expanded(
               child: Container(
                 alignment: Alignment.bottomCenter,
-                child:
-                    SvgPicture.asset('assets/svg/${this.fact.imageName}.svg'),
+                child: AspectRatio(
+                  aspectRatio: 316 / 240,
+                  child:
+                      SvgPicture.asset('assets/svg/${this.fact.imageName}.svg'),
+                ),
               ),
             )
           ],
