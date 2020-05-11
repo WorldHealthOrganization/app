@@ -157,7 +157,6 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       long countryTotalDeaths = 0L;
 
       for (Map.Entry<Long, StoredCaseStats.StoredStatSnapshot> innerEntry : countrySnapshots.entrySet()) {
-        long timestamp = innerEntry.getKey();
         StoredCaseStats.StoredStatSnapshot countrySnapshot = innerEntry.getValue();
         countryTotalCases += countrySnapshot.dailyCases;
         countryTotalDeaths += countrySnapshot.dailyDeaths;
@@ -177,5 +176,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
           .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
           .collect(Collectors.toList()))
       .attribution("WHO");
+
+      StoredCaseStats.save(perCountryCaseStats.build());
+
+    }
   }
 }
