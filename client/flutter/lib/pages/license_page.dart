@@ -106,7 +106,7 @@ class _LicensePageState extends State<LicensePage> {
       title: "Licenses",
       body: [
         SliverPadding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(24.0),
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
