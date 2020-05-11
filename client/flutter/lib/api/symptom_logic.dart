@@ -9,6 +9,7 @@ import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 /// names (where questionId is the id of any prior question and
 /// answerId is any answer id in that question):
 /// - wasDisplayed("<questionId>") - whether a prior question was displayed
+/// - has("<answerId>") - true iff any answer with that id was selected
 ///
 /// The following are defined solely if the question was displayed
 /// (conditions must not rely on answers to questions that may not have been
@@ -43,6 +44,8 @@ class SymptomLogic {
           .firstWhere((p) => p.question.id == qId)
           .selectedAnswers
           .length,
+      'has': (String aId) =>
+          previousPages.any((p) => p.selectedAnswers.contains(aId)),
     };
     previousPages.forEach((m) {
       ret.addAll(_pageToContext(m));

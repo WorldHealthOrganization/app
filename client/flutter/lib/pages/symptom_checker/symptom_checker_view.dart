@@ -98,11 +98,6 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   }
 
   void _modelChanged() {
-    if (!_model.isFatalError && _model.results != null) {
-      Navigator.of(context)
-          .pushReplacementNamed('/symptom-checker-results', arguments: _model);
-      return;
-    }
     setState(() {
       _pages = _model.pages.map(_viewForPageModel).toList();
     });
@@ -126,6 +121,11 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   @override
   void answerQuestion(Set<String> answerIds) {
     _model.answerQuestion(answerIds);
+    if (!_model.isFatalError && _model.results != null) {
+      Navigator.of(context)
+          .pushNamed('/symptom-checker-results', arguments: _model);
+      return;
+    }
   }
 
   /// Receive back indication from the page and update the model.

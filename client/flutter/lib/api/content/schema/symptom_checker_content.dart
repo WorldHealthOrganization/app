@@ -9,6 +9,7 @@ import '../content_loading.dart';
 class SymptomCheckerContent extends ContentBase {
   List<SymptomCheckerQuestion> questions;
   List<SymptomCheckerResult> results;
+  Map<String, SymptomCheckerResultCard> cards;
 
   static Future<SymptomCheckerContent> load(Locale locale) async {
     var bundle = await ContentLoading().load(locale, "symptom_checker");
@@ -19,6 +20,10 @@ class SymptomCheckerContent extends ContentBase {
       : super(bundle, schemaName: "symptom_checker") {
     try {
       this.questions = bundle.contentItems.map(_questionFromContent).toList();
+      this.cards = Map<String, SymptomCheckerResultCard>.fromIterable(
+          bundle.contentCards.map(_cardFromContent),
+          key: (v) => v.id,
+          value: (v) => v);
       this.results = bundle.contentResults.map(_resultFromContent).toList();
     } catch (err) {
       print("Error loading symptom checker data: $err");
@@ -72,19 +77,19 @@ class SymptomCheckerContent extends ContentBase {
         severity: severity,
         id: item['id'],
         displayCondition: item['display_condition'],
-        cards: _cardsFromContent(item));
+        cards: _cardsFromIds(item['cards']));
   }
 
-  List<SymptomCheckerResultCard> _cardsFromContent(dynamic item) {
-    var cards = item['cards'];
-    if (cards == null) {
+  List<SymptomCheckerResultCard> _cardsFromIds(dynamic cardIds) {
+    if (cardIds == null) {
       return [];
     }
-    return List<SymptomCheckerResultCard>.from(cards.map(_cardFromContent));
+    return List<SymptomCheckerResultCard>.from(cardIds.map((id) => cards[id]));
   }
 
   SymptomCheckerResultCard _cardFromContent(dynamic item) {
     return SymptomCheckerResultCard(
+      id: item['id'],
       title: item['title'],
       bodyHtml: item['body_html'],
       iconName: item['icon_name'],
@@ -192,6 +197,9 @@ class SymptomCheckerResult {
 
 class SymptomCheckerResultCard {
   /// The title
+  final String id;
+
+  /// The title
   final String title;
 
   /// The answer
@@ -201,6 +209,7 @@ class SymptomCheckerResultCard {
   final String iconName;
 
   SymptomCheckerResultCard({
+    @required this.id,
     @required this.title,
     this.bodyHtml,
     this.iconName,
