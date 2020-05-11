@@ -51,11 +51,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
 
     Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
     
-    HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> perCountrySnapshots = new HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>>();
+    HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> allCountrySnapshots = new HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>>();
 
-    // Given that each row has heterogeneous elements, not sure there is much benefit
-    // to using gson with reflection here.
     for (JsonElement feature : rows) {
+      // iterate through list once to creat result data structure to avoid nested null check below
 
       JsonObject featureAsJsonObject = feature.getAsJsonObject();
       JsonElement attributesElement = featureAsJsonObject.get("attributes");
@@ -63,9 +62,13 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       JsonObject attributes = attributesElement.getAsJsonObject();
 
       String iso2code = attributes.get("ISO_2_CODE").getAsString();
-    
+
+      HashMap<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = new HashMap<>();
+      allCountrySnapshots.put(iso2code,countrySnapshots);
     }
 
+    // Given that each row has heterogeneous elements, not sure there is much benefit
+    // to using gson with reflection here.
     for (JsonElement feature : rows) {
 
       JsonObject featureAsJsonObject = feature.getAsJsonObject();
@@ -92,7 +95,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       globalTotalCases += dailyCases;
       globalTotalDeaths += dailyDeaths;
 
-      Map<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = perCountrySnapshots.get(iso2code);
+      Map<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = allCountrySnapshots.get(iso2code);
 
       StoredCaseStats.StoredStatSnapshot globalSnapshot = globalSnapshots.get(timestamp);
       StoredCaseStats.StoredStatSnapshot countrySnapshot = countrySnapshots.get(timestamp);
@@ -145,7 +148,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
 
     StoredCaseStats.save(global.build());
 
-    for (Map.Entry<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> outerEntry : perCountrySnapshots.entrySet()) {
+    for (Map.Entry<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> outerEntry : allCountrySnapshots.entrySet()) {
       
       String iso2code = outerEntry.getKey();
       HashMap<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = outerEntry.getValue();
@@ -174,6 +177,5 @@ public class RefreshCaseStatsServlet extends HttpServlet {
           .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
           .collect(Collectors.toList()))
       .attribution("WHO");
-
   }
 }
