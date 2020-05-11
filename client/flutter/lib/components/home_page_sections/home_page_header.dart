@@ -107,10 +107,6 @@ class HomePageHeader extends StatelessWidget {
                         ),
                         color: CupertinoColors.white,
                         child: Container(
-                          constraints: BoxConstraints(
-                            minWidth: 180,
-                            maxWidth: 300,
-                          ),
                           child: ThemedText(
                             this.buttonText,
                             variant: TypographyVariant.button,

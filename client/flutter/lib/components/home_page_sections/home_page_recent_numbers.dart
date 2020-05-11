@@ -32,19 +32,11 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
           _HomeStatCard(
             stat: _globalCaseCount != null && _globalCaseCount > 0
                 ? numFmt.format(_globalCaseCount)
-                : '-',
+                : '',
             // TODO: localize
-            title: 'Global Cases',
-          ),
-          Container(
-            height: 12.0,
-          ),
-          _HomeStatCard(
-            stat: _globalDeathCount != null && _globalDeathCount > 0
-                ? numFmt.format(_globalDeathCount)
-                : '-',
-            // TODO: localize
-            title: 'Global Deaths',
+            title: _globalCaseCount != null && _globalCaseCount > 0
+                ? 'Global Cases'
+                : '',
           ),
         ],
       ),
@@ -107,13 +99,13 @@ class _HomeStatCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 8.0,
+                  height: 4.0,
                 ),
                 ThemedText(
                   this.title,
                   variant: TypographyVariant.button,
                   style: TextStyle(
-                    color: Constants.whoBackgroundBlueColor,
+                    color: Constants.primaryDarkColor,
                   ),
                 ),
               ],
