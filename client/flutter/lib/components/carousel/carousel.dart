@@ -54,8 +54,7 @@ class CarouselView extends StatelessWidget {
                       ? goToPreviousPage()
                       : goToLastPage(),
                 ),
-                Container(
-                    child: _buildPageViewIndicator(context)),
+                Container(child: _buildPageViewIndicator(context)),
                 CupertinoButton(
                   child: Icon(CupertinoIcons.forward),
                   onPressed: () => pageController.page < this.items.length - 1
