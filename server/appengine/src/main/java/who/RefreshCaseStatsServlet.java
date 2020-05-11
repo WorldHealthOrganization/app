@@ -50,6 +50,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     long lastUpdated = 0L;
 
     Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
+    
+    HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> perCountrySnapshots = new HashMap<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>>();
+
     // Given that each row has heterogeneous elements, not sure there is much benefit
     // to using gson with reflection here.
     for (JsonElement feature : rows) {
@@ -58,6 +61,19 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       JsonElement attributesElement = featureAsJsonObject.get("attributes");
 
       JsonObject attributes = attributesElement.getAsJsonObject();
+
+      String iso2code = attributes.get("ISO_2_CODE").getAsString();
+    
+    }
+
+    for (JsonElement feature : rows) {
+
+      JsonObject featureAsJsonObject = feature.getAsJsonObject();
+      JsonElement attributesElement = featureAsJsonObject.get("attributes");
+
+      JsonObject attributes = attributesElement.getAsJsonObject();
+
+      String iso2code = attributes.get("ISO_2_CODE").getAsString();
 
       long timestamp = attributes.get("date_epicrv").getAsLong();
 
@@ -76,21 +92,40 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       globalTotalCases += dailyCases;
       globalTotalDeaths += dailyDeaths;
 
-      StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(timestamp);
+      Map<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = perCountrySnapshots.get(iso2code);
 
-      if (snapshot == null) {
-        snapshot = new StoredCaseStats.StoredStatSnapshot();
-        snapshot.epochMsec = timestamp;
-        snapshot.dailyCases = 0L;
-        snapshot.dailyDeaths = 0L;
-        snapshot.totalCases = 0L;
-        snapshot.totalDeaths = 0L;
-        globalSnapshots.put(timestamp, snapshot);
+      StoredCaseStats.StoredStatSnapshot globalSnapshot = globalSnapshots.get(timestamp);
+      StoredCaseStats.StoredStatSnapshot countrySnapshot = countrySnapshots.get(timestamp);
+
+      if (globalSnapshot == null) {
+        globalSnapshot = new StoredCaseStats.StoredStatSnapshot();
+        globalSnapshot.epochMsec = timestamp;
+        globalSnapshot.dailyCases = 0L;
+        globalSnapshot.dailyDeaths = 0L;
+        globalSnapshot.totalCases = 0L;
+        globalSnapshot.totalDeaths = 0L;
+        globalSnapshots.put(timestamp, globalSnapshot);
       }
-      snapshot.dailyCases += dailyCases;
-      snapshot.dailyDeaths += dailyDeaths;
-      snapshot.totalCases += totalCases;
-      snapshot.totalDeaths += totalDeaths;
+
+      if (countrySnapshot == null) {
+        countrySnapshot = new StoredCaseStats.StoredStatSnapshot();
+        countrySnapshot.epochMsec = timestamp;
+        countrySnapshot.dailyCases = 0L;
+        countrySnapshot.dailyDeaths = 0L;
+        countrySnapshot.totalCases = 0L;
+        countrySnapshot.totalDeaths = 0L;
+        countrySnapshots.put(timestamp, countrySnapshot);
+      }
+      
+      globalSnapshot.dailyCases += dailyCases;
+      globalSnapshot.dailyDeaths += dailyDeaths;
+      globalSnapshot.totalCases += totalCases;
+      globalSnapshot.totalDeaths += totalDeaths;
+
+      countrySnapshot.dailyCases += dailyCases;
+      countrySnapshot.dailyDeaths += dailyDeaths;
+      countrySnapshot.totalCases += totalCases;
+      countrySnapshot.totalDeaths += totalDeaths;
     }
 
     CaseStats.Builder global = new CaseStats.Builder()
@@ -109,5 +144,36 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         .attribution("WHO");
 
     StoredCaseStats.save(global.build());
+
+    for (Map.Entry<String, HashMap<Long, StoredCaseStats.StoredStatSnapshot>> outerEntry : perCountrySnapshots.entrySet()) {
+      
+      String iso2code = outerEntry.getKey();
+      HashMap<Long, StoredCaseStats.StoredStatSnapshot> countrySnapshots = outerEntry.getValue();
+      
+      long countryTotalCases = 0L;
+      long countryTotalDeaths = 0L;
+
+      for (Map.Entry<Long, StoredCaseStats.StoredStatSnapshot> innerEntry : countrySnapshots.entrySet()) {
+        long timestamp = innerEntry.getKey();
+        StoredCaseStats.StoredStatSnapshot countrySnapshot = innerEntry.getValue();
+        countryTotalCases += countrySnapshot.dailyCases;
+        countryTotalDeaths += countrySnapshot.dailyDeaths;
+      }
+
+      CaseStats.Builder perCountryCaseStats = new CaseStats.Builder()
+      .jurisdictionType(JurisdictionType.COUNTRY)
+      .jurisdiction(iso2code)
+      .cases(countryTotalCases)
+      .deaths(countryTotalDeaths)
+      .lastUpdated(lastUpdated)
+      .recoveries(-1L)
+      .timeseries(
+        countrySnapshots.entrySet().stream()
+          .sorted(Comparator.comparing(Map.Entry::getKey))
+          .map(Map.Entry::getValue)
+          .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
+          .collect(Collectors.toList()))
+      .attribution("WHO");
+
   }
 }
