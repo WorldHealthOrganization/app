@@ -44,11 +44,11 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 
   FlutterError.onError = _onFlutterError;
 
-  await runZoned<Future<void>>(
+  await runZonedGuarded<Future<void>>(
     () async {
       runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
     },
-    onError: _onError,
+    _onError,
   );
 }
 
