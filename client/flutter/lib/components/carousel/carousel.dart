@@ -46,7 +46,7 @@ class CarouselView extends StatelessWidget {
           child: SafeArea(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 CupertinoButton(
                   child: Icon(CupertinoIcons.back),
@@ -54,9 +54,7 @@ class CarouselView extends StatelessWidget {
                       ? goToPreviousPage()
                       : goToLastPage(),
                 ),
-                Container(
-                    padding: EdgeInsets.only(bottom: 8),
-                    child: _buildPageViewIndicator(context)),
+                Container(child: _buildPageViewIndicator(context)),
                 CupertinoButton(
                   child: Icon(CupertinoIcons.forward),
                   onPressed: () => pageController.page < this.items.length - 1
@@ -111,7 +109,7 @@ class CarouselView extends StatelessWidget {
                   length: this.items.length,
                   normalBuilder: (animationController, index) => Circle(
                     size: 20.0,
-                    color: Constants.primaryDarkColor.withOpacity(.75),
+                    color: Constants.neutralTextLightColor.withOpacity(0.2),
                   ),
                   highlightedBuilder: (animationController, index) =>
                       ScaleTransition(
@@ -120,7 +118,7 @@ class CarouselView extends StatelessWidget {
                       curve: Curves.ease,
                     ),
                     child: Circle(
-                      size: 28.0,
+                      size: 24.0,
                       color: Constants.primaryDarkColor,
                     ),
                   ),
