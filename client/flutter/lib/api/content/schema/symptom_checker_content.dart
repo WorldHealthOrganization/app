@@ -8,6 +8,7 @@ import '../content_loading.dart';
 /// are to be presented.
 class SymptomCheckerContent extends ContentBase {
   List<SymptomCheckerQuestion> questions;
+  List<SymptomCheckerResult> results;
 
   static Future<SymptomCheckerContent> load(Locale locale) async {
     var bundle = await ContentLoading().load(locale, "symptom_checker");
@@ -18,6 +19,7 @@ class SymptomCheckerContent extends ContentBase {
       : super(bundle, schemaName: "symptom_checker") {
     try {
       this.questions = bundle.contentItems.map(_questionFromContent).toList();
+      this.results = bundle.contentResults.map(_resultFromContent).toList();
     } catch (err) {
       print("Error loading symptom checker data: $err");
       throw ContentBundleDataException();
@@ -43,6 +45,50 @@ class SymptomCheckerContent extends ContentBase {
         displayCondition: item['display_condition'],
         imageName: item['image_name'],
         answers: _answersFromContent(item));
+  }
+
+  SymptomCheckerResult _resultFromContent(dynamic item) {
+    SymptomCheckerResultSeverity severity;
+    if (item['severity'] != null) {
+      switch (item['severity']) {
+        case "covid19_symptoms":
+          severity = SymptomCheckerResultSeverity.COVID19Symptoms;
+          break;
+        case "some_symptoms":
+          severity = SymptomCheckerResultSeverity.SomeSymptoms;
+          break;
+        case "none":
+          severity = SymptomCheckerResultSeverity.None;
+          break;
+        case "emergency":
+          severity = SymptomCheckerResultSeverity.Emergency;
+          break;
+        default:
+          throw Exception("unrecognized result severity");
+      }
+    }
+    return SymptomCheckerResult(
+        title: item['title'],
+        severity: severity,
+        id: item['id'],
+        displayCondition: item['display_condition'],
+        cards: _cardsFromContent(item));
+  }
+
+  List<SymptomCheckerResultCard> _cardsFromContent(dynamic item) {
+    var cards = item['cards'];
+    if (cards == null) {
+      return [];
+    }
+    return List<SymptomCheckerResultCard>.from(cards.map(_cardFromContent));
+  }
+
+  SymptomCheckerResultCard _cardFromContent(dynamic item) {
+    return SymptomCheckerResultCard(
+      title: item['title'],
+      bodyHtml: item['body_html'],
+      iconName: item['icon_name'],
+    );
   }
 
   List<SymptomCheckerAnswer> _answersFromContent(dynamic item) {
@@ -109,6 +155,55 @@ class SymptomCheckerQuestion {
     @required this.imageName,
     @required this.displayCondition,
     this.answers,
+  });
+}
+
+enum SymptomCheckerResultSeverity {
+  None,
+  SomeSymptoms,
+  COVID19Symptoms,
+  Emergency,
+}
+
+class SymptomCheckerResult {
+  /// A globally unique id for the result.
+  final String id;
+
+  /// The summary/title.
+  final String title;
+
+  /// The summary/title.
+  final SymptomCheckerResultSeverity severity;
+
+  /// An expression indicating whether the question should be presented.
+  final String displayCondition;
+
+  /// The list of possible answers.
+  final List<SymptomCheckerResultCard> cards;
+
+  SymptomCheckerResult({
+    @required this.id,
+    this.title,
+    @required this.displayCondition,
+    this.severity,
+    this.cards,
+  });
+}
+
+class SymptomCheckerResultCard {
+  /// The title
+  final String title;
+
+  /// The answer
+  final String bodyHtml;
+
+  /// An icon to display with the answer
+  final String iconName;
+
+  SymptomCheckerResultCard({
+    @required this.title,
+    this.bodyHtml,
+    this.iconName,
   });
 }
 

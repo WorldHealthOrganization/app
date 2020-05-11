@@ -28,7 +28,8 @@ contents:
     -
       id:  q2_symptoms
       type: multiple_selection
-      display_condition: q1_emergency['no_emergency']
+      display_condition: >-
+        q1_emergency['no_emergency']
       question_html: |
         <p><b>Do you have any of these symptoms?</b></p>
       answers:
@@ -85,7 +86,9 @@ contents:
     -
       id:  q3_covid19contact
       type: single_selection
-      display_condition: wasDisplayed('q2_symptoms') && !(q2_symptoms['fever'] && q2_symptoms['dry_cough'])
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough'])
       question_html: |
         <p><b>Close contact with COVID-19?</b></p>
         <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
@@ -101,9 +104,38 @@ contents:
           body_html: |
             <p>No</p>
     -
-      id:  q4_age
+      id:  q4_ltc_hcf
       type: single_selection
-      display_condition: wasDisplayed('q3_covid19contact') && ((selectionCount('q2_symptoms') > 0) || q3_covid19contact['no_contact'])
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (selectionCount('q2_symptoms') > 0) &&
+        wasDisplayed('q3_covid19contact') &&
+        q3_covid19contact['no_contact']
+      question_html: |
+        <p><b>Are you a resident of or do you work in a healthcare facility or a longterm care facility?</b></p>
+      answers:
+        -
+          id: ltc_hcf
+          icon_name: snowflake
+          body_html: |
+            <p>Yes</p>
+        -
+          id: no_ltc_hcf
+          icon_name: snowflake
+          body_html: |
+            <p>No</p>
+    -
+      id:  q5_age
+      type: single_selection
+      display_condition: >-
+        wasDisplayed('q2_symptoms') && 
+        (
+          (q2_symptoms['fever'] && q2_symptoms['dry_cough']) ||
+          (wasDisplayed('q3_covid19contact') &&
+            ((selectionCount('q2_symptoms') > 0) ||
+              q3_covid19contact['no_contact'])
+            )
+        )
       question_html: |
         <p><b>How old are you?</b></p>
       answers:
@@ -119,9 +151,10 @@ contents:
             <p>Over 60</p>
 
     -
-      id:  q5_preexisting_cond
+      id:  q6_preexisting_cond
       type: single_selection
-      display_condition: wasDisplayed('q4_age') && q4_age['under60']
+      display_condition: >-
+        wasDisplayed('q5_age') && q5_age['under60']
       question_html: |
         <p><b>Pre-existing conditions?</b><p>
         Do you have any of the following conditions?<br/>
@@ -130,7 +163,7 @@ contents:
         - Cardiovascular disease<br/>
         - Chronic respiratory disease<br/>
         - Immunocompromising conditions<br/>
-        - Obesity</p>
+        - Extreme obesity (Body Mass Index [BMI] > 40)</p>
       answers:
         -
           id: preexisting_cond
@@ -142,3 +175,354 @@ contents:
           icon_name: snowflake
           body_html: |
             <p>No</p>
+  results:
+    -
+      id: emergency
+      title: Call for Help
+      severity: emergency
+      display_condition: >-
+        q1_emergency['emergency']
+      cards:
+        -
+          title: Based on your reported symptoms, you should seek medical attention immediately.
+          body_html: <p>Always call before visiting your doctor or health facility.</p>
+          icon_name: call
+        -
+          title: Always follow local guidance.
+          body_html: <p>Regularly check for the latest info from WHO and national and local public health authorities.</p>
+          icon_name: note
+    -
+      id: covid19_symptoms
+      severity: covid19_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (q2_symptoms['fever'] && q2_symptoms['dry_cough'])
+      title: You currently have symptoms consistent with COVID-19 and should self-isolate. 
+    -
+      id: covid19_symptoms_call1
+      severity: covid19_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        (!wasDisplayed('q6_preexisting_cond') ||
+        q6_preexisting_cond['preexisting_cond'])
+      cards:
+        -
+          title: Call your healthcare provider.
+          icon_name: call
+    -
+      id: covid19_symptoms_common
+      severity: covid19_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (q2_symptoms['fever'] && q2_symptoms['dry_cough'])
+      cards:
+        -
+          title: Testing
+          body_html: >-
+            <p>We recommend getting tested for COVID-19. Contact your local health authorities to learn more about testing and care options in your area.</p>
+        -
+          title: Avoid all contact
+          body_html: >-
+            <p>Avoid contact with other people, including the people you live with. Try and stay away from others for at least 14 days from when your symptoms resolve. Isolation can end if your symptoms improve and you have had no fever for at least 3 days without the use of medicine.</p>
+          icon_name: home
+        -
+          title: Masks
+          body_html: >-
+            <p>We recommend that you wear a mask around others. Your caregivers should wear a mask too [TODO: link to guidance for caregivers]. Don't have a mask? [TODO: Link out to instructions for people without a mask]. How to use a mask [TODO: Link out to instructions on how to use a mask]</p>
+        -
+          title: Cough into your elbow or tissue
+          body_html: >-
+            <p>If you're not wearing a mask, when coughing and sneezing, cover your mouth and nose with flexed elbow or tissue. Throw your tissue into a closed bin immediately after use.</p>
+        -
+          title: Monitor Symptoms
+          body_html: >-
+            <p>You should monitor your symptoms closely and if they get worse consult with a healthcare provider.</p>
+        -
+          title: Rest and Take Care
+          body_html: >-
+            <p>Eat well, drink fluids, and get plenty of rest.</p>
+          icon_name: bed
+        -
+          title: >-
+            Learn other ways to protect others [TODO: Link out to "prevent" section of app content]
+    -
+      id: covid19_symptoms_call2
+      severity: covid19_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        (!wasDisplayed('q6_preexisting_cond') ||
+        q6_preexisting_cond['preexisting_cond'])
+      cards:
+        -
+          title: Always follow local guidance.
+          body_html: >-
+            <p>Regularly check for the latest info from WHO and national and local public health authorities.</p>
+    -
+      id: covid19_symptoms_no_call
+      severity: covid19_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        (q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        wasDisplayed('q6_preexisting_cond') &&
+        q6_preexisting_cond['no_preexisting_cond']
+      cards:
+        -
+          title: If you have any concerns, call your healthcare provider.
+          body_html: >-
+            <p>Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.</p>
+    -
+      id: some_symptoms
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0
+      title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
+    -
+      id: some_symptoms_call1
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0 &&
+        (!wasDisplayed('q6_preexisting_cond') ||
+        q6_preexisting_cond['preexisting_cond'])
+      cards:
+        -
+          title: Call your healthcare provider.
+          icon_name: call
+    -
+      id: some_symptoms_common1
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0
+      cards:
+        -
+          title: Testing
+          body_html: >-
+            <p>We recommend getting tested for COVID-19. Contact your local health authorities to learn more about testing and care options in your area.</p>
+    -
+      id: some_symptoms_quarantine
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0 &&
+        (!wasDisplayed('q4_ltc_hcf') ||
+        q4_ltc_hcf['ltc_hcf'])
+      cards:
+        -
+          title: Quarantine
+          body_html: >-
+            <p>You may have been exposed and should stay home for the 14 days after your last exposure. Avoid contact with other people, including the people you live with, so you don't infect others.</p>
+          icon_name: home
+    -
+      id: some_symptoms_stay_home
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0 &&
+        wasDisplayed('q4_ltc_hcf') &&
+        q4_ltc_hcf['no_ltc_hcf']
+      cards:
+        -
+          title: Stay home
+          body_html: >-
+            <p>Keep others safe by staying home until your symptoms go away.</p>
+          icon_name: home
+    -
+      id: some_symptoms_common2
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0
+      cards:
+        -
+          title: Wear a mask
+          body_html: >-
+            <p>Wear a mask around others, especially if you are coughing. Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+        -
+          title: Cough into your elbow or tissue
+          body_html: >-
+            <p>If you're not wearing a mask, when coughing and sneezing, cover your mouth and nose with flexed elbow or tissue. Throw your tissue into a closed bin immediately after use.</p>
+        -
+          title: Monitor Symptoms
+          body_html: >-
+            <p>You should monitor your symptoms closely and if they get worse consult with a healthcare provider.</p>
+        -
+          title: Rest and Take Care
+          body_html: >-
+            <p>Eat well, drink fluids, and get plenty of rest.</p>
+          icon_name: bed
+        -
+          title: >-
+            Learn other ways to protect others [TODO: Link out to "prevent" section of app content]
+    -
+      id: some_symptoms_call2
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0 &&
+        (!wasDisplayed('q6_preexisting_cond') ||
+        q6_preexisting_cond['preexisting_cond'])
+      cards:
+        -
+          title: Always follow local guidance.
+          body_html: >-
+            <p>Regularly check for the latest info from WHO and national and local public health authorities.</p>
+    -
+      id: some_symptoms_no_call
+      severity: some_symptoms
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        !(q2_symptoms['fever'] && q2_symptoms['dry_cough']) &&
+        selectionCount('q2_symptoms') > 0 &&
+        !(!wasDisplayed('q6_preexisting_cond') ||
+        q6_preexisting_cond['preexisting_cond'])
+      cards:
+        -
+          title: If you have any concerns, call your healthcare provider.
+          body_html: >-
+            <p>Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.</p>
+    -
+      id: no_symptoms
+      severity: none
+      title: You do not have symptoms consistent with COVID-19.
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0
+    -
+      id: no_symptoms_no_contact
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        wasDisplayed('q3_covid19contact') &&
+        q3_covid19contact['contact']
+      cards:
+        - title: Testing
+          body_html: >-
+            <p>We recommend getting tested for COVID-19. Contact your local health authorities to learn more about testing and care options in your area.</p>
+        -
+          title: Quarantine
+          body_html: >-
+            <p>You may have been exposed and should stay home for the 14 days after your last exposure. Avoid contact with other people, including the people you live with, so you don't infect others.</p>
+        -
+          title: Monitor Symptoms
+          body_html: >-
+            <p>You should monitor your symptoms closely. If you begin to develop symptoms, consult with a healthcare provider.</p>
+    -
+      id: no_symptoms_known_risk_factors
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        ((wasDisplayed('q6_preexisting_cond') &&
+        q3_covid19contact['preexisting_cond']) ||
+        (wasDisplayed('q5_age') && q5_age['over60']))
+      cards:
+        -
+          title: Stay home
+          body_html: >-
+            <p>You have known risk factors for COVID-19. Staying home and limiting contact with people you don't live with is one of the best ways to protect yourself.</p>
+          icon_name: home
+        -
+          title: Contact local health authorities
+          body_html: >-
+            <p>Because you have known risk factors for COVID-19, testing and care might be available in your area. Contact local health authorities to learn more.</p>
+    -
+      id: no_symptoms_distancing
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        wasDisplayed('q6_preexisting_cond') &&
+        q3_covid19contact['no_preexisting_cond']
+      cards:
+        -
+          title: Practice Physical Distancing
+          body_html: >-
+            <p>Avoid groups of people and keep 6 feet apart from anyone who you do not live with. Avoid anyone showing symptoms.</p>
+    -
+      id: no_symptoms_hygiene
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        wasDisplayed('q3_covid19contact') &&
+        q3_covid19contact['no_contact']
+      cards:
+        -
+          title: Hand hygiene
+          body_html: >-
+            <p>Perform hand hygiene frequently, using an alcohol-based hand rub if hands are not visibly dirty or soap and water when hands are visibly dirty</p>
+        -
+          title: Don't touch your face
+          body_html: >-
+            <p>Avoid touching eyes, nose and mouth. Why? Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you.</p>
+    -
+      id: no_symptoms_cough_common
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0
+      cards:
+        -
+          title: Cough into your elbow or tissue
+          body_html: >-
+            <p>If you're not wearing a mask, when coughing and sneezing, cover your mouth and nose with flexed elbow or tissue. Throw your tissue into a closed bin immediately after use.</p>
+    -
+      id: no_symptoms_sick_later
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        wasDisplayed('q6_preexisting_cond') &&
+        q6_preexisting_cond['no_preexisting_cond']
+      cards:
+        -
+          title: >-
+            If you feel sick later:
+          body_html: >-
+            Stay home if you feel sick, even if you develop a slight fever or cough
+    -
+      id: no_symptoms_mask_common
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0
+      cards:
+        -
+          title: Masks
+          body_html: >-
+            <p>Wear a mask if you or someone you are looking after or in close contact with are ill with COVID-19 symptoms (especially coughing). Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+    -
+      id: no_symptoms_protect_others
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0 &&
+        wasDisplayed('q3_covid19contact') &&
+        q3_covid19contact['contact']
+      cards:
+        -
+          title: >-
+            Learn other ways to protect others [TODO: Link out to "prevent" section of app content]
+    -
+      id: no_symptoms_final_common
+      severity: none
+      display_condition: >-
+        wasDisplayed('q2_symptoms') &&
+        selectionCount('q2_symptoms') == 0
+      cards:
+        -
+          title: If you have any concerns, call your healthcare provider.
+          body_html: >-
+            <p>Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.</p>
