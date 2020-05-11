@@ -12,7 +12,6 @@ class HomePageRecentNumbers extends StatefulWidget {
 
 class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
   int _globalCaseCount;
-  int _globalDeathCount;
 
   @override
   void initState() {
@@ -50,7 +49,6 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
     if (globalStats != null) {
       setState(() {
         _globalCaseCount = globalStats['cases'];
-        _globalDeathCount = globalStats['deaths'];
       });
     }
   }
