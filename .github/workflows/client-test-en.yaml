@@ -26,7 +26,7 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.9 _flutter
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b 1.17.0 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/exposure_notifications
@@ -44,7 +44,7 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b v1.12.13+hotfix.9 _flutter
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b 1.17.0 _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/app_en
