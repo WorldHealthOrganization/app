@@ -128,7 +128,7 @@ class CountrySelectPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
                   alignment: Alignment.centerRight,
                   padding: EdgeInsets.symmetric(

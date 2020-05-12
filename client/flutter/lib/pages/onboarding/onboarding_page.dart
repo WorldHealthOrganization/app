@@ -21,6 +21,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final PageController _pageController = PageController();
 
+  Map<String, IsoCountry> _countries;
+  bool _couldLoadCountries;
   IsoCountry _selectedCountry;
   bool _showCountryListPage = true;
 
@@ -28,6 +30,22 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupCountries();
+  }
+
+  void setupCountries() async {
+    _couldLoadCountries = await IsoCountryList().loadCountries();
+    if (_couldLoadCountries) {
+      _countries = IsoCountryList().countries;
+      final currentCountryCode = Localizations.localeOf(context).countryCode;
+      _selectedCountry = _countries[currentCountryCode];
+    }
+    setState(() {});
   }
 
   @override
@@ -58,6 +76,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
           if (_showCountryListPage)
             CountryListPage(
+              countries: _countries,
               onBack: _toPreviousPage,
               selectedCountryCode: _selectedCountry?.alpha2Code,
               onCountrySelected: _selectCountry,

@@ -7,36 +7,19 @@ import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class CountryListPage extends StatefulWidget {
+class CountryListPage extends StatelessWidget {
   final String selectedCountryCode;
   final Function onBack;
   final Function onCountrySelected;
+  final Map<String, IsoCountry> countries;
 
   const CountryListPage({
     @required this.onBack,
     @required this.onCountrySelected,
+    @required this.countries,
     this.selectedCountryCode,
     Key key,
   }) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _CountryListState();
-}
-
-class _CountryListState extends State<CountryListPage> {
-  Map<String, IsoCountry> _countries;
-
-  @override
-  void initState() {
-    super.initState();
-    getCountries();
-  }
-
-  void getCountries() async {
-    await IsoCountryList().loadCountries();
-    _countries = IsoCountryList().countries;
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +27,7 @@ class _CountryListState extends State<CountryListPage> {
       navigationBar: CupertinoNavigationBar(
         backgroundColor: CupertinoColors.white,
         leading: CupertinoNavigationBarBackButton(
-          onPressed: this.widget.onBack,
+          onPressed: this.onBack,
           color: Constants.accentNavyColor,
         ),
         // TODO: localize?
@@ -61,10 +44,10 @@ class _CountryListState extends State<CountryListPage> {
   }
 
   List<Widget> _buildCountries() {
-    if (_countries == null || _countries.isEmpty) {
+    if (this.countries == null || this.countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return _countries.values
+    return (this.countries?.values ?? [])
         .map((country) => _buildCountryItem(country))
         .toList();
   }
@@ -75,7 +58,7 @@ class _CountryListState extends State<CountryListPage> {
         color: CupertinoColors.white,
         child: InkWell(
           onTap: () async {
-            await this.widget.onCountrySelected(country);
+            await this.onCountrySelected(country);
           },
           child: Column(
             children: <Widget>[
@@ -96,7 +79,7 @@ class _CountryListState extends State<CountryListPage> {
                       ),
                     ),
                   ),
-                  if (this.widget.selectedCountryCode == country.alpha2Code)
+                  if (this.selectedCountryCode == country.alpha2Code)
                     Container(
                       padding:
                           EdgeInsets.only(top: 16.0, bottom: 16.0, right: 12.0),
