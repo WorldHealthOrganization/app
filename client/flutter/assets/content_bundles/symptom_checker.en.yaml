@@ -175,7 +175,7 @@ contents:
           icon_name: snowflake
           body_html: |
             <p>No</p>
-  cards:
+  results_cards:
     -
       id: emergency_call
       title: Based on your reported symptoms, you should seek medical attention immediately.

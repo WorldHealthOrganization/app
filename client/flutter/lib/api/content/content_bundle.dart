@@ -72,7 +72,7 @@ class ContentBundle {
 
   YamlList get contentCards {
     try {
-      return yaml['contents']['cards'];
+      return yaml['contents']['results_cards'];
     } catch (err) {
       return YamlList();
     }

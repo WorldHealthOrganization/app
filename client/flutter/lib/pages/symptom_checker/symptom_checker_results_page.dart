@@ -124,7 +124,7 @@ class _Card extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
             color: CupertinoColors.white,
-            padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+            padding: EdgeInsets.all(16.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
