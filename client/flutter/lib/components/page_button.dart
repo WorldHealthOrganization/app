@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/constants.dart';
 
-class PageButton extends StatelessWidget {
+class PageButton extends StatefulWidget {
   final Color backgroundColor;
   final String title;
   final String description;
@@ -31,47 +31,74 @@ class PageButton extends StatelessWidget {
   });
 
   @override
+  _PageButtonState createState() => _PageButtonState();
+}
+
+class _PageButtonState extends State<PageButton> {
+  bool enabled = true;
+
+  void _onPressed() {
+    if (!enabled) return;
+    widget.onPressed();
+    _debounce();
+  }
+
+  Future<void> _debounce() async {
+    setState(() {
+      enabled = false;
+    });
+
+    // 200ms works, 300ms is just for good measure.
+    await Future.delayed(Duration(milliseconds: 300));
+    setState(() {
+      enabled = true;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      borderRadius: BorderRadius.circular(this.borderRadius),
-      color: backgroundColor,
+      borderRadius: BorderRadius.circular(this.widget.borderRadius),
+      color: widget.backgroundColor,
+      onPressed: _onPressed,
       child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: this.verticalPadding,
-              horizontal: this.horizontalPadding),
-          child: Column(
-            crossAxisAlignment: this.crossAxisAlignment,
-            mainAxisAlignment: this.mainAxisAlignment,
-            children: <Widget>[
-              Text(
-                this.title,
-                textAlign: TextAlign.left,
-                style: titleStyle?.copyWith(
-                      letterSpacing: Constants.buttonTextSpacing,
-                    ) ??
-                    TextStyle(
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: Constants.buttonTextSpacing,
-                      fontSize: 18,
+        padding: EdgeInsets.symmetric(
+          vertical: this.widget.verticalPadding,
+          horizontal: this.widget.horizontalPadding,
+        ),
+        child: Column(
+          crossAxisAlignment: this.widget.crossAxisAlignment,
+          mainAxisAlignment: this.widget.mainAxisAlignment,
+          children: <Widget>[
+            Text(
+              this.widget.title,
+              textAlign: TextAlign.left,
+              style: widget.titleStyle?.copyWith(
+                    letterSpacing: Constants.buttonTextSpacing,
+                  ) ??
+                  TextStyle(
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: Constants.buttonTextSpacing,
+                    fontSize: 18,
+                  ),
+            ),
+            // Makes sure text is centered properly when no description is provided
+            SizedBox(height: widget.description.isNotEmpty ? 4 : 0),
+            this.widget.description.isNotEmpty
+                ? Text(
+                    this.widget.description,
+                    textAlign: TextAlign.left,
+                    textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
+                        MediaQuery.textScaleFactorOf(context),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: widget.descriptionColor ?? Color(0xFFC9CDD6),
                     ),
-              ),
-              // Makes sure text is centered properly when no description is provided
-              SizedBox(height: description.isNotEmpty ? 4 : 0),
-              this.description.isNotEmpty
-                  ? Text(
-                      this.description,
-                      textAlign: TextAlign.left,
-                      textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
-                          MediaQuery.textScaleFactorOf(context),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: descriptionColor ?? Color(0xFFC9CDD6),
-                      ),
-                    )
-                  : Container()
-            ],
-          )),
-      onPressed: this.onPressed,
+                  )
+                : Container()
+          ],
+        ),
+      ),
     );
   }
 }
