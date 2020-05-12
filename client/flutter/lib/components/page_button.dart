@@ -12,6 +12,9 @@ class PageButton extends StatefulWidget {
   final TextStyle titleStyle;
   final Color descriptionColor;
 
+  /// The amount of time elapsed before subsequent taps are recorded. Can be
+  /// increased for actions that take a long time to complete.
+  final Duration debounceDuration;
   final double verticalPadding;
   final double horizontalPadding;
 
@@ -28,6 +31,8 @@ class PageButton extends StatefulWidget {
     this.mainAxisAlignment = MainAxisAlignment.end,
     this.titleStyle,
     this.descriptionColor,
+    // 200ms works, 300ms is just for good measure.
+    this.debounceDuration = const Duration(milliseconds: 300),
   });
 
   @override
@@ -48,8 +53,7 @@ class _PageButtonState extends State<PageButton> {
       enabled = false;
     });
 
-    // 200ms works, 300ms is just for good measure.
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(widget.debounceDuration);
     setState(() {
       enabled = true;
     });
