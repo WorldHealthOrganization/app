@@ -29,7 +29,7 @@ contents:
       id:  q2_symptoms
       type: multiple_selection
       display_condition: >-
-        q1_emergency['no_emergency']
+        has('no_emergency')
       question_html: |
         <p><b>Do you have any of these symptoms?</b></p>
       answers:
@@ -87,8 +87,8 @@ contents:
       id:  q3_covid19contact
       type: single_selection
       display_condition: >-
-        wasDisplayed('q2_symptoms') &&
-        !(q2_symptoms['fever'] && q2_symptoms['dry_cough'])
+        has('no_emergency') &&
+        !(has('fever') && has('dry_cough'))
       question_html: |
         <p><b>Close contact with COVID-19?</b></p>
         <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
@@ -107,10 +107,9 @@ contents:
       id:  q4_ltc_hcf
       type: single_selection
       display_condition: >-
-        wasDisplayed('q2_symptoms') &&
+        has('no_emergency') &&
         (selectionCount('q2_symptoms') > 0) &&
-        wasDisplayed('q3_covid19contact') &&
-        q3_covid19contact['no_contact']
+        has('no_contact')
       question_html: |
         <p><b>Are you a resident of or do you work in a healthcare facility or a longterm care facility?</b></p>
       answers:
@@ -128,14 +127,8 @@ contents:
       id:  q5_age
       type: single_selection
       display_condition: >-
-        wasDisplayed('q2_symptoms') && 
-        (
-          (q2_symptoms['fever'] && q2_symptoms['dry_cough']) ||
-          (wasDisplayed('q3_covid19contact') &&
-            ((selectionCount('q2_symptoms') > 0) ||
-              q3_covid19contact['no_contact'])
-            )
-        )
+        has('no_emergency') &&
+        !(has('contact') && (selectionCount('q2_symptoms') == 0))
       question_html: |
         <p><b>How old are you?</b></p>
       answers:
@@ -154,7 +147,7 @@ contents:
       id:  q6_preexisting_cond
       type: single_selection
       display_condition: >-
-        wasDisplayed('q5_age') && q5_age['under60']
+        has('under60')
       question_html: |
         <p><b>Pre-existing conditions?</b><p>
         Do you have any of the following conditions?<br/>
@@ -337,7 +330,7 @@ contents:
       id: some_symptoms_call_quarantine
       severity: some_symptoms
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
+        has('no_emergency') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
         (has('contact') || has('ltc_hcf')) &&
         (has('over60') || has('preexisting_cond'))
       title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
@@ -355,7 +348,7 @@ contents:
       id: some_symptoms_nocall_quarantine
       severity: some_symptoms
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
+        has('no_emergency') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
         (has('contact') || has('ltc_hcf')) &&
         has('no_preexisting_cond')
       title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
@@ -372,7 +365,7 @@ contents:
       id: some_symptoms_call_stayhome
       severity: some_symptoms
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
+        has('no_emergency') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
         has('no_contact') &&
         has('no_ltc_hcf') &&
         (has('preexisting_cond') || has('over60'))
@@ -391,7 +384,7 @@ contents:
       id: some_symptoms_nocall_stayhome
       severity: some_symptoms
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
+        has('no_emergency') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
         has('no_contact') &&
         has('no_ltc_hcf') &&
         has('no_preexisting_cond')
@@ -410,7 +403,7 @@ contents:
       severity: none
       title: You do not have symptoms consistent with COVID-19.
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') == 0 &&
+        has('no_emergency') && selectionCount('q2_symptoms') == 0 &&
         has('contact')
       cards:
         - testing
@@ -425,7 +418,7 @@ contents:
       severity: none
       title: You do not have symptoms consistent with COVID-19.
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') == 0 &&
+        has('no_emergency') && selectionCount('q2_symptoms') == 0 &&
         has('no_contact') &&
         (has('over60') || has('preexisting_cond'))
       cards:
@@ -441,7 +434,7 @@ contents:
       severity: none
       title: You do not have symptoms consistent with COVID-19.
       display_condition: >-
-        wasDisplayed('q2_symptoms') && selectionCount('q2_symptoms') == 0 &&
+        has('no_emergency') && selectionCount('q2_symptoms') == 0 &&
         has('no_contact') &&
         has('no_preexisting_cond')
       cards:
