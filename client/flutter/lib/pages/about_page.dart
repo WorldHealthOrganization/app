@@ -23,24 +23,27 @@ class AboutPage extends StatelessWidget {
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
-    void _openTermsOfService(BuildContext context) {
+    Future<void> _openTermsOfService(BuildContext context) async {
       final String url = S.of(context).aboutPageTermsOfServiceLinkUrl;
-      launch(url);
-      FirebaseAnalytics().logEvent(name: 'TermsOfService');
+      await launch(url);
+      await FirebaseAnalytics().logEvent(name: 'TermsOfService');
     }
 
-    void _openPrivacyPolicy(BuildContext context) {
+    Future<void> _openPrivacyPolicy(BuildContext context) async {
       final String url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
-      launch(url);
-      FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
+      await launch(url);
+      await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
     }
 
-    void _openLicenses(BuildContext context) {
-      Navigator.push(
+    Future<void> _openLicenses(BuildContext context) async {
+      // Logs the page switch as it happens while avoiding any delay caused
+      // by logging.
+      // ignore: unawaited_futures
+      FirebaseAnalytics().logEvent(name: 'ViewLicenses');
+      await Navigator.push(
         context,
         MaterialPageRoute(builder: (BuildContext context) => who.LicensePage()),
       );
-      FirebaseAnalytics().logEvent(name: 'ViewLicenses');
     }
 
     // TODO add divider theme to ThemeData once we've switched to a MaterialApp
