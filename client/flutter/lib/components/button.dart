@@ -36,6 +36,11 @@ class Button extends StatelessWidget {
   }
 }
 
+typedef DebounceBuilder = Widget Function(
+  BuildContext context,
+  VoidCallback callback,
+);
+
 class _Debouncer extends StatefulWidget {
   const _Debouncer({
     Key key,
@@ -46,7 +51,7 @@ class _Debouncer extends StatefulWidget {
 
   final Duration debounceDuration;
   final VoidCallback onCallback;
-  final Widget Function(BuildContext context, VoidCallback callback) builder;
+  final DebounceBuilder builder;
 
   @override
   __DebouncerState createState() => __DebouncerState();
