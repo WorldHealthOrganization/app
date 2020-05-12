@@ -53,9 +53,26 @@ class ContentBundle {
     }
   }
 
+  /// For content types containing a primary list of items, return the items.
   YamlList get contentItems {
     try {
       return yaml['contents']['items'];
+    } catch (err) {
+      return YamlList();
+    }
+  }
+
+  YamlList get contentResults {
+    try {
+      return yaml['contents']['results'];
+    } catch (err) {
+      return YamlList();
+    }
+  }
+
+  YamlList get contentCards {
+    try {
+      return yaml['contents']['results_cards'];
     } catch (err) {
       return YamlList();
     }
