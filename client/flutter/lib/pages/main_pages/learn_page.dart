@@ -152,50 +152,43 @@ class _MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Container(
-            color: this.color,
-            constraints: BoxConstraints(
-              minHeight: 24.0,
-              minWidth: double.infinity,
-            ),
-            child: FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                return this.link.open(context);
-              },
-              child: Container(
-                width: double.infinity,
-                child: Stack(
-                  alignment: Alignment.centerLeft,
-                  children: <Widget>[
-                    if (this.assetName != null)
-                      Positioned(
-                        right: 0.0,
-                        top: 0.0,
-                        bottom: 0.0,
-                        child: SvgPicture.asset(this.assetName),
-                      ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 24.0),
-                      child: ThemedText(
-                        this.title,
-                        variant: TypographyVariant.button,
-                        style: TextStyle(
-                          color: this.textColor,
-                        ),
-                      ),
-                    )
-                  ],
+    return Container(
+      constraints: BoxConstraints(minHeight: 64, minWidth: double.infinity),
+      margin: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
+      child: FlatButton(
+        onPressed: () => link.open(context),
+        padding: EdgeInsets.zero,
+        color: color,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        clipBehavior: Clip.antiAlias,
+        child: SizedBox(
+          width: double.infinity,
+          child: Stack(
+            alignment: Alignment.centerLeft,
+            children: <Widget>[
+              if (assetName != null)
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: SvgPicture.asset(assetName, fit: BoxFit.fitHeight),
                 ),
-              ),
-            ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 24.0,
+                ),
+                child: ThemedText(
+                  title,
+                  variant: TypographyVariant.button,
+                  style: TextStyle(color: textColor),
+                ),
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
