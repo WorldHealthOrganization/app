@@ -15,6 +15,17 @@ class CarouselView extends StatelessWidget {
 
   final PageController pageController = PageController();
 
+  Widget _animatedVisibility({@required Widget child, @required bool visible}) {
+    return ExcludeSemantics(
+      excluding: !visible,
+      child: AnimatedOpacity(
+        opacity: visible ? 1 : 0,
+        duration: Duration(milliseconds: 200),
+        child: IgnorePointer(ignoring: !visible, child: child),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -44,24 +55,35 @@ class CarouselView extends StatelessWidget {
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                CupertinoButton(
-                  child: Icon(CupertinoIcons.back),
-                  onPressed: () => pageController.page > 0
-                      ? goToPreviousPage()
-                      : goToLastPage(),
-                ),
-                Container(child: _buildPageViewIndicator(context)),
-                CupertinoButton(
-                  child: Icon(CupertinoIcons.forward),
-                  onPressed: () => pageController.page < this.items.length - 1
-                      ? goToNextPage()
-                      : goToFirstPage(),
-                ),
-              ],
+            child: ValueListenableBuilder(
+              valueListenable: pageIndexNotifier,
+              // Anything not effected by the value of the notifier
+              child: _buildPageViewIndicator(context),
+              builder: (context, index, child) {
+                final bool isFirstPage = index == 0;
+                final bool isLastPage = index + 1 == items.length;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    _animatedVisibility(
+                      visible: !isFirstPage,
+                      child: CupertinoButton(
+                        child: Icon(CupertinoIcons.back),
+                        onPressed: goToPreviousPage,
+                      ),
+                    ),
+                    child,
+                    _animatedVisibility(
+                      visible: !isLastPage,
+                      child: CupertinoButton(
+                        child: Icon(CupertinoIcons.forward),
+                        onPressed: goToNextPage,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
@@ -109,7 +110,7 @@ class _MyAppState extends State<MyApp> {
       textDirection: GlobalWidgetsLocalizations(
         Locale(Intl.getCurrentLocale()),
       ).textDirection,
-      child: CupertinoApp(
+      child: MaterialApp(
         title: "WHO COVID-19",
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
@@ -124,12 +125,18 @@ class _MyAppState extends State<MyApp> {
         /// allows routing to work without a [Navigator.defaultRouteName] route
         builder: (context, child) => child,
         navigatorObservers: <NavigatorObserver>[observer],
-        theme: CupertinoThemeData(
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Constants.primaryDarkColor,
+          textTheme: TextTheme(),
+          cupertinoOverrideTheme: CupertinoThemeData(
             brightness: Brightness.light,
             primaryColor: Constants.primaryDarkColor,
             textTheme: CupertinoTextThemeData(
               textStyle: ThemedText.styleForVariant(TypographyVariant.body),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

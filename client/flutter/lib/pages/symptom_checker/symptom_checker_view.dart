@@ -4,7 +4,6 @@ import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
-import 'package:who_app/pages/symptom_checker/symptom_checker_summary.dart';
 
 /// This view is the container for the series of symptom checker questions.
 class SymptomCheckerView extends StatefulWidget {
@@ -44,12 +43,14 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        middle: Text("Symptom Checker"),
+    return Material(
+      child: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          backgroundColor: CupertinoColors.white,
+          middle: Text("Symptom Checker"),
+        ),
+        child: Container(child: _buildPage(context)),
       ),
-      child: Container(child: _buildPage(context)),
     );
   }
 
@@ -61,9 +62,6 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       return _buildMessage(
           "Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.",
           loading: false);
-    }
-    if (_model.isComplete) {
-      return _buildComplete();
     }
     return PageView(
         physics: NeverScrollableScrollPhysics(),
@@ -79,23 +77,6 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
     }
     throw Exception("Unsupported");
-  }
-
-  Widget _buildComplete() {
-    return Column(
-      children: <Widget>[
-        Spacer(),
-        Center(child: SymptomCheckerSummary(model: _model)),
-        SizedBox(height: 24),
-        FlatButton(
-            color: Colors.grey,
-            child: Text("Dismiss"),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
-        Spacer(flex: 3),
-      ],
-    );
   }
 
   Widget _buildMessage(String text, {bool loading = false}) {
@@ -142,6 +123,11 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   @override
   void answerQuestion(Set<String> answerIds) {
     _model.answerQuestion(answerIds);
+    if (!_model.isFatalError && _model.results != null) {
+      Navigator.of(context)
+          .pushNamed('/symptom-checker-results', arguments: _model);
+      return;
+    }
   }
 
   /// Receive back indication from the page and update the model.
