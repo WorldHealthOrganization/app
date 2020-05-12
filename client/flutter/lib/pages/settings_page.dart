@@ -240,15 +240,14 @@ class _SettingsPageState extends State<SettingsPage>
                     ),
                     Semantics(
                       excludeSemantics: true,
-                      child: CupertinoSwitch(
-                        activeColor: Constants.primaryColor,
+                      child: Switch.adaptive(
                         value: isToggled,
-                        onChanged: (newVal) => {onToggle(newVal)},
+                        onChanged: onToggle,
+                        activeColor: Constants.primaryColor,
                       ),
                     )
                   ],
                 ),
-                const SizedBox(height: 16),
                 ThemedText(
                   info,
                   variant: TypographyVariant.body,
