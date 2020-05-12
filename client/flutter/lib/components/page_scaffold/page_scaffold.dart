@@ -2,6 +2,7 @@ import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
@@ -36,14 +37,15 @@ class PageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(
       color: this.color,
       child: Padding(
         padding: this.padding,
         child: Stack(
           children: <Widget>[
             CustomScrollView(
-                physics: BouncingScrollPhysics(parent: ClampingScrollPhysics()),
+                // Disables scrolling when there's insufficient content to scroll
+                primary: false,
                 slivers: [
                   ...this.beforeHeader,
                   if (this.showHeader)
