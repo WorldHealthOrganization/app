@@ -31,6 +31,7 @@ class Constants {
 
   // Illustration Colors
   static const Color illustrationBlue1Color = Color(0xffD5F5FD);
+  static const Color illustrationPinkColor = Color(0xffEC96AA); // PINK
 
   // Spacing
   static const double buttonTextSpacing = -.4;
