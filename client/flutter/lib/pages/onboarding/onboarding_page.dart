@@ -35,7 +35,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void initState() {
     super.initState();
-    setupCountries();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setupCountries();
+    });
   }
 
   void setupCountries() async {
@@ -45,7 +47,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
       final currentCountryCode = Localizations.localeOf(context).countryCode;
       _selectedCountry = _countries[currentCountryCode];
     }
-    setState(() {});
+    if (this.mounted) {
+      setState(() {});
+    }
   }
 
   @override
