@@ -248,7 +248,6 @@ class _SettingsPageState extends State<SettingsPage>
                     )
                   ],
                 ),
-                const SizedBox(height: 16),
                 ThemedText(
                   info,
                   variant: TypographyVariant.body,
