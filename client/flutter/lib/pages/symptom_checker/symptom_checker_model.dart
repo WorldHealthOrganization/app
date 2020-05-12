@@ -17,8 +17,8 @@ class SymptomCheckerModel with ChangeNotifier {
         questionIndex: 0));
   }
 
-  /// True when the question series is complete and ready for analysis.
-  bool isComplete = false;
+  /// Non-null when the question series is complete and ready for analysis.
+  List<SymptomCheckerResult> results;
 
   /// True if the symptom checker cannot continue functioning.
   bool isFatalError = false;
@@ -34,26 +34,27 @@ class SymptomCheckerModel with ChangeNotifier {
 
   /// Set the answer for the current page, advancing to the next question if
   /// needed. If additional questions remain the next page will be added to
-  /// the pages list. If the series is complete the isComplete flag will be set.
+  /// the pages list. If the series is complete the results will be set.
   /// In both cases the change notifier will fire to indicate the update.
   void answerQuestion(Set<String> answerIds) {
     isFatalError = true;
     try {
-      isComplete = _answerQuestionImpl(answerIds);
+      results = _answerQuestionImpl(answerIds);
       isFatalError = false;
     } catch (e) {
+      print(e);
       // Do NOT log these errors to analytics.
       isFatalError = true;
     }
     notifyListeners();
   }
 
-  bool _answerQuestionImpl(Set<String> answerIds) {
+  List<SymptomCheckerResult> _answerQuestionImpl(Set<String> answerIds) {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
     bool nextPageFound = false;
     final logic = SymptomLogic();
-    for (var i = pages.length;
+    for (var i = pages[pages.length - 1].questionIndex + 1;
         !nextPageFound && i < _content.questions.length;
         i++) {
       nextPageFound = logic.evaluateCondition(
@@ -66,7 +67,13 @@ class SymptomCheckerModel with ChangeNotifier {
             questionIndex: i));
       }
     }
-    return !nextPageFound;
+    if (nextPageFound) {
+      return null;
+    }
+
+    return List<SymptomCheckerResult>.unmodifiable(_content.results.where((r) =>
+        logic.evaluateCondition(
+            condition: r.displayCondition, previousPages: pages)));
   }
 
   /// Indicate that the user has driven the UI back to the previous page or
@@ -75,14 +82,6 @@ class SymptomCheckerModel with ChangeNotifier {
   void previousQuestion() {
     pages.removeLast();
     notifyListeners();
-  }
-
-  /// Get the selected answers for a question id.
-  /// If the question id is not found an StateError is thrown.
-  ModelQueryResult operator [](String questionId) {
-    return ModelQueryResult(pages
-        .firstWhere((page) => page.question.id == questionId)
-        .selectedAnswers);
   }
 }
 
@@ -126,23 +125,4 @@ abstract class SymptomCheckerPageDelegate {
   // Indicate that the user wishes to go back to the previous page using an
   // affordance on the page.
   void goBack();
-}
-
-/// A convenience wrapper for the set of selected answers returned by the model.
-class ModelQueryResult {
-  final Set<String> selectedAnswers;
-
-  ModelQueryResult(this.selectedAnswers);
-
-  bool answered(String answerId) {
-    return selectedAnswers.contains(answerId);
-  }
-
-  bool answeredAny(Set<String> answerIds) {
-    return answerIds.intersection(selectedAnswers).isNotEmpty;
-  }
-
-  bool answeredAll(Set<String> answerIds) {
-    return selectedAnswers.containsAll(answerIds);
-  }
 }
