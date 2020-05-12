@@ -44,7 +44,8 @@ class PageScaffold extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             CustomScrollView(
-                physics: BouncingScrollPhysics(parent: ClampingScrollPhysics()),
+                // Disables scrolling when there's insufficient content to scroll
+                primary: false,
                 slivers: [
                   ...this.beforeHeader,
                   if (this.showHeader)
