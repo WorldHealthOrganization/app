@@ -5,6 +5,7 @@ import 'package:share/share.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -157,7 +158,7 @@ class _SettingsPageState extends State<SettingsPage>
     final Size size = MediaQuery.of(context).size;
     return Column(children: <Widget>[
       divider,
-      menuItem(
+      MenuListTile(
         title: S.of(context).homePagePageSliverListShareTheApp,
         onTap: () {
           FirebaseAnalytics().logShare(
@@ -171,14 +172,14 @@ class _SettingsPageState extends State<SettingsPage>
       ),
       divider,
       // TODO: Localize
-      menuItem(
+      MenuListTile(
           title: 'Provide app feedback',
           onTap: () {
             FirebaseAnalytics().logEvent(name: 'Feedback');
             // TODO: Implement feedback #989 #1015
           }),
       divider,
-      menuItem(
+      MenuListTile(
         title: S.of(context).homePagePageSliverListAboutTheApp,
         onTap: () {
           return Navigator.of(context, rootNavigator: true).pushNamed('/about');
@@ -186,27 +187,6 @@ class _SettingsPageState extends State<SettingsPage>
       ),
       divider,
     ]);
-  }
-
-  Widget menuItem({BuildContext context, String title, Function() onTap}) {
-    return Material(
-      color: Colors.white,
-      child: ListTile(
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 8,
-        ),
-        title: ThemedText(
-          title,
-          variant: TypographyVariant.button,
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          color: Color(0xFFC9CDD6),
-        ),
-        onTap: onTap,
-      ),
-    );
   }
 
   Widget switchItem(
