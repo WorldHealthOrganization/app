@@ -4,7 +4,8 @@ import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 class IsoCountryList {
-  Map<String, IsoCountry> countries;
+  Map<String, IsoCountry> _countries;
+  Map<String, IsoCountry> get countries => _countries;
 
   static const isoFilePath = 'assets/onboarding/iso_countries.en.yaml';
 
@@ -16,7 +17,7 @@ class IsoCountryList {
 
   IsoCountryList._internal();
 
-  static Future<Map<String, IsoCountry>> countriesFromYaml(
+  static Future<Map<String, IsoCountry>> _countriesFromYaml(
       String csvPath) async {
     Map<String, IsoCountry> countries = {};
     final yamlString = await rootBundle.loadString(IsoCountryList.isoFilePath);
@@ -32,11 +33,11 @@ class IsoCountryList {
   }
 
   Future<bool> loadCountries() async {
-    if (countries != null && countries.isNotEmpty) {
+    if (_countries?.isNotEmpty ?? false) {
       return true;
     }
     try {
-      countries = await countriesFromYaml(IsoCountryList.isoFilePath);
+      _countries = await _countriesFromYaml(IsoCountryList.isoFilePath);
       return true;
     } catch (error) {
       print('Error loading countries: $error');
