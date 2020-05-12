@@ -72,7 +72,7 @@ class AboutPage extends StatelessWidget {
               _divider(),
               Container(
                 color: CupertinoColors.white,
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
                 child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
