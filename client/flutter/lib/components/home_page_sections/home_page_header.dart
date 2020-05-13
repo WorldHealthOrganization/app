@@ -54,6 +54,7 @@ class HomePageHeader extends StatelessWidget {
         SafeArea(
           bottom: false,
           child: Container(
+            padding: EdgeInsets.only(top: 12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
