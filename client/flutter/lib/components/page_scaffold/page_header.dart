@@ -5,16 +5,15 @@ import 'package:who_app/components/themed_text.dart';
 class PageHeader extends StatelessWidget {
   final String title;
   final String heroTag;
+  final Widget leading;
   final Color borderColor;
   final TextStyle titleStyle;
   final TypographyVariant titleTypographyVariant;
 
-  final bool disableBackButton;
-
   PageHeader({
     @required this.title,
+    this.leading,
     this.heroTag,
-    this.disableBackButton = false,
     this.titleStyle,
     this.borderColor,
     this.titleTypographyVariant = TypographyVariant.header,
@@ -33,9 +32,12 @@ class PageHeader extends StatelessWidget {
       transitionBetweenRoutes: true,
       backgroundColor: CupertinoColors.white.withOpacity(0.85),
       heroTag: this.heroTag ?? this.title,
-      leading: this.disableBackButton ? Container() : null,
-      largeTitle: buildTitle(this.title,
-          textStyle: titleStyle, variant: this.titleTypographyVariant),
+      leading: this.leading,
+      largeTitle: buildTitle(
+        this.title,
+        textStyle: titleStyle,
+        variant: this.titleTypographyVariant,
+      ),
     );
   }
 

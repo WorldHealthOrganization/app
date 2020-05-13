@@ -11,10 +11,10 @@ class PageScaffold extends StatelessWidget {
   final List<Widget> beforeHeader;
   final Color color;
   final Color headingBorderColor;
-  final bool disableBackButton;
   final TextStyle headerTitleStyle;
   final TypographyVariant headerTypographyVariant;
   final Widget header;
+  final Widget leading;
 
   final bool showHeader;
 
@@ -23,6 +23,7 @@ class PageScaffold extends StatelessWidget {
   PageScaffold({
     @required this.body,
     this.title,
+    this.leading,
     this.heroTag,
     this.header,
     this.showHeader = true,
@@ -30,7 +31,6 @@ class PageScaffold extends StatelessWidget {
     this.color = Constants.greyBackgroundColor,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
-    this.disableBackButton = false,
     this.headerTitleStyle,
     this.headerTypographyVariant = TypographyVariant.header,
   });
@@ -52,9 +52,9 @@ class PageScaffold extends StatelessWidget {
                     (this.header ??
                         PageHeader(
                           title: this.title,
+                          leading: this.leading,
                           heroTag: this.heroTag ?? this.title,
                           borderColor: headingBorderColor,
-                          disableBackButton: disableBackButton,
                           titleStyle: headerTitleStyle,
                           titleTypographyVariant: this.headerTypographyVariant,
                         )),

@@ -7,7 +7,7 @@ class ExposuresPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      disableBackButton: true,
+      leading: Container(),
       headingBorderColor: Color(0x0),
       title: "Exposures",
       body: <Widget>[

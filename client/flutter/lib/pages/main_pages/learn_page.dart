@@ -69,7 +69,7 @@ class _LearnPageState extends State<LearnPage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      disableBackButton: true,
+      leading: Container(),
       headingBorderColor: Color(0x0),
       heroTag: HeroTags.learn,
       // TODO: localize

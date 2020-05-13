@@ -19,6 +19,17 @@ class SymptomCheckerResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       heroTag: HeroTags.checkUp,
+      leading: CupertinoButton(
+        padding: EdgeInsets.zero,
+        child: Icon(
+          CupertinoIcons.back,
+          size: 34,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      ),
       body: [
         _buildBody(context),
       ],

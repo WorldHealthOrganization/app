@@ -107,7 +107,7 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      disableBackButton: true,
+      leading: Container(),
       heroTag: HeroTags.settings,
       body: [
         SliverList(
