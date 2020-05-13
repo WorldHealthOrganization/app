@@ -159,14 +159,3 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     }
   }
 }
-
-double verticalInterval({@required List timeseries, @required String key}) {
-  double maximum = 0;
-  final double interval = 5;
-  for (Map item in timeseries) {
-    if (maximum < item[key]) {
-      maximum = item[key].toDouble();
-    }
-  }
-  return maximum / interval;
-}
