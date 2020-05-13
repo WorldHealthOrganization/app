@@ -1,36 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 
-class PreviousNextButtons extends StatelessWidget {
-  final bool showPrevious;
+class NextButton extends StatelessWidget {
   final bool enableNext;
-  final VoidCallback onPrevious;
   final VoidCallback onNext;
 
-  const PreviousNextButtons({
+  const NextButton({
     Key key,
-    @required this.showPrevious,
     @required this.enableNext,
-    @required this.onPrevious,
     @required this.onNext,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        showPrevious
-            ? FlatButton(
-                color: Colors.grey,
-                child: Text("Previous"),
-                onPressed: onPrevious)
-            : Container(),
-        FlatButton(
-            color: Colors.grey,
-            child: Text("Next"),
-            onPressed: enableNext ? onNext : null),
-      ],
+    return PageButton(
+      Constants.whoBackgroundBlueColor,
+      // TODO: Localize
+      "Next",
+      enableNext ? onNext : null,
+      borderRadius: 50,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      titleStyle: ThemedText.styleForVariant(TypographyVariant.h4)
+          .merge(TextStyle(color: CupertinoColors.white)),
     );
   }
 }

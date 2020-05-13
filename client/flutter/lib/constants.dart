@@ -20,6 +20,7 @@ class Constants {
   static const Color emergencyRedColor = Color(0xffD82037);
   static const Color menuButtonColor = Color(0xCC1694BE);
   static const Color successCheckColor = Color(0xff9BC53D); // NEW GREEN
+  static const Color itemBorderColor = Color.fromARGB(64, 92, 97, 100);
 
   // Neutral Colors
   static const Color neutral1Color = Color(0xff050C1D);

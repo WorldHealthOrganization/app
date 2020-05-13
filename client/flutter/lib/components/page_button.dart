@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:who_app/constants.dart';
 
 class PageButton extends StatelessWidget {
@@ -32,8 +33,12 @@ class PageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      borderRadius: BorderRadius.circular(this.borderRadius),
+    return FlatButton(
+      disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
+      disabledTextColor: CupertinoColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(this.borderRadius),
+      ),
       color: backgroundColor,
       child: Padding(
           padding: EdgeInsets.symmetric(
