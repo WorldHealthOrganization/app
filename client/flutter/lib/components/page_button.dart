@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:who_app/constants.dart';
 
 class PageButton extends StatefulWidget {
@@ -61,10 +61,14 @@ class _PageButtonState extends State<PageButton> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton(
-      borderRadius: BorderRadius.circular(this.widget.borderRadius),
-      color: widget.backgroundColor,
+    return FlatButton(
       onPressed: _onPressed,
+      disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
+      disabledTextColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(widget.borderRadius),
+      ),
+      color: widget.backgroundColor,
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: this.widget.verticalPadding,

@@ -12,12 +12,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>WHO COVID-19</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
-	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-	<string>Your location is used to deliver you the most relevant information and push notifications to your area.</string>
 	<key>CFBundleDisplayName</key>
 	<string>COVID–19</string>
 	<key>CFBundlePackageType</key>

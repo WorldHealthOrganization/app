@@ -6,103 +6,88 @@ contents:
     -
       id:  q1_emergency
       type: single_selection
-      question_html: |
-        <p><b>Is this an emergency?</b></p>
-        <p>Stop and seek immediate medical attention if you are experiencing:<br/>
-        - Difficulty breathing<br/>
-        - Shortness of breath<br/>
-        - Chest pain or pressure<br/>
-        - Loss of speech or movement<br/></p>
+      title: Is this an emergency?
+      body_html: |
+        <p>Stop and seek immediate medical attention if you are experiencing:
+        <ul><li>Difficulty breathing</li>
+        <li>Shortness of breath</li>
+        <li>Chest pain or pressure</li>
+        <li>Loss of speech or movement</li></ul></p>
       answers:
         -
           id: emergency
           icon_name: snowflake
-          body_html: |
-            <p>I am experiencing at least one of these symptoms</p>
+          title: I am experiencing at least one of these symptoms
         -
           id: no_emergency
           icon_name: snowflake
-          body_html: |
-            <p>I do not have any of these symptoms</p>
+          title: I do not have any of these symptoms
 
     -
       id:  q2_symptoms
       type: multiple_selection
       display_condition: >-
         has('no_emergency')
-      question_html: |
-        <p><b>Do you have any of these symptoms?</b></p>
+      title: Do you have any of these symptoms?
       answers:
         -
           id: fever
           icon_name: snowflake
-          body_html: |
-            <p>Fever</p>
+          title: Fever
         -
           id: dry_cough
           icon_name: snowflake
-          body_html: |
-            <p>Dry cough</p>
+          title: Dry cough
         -
           id: tiredness
           icon_name: snowflake
-          body_html: |
-            <p>Tiredness</p>
+          title: Tiredness
         -
           id: aches_and_pains
           icon_name: snowflake
-          body_html: |
-            <p>Aches and pains</p>
+          title: Aches and pains
         -
           id: sore_throat
           icon_name: snowflake
-          body_html: |
-            <p>Sore throat</p>
+          title: Sore throat
         -
           id: diarrhoea
           icon_name: snowflake
-          body_html: |
-            <p>Diarrhoea</p>
+          title: Diarrhoea
         -
           id: conjunctivitis
           icon_name: snowflake
-          body_html: |
-            <p>Conjunctivitis</p>
+          title: Conjunctivitis
         -
           id: headache
           icon_name: snowflake
-          body_html: |
-            <p>Headache</p>
+          title: Headache
         -
           id: loss_of_taste_or_smell
           icon_name: snowflake
-          body_html: |
-            <p>Loss of taste or smell</p>
+          title: Loss of taste or smell
         -
           id: rash_or_discolouration
           icon_name: snowflake
-          body_html: |
-            <p>A rash on the skin, or discolouration of fingers or toes</p>
+          title: A rash on the skin, or discolouration of fingers or toes
     -
       id:  q3_covid19contact
       type: single_selection
       display_condition: >-
         has('no_emergency') &&
         !(has('fever') && has('dry_cough'))
-      question_html: |
-        <p><b>Close contact with COVID-19?</b></p>
+      title: Close contact with COVID-19?
+      body_html: |
         <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
       answers:
         -
           id: contact
           icon_name: snowflake
-          body_html: |
-            <p>Yes</p>
+          title: Yes
         -
           id: no_contact
           icon_name: snowflake
-          body_html: |
-            <p>No</p>
+          title: No
     -
       id:  q4_ltc_hcf
       type: single_selection
@@ -110,64 +95,56 @@ contents:
         has('no_emergency') &&
         (selectionCount('q2_symptoms') > 0) &&
         has('no_contact')
-      question_html: |
-        <p><b>Are you a resident of or do you work in a healthcare facility or a longterm care facility?</b></p>
+      title: Are you a resident of or do you work in a healthcare facility or a longterm care facility?
       answers:
         -
           id: ltc_hcf
           icon_name: snowflake
-          body_html: |
-            <p>Yes</p>
+          title: Yes
         -
           id: no_ltc_hcf
           icon_name: snowflake
-          body_html: |
-            <p>No</p>
+          title: No
     -
       id:  q5_age
       type: single_selection
       display_condition: >-
         has('no_emergency') &&
         !(has('contact') && (selectionCount('q2_symptoms') == 0))
-      question_html: |
-        <p><b>How old are you?</b></p>
+      title: How old are you?
       answers:
         -
           id: under60
           icon_name: snowflake
-          body_html: |
-            <p>Under 60</p>
+          title: Under 60
         -
           id: over60
           icon_name: snowflake
-          body_html: |
-            <p>Over 60</p>
+          title: Over 60
 
     -
       id:  q6_preexisting_cond
       type: single_selection
       display_condition: >-
         has('under60')
-      question_html: |
-        <p><b>Pre-existing conditions?</b><p>
-        Do you have any of the following conditions?<br/>
-        - Hypertension<br/>
-        - Diabetes<br/>
-        - Cardiovascular disease<br/>
-        - Chronic respiratory disease<br/>
-        - Immunocompromising conditions<br/>
-        - Extreme obesity (Body Mass Index [BMI] > 40)</p>
+      title: Pre-existing conditions?
+      body_html: |
+        <p>Do you have any of the following conditions?
+        <ul><li>Hypertension</li>
+        <li>Diabetes</li>
+        <li>Cardiovascular disease</li>
+        <li>Chronic respiratory disease</li>
+        <li>Immunocompromising conditions</li>
+        <li>Extreme obesity (Body Mass Index [BMI] > 40)</li></ul></p>
       answers:
         -
           id: preexisting_cond
           icon_name: snowflake
-          body_html: |
-            <p>Yes</p>
+          title: Yes
         -
           id: no_preexisting_cond
           icon_name: snowflake
-          body_html: |
-            <p>No</p>
+          title: No
   results_cards:
     -
       id: emergency_call
@@ -180,49 +157,55 @@ contents:
       icon_name: call
     -
       id: local_guidance
-      title: Always follow local guidance.
-      body_html: <p>Regularly check for the latest info from WHO and national and local public health authorities.</p>
-      icon_name: note
+      title: Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.
     -
       id: testing
       title: Testing
       body_html: >-
         <p>We recommend getting tested for COVID-19. Contact your local health authorities to learn more about testing and care options in your area.</p>
+      icon_name: note
     -
       id: avoid_all_contact
       title: Avoid all contact
       body_html: >-
         <p>Avoid contact with other people, including the people you live with. Try and stay away from others for at least 14 days from when your symptoms resolve. Isolation can end if your symptoms improve and you have had no fever for at least 3 days without the use of medicine.</p>
+      icon_name: note
     -
       id: wear_a_mask_now
       title: Masks
       body_html: >-
         <p>We recommend that you wear a mask around others. Your caregivers should wear a mask too [TODO: link to guidance for caregivers]. Don't have a mask? [TODO: Link out to instructions for people without a mask]. How to use a mask [TODO: Link out to instructions on how to use a mask]</p>
+      icon_name: note
     -
       id: wear_a_mask_if_coughing
       title: Wear a mask
       body_html: >-
         <p>Wear a mask around others, especially if you are coughing. Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+      icon_name: note
     -
       id: wear_a_mask_if_ill
       title: Masks
       body_html: >-
         <p>Wear a mask if you or someone you are looking after or in close contact with are ill with COVID-19 symptoms (especially coughing). Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+      icon_name: note
     -
       id: cough_tissue
       title: Cough into your elbow or tissue
       body_html: >-
         <p>If you're not wearing a mask, when coughing and sneezing, cover your mouth and nose with flexed elbow or tissue. Throw your tissue into a closed bin immediately after use.</p>
+      icon_name: note
     -
       id: monitor_symptoms_getting_worse
       title: Monitor Symptoms
       body_html: >-
         <p>You should monitor your symptoms closely and if they get worse consult with a healthcare provider.</p>
+      icon_name: note
     -
       id: monitor_symptoms_begin
       title: Monitor Symptoms
       body_html: >-
         <p>You should monitor your symptoms closely. If you begin to develop symptoms, consult with a healthcare provider.</p>
+      icon_name: note
     -
       id: rest
       title: Rest and Take Care
@@ -233,11 +216,10 @@ contents:
       id: protect_others
       title: >-
         Learn other ways to protect others [TODO: Link out to "prevent" section of app content]
+      icon_name: note
     -
       id: call_if_concerned
-      title: If you have any concerns, call your healthcare provider.
-      body_html: >-
-        <p>Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.</p>
+      title: If you have any concerns, call your healthcare provider. Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.
     -
       id: quarantine
       title: Quarantine
@@ -261,27 +243,32 @@ contents:
       title: Contact local health authorities
       body_html: >-
         <p>Because you have known risk factors for COVID-19, testing and care might be available in your area. Contact local health authorities to learn more.</p>
+      icon_name: note
     -
       id: physical_distancing
       title: Practice Physical Distancing
       body_html: >-
         <p>Avoid groups of people and keep 6 feet apart from anyone who you do not live with. Avoid anyone showing symptoms.</p>
+      icon_name: note
     -
       id: hand_hygiene
       title: Hand hygiene
       body_html: >-
         <p>Perform hand hygiene frequently, using an alcohol-based hand rub if hands are not visibly dirty or soap and water when hands are visibly dirty</p>
+      icon_name: note
     -
       id: dont_touch_face
       title: Don't touch your face
       body_html: >-
         <p>Avoid touching eyes, nose and mouth. Why? Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you.</p>
+      icon_name: note
     -
       id: if_sick_later
       title: >-
         If you feel sick later:
       body_html: >-
-        Stay home if you feel sick, even if you develop a slight fever or cough
+        <p>Stay home if you feel sick, even if you develop a slight fever or cough</p>
+      icon_name: note
 
   results:
     -

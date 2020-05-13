@@ -46,7 +46,8 @@ class SymptomCheckerContent extends ContentBase {
     return SymptomCheckerQuestion(
         type: type,
         id: item['id'],
-        questionHtml: item['question_html'],
+        title: item['title'],
+        bodyHtml: item['body_html'],
         displayCondition: item['display_condition'],
         imageName: item['image_name'],
         answers: _answersFromContent(item));
@@ -107,7 +108,7 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerAnswer _answerFromContent(dynamic item) {
     return SymptomCheckerAnswer(
       id: item['id'],
-      bodyHtml: item['body_html'],
+      title: item['title'],
       iconName: item['icon_name'],
     );
   }
@@ -132,7 +133,9 @@ class SymptomCheckerQuestion {
   final String id;
 
   /// The question.
-  final String questionHtml;
+  final String title;
+
+  final String bodyHtml;
 
   /// An optional image to be displayed with the question.
   final String imageName;
@@ -156,8 +159,9 @@ class SymptomCheckerQuestion {
   SymptomCheckerQuestion({
     @required this.type,
     @required this.id,
-    @required this.questionHtml,
-    @required this.imageName,
+    @required this.title,
+    this.bodyHtml,
+    this.imageName,
     @required this.displayCondition,
     this.answers,
   });
@@ -224,7 +228,7 @@ class SymptomCheckerAnswer {
   final String displayCondition;
 
   /// The answer
-  final String bodyHtml;
+  final String title;
 
   /// An icon to display with the answer
   final String iconName;
@@ -232,7 +236,7 @@ class SymptomCheckerAnswer {
   SymptomCheckerAnswer({
     @required this.id,
     this.displayCondition,
-    @required this.bodyHtml,
+    @required this.title,
     this.iconName,
   });
 }

@@ -75,6 +75,16 @@ class UserPreferences {
     }
     return uuid;
   }
+
+  Future<bool> setCountryIsoCode(String value) async {
+    return (await SharedPreferences.getInstance())
+        .setString(UserPreferenceKey.CountryISOCode.toString(), value);
+  }
+
+  Future<String> getCountryIsoCode() async {
+    return (await SharedPreferences.getInstance())
+        .getString(UserPreferenceKey.CountryISOCode.toString());
+  }
 }
 
 enum UserPreferenceKey {
@@ -82,5 +92,6 @@ enum UserPreferenceKey {
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,
-  FirebaseToken
+  FirebaseToken,
+  CountryISOCode,
 }

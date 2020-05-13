@@ -5,6 +5,7 @@ import 'package:who_app/constants.dart';
 enum TypographyVariant {
   title,
   header,
+  headerSmall,
   h1,
   h2,
   h3,
@@ -66,6 +67,14 @@ class ThemedText extends StatelessWidget {
           fontSize: 34,
           height: 0.88,
           letterSpacing: -0.5,
+        );
+        break;
+      case TypographyVariant.headerSmall:
+        style = TextStyle(
+          color: Constants.accentNavyColor,
+          fontWeight: FontWeight.w800,
+          fontSize: 24,
+          height: 1.25,
         );
         break;
       case TypographyVariant.h1:

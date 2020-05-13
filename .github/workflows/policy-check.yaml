@@ -18,7 +18,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        pip install profanity-check==1.0.3
+        pip install scikit-learn==0.22.2 profanity-check==1.0.3
     - name: Lint with profanity-check
       run: |
         # Every file in the repo that is treated as text
