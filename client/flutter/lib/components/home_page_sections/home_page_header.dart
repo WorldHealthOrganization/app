@@ -28,14 +28,17 @@ class HomePageHeader extends StatelessWidget {
   }
 
   Color get backgroundColor {
-    switch (this.headerType) {
-      case IndexPromoType.CheckYourSymptoms:
-        return Constants.primaryDarkColor;
-      case IndexPromoType.ProtectYourself:
-        return Constants.accentTealColor;
-      default:
-        return Constants.primaryDarkColor;
-    }
+    // switch (this.headerType) {
+    //   case IndexPromoType.CheckYourSymptoms:
+    //     return Constants.primaryDarkColor;
+    //   case IndexPromoType.ProtectYourself:
+    //     return Constants.accentTealColor;
+    //   default:
+    //     return Constants.primaryDarkColor;
+    // }
+
+    // Avoiding mistakes in v1 by not making this configurable
+    return Constants.primaryDarkColor;
   }
 
   @override
@@ -50,116 +53,112 @@ class HomePageHeader extends StatelessWidget {
         ),
         SafeArea(
           bottom: false,
-          child: _buildForeground(context),
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _LogoRow(),
+                Stack(
+                  alignment: Alignment.topLeft,
+                  children: <Widget>[
+                    Positioned(
+                      bottom: 0.0,
+                      right: 0.0,
+                      child: this.svgAssetName != null
+                          ? SvgPicture.asset(this.svgAssetName)
+                          : Container(),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 24.0, right: 72.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(top: 28.0),
+                            child: AutoSizeThemedText(
+                              this.title,
+                              variant: TypographyVariant.title,
+                              maxFontSize: 40,
+                              style: TextStyle(
+                                color: CupertinoColors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: ThemedText(
+                              this.subtitle,
+                              variant: TypographyVariant.body,
+                              style: TextStyle(
+                                color: CupertinoColors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 32.0, bottom: 88.0),
+                            child: CupertinoButton(
+                              borderRadius: BorderRadius.circular(50),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 32,
+                                vertical: 8,
+                              ),
+                              color: CupertinoColors.white,
+                              child: Container(
+                                child: ThemedText(
+                                  this.buttonText,
+                                  variant: TypographyVariant.button,
+                                  style:
+                                      TextStyle(color: Constants.primaryColor),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              onPressed: () {
+                                return this.link.open(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
         )
       ],
     );
   }
+}
 
-  Widget _buildForeground(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          _buildLogoSection(),
-          Stack(
-            alignment: Alignment.topLeft,
-            children: <Widget>[
-              Positioned(
-                bottom: 0.0,
-                right: 0.0,
-                child: this.svgAssetName != null
-                    ? SvgPicture.asset(this.svgAssetName)
-                    : Container(),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 24.0, right: 72.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 28.0),
-                      child: ThemedText(
-                        this.title,
-                        variant: TypographyVariant.title,
-                        style: TextStyle(
-                          color: CupertinoColors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: ThemedText(
-                        this.subtitle,
-                        variant: TypographyVariant.body,
-                        style: TextStyle(
-                          color: CupertinoColors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 32.0, bottom: 88.0),
-                      child: CupertinoButton(
-                        borderRadius: BorderRadius.circular(50),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 8,
-                        ),
-                        color: CupertinoColors.white,
-                        child: Container(
-                          child: ThemedText(
-                            this.buttonText,
-                            variant: TypographyVariant.button,
-                            style: TextStyle(color: Constants.primaryColor),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        onPressed: () {
-                          return this.link.open(context);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLogoSection() {
-    return Container(
-      constraints: BoxConstraints(minHeight: 48.0),
-      padding: EdgeInsets.symmetric(
-        horizontal: 24.0,
-      ),
+class _LogoRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24.0, right: 12.0),
       child: IntrinsicHeight(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              color: CupertinoColors.white,
-              width: 48.0,
-              margin: EdgeInsets.only(right: 8),
-              // TODO: Add WHO logo
-              // child: ,
+              width: 112.0,
+              child: SvgPicture.asset('assets/svg/who-logo-white.svg'),
             ),
             Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 14.0,
               ),
-              color: Color.fromARGB(127, 250, 232, 169),
+              color: Constants.homeHeaderGreenColor.withOpacity(0.5),
+              height: double.infinity,
               width: 1.0,
             ),
-            Center(
+            Expanded(
               child: Text(
                 // TODO: Localize
                 'COVID-19 Response',
                 style: TextStyle(
-                  color: Color(0xffFAE8A9),
+                  color: Constants.homeHeaderGreenColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   height: 1.57,
