@@ -42,8 +42,6 @@ class PageHeader extends StatelessWidget {
     );
   }
 
-  static const textColor = Color(0xff1A458E);
-
   static Widget buildTitle(String title,
       {TextStyle textStyle,
       TypographyVariant variant = TypographyVariant.header}) {

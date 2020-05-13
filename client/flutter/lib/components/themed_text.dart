@@ -117,7 +117,7 @@ class ThemedText extends StatelessWidget {
           fontWeight: FontWeight.normal,
           fontSize: 16,
           height: 1.375,
-          letterSpacing: -0.32,
+          letterSpacing: -0.02,
         );
         break;
       case TypographyVariant.button:
