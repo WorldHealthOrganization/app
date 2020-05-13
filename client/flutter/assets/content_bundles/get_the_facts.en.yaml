@@ -10,6 +10,7 @@ contents:
         <p>COVID-19 can spread in any climate, regardless of whether the temperature is hot and humid or cold and dry.</p>
         <p>No matter where you live, the best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.</p>
       image_name: x-priv-temperature-thermometer-high
+      display_condition: ctx_isoCountryCode == 'US'
     -
       title_html: |
         COVID-19 <b><u>is not</u></b> transmitted by mosquitoes.
@@ -17,6 +18,7 @@ contents:
         <p>There's no evidence that people can get the virus from mosquitoes or household pets.</p>
         <p>COVID-19 is a respiratory virus that spreads through the small amounts of liquid that an infected person sneezes or coughs into the air. To protect yourself, avoid contact with anyone who is coughing or sneezing.</p>
       image_name: x-priv-flying-insect-dragonfly
+      display_condition: ctx_isoCountryCode == 'FR'
     -
       title_html: |
         Cold weather <b><u>does not</u></b> kill COVID-19 or other diseases.

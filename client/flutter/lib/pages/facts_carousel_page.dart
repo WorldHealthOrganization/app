@@ -1,4 +1,5 @@
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/carousel/carousel.dart';
 import 'package:who_app/components/carousel/carousel_slide.dart';
 import 'package:who_app/components/dialogs.dart';
@@ -22,6 +23,7 @@ class FactsCarouselPage extends StatefulWidget {
 
 class _FactsCarouselPageState extends State<FactsCarouselPage> {
   FactContent _factContent;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -39,6 +41,7 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _factContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
     } catch (err) {
@@ -51,7 +54,12 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
 
   @override
   Widget build(BuildContext context) {
-    List items = (_factContent?.items ?? []).asMap().entries.map((entry) {
+    List items = (_factContent?.items ?? [])
+        .where((item) => item.isDisplayed(_logicContext))
+        .toList()
+        .asMap()
+        .entries
+        .map((entry) {
       int index = entry.key;
       FactItem fact = entry.value;
       return CarouselSlide(

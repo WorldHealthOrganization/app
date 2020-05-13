@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/content_bundle.dart';
+import 'package:who_app/api/content/schema/conditional_content.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/api/content/content_loading.dart';
 import 'dart:ui';
@@ -12,7 +13,7 @@ typedef IndexDataSource = Future<IndexContent> Function(Locale);
 /// link.
 class IndexContent extends ContentBase {
   List<IndexItem> items;
-  IndexPromo promo;
+  List<IndexPromo> promos;
 
   static Future<IndexContent> homeIndex(Locale locale) async {
     var bundle = await ContentLoading().load(locale, "home_index");
@@ -26,16 +27,19 @@ class IndexContent extends ContentBase {
 
   IndexContent(ContentBundle bundle) : super(bundle, schemaName: "index") {
     try {
-      final yamlPromo = bundle.contentPromo;
-      if (yamlPromo != null) {
-        this.promo = IndexPromo(
-          promoType: yamlPromo['promo_type'],
-          buttonText: yamlPromo['button_text'],
-          title: yamlPromo['title'],
-          subtitle: yamlPromo['subtitle'],
-          link: RouteLink.fromUri(yamlPromo['href']),
-          imageName: yamlPromo['image_name'],
-        );
+      final yamlPromos = bundle.contentPromos;
+      if (yamlPromos != null) {
+        this.promos = bundle.contentPromos
+            .map((yamlPromo) => IndexPromo(
+                  promoType: yamlPromo['promo_type'],
+                  buttonText: yamlPromo['button_text'],
+                  title: yamlPromo['title'],
+                  subtitle: yamlPromo['subtitle'],
+                  link: RouteLink.fromUri(yamlPromo['href']),
+                  imageName: yamlPromo['image_name'],
+                  displayCondition: yamlPromo['display_condition'],
+                ))
+            .toList();
       }
       this.items = bundle.contentItems
           .map((item) => IndexItem(
@@ -57,13 +61,14 @@ class IndexContent extends ContentBase {
 
 enum IndexPromoType { CheckYourSymptoms, ProtectYourself, DefaultType }
 
-class IndexPromo {
+class IndexPromo with ConditionalItem {
   final String promoType;
   final String title;
   final String subtitle;
   final RouteLink link;
   final String buttonText;
   final String imageName;
+  final String displayCondition;
 
   IndexPromo({
     @required this.title,
@@ -72,6 +77,7 @@ class IndexPromo {
     @required this.buttonText,
     this.imageName,
     this.promoType,
+    this.displayCondition,
   });
 
   IndexPromoType get type {
@@ -92,7 +98,7 @@ enum IndexItemType {
   unknown
 }
 
-class IndexItem {
+class IndexItem with ConditionalItem {
   final String itemType;
   final String title;
   final String subtitle;

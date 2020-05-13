@@ -20,6 +20,12 @@ contents:
       image_name: undraw-wash-hands
       body_html: |
         <b>Stay more than</b> 1 meter (>3 feet) away from a person who is sick.
+      display_condition: ctx_isoCountryCode != 'US'
+    -
+      image_name: undraw-wash-hands
+      body_html: |
+        <b>Stay more than</b> 2 meters (>6 feet) away from a person who is sick.
+      display_condition: ctx_isoCountryCode == 'US'
     -
       image_name: undraw-wash-hands
       body_html: |
