@@ -11,7 +11,6 @@ class PageHeader extends StatelessWidget {
   final TextStyle titleStyle;
   final Color appBarColor;
   final bool inSliver;
-  final TypographyVariant titleTypographyVariant;
   final Widget trailing;
 
   final bool showBackButton;
@@ -24,7 +23,6 @@ class PageHeader extends StatelessWidget {
     this.borderColor = const Color(0xffC9CDD6),
     this.appBarColor,
     this.inSliver = true,
-    this.titleTypographyVariant = TypographyVariant.header,
     this.trailing,
   });
 
