@@ -36,7 +36,6 @@ dependencies:
   path_drawing: ^0.4.1
   shared_preferences: ^0.5.6
   firebase_messaging: ^6.0.13
-  location: ^3.0.1
   yaml: ^2.2.0
   http: ^0.12.0+3
   uuid: 2.0.4
@@ -48,7 +47,6 @@ dependencies:
   flutter_cache_manager: ^1.1.3
   path_provider: ^1.6.5
   fl_chart: ^0.8.7
-  s2geometry: 0.1.1
   notification_permissions: ^0.4.4
   expressions: 0.1.5
 
