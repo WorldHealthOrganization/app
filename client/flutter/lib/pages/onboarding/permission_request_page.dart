@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -90,13 +91,15 @@ class PermissionRequestPage extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       PageButton(
-                        Constants.primaryColor,
+                        Constants.whoBackgroundBlueColor,
                         buttonTitle,
                         onGrantPermission,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         verticalPadding: 12,
                         borderRadius: 35,
+                        titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
+                      .merge(TextStyle(color: CupertinoColors.white))
                       ),
                       CupertinoButton(
                         padding: EdgeInsets.all(16),
