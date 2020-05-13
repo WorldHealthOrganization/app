@@ -31,7 +31,7 @@ class LegalLandingPage extends StatelessWidget {
                     child: Text(
                       S.of(context).legalLandingPageTitle,
                       style: TextStyle(
-                        color: Color(0xff008DC9),
+                        color: Constants.primaryColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
