@@ -11,25 +11,36 @@ import 'package:who_app/constants.dart';
 class CheckUpIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool inHomePage = !ModalRoute.of(context).canPop;
     return PageScaffold(
-      showBackButton: ModalRoute.of(context).canPop ?? false,
-      headingBorderColor: Color(0x0),
+      showBackButton: !inHomePage,
       color: CupertinoColors.white,
       // TODO: localize
       title: "Check-Up",
-      header: SliverSafeArea(
-          top: true,
-          bottom: false,
-          sliver: SliverToBoxAdapter(
-              child: Padding(
+      header: inHomePage
+          ? SliverSafeArea(
+              top: true,
+              bottom: false,
+              sliver: SliverToBoxAdapter(
+                child: Padding(
                   padding: EdgeInsets.fromLTRB(16, 36, 16, 20),
                   // TODO: localize
-                  child: PageHeader.buildTitle("Check-Up",
-                      textStyle: ThemedText.styleForVariant(
-                              TypographyVariant.title)
-                          .merge(
-                              TextStyle(color: Constants.primaryDarkColor)))))),
-      body: <Widget>[_buildBody(context)],
+                  child: PageHeader.buildTitle(
+                    "Check-Up",
+                    textStyle:
+                        ThemedText.styleForVariant(TypographyVariant.title)
+                            .merge(
+                      TextStyle(color: Constants.primaryDarkColor),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          : null,
+      body: <Widget>[
+        if (!inHomePage) SliverToBoxAdapter(child: SizedBox(height: 24)),
+        _buildBody(context)
+      ],
     );
   }
 
