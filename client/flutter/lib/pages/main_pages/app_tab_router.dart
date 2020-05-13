@@ -52,31 +52,21 @@ class _AppTabRouterState extends State<AppTabRouter> {
 
   CupertinoTabController _controller;
   FirebaseAnalytics _analytics;
-  int lastTabIndex;
+
   @override
   void initState() {
     super.initState();
 
     _analytics = FirebaseAnalytics();
     _controller = CupertinoTabController();
-    lastTabIndex = _controller.index;
 
     _controller.addListener(
       () {
         int currentIndex = _controller.index;
 
-        String lastTab = tabTitle(lastTabIndex);
         String currentTab = tabTitle(currentIndex);
 
-        lastTabIndex = currentIndex;
-
-        _analytics.logEvent(
-          name: 'changed_tabs',
-          parameters: {
-            'current_tab': currentTab,
-            'last_tab': lastTab,
-          },
-        );
+        _analytics.setCurrentScreen(screenName: currentTab);
       },
     );
   }
