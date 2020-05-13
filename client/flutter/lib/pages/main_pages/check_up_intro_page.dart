@@ -15,6 +15,7 @@ class CheckUpIntroPage extends StatelessWidget {
       disableBackButton: true,
       headingBorderColor: Color(0x0),
       color: CupertinoColors.white,
+      // TODO: localize
       title: "Check-Up",
       header: SliverSafeArea(
           top: true,
@@ -39,6 +40,7 @@ class CheckUpIntroPage extends StatelessWidget {
       ]));
 
   List<Widget> optionWidgets() {
+    // TODO: localize everything
     return <Widget>[
       Padding(
           padding: const EdgeInsets.only(
