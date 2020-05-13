@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter_html/rich_text_parser.dart';
@@ -44,13 +45,16 @@ class LegalLandingPage extends StatelessWidget {
               flex: 1,
               child: Column(children: <Widget>[
                 PageButton(
-                  Constants.primaryColor,
+                  Constants.whoBackgroundBlueColor,
                   S.of(context).legalLandingPageButtonGetStarted,
                   onNext,
                   verticalPadding: 12,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   borderRadius: 60,
+                  titleStyle:
+                      ThemedText.styleForVariant(TypographyVariant.button)
+                          .merge(TextStyle(color: CupertinoColors.white)),
                 ),
                 SizedBox(height: 17),
                 Text.rich(
