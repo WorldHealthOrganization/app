@@ -45,6 +45,7 @@ class IndexContent extends ContentBase {
                 link: RouteLink.fromUri(item['href']),
                 buttonText: item['button_text'],
                 imageName: item['image_name'],
+                displayCondition: item['display_condition'],
               ))
           .toList();
     } catch (err) {
@@ -98,6 +99,7 @@ class IndexItem {
   final RouteLink link;
   final String buttonText;
   final String imageName;
+  final String displayCondition;
 
   IndexItem({
     this.itemType,
@@ -106,6 +108,7 @@ class IndexItem {
     this.link,
     this.buttonText,
     this.imageName,
+    this.displayCondition,
   });
 
   IndexItemType get type {
