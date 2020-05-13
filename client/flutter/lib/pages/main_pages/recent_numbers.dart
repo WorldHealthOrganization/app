@@ -61,6 +61,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      appBarColor: Constants.backgroundColor,
       body: <Widget>[
         CupertinoSliverRefreshControl(
           builder: (context, refreshIndicatorMode, pulledExtent, b, c) {

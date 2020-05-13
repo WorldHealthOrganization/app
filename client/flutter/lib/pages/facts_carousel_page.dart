@@ -6,7 +6,6 @@ import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:who_app/pages/main_pages/routes.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
 class FactsCarouselPage extends StatefulWidget {
@@ -65,15 +64,15 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
     }).toList();
 
     return Material(
-      child: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          heroTag: HeroTags.learn,
-          backgroundColor: CupertinoColors.white,
-          middle: PageHeader.buildTitle("Get the Facts"),
-          transitionBetweenRoutes: false,
-        ),
-        child: Container(
-            child: items.isNotEmpty ? CarouselView(items: items) : Container()),
+      child: Column(
+        children: <Widget>[
+          PageHeader(inSliver: false, title: 'Get the Facts'),
+          Expanded(
+            child: items.isNotEmpty //
+                ? CarouselView(items: items)
+                : Container(),
+          ),
+        ],
       ),
     );
   }
