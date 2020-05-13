@@ -1,5 +1,6 @@
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/pages/onboarding/country_list_page.dart';
 import 'package:who_app/pages/onboarding/country_select_page.dart';
 import 'package:who_app/pages/onboarding/legal_landing_page.dart';
@@ -103,6 +104,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       _showCountryListPage = false;
     });
     await _toNextPage();
+    await WhoService.putLocation(isoCountryCode: _selectedCountry.alpha2Code);
   }
 
   Future<void> _onLegalDone() async {
