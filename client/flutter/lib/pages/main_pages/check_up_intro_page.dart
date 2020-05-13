@@ -38,7 +38,7 @@ class CheckUpIntroPage extends StatelessWidget {
             )
           : null,
       body: <Widget>[
-        if (!inHomePage) SliverToBoxAdapter(child: SizedBox(height: 56)),
+        if (!inHomePage) SliverToBoxAdapter(child: SizedBox(height: 24)),
         _buildBody(context)
       ],
     );
