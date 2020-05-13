@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
-import 'package:who_app/api/symptom_logic.dart';
+import 'package:who_app/api/display_conditions.dart';
 
 /// Represents a series of symptom checker pages.
 /// Notifies the listener on page changes or change of status including completion
 /// of the series or indication that the user should seek medical attention.
 class SymptomCheckerModel with ChangeNotifier {
   final SymptomCheckerContent _content;
+  final LogicContext _logicContext;
 
   /// Create the symptom checker model with content from a content bundle.
-  SymptomCheckerModel(this._content) {
+  SymptomCheckerModel(this._content, this._logicContext) {
     // Add the first page
     pages.add(SymptomCheckerPageModel(
         question: _content.questions.first,
@@ -58,8 +59,9 @@ class SymptomCheckerModel with ChangeNotifier {
         !nextPageFound && i < _content.questions.length;
         i++) {
       nextPageFound = logic.evaluateCondition(
-          condition: _content.questions[i].displayCondition ?? 'true',
-          previousPages: pages);
+          condition: _content.questions[i].displayCondition,
+          previousPages: pages,
+          context: _logicContext);
       if (nextPageFound) {
         pages.add(SymptomCheckerPageModel(
             question: _content.questions[i],
@@ -73,7 +75,9 @@ class SymptomCheckerModel with ChangeNotifier {
 
     return List<SymptomCheckerResult>.unmodifiable(_content.results.where((r) =>
         logic.evaluateCondition(
-            condition: r.displayCondition, previousPages: pages)));
+            condition: r.displayCondition,
+            previousPages: pages,
+            context: _logicContext)));
   }
 
   /// Indicate that the user has driven the UI back to the previous page or

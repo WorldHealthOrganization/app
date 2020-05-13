@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/home_page_sections/home_page_donate.dart';
@@ -24,6 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   IndexContent _content;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _content = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
     } catch (err) {
@@ -80,7 +83,12 @@ class _HomePageState extends State<HomePage> {
     if (items == null) {
       return [LoadingIndicator()];
     }
-    List<Widget> bundleWidgets = items.map((item) => _buildItem(item)).toList();
+    Logic logic = Logic();
+    List<Widget> bundleWidgets = items
+        .where((item) => logic.evaluateCondition(
+            condition: item.displayCondition, context: _logicContext))
+        .map((item) => _buildItem(item))
+        .toList();
     return [
       ...bundleWidgets,
       // TODO: do we want to drive donate section via the content bundle too?

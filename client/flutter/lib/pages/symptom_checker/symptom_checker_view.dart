@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
@@ -31,9 +32,10 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     // TODO: Reduce this boilerplate
     Locale locale = Localizations.localeOf(context);
     try {
+      final logicContext = await LogicContext.generate();
       var content = await SymptomCheckerContent.load(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, content);
-      _model = SymptomCheckerModel(content);
+      _model = SymptomCheckerModel(content, logicContext);
     } catch (err) {
       print("Error loading content: $err");
     }

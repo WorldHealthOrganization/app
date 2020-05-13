@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/learn_page_promo.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
@@ -25,6 +26,7 @@ class _LearnPageState extends State<LearnPage> {
   final header =
       TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
   IndexContent _content;
+  LogicContext _logicContext;
   final List<_MenuItemTheme> menuColors = [
     _MenuItemTheme(
       backgroundColor: Constants.primaryDarkColor,
@@ -56,6 +58,7 @@ class _LearnPageState extends State<LearnPage> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _content = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
     } catch (err) {
@@ -115,8 +118,15 @@ class _LearnPageState extends State<LearnPage> {
       SliverList(delegate: SliverChildListDelegate(_buildMenu()));
 
   List<Widget> _buildMenu() {
-    return (_content?.items ?? []).asMap().entries.map((entry) {
-      final itemTheme = menuColors[entry.key];
+    Logic logic = Logic();
+    return (_content?.items ?? [])
+        .where((item) => logic.evaluateCondition(
+            condition: item.displayCondition, context: _logicContext))
+        .toList()
+        .asMap()
+        .entries
+        .map((entry) {
+      final itemTheme = menuColors[entry.key % menuColors.length];
       return _MenuItem(
         title: entry.value.title,
         subtitle: entry.value.subtitle,
