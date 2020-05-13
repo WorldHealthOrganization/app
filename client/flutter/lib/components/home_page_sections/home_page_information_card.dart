@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -8,8 +9,52 @@ class HomePageInformationCard extends StatelessWidget {
   final RouteLink link;
   final String subtitle;
   final String title;
+  final String imageName;
+
+  String get assetName =>
+      this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
 
   const HomePageInformationCard({
+    @required this.buttonText,
+    @required this.link,
+    @required this.subtitle,
+    @required this.title,
+    this.imageName,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final inner = _HomePageInformationCardInner(
+      buttonText: this.buttonText,
+      link: this.link,
+      subtitle: this.subtitle,
+      title: this.title,
+    );
+    return this.assetName != null
+        ? Stack(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 36.0),
+                child: inner,
+              ),
+              Positioned(
+                right: 44.0,
+                child: SvgPicture.asset(this.assetName),
+              )
+            ],
+          )
+        : inner;
+  }
+}
+
+class _HomePageInformationCardInner extends StatelessWidget {
+  final String buttonText;
+  final RouteLink link;
+  final String subtitle;
+  final String title;
+
+  const _HomePageInformationCardInner({
     @required this.buttonText,
     @required this.link,
     @required this.subtitle,
