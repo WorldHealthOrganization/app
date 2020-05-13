@@ -1,5 +1,6 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -20,6 +21,7 @@ class TravelAdvice extends StatefulWidget {
 
 class _TravelAdviceState extends State<TravelAdvice> {
   AdviceContent _adviceContent;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -33,6 +35,7 @@ class _TravelAdviceState extends State<TravelAdvice> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _adviceContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _adviceContent);
     } catch (err) {
@@ -56,48 +59,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
   SliverList _buildBody() {
     return SliverList(
         delegate: SliverChildListDelegate([
-      Container(
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(color: Constants.emergencyRedColor, width: 1.0),
-            ),
-          ),
-          padding: const EdgeInsets.all(28.0),
-          child: Column(children: <Widget>[
-            if (_adviceContent?.banner != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  FaIcon(
-                    FontAwesomeIcons.exclamationTriangle,
-                    color: Constants.emergencyRedColor,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ThemedText(
-                    _adviceContent.banner,
-                    variant: TypographyVariant.h4,
-                    style: TextStyle(
-                      color: Constants.emergencyRedColor,
-                      height: 1.37,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            if (_adviceContent?.body != null)
-              ThemedText(
-                _adviceContent.body,
-                variant: TypographyVariant.body,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Constants.textColor,
-                ),
-              ),
-          ])),
       ..._getItems(context),
       SizedBox(
         height: 28,
@@ -106,18 +67,74 @@ class _TravelAdviceState extends State<TravelAdvice> {
   }
 
   List<Widget> _getItems(BuildContext context) {
-    return (_adviceContent?.items ?? []).map((item) {
-      return TravelAdviceListItem(
-          title: item.title ?? "", description: item.body ?? "");
+    return (_adviceContent?.items ?? [])
+        .where((element) => element.isDisplayed(_logicContext))
+        .map((item) {
+      return item.isBanner
+          ? _Banner(title: item.title, body: item.body)
+          : _TravelAdviceListItem(
+              title: item.title ?? "", description: item.body ?? "");
     }).toList();
   }
 }
 
-class TravelAdviceListItem extends StatelessWidget {
+class _Banner extends StatelessWidget {
+  final String title;
+  final String body;
+
+  _Banner({@required this.title, @required this.body});
+
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Constants.emergencyRedColor, width: 1.0),
+          ),
+        ),
+        padding: const EdgeInsets.all(28.0),
+        child: Column(children: <Widget>[
+          if (title != null)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                FaIcon(
+                  FontAwesomeIcons.exclamationTriangle,
+                  color: Constants.emergencyRedColor,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ThemedText(
+                  title,
+                  variant: TypographyVariant.h4,
+                  style: TextStyle(
+                    color: Constants.emergencyRedColor,
+                    height: 1.37,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          if (body != null)
+            ThemedText(
+              body,
+              variant: TypographyVariant.body,
+              style: TextStyle(
+                fontSize: 18,
+                color: Constants.textColor,
+              ),
+            ),
+        ]));
+  }
+}
+
+class _TravelAdviceListItem extends StatelessWidget {
   final String title;
   final String description;
 
-  TravelAdviceListItem({@required this.title, @required this.description});
+  _TravelAdviceListItem({@required this.title, @required this.description});
 
   @override
   Widget build(BuildContext context) {

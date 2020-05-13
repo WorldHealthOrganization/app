@@ -1,5 +1,6 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/content/schema/conditional_content.dart';
 import '../content_loading.dart';
 
 /// Interpret a content bundle as symptom checker data.
@@ -220,7 +221,7 @@ class SymptomCheckerResultCard {
   });
 }
 
-class SymptomCheckerAnswer {
+class SymptomCheckerAnswer with ConditionalItem {
   /// An id for the answer that is unique within its question context.
   final String id;
 

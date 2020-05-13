@@ -2,13 +2,14 @@ schema_version: 1
 content_version: 1
 contents:
   type: index
-  promo:
-    promo_type: check_your_symptoms
-    title: Check Your Symptoms
-    subtitle: See what your symptoms could mean and what you can do to move forward.
-    button_text: Check Now
-    href: /symptom-checker
-    image_name: undraw-home-promo-symptoms
+  promos:
+    -
+      promo_type: check_your_symptoms
+      title: Check Your Symptoms1
+      subtitle: See what your symptoms could mean and what you can do to move forward.
+      button_text: Check Now
+      href: /symptom-checker
+      image_name: undraw-home-promo-symptoms
   items:
     -
       item_type: recent_numbers

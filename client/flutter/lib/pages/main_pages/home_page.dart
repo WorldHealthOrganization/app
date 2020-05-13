@@ -65,7 +65,8 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _buildPromo() {
     List<Widget> preHeader = [];
-    IndexPromo p = _content?.promo;
+    IndexPromo p = _content?.promos
+        ?.firstWhere((element) => element.isDisplayed(_logicContext));
     if (p != null) {
       preHeader.add(_HomePageSection(
         content: HomePageHeader(
@@ -86,10 +87,8 @@ class _HomePageState extends State<HomePage> {
     if (items == null) {
       return [LoadingIndicator()];
     }
-    Logic logic = Logic();
     List<Widget> bundleWidgets = items
-        .where((item) => logic.evaluateCondition(
-            condition: item.displayCondition, context: _logicContext))
+        .where((item) => item.isDisplayed(_logicContext))
         .map((item) => _buildItem(item))
         .toList();
     return [

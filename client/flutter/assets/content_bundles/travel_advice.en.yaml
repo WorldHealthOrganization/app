@@ -2,9 +2,11 @@ schema_version: 1
 content_version: 1
 contents:
   type: advice
-  banner: WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks.
-  body: It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases.
   items:
+    -
+      title: US WHO continues to advise against the application of travel or trade restrictions to countries experiencing COVID-19 outbreaks.
+      body: It is prudent for travellers who are sick to delay or avoid travel to affected areas, in particular for elderly travellers and people with chronic diseases or underlying health conditions. “Affected areas” are considered those countries, provinces, territories or cities experiencing ongoing transmission of COVID-19, in contrast to areas reporting only imported cases.
+      is_banner: true
     -
       title: Self-monitor for 14 days
       body: Monitor symptoms and follow national protocols of receiving countries.

@@ -78,11 +78,11 @@ class ContentBundle {
     }
   }
 
-  YamlMap get contentPromo {
+  YamlList get contentPromos {
     try {
-      return yaml['contents']['promo'];
+      return yaml['contents']['promos'];
     } catch (err) {
-      return YamlMap();
+      return YamlList();
     }
   }
 
