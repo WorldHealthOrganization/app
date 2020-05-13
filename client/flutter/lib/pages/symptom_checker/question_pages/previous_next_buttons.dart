@@ -21,9 +21,11 @@ class NextButton extends StatelessWidget {
       // TODO: Localize
       "Next",
       enableNext ? onNext : null,
-      borderRadius: 50,
       crossAxisAlignment: CrossAxisAlignment.center,
-      titleStyle: ThemedText.styleForVariant(TypographyVariant.h4)
+      mainAxisAlignment: MainAxisAlignment.center,
+      verticalPadding: 12,
+      borderRadius: 500,
+      titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
           .merge(TextStyle(color: CupertinoColors.white)),
     );
   }

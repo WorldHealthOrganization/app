@@ -6,6 +6,7 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/about_page.dart';
 import 'package:who_app/pages/facts_carousel_page.dart';
 import 'package:who_app/pages/main_pages/app_tab_router.dart';
+import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/news_feed.dart';
 import 'package:who_app/pages/onboarding/onboarding_page.dart';
@@ -32,7 +33,8 @@ class Routes {
           dataSource: QuestionContent.yourQuestionsAnswered,
           title: S.of(context).homePagePageButtonQuestions,
         ),
-    '/symptom-checker': (context) => SymptomCheckerView(),
+    '/symptom-checker': (context) => CheckUpIntroPage(),
+    '/symptom-checker-survey': (context) => SymptomCheckerView(),
     '/symptom-checker-results': (context) => SymptomCheckerResultsPage(
         model:
             ModalRoute.of(context).settings.arguments as SymptomCheckerModel),
