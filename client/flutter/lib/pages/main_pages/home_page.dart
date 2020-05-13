@@ -54,7 +54,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
-      color: CupertinoColors.white,
+      // For background scroll bleed only - white background set on _HomePageSection widgets
+      color: _content?.items != null
+          ? Constants.primaryDarkColor
+          : CupertinoColors.white,
       beforeHeader: _buildPromo(),
       body: _buildBody(),
     );
@@ -170,7 +173,8 @@ class _HomePageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Padding(
+      child: Container(
+        color: CupertinoColors.white,
         padding: this.padding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
