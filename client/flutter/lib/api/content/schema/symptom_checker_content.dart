@@ -8,6 +8,8 @@ import '../content_loading.dart';
 /// are to be presented.
 class SymptomCheckerContent extends ContentBase {
   List<SymptomCheckerQuestion> questions;
+  List<SymptomCheckerResult> results;
+  Map<String, SymptomCheckerResultCard> cards;
 
   static Future<SymptomCheckerContent> load(Locale locale) async {
     var bundle = await ContentLoading().load(locale, "symptom_checker");
@@ -18,6 +20,11 @@ class SymptomCheckerContent extends ContentBase {
       : super(bundle, schemaName: "symptom_checker") {
     try {
       this.questions = bundle.contentItems.map(_questionFromContent).toList();
+      this.cards = Map<String, SymptomCheckerResultCard>.fromIterable(
+          bundle.contentCards.map(_cardFromContent),
+          key: (v) => v.id,
+          value: (v) => v);
+      this.results = bundle.contentResults.map(_resultFromContent).toList();
     } catch (err) {
       print("Error loading symptom checker data: $err");
       throw ContentBundleDataException();
@@ -27,17 +34,11 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerQuestion _questionFromContent(dynamic item) {
     SymptomCheckerQuestionType type;
     switch (item['type']) {
-      case "yes_no":
-        type = SymptomCheckerQuestionType.YesNo;
+      case "single_selection":
+        type = SymptomCheckerQuestionType.SingleSelection;
         break;
-      case "short_list_single_selection":
-        type = SymptomCheckerQuestionType.ShortListSingleSelection;
-        break;
-      case "short_list_multiple_selection":
-        type = SymptomCheckerQuestionType.ShortListMultipleSelection;
-        break;
-      case "long_list_single_selection":
-        type = SymptomCheckerQuestionType.LongListSingleSelection;
+      case "multiple_selection":
+        type = SymptomCheckerQuestionType.MultipleSelection;
         break;
       default:
         throw Exception("unreognized question type");
@@ -45,10 +46,55 @@ class SymptomCheckerContent extends ContentBase {
     return SymptomCheckerQuestion(
         type: type,
         id: item['id'],
-        questionHtml: item['question_html'],
+        title: item['title'],
+        bodyHtml: item['body_html'],
         displayCondition: item['display_condition'],
         imageName: item['image_name'],
         answers: _answersFromContent(item));
+  }
+
+  SymptomCheckerResult _resultFromContent(dynamic item) {
+    SymptomCheckerResultSeverity severity;
+    if (item['severity'] != null) {
+      switch (item['severity']) {
+        case "covid19_symptoms":
+          severity = SymptomCheckerResultSeverity.COVID19Symptoms;
+          break;
+        case "some_symptoms":
+          severity = SymptomCheckerResultSeverity.SomeSymptoms;
+          break;
+        case "none":
+          severity = SymptomCheckerResultSeverity.None;
+          break;
+        case "emergency":
+          severity = SymptomCheckerResultSeverity.Emergency;
+          break;
+        default:
+          throw Exception("unrecognized result severity");
+      }
+    }
+    return SymptomCheckerResult(
+        title: item['title'],
+        severity: severity,
+        id: item['id'],
+        displayCondition: item['display_condition'],
+        cards: _cardsFromIds(item['cards']));
+  }
+
+  List<SymptomCheckerResultCard> _cardsFromIds(dynamic cardIds) {
+    if (cardIds == null) {
+      return [];
+    }
+    return List<SymptomCheckerResultCard>.from(cardIds.map((id) => cards[id]));
+  }
+
+  SymptomCheckerResultCard _cardFromContent(dynamic item) {
+    return SymptomCheckerResultCard(
+      id: item['id'],
+      title: item['title'],
+      bodyHtml: item['body_html'],
+      iconName: item['icon_name'],
+    );
   }
 
   List<SymptomCheckerAnswer> _answersFromContent(dynamic item) {
@@ -62,27 +108,20 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerAnswer _answerFromContent(dynamic item) {
     return SymptomCheckerAnswer(
       id: item['id'],
-      bodyHtml: item['body_html'],
+      title: item['title'],
       iconName: item['icon_name'],
     );
   }
 }
 
 enum SymptomCheckerQuestionType {
-  /// A yes or no question.
-  YesNo,
+  /// A question with a list of answers intended to be presented together in
+  /// which a single selection is required.
+  SingleSelection,
 
-  /// A question with a short list of answers intended to be presented together in
-  /// which a single selection is allowed.
-  ShortListSingleSelection,
-
-  /// A question with a short list of answers intended to be presented together in
-  /// which multiple selections are allowed.
-  ShortListMultipleSelection,
-
-  /// A question with a lengthy list of answers intended to be presented in a list
-  /// in which a single selection is allowed.
-  LongListSingleSelection,
+  /// A question with a list of answers intended to be presented together in
+  /// which zero or more selections are allowed.
+  MultipleSelection,
 }
 
 /// SymptomChecker ('symptom_checker' schema) question items including question and
@@ -94,7 +133,9 @@ class SymptomCheckerQuestion {
   final String id;
 
   /// The question.
-  final String questionHtml;
+  final String title;
+
+  final String bodyHtml;
 
   /// An optional image to be displayed with the question.
   final String imageName;
@@ -107,11 +148,9 @@ class SymptomCheckerQuestion {
 
   bool get allowsMultipleSelection {
     switch (type) {
-      case SymptomCheckerQuestionType.YesNo:
-      case SymptomCheckerQuestionType.ShortListSingleSelection:
-      case SymptomCheckerQuestionType.LongListSingleSelection:
+      case SymptomCheckerQuestionType.SingleSelection:
         return false;
-      case SymptomCheckerQuestionType.ShortListMultipleSelection:
+      case SymptomCheckerQuestionType.MultipleSelection:
         return true;
     }
     throw Exception("should be unreachable");
@@ -120,21 +159,52 @@ class SymptomCheckerQuestion {
   SymptomCheckerQuestion({
     @required this.type,
     @required this.id,
-    @required this.questionHtml,
-    @required this.imageName,
+    @required this.title,
+    this.bodyHtml,
+    this.imageName,
     @required this.displayCondition,
     this.answers,
-  }) {
-    assert(displayCondition == null, "Display conditions unimplemented.");
-  }
+  });
 }
 
-class SymptomCheckerAnswer {
-  /// An id for the question that is unique within its question context.
+enum SymptomCheckerResultSeverity {
+  None,
+  SomeSymptoms,
+  COVID19Symptoms,
+  Emergency,
+}
+
+class SymptomCheckerResult {
+  /// A globally unique id for the result.
   final String id;
+
+  /// The summary/title.
+  final String title;
+
+  /// The summary/title.
+  final SymptomCheckerResultSeverity severity;
 
   /// An expression indicating whether the question should be presented.
   final String displayCondition;
+
+  /// The list of possible answers.
+  final List<SymptomCheckerResultCard> cards;
+
+  SymptomCheckerResult({
+    @required this.id,
+    this.title,
+    @required this.displayCondition,
+    this.severity,
+    this.cards,
+  });
+}
+
+class SymptomCheckerResultCard {
+  /// The title
+  final String id;
+
+  /// The title
+  final String title;
 
   /// The answer
   final String bodyHtml;
@@ -142,10 +212,31 @@ class SymptomCheckerAnswer {
   /// An icon to display with the answer
   final String iconName;
 
+  SymptomCheckerResultCard({
+    @required this.id,
+    @required this.title,
+    this.bodyHtml,
+    this.iconName,
+  });
+}
+
+class SymptomCheckerAnswer {
+  /// An id for the answer that is unique within its question context.
+  final String id;
+
+  /// An expression indicating whether the question should be presented.
+  final String displayCondition;
+
+  /// The answer
+  final String title;
+
+  /// An icon to display with the answer
+  final String iconName;
+
   SymptomCheckerAnswer({
     @required this.id,
     this.displayCondition,
-    @required this.bodyHtml,
+    @required this.title,
     this.iconName,
   });
 }

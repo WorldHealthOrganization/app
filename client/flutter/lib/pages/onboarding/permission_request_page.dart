@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
+import 'package:flutter/material.dart';
 
 class PermissionRequestPage extends StatelessWidget {
   final String pageTitle;
@@ -23,7 +24,7 @@ class PermissionRequestPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return Material(
       child: Stack(
         children: <Widget>[
           Align(

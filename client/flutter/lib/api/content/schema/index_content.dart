@@ -34,6 +34,7 @@ class IndexContent extends ContentBase {
           title: yamlPromo['title'],
           subtitle: yamlPromo['subtitle'],
           link: RouteLink.fromUri(yamlPromo['href']),
+          imageName: yamlPromo['image_name'],
         );
       }
       this.items = bundle.contentItems
@@ -43,6 +44,8 @@ class IndexContent extends ContentBase {
                 subtitle: item['subtitle'],
                 link: RouteLink.fromUri(item['href']),
                 buttonText: item['button_text'],
+                imageName: item['image_name'],
+                displayCondition: item['display_condition'],
               ))
           .toList();
     } catch (err) {
@@ -60,12 +63,14 @@ class IndexPromo {
   final String subtitle;
   final RouteLink link;
   final String buttonText;
+  final String imageName;
 
   IndexPromo({
     @required this.title,
     @required this.subtitle,
     @required this.link,
     @required this.buttonText,
+    this.imageName,
     this.promoType,
   });
 
@@ -93,6 +98,8 @@ class IndexItem {
   final String subtitle;
   final RouteLink link;
   final String buttonText;
+  final String imageName;
+  final String displayCondition;
 
   IndexItem({
     this.itemType,
@@ -100,6 +107,8 @@ class IndexItem {
     this.subtitle,
     this.link,
     this.buttonText,
+    this.imageName,
+    this.displayCondition,
   });
 
   IndexItemType get type {

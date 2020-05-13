@@ -47,7 +47,6 @@ class _TravelAdviceState extends State<TravelAdvice> {
   Widget build(BuildContext context) {
     return PageScaffold(
         heroTag: HeroTags.learn,
-        headingBorderColor: Constants.emergencyRedColor,
         body: [
           _adviceContent != null ? _buildBody() : LoadingIndicator(),
         ],
@@ -58,6 +57,11 @@ class _TravelAdviceState extends State<TravelAdvice> {
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(color: Constants.emergencyRedColor, width: 1.0),
+            ),
+          ),
           padding: const EdgeInsets.all(28.0),
           child: Column(children: <Widget>[
             if (_adviceContent?.banner != null)
@@ -118,7 +122,7 @@ class TravelAdviceListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(28.0),
+      padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

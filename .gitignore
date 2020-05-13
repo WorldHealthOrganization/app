@@ -96,3 +96,9 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# Visual Studio
+
+.classpath
+.project
+.settings

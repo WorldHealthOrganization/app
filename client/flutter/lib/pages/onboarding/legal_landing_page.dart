@@ -5,6 +5,7 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';
 
 class LegalLandingPage extends StatelessWidget {
   final VoidCallback onNext;
@@ -13,7 +14,7 @@ class LegalLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return Material(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -30,7 +31,7 @@ class LegalLandingPage extends StatelessWidget {
                     child: Text(
                       S.of(context).legalLandingPageTitle,
                       style: TextStyle(
-                        color: Color(0xff008DC9),
+                        color: Constants.primaryColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),

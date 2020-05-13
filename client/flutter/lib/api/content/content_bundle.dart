@@ -62,6 +62,22 @@ class ContentBundle {
     }
   }
 
+  YamlList get contentResults {
+    try {
+      return yaml['contents']['results'];
+    } catch (err) {
+      return YamlList();
+    }
+  }
+
+  YamlList get contentCards {
+    try {
+      return yaml['contents']['results_cards'];
+    } catch (err) {
+      return YamlList();
+    }
+  }
+
   YamlMap get contentPromo {
     try {
       return yaml['contents']['promo'];
