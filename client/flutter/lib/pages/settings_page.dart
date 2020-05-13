@@ -204,37 +204,44 @@ class _SettingsPageState extends State<SettingsPage>
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 24,
-              vertical: 16,
+              vertical: 20,
             ),
-            child: Column(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ThemedText(header,
-                          variant: TypographyVariant.h3,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            color: Constants.neutral1Color,
-                          )),
-                    ),
-                    Semantics(
-                      excludeSemantics: true,
-                      child: Switch.adaptive(
-                        value: isToggled,
-                        onChanged: onToggle,
-                        activeColor: Constants.primaryColor,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0, bottom: 8.0),
+                        child: ThemedText(header,
+                            variant: TypographyVariant.h3,
+                            style: TextStyle(
+                              color: Constants.neutral1Color,
+                            )),
                       ),
-                    )
-                  ],
-                ),
-                ThemedText(
-                  info,
-                  variant: TypographyVariant.body,
-                  style: TextStyle(
-                    color: Constants.neutral2Color,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: ThemedText(
+                          info,
+                          variant: TypographyVariant.body,
+                          style: TextStyle(
+                            color: Constants.neutral2Color,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                )
+                ),
+                Semantics(
+                  excludeSemantics: true,
+                  child: Switch.adaptive(
+                    value: isToggled,
+                    onChanged: onToggle,
+                    activeColor: Constants.primaryColor,
+                  ),
+                ),
               ],
             ),
           ),
