@@ -12,12 +12,12 @@ class PageHeader extends StatelessWidget {
   final Color appBarColor;
   final bool inSliver;
 
-  final bool disableBackButton;
+  final bool showBackButton;
 
   PageHeader({
     @required this.title,
     this.heroTag,
-    this.disableBackButton = false,
+    this.showBackButton = true,
     this.titleStyle,
     this.borderColor = const Color(0xffC9CDD6),
     this.appBarColor,
@@ -32,10 +32,13 @@ class PageHeader extends StatelessWidget {
       children: <Widget>[
         AppBar(
           centerTitle: false,
-          automaticallyImplyLeading: !disableBackButton,
+          automaticallyImplyLeading: false,
+          leading: showBackButton ? BackButton() : null,
           iconTheme: IconThemeData(color: Constants.accentNavyColor),
           title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: showBackButton
+                ? EdgeInsets.zero
+                : EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               title,
               style: TextStyle(color: Constants.accentNavyColor),

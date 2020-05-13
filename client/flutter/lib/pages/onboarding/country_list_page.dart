@@ -23,7 +23,6 @@ class CountryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO back button isn't shown as this page isn't being pushed as a route
     return PageScaffold(
       // TODO: localize?
       title: 'Country',

@@ -11,7 +11,7 @@ class PageScaffold extends StatelessWidget {
   final Color color;
   final Color appBarColor;
   final Color headingBorderColor;
-  final bool disableBackButton;
+  final bool showBackButton;
   final TextStyle headerTitleStyle;
   final Widget header;
 
@@ -30,7 +30,7 @@ class PageScaffold extends StatelessWidget {
     this.appBarColor,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
-    this.disableBackButton = false,
+    this.showBackButton = true,
     this.headerTitleStyle,
   });
 
@@ -53,7 +53,7 @@ class PageScaffold extends StatelessWidget {
                           title: this.title,
                           heroTag: this.heroTag ?? this.title,
                           borderColor: headingBorderColor,
-                          disableBackButton: disableBackButton,
+                          showBackButton: showBackButton,
                           titleStyle: headerTitleStyle,
                           appBarColor: appBarColor ?? color,
                         )),
