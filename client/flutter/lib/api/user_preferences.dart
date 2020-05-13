@@ -16,14 +16,14 @@ class UserPreferences {
   /// Was the user shown the introductory pages as part of onboarding
   Future<bool> getOnboardingCompleted() async {
     return (await SharedPreferences.getInstance())
-            .getBool(UserPreferenceKey.OnboardingCompleted.toString()) ??
+            .getBool(UserPreferenceKey.OnboardingCompleted_2.toString()) ??
         false;
   }
 
   /// Was the user shown the introductory pages as part of onboarding
   Future<bool> setOnboardingCompleted(bool value) async {
     return (await SharedPreferences.getInstance())
-        .setBool(UserPreferenceKey.OnboardingCompleted.toString(), value);
+        .setBool(UserPreferenceKey.OnboardingCompleted_2.toString(), value);
   }
 
   Future<bool> getAnalyticsEnabled() async {
@@ -88,7 +88,7 @@ class UserPreferences {
 }
 
 enum UserPreferenceKey {
-  OnboardingCompleted,
+  OnboardingCompleted_2, // Increment to force re-onboarding.
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,
