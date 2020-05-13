@@ -13,6 +13,7 @@ class Constants {
   static const Color backgroundColor = CupertinoColors.white; // WHITE
   static const Color greyBackgroundColor = Color(0xFFF9F8F7); // GREY
   static const Color whoBackgroundBlueColor = Color(0xff007EB4); // WHO BLUE 2
+  static const Color homeHeaderGreenColor = Color(0xffFAE8A9);
 
   // Element colors
   static const Color bodyTextColor = Color(0xff272626); // CHARCOAL
