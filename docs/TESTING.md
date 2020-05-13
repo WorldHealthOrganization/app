@@ -1,7 +1,3 @@
----
-For release: v1.0
----
-
 # Test Plan
 
 ## Introduction
@@ -10,13 +6,9 @@ The idea of this Test Plan is to communicate the test approach to team members.
 
 As the team works with the product, they will define the needs for the vNext.
 
-### Team communication
-
-Perform communication through Slack and Github issues.
-
 ### Objectives
 
-The 1.0 phase will focus on manual testing for now, and then we'll migrate to automation in the future. Preferably in the next major test plan update, the next app release will follow.
+We are focusing on manual testing and automated checks.
 
 App milestones for 1.0:  
 [https://github.com/WorldHealthOrganization/app/milestone/4](https://github.com/WorldHealthOrganization/app/milestone/4)
@@ -36,22 +28,61 @@ We're supporting Android and iOS mobile operating systems.
 
 #### Scope
 
-In manual testing, we should focus on all user interface elements, hand washing animation in "Protect Yourself".
+In manual testing, we should focus on all user interface interactions:
+
+* Protect yourself
+* Your questions answered
+* Individual questions
+* News & press
+* External links w/titles/brief text
+* Travel advice
+* Myth-busters
+* Latest numbers
 
 #### Examples of configurations to focus on;
 
-* Android GO.
-* Older devices such as Galaxy S3 and iPhone 4s.
-* Smaller screen devices - iPhone 5.
-* Big screens - big tablets such as SM-T670 18.4".
-* Big screen with smaller resolution - iPhone XR.
-* Xiaomi devices.
+* Android GO - Nokia 2.1
+* Older devices such as Samsung Galaxy Nexus (on Android 4.1 - 4.X) and iPhone 4s (on iOS 8.X)
+* Smaller screen devices - iPhone 5
+* Big screen with smaller resolution - iPhone XR
+* Devices with custom user interface - Huawei P10 Lite
+
+#### Android devices
+
+* Samsung Galaxy Nexus
+* Samsung Galaxy A40
+* Samsung Galaxy S20
+* Samsung Galaxy S10
+* Samsung Galaxy S9
+* Samsung Galaxy S8
+* Samsung Galaxy S7
+* Xiaomi Redmi 4A
+* Xiaomi Redmi 5
+* Xiaomi Redmi Note 7 
+* Huawei P20 Lite
+* Huawei P10 Lite
+* Nokia 2.1
+* HTC U11
+* LG G6
+* BQ Aquaris M5
+
+#### iOS devices
+
+* Apple iPhone 4s
+* Apple iPhone 5
+* Apple iPhone 6
+* Apple iPhone 8
+* Apple iPhone SE
+* Apple iPhone XR
+* Apple iPhone XS
 
 ### Automated checks
 
-We plan to use Firebase Robo test checks for now, and add UI integration tests in the second phase.
+We plan to use [Firebase Test Lab](https://firebase.google.com/docs/test-lab/android/overview) for as much test functionality as possible. 
 
-We can also use cloud device labs as support in performing various test types.
+That's for integration tests using Espresso binding for Flutter and Firebase Robo test crawler.
+
+We will also use others cloud device labs as support in performing various test types.
 
 ### Compatibility with Device Hardware
 
@@ -127,9 +158,17 @@ We can also use cloud device labs as support in performing various test types.
 
 #### Accessibility testing
 
-* Check screen readers;
-* Check high contrast colours;
-* Check black and white screen colours;
+* Check screen readers.
+* Check high contrast colours.
+* Check black and white screen colours.
+* Minimum color contrast ratios of 3:1 for 18pt text and larger and 4.5:1 of any smaller text.
+* Touch targets are at least 44pt on iOS and 48dp on Android (in the smallest dimension).
+* All interactive elements are labeled as such with accessibility traits that reflect interactive state and text labels.
+* Images provide text descriptions
+* Screens MUST have meaningful titles.
+* The reading order of a screen as conveyed by VoiceOver / TalkBack MUST be logical and intuitive.
+* When content is added or deleted from a screen, VoiceOver / TalkBack focus MUST be managed logically and never be lost.
+* Fonts should be resizable without breaking layout.
 
 ### Test procedures
 
@@ -145,6 +184,6 @@ Bug bashes will have their procedure which will be sent to invited users.
 
 #### We don't exactly know what devices our users will use.
 
-That's our main risk. We need to assume that they could use anything ranging from Samsung Galaxy S3 \(Android 4.3\) and iPhone 4s \(iOS 9.3.5\) to Samsung Galaxy Folder 2 \(3.8" screen\), Samsung Galaxy View SM-760 \(18.4" screen\) and Infinix Zero 5 Pro \(with Mediatek MT6757CD Helio P20 CPU\) ending with Xiaomi Redmi K30 Pro \(2020 release\).
+That's our main risk. We need to assume that they could use anything ranging from Samsung Galaxy Nexus \(Android 4.X\) and iPhone 4s \(iOS 9.3.5\) to Samsung Galaxy Folder 2 \(3.8" screen\), Samsung Galaxy View SM-760 \(18.4" screen\) and Infinix Zero 5 Pro \(with Mediatek MT6757CD Helio P20 CPU\) ending with Xiaomi Redmi K30 Pro \(2020 release\).
 
 We must deal with multiple device types, OS versions, screen sizes, quality of display and many more.
