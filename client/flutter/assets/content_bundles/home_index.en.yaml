@@ -5,7 +5,7 @@ contents:
   promos:
     -
       promo_type: check_your_symptoms
-      title: Check Your Symptoms1
+      title: Check Your Symptoms
       subtitle: See what your symptoms could mean and what you can do to move forward.
       button_text: Check Now
       href: /symptom-checker
