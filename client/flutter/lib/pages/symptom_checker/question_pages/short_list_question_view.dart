@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/components/forms.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/previous_next_buttons.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
+import 'package:html/dom.dart' as dom;
 
 // A short list question supporting either single or multiple selection modes.
 class ShortListQuestionView extends StatefulWidget {
@@ -27,6 +28,7 @@ class ShortListQuestionView extends StatefulWidget {
 class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   String _singleSelection;
   Set<String> _multipleSelections = {};
+  bool _noneOfTheAboveSelected = false;
 
   bool get _allowsMultipleSelection {
     return widget.pageModel.question.allowsMultipleSelection;
@@ -46,62 +48,108 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Spacer(),
-            Container(
-                width: 300,
-                child: Html(data: widget.pageModel.question.questionHtml)),
-            SizedBox(height: 24),
-            ...widget.pageModel.question.answers.map(_buildAnswerRow).toList(),
-            Spacer(flex: 3),
-            PreviousNextButtons(
-                showPrevious: widget.pageModel.questionIndex > 0,
-                enableNext: _isComplete,
-                onPrevious: _previous,
-                onNext: _next),
-            Spacer()
-          ],
-        ),
-      ),
-    );
-  }
+    final answers = widget.pageModel.question.answers;
+    final group = _allowsMultipleSelection
+        ? PickOneOrMoreOptionGroup(
+            items: [
+              ...answers.map((a) => MultiSelectOptionItem(
+                    title: a.title,
+                    selected: _multipleSelections.contains(a.id),
+                  )),
+              // TODO: Localize
+              MultiSelectOptionItem(
+                  title: "None of the above", noneOfTheAbove: true),
+            ],
+            onPressed: (idx, sel) {
+              setState(() {
+                _multipleSelections.clear();
+                if (sel.last.selected) {
+                  _noneOfTheAboveSelected = true;
+                } else {
+                  _noneOfTheAboveSelected = false;
+                  for (int i = 0; i < answers.length; i++) {
+                    if (sel[i].selected) {
+                      _multipleSelections.add(answers[i].id);
+                    }
+                  }
+                }
+              });
+            },
+          )
+        : PickOneOptionGroup(
+            items: widget.pageModel.question.answers
+                .map((a) => OptionItem(
+                      title: a.title,
+                      selected: _singleSelection == a.id,
+                    ))
+                .toList(),
+            onPressed: (idx, sel) {
+              setState(() {
+                _singleSelection = null;
+                final idx = sel.indexWhere((e) => e.selected);
+                if (idx >= 0) {
+                  _singleSelection = answers[idx].id;
+                } else {
+                  _singleSelection = null;
+                }
+              });
+            },
+          );
+    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+        TypographyVariant.body,
+        textScaleFactor: MediaQuery.textScaleFactorOf(context));
+    final TextStyle boldTextStyle =
+        defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
 
-  Widget _buildAnswerRow(SymptomCheckerAnswer answer) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        _selected(answer.id);
-      },
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            if (answer.iconName != null)
-              SvgPicture.asset("assets/svg/${answer.iconName}.svg", height: 24),
-            Material(
-              color: Colors.white,
-              child: _allowsMultipleSelection
-                  ? Checkbox(
-                      value: _multipleSelections.contains(answer.id),
-                      onChanged: (_) {},
-                    )
-                  : Radio<String>(
-                      groupValue: _singleSelection,
-                      value: answer.id,
-                      onChanged: (_) {},
-                    ),
-            ),
-            Flexible(child: Html(data: answer.bodyHtml))
-          ]),
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+            child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 24),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      ThemedText(
+                        widget.pageModel.question.title,
+                        variant: TypographyVariant.h3,
+                      ),
+                      if (widget.pageModel.question.bodyHtml != null)
+                        Html(
+                          customEdgeInsets: (_) => EdgeInsets.zero,
+                          data: widget.pageModel.question.bodyHtml,
+                          defaultTextStyle: defaultTextStyle,
+                          customTextStyle:
+                              (dom.Node node, TextStyle baseStyle) {
+                            if (node is dom.Element) {
+                              switch (node.localName) {
+                                case 'b':
+                                  return baseStyle.merge(boldTextStyle);
+                              }
+                            }
+                            return baseStyle.merge(defaultTextStyle);
+                          },
+                        )
+                    ],
+                  )),
+              SizedBox(
+                  height: widget.pageModel.question.bodyHtml != null ? 36 : 18),
+              group,
+              SizedBox(height: 20),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: NextButton(enableNext: _isComplete, onNext: _next)),
+              SizedBox(height: 48),
+            ],
+          ),
+        )),
+      ],
     );
-  }
-
-  void _previous() {
-    widget.pageDelegate.goBack();
   }
 
   void _next() {
@@ -113,21 +161,8 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
   }
 
   bool get _isComplete {
-    return (_allowsMultipleSelection) ||
+    return (_allowsMultipleSelection &&
+            (_noneOfTheAboveSelected || _multipleSelections.isNotEmpty)) ||
         (!_allowsMultipleSelection && _singleSelection != null);
-  }
-
-  void _selected(String answerId) {
-    if (_allowsMultipleSelection) {
-      // toggle
-      if (_multipleSelections.contains(answerId)) {
-        _multipleSelections.remove(answerId);
-      } else {
-        _multipleSelections.add(answerId);
-      }
-    } else {
-      _singleSelection = answerId;
-    }
-    setState(() {});
   }
 }

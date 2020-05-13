@@ -1,5 +1,6 @@
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,8 @@ class PageScaffold extends StatelessWidget {
   final bool showBackButton;
   final TextStyle headerTitleStyle;
   final Widget header;
+  final Widget trailing;
+  final TypographyVariant headerTypographyVariant;
 
   final bool showHeader;
 
@@ -32,6 +35,8 @@ class PageScaffold extends StatelessWidget {
     this.beforeHeader = const <Widget>[],
     this.showBackButton = true,
     this.headerTitleStyle,
+    this.headerTypographyVariant = TypographyVariant.header,
+    this.trailing,
   });
 
   @override
@@ -56,6 +61,8 @@ class PageScaffold extends StatelessWidget {
                           showBackButton: showBackButton,
                           titleStyle: headerTitleStyle,
                           appBarColor: appBarColor ?? color,
+                          titleTypographyVariant: this.headerTypographyVariant,
+                          trailing: trailing,
                         )),
                   ...this.body,
                   SliverToBoxAdapter(

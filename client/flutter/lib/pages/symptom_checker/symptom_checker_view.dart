@@ -51,7 +51,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         children: <Widget>[
           PageHeader(
             inSliver: false,
-            title: 'Symptom Checker',
+            title: 'Check-Up',
             appBarColor: Constants.backgroundColor,
           ),
           Expanded(child: _buildPage(context)),

@@ -37,6 +37,9 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   final bool onboardingComplete =
       await UserPreferences().getOnboardingCompleted();
 
+  // Comment the above lines out and uncomment this to force onboarding in development
+  // final bool onboardingComplete = false;
+
   // Set `enableInDevMode` to true to see reports while in debug mode
   // This is only to be used for confirming that reports are being
   // submitted as expected. It is not intended to be used for everyday
