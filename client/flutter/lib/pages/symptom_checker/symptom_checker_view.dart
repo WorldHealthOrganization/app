@@ -19,6 +19,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   final PageController _controller = PageController();
   SymptomCheckerModel _model;
   List<Widget> _pages;
+  static const Duration _transitionDuration = Duration(milliseconds: 500);
 
   @override
   void didChangeDependencies() async {
@@ -45,19 +46,32 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     setState(() {});
   }
 
+  Future<bool> _onWillPop() async {
+    if (_controller.page == 0) {
+      return true;
+    } else {
+      await goBack();
+      await Future.delayed(_transitionDuration);
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Constants.backgroundColor,
-      child: Column(
-        children: <Widget>[
-          PageHeader(
-            inSliver: false,
-            title: 'Check-Up',
-            appBarColor: Constants.backgroundColor,
-          ),
-          Expanded(child: _buildPage(context)),
-        ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Material(
+        color: Constants.backgroundColor,
+        child: Column(
+          children: <Widget>[
+            PageHeader(
+              inSliver: false,
+              title: 'Check-Up',
+              appBarColor: Constants.backgroundColor,
+            ),
+            Expanded(child: _buildPage(context)),
+          ],
+        ),
       ),
     );
   }
@@ -125,7 +139,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   }
 
   Future<void> _previousPage() => _controller.previousPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+        duration: _transitionDuration,
+        curve: Curves.easeInOut,
+      );
 
   /// Receive answers from the page and update the model.
   @override
