@@ -62,7 +62,7 @@ class _PageButtonState extends State<PageButton> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: _onPressed,
+      onPressed: widget.onPressed != null ? _onPressed : null,
       disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
       disabledTextColor: Colors.white,
       shape: RoundedRectangleBorder(
