@@ -1,6 +1,5 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -78,17 +77,6 @@ class AboutPage extends StatelessWidget {
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
                   variant: TypographyVariant.body,
-                ),
-              ),
-              Container(
-                color: CupertinoColors.white,
-                padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
-                child: FutureBuilder(
-                  future: UserPreferences().getCohort(),
-                  builder: (context, snapshot) => ThemedText(
-                    "Cohort: ${snapshot.data ?? '?'}",
-                    variant: TypographyVariant.body,
-                  ),
                 ),
               ),
               Container(
