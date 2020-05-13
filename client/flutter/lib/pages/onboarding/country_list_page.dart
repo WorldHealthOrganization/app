@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/components/loading_indicator.dart';
-import 'package:who_app/components/page_scaffold/page_header.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
@@ -23,23 +23,11 @@ class CountryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        leading: CupertinoNavigationBarBackButton(
-          onPressed: this.onBack,
-          color: Constants.accentNavyColor,
-        ),
-        // TODO: localize?
-        middle: PageHeader.buildTitle('Country',
-            variant: TypographyVariant.headerSmall),
-        transitionBetweenRoutes: false,
-      ),
-      child: Material(
-        child: CustomScrollView(
-          slivers: <Widget>[..._buildCountries()],
-        ),
-      ),
+    return PageScaffold(
+      // TODO: localize?
+      title: 'Country',
+      color: Constants.backgroundColor,
+      body: _buildCountries(),
     );
   }
 

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/page_scaffold/page_header.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
@@ -46,13 +48,16 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: CupertinoPageScaffold(
-        backgroundColor: CupertinoColors.white,
-        navigationBar: CupertinoNavigationBar(
-          backgroundColor: CupertinoColors.white,
-          middle: Text("Check-Up"),
-        ),
-        child: Container(child: _buildPage(context)),
+      color: Constants.backgroundColor,
+      child: Column(
+        children: <Widget>[
+          PageHeader(
+            inSliver: false,
+            title: 'Check-Up',
+            appBarColor: Constants.backgroundColor,
+          ),
+          Expanded(child: _buildPage(context)),
+        ],
       ),
     );
   }

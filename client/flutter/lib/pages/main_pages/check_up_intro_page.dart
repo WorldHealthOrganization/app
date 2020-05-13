@@ -12,7 +12,7 @@ class CheckUpIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      disableBackButton: true,
+      showBackButton: ModalRoute.of(context).canPop ?? false,
       headingBorderColor: Color(0x0),
       color: CupertinoColors.white,
       // TODO: localize

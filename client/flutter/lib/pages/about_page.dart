@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -51,6 +52,7 @@ class AboutPage extends StatelessWidget {
         Divider(height: 1, thickness: 1, color: Color(0xFFC9CDD6));
 
     return PageScaffold(
+      appBarColor: Constants.backgroundColor,
       body: [
         SliverList(
           delegate: SliverChildListDelegate.fixed(
