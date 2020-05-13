@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
@@ -18,6 +19,17 @@ class SymptomCheckerResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      // TODO: Redo the headers
+      trailing: FlatButton(
+        padding: EdgeInsets.zero,
+        child: ThemedText(
+          "Done",
+          variant: TypographyVariant.button,
+          style: TextStyle(color: Constants.whoBackgroundBlueColor),
+        ),
+        onPressed: () =>
+            Navigator.of(context).popUntil((route) => route.isFirst),
+      ),
       heroTag: HeroTags.checkUp,
       body: [
         _buildBody(context),
@@ -93,6 +105,7 @@ class _Card extends StatelessWidget {
 
   IconData _icon(String name) {
     if (name != null) {
+      // TODO: Redo with SVGs.
       switch (name) {
         case 'call':
           return FontAwesomeIcons.phoneSquareAlt;
@@ -102,81 +115,94 @@ class _Card extends StatelessWidget {
           return FontAwesomeIcons.houseUser;
         case 'bed':
           return FontAwesomeIcons.bed;
+        default:
+          return FontAwesomeIcons.commentMedical;
       }
     }
-    return FontAwesomeIcons.commentMedical;
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
+    final icon = _icon(content.iconName);
+
+    return icon == null
+        ? Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: _buildCardContent(context,
+                titleStyle: TextStyle(color: Constants.neutralTextLightColor)))
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Container(
+                  color: CupertinoColors.white,
+                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        child: FaIcon(
+                          icon,
+                          color: iconColor,
+                          size: 24 * MediaQuery.of(context).textScaleFactor,
+                        ),
+                        constraints: BoxConstraints(
+                            minWidth:
+                                24 * MediaQuery.of(context).textScaleFactor,
+                            maxWidth:
+                                24 * MediaQuery.of(context).textScaleFactor),
+                      ),
+                      SizedBox(
+                        // its 12, but 2 is in the card content due to how Html works
+                        width: 10,
+                      ),
+                      Flexible(
+                        child: _buildCardContent(context),
+                      ),
+                    ],
+                  )),
+            ),
+          );
+  }
+
+  Column _buildCardContent(BuildContext context,
+      {TextStyle titleStyle = const TextStyle(fontWeight: FontWeight.w700)}) {
     final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context));
     final TextStyle boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     ;
-
-    final icon = _icon(content.iconName);
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8.0),
-        child: Container(
-            color: CupertinoColors.white,
-            padding: EdgeInsets.all(16.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: FaIcon(
-                    icon,
-                    color: iconColor,
-                    size: 24 * MediaQuery.of(context).textScaleFactor,
-                  ),
-                  constraints: BoxConstraints(
-                      minWidth: 24 * MediaQuery.of(context).textScaleFactor,
-                      maxWidth: 36 * MediaQuery.of(context).textScaleFactor),
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Padding(
-                        // Html widget has 2 un-modifiable pixel padding, sigh...
-                        padding: EdgeInsets.symmetric(horizontal: 2),
-                        child: ThemedText(
-                          content.title,
-                          variant: TypographyVariant.body,
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      if (content.bodyHtml != null)
-                        Html(
-                          customEdgeInsets: (_) => EdgeInsets.zero,
-                          data: content.bodyHtml,
-                          defaultTextStyle: defaultTextStyle,
-                          customTextStyle:
-                              (dom.Node node, TextStyle baseStyle) {
-                            if (node is dom.Element) {
-                              switch (node.localName) {
-                                case 'b':
-                                  return baseStyle.merge(boldTextStyle);
-                              }
-                            }
-                            return baseStyle.merge(defaultTextStyle);
-                          },
-                        )
-                    ],
-                  ),
-                ),
-              ],
-            )),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Padding(
+          // Html widget has 2 un-modifiable pixel padding, sigh...
+          padding: EdgeInsets.symmetric(horizontal: 2),
+          child: ThemedText(
+            content.title,
+            variant: TypographyVariant.body,
+            style: titleStyle,
+          ),
+        ),
+        if (content.bodyHtml != null)
+          Html(
+            customEdgeInsets: (_) => EdgeInsets.zero,
+            data: content.bodyHtml,
+            defaultTextStyle: defaultTextStyle,
+            customTextStyle: (dom.Node node, TextStyle baseStyle) {
+              if (node is dom.Element) {
+                switch (node.localName) {
+                  case 'b':
+                    return baseStyle.merge(boldTextStyle);
+                }
+              }
+              return baseStyle.merge(defaultTextStyle);
+            },
+          )
+      ],
     );
   }
 }

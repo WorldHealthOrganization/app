@@ -8,6 +8,7 @@ class PageHeader extends StatelessWidget {
   final Color borderColor;
   final TextStyle titleStyle;
   final TypographyVariant titleTypographyVariant;
+  final Widget trailing;
 
   final bool disableBackButton;
 
@@ -18,6 +19,7 @@ class PageHeader extends StatelessWidget {
     this.titleStyle,
     this.borderColor,
     this.titleTypographyVariant = TypographyVariant.header,
+    this.trailing,
   });
 
   @override
@@ -30,7 +32,8 @@ class PageHeader extends StatelessWidget {
           style: BorderStyle.solid,
         ),
       ),
-      transitionBetweenRoutes: true,
+      transitionBetweenRoutes: false,
+      trailing: trailing,
       backgroundColor: CupertinoColors.white.withOpacity(0.85),
       heroTag: this.heroTag ?? this.title,
       leading: this.disableBackButton ? Container() : null,
