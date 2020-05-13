@@ -58,29 +58,22 @@ class LegalLandingPage extends StatelessWidget {
                     style: TextStyle(
                         color: CupertinoColors.systemGrey, height: 1.4),
                     children: [
-                      TextSpan(
-                          text: S.of(context).legalLandingPageButtonAgree),
+                      TextSpan(text: S.of(context).legalLandingPageButtonAgree),
                       LinkTextSpan(
                         text: S
                             .of(context)
                             .LegalLandingPageTermsOfServiceLinkText,
-                        style:
-                            TextStyle(decoration: TextDecoration.underline),
-                        url: S
-                            .of(context)
-                            .legalLandingPageTermsOfServiceLinkUrl,
+                        style: TextStyle(decoration: TextDecoration.underline),
+                        url:
+                            S.of(context).legalLandingPageTermsOfServiceLinkUrl,
                         onLinkTap: (v) => launch(v),
                       ),
                       TextSpan(text: S.of(context).legalLandingPageAnd),
                       LinkTextSpan(
-                        text: S
-                            .of(context)
-                            .legalLandingPagePrivacyPolicyLinkText,
-                        style:
-                            TextStyle(decoration: TextDecoration.underline),
-                        url: S
-                            .of(context)
-                            .legalLandingPagePrivacyPolicyLinkUrl,
+                        text:
+                            S.of(context).legalLandingPagePrivacyPolicyLinkText,
+                        style: TextStyle(decoration: TextDecoration.underline),
+                        url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
                         onLinkTap: (v) => launch(v),
                       ),
                       TextSpan(text: "."),
