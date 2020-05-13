@@ -19,7 +19,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   final PageController _controller = PageController();
   SymptomCheckerModel _model;
   List<Widget> _pages;
-  static const Duration _transitionDuration = Duration(milliseconds: 500);
+  bool inTransition = false;
 
   @override
   void didChangeDependencies() async {
@@ -47,11 +47,12 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   }
 
   Future<bool> _onWillPop() async {
+    if (inTransition) return false;
+
     if (_controller.page == 0) {
       return true;
     } else {
       await goBack();
-      await Future.delayed(_transitionDuration);
       return false;
     }
   }
@@ -128,20 +129,20 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     _nextPage();
   }
 
-  void _nextPage() {
+  void _nextPage() async {
     if (!_controller.hasClients) {
       return;
     }
     if (_controller.page < _model.pages.length) {
-      _controller.animateToPage(_model.pages.length - 1,
+      inTransition = true;
+      await _controller.animateToPage(_model.pages.length - 1,
           duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+      inTransition = false;
     }
   }
 
   Future<void> _previousPage() => _controller.previousPage(
-        duration: _transitionDuration,
-        curve: Curves.easeInOut,
-      );
+      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
 
   /// Receive answers from the page and update the model.
   @override
@@ -149,15 +150,17 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     _model.answerQuestion(answerIds);
     if (!_model.isFatalError && _model.results != null) {
       Navigator.of(context)
-          .pushNamed('/symptom-checker-results', arguments: _model);
+          .pushReplacementNamed('/symptom-checker-results', arguments: _model);
       return;
     }
   }
 
   /// Receive back indication from the page and update the model.
   @override
-  void goBack() async {
+  Future<void> goBack() async {
+    inTransition = true;
     await _previousPage();
+    inTransition = false;
     _model.previousQuestion();
   }
 }
