@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Submits the APK to Google Play internal testing track"
+  lane :upload_to_play_store_internal do
+    upload_to_play_store(
+      track: 'internal',
+      apk_paths: Dir.glob('../build/app/outputs/apk/release/app-*-release.apk'),
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+    )
+  end
+
+  desc "Promote Internal to Alpha"
+  lane :promote_internal_to_alpha do
+    upload_to_play_store(
+      track: 'internal',
+      track_promote_to: 'alpha',
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+    )
+  end
+
+  desc "Promote Alpha to Production"
+  lane :promote_alpha_to_production do
+    upload_to_play_store(
+      track: 'alpha',
+      track_promote_to: 'production',
+      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+    )
+  end
+end

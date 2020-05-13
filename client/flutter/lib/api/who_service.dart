@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:WHOFlutter/api/endpoints.dart';
-import 'package:WHOFlutter/api/user_preferences.dart';
+import 'package:who_app/main.dart';
+import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
@@ -22,15 +23,10 @@ class WhoService {
   }
 
   /// Put location
-  static Future<bool> putLocation({double latitude, double longitude, String countryCode, String adminArea, String subadminArea, String locality}) async {
+  static Future<bool> putLocation({String isoCountryCode}) async {
     Map<String, String> headers = await _getHeaders();
     var postBody = jsonEncode({
-      "latitude": latitude,
-      "longitude": longitude,
-      "countryCode": countryCode,
-      "adminArea1": adminArea,
-      "adminArea2": subadminArea,
-      "locality": locality,
+      "isoCountryCode": isoCountryCode,
     });
     var url = '$serviceUrl/putLocation';
     var response = await http.post(url, headers: headers, body: postBody);
@@ -40,8 +36,7 @@ class WhoService {
     return true;
   }
 
-
-  static Future<Map<String,dynamic>> getCaseStats() async {
+  static Future<Map<String, dynamic>> getCaseStats() async {
     Map<String, String> headers = await _getHeaders();
     var url = '$serviceUrl/getCaseStats';
     var response = await http.post(url, headers: headers, body: '');
@@ -57,9 +52,15 @@ class WhoService {
     var headers = {
       'Content-Type': 'application/json',
       'Who-Client-ID': clientId,
-      'Who-Platform': _platform
+      'Who-Platform': _platform,
+      'User-Agent': userAgent,
+      'Accept-Encoding': 'gzip',
     };
     return headers;
+  }
+
+  static String get userAgent {
+    return 'WHO-App/${_platform}/${packageInfo != null ? packageInfo.version : ''}/${packageInfo != null ? packageInfo.buildNumber : ''} (gzip)';
   }
 
   static String get _platform {
@@ -72,4 +73,3 @@ class WhoService {
     return "WEB";
   }
 }
-
