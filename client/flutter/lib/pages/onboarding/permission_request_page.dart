@@ -90,17 +90,15 @@ class PermissionRequestPage extends StatelessWidget {
                   flex: 1,
                   child: Column(
                     children: <Widget>[
-                      PageButton(
-                        Constants.whoBackgroundBlueColor,
-                        buttonTitle,
-                        onGrantPermission,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        verticalPadding: 12,
-                        borderRadius: 35,
-                        titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
-                      .merge(TextStyle(color: CupertinoColors.white))
-                      ),
+                      PageButton(Constants.whoBackgroundBlueColor, buttonTitle,
+                          onGrantPermission,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          verticalPadding: 12,
+                          borderRadius: 35,
+                          titleStyle: ThemedText.styleForVariant(
+                                  TypographyVariant.button)
+                              .merge(TextStyle(color: CupertinoColors.white))),
                       CupertinoButton(
                         padding: EdgeInsets.all(16),
                         child: Text(

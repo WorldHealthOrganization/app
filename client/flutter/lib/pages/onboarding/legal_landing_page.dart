@@ -52,8 +52,9 @@ class LegalLandingPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   borderRadius: 60,
-                  titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
-                      .merge(TextStyle(color: CupertinoColors.white)),
+                  titleStyle:
+                      ThemedText.styleForVariant(TypographyVariant.button)
+                          .merge(TextStyle(color: CupertinoColors.white)),
                 ),
                 SizedBox(height: 17),
                 Text.rich(
