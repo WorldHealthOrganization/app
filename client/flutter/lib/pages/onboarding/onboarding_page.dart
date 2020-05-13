@@ -104,7 +104,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
       _showCountryListPage = false;
     });
     await _toNextPage();
-    await WhoService.putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+    try {
+      await WhoService.putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+    } catch (error) {
+      print('Error sending location to API: $error');
+    }
   }
 
   Future<void> _onLegalDone() async {
