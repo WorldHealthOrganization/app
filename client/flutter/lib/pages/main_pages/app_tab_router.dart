@@ -50,6 +50,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
     ),
   ];
 
+  // Added a tab controller and analytics
   CupertinoTabController _controller;
   FirebaseAnalytics _analytics;
 
@@ -57,15 +58,18 @@ class _AppTabRouterState extends State<AppTabRouter> {
   void initState() {
     super.initState();
 
-    _analytics = FirebaseAnalytics();
+    // Initialized controller and analytics
     _controller = CupertinoTabController();
+    _analytics = FirebaseAnalytics();
 
     _controller.addListener(
       () {
         int currentIndex = _controller.index;
 
+        // Changes the tab from the index to the title
         String currentTab = tabTitle(currentIndex);
 
+        // Sets the analytic's screen to the tab
         _analytics.setCurrentScreen(screenName: currentTab);
       },
     );
