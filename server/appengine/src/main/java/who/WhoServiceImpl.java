@@ -52,28 +52,15 @@ public class WhoServiceImpl implements WhoService {
   // 10 mins
   private static final long STATS_TTL_SECONDS = 60 * 10;
 
-  @Override public GetCaseStatsResponse getCaseStats(GetCaseStatsRequest request) throws IOException {
+  @Override public GetCaseStatsResponse getCaseStats(Void request) throws IOException {
     Client client = Client.current();
 
     CaseStats countryStats = null;
 
-    String countryCode = "";
-
-    // default to client's stored country code if it exists
-
+    // retrieve and return country case stats if client has a stored country code
+   
     if((client.countryCode != null) && (!client.countryCode.isEmpty())){
-      countryCode = client.countryCode;
-    }
-
-    // countryCode is an optional overriding param
-    if (request != null){
-      if  ((request.countryCode != null) && (!request.countryCode.isEmpty())) {
-        countryCode = request.countryCode;
-     }
-    }
-
-    if ((countryCode != null) && (!countryCode.isEmpty())) {
-      countryStats = StoredCaseStats.load(JurisdictionType.COUNTRY, countryCode);
+      countryStats = StoredCaseStats.load(JurisdictionType.COUNTRY, client.countryCode);
     }
 
     CaseStats globalStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
