@@ -43,10 +43,14 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       print("Error loading content: $err");
     }
     _model.addListener(_modelChanged);
+    if (!mounted) return;
     setState(() {});
   }
 
   Future<bool> _onWillPop() async {
+    // If the page controller hasn't been built yet then we're on the first page
+    if (_controller.hasClients == false) return true;
+
     if (inTransition) return false;
 
     if (_controller.page == 0) {
