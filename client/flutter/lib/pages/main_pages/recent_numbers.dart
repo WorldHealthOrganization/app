@@ -105,9 +105,11 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                       widget.analytics.logEvent(
                           name: 'RecentNumberAggregation',
                           parameters: {'index': this.aggregation.index});
-                      setState(() {
-                        this.aggregation = value;
-                      });
+                      setState(
+                        () {
+                          this.aggregation = value;
+                        },
+                      );
                     },
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
@@ -116,8 +118,10 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   Container(height: 16.0),
                   ConstrainedBox(
                     child: RecentNumbersGraph(
+                      aggregation: this.aggregation,
                       timeseries: this.globalStats['timeseries'],
                       timeseriesKey: this.timeseriesKey,
+                      dimension: this.dimension,
                     ),
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
@@ -198,14 +202,15 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
         : '-';
     return Padding(
       child: _TappableStatCard(
-          isSelected: dimension == this.dimension,
-          onTap: () {
-            setState(() {
-              this.dimension = dimension;
-            });
-          },
-          stat: stat,
-          title: title),
+        isSelected: dimension == this.dimension,
+        onTap: () {
+          setState(() {
+            this.dimension = dimension;
+          });
+        },
+        stat: stat,
+        title: title,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
     );
   }
@@ -229,21 +234,22 @@ class _TappableStatCard extends StatelessWidget {
     return Semantics(
       button: true,
       child: GestureDetector(
-          child: Container(
-            child: StatCard(
-              stat: this.stat,
-              title: this.title,
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                  color: this.isSelected
-                      ? Constants.primaryColor
-                      : CupertinoColors.white,
-                  width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-            ),
+        child: Container(
+          child: StatCard(
+            stat: this.stat,
+            title: this.title,
           ),
-          onTap: this.onTap),
+          decoration: BoxDecoration(
+            border: Border.all(
+                color: this.isSelected
+                    ? Constants.primaryColor
+                    : CupertinoColors.white,
+                width: 2.0),
+            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+          ),
+        ),
+        onTap: this.onTap,
+      ),
       label: this.title,
     );
   }
