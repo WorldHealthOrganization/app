@@ -4,7 +4,6 @@ contents:
   type: qa
   items:
     -
-      display_condition: ctx_isoCountryCode == 'US'
       title_html: |
         What are coronaviruses, what is COVID-19 and how is it related to SARS?
       body_html: |
@@ -20,7 +19,6 @@ contents:
 
         <p>No. The virus that causes COVID-19 and the one that caused the outbreak of Severe Acute Respiratory Syndrome (SARS) in 2003 are related to each other genetically, but the diseases they cause are quite different. SARS was more deadly but much less infectious than COVID-19. There have been no outbreaks of SARS anywhere in the world since 2003.</p>
     -
-      display_condition: ctx_isoCountryCode == 'FR'
       title_html: |
         What are the symptoms of COVID-19?
       body_html: |
