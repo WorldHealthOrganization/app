@@ -48,6 +48,7 @@ class PageHeader extends StatelessWidget {
           ),
           backgroundColor: appBarColor ?? Colors.transparent,
           elevation: 0,
+          actions: <Widget>[if (trailing != null) trailing],
         ),
         Divider(height: 1, thickness: 1, color: borderColor)
       ],
