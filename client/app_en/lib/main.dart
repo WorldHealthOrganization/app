@@ -17,6 +17,9 @@ void main() async {
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.bluetooth), title: Text("Exposure")),
   );
-  routes['/'] = (context) => AppTabRouter(tabs, navItems);
+  routes['/'] = (context) => AppTabRouter(
+        tabs: tabs,
+        navItems: navItems,
+      );
   await mainImpl(routes: routes);
 }

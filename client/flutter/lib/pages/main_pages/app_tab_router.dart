@@ -9,12 +9,7 @@ import 'package:who_app/pages/settings_page.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_page.dart';
 
 class AppTabRouter extends StatefulWidget {
-  @override
-  _AppTabRouterState createState() => _AppTabRouterState();
-}
-
-class _AppTabRouterState extends State<AppTabRouter> {
-  final List<Widget Function(BuildContext)> tabs = [
+  static List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
           dataSource: IndexContent.homeIndex,
         ),
@@ -26,7 +21,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
     (context) => SettingsPage(),
   ];
 
-  final List<BottomNavigationBarItem> navItems = [
+  static List<BottomNavigationBarItem> defaultNavItems = [
     BottomNavigationBarItem(
       // TODO: localize title strings
       icon: Icon(CupertinoIcons.home),
@@ -50,6 +45,19 @@ class _AppTabRouterState extends State<AppTabRouter> {
     ),
   ];
 
+  final List<BottomNavigationBarItem> navItems;
+  final List<Widget Function(BuildContext)> tabs;
+
+  const AppTabRouter({
+    Key key,
+    @required this.navItems,
+    @required this.tabs,
+  }) : super(key: key);
+  @override
+  _AppTabRouterState createState() => _AppTabRouterState();
+}
+
+class _AppTabRouterState extends State<AppTabRouter> {
   // Added a tab controller and analytics
   CupertinoTabController _controller;
   FirebaseAnalytics _analytics;
@@ -76,7 +84,7 @@ class _AppTabRouterState extends State<AppTabRouter> {
   }
 
   String tabTitle(int index) {
-    Text txt = this.navItems[index].title;
+    Text txt = widget.navItems[index].title;
     String data = txt.data;
     return data;
   }
@@ -92,15 +100,15 @@ class _AppTabRouterState extends State<AppTabRouter> {
     return CupertinoTabScaffold(
       controller: _controller,
       tabBuilder: (BuildContext context, int index) {
-        if (index < tabs.length) {
-          return wrapTabView(tabs[index]);
+        if (index < widget.tabs.length) {
+          return wrapTabView(widget.tabs[index]);
         }
         return null;
       },
       tabBar: CupertinoTabBar(
         inactiveColor: CupertinoColors.black,
         activeColor: Constants.accentColor,
-        items: navItems,
+        items: widget.navItems,
       ),
     );
   }
