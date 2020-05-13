@@ -89,6 +89,24 @@ flutter build appbundle
 
 The release bundle for your app is created at `client/flutter/build/app/outputs/bundle/release/app.aab`.
 
+### Upload the bundle to Firebase App Distribution
+
+We use fastlane to upload the bundle to Firebase App Distribution.
+
+1. Install the [Firebase CLI](https://firebase.google.com/docs/cli).
+
+2. Run the following commands:
+
+```
+firebase login
+cd $(git rev-parse --show-toplevel)/client/flutter
+flutter build apk
+cd android
+gem install bundler
+bundle install
+bundle exec fastlane distribute
+```
+
 ### Upload the bundle to Google Play
 
 Follow Google's instructions to [prepare & roll out releases](https://support.google.com/googleplay/android-developer/answer/7159011).

@@ -11,35 +11,56 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-update_fastlane
+# update_fastlane
 
 default_platform(:android)
 
 platform :android do
-  desc "Submits the APK to Google Play internal testing track"
-  lane :upload_to_play_store_internal do
-    upload_to_play_store(
-      track: 'internal',
-      apk_paths: Dir.glob('../build/app/outputs/apk/release/app-*-release.apk'),
-      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+
+  desc "Submit to firebase app distribution on who-myhealth-staging (for testing the distribution process only; who-myhealth-staging is not actually used for app distribution)"
+  lane :distribute_staging do
+    firebase_app_distribution(
+        app: "1:1057717871229:android:4fbe832a3de230450dc714",
+        groups: "internal-testers-app-team",
+        release_notes: "Not a demo -- this release is only meant for internal testing.",
+        apk_path: File.join(Dir.pwd, "../../build/app/outputs/apk/release/app-release.apk")
     )
   end
 
-  desc "Promote Internal to Alpha"
-  lane :promote_internal_to_alpha do
-    upload_to_play_store(
-      track: 'internal',
-      track_promote_to: 'alpha',
-      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+  desc "Submit to firebase app distribution on who-myhealth-production"
+  lane :distribute do
+    firebase_app_distribution(
+        app: "1:936622942451:android:145c5bb2454415ee076f86",
+        groups: "internal-testers-app-team",
+        release_notes: "Not a demo -- this release is only meant for internal testing.",
+        apk_path: File.join(Dir.pwd, "../../build/app/outputs/apk/release/app-release.apk")
     )
   end
 
-  desc "Promote Alpha to Production"
-  lane :promote_alpha_to_production do
-    upload_to_play_store(
-      track: 'alpha',
-      track_promote_to: 'production',
-      json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
-    )
-  end
+  # desc "Submits the APK to Google Play internal testing track"
+  # lane :upload_to_play_store_internal do
+  #   upload_to_play_store(
+  #     track: 'internal',
+  #     apk_paths: Dir.glob('../build/app/outputs/apk/release/app-*-release.apk'),
+  #     json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+  #   )
+  # end
+
+  # desc "Promote Internal to Alpha"
+  # lane :promote_internal_to_alpha do
+  #   upload_to_play_store(
+  #     track: 'internal',
+  #     track_promote_to: 'alpha',
+  #     json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+  #   )
+  # end
+
+  # desc "Promote Alpha to Production"
+  # lane :promote_alpha_to_production do
+  #   upload_to_play_store(
+  #     track: 'alpha',
+  #     track_promote_to: 'production',
+  #     json_key_data: ${{ secrets.GOOGLE_STORE_KEY }}
+  #   )
+  # end
 end
