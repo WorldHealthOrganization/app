@@ -14,7 +14,7 @@ Services:
 - Staging Cloud Datastore
 - Staging Firebase Project
 
-### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-europe)
+### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-production)
 
 Services:
 
