@@ -120,6 +120,7 @@ class _HomePageState extends State<HomePage> {
         subtitle: item.subtitle,
         buttonText: item.buttonText,
         link: item.link,
+        imageName: item.imageName,
       ),
     );
   }
