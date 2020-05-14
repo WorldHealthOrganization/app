@@ -14,12 +14,11 @@ import javax.inject.Singleton;
 public class FirebaseModule extends AbstractModule {
 
   @Provides @Singleton
-  FirebaseApp provideFirebaseApp() throws IOException {
-
+  FirebaseApp provideFirebaseApp(Environment env) throws IOException {
     FirebaseOptions options = new FirebaseOptions.Builder()
       .setCredentials(GoogleCredentials.getApplicationDefault())
       // FIXME
-      .setDatabaseUrl("https://who-myhealth-staging.firebaseio.com")
+      .setDatabaseUrl("https://" + env.firebaseApplicationId() + ".firebaseio.com")
       .build();
 
     FirebaseApp.initializeApp(options);

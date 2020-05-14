@@ -14,7 +14,7 @@ Services:
 - Staging Cloud Datastore
 - Staging Firebase Project
 
-### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-production)
+### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-europe)
 
 Services:
 
@@ -101,6 +101,10 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 ### Log In
 
     $ gcloud auth login
+
+And, if you want to be able to manipulate Firebase:
+
+    	$ gcloud auth application-default login
 
 ### Install the most up-to-date App Engine Component
 
