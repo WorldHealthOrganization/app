@@ -78,7 +78,7 @@ contents:
         !(has('fever') && has('dry_cough'))
       title: Close contact with COVID-19?
       body_html: |
-        <p>In the last 14 days, are you aware of having been in close contact with someone who has been diagnosed with COVID-19 or has symptoms of COVID-19 (cough, fever, or difficulty breathing)?</p>
+        <p>In the last 14 days, have you been in close contact with anyone with COVID-19 or with cough, fever, or difficulty breathing?</p>
       answers:
         -
           id: contact
@@ -87,7 +87,7 @@ contents:
         -
           id: no_contact
           icon_name: snowflake
-          title: No
+          title: Not that I know of
     -
       id:  q4_ltc_hcf
       type: single_selection
@@ -95,7 +95,7 @@ contents:
         has('no_emergency') &&
         (selectionCount('q2_symptoms') > 0) &&
         has('no_contact')
-      title: Are you a resident of or do you work in a healthcare facility or a longterm care facility?
+      title: Do you live or work in a healthcare facility or a longterm care facility?
       answers:
         -
           id: ltc_hcf
@@ -174,20 +174,47 @@ contents:
       id: wear_a_mask_now
       title: Masks
       body_html: >-
-        <p>We recommend that you wear a mask around others. Your caregivers should wear a mask too [TODO: link to guidance for caregivers]. Don't have a mask? [TODO: Link out to instructions for people without a mask]. How to use a mask [TODO: Link out to instructions on how to use a mask]</p>
+        <p>We recommend that you wear a mask around others. Your caregivers should wear a mask too.</p>
+      links:
+        -
+          title: Don't have a mask?
+          # FIXME
+          href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/when-and-how-to-use-masks
+        -
+          title: How to use a mask
+          # FIXME
+          href: https://www.who.int/docs/default-source/epi-win/how-to-use-mask-v0-1-print.pdf
       icon_name: note
     -
       id: wear_a_mask_if_coughing
       title: Wear a mask
       body_html: >-
-        <p>Wear a mask around others, especially if you are coughing. Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+        <p>Wear a mask around others, especially if you are coughing. Don’t touch the mask or face during use and discard afterwards.</p>
       icon_name: note
+      links:
+        -
+          title: Don't have a mask?
+          # FIXME
+          href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/when-and-how-to-use-masks
+        -
+          title: How to use a mask
+          # FIXME
+          href: https://www.who.int/docs/default-source/epi-win/how-to-use-mask-v0-1-print.pdf
     -
       id: wear_a_mask_if_ill
       title: Masks
       body_html: >-
-        <p>Wear a mask if you or someone you are looking after or in close contact with are ill with COVID-19 symptoms (especially coughing). Don’t touch the mask or face during use and discard afterwards. Don't have a mask? [Link out to instructions for people without a mask] How to use a mask [Link out to instructions on how to use a mask]</p>
+        <p>Wear a mask if you or someone you are looking after or in close contact with are ill with COVID-19 symptoms (especially coughing). Don’t touch the mask or face during use and discard afterwards.
       icon_name: note
+      links:
+        -
+          title: Don't have a mask?
+          # FIXME
+          href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/when-and-how-to-use-masks
+        -
+          title: How to use a mask
+          # FIXME
+          href: https://www.who.int/docs/default-source/epi-win/how-to-use-mask-v0-1-print.pdf
     -
       id: cough_tissue
       title: Cough into your elbow or tissue
@@ -196,27 +223,27 @@ contents:
       icon_name: note
     -
       id: monitor_symptoms_getting_worse
-      title: Monitor Symptoms
+      title: Monitor symptoms
       body_html: >-
         <p>You should monitor your symptoms closely and if they get worse consult with a healthcare provider.</p>
       icon_name: note
     -
       id: monitor_symptoms_begin
-      title: Monitor Symptoms
+      title: Monitor symptoms
       body_html: >-
         <p>You should monitor your symptoms closely. If you begin to develop symptoms, consult with a healthcare provider.</p>
       icon_name: note
     -
       id: rest
-      title: Rest and Take Care
+      title: Rest and take care
       body_html: >-
         <p>Eat well, drink fluids, and get plenty of rest.</p>
       icon_name: bed
     -
       id: protect_others
       title: >-
-        Learn other ways to protect others [TODO: Link out to "prevent" section of app content]
-      icon_name: note
+        Learn other ways to protect others
+      href: /protect-yourself
     -
       id: call_if_concerned
       title: If you have any concerns, call your healthcare provider. Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.
@@ -246,15 +273,15 @@ contents:
       icon_name: note
     -
       id: physical_distancing
-      title: Practice Physical Distancing
+      title: Keep 1 meter (3 feet) apart from others
       body_html: >-
-        <p>Avoid groups of people and keep 6 feet apart from anyone who you do not live with. Avoid anyone showing symptoms.</p>
+        <p>Avoid groups of people and keep 1 meter (3 feet) apart from anyone who you do not live with. Avoid anyone showing symptoms.</p>
       icon_name: note
     -
       id: hand_hygiene
-      title: Hand hygiene
+      title: Clean your hands frequently
       body_html: >-
-        <p>Perform hand hygiene frequently, using an alcohol-based hand rub if hands are not visibly dirty or soap and water when hands are visibly dirty</p>
+        <p>Use an alcohol-based hand rub if hands are not visibly dirty, or soap and water when hands are visibly dirty.</p>
       icon_name: note
     -
       id: dont_touch_face
@@ -267,7 +294,7 @@ contents:
       title: >-
         If you feel sick later:
       body_html: >-
-        <p>Stay home if you feel sick, even if you develop a slight fever or cough</p>
+        <p>Stay home if you feel sick, even if you develop a slight fever or cough.</p>
       icon_name: note
 
   results:
