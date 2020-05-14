@@ -7,7 +7,7 @@ import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-import '../dialogs.dart';
+import 'package:who_app/components/dialogs.dart';
 
 ///========================================================
 /// TODO SUMMARY:
