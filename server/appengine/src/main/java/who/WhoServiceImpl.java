@@ -2,6 +2,8 @@ package who;
 
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
+import com.google.common.geometry.S2CellId;
+import com.google.common.geometry.S2LatLng;
 import present.rpc.ClientException;
 
 import java.io.IOException;
@@ -50,10 +52,23 @@ public class WhoServiceImpl implements WhoService {
   // 10 mins
   private static final long STATS_TTL_SECONDS = 60 * 10;
 
-  @Override public GetCaseStatsResponse getCaseStats(Void request) throws IOException {
-    CaseStats global = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+  @Override public GetCaseStatsResponse getCaseStats(GetCaseStatsRequest request) throws IOException {
+    
+    CaseStats countryStats = null;
+
+    // countryCode is an optional param
+
+    if (request != null){
+      if  ((request.countryCode != null) && (!request.countryCode.isEmpty())) {
+        countryStats = StoredCaseStats.load(JurisdictionType.COUNTRY, request.countryCode);
+     }
+    }
+
+    CaseStats globalStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+
     return new GetCaseStatsResponse.Builder()
-      .globalStats(global)
+      .globalStats(globalStats)
+      .countryStats(countryStats)
       .ttl(STATS_TTL_SECONDS)
       .build();
   }

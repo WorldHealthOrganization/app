@@ -13,7 +13,7 @@ service WhoService {
   // The client should not pass a precise location.
   rpc putLocation(PutLocationRequest) returns (Void);
 
-  rpc getCaseStats(Void) returns (GetCaseStatsResponse);
+  rpc getCaseStats(GetCaseStatsRequest) returns (GetCaseStatsResponse);
 }
 
 message PutDeviceTokenRequest {
@@ -25,6 +25,11 @@ message PutLocationRequest {
   string isoCountryCode = 12;
 }
 
+message GetCaseStatsRequest {
+  // ISO_2_CODE
+  string countryCode = 1;
+}
+
 message GetCaseStatsResponse {
   CaseStats globalStats = 1;
 
@@ -32,6 +37,8 @@ message GetCaseStatsResponse {
 
   // Clients should not re-request stats until at least ttl seconds.
   uint64 ttl = 2;
+
+  CaseStats countryStats = 3;
 }
 
 message StatSnapshot {
