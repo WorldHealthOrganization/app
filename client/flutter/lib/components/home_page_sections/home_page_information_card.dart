@@ -41,7 +41,8 @@ class HomePageInformationCard extends StatelessWidget {
               ),
               Positioned(
                 right: 44.0,
-                child: SvgPicture.asset(this.assetName),
+                child: Container(
+                    height: 96, child: SvgPicture.asset(this.assetName)),
               )
             ],
           )
