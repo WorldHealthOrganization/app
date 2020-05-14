@@ -33,11 +33,6 @@ class RouteLink {
         route: route,
       ).dispatch(context);
     }
-
-    /* return this.isExternal
-        ? launch(this.url)
-        : Navigator.of(context, rootNavigator: true)
-            .pushNamed(this.route, arguments: this.args); */
   }
 
   RouteLink.fromUri(String uri) {
