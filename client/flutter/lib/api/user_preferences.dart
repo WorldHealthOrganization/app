@@ -28,6 +28,17 @@ class UserPreferences {
         .setBool(UserPreferenceKey.OnboardingCompleted.toString(), value);
   }
 
+  Future<bool> getTermsOfServiceCompleted() async {
+    return (await SharedPreferences.getInstance())
+            .getBool(UserPreferenceKey.TermsOfServiceCompleted.toString()) ??
+        false;
+  }
+
+  Future<bool> setTermsOfServiceCompleted(bool value) async {
+    return (await SharedPreferences.getInstance())
+        .setBool(UserPreferenceKey.TermsOfServiceCompleted.toString(), value);
+  }
+
   Future<bool> getAnalyticsEnabled() async {
     return (await SharedPreferences.getInstance())
             .getBool(UserPreferenceKey.AnalyticsEnabled.toString()) ??
@@ -103,6 +114,7 @@ class UserPreferences {
 
 enum UserPreferenceKey {
   OnboardingCompleted,
+  TermsOfServiceCompleted,
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,
