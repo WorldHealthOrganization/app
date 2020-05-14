@@ -38,7 +38,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   final bool onboardingComplete =
-      await UserPreferences().getOnboardingCompleted();
+  await UserPreferences().getOnboardingCompleted();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;
@@ -52,7 +52,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   FlutterError.onError = _onFlutterError;
 
   await runZonedGuarded<Future<void>>(
-    () async {
+        () async {
       runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
     },
     _onError,
@@ -80,7 +80,7 @@ class MyApp extends StatefulWidget {
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
+  FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   _MyAppState createState() => _MyAppState(analytics, observer);
@@ -100,9 +100,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
     _notifications.configure();
     _notifications.updateFirebaseToken();
+    _precacheContent();
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement
@@ -153,15 +153,21 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     switch (state) {
       case AppLifecycleState.resumed:
-        if (await UserPreferences().getTermsOfServiceAccepted()) {
-          // ignore: unawaited_futures
-          ContentLoading().preCacheContent(getLocale());
-        }
+        _precacheContent();
         break;
       case AppLifecycleState.inactive:
       case AppLifecycleState.paused:
       case AppLifecycleState.detached:
         break;
+    }
+  }
+
+  /// Pre-cache commonly loaded content.
+  /// Called on on app lauch and return to foreground.
+  void _precacheContent() async {
+    if (await UserPreferences().getTermsOfServiceCompleted()) {
+      // ignore: unawaited_futures
+      ContentLoading().preCacheContent(getLocale());
     }
   }
 

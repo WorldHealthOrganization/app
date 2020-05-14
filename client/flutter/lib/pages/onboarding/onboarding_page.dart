@@ -113,6 +113,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Future<void> _onLegalDone() async {
+    await UserPreferences().setTermsOfServiceCompleted(true);
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
     await UserPreferences().setAnalyticsEnabled(true);
