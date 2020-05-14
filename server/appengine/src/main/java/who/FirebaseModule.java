@@ -17,7 +17,6 @@ public class FirebaseModule extends AbstractModule {
   FirebaseApp provideFirebaseApp(Environment env) throws IOException {
     FirebaseOptions options = new FirebaseOptions.Builder()
       .setCredentials(GoogleCredentials.getApplicationDefault())
-      // FIXME
       .setDatabaseUrl("https://" + env.firebaseApplicationId() + ".firebaseio.com")
       .build();
 
