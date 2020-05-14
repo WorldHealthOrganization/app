@@ -62,9 +62,9 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
       for (int i = 0; i < daysSinceStart; i++) {
         bars.add(
           BarChartRodData(
-            y: (i * 24).toDouble(),
+            y: 0,
             color: Constants.textColor.withOpacity(.3),
-            width: screenWidth / (widget.timeseries.length * 3),
+            width: screenWidth / (daysSinceStart * 3),
           ),
         );
       }
@@ -94,13 +94,18 @@ class RecentNumbersGraph extends StatefulWidget {
 class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
   Widget graph;
   final numFmt = NumberFormat.decimalPattern();
-
+  int titleData;
   @override
   Widget build(BuildContext context) {
     graph = RecentNumbersBarGraph(
       timeseries: widget.timeseries,
       timeseriesKey: widget.timeseriesKey,
     );
+    try {
+      titleData = widget.timeseries.last[widget.timeseriesKey];
+    } catch (e) {
+      titleData = 0;
+    }
 
     return Stack(
       fit: StackFit.expand,
@@ -112,7 +117,9 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ThemedText(
-                numFmt.format(widget.timeseries.last[widget.timeseriesKey]),
+                numFmt.format(this.titleData) == "0"
+                    ? "-"
+                    : numFmt.format(this.titleData),
                 variant: TypographyVariant.h2,
                 style: TextStyle(
                   color: widget.dimension == DataDimension.cases
