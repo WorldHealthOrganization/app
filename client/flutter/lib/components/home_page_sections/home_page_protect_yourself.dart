@@ -7,6 +7,8 @@ import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
+import 'package:who_app/components/dialogs.dart';
+
 ///========================================================
 /// TODO SUMMARY:
 ///   1. Handle content bundle schema change better
@@ -42,6 +44,7 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
     try {
       _logicContext = await LogicContext.generate();
       _factContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
     } catch (err) {
       print("Error loading fact data: $err");
     }
@@ -59,11 +62,6 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
           child: CupertinoActivityIndicator(),
         ),
       );
-    }
-
-    // TODO: better handle schema version changes
-    if (_factContent.bundle.unsupportedSchemaVersionAvailable) {
-      return null;
     }
 
     return SingleChildScrollView(

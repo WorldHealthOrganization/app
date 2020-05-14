@@ -127,6 +127,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   }
 
   void _modelChanged() {
+    if (_model == null) {
+      return;
+    }
     setState(() {
       _pages = _model.pages.map(_viewForPageModel).toList();
     });
