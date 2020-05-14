@@ -6,6 +6,7 @@ import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -67,29 +68,57 @@ class _AppTabRouterState extends State<AppTabRouter> {
     }
   }
 
+  bool _onSwitchTabNotification(SwitchTabNotification notification) {
+    final String routeName = notification.route;
+    final int newIndex = widget.tabs.indexWhere(
+      (Widget Function(BuildContext) builder) =>
+          builder(context).runtimeType ==
+          Routes.map[routeName](context).runtimeType,
+    );
+
+    if (newIndex != -1) {
+      _switchPage(newIndex);
+    } else {
+      Navigator.pushNamed(context, routeName, arguments: notification.args);
+    }
+
+    // Terminates the notification
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: widget.tabs[currentIndex](context),
-      extendBody: Theme.of(context).platform == TargetPlatform.iOS,
-      bottomNavigationBar: PlatformWidget(
-        material: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: _switchPage,
-          items: widget.navItems,
-          selectedItemColor: selectedColor,
-          unselectedItemColor: unselectedColor,
-          type: BottomNavigationBarType.fixed,
-          selectedFontSize: 12,
-        ),
-        cupertino: CupertinoTabBar(
-          currentIndex: currentIndex,
-          onTap: _switchPage,
-          items: widget.navItems,
-          activeColor: selectedColor,
-          inactiveColor: unselectedColor,
+    return NotificationListener<SwitchTabNotification>(
+      onNotification: _onSwitchTabNotification,
+      child: Scaffold(
+        body: widget.tabs[currentIndex](context),
+        extendBody: Theme.of(context).platform == TargetPlatform.iOS,
+        bottomNavigationBar: PlatformWidget(
+          material: BottomNavigationBar(
+            currentIndex: currentIndex,
+            onTap: _switchPage,
+            items: widget.navItems,
+            selectedItemColor: selectedColor,
+            unselectedItemColor: unselectedColor,
+            type: BottomNavigationBarType.fixed,
+            selectedFontSize: 12,
+          ),
+          cupertino: CupertinoTabBar(
+            currentIndex: currentIndex,
+            onTap: _switchPage,
+            items: widget.navItems,
+            activeColor: selectedColor,
+            inactiveColor: unselectedColor,
+          ),
         ),
       ),
     );
   }
+}
+
+class SwitchTabNotification extends Notification {
+  SwitchTabNotification({@required this.route, @required this.args});
+
+  final String route;
+  final Object args;
 }
