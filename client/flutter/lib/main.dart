@@ -38,7 +38,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   final bool onboardingComplete =
-  await UserPreferences().getOnboardingCompleted();
+      await UserPreferences().getOnboardingCompleted();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;
@@ -52,7 +52,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   FlutterError.onError = _onFlutterError;
 
   await runZonedGuarded<Future<void>>(
-        () async {
+    () async {
       runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
     },
     _onError,
@@ -80,7 +80,7 @@ class MyApp extends StatefulWidget {
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer =
-  FirebaseAnalyticsObserver(analytics: analytics);
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   _MyAppState createState() => _MyAppState(analytics, observer);

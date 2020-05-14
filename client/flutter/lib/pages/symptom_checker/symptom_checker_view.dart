@@ -42,7 +42,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     } catch (err) {
       print("Error loading content: $err");
     }
-      _model.addListener(_modelChanged);
+    _model.addListener(_modelChanged);
     if (!mounted) return;
     setState(() {});
   }

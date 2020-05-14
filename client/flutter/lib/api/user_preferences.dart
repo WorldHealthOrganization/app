@@ -30,7 +30,7 @@ class UserPreferences {
 
   Future<bool> getTermsOfServiceCompleted() async {
     return (await SharedPreferences.getInstance())
-        .getBool(UserPreferenceKey.TermsOfServiceCompleted.toString()) ??
+            .getBool(UserPreferenceKey.TermsOfServiceCompleted.toString()) ??
         false;
   }
 
