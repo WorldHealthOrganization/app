@@ -27,7 +27,7 @@ class RouteLink {
       await launch(url);
     } else {
       /// Intercepted by the [AppTabRouter] which decides whether to switch
-      /// home page tabs or to push the route with the provided arguments 
+      /// home page tabs or to push the route with the provided arguments
       SwitchTabNotification(
         args: args,
         route: route,
