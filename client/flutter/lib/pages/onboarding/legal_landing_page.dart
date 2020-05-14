@@ -16,6 +16,7 @@ class LegalLandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: CupertinoColors.white,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -25,16 +26,22 @@ class LegalLandingPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SvgPicture.asset('assets/svg/logo_banner.svg'),
-                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: AspectRatio(
+                        // Aspect ratio of image; keeps it from popping in and pushing content
+                        aspectRatio: 581 / 178,
+                        child: SvgPicture.asset('assets/svg/logo_banner.svg')),
+                  ),
+                  SizedBox(height: 8),
                   Semantics(
                     container: true,
-                    child: Text(
+                    child: ThemedText(
                       S.of(context).legalLandingPageTitle,
+                      variant: TypographyVariant.body,
                       style: TextStyle(
                         color: Constants.primaryColor,
                         fontSize: 18,
-                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
