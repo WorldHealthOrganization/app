@@ -2,6 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -30,10 +31,10 @@ class HomePageDonate extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             vertical: 24.0,
           ),
-          child: CupertinoButton(
+          child: Button(
             borderRadius: BorderRadius.circular(50.0),
             color: Constants.accentTealColor,
-            padding: EdgeInsets.symmetric(horizontal: 88.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 88.0, vertical: 12.0),
             child: ThemedText(
               // TODO: localize
               'Donate Now',

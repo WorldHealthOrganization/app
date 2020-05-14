@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/promo_curved_background.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -64,7 +65,7 @@ class LearnPagePromo extends StatelessWidget {
                 SizedBox(
                   height: 16.0,
                 ),
-                CupertinoButton(
+                Button(
                   color: CupertinoColors.white,
                   borderRadius: BorderRadius.circular(50),
                   padding: EdgeInsets.symmetric(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/promo_curved_background.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -98,11 +99,11 @@ class HomePageHeader extends StatelessWidget {
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 32.0, bottom: 88.0),
-                            child: CupertinoButton(
+                            child: Button(
                               borderRadius: BorderRadius.circular(50),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 32,
-                                vertical: 8,
+                                vertical: 12,
                               ),
                               color: CupertinoColors.white,
                               child: Container(

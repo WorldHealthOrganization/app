@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
@@ -96,11 +97,11 @@ class _HomePageInformationCardInner extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  CupertinoButton(
+                  Button(
                     color: CupertinoColors.white,
                     borderRadius: BorderRadius.circular(50.0),
                     padding:
-                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
                     child: ThemedText(
                       this.buttonText,
                       variant: TypographyVariant.button,
