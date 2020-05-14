@@ -23,44 +23,30 @@ class AppTabRouter extends StatelessWidget {
   ];
 
   static final List<BottomNavigationBarItem> defaultNavItems = [
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset('assets/svg/bottom_icons/house.svg'),
-        activeIcon: SvgPicture.asset(
-          "assets/svg/bottom_icons/house.svg",
-          color: Constants.accentColor,
-        ),
-        title: Text("Home")),
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset('assets/svg/bottom_icons/earth-model.svg'),
-        activeIcon: SvgPicture.asset(
-          "assets/svg/bottom_icons/earth-model.svg",
-          color: Constants.accentColor,
-        ),
-        title: Text("Stats")),
-    BottomNavigationBarItem(
-        icon: SvgPicture.asset('assets/svg/bottom_icons/search.svg'),
-        activeIcon: SvgPicture.asset(
-          "assets/svg/bottom_icons/search.svg",
-          color: Constants.accentColor,
-        ),
-        title: Text("Learn")),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset('assets/svg/bottom_icons/medical.svg'),
-      activeIcon: SvgPicture.asset(
-        "assets/svg/bottom_icons/medical.svg",
-        color: Constants.accentColor,
-      ),
-      title: Text("Settings"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-home',
+      title: 'Home',
+      activeColor: Constants.accentColor,
     ),
-    BottomNavigationBarItem(
-      icon: SvgPicture.asset(
-        "assets/svg/bottom_icons/settings.svg",
-      ),
-      activeIcon: SvgPicture.asset(
-        "assets/svg/bottom_icons/settings.svg",
-        color: Constants.accentColor,
-      ),
-      title: Text("Settings"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-checkup',
+      title: 'Check-Up',
+      activeColor: Constants.accentColor,
+    ),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-learn',
+      title: 'Learn',
+      activeColor: Constants.accentColor,
+    ),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-stats',
+      title: 'Stats',
+      activeColor: Constants.accentColor,
+    ),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-settings',
+      title: 'Settings',
+      activeColor: Constants.accentColor,
     ),
   ];
 
@@ -90,6 +76,19 @@ class AppTabRouter extends StatelessWidget {
         activeColor: Constants.accentColor,
         items: navItems,
       ),
+    );
+  }
+
+  static BottomNavigationBarItem _buildSvgNavItem(
+      {String iconName, String title, Color activeColor}) {
+    final String assetName = 'assets/svg/${iconName}.svg';
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(assetName),
+      activeIcon: SvgPicture.asset(
+        assetName,
+        color: activeColor,
+      ),
+      title: Text(title),
     );
   }
 }
