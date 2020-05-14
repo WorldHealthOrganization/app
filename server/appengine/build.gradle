@@ -65,7 +65,10 @@ dependencies {
 
     // Not sure why this didn't come in with present-engine...
     implementation 'com.google.appengine:appengine-remote-api:+'
-    implementation 'com.google.appengine:appengine-remote-api:+'
+
+    implementation 'com.google.firebase:firebase-admin:6.12.2'
+    // 4.1.34.Final included in Firebase, which has vulnerabilities.
+    implementation 'io.netty:netty-codec-http:4.1.46.Final'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.+"

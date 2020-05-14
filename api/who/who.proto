@@ -21,12 +21,8 @@ message PutDeviceTokenRequest {
 }
 
 message PutLocationRequest {
-  // A token is a hex representation of the 64-bit S2CellId
-  // in string format that will also survive JSON (which
-  // lacks 64-bit number precision).
-  // The level (specificity) of the S2CellId must not exceed
-  // who.Client.MAX_S2_CELL_LEVEL.
-  string s2CellIdToken = 11;
+  // ISO 3166-1 alpha-2 (uppercase) code
+  string isoCountryCode = 12;
 }
 
 message GetCaseStatsResponse {
