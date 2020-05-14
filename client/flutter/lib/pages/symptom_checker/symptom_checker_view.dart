@@ -4,6 +4,7 @@ import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
@@ -73,6 +74,16 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
               inSliver: false,
               title: 'Check-Up',
               appBarColor: Constants.backgroundColor,
+              trailing: FlatButton(
+                padding: EdgeInsets.zero,
+                child: ThemedText(
+                  "Cancel",
+                  variant: TypographyVariant.button,
+                  style: TextStyle(color: Constants.whoBackgroundBlueColor),
+                ),
+                onPressed: () =>
+                    Navigator.of(context).popUntil((route) => route.isFirst),
+              ),
             ),
             Expanded(child: _buildPage(context)),
           ],
@@ -157,7 +168,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     _model.answerQuestion(answerIds);
     if (!_model.isFatalError && _model.results != null) {
       Navigator.of(context)
-          .pushReplacementNamed('/symptom-checker-results', arguments: _model);
+          .pushNamed('/symptom-checker-results', arguments: _model);
       return;
     }
   }
