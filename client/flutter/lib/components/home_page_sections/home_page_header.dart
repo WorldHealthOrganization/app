@@ -1,11 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/button.dart';
+import 'package:who_app/components/promo_curved_background.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
-import 'package:who_app/generated/l10n.dart';
 
 class HomePageHeader extends StatelessWidget {
   final IndexPromoType headerType;
@@ -13,6 +13,7 @@ class HomePageHeader extends StatelessWidget {
   final String subtitle;
   final String buttonText;
   final RouteLink link;
+  final String imageName;
 
   const HomePageHeader({
     @required this.headerType,
@@ -20,158 +21,155 @@ class HomePageHeader extends StatelessWidget {
     @required this.subtitle,
     @required this.buttonText,
     @required this.link,
+    this.imageName,
   });
 
   String get svgAssetName {
-    switch (this.headerType) {
-      // case IndexPromoType.CheckYourSymptoms:
-      //   return "assets/svg/home_page_header/check_your_symptoms.svg";
-      // case IndexPromoType.ProtectYourself:
-      //   return "assets/svg/home_page_header/protect_yourself.svg";
-      default:
-        return null;
-    }
+    return this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
   }
 
   Color get backgroundColor {
-    switch (this.headerType) {
-      case IndexPromoType.CheckYourSymptoms:
-        return Constants.primaryDarkColor;
-      case IndexPromoType.ProtectYourself:
-        return Color(0xff4ACA8C);
-      default:
-        return Constants.primaryDarkColor;
-    }
+    // switch (this.headerType) {
+    //   case IndexPromoType.CheckYourSymptoms:
+    //     return Constants.primaryDarkColor;
+    //   case IndexPromoType.ProtectYourself:
+    //     return Constants.accentTealColor;
+    //   default:
+    //     return Constants.primaryDarkColor;
+    // }
+
+    // Avoiding mistakes in v1 by not making this configurable
+    return Constants.primaryDarkColor;
   }
 
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: HeaderClipper(),
-      child: Container(
-        padding: EdgeInsets.all(24),
-        color: this.backgroundColor,
-        child: SafeArea(
-          bottom: false,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 48,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      color: CupertinoColors.white,
-                      width: 48,
-                      margin: EdgeInsets.only(right: 8),
-                    ),
-                    Flexible(
-                      child: AutoSizeText(
-                        S.of(context).commonWorldHealthOrganization,
-                        maxLines: 2,
-                        maxFontSize: 18,
-                        style: TextStyle(
-                          color: CupertinoColors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 14,
-                      ),
-                      color: Color.fromARGB(127, 250, 232, 169),
-                      width: 1,
-                    ),
-                    Text(
-                      "COVID-19 Response",
-                      style: TextStyle(
-                        color: Color(0xffFAE8A9),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 32,
-              ),
-              ThemedText(
-                this.title,
-                variant: TypographyVariant.title,
-                style: TextStyle(
-                  color: CupertinoColors.white,
-                ),
-                textAlign: TextAlign.left,
-              ),
-              ThemedText(
-                this.subtitle,
-                variant: TypographyVariant.body,
-                style: TextStyle(
-                  color: CupertinoColors.white,
-                ),
-              ),
-              Container(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  this.svgAssetName != null
-                      ? SvgPicture.asset(this.svgAssetName)
-                      : Container(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                    ),
-                    child: CupertinoButton(
-                      borderRadius: BorderRadius.circular(50),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 8,
-                      ),
-                      color: CupertinoColors.white,
-                      child: ThemedText(
-                        this.buttonText,
-                        variant: TypographyVariant.button,
-                        style: TextStyle(color: Constants.primaryColor),
-                      ),
-                      onPressed: () {
-                        return this.link.open(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              if (this.svgAssetName == null)
-                Container(
-                  height: 40,
-                ),
-            ],
+    return Stack(
+      alignment: Alignment.topLeft,
+      children: <Widget>[
+        Positioned.fill(
+          child: PromoCurvedBackground(
+            color: this.backgroundColor,
           ),
         ),
-      ),
+        SafeArea(
+          bottom: false,
+          child: Container(
+            padding: EdgeInsets.only(top: 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _LogoRow(),
+                Stack(
+                  alignment: Alignment.topLeft,
+                  children: <Widget>[
+                    Positioned(
+                      bottom: 0.0,
+                      right: 0.0,
+                      child: this.svgAssetName != null
+                          ? SvgPicture.asset(this.svgAssetName)
+                          : Container(),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 24.0, right: 72.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(top: 28.0),
+                            child: AutoSizeThemedText(
+                              this.title,
+                              variant: TypographyVariant.title,
+                              maxFontSize: 40,
+                              style: TextStyle(
+                                color: CupertinoColors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: ThemedText(
+                              this.subtitle,
+                              variant: TypographyVariant.body,
+                              style: TextStyle(
+                                color: CupertinoColors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 32.0, bottom: 88.0),
+                            child: Button(
+                              borderRadius: BorderRadius.circular(50),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 32,
+                                vertical: 12,
+                              ),
+                              color: CupertinoColors.white,
+                              child: Container(
+                                child: ThemedText(
+                                  this.buttonText,
+                                  variant: TypographyVariant.button,
+                                  style:
+                                      TextStyle(color: Constants.primaryColor),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              onPressed: () {
+                                return this.link.open(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 }
 
-class HeaderClipper extends CustomClipper<Path> {
+class _LogoRow extends StatelessWidget {
   @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.lineTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height - 20),
-        radius: Radius.elliptical(size.width, 240));
-    path.lineTo(size.width, 0);
-
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> path) {
-    return false;
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24.0, right: 12.0),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: 112.0,
+              child: SvgPicture.asset('assets/svg/who-logo-white.svg'),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: 14.0,
+              ),
+              color: Constants.homeHeaderGreenColor.withOpacity(0.5),
+              height: double.infinity,
+              width: 1.0,
+            ),
+            Expanded(
+              child: Text(
+                // TODO: Localize
+                'COVID-19 Response',
+                style: TextStyle(
+                  color: Constants.homeHeaderGreenColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  height: 1.57,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

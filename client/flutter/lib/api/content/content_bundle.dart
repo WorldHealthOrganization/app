@@ -53,6 +53,7 @@ class ContentBundle {
     }
   }
 
+  /// For content types containing a primary list of items, return the items.
   YamlList get contentItems {
     try {
       return yaml['contents']['items'];
@@ -61,11 +62,27 @@ class ContentBundle {
     }
   }
 
-  YamlMap get contentPromo {
+  YamlList get contentResults {
     try {
-      return yaml['contents']['promo'];
+      return yaml['contents']['results'];
     } catch (err) {
-      return YamlMap();
+      return YamlList();
+    }
+  }
+
+  YamlList get contentCards {
+    try {
+      return yaml['contents']['results_cards'];
+    } catch (err) {
+      return YamlList();
+    }
+  }
+
+  YamlList get contentPromos {
+    try {
+      return yaml['contents']['promos'];
+    } catch (err) {
+      return YamlList();
     }
   }
 

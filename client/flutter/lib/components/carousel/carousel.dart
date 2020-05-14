@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:who_app/components/carousel/carousel_slide.dart';
 import 'package:who_app/constants.dart';
 import 'package:flutter/rendering.dart';
@@ -6,12 +7,24 @@ import 'package:flutter/cupertino.dart';
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
 
   CarouselView({@required this.items});
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
   final PageController pageController = PageController();
+
+  Widget _animatedVisibility({@required Widget child, @required bool visible}) {
+    return ExcludeSemantics(
+      excluding: !visible,
+      child: AnimatedOpacity(
+        opacity: visible ? 1 : 0,
+        duration: Duration(milliseconds: 200),
+        child: IgnorePointer(ignoring: !visible, child: child),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,26 +55,35 @@ class CarouselView extends StatelessWidget {
         Align(
           alignment: FractionalOffset.bottomCenter,
           child: SafeArea(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                CupertinoButton(
-                  child: Icon(CupertinoIcons.back),
-                  onPressed: () => pageController.page > 0
-                      ? goToPreviousPage()
-                      : goToLastPage(),
-                ),
-                Container(
-                    padding: EdgeInsets.only(bottom: 8),
-                    child: _buildPageViewIndicator(context)),
-                CupertinoButton(
-                  child: Icon(CupertinoIcons.forward),
-                  onPressed: () => pageController.page < this.items.length - 1
-                      ? goToNextPage()
-                      : goToFirstPage(),
-                ),
-              ],
+            child: ValueListenableBuilder(
+              valueListenable: pageIndexNotifier,
+              // Anything not effected by the value of the notifier
+              child: _buildPageViewIndicator(context),
+              builder: (context, index, child) {
+                final bool isFirstPage = index == 0;
+                final bool isLastPage = index + 1 == items.length;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    _animatedVisibility(
+                      visible: !isFirstPage,
+                      child: CupertinoButton(
+                        child: Icon(CupertinoIcons.back),
+                        onPressed: goToPreviousPage,
+                      ),
+                    ),
+                    child,
+                    _animatedVisibility(
+                      visible: !isLastPage,
+                      child: CupertinoButton(
+                        child: Icon(CupertinoIcons.forward),
+                        onPressed: goToNextPage,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -69,17 +91,29 @@ class CarouselView extends StatelessWidget {
     );
   }
 
-  Future<void> goToLastPage() =>
-      pageController.animateToPage(this.items.length - 1,
-          duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
-  Future<void> goToFirstPage() => pageController.animateToPage(0,
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToLastPage() {
+    analytics.logEvent(name: 'CarouselLastPage');
+    return pageController.animateToPage(this.items.length - 1,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
-  Future<void> goToNextPage() => pageController.nextPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToFirstPage() {
+    analytics.logEvent(name: 'CarouselFirstPage');
+    return pageController.animateToPage(0,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
-  Future<void> goToPreviousPage() => pageController.previousPage(
-      duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  Future<void> goToNextPage() {
+    analytics.logEvent(name: 'CarouselNextPage');
+    return pageController.nextPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
+
+  Future<void> goToPreviousPage() {
+    analytics.logEvent(name: 'CarouselPreviousPage');
+    return pageController.previousPage(
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
 
   Widget _buildPageViewIndicator(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -97,7 +131,7 @@ class CarouselView extends StatelessWidget {
                   length: this.items.length,
                   normalBuilder: (animationController, index) => Circle(
                     size: 20.0,
-                    color: Constants.primaryDarkColor.withOpacity(.75),
+                    color: Constants.neutralTextLightColor.withOpacity(0.2),
                   ),
                   highlightedBuilder: (animationController, index) =>
                       ScaleTransition(
@@ -106,7 +140,7 @@ class CarouselView extends StatelessWidget {
                       curve: Curves.ease,
                     ),
                     child: Circle(
-                      size: 28.0,
+                      size: 24.0,
                       color: Constants.primaryDarkColor,
                     ),
                   ),

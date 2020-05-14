@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/home_page_sections/home_page_donate.dart';
@@ -24,6 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   IndexContent _content;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _content = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
     } catch (err) {
@@ -51,7 +54,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
-      color: Constants.greyBackgroundColor,
+      // For background scroll bleed only - white background set on _HomePageSection widgets
+      color: _content?.items != null
+          ? Constants.primaryDarkColor
+          : CupertinoColors.white,
       beforeHeader: _buildPromo(),
       body: _buildBody(),
     );
@@ -59,7 +65,8 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _buildPromo() {
     List<Widget> preHeader = [];
-    IndexPromo p = _content?.promo;
+    IndexPromo p = _content?.promos
+        ?.firstWhere((element) => element.isDisplayed(_logicContext));
     if (p != null) {
       preHeader.add(_HomePageSection(
         content: HomePageHeader(
@@ -68,6 +75,7 @@ class _HomePageState extends State<HomePage> {
           subtitle: p.subtitle,
           buttonText: p.buttonText,
           link: p.link,
+          imageName: p.imageName,
         ),
       ));
     }
@@ -79,9 +87,13 @@ class _HomePageState extends State<HomePage> {
     if (items == null) {
       return [LoadingIndicator()];
     }
-    List<Widget> bundleWidgets = items.map((item) => _buildItem(item)).toList();
+    List<Widget> bundleWidgets = items
+        .where((item) => item.isDisplayed(_logicContext))
+        .map((item) => _buildItem(item))
+        .toList();
     return [
       ...bundleWidgets,
+      // TODO: do we want to drive donate section via the content bundle too?
       _buildDonate(),
     ];
   }
@@ -94,6 +106,7 @@ class _HomePageState extends State<HomePage> {
         return _buildProtectYourself(item);
       case IndexItemType.recent_numbers:
         return _buildRecentNumbers(item);
+      case IndexItemType.menu_list_tile:
       case IndexItemType.unknown:
         return null;
     }
@@ -108,6 +121,7 @@ class _HomePageState extends State<HomePage> {
         subtitle: item.subtitle,
         buttonText: item.buttonText,
         link: item.link,
+        imageName: item.imageName,
       ),
     );
   }
@@ -160,7 +174,8 @@ class _HomePageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Padding(
+      child: Container(
+        color: CupertinoColors.white,
         padding: this.padding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

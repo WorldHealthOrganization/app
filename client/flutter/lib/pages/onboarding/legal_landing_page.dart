@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/page_button.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';
 
 class LegalLandingPage extends StatelessWidget {
   final VoidCallback onNext;
@@ -13,7 +15,7 @@ class LegalLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return Material(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -30,7 +32,7 @@ class LegalLandingPage extends StatelessWidget {
                     child: Text(
                       S.of(context).legalLandingPageTitle,
                       style: TextStyle(
-                        color: Color(0xff008DC9),
+                        color: Constants.primaryColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -43,13 +45,16 @@ class LegalLandingPage extends StatelessWidget {
               flex: 1,
               child: Column(children: <Widget>[
                 PageButton(
-                  Constants.primaryColor,
+                  Constants.whoBackgroundBlueColor,
                   S.of(context).legalLandingPageButtonGetStarted,
                   onNext,
                   verticalPadding: 12,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   borderRadius: 60,
+                  titleStyle:
+                      ThemedText.styleForVariant(TypographyVariant.button)
+                          .merge(TextStyle(color: CupertinoColors.white)),
                 ),
                 SizedBox(height: 17),
                 Text.rich(

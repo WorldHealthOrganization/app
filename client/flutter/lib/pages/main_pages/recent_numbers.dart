@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -12,6 +13,8 @@ enum DataAggregation { daily, total }
 enum DataDimension { cases, deaths }
 
 class RecentNumbersPage extends StatefulWidget {
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
+
   @override
   _RecentNumbersPageState createState() => _RecentNumbersPageState();
 }
@@ -58,6 +61,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
+      appBarColor: Constants.backgroundColor,
+      showBackButton: ModalRoute.of(context).canPop ?? false,
       body: <Widget>[
         CupertinoSliverRefreshControl(
           builder: (context, refreshIndicatorMode, pulledExtent, b, c) {
@@ -82,6 +87,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
             }
           },
           onRefresh: () async {
+            await widget.analytics.logEvent(name: 'RecentNumberRefresh');
             await fetchStats();
           },
           refreshIndicatorExtent: 100,
@@ -98,9 +104,14 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                         _buildSegmentControlChildren(context, this.aggregation),
                     groupValue: this.aggregation,
                     onValueChanged: (value) {
-                      setState(() {
-                        this.aggregation = value;
-                      });
+                      widget.analytics.logEvent(
+                          name: 'RecentNumberAggregation',
+                          parameters: {'index': this.aggregation.index});
+                      setState(
+                        () {
+                          this.aggregation = value;
+                        },
+                      );
                     },
                     padding:
                         EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
@@ -109,8 +120,10 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   Container(height: 16.0),
                   ConstrainedBox(
                     child: RecentNumbersGraph(
+                      aggregation: this.aggregation,
                       timeseries: this.globalStats['timeseries'],
                       timeseriesKey: this.timeseriesKey,
+                      dimension: this.dimension,
                     ),
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
@@ -191,14 +204,15 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
         : '-';
     return Padding(
       child: _TappableStatCard(
-          isSelected: dimension == this.dimension,
-          onTap: () {
-            setState(() {
-              this.dimension = dimension;
-            });
-          },
-          stat: stat,
-          title: title),
+        isSelected: dimension == this.dimension,
+        onTap: () {
+          setState(() {
+            this.dimension = dimension;
+          });
+        },
+        stat: stat,
+        title: title,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
     );
   }
@@ -222,21 +236,22 @@ class _TappableStatCard extends StatelessWidget {
     return Semantics(
       button: true,
       child: GestureDetector(
-          child: Container(
-            child: StatCard(
-              stat: this.stat,
-              title: this.title,
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                  color: this.isSelected
-                      ? Constants.primaryColor
-                      : CupertinoColors.white,
-                  width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(12.0)),
-            ),
+        child: Container(
+          child: StatCard(
+            stat: this.stat,
+            title: this.title,
           ),
-          onTap: this.onTap),
+          decoration: BoxDecoration(
+            border: Border.all(
+                color: this.isSelected
+                    ? Constants.primaryColor
+                    : CupertinoColors.white,
+                width: 2.0),
+            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+          ),
+        ),
+        onTap: this.onTap,
+      ),
       label: this.title,
     );
   }

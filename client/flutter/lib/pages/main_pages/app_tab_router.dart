@@ -2,22 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
-import 'package:who_app/pages/main_pages/check_up_page.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
+import 'package:flutter/material.dart';
 
 class AppTabRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
           dataSource: IndexContent.homeIndex,
         ),
-    (context) => RecentNumbersPage(),
+    (context) => CheckUpIntroPage(),
     (context) => LearnPage(
           dataSource: IndexContent.learnIndex,
         ),
-    (context) => CheckUpPage(),
+    (context) => RecentNumbersPage(),
     (context) => SettingsPage(),
   ];
 

@@ -1,5 +1,7 @@
 import 'dart:math';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -26,6 +28,7 @@ class QuestionIndexPage extends StatefulWidget {
 
 class _QuestionIndexPageState extends State<QuestionIndexPage> {
   QuestionContent _questionContent;
+  LogicContext _logicContext;
 
   @override
   void initState() {
@@ -47,6 +50,7 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _questionContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _questionContent);
     } catch (err) {
@@ -64,10 +68,16 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 
   Widget _buildPage() {
     List items = (_questionContent?.items ?? [])
-        .map((questionData) => QuestionTile(
-              questionItem: questionData,
-            ))
-        .toList();
+        .where((item) => item.isDisplayed(_logicContext))
+        .toList()
+        .asMap()
+        .entries
+        .map((entry) {
+      return QuestionTile(
+        questionItem: entry.value,
+        index: entry.key,
+      );
+    }).toList();
 
     return PageScaffold(
       heroTag: HeroTags.learn,
@@ -84,9 +94,12 @@ class _QuestionIndexPageState extends State<QuestionIndexPage> {
 class QuestionTile extends StatefulWidget {
   const QuestionTile({
     @required this.questionItem,
+    @required this.index,
   });
 
   final QuestionItem questionItem;
+
+  final int index;
 
   @override
   _QuestionTileState createState() => _QuestionTileState();
@@ -124,6 +137,9 @@ class _QuestionTileState extends State<QuestionTile>
           child: ExpansionTile(
             onExpansionChanged: (expanded) {
               if (expanded) {
+                FirebaseAnalytics().logEvent(
+                    name: 'QuestionExpanded',
+                    parameters: {'index': widget.index});
                 rotationController.forward();
               } else {
                 rotationController.reverse();

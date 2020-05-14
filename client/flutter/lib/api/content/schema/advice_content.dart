@@ -2,6 +2,7 @@ import 'package:who_app/api/content/content_bundle.dart';
 import 'package:who_app/api/content/content_loading.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
+import 'package:who_app/api/content/schema/conditional_content.dart';
 
 typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 
@@ -9,8 +10,6 @@ typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 /// Advice data contains banner text, a recommendation link and text,
 /// and a series of advice items comprising text and image pairs.
 class AdviceContent extends ContentBase {
-  String banner;
-  String body;
   List<AdviceItem> items;
 
   static Future<AdviceContent> travelAdvice(Locale locale) async {
@@ -20,12 +19,12 @@ class AdviceContent extends ContentBase {
 
   AdviceContent(ContentBundle bundle) : super(bundle, schemaName: "advice") {
     try {
-      this.banner = bundle.getString('banner') ?? "";
-      this.body = bundle.getString('body') ?? "";
       this.items = bundle.contentItems
           .map((item) => AdviceItem(
+                isBanner: item['is_banner'] ?? false,
                 title: (item['title'] ?? "").trim(),
                 body: (item['body'] ?? "").trim(), // remove trailing newline
+                displayCondition: item['display_condition'],
               ))
           .toList();
     } catch (err) {
@@ -36,12 +35,16 @@ class AdviceContent extends ContentBase {
 }
 
 /// Advice ('advice' schema) items including title and body text.
-class AdviceItem {
+class AdviceItem with ConditionalItem {
   final String title;
   final String body;
+  final String displayCondition;
+  final bool isBanner;
 
   AdviceItem({
     @required this.title,
     @required this.body,
+    this.isBanner,
+    this.displayCondition,
   });
 }

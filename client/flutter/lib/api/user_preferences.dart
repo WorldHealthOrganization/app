@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,6 +77,28 @@ class UserPreferences {
     }
     return uuid;
   }
+
+  Future<int> getCohort() async {
+    final prefs = await SharedPreferences.getInstance();
+    var cohort = prefs.getInt(UserPreferenceKey.ExperimentCohort.toString());
+
+    // Create if not found
+    if (cohort == null) {
+      cohort = Random.secure().nextInt(100);
+      await prefs.setInt(UserPreferenceKey.ExperimentCohort.toString(), cohort);
+    }
+    return cohort;
+  }
+
+  Future<bool> setCountryIsoCode(String value) async {
+    return (await SharedPreferences.getInstance())
+        .setString(UserPreferenceKey.CountryISOCode.toString(), value);
+  }
+
+  Future<String> getCountryIsoCode() async {
+    return (await SharedPreferences.getInstance())
+        .getString(UserPreferenceKey.CountryISOCode.toString());
+  }
 }
 
 enum UserPreferenceKey {
@@ -82,5 +106,7 @@ enum UserPreferenceKey {
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,
-  FirebaseToken
+  FirebaseToken,
+  CountryISOCode,
+  ExperimentCohort,
 }

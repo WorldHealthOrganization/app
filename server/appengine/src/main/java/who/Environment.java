@@ -43,6 +43,18 @@ public enum Environment {
     }
   }
 
+  public String firebaseApplicationId() {
+    switch (this) {
+      case TEST:
+      case DEVELOPMENT:
+      case STAGING:
+        return "who-myhealth-staging";
+      case HACKER_ONE: return "who-myhealth-hackerone";
+      case PRODUCTION: return "who-myhealth-europe";
+      default: throw new RuntimeException("Unrecognized environment: " + this);
+    }
+  }
+
   /** True if this is the development server. */
   public static boolean isDevelopment() {
     return current() == DEVELOPMENT;

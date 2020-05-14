@@ -4,7 +4,7 @@ description: Exposure notifications integration plugin
 # This plugin is published solely within our app.
 publish_to: none
 
-# Prior to an official release, this version is the
+# Prior to a production release, this version is the
 # next expected version, and the `-git` suffix is a
 # pre-release indicator.
 # https://dart.dev/tools/pub/pubspec#version
@@ -18,8 +18,8 @@ issue_tracker: https://github.com/WorldHealthOrganization/app/issues?q=is%3Aopen
 # you must update /.github/workflows/client-*.yml to use same min Flutter version
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.8 <2.0.0"
+  sdk: ">=2.8.1 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
