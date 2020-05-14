@@ -1,5 +1,7 @@
 package who;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
@@ -21,6 +23,8 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class NotificationsManager {
   FirebaseMessaging fcm;
+
+  private static Logger logger = LoggerFactory.getLogger(NotificationsManager.class);
 
   @Inject
   public NotificationsManager(FirebaseMessaging fcm, Environment env) {
@@ -46,18 +50,24 @@ public class NotificationsManager {
       for (String topic : topicsToAdd) {
         TopicManagementResponse resp = fcm.subscribeToTopic(theToken, topic);
         if (resp.getSuccessCount() == 1) {
+          if (!Environment.isProduction()) logger.info("SUCCESS - Subscribed " + client.token + " to topic " + topic);
           client.subscribedTopics.add(topic);
           // If something goes wrong we'll still save the partial update.
           ofy().defer().save().entity(client);
+        } else {
+          if (!Environment.isProduction()) logger.info("FAILED - Subscribed " + client.token + " to topic " + topic);
         }
       }
 
       for (String topic : topicsToRemove) {
         TopicManagementResponse resp = fcm.unsubscribeFromTopic(theToken, topic);
         if (resp.getSuccessCount() == 1) {
+          if (!Environment.isProduction()) logger.info("SUCCESS - Unsubscribed " + client.token + " from topic " + topic);
           client.subscribedTopics.remove(topic);
           // If something goes wrong we'll still save the partial update.
           ofy().defer().save().entity(client);
+        } else {
+          if (!Environment.isProduction()) logger.info("FAILED - Unsubscribed " + client.token + " from topic " + topic);
         }
       }
     } catch (FirebaseMessagingException fme) {

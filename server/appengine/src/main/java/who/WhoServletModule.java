@@ -2,6 +2,7 @@ package who;
 
 import com.google.apphosting.utils.remoteapi.RemoteApiServlet;
 import com.google.inject.servlet.ServletModule;
+import com.google.inject.Provides;
 import com.googlecode.objectify.ObjectifyFilter;
 import com.googlecode.objectify.ObjectifyService;
 import javax.inject.Singleton;
@@ -16,6 +17,11 @@ import static who.ForwardingServlet.forwardTo;
 public class WhoServletModule extends ServletModule {
 
   private static final Logger logger = LoggerFactory.getLogger(WhoServletModule.class);
+
+  @Provides
+  Environment provideEnvironment() {
+    return Environment.current();
+  }
 
   @Override protected void configureServlets() {
     install(new FirebaseModule());
