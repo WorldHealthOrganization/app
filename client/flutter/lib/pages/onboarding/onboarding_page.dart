@@ -1,3 +1,4 @@
+import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
@@ -115,6 +116,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
     await UserPreferences().setAnalyticsEnabled(true);
+
+    // ignore: unawaited_futures
+    ContentLoading().preCacheContent(Localizations.localeOf(context));
+
     await _toNextPage();
   }
 

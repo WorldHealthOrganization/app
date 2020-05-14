@@ -44,6 +44,10 @@ class UserPreferences {
         .setBool(UserPreferenceKey.AnalyticsEnabled.toString(), value);
   }
 
+  Future<bool> getTermsOfServiceAccepted() async {
+    return getAnalyticsEnabled();
+  }
+
   Future<bool> getNotificationsEnabled() async {
     return (await SharedPreferences.getInstance())
             .getBool(UserPreferenceKey.NotificationsEnabled.toString()) ??
