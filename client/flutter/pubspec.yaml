@@ -1,10 +1,10 @@
 name: who_app
-description: The official World Health Organization COVID-19 app
+description: COVID-19 app
 
 # This app is published as a mobile app, not to pub.dev.
 publish_to: none
 
-# Prior to an official release, this version is the
+# Prior to a production release, this version is the
 # next expected version, and the `-git` suffix is a
 # pre-release indicator.
 # https://dart.dev/tools/pub/pubspec#version
