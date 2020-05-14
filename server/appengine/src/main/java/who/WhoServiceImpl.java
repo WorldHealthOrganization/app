@@ -59,8 +59,8 @@ public class WhoServiceImpl implements WhoService {
 
     // retrieve and return country case stats if client has a stored country code
    
-    if((client.countryCode != null) && (!client.countryCode.isEmpty())){
-      countryStats = StoredCaseStats.load(JurisdictionType.COUNTRY, client.countryCode);
+    if((client.isoCountryCode != null) && (!client.isoCountryCode.isEmpty())){
+      countryStats = StoredCaseStats.load(JurisdictionType.COUNTRY, client.isoCountryCode);
     }
 
     CaseStats globalStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
