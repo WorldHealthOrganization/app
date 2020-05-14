@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
         return _buildProtectYourself(item);
       case IndexItemType.recent_numbers:
         return _buildRecentNumbers(item);
+      case IndexItemType.menu_list_tile:
       case IndexItemType.unknown:
         return null;
     }

@@ -25,6 +25,11 @@ class IndexContent extends ContentBase {
     return IndexContent(bundle);
   }
 
+  static Future<IndexContent> newsIndex(Locale locale) async {
+    var bundle = await ContentLoading().load(locale, "news_index");
+    return IndexContent(bundle);
+  }
+
   IndexContent(ContentBundle bundle) : super(bundle, schemaName: "index") {
     try {
       final yamlPromos = bundle.contentPromos;
@@ -95,7 +100,8 @@ enum IndexItemType {
   recent_numbers,
   protect_yourself,
   information_card,
-  unknown
+  menu_list_tile,
+  unknown,
 }
 
 class IndexItem with ConditionalItem {
@@ -125,6 +131,8 @@ class IndexItem with ConditionalItem {
         return IndexItemType.protect_yourself;
       case 'information_card':
         return IndexItemType.information_card;
+      case 'menu_list_tile':
+        return IndexItemType.menu_list_tile;
     }
     return IndexItemType.unknown;
   }
