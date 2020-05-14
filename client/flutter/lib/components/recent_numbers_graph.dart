@@ -1,8 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
+import 'package:who_app/components/themed_text.dart';
+import 'package:who_app/constants.dart';
+import 'package:who_app/pages/main_pages/recent_numbers.dart';
 
-class RecentNumbersGraph extends StatefulWidget {
-  const RecentNumbersGraph({
+class RecentNumbersBarGraph extends StatefulWidget {
+  const RecentNumbersBarGraph({
     Key key,
     this.timeseries,
     this.timeseriesKey,
@@ -12,56 +16,42 @@ class RecentNumbersGraph extends StatefulWidget {
   final String timeseriesKey;
 
   @override
-  _RecentNumbersGraphState createState() => _RecentNumbersGraphState();
+  _RecentNumbersBarGraphState createState() => _RecentNumbersBarGraphState();
 }
 
-class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
+class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   @override
   Widget build(BuildContext context) {
-    return LineChart(
-      LineChartData(
+    return BarChart(
+      BarChartData(
         axisTitleData: FlAxisTitleData(show: false),
-        backgroundColor: Color(0xFF008DC9),
         borderData: FlBorderData(show: false),
-        clipToBorder: true,
-        gridData: FlGridData(show: false),
-        lineBarsData: [
-          LineChartBarData(
-            aboveBarData: BarAreaData(
-              colors: [Color(0xFF008DC9)],
-              show: true,
-            ),
-            barWidth: 0,
-            belowBarData: BarAreaData(
-              colors: [Color(0xFF6AC7FA)],
-              show: true,
-            ),
-            colors: [Color(0xFF6AC7FA)],
-            dotData: FlDotData(show: false),
-            isCurved: false,
-            spots: _buildSpots(),
+        barGroups: [
+          BarChartGroupData(
+            x: 0,
+            barRods: _buildRods(MediaQuery.of(context).size.width),
           ),
         ],
-        lineTouchData: LineTouchData(enabled: false),
         titlesData: FlTitlesData(show: false),
       ),
       swapAnimationDuration: Duration(milliseconds: 750),
     );
   }
 
-  List<FlSpot> _buildSpots() {
-    var spots = <FlSpot>[];
+  List<BarChartRodData> _buildRods(double screenWidth) {
+    List<BarChartRodData> bars = <BarChartRodData>[];
     final startDate = DateTime.utc(2020, 1, 1);
     if (widget.timeseries != null) {
       for (var snapshot in widget.timeseries) {
         try {
-          var xAxis = DateTime.fromMillisecondsSinceEpoch(snapshot['epochMsec'],
-                  isUtc: true)
-              .difference(startDate)
-              .inHours
-              .toDouble();
-          var yAxis = snapshot[widget.timeseriesKey].toDouble();
-          spots.add(FlSpot(xAxis, yAxis));
+          double yAxis = snapshot[widget.timeseriesKey].toDouble();
+          bars.add(
+            BarChartRodData(
+              y: yAxis,
+              color: Constants.textColor.withOpacity(.3),
+              width: screenWidth / (widget.timeseries.length * 3),
+            ),
+          );
         } catch (e) {
           print('Error adding point for snapshot: $e');
         }
@@ -70,9 +60,109 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
       final daysSinceStart =
           DateTime.now().toUtc().difference(startDate).inDays;
       for (int i = 0; i < daysSinceStart; i++) {
-        spots.add(FlSpot((i * 24).toDouble(), 0.0));
+        bars.add(
+          BarChartRodData(
+            y: 0,
+            color: Constants.textColor.withOpacity(.3),
+            width: screenWidth / (daysSinceStart * 3),
+          ),
+        );
       }
     }
-    return spots;
+    return bars;
+  }
+}
+
+class RecentNumbersGraph extends StatefulWidget {
+  final DataAggregation aggregation;
+  final DataDimension dimension;
+  final List timeseries;
+  final String timeseriesKey;
+
+  const RecentNumbersGraph({
+    Key key,
+    @required this.aggregation,
+    @required this.timeseries,
+    @required this.timeseriesKey,
+    @required this.dimension,
+  }) : super(key: key);
+
+  @override
+  _RecentNumbersGraphState createState() => _RecentNumbersGraphState();
+}
+
+class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
+  Widget graph;
+  final numFmt = NumberFormat.decimalPattern();
+  int titleData;
+  @override
+  Widget build(BuildContext context) {
+    graph = RecentNumbersBarGraph(
+      timeseries: widget.timeseries,
+      timeseriesKey: widget.timeseriesKey,
+    );
+    try {
+      titleData = widget.timeseries.last[widget.timeseriesKey];
+    } catch (e) {
+      titleData = 0;
+    }
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        graph,
+        Align(
+          alignment: Alignment.topLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ThemedText(
+                numFmt.format(this.titleData) == "0"
+                    ? "-"
+                    : numFmt.format(this.titleData),
+                variant: TypographyVariant.h2,
+                style: TextStyle(
+                  color: widget.dimension == DataDimension.cases
+                      ? Constants.primaryDarkColor
+                      : Constants.accentColor,
+                ),
+              ),
+              ThemedText(
+                this.graphTitle,
+                variant: TypographyVariant.h4,
+                style: TextStyle(
+                  color: widget.dimension == DataDimension.cases
+                      ? Constants.primaryDarkColor
+                      : Constants.accentColor,
+                ),
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  String get graphTitle => "$graphAggregation $graphDimension";
+  String get graphAggregation {
+    switch (widget.aggregation) {
+      case DataAggregation.total:
+        return "Total";
+      case DataAggregation.daily:
+        return "Daily";
+      default:
+        return "";
+    }
+  }
+
+  String get graphDimension {
+    switch (widget.dimension) {
+      case DataDimension.cases:
+        return "cases";
+      case DataDimension.deaths:
+        return "deaths";
+      default:
+        return "";
+    }
   }
 }
