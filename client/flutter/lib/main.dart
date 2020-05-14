@@ -18,7 +18,7 @@ import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
-import 'api/content/content_loading.dart';
+import 'package:who_app/api/content/content_loading.dart';
 
 PackageInfo _packageInfo;
 
