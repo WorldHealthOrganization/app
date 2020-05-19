@@ -58,13 +58,12 @@ We use Firebase App Distribution to distribute apps to testers before the app ge
 
 ### Push to stores
 
-1. Determine drop-dead time for:
-
-- [ ] Stopping code churn
-- [ ] Finalizing release in Github
-- [ ] Pushing build from GitHub to WHO
-- [ ] Alpha release planned date
-- [ ] Production release planned date
+1. [ ] Determine drop-dead time for:
+   - Stopping code churn
+   - Finalizing release in Github
+   - Pushing build from GitHub to WHO
+   - Alpha release planned date
+   - Production release planned date
 
 1. [ ] Get all [checkoffs](#checkoffs).
 1. [ ] Prepare a new release version; see [prepare-release.md](prepare-release.md) for more information on the steps needed for this.
