@@ -59,6 +59,7 @@ We use Firebase App Distribution to distribute apps to testers before the app ge
 ### Push to stores
 
 1. [ ] Determine drop-dead time for:
+
    - Stopping code churn
    - Finalizing release in Github
    - Pushing build from GitHub to WHO
@@ -68,7 +69,7 @@ We use Firebase App Distribution to distribute apps to testers before the app ge
 1. [ ] Get all [checkoffs](#checkoffs).
 1. [ ] Prepare a new release version; see [prepare-release.md](prepare-release.md) for more information on the steps needed for this.
 1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**. More information on the steps WHO should perform to create a manual build is found in [manual-build.md](manual-build.md).
-1. [ ] iOS: WHO will upload build to TestFlight. 
+1. [ ] iOS: WHO will upload build to TestFlight.
 1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.
 1. [ ] Double check that WHO has uploaded and updated the text / image assets that we want.
 
