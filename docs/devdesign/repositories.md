@@ -3,7 +3,7 @@
 ## Problem
 
 Certain assets will not be licensed under our public repository's open source license.
-This means that we need a flow where we have a public repo for doing the main work and a private for storing those assets and putting them in at build time.
+This means that we need a flow where we have a public repository for doing the main work and a private repository for storing those assets and putting them in at build time.
 
 ## Scope
 
@@ -11,11 +11,11 @@ This document is only about the mobile app(s), it is not about anything server-s
 
 ## Implemented solution
 
-We will have 3 repositories set up: App, Overlay and Build.
+We have 3 repositories set up: App, Overlay and Build.
 
-The App repository will contain the application with assets to build it locally. (this repo)
-The Overlay repository will contain a directory structure similar to the structure of the App repository. (private repo)
-The Build repo contains 2 submodules and the build scripts (https://github.com/WorldHealthOrganization/app-build-tools)
+- This App repository contains the application with assets to build it locally.
+- The private Overlay repository contains a directory structure similar to the structure of the App repository.
+- The Build repository contains 2 submodules and the build scripts (https://github.com/WorldHealthOrganization/app-build-tools)
 
 ## Building the app with the private assets
 
