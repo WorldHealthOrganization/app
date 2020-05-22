@@ -27,9 +27,14 @@ class CountrySelectPage extends StatelessWidget {
           Expanded(
             child: Container(
               alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.only(left: 36.0, bottom: 18.0),
-              child:
-                  SvgPicture.asset('assets/svg/undraw-onboarding-location.svg'),
+              padding: EdgeInsets.only(
+                left: 36.0,
+                bottom: 18.0,
+                top: MediaQuery.of(context).padding.top,
+              ),
+              child: SvgPicture.asset(
+                'assets/svg/undraw-onboarding-location.svg',
+              ),
             ),
           ),
           Column(
@@ -58,7 +63,7 @@ class CountrySelectPage extends StatelessWidget {
               ),
               _buildOpenListRow(),
               Padding(
-                padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 112.0),
+                padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 32.0),
                 child: Material(
                   child: FlatButton(
                     onPressed: this.countryName != null ? this.onNext : null,
