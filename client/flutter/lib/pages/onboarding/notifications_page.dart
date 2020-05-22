@@ -29,7 +29,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
           Expanded(
             child: Container(
               alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.only(left: 36.0, bottom: 18.0),
+              padding: EdgeInsets.only(
+                left: 36.0,
+                bottom: 18.0,
+                top: MediaQuery.of(context).padding.top + 10,
+              ),
               child: SvgPicture.asset(
                   'assets/svg/undraw-onboarding-notifications.svg'),
             ),
@@ -61,7 +65,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 112.0),
+                padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 32.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
