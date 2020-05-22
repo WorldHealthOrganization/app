@@ -25,10 +25,17 @@ class ShortListQuestionView extends StatefulWidget {
   _ShortListQuestionViewState createState() => _ShortListQuestionViewState();
 }
 
-class _ShortListQuestionViewState extends State<ShortListQuestionView> {
+class _ShortListQuestionViewState extends State<ShortListQuestionView>
+    with AutomaticKeepAliveClientMixin {
   String _singleSelection;
   Set<String> _multipleSelections = {};
   bool _noneOfTheAboveSelected = false;
+
+  // Prevents the widget's state from being lost when it is no longer the
+  // current page in the PageView. Otherwise user selections would be lost when
+  // pressing the back button.
+  @override
+  bool get wantKeepAlive => true;
 
   bool get _allowsMultipleSelection {
     return widget.pageModel.question.allowsMultipleSelection;
@@ -48,6 +55,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final answers = widget.pageModel.question.answers;
     final group = _allowsMultipleSelection
         ? PickOneOrMoreOptionGroup(

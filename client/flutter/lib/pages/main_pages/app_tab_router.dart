@@ -1,5 +1,6 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
@@ -22,27 +23,32 @@ class AppTabRouter extends StatefulWidget {
     (context) => SettingsPage(),
   ];
 
-  static List<BottomNavigationBarItem> defaultNavItems = [
-    BottomNavigationBarItem(
-      // TODO: localize title strings
-      icon: Icon(CupertinoIcons.home),
-      title: Text("Home"),
+
+  static final List<BottomNavigationBarItem> defaultNavItems = [
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-home',
+      title: 'Home',
+      activeColor: Constants.accentColor,
     ),
-    BottomNavigationBarItem(
-      icon: Icon(CupertinoIcons.lab_flask),
-      title: Text("Check-Up"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-checkup',
+      title: 'Check-Up',
+      activeColor: Constants.accentColor,
     ),
-    BottomNavigationBarItem(
-      icon: Icon(CupertinoIcons.search),
-      title: Text("Learn"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-learn',
+      title: 'Learn',
+      activeColor: Constants.accentColor,
     ),
-    BottomNavigationBarItem(
-      icon: Icon(CupertinoIcons.circle),
-      title: Text("Stats"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-stats',
+      title: 'Stats',
+      activeColor: Constants.accentColor,
     ),
-    BottomNavigationBarItem(
-      icon: Icon(CupertinoIcons.person),
-      title: Text("Settings"),
+    _buildSvgNavItem(
+      iconName: 'streamline-nav-settings',
+      title: 'Settings',
+      activeColor: Constants.accentColor,
     ),
   ];
 
@@ -90,11 +96,10 @@ class _AppTabRouterState extends State<AppTabRouter> {
     return data;
   }
 
-  Widget wrapTabView(Widget Function(BuildContext) builder) {
-    return Material(
-      child: CupertinoTabView(
-        builder: builder,
-      ),
+  CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
+    return CupertinoTabView(
+      navigatorObservers: [],
+      builder: builder,
     );
   }
 
@@ -113,6 +118,19 @@ class _AppTabRouterState extends State<AppTabRouter> {
         activeColor: Constants.accentColor,
         items: widget.navItems,
       ),
+    );
+  }
+
+  static BottomNavigationBarItem _buildSvgNavItem(
+      {String iconName, String title, Color activeColor}) {
+    final String assetName = 'assets/svg/${iconName}.svg';
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(assetName),
+      activeIcon: SvgPicture.asset(
+        assetName,
+        color: activeColor,
+      ),
+      title: Text(title),
     );
   }
 }

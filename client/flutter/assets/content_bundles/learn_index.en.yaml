@@ -2,12 +2,13 @@ schema_version: 1
 content_version: 1
 contents:
   type: index
-  promo:
-    title: Get the Facts
-    subtitle: Busting myths about COVID-19
-    button_text: View
-    href: /get-the-facts
-    image_name: undraw-learn-promo
+  promos:
+    -
+      title: Get the Facts
+      subtitle: Busting myths about COVID-19
+      button_text: View
+      href: /get-the-facts
+      image_name: undraw-learn-promo
   items:
     -
       title: Travel Advice

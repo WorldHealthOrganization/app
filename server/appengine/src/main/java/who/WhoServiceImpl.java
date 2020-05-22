@@ -1,37 +1,49 @@
 package who;
 
 import com.google.common.base.Strings;
-import com.google.common.geometry.S2CellId;
-import com.google.common.geometry.S2LatLng;
+import com.google.inject.Inject;
 import present.rpc.ClientException;
+
 import java.io.IOException;
+import java.util.regex.Pattern;
+import java.util.TreeSet;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class WhoServiceImpl implements WhoService {
+  NotificationsManager nm;
+
+  @Inject WhoServiceImpl(NotificationsManager nm) {
+    this.nm = nm;
+  }
 
   @Override public Void putDeviceToken(PutDeviceTokenRequest request) throws IOException {
     Client client = Client.current();
-    client.token = request.token;
+    if (client.token != null && client.token.equals(request.token)) {
+      // Nothing to change.
+      return new Void();
+    }
+    client.token = Strings.emptyToNull(request.token);
+    // The token changed; we will need to resubscribe to topics b/c this
+    // new token has never been subscribed to anything.
+    client.subscribedTopics = new TreeSet<String>();
     ofy().save().entities(client);
+    nm.updateSubscriptions(client);
     return new Void();
   }
 
+  private static final Pattern COUNTRY_CODE = Pattern.compile("^[A-Z][A-Z]$");
+
   @Override public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
-    S2CellId location = S2CellId.fromToken(request.s2CellIdToken);
-    if (!location.isValid()) {
-      throw new ClientException("Invalid s2CellId");
+    // Don't even run a regex on a very long string.
+    if (request.isoCountryCode == null || request.isoCountryCode.length() != 2
+        || !COUNTRY_CODE.matcher(request.isoCountryCode).matches()) {
+      throw new ClientException("Invalid isoCountryCode");
     }
-    if (location.level() > Client.MAX_S2_CELL_LEVEL) {
-      throw new ClientException("s2CellId level too high");
-    }
-    client.location = location.id();
-    // Center of the cell.
-    S2LatLng point = location.toLatLng();
-    client.latitude = point.latDegrees();
-    client.longitude = point.lngDegrees();
+    client.isoCountryCode = request.isoCountryCode;
     ofy().save().entities(client);
+    nm.updateSubscriptions(client);
     return new Void();
   }
 

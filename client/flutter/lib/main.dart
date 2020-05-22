@@ -18,7 +18,10 @@ import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
+import 'package:who_app/api/content/content_loading.dart';
+
 PackageInfo _packageInfo;
+
 PackageInfo get packageInfo => _packageInfo;
 
 void main() async {
@@ -83,21 +86,23 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState(analytics, observer);
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   final Notifications _notifications = Notifications();
 
   _MyAppState(this.analytics, this.observer);
+
   final FirebaseAnalytics analytics;
   final FirebaseAnalyticsObserver observer;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
     _notifications.configure();
     _notifications.updateFirebaseToken();
+    _precacheContent();
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement
@@ -111,7 +116,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: GlobalWidgetsLocalizations(
-        Locale(Intl.getCurrentLocale()),
+        getLocale(),
       ).textDirection,
       child: MaterialApp(
         title: "WHO COVID-19",
@@ -142,5 +147,40 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        _precacheContent();
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+        break;
+    }
+  }
+
+  /// Pre-cache commonly loaded content.
+  /// Called on on app lauch and return to foreground.
+  void _precacheContent() async {
+    if (await UserPreferences().getTermsOfServiceCompleted()) {
+      // ignore: unawaited_futures
+      ContentLoading().preCacheContent(getLocale());
+    }
+  }
+
+  /// Construct the Locale from the Intl locale string.
+  /// This allows us to get the Locale outside of the main build context.
+  Locale getLocale() {
+    var parts = Intl.getCurrentLocale().split('_');
+    return Locale(parts[0], parts[1]);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 }

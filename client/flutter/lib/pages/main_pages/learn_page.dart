@@ -101,7 +101,8 @@ class _LearnPageState extends State<LearnPage> {
   //Column(children:_buildPromo());
 
   List<Widget> _buildPromo() {
-    final p = _content?.promo;
+    final p = _content?.promos
+        ?.firstWhere((element) => element.isDisplayed(_logicContext));
     return <Widget>[
       if (p != null)
         _PromoItem(
@@ -118,10 +119,8 @@ class _LearnPageState extends State<LearnPage> {
       SliverList(delegate: SliverChildListDelegate(_buildMenu()));
 
   List<Widget> _buildMenu() {
-    Logic logic = Logic();
     return (_content?.items ?? [])
-        .where((item) => logic.evaluateCondition(
-            condition: item.displayCondition, context: _logicContext))
+        .where((item) => item.isDisplayed(_logicContext))
         .toList()
         .asMap()
         .entries

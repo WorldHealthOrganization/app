@@ -1,4 +1,5 @@
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -22,6 +23,7 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   final header = TextStyle(
       color: CupertinoColors.black, fontSize: 24, fontWeight: FontWeight.w800);
   FactContent _factContent;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -36,6 +38,7 @@ class _ProtectYourselfState extends State<ProtectYourself> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _factContent = await widget.dataSource(locale);
       await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
     } catch (err) {
@@ -67,6 +70,7 @@ class _ProtectYourselfState extends State<ProtectYourself> {
       height: 1.4,
     );
     return (_factContent?.items ?? [])
+        .where((item) => item.isDisplayed(_logicContext))
         .map((fact) => Padding(
               padding: EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0),
               child: ProtectYourselfCard.fromFact(fact,

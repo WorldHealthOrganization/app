@@ -4,6 +4,7 @@ import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
@@ -19,6 +20,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   final PageController _controller = PageController();
   SymptomCheckerModel _model;
   List<Widget> _pages;
+  bool inTransition = false;
 
   @override
   void didChangeDependencies() async {
@@ -42,22 +44,50 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       print("Error loading content: $err");
     }
     _model.addListener(_modelChanged);
+    if (!mounted) return;
     setState(() {});
+  }
+
+  Future<bool> _onWillPop() async {
+    // If the page controller hasn't been built yet then we're on the first page
+    if (_controller.hasClients == false) return true;
+
+    if (inTransition) return false;
+
+    if (_controller.page == 0) {
+      return true;
+    } else {
+      await goBack();
+      return false;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Constants.backgroundColor,
-      child: Column(
-        children: <Widget>[
-          PageHeader(
-            inSliver: false,
-            title: 'Check-Up',
-            appBarColor: Constants.backgroundColor,
-          ),
-          Expanded(child: _buildPage(context)),
-        ],
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Material(
+        color: Constants.backgroundColor,
+        child: Column(
+          children: <Widget>[
+            PageHeader(
+              inSliver: false,
+              title: 'Check-Up',
+              appBarColor: Constants.backgroundColor,
+              trailing: FlatButton(
+                padding: EdgeInsets.zero,
+                child: ThemedText(
+                  "Cancel",
+                  variant: TypographyVariant.button,
+                  style: TextStyle(color: Constants.whoBackgroundBlueColor),
+                ),
+                onPressed: () =>
+                    Navigator.of(context).popUntil((route) => route.isFirst),
+              ),
+            ),
+            Expanded(child: _buildPage(context)),
+          ],
+        ),
       ),
     );
   }
@@ -108,19 +138,24 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
   }
 
   void _modelChanged() {
+    if (_model == null) {
+      return;
+    }
     setState(() {
       _pages = _model.pages.map(_viewForPageModel).toList();
     });
     _nextPage();
   }
 
-  void _nextPage() {
+  void _nextPage() async {
     if (!_controller.hasClients) {
       return;
     }
     if (_controller.page < _model.pages.length) {
-      _controller.animateToPage(_model.pages.length - 1,
+      inTransition = true;
+      await _controller.animateToPage(_model.pages.length - 1,
           duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+      inTransition = false;
     }
   }
 
@@ -140,8 +175,10 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   /// Receive back indication from the page and update the model.
   @override
-  void goBack() async {
+  Future<void> goBack() async {
+    inTransition = true;
     await _previousPage();
+    inTransition = false;
     _model.previousQuestion();
   }
 }

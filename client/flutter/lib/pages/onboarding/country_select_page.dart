@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -28,15 +28,8 @@ class CountrySelectPage extends StatelessWidget {
             child: Container(
               alignment: Alignment.bottomLeft,
               padding: EdgeInsets.only(left: 36.0, bottom: 18.0),
-              // Uncomment below when SVG asset is ready to be included
-              // child: SvgPicture.asset(
-              //     'assets/svg/streamline-onboarding-location.svg'),
-              // Remove below when SVG asset is ready to be included
-              child: Container(
-                height: 145.0,
-                width: 145.0,
-                color: Constants.illustrationPinkColor,
-              ),
+              child:
+                  SvgPicture.asset('assets/svg/undraw-onboarding-location.svg'),
             ),
           ),
           Column(
@@ -48,7 +41,8 @@ class CountrySelectPage extends StatelessWidget {
                   S.of(context).locationSharingPageTitle,
                   variant: TypographyVariant.h2,
                   style: TextStyle(
-                    color: Constants.primaryDarkColor,
+                    color: Constants.accentNavyColor,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
               ),
@@ -58,7 +52,7 @@ class CountrySelectPage extends StatelessWidget {
                   S.of(context).locationSharingPageDescription,
                   variant: TypographyVariant.body,
                   style: TextStyle(
-                    color: Constants.neutral1Color,
+                    color: Constants.neutral2Color,
                   ),
                 ),
               ),
