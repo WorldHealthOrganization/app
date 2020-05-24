@@ -84,7 +84,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                   ),
                 if (result.title != null)
                   SizedBox(
-                    height: 24,
+                    height: 12,
                   ),
                 ...result.cards
                     .map((c) => _Card(
@@ -115,7 +115,7 @@ class _Card extends StatelessWidget {
     final iconSize = 24 * MediaQuery.of(context).textScaleFactor;
     return this.content.iconName == null
         ? Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: _buildCardContent(context,
                 titleStyle: TextStyle(color: Constants.neutralTextLightColor)))
         : Padding(

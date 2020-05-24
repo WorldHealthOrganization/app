@@ -138,6 +138,12 @@ contents:
       # FIXME: Design to choose an icon
       icon_name: monitor
     -
+      id: covid_symptoms
+      title: You currently have symptoms consistent with COVID-19 and should self-isolate.
+    -
+      id: some_symptoms
+      title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
+    -
       id: local_guidance
       title: Always follow local guidance. Regularly check for the latest info from WHO and national and local public health authorities.
     -
@@ -282,7 +288,7 @@ contents:
   results:
     -
       id: emergency
-      title: Call for Help
+      title: Call for help
       severity: emergency
       display_condition: >-
         has('emergency')
@@ -295,9 +301,9 @@ contents:
       display_condition: >-
         has('fever') && has('dry_cough') &&
         (has('over60') || has('preexisting_cond'))
-      title: You currently have symptoms consistent with COVID-19 and should self-isolate. 
+      title: Call your healthcare provider
       cards:
-        - nonemergency_call
+        - covid_symptoms
         - testing
         - avoid_all_contact
         - wear_a_mask_now
@@ -329,9 +335,9 @@ contents:
         has('no_emergency') && selectionCount('q2_symptoms') > 0 && !(has('fever') && has('dry_cough')) &&
         (has('contact') || has('ltc_hcf')) &&
         (has('over60') || has('preexisting_cond'))
-      title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
+      title: Call your healthcare provider
       cards:
-        - nonemergency_call
+        - some_symptoms
         - testing
         - quarantine
         - wear_a_mask_if_coughing
@@ -365,9 +371,9 @@ contents:
         has('no_contact') &&
         has('no_ltc_hcf') &&
         (has('preexisting_cond') || has('over60'))
-      title: Your symptoms might be caused by COVID-19, or could be caused by something else. Monitor your symptoms carefully.
+      title: Call your healthcare provider
       cards:
-        - nonemergency_call
+        - some_symptoms
         - testing
         - stay_home_until_better
         - wear_a_mask_if_coughing
