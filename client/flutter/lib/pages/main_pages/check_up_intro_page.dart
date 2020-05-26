@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
@@ -68,16 +68,16 @@ class CheckUpIntroPage extends StatelessWidget {
       _ListItem(
           title:
               "Your answers will not be shared with WHO or others without your permission.",
-          icon: FontAwesomeIcons.lock),
+          iconName: 'safe'),
       _ListItem(
         title:
             "By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.",
-        icon: FontAwesomeIcons.solidCheckCircle,
+        iconName: 'check',
       ),
       _ListItem(
         title:
             "Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.",
-        icon: FontAwesomeIcons.fileMedical,
+        iconName: 'medical',
         extra: CupertinoButton(
           padding: EdgeInsets.zero,
           child: ThemedText(
@@ -122,14 +122,18 @@ class CheckUpIntroPage extends StatelessWidget {
 class _ListItem extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
+  final String iconName;
   final Widget extra;
 
   _ListItem(
-      {@required this.title, @required this.icon, this.subtitle, this.extra});
+      {@required this.title,
+      @required this.iconName,
+      this.subtitle,
+      this.extra});
 
   @override
   Widget build(BuildContext context) {
+    final iconSize = 24 * MediaQuery.textScaleFactorOf(context);
     return Padding(
       padding: const EdgeInsets.only(
         left: 32,
@@ -139,10 +143,11 @@ class _ListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Icon(
-            icon,
+          SvgPicture.asset(
+            'assets/svg/streamline-sc-start-${iconName}.svg',
             color: Constants.whoBackgroundBlueColor,
-            size: 24,
+            width: iconSize,
+            height: iconSize,
           ),
           SizedBox(
             width: 12,
