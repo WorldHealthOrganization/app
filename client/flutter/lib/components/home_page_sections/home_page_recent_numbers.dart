@@ -84,8 +84,9 @@ class _HomeStatCard extends StatelessWidget {
             ),
           ),
           FlatButton(
-            onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>RecentNumbersPage())),
-              child: Container(
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => RecentNumbersPage())),
+            child: Container(
               padding: EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 18.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,

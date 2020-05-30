@@ -38,9 +38,9 @@ class ProtectYourselfCard extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: childBackgroundColor,
-          child: media,
-        ),
+            color: childBackgroundColor,
+            child: media,
+          ),
       ),
       message: Html(
         data: fact.body ?? '',

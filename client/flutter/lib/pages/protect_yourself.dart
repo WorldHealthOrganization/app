@@ -61,7 +61,9 @@ class _ProtectYourselfState extends State<ProtectYourself> {
   }
 
   SliverList _buildBody() =>
-      SliverList(delegate: SliverChildListDelegate(_buildCards()));
+      SliverList(
+        delegate: SliverChildListDelegate(_buildCards()),
+      );
 
   List<Widget> _buildCards() {
     final TextStyle normalText = TextStyle(
@@ -73,8 +75,11 @@ class _ProtectYourselfState extends State<ProtectYourself> {
         .where((item) => item.isDisplayed(_logicContext))
         .map((fact) => Padding(
               padding: EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0),
-              child: ProtectYourselfCard.fromFact(fact,
-                  defaultTextStyle: normalText),
+              child: GestureDetector(
+                onTap: ()=>Navigator.pushNamed(context, '/protect-yourself'),
+                child: ProtectYourselfCard.fromFact(fact,
+                    defaultTextStyle: normalText),
+              ),
             ))
         .toList();
   }
