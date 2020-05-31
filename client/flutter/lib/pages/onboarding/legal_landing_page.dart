@@ -38,7 +38,7 @@ class LegalLandingPage extends StatelessWidget {
                     container: true,
                     child: FittedBox(
                       fit: BoxFit.fitWidth,
-                        child: ThemedText(
+                      child: ThemedText(
                         S.of(context).legalLandingPageTitle,
                         variant: TypographyVariant.body,
                         style: TextStyle(
