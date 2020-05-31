@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/pages/main_pages/recent_numbers.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
   @override
@@ -28,14 +30,17 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          _HomeStatCard(
-            stat: _globalCaseCount != null && _globalCaseCount > 0
-                ? numFmt.format(_globalCaseCount)
-                : '',
-            // TODO: localize
-            title: _globalCaseCount != null && _globalCaseCount > 0
-                ? 'Global Cases'
-                : '',
+          GestureDetector(
+            onTap: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RecentNumbersPage())),
+            child: _HomeStatCard(
+              stat: _globalCaseCount != null && _globalCaseCount > 0
+                  ? numFmt.format(_globalCaseCount)
+                  : '',
+              // TODO: localize
+              title: _globalCaseCount != null && _globalCaseCount > 0
+                  ? 'Global Cases'
+                  : '',
+            ),
           ),
         ],
       ),
