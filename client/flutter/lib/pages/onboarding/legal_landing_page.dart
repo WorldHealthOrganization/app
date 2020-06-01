@@ -13,8 +13,27 @@ class LegalLandingPage extends StatelessWidget {
 
   const LegalLandingPage({@required this.onNext}) : assert(onNext != null);
 
+  /// Fix for issue # 1350.
+  TextStyle _determineTextStyle(double screenWidth) {
+//    print("current screen width is: $screenWidth");
+
+    if (screenWidth > 320) {
+      return TextStyle(
+        color: Constants.primaryColor,
+        fontSize: 18,
+      );
+    } else {
+      return TextStyle(
+        color: Constants.primaryColor,
+        fontSize: 16,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final _screenWidth = MediaQuery.of(context).size.width;
+
     return Material(
       color: CupertinoColors.white,
       child: Padding(
@@ -39,10 +58,7 @@ class LegalLandingPage extends StatelessWidget {
                     child: ThemedText(
                       S.of(context).legalLandingPageTitle,
                       variant: TypographyVariant.body,
-                      style: TextStyle(
-                        color: Constants.primaryColor,
-                        fontSize: 18,
-                      ),
+                      style: _determineTextStyle(_screenWidth),
                     ),
                   ),
                 ],
