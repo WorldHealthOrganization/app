@@ -41,7 +41,7 @@ class LegalLandingPage extends StatelessWidget {
                       variant: TypographyVariant.body,
                       style: TextStyle(
                         color: Constants.primaryColor,
-                        fontSize: 18,
+                        fontSize: 17,
                       ),
                     ),
                   ),
