@@ -34,16 +34,16 @@ class LegalLandingPage extends StatelessWidget {
                         child: SvgPicture.asset('assets/svg/logo_banner.svg')),
                   ),
                   SizedBox(height: 8),
-                  Semantics(
-                    container: true,
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                      child: Semantics(
+                      container: true,
                       child: ThemedText(
                         S.of(context).legalLandingPageTitle,
                         variant: TypographyVariant.body,
                         style: TextStyle(
                           color: Constants.primaryColor,
-                          fontSize: 18,
+                          fontSize: 24,
                         ),
                       ),
                     ),
