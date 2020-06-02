@@ -31,6 +31,7 @@ class LegalLandingPage extends StatelessWidget {
         return 16;
       }
     }
+    return 18;
   }
 
   @override
