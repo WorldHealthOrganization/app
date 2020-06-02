@@ -15,7 +15,7 @@ class LegalLandingPage extends StatelessWidget {
   const LegalLandingPage({@required this.onNext}) : assert(onNext != null);
 
   /// Fix for issue # 1350.
-  double determineFontSize(double screenWidth, double screenHeight) {
+  double determineFontSize(double screenWidth) {
     if (Platform.isAndroid) {
       if (screenWidth > 320) {
         return 18;
@@ -36,7 +36,6 @@ class LegalLandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _screenWidth = MediaQuery.of(context).size.width;
-    final _screenHeight = MediaQuery.of(context).size.height;
 
     return Material(
       color: CupertinoColors.white,
@@ -64,8 +63,7 @@ class LegalLandingPage extends StatelessWidget {
                       variant: TypographyVariant.body,
                       style: TextStyle(
                         color: Constants.primaryColor,
-                        fontSize:
-                            determineFontSize(_screenWidth, _screenHeight),
+                        fontSize: determineFontSize(_screenWidth),
                       ),
                     ),
                   ),
