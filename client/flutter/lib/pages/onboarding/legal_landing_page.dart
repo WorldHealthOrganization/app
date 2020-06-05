@@ -36,10 +36,17 @@ class LegalLandingPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Semantics(
                     container: true,
+<<<<<<< HEAD
                     child: FittedBox(
                       fit: BoxFit.fitWidth,
                       child: ThemedText(
                         S.of(context).legalLandingPageTitle,
+=======
+                    child: Center(
+                      child: ThemedText(
+                        S.of(context).legalLandingPageTitle,
+                        textAlign: TextAlign.center,
+>>>>>>> 2bfe9976238bdce48b798478dd2768225512930a
                         variant: TypographyVariant.body,
                         style: TextStyle(
                           color: Constants.primaryColor,
