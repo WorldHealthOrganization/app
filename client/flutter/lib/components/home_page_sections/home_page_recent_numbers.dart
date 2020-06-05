@@ -31,7 +31,8 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           GestureDetector(
-            onTap: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RecentNumbersPage())),
+            onTap: () => Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => RecentNumbersPage())),
             child: _HomeStatCard(
               stat: _globalCaseCount != null && _globalCaseCount > 0
                   ? numFmt.format(_globalCaseCount)
