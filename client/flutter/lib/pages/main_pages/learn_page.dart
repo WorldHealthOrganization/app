@@ -71,8 +71,7 @@ class _LearnPageState extends State<LearnPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-          child: PageScaffold(
+    return PageScaffold(
         showBackButton: false,
         headingBorderColor: Color(0x0),
         heroTag: HeroTags.learn,
@@ -80,22 +79,21 @@ class _LearnPageState extends State<LearnPage> {
         title: "Learn",
         showHeader: _content != null,
         header: SliverToBoxAdapter(
-            child: Padding(
-                padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 36, bottom: 12),
-                // TODO: localize
-                child: PageHeader.buildTitle("Learn",
-                    textStyle: TextStyle(fontSize: 40)))),
+      child: Padding(
+          padding:
+              EdgeInsets.only(left: 16, right: 16, top: 36, bottom: 12),
+          // TODO: localize
+          child: PageHeader.buildTitle("Learn",
+              textStyle: TextStyle(fontSize: 40)))),
         beforeHeader: <Widget>[
-          _buildPromos(),
+    _buildPromos(),
         ],
         body: <Widget>[
-          _content != null
-              ? _buildBody()
-              : SliverSafeArea(sliver: LoadingIndicator()),
+    _content != null
+        ? _buildBody()
+        : SliverSafeArea(sliver: LoadingIndicator()),
         ],
-      ),
-    );
+      );
   }
 
   Widget _buildPromos() =>
