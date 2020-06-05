@@ -10,12 +10,16 @@ class MenuListTile extends StatelessWidget {
     this.subtitle,
     this.contentPadding =
         const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+    this.hasArrow = true,
+    this.titleStyle,
   }) : super(key: key);
 
   final String title;
   final String subtitle;
   final EdgeInsets contentPadding;
   final VoidCallback onTap;
+  final bool hasArrow;
+  final TextStyle titleStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,11 @@ class MenuListTile extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         contentPadding: contentPadding,
-        title: ThemedText(title, variant: TypographyVariant.button),
+        title: ThemedText(
+          title,
+          variant: TypographyVariant.button,
+          style: titleStyle,
+        ),
         subtitle: subtitle != null
             ? ThemedText(
                 subtitle,
@@ -31,12 +39,14 @@ class MenuListTile extends StatelessWidget {
               )
             : null,
         isThreeLine: subtitle != null,
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(Icons.arrow_forward_ios, color: Constants.neutral3Color),
-          ],
-        ),
+        trailing: hasArrow
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.arrow_forward_ios, color: Constants.neutral3Color),
+                ],
+              )
+            : null,
         onTap: onTap,
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
+import 'package:who_app/api/linking.dart';
 import '../content_loading.dart';
 
 /// Interpret a content bundle as symptom checker data.
@@ -95,6 +96,13 @@ class SymptomCheckerContent extends ContentBase {
       title: item['title'],
       bodyHtml: item['body_html'],
       iconName: item['icon_name'],
+      titleLink: item['href'] != null ? RouteLink.fromUri(item['href']) : null,
+      links: item['links'] == null
+          ? null
+          : List<SymptomCheckerResultLink>.from(item['links'].map((link) =>
+              SymptomCheckerResultLink(
+                  title: link['title'],
+                  link: RouteLink.fromUri(link['href'])))),
     );
   }
 
@@ -213,11 +221,28 @@ class SymptomCheckerResultCard {
   /// An icon to display with the answer
   final String iconName;
 
+  final RouteLink titleLink;
+
+  final List<SymptomCheckerResultLink> links;
+
   SymptomCheckerResultCard({
     @required this.id,
     @required this.title,
     this.bodyHtml,
     this.iconName,
+    this.titleLink,
+    this.links,
+  });
+}
+
+class SymptomCheckerResultLink {
+  final String title;
+
+  final RouteLink link;
+
+  SymptomCheckerResultLink({
+    @required this.title,
+    @required this.link,
   });
 }
 
