@@ -17,6 +17,7 @@ exemptLabels:
   - "a:privacy"
   - "a:security"
   - "needs:legal"
+  - "source:who"
   - "t:idea"
   - "t:launch-day-task"
   - "t:pre-launch-prod-test"
@@ -36,7 +37,7 @@ staleLabel: "resolved:stale"
 
 # Comment to post when marking as stale. Set to `false` to disable
 markComment: >
-  This issue has been automatically marked as stale because it has not had
+  This item has been automatically marked as stale because it has not had
   recent activity. It will be closed if no further activity occurs. Thank you
   for your contributions.
 
@@ -46,7 +47,7 @@ markComment: >
 
 # Comment to post when closing a stale Issue or Pull Request.
 closeComment: >
-  This issue has been automatically closed as stale.
+  This item has been automatically closed as stale.
 
 # Limit the number of actions per hour, from 1-30. Default is 30
 limitPerRun: 30
@@ -55,12 +56,8 @@ limitPerRun: 30
 # only: issues
 
 # Optionally, specify configuration settings that are specific to just 'issues' or 'pulls':
-# pulls:
-#   daysUntilStale: 30
-#   markComment: >
-#     This pull request has been automatically marked as stale because it has not had
-#     recent activity. It will be closed if no further activity occurs. Thank you
-#     for your contributions.
+pulls:
+  daysUntilStale: 7
 
 # issues:
 #   exemptLabels:
