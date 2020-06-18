@@ -17,6 +17,7 @@ exemptLabels:
   - "a:privacy"
   - "a:security"
   - "needs:legal"
+  - "t:idea"
   - "t:launch-day-task"
   - "t:pre-launch-prod-test"
   - "t:signoff"
