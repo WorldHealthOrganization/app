@@ -5,9 +5,9 @@ contents:
   promos:
     -
       promo_type: check_your_symptoms
-      title: Check Your Symptoms
-      subtitle: See what your symptoms could mean and what you can do to move forward.
-      button_text: Check Now
+      title: Track Your Symptoms
+      subtitle: Keep track of how you're feeling to stay on top of your health
+      button_text: Track Now
       href: /symptom-checker
       image_name: undraw-home-promo-symptoms
   items:
