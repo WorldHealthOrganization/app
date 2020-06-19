@@ -12,10 +12,10 @@ Run `flutter --version` and ensure your output is exactly:
 
 ```sh
 > flutter --version
-Flutter 1.17.0 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision e6b34c2b5c (8 days ago) • 2020-05-02 11:39:18 -0700
-Engine • revision 540786dd51
-Tools • Dart 2.8.1
+Flutter 1.17.4 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 1ad9baa8b9 (29 hours ago) • 2020-06-17 14:41:16 -0700
+Engine • revision ee76268252
+Tools • Dart 2.8.4
 ```
 
 ## Clone the Repo
