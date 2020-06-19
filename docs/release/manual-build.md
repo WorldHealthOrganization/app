@@ -23,7 +23,7 @@ Tools • Dart 2.8.1
 In order to ensure reproducibility, you will always build from a specified `TAG_NAME` (e.g. `v0.1.0`) and should not change bundle/application ids or version or build numbers that are stored in the git repository.
 
 ```
-git clone -b TAG_NAME https://github.com/WorldHealthOrganization/app.git
+git clone -b $TAG_NAME https://github.com/WorldHealthOrganization/app-private-who.git
 cd app
 ```
 

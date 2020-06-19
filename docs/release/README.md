@@ -45,38 +45,39 @@ Items that are still under discussion / not ready to be used for v1.0 currently 
    1. [ ] Design
    1. [ ] Compliance
 
-### Push to stores
+## QA testing with Firebase App Distribution
 
-1. Determine drop-dead time for:
+We use Firebase App Distribution to distribute apps to testers before the app gets deployed onto the App Store / Play Store. We currently do this only for Android; we do not release code for iOS until the TestFlight phase.
 
-- [ ] Stopping code churn
-- [ ] Finalizing release in Github
-- [ ] Pushing build from GitHub to WHO
-- [ ] Alpha release planned date
-- [ ] Production release planned date
-
-1. [ ] Get all [checkoffs](#checkoffs)
-1. [ ] Upload all assets needed to Google Drive and share it with the WHO
-1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**.
-1. [ ] WHO will fill in store information and update screenshots from the Google Drive folder.
-1. [ ] iOS: WHO will upload build to TestFlight. They will also submit the build for app review and select "Manually release this version".
-1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.
-1. [ ] Double check that WHO has uploaded and updated the text / image assets that we want.
-
-## QA and testing
-
-We use Firebase App Distribution, TestFlight beta, and the Google Play Alpha channel for testing.
-
-1. [ ] Set up a new release on TestFlight beta with an open link for testing iOS with QA.
-1. [ ] Upload the release apk to Firebase App Distribution -- we use an open link with Firebase App Distribution for testing Android with QA.
-1. [ ] Publish beta testing URLs for both Android and iOS to Slack.
-1. [ ] Promote the apk on the Play Store to the Alpha channel -- we use closed Alpha testing for non-QA testing for Android.
+1. [ ] Build the app on a local developer's computer. The app can be signed with a Debug certificate and can be built by running `flutter build apk`. Note that the version does not necessarily need to be incremented here.
+1. [ ] Upload the release apk to Firebase App Distribution. Make sure it is shared with "internal-testers-app-team" and provide the following text in the release notes: "Not a demo -- this release is only meant for internal testing."
 1. [ ] QA testers will fill out any issues they find on a Bug Bash form.
 1. [ ] We will triage these issues as needed. If a serious issue is detected, fix the issue and restart the release process.
 
+:construction: This process may soon be automated by [#1293](https://github.com/WorldHealthOrganization/app/pull/1293)
+
+### Push to stores
+
+1. [ ] Determine drop-dead time for:
+
+   - Stopping code churn
+   - Finalizing release in Github
+   - Pushing build from GitHub to WHO
+   - Alpha release planned date
+   - Production release planned date
+
+1. [ ] Get all [checkoffs](#checkoffs).
+1. [ ] Prepare a new release version; see [prepare-release.md](prepare-release.md) for more information on the steps needed for this.
+1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**. More information on the steps WHO should perform to create a manual build is found in [manual-build.md](manual-build.md).
+1. [ ] iOS: WHO will upload build to TestFlight.
+1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.
+1. [ ] Double check that WHO has uploaded and updated the text / image assets that we want.
+
 ## Release to production
 
-1. [ ] Once the App Store review approval has been granted, WHO should manually release the new version.
+1. [ ] Upload all assets needed to a Google Drive folder and share it with the WHO.
+1. [ ] WHO will fill in store information and update screenshots from the Google Drive folder.
+1. [ ] iOS: WHO will submit the build for app review and select "Manually release this version". WHO should manually release the new version.
 1. [ ] WHO should promote the Play Store release to "Production".
 
 ## :construction: Post-release tasks
