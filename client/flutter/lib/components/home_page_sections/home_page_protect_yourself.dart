@@ -3,8 +3,11 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+
+import 'package:who_app/components/dialogs.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -25,6 +28,7 @@ class HomePageProtectYourself extends StatefulWidget {
 
 class _HomePageProtectYourself extends State<HomePageProtectYourself> {
   FactContent _factContent;
+  LogicContext _logicContext;
 
   @override
   void didChangeDependencies() async {
@@ -38,7 +42,9 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
     }
     Locale locale = Localizations.localeOf(context);
     try {
+      _logicContext = await LogicContext.generate();
       _factContent = await widget.dataSource(locale);
+      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
     } catch (err) {
       print("Error loading fact data: $err");
     }
@@ -58,11 +64,6 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
       );
     }
 
-    // TODO: better handle schema version changes
-    if (_factContent.bundle.unsupportedSchemaVersionAvailable) {
-      return null;
-    }
-
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
@@ -80,6 +81,7 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
   List<Widget> _buildCards() {
     final screenWidth = MediaQuery.of(context).size.width;
     return (_factContent?.items ?? [])
+        .where((item) => item.isDisplayed(_logicContext))
         .map((fact) => SizedBox(
               width: screenWidth * 0.75,
               child: Padding(

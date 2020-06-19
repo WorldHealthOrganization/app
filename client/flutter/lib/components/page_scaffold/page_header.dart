@@ -28,35 +28,46 @@ class PageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-
-    child = Column(
-      children: <Widget>[
-        AppBar(
-          centerTitle: false,
-          automaticallyImplyLeading: false,
-          leading: showBackButton ? BackButton() : null,
-          iconTheme: IconThemeData(color: Constants.accentNavyColor),
-          title: Padding(
-            padding: showBackButton
-                ? EdgeInsets.zero
-                : EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              title,
-              style: TextStyle(color: Constants.accentNavyColor),
-            ),
-          ),
-          backgroundColor: appBarColor ?? Colors.transparent,
-          elevation: 0,
-          actions: <Widget>[if (trailing != null) trailing],
-        ),
-        Divider(height: 1, thickness: 1, color: borderColor)
-      ],
+    final titleWrapper = Padding(
+      padding: showBackButton
+          ? EdgeInsets.zero
+          : EdgeInsets.symmetric(horizontal: 8),
+      child: Text(
+        title,
+        style: TextStyle(color: Constants.accentNavyColor),
+      ),
     );
-
-    if (inSliver) child = SliverToBoxAdapter(child: child);
-
-    return child;
+    final leading = showBackButton ? BackButton() : null;
+    final iconThemeData = IconThemeData(color: Constants.accentNavyColor);
+    final actions = <Widget>[if (trailing != null) trailing];
+    final bgColor = appBarColor ?? Colors.transparent;
+    final bottomBorder = Border(
+        bottom:
+            BorderSide(color: borderColor, style: BorderStyle.solid, width: 1));
+    return inSliver
+        ? SliverAppBar(
+            centerTitle: false,
+            automaticallyImplyLeading: false,
+            leading: leading,
+            iconTheme: iconThemeData,
+            title: titleWrapper,
+            backgroundColor: bgColor,
+            actions: actions,
+            shape: bottomBorder,
+            elevation: 0,
+            pinned: true,
+          )
+        : AppBar(
+            centerTitle: false,
+            automaticallyImplyLeading: false,
+            leading: leading,
+            iconTheme: iconThemeData,
+            title: titleWrapper,
+            backgroundColor: bgColor,
+            actions: actions,
+            shape: bottomBorder,
+            elevation: 0,
+          );
   }
 
   static Widget buildTitle(String title,

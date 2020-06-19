@@ -102,6 +102,10 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 
     $ gcloud auth login
 
+And, if you want to be able to manipulate Firebase:
+
+    	$ gcloud auth application-default login
+
 ### Install the most up-to-date App Engine Component
 
     $  gcloud components install app-engine-java && gcloud components update

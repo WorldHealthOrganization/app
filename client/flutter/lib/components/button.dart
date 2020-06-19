@@ -11,7 +11,7 @@ class Button extends StatelessWidget {
   const Button({
     Key key,
     this.color,
-    this.borderRadius,
+    this.borderRadius = const BorderRadius.all(Radius.zero),
     this.padding,
     this.child,
     this.onPressed,

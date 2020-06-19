@@ -11,18 +11,18 @@
 # Sadly, we have to repeat the top-level owners everywhere,
 # since we are not team-members of a GitHub Organization.
 
-* @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+* @advaydev1 @brunobowden @crazybob @hspinks
 
 # Feature areas:
 
 # Client UI
-/client/flutter/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @sammousa @theswerd
+/client/flutter/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @theswerd
 
 # Client Localization
 # Pure translation changes can be approved by @sapte91, but Client UI folks can also still approve/submit
 # as needed when mixed with code changes.
-/client/flutter/lib/generated/intl/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @sammousa @sapte91 @theswerd
-/client/flutter/lib/l10n/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @sammousa @sapte91 @theswerd
+/client/flutter/lib/generated/intl/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @sapte91 @theswerd
+/client/flutter/lib/l10n/ @advaydev1 @britannio @brunobowden @crazybob @hspinks @patniemeyer @sapte91 @theswerd
 
 # Team-wide processes
 /docs/ @advaydev1 @brunobowden @crazybob @hspinks @deanhach
@@ -32,13 +32,13 @@
 /docs/release/ @advaydev1 @brunobowden @crazybob @epicfaace @hspinks @deanhach
 
 # Server
-/server/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+/server/ @advaydev1 @brunobowden @crazybob @hspinks
 
 # API
-/api/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+/api/ @advaydev1 @brunobowden @crazybob @hspinks
 
 # ***** Security-sensitive - always keep these at the end. *****
 
 # CI and CD; Note no secrets shall be stored in this GitHub repo.
-/.github/workflows/ @advaydev1 @brunobowden @crazybob @hspinks @sammousa
-/.github/CODEOWNERS @advaydev1 @brunobowden @crazybob @hspinks @sammousa
+/.github/workflows/ @advaydev1 @brunobowden @crazybob @hspinks
+/.github/CODEOWNERS @advaydev1 @brunobowden @crazybob @hspinks

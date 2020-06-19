@@ -2,6 +2,7 @@ import 'package:who_app/api/content/content_bundle.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:who_app/api/content/content_loading.dart';
+import 'package:who_app/api/content/schema/conditional_content.dart';
 
 typedef FactsDataSource = Future<FactContent> Function(Locale);
 
@@ -25,10 +26,12 @@ class FactContent extends ContentBase {
     try {
       this.items = bundle.contentItems
           .map((item) => FactItem(
-              title: item['title_html'],
-              body: item['body_html'],
-              imageName: item['image_name'],
-              animationName: item['animation_name']))
+                title: item['title_html'],
+                body: item['body_html'],
+                imageName: item['image_name'],
+                animationName: item['animation_name'],
+                displayCondition: item['display_condition'],
+              ))
           .toList();
     } catch (err) {
       print("Error loading fact data: $err");
@@ -39,15 +42,17 @@ class FactContent extends ContentBase {
 
 /// Fact ('fact' schema) items including a title, body, and optional image or
 /// animation name referencing a local asset.
-class FactItem {
+class FactItem with ConditionalItem {
   final String title;
   final String body;
   final String imageName;
   final String animationName;
+  final String displayCondition;
 
   FactItem(
       {@required this.title,
       @required this.body,
       this.imageName,
-      this.animationName});
+      this.animationName,
+      this.displayCondition});
 }

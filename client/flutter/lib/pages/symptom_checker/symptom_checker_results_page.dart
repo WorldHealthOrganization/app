@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
+import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:html/dom.dart' as dom;
@@ -101,32 +102,18 @@ class _Card extends StatelessWidget {
   final SymptomCheckerResultCard content;
   final Color iconColor;
 
-  _Card({@required this.content, this.iconColor});
-
-  IconData _icon(String name) {
-    if (name != null) {
-      // TODO: Redo with SVGs.
-      switch (name) {
-        case 'call':
-          return FontAwesomeIcons.phoneSquareAlt;
-        case 'note':
-          return FontAwesomeIcons.notesMedical;
-        case 'home':
-          return FontAwesomeIcons.houseUser;
-        case 'bed':
-          return FontAwesomeIcons.bed;
-        default:
-          return FontAwesomeIcons.commentMedical;
-      }
-    }
-    return null;
+  String get assetName {
+    return this.content.iconName != null
+        ? 'assets/svg/streamline-sc-${this.content.iconName}.svg'
+        : null;
   }
+
+  _Card({@required this.content, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
-    final icon = _icon(content.iconName);
-
-    return icon == null
+    final iconSize = 24 * MediaQuery.of(context).textScaleFactor;
+    return this.content.iconName == null
         ? Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: _buildCardContent(context,
@@ -137,25 +124,22 @@ class _Card extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Container(
                   color: CupertinoColors.white,
-                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+                  padding: EdgeInsets.fromLTRB(
+                      12, 18, 0, content.links != null ? 0 : 18),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
                         alignment: Alignment.center,
-                        child: FaIcon(
-                          icon,
+                        child: SvgPicture.asset(
+                          this.assetName,
                           color: iconColor,
-                          size: 24 * MediaQuery.of(context).textScaleFactor,
+                          width: iconSize,
+                          height: iconSize,
                         ),
-                        constraints: BoxConstraints(
-                            minWidth:
-                                24 * MediaQuery.of(context).textScaleFactor,
-                            maxWidth:
-                                24 * MediaQuery.of(context).textScaleFactor),
                       ),
                       SizedBox(
-                        // its 12, but 2 is in the card content due to how Html works
+                        // its 12, but 2 is in the card content due to how Html widget works
                         width: 10,
                       ),
                       Flexible(
@@ -167,41 +151,80 @@ class _Card extends StatelessWidget {
           );
   }
 
+  Widget _divider() =>
+      Divider(height: 1, thickness: 1, color: Color(0xFFC9CDD6));
+
   Column _buildCardContent(BuildContext context,
       {TextStyle titleStyle = const TextStyle(fontWeight: FontWeight.w700)}) {
-    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+    final defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context));
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     ;
+    final title = ThemedText(
+      content.title,
+      variant: TypographyVariant.body,
+      style: content.titleLink == null
+          ? titleStyle
+          : titleStyle.merge(TextStyle(
+              color: Constants.whoBackgroundBlueColor,
+            )),
+    );
+    final child = content.titleLink != null
+        ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              child: title,
+              onPressed: () => content.titleLink.open(context),
+            )
+          ])
+        : title;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Padding(
           // Html widget has 2 un-modifiable pixel padding, sigh...
-          padding: EdgeInsets.symmetric(horizontal: 2),
-          child: ThemedText(
-            content.title,
-            variant: TypographyVariant.body,
-            style: titleStyle,
-          ),
+          padding: EdgeInsets.only(left: 2, right: 12),
+          child: child,
         ),
         if (content.bodyHtml != null)
-          Html(
-            customEdgeInsets: (_) => EdgeInsets.zero,
-            data: content.bodyHtml,
-            defaultTextStyle: defaultTextStyle,
-            customTextStyle: (dom.Node node, TextStyle baseStyle) {
-              if (node is dom.Element) {
-                switch (node.localName) {
-                  case 'b':
-                    return baseStyle.merge(boldTextStyle);
+          Padding(
+            // Html widget has 2 un-modifiable pixel padding, sigh...
+            padding: EdgeInsets.only(
+                right: 12, bottom: content.links != null ? 12 : 0),
+            child: Html(
+              customEdgeInsets: (_) => EdgeInsets.zero,
+              data: content.bodyHtml,
+              defaultTextStyle: defaultTextStyle,
+              customTextStyle: (dom.Node node, TextStyle baseStyle) {
+                if (node is dom.Element) {
+                  switch (node.localName) {
+                    case 'b':
+                      return baseStyle.merge(boldTextStyle);
+                  }
                 }
-              }
-              return baseStyle.merge(defaultTextStyle);
-            },
-          )
+                return baseStyle.merge(defaultTextStyle);
+              },
+            ),
+          ),
+        if (content.links != null)
+          ...(content.links
+              .map((e) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _divider(),
+                        MenuListTile(
+                          hasArrow: false,
+                          contentPadding: EdgeInsets.zero,
+                          title: e.title,
+                          onTap: () => e.link.open(context),
+                          titleStyle: TextStyle(color: iconColor),
+                        )
+                      ]))
+              .toList())
       ],
     );
   }
