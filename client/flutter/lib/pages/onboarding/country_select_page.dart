@@ -46,7 +46,10 @@ class CountrySelectPage extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: 36.0, right: 20.0, bottom: 18.0),
+                            left: 36.0, 
+                            right: 20.0, 
+                            bottom: 18.0,
+                          ),
                         child: ThemedText(
                           S.of(context).locationSharingPageTitle,
                           variant: TypographyVariant.h2,
