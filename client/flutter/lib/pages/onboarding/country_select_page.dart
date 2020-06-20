@@ -85,7 +85,12 @@ class CountrySelectPage extends StatelessWidget {
                       children: <Widget>[
                         _buildOpenListRow(),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 12.0),
+                          padding: EdgeInsets.fromLTRB(
+                            24.0, 
+                            32.0, 
+                            24.0, 
+                            12.0,
+                          ),
                           child: Material(
                             child: FlatButton(
                               onPressed:
