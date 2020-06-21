@@ -23,90 +23,114 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return Material(
       color: CupertinoColors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.only(left: 36.0, bottom: 18.0),
-              child: SvgPicture.asset(
-                  'assets/svg/undraw-onboarding-notifications.svg'),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 36.0, right: 20.0, bottom: 18.0),
-                child: ThemedText(
-                  S.of(context).notificationsPagePermissionRequestPageTitle,
-                  variant: TypographyVariant.h2,
-                  style: TextStyle(
-                    color: Constants.accentNavyColor,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 36.0, right: 54.0, bottom: 42.0),
-                child: ThemedText(
-                  S
-                      .of(context)
-                      .notificationsPagePermissionRequestPageDescription,
-                  variant: TypographyVariant.body,
-                  style: TextStyle(
-                    color: Constants.neutral1Color,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 112.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Button(
-                      onPressed: () async {
-                        await _allowNotifications();
-                      },
-                      color: Constants.whoBackgroundBlueColor,
-                      borderRadius: BorderRadius.circular(50.0),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 32.0,
-                          vertical: 12.0,
-                        ),
-                        child: ThemedText(
-                          S
-                              .of(context)
-                              .notificationsPagePermissionRequestPageButton,
-                          variant: TypographyVariant.button,
-                          style: TextStyle(
-                            color: CupertinoColors.white,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.only(
+                        left: 36.0,
+                        bottom: 18.0,
+                        top: 10,
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/svg/undraw-onboarding-notifications.svg',
+                        height: double.infinity,
                       ),
                     ),
-                    CupertinoButton(
-                      onPressed: () async {
-                        await _skipNotifications();
-                      },
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 36.0,
+                            right: 20.0,
+                            bottom: 18.0,
+                          ),
+                          child: ThemedText(
+                            S
+                                .of(context)
+                                .notificationsPagePermissionRequestPageTitle,
+                            variant: TypographyVariant.h2,
+                            style: TextStyle(
+                              color: Constants.accentNavyColor,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: 36.0, right: 54.0, bottom: 12.0),
+                          child: ThemedText(
+                            S
+                                .of(context)
+                                .notificationsPagePermissionRequestPageDescription,
+                            variant: TypographyVariant.body,
+                            style: TextStyle(
+                              color: Constants.neutral1Color,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(24.0, 32.0, 24.0, 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Button(
+                    onPressed: () async {
+                      await _allowNotifications();
+                    },
+                    color: Constants.whoBackgroundBlueColor,
+                    borderRadius: BorderRadius.circular(50.0),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 32.0,
+                        vertical: 12.0,
+                      ),
                       child: ThemedText(
-                        S.of(context).commonPermissionRequestPageButtonSkip,
+                        S
+                            .of(context)
+                            .notificationsPagePermissionRequestPageButton,
                         variant: TypographyVariant.button,
                         style: TextStyle(
-                          color:
-                              Constants.neutralTextLightColor.withOpacity(0.5),
+                          color: CupertinoColors.white,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
+                    ),
+                  ),
+                  CupertinoButton(
+                    onPressed: () async {
+                      await _skipNotifications();
+                    },
+                    child: ThemedText(
+                      S.of(context).commonPermissionRequestPageButtonSkip,
+                      variant: TypographyVariant.button,
+                      style: TextStyle(
+                        color: Constants.neutralTextLightColor.withOpacity(0.5),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
