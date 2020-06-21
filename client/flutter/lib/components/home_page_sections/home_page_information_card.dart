@@ -36,11 +36,11 @@ class HomePageInformationCard extends StatelessWidget {
         ? Stack(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 36.0),
+                margin: EdgeInsets.only(top: 40.0),
                 child: inner,
               ),
               Positioned(
-                right: 44.0,
+                right: 28.0,
                 child: Container(
                     height: 96, child: SvgPicture.asset(this.assetName)),
               )
