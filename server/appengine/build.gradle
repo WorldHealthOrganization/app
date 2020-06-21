@@ -48,7 +48,7 @@ dependencies {
     implementation 'co.present.rpc:client:0.2-SNAPSHOT'
 
     implementation 'com.google.inject:guice:4.2.2:no_aop'
-    implementation 'com.google.inject.extensions:guice-servlet:4.2.2'
+    implementation 'com.google.inject.extensions:guice-servlet:4.2.3'
 
     implementation 'com.googlecode.objectify:objectify:5.1.22'
 
