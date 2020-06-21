@@ -23,7 +23,7 @@ jobs:
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
         working-directory: ./client/app
-      - run: flutter build ios --no-codesign
+      - run: flutter build ios  --release --no-codesign
         working-directory: ./client/app
       - run: git diff --exit-code
   buildandroid:
