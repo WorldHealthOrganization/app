@@ -1,0 +1,28 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/tools" # Location of package manifests
+    schedule:
+      interval: "daily"
+    labels:
+      - "t:deps"
+      - "a:dev-workflow"
+  - package-ecosystem: "gradle"
+    directory: "/server"
+    schedule:
+      interval: "daily"
+    labels:
+      - "t:deps"
+      - "c:server"
+  - package-ecosystem: "gradle"
+    directory: "/server/appengine"
+    schedule:
+      interval: "daily"
+    labels:
+      - "t:deps"
+      - "c:server"
