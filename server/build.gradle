@@ -21,7 +21,7 @@ buildscript {
         'firebase': "com.google.firebase:firebase-admin:6.12.2",
         'netty': 'io.netty:netty-codec-http:4.1.46.Final',
         'guava': "com.google.guava:guava:27.0.1-jre",
-        'gson': "com.google.code.gson:gson:2.8.5",
+        'gson': "com.google.code.gson:gson:2.8.6",
         'servlet': "javax.servlet:javax.servlet-api:3.1.0",
         'junit': "junit:junit:4.12",
         'wire': [
