@@ -70,7 +70,7 @@ dependencies {
     // 4.1.34.Final included in Firebase, which has vulnerabilities.
     implementation 'io.netty:netty-codec-http:4.1.50.Final'
 
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13'
     testCompile "org.mockito:mockito-core:1.+"
     testCompile 'com.google.appengine:appengine-testing:+'
     testCompile 'com.google.appengine:appengine-api-stubs:+'
