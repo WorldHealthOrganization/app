@@ -19,10 +19,3 @@ updates:
     labels:
       - "t:deps"
       - "c:server"
-  - package-ecosystem: "gradle"
-    directory: "/server/appengine"
-    schedule:
-      interval: "daily"
-    labels:
-      - "t:deps"
-      - "c:server"
