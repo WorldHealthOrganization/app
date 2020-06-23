@@ -36,7 +36,7 @@ configurations.all {
 
 dependencies {
     compile 'com.google.appengine:appengine-api-1.0-sdk:+' // Latest App Engine Api's
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
 
     implementation deps.slf4j.jdk14
 
