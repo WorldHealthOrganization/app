@@ -1,10 +1,8 @@
 name: Firebase Staging App Distribution
 on:
   push:
-    # FIXME: Uncomment the `branches` line before submitting.
-    # It is needed as a comment for me to test this.
     # Master branch has the staging firebase config.
-    # branches: [ master ]
+    branches: [ master ]
     paths:
       - '.github/workflows/**'
       - 'api/**'
