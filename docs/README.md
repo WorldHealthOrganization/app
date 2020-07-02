@@ -4,6 +4,12 @@
 ![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
 ![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
 
+![Flutter](https://img.shields.io/badge/Framework-Flutter-3cc6fd?logo=flutter)
+![Dart](https://img.shields.io/badge/Language-Dart-0c458b?logo=dart)
+![Java](https://img.shields.io/badge/Language-Java-ed8217?logo=java)
+![App Engine](https://img.shields.io/badge/Cloud-App%20Engine-3469ee?logo=Google%20Cloud)
+![Firebase](https://img.shields.io/badge/Cloud-Firebase-f5ba23?logo=Firebase)
+
 COVID-19 app
 
 <!-- This is formatted strangely but automatically by Prettier. -->
