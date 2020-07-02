@@ -2,6 +2,7 @@
   "name": "app-dev-tools",
   "private": true,
   "devDependencies": {
+    "firebase-tools": "^8.4.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
