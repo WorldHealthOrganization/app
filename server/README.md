@@ -108,7 +108,7 @@ And, if you want to be able to manipulate Firebase:
 
 ### Install the most up-to-date App Engine Component
 
-    $  gcloud components install app-engine-java && gcloud components update
+    $  gcloud components install beta app-engine-java && gcloud components update
 
 ### Install IntelliJ IDE (Optional)
 

@@ -1,0 +1,121 @@
+name: Server CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'content/**'
+      - 'api/**'
+      - 'server/**'
+      - 'client/flutter/assets/content_bundles/**'
+      - 'tools/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'content/**'
+      - 'api/**'
+      - 'server/**'
+      - 'client/flutter/assets/content_bundles/**'
+      - 'tools/**'
+
+jobs:
+  test:
+    name: Test server on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.0.2'
+        architecture: x86
+    - uses: gradle/wrapper-validation-action@v1
+    - run: ./gradlew test
+      working-directory: server
+  deploy_to_appengine_staging:
+    # Only push if tests are successful
+    needs: test
+    name: Deploy Server to App Engine (Staging)
+    # SECURITY: This job uses staging secrets; do not enable it for
+    # pull requests.
+    if: |
+      github.repository == 'WorldHealthOrganization/app' &&
+      github.ref == 'master' &&
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      LOG_URL: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.0.2'
+          architecture: x86
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.2
+      - run: gcloud components install beta app-engine-java && gcloud components update
+      - name: Setup GCP Credentials
+        shell: bash
+        run: |
+          echo "$BASE64_KEY_JSON" | base64 --decode > $APPLICATION_CREDENTIALS_GPG
+          gpg --quiet --batch --yes --decrypt --passphrase="$KEY_PASSPHRASE" --output $APPLICATION_CREDENTIALS $APPLICATION_CREDENTIALS_GPG
+          rm $APPLICATION_CREDENTIALS_GPG
+          gcloud auth activate-service-account --key-file=$APPLICATION_CREDENTIALS
+        env:
+          BASE64_KEY_JSON: "${{ secrets.APP_ENGINE_DEPLOY_STAGING_SVCACCT_JSON }}"
+          KEY_PASSPHRASE: "${{ secrets.APP_ENGINE_DEPLOY_STAGING_SVCACCT_PASSPHRASE }}"
+          APPLICATION_CREDENTIALS: "${{ runner.temp }}/gcp.json"
+          APPLICATION_CREDENTIALS_GPG: "${{ runner.temp }}/gcp.json.gpg"
+      - run: gcloud info
+      - id: newDeployment
+        name: Track Environment Deployment Status
+        uses: actions/github-script@v2
+        with:
+          previews: flash,ant-man
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { data: deployment } = await github.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              auto_merge: false,
+              environment: 'appengine-staging',
+              required_contexts: [],
+            });
+            await github.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              state: 'in_progress',
+              log_url: process.env.LOG_URL,
+            });
+            return deployment.id;
+      - shell: bash
+        run: ./bin/deploy-staging.sh
+        working-directory: server
+      - name: Destroy GCP Credentials File
+        run: rm $APPLICATION_CREDENTIALS
+        if: ${{ always() }}
+        env:
+          APPLICATION_CREDENTIALS: "${{ runner.temp }}/gcp.json"
+      - name: Revoke GCP Credentials
+        run: gcloud auth revoke
+        if: ${{ always() }}
+      - uses: actions/github-script@v2
+        name: Finalize Deployment Status
+        if: ${{ always() }}
+        with:
+          previews: flash,ant-man
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: '${{steps.newDeployment.outputs.result}}',
+              state: '${{job.status}}' === 'success' ? 'success' : 'failure',
+              log_url: process.env.LOG_URL,
+              environment_url: '${{job.status}}' === 'success' ? 'https://console.cloud.google.com/appengine?project=who-myhealth-staging&serviceId=default' : '',
+              auto_inactive: '${{job.status}}' === 'success'
+            });

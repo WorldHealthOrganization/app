@@ -51,6 +51,8 @@ Follow Apple's instructions on [preparing for app distribution](https://help.app
 Prepare the Flutter release:
 
 ```
+cd $(git rev-parse --show-toplevel)
+DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
 cd $(git rev-parse --show-toplevel)/client/flutter
 flutter build ios
 ```
@@ -83,6 +85,8 @@ Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/dep
 Build the app bundle:
 
 ```
+cd $(git rev-parse --show-toplevel)
+DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
 cd $(git rev-parse --show-toplevel)/client/flutter
 flutter build appbundle
 ```
