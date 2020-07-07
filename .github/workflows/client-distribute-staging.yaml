@@ -1,0 +1,77 @@
+name: Firebase Staging App Distribution
+on:
+  push:
+    # Master branch has the staging firebase config.
+    branches: [ master ]
+    paths:
+      - '.github/workflows/**'
+      - 'api/**'
+      - 'client/app/**'
+      - 'client/flutter/**'
+      - 'content/**'
+
+jobs:
+  build_apk:
+    # Firebase requires fat APKs, not AABs, so this workflow is separate from client-build.
+    name: Build Android APK (Staging)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b 1.17.4 _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/app
+      - run: flutter build apk
+        working-directory: ./client/app
+      - name: Upload Staging APK artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: staging-apk
+          path: ./client/app/build/app/outputs/apk/release/app-release.apk
+  deploy_to_firebase_staging:
+    name: Deploy APK to Firebase App Distribution (Staging)
+    runs-on: ubuntu-latest
+    needs: build_apk
+    env:
+      FIREBASE_STAGING_APP_ID: '1:1057717871229:android:4fbe832a3de230450dc714'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Staging APK Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: staging-apk
+          path: tools
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install Firebase CLI
+        run: npm install
+        working-directory: ./tools
+      - name: Setup Firebase Credentials
+        shell: bash
+        run: |
+          echo "$BASE64_KEY_JSON" | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS_GPG
+          gpg --quiet --batch --yes --decrypt --passphrase="$KEY_PASSPHRASE" --output $GOOGLE_APPLICATION_CREDENTIALS $GOOGLE_APPLICATION_CREDENTIALS_GPG
+          rm $GOOGLE_APPLICATION_CREDENTIALS_GPG
+        env:
+          BASE64_KEY_JSON: "${{ secrets.FIREBASE_APPDEPLOY_STAGING_SVCACCT_JSON }}"
+          KEY_PASSPHRASE: "${{ secrets.FIREBASE_APPDEPLOY_STAGING_SVCACCT_PASSPHRASE }}"
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ runner.temp }}/fbappdeploy.json"
+          GOOGLE_APPLICATION_CREDENTIALS_GPG: "${{ runner.temp }}/fbappdeploy.json.gpg"
+      - name: Run Firebase App Distribution
+        shell: bash
+        run: |
+          npx firebase appdistribution:distribute --app "$FIREBASE_STAGING_APP_ID" --release-notes "$RELEASE_NOTES" --groups "every-build" app-release.apk
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ runner.temp }}/fbappdeploy.json"
+          RELEASE_NOTES: "Automatic deployment of https://github.com/${{ github.repository }}/tree/${{ github.sha }} . Any prior version of this app will need to be uninstalled prior to installing this build."
+        working-directory: ./tools
+      - name: Destroy Firebase Credentials
+        run: rm $GOOGLE_APPLICATION_CREDENTIALS
+        if: ${{ always() }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${{ runner.temp }}/fbappdeploy.json"
