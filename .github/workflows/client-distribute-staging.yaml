@@ -9,6 +9,7 @@ on:
       - 'client/app/**'
       - 'client/flutter/**'
       - 'content/**'
+      - 'tools/**'
 
 jobs:
   build_apk:
