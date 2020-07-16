@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:who_app/constants.dart';
+import 'package:who_app/generated/build.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,6 +19,8 @@ import 'package:yaml/yaml.dart';
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var devInfo = false;
+
     final String versionString = packageInfo != null
         ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
             packageInfo.version, packageInfo.buildNumber)
@@ -36,6 +42,19 @@ class AboutPage extends StatelessWidget {
       await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
     }
 
+    String _buildInfoText(BuildContext bc) {
+      return [
+        'Pkg info: ${packageInfo.appName}, ${packageInfo.packageName}, ${packageInfo.version}, ${packageInfo.buildNumber}',
+        'Git commit: ${BuildInfo.GIT_SHA}',
+        'Built at: ${BuildInfo.BUILT_AT}',
+        'Development build: ${BuildInfo.DEVELOPMENT_ONLY}',
+        'Platform locale: ${Platform.localeName}',
+        'Platform version: ${Platform.operatingSystem} ${Platform.operatingSystemVersion}',
+        'Flutter locale: ${Localizations.localeOf(bc).toString()}',
+        'Flutter version: ${BuildInfo.FLUTTER_VERSION}',
+      ].join('\n');
+    }
+
     Future<void> _openLicenses(BuildContext context) async {
       // Logs the page switch as it happens while avoiding any delay caused
       // by logging.
@@ -52,7 +71,8 @@ class AboutPage extends StatelessWidget {
         Divider(height: 1, thickness: 1, color: Color(0xFFC9CDD6));
 
     return PageScaffold(
-      appBarColor: Constants.backgroundColor,
+      appBarColor: Colors.white,
+      color: Colors.white,
       body: [
         SliverList(
           delegate: SliverChildListDelegate.fixed(
@@ -74,7 +94,7 @@ class AboutPage extends StatelessWidget {
               _divider(),
               Container(
                 color: CupertinoColors.white,
-                padding: EdgeInsets.fromLTRB(25, 25, 25, 10),
+                padding: EdgeInsets.fromLTRB(24, 24, 24, 8),
                 child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                       copyrightString, versionString),
@@ -83,7 +103,7 @@ class AboutPage extends StatelessWidget {
               ),
               Container(
                 color: CupertinoColors.white,
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
                       .loadString('assets/credits.yaml'),
@@ -110,6 +130,33 @@ class AboutPage extends StatelessWidget {
                   },
                 ),
               ),
+              Container(
+                  color: CupertinoColors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  child: StatefulBuilder(
+                      builder: (BuildContext context, StateSetter setState) =>
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Button(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 24),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.code,
+                                    size: 14,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      devInfo = !devInfo;
+                                    });
+                                  },
+                                ),
+                                if (devInfo)
+                                  ThemedText(
+                                    _buildInfoText(context),
+                                    variant: TypographyVariant.bodySmall,
+                                  )
+                              ])))
             ],
           ),
         ),

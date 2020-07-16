@@ -1,8 +1,7 @@
 # COVID-19 App
 
-![iOS and Android App Builds](https://github.com/WorldHealthOrganization/app/workflows/Client%20Build/badge.svg)
-![Client Tests](https://github.com/WorldHealthOrganization/app/workflows/Client%20Tests/badge.svg)
-![Server Tests](https://github.com/WorldHealthOrganization/app/workflows/Server%20Tests/badge.svg)
+[![Client CI](https://github.com/WorldHealthOrganization/app/workflows/Client%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Client+CI"+branch%3Amaster+event%3Apush)
+[![Server CI](https://github.com/WorldHealthOrganization/app/workflows/Server%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Server+CI"+branch%3Amaster+event%3Apush)
 
 ![Flutter](https://img.shields.io/badge/Framework-Flutter-3cc6fd?logo=flutter)
 ![Dart](https://img.shields.io/badge/Language-Dart-0c458b?logo=dart)
