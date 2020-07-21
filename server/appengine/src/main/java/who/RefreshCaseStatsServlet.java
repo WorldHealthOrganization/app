@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import java.security.SecureRandom;
 import okhttp3.Response;
 
 public class RefreshCaseStatsServlet extends HttpServlet {
@@ -25,6 +26,8 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     Request request = new Request.Builder()
         .url(WHO_CASE_STATS_URL)
         .build();
+    SecureRandom random = new SecureRandom();
+    random.setSeed(20L);
     try (Response response = HTTP_CLIENT.newCall(request).execute()) {
       return response.body().string();
     }
