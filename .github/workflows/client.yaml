@@ -82,7 +82,7 @@ jobs:
     # pull requests.
     if: |
       github.repository == 'WorldHealthOrganization/app' &&
-      github.ref == 'master' &&
+      github.ref == 'refs/heads/master' &&
       github.event_name == 'push'
     env:
       FIREBASE_STAGING_APP_ID: '1:1057717871229:android:4fbe832a3de230450dc714'
