@@ -3,7 +3,6 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/components/rive_animation.dart';
 import 'package:who_app/constants.dart';
 
 class ProtectYourselfCard extends StatelessWidget {
@@ -24,14 +23,7 @@ class ProtectYourselfCard extends StatelessWidget {
       BorderRadius borderRadius = const BorderRadius.all(Radius.circular(16.0)),
       TextStyle defaultTextStyle = const TextStyle(
           color: Constants.textColor, fontSize: 16, height: 1.4)}) {
-    Widget media = shouldAnimate && fact.animationName != null
-        ? RiveAnimation(
-            'assets/animations/${fact.animationName}.flr',
-            alignment: Alignment.center,
-            fit: BoxFit.contain,
-            animation: fact.animationName,
-          )
-        : SvgPicture.asset('assets/svg/${fact.imageName}.svg');
+    Widget media = SvgPicture.asset('assets/svg/${fact.imageName}.svg');
     final TextStyle boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return ProtectYourselfCard(
