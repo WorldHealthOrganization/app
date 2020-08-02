@@ -1,6 +1,6 @@
 name: Client CI
 env:
-  FLUTTER_VERSION: '1.17.4'
+  FLUTTER_VERSION: '1.17.5'
 on:
   push:
     paths:
