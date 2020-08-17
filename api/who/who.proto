@@ -20,10 +20,6 @@ message PutDeviceTokenRequest {
   string token = 1;
 }
 
-message PutDeviceTokenRequest {
-  string token = 1;
-}
-
 message PutLocationRequest {
   // ISO 3166-1 alpha-2 (uppercase) code
   string isoCountryCode = 12;
