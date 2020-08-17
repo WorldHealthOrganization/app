@@ -120,20 +120,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.7"
-  flare_dart:
-    dependency: transitive
-    description:
-      name: flare_dart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.4"
-  flare_flutter:
-    dependency: "direct main"
-    description:
-      name: flare_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
