@@ -50,8 +50,11 @@ public class WhoServiceImpl implements WhoService {
   // 10 mins
   private static final long STATS_TTL_SECONDS = 60 * 10;
 
-  @Override public GetCaseStatsResponse getCaseStats(Void request) throws IOException {
+  @Override public GetCaseStatsResponse getCaseStats(GetCaseStatsRequest request) throws IOException {
     CaseStats global = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+
+    // TODO(brunob): Add jurisdiction-specifc stats in response.
+
     return new GetCaseStatsResponse.Builder()
       .globalStats(global)
       .ttl(STATS_TTL_SECONDS)
