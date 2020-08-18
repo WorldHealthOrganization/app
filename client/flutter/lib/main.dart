@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -14,6 +19,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
+import 'package:who_app/generated/build.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -87,8 +93,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  final Notifications _notifications = Notifications();
-
   _MyAppState(this.analytics, this.observer);
 
   final FirebaseAnalytics analytics;
@@ -100,8 +104,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _notifications.configure();
-    _notifications.updateFirebaseToken();
     _precacheContent();
   }
 
@@ -118,30 +120,52 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       textDirection: GlobalWidgetsLocalizations(
         getLocale(),
       ).textDirection,
-      child: MaterialApp(
-        title: "WHO COVID-19",
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          S.delegate
+      child: MultiProvider(
+        providers: [
+          Provider(
+              create: (_) => WhoService(
+                    endpoint: BuildInfo.DEVELOPMENT_ONLY
+                        ? Endpoints.STAGING
+                        : Endpoints.PROD,
+                  )),
+          ProxyProvider(
+            update: (_, WhoService service, old) {
+              final ret = Notifications(service: service);
+              ret.configure();
+              ret.updateFirebaseToken();
+              return ret;
+            },
+          ),
+          ProxyProvider(
+            update: (_, WhoService service, __) => StatsStore(service: service),
+          ),
+          PeriodicUpdater.asProvider<StatsStore>(),
         ],
-        routes: widget.routes,
-        // FIXME Issue #1012 - disabled supported languages for P0
-        //supportedLocales: S.delegate.supportedLocales,
-        initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
+        child: MaterialApp(
+          title: "WHO COVID-19",
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            S.delegate
+          ],
+          routes: widget.routes,
+          // FIXME Issue #1012 - disabled supported languages for P0
+          //supportedLocales: S.delegate.supportedLocales,
+          initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
 
-        /// allows routing to work without a [Navigator.defaultRouteName] route
-        builder: (context, child) => child,
-        navigatorObservers: <NavigatorObserver>[observer],
-        theme: ThemeData(
-          brightness: Brightness.light,
-          primaryColor: Constants.primaryDarkColor,
-          textTheme: TextTheme(),
-          cupertinoOverrideTheme: CupertinoThemeData(
+          /// allows routing to work without a [Navigator.defaultRouteName] route
+          builder: (context, child) => child,
+          navigatorObservers: <NavigatorObserver>[observer],
+          theme: ThemeData(
             brightness: Brightness.light,
             primaryColor: Constants.primaryDarkColor,
-            textTheme: CupertinoTextThemeData(
-              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+            textTheme: TextTheme(),
+            cupertinoOverrideTheme: CupertinoThemeData(
+              brightness: Brightness.light,
+              primaryColor: Constants.primaryDarkColor,
+              textTheme: CupertinoTextThemeData(
+                textStyle: ThemedText.styleForVariant(TypographyVariant.body),
+              ),
             ),
           ),
         ),

@@ -2,3 +2,5 @@ server/appengine/src/main/java/com/google/** linguist-vendored
 gradlew linguist-vendored
 gradlew.bat linguist-vendored
 client/flutter/lib/generated/** linguist-generated
+client/flutter/lib/proto/api/** linguist-generated
+*.g.dart linguist-generated

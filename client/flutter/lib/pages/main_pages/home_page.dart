@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/home_page_sections/home_page_donate.dart';
 import 'package:who_app/components/home_page_sections/home_page_header.dart';
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           ? Constants.primaryDarkColor
           : CupertinoColors.white,
       beforeHeader: _buildPromo(),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
@@ -82,14 +84,14 @@ class _HomePageState extends State<HomePage> {
     return preHeader;
   }
 
-  List<Widget> _buildBody() {
+  List<Widget> _buildBody(BuildContext ctx) {
     List<IndexItem> items = _content?.items;
     if (items == null) {
       return [LoadingIndicator()];
     }
     List<Widget> bundleWidgets = items
         .where((item) => item.isDisplayed(_logicContext))
-        .map((item) => _buildItem(item))
+        .map((item) => _buildItem(ctx, item))
         .toList();
     return [
       ...bundleWidgets,
@@ -98,14 +100,14 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  Widget _buildItem(IndexItem item) {
+  Widget _buildItem(BuildContext ctx, IndexItem item) {
     switch (item.type) {
       case IndexItemType.information_card:
         return _buildInfoCard(item);
       case IndexItemType.protect_yourself:
         return _buildProtectYourself(item);
       case IndexItemType.recent_numbers:
-        return _buildRecentNumbers(item);
+        return _buildRecentNumbers(ctx, item);
       case IndexItemType.menu_list_tile:
       case IndexItemType.unknown:
         return null;
@@ -140,7 +142,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildRecentNumbers(IndexItem item) {
+  Widget _buildRecentNumbers(BuildContext ctx, IndexItem item) {
     return _HomePageSection(
       padding: EdgeInsets.only(top: 56.0),
       header: _HomePageSectionHeader(
@@ -148,7 +150,9 @@ class _HomePageState extends State<HomePage> {
         linkText: item.buttonText,
         link: item.link,
       ),
-      content: HomePageRecentNumbers(),
+      content: HomePageRecentNumbers(
+        statsStore: Provider.of<StatsStore>(ctx),
+      ),
     );
   }
 

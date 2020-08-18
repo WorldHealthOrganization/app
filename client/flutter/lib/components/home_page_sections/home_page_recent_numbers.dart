@@ -1,22 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:who_app/api/who_service.dart';
+import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
+  final StatsStore statsStore;
+
+  const HomePageRecentNumbers({Key key, @required this.statsStore})
+      : super(key: key);
+
   @override
   _HomePageRecentNumbersState createState() => _HomePageRecentNumbersState();
 }
 
 class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
-  int _globalCaseCount;
-
   @override
   void initState() {
     super.initState();
-    fetchStats();
+    widget.statsStore.update();
   }
 
   @override
@@ -28,29 +32,22 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          _HomeStatCard(
-            stat: _globalCaseCount != null && _globalCaseCount > 0
-                ? numFmt.format(_globalCaseCount)
-                : '',
-            // TODO: localize
-            title: _globalCaseCount != null && _globalCaseCount > 0
-                ? 'Global Cases'
-                : '',
+          Observer(
+            builder: (ctx) => _HomeStatCard(
+              stat: widget.statsStore.globalCases != null &&
+                      widget.statsStore.globalCases > 0
+                  ? numFmt.format(widget.statsStore.globalCases)
+                  : '',
+              // TODO: localize
+              title: widget.statsStore.globalCases != null &&
+                      widget.statsStore.globalCases > 0
+                  ? 'Global Cases'
+                  : '',
+            ),
           ),
         ],
       ),
     );
-  }
-
-  void fetchStats() async {
-    final statsResponse = await WhoService.getCaseStats();
-    final globalStats = statsResponse['globalStats'];
-
-    if (globalStats != null) {
-      setState(() {
-        _globalCaseCount = globalStats['cases'];
-      });
-    }
   }
 }
 

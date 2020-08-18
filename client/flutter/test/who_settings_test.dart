@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:who_app/api/notifications.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/settings_page.dart';
 
@@ -27,7 +29,10 @@ void main() {
       (WidgetTester tester) async {
     // Increasing the default viewport size to avoid RenderFlex overflow error
     await binding.setSurfaceSize(Size(800, 800));
-    await tester.pumpWidget(testableWidget(child: SettingsPage()));
+    await tester.pumpWidget(testableWidget(
+        child: SettingsPage(
+      notifications: Notifications(service: WhoService(endpoint: '')),
+    )));
     await tester.pumpAndSettle();
     expect(find.text("Settings"), findsWidgets);
   });

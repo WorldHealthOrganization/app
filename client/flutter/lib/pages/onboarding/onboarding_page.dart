@@ -10,7 +10,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key key}) : super(key: key);
+  const OnboardingPage({Key key, @required this.service}) : super(key: key);
+
+  final WhoService service;
 
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -106,7 +108,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
     });
     await _toNextPage();
     try {
-      await WhoService.putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+      await widget.service
+          .putLocation(isoCountryCode: _selectedCountry.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }

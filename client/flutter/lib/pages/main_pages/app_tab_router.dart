@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
+import 'package:who_app/api/notifications.dart';
+import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
@@ -18,8 +21,12 @@ class AppTabRouter extends StatelessWidget {
     (context) => LearnPage(
           dataSource: IndexContent.learnIndex,
         ),
-    (context) => RecentNumbersPage(),
-    (context) => SettingsPage(),
+    (context) => RecentNumbersPage(
+          statsStore: Provider.of<StatsStore>(context),
+        ),
+    (context) => SettingsPage(
+          notifications: Provider.of<Notifications>(context),
+        ),
   ];
 
   static final List<BottomNavigationBarItem> defaultNavItems = [

@@ -5,3 +5,7 @@ analyzer:
   # This does, however, work with `flutter analyze`, which is relevant for CI.
   exclude:
     - lib/generated/** # Generated code should not be checked.
+    - lib/proto/api/**
+  errors:
+    unused_import: error
+    missing_required_param: error
