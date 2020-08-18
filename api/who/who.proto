@@ -26,7 +26,7 @@ message PutLocationRequest {
 }
 
 message JurisdictionId {
-  JurisdictionType jurisdictionType = 7;
+  JurisdictionType jurisdictionType = 2;
   // empty for global stats, ISO 3166-1 alpha-2 (uppercase) code for country
   string code = 1;
 }
