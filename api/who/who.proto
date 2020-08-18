@@ -13,7 +13,7 @@ service WhoService {
   // The client should not pass a precise location.
   rpc putLocation(PutLocationRequest) returns (Void);
 
-  rpc getCaseStats(Void) returns (GetCaseStatsResponse);
+  rpc getCaseStats(GetCaseStatsRequest) returns (GetCaseStatsResponse);
 }
 
 message PutDeviceTokenRequest {
@@ -25,10 +25,23 @@ message PutLocationRequest {
   string isoCountryCode = 12;
 }
 
+message JurisdictionId {
+  JurisdictionType jurisdictionType = 2;
+  // empty for global stats, ISO 3166-1 alpha-2 (uppercase) code for country
+  string code = 1;
+}
+
+message GetCaseStatsRequest {
+  // Request any sub-global jurisdictions 
+  repeated JurisdictionId jurisdictions = 1;
+}
+
 message GetCaseStatsResponse {
   CaseStats globalStats = 1;
 
-  // TODO: Add local stats fields too, potentially at multiple administrative levels.
+  // Provided in the same order as the requested jurisdictions.
+  // If data in a jurisdiction is unavailable, lastUpdated will be 0.
+  repeated CaseStats jurisdictionStats = 3;
 
   // Clients should not re-request stats until at least ttl seconds.
   uint64 ttl = 2;
@@ -52,7 +65,7 @@ message CaseStats {
   // empty for global stats
   string jurisdiction = 1;
 
-  // msec since epoch.
+  // msec since epoch, or 0 if no data available.
   uint64 lastUpdated = 2;
 
   int64 cases = 3;
