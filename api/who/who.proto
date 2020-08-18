@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package who;
 
+// Run ./tools/gen-client-protos.sh from the repo root
+// when you modify this file.
+
 message Void {}
 
 // None of these responses are publicly cacheable.

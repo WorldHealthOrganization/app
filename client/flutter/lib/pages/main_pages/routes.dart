@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/about_page.dart';
 import 'package:who_app/pages/facts_carousel_page.dart';
@@ -23,7 +26,8 @@ class Routes {
     '/home': (context) =>
         AppTabRouter(AppTabRouter.defaultTabs, AppTabRouter.defaultNavItems),
     '/about': (context) => AboutPage(),
-    '/onboarding': (context) => OnboardingPage(),
+    '/onboarding': (context) =>
+        OnboardingPage(service: Provider.of<WhoService>(context)),
     '/travel-advice': (context) => TravelAdvice(
           dataSource: AdviceContent.travelAdvice,
         ),
@@ -46,7 +50,8 @@ class Routes {
           dataSource: FactContent.getTheFacts,
           title: S.of(context).homePagePageButtonWHOMythBusters,
         ),
-    '/recent-numbers': (context) => RecentNumbersPage(),
+    '/recent-numbers': (context) =>
+        RecentNumbersPage(statsStore: Provider.of<StatsStore>(context)),
   };
 }
 

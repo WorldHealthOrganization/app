@@ -4,16 +4,19 @@ import 'package:intl/intl.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
+import 'package:who_app/proto/api/who/who.pb.dart';
 
 class RecentNumbersBarGraph extends StatefulWidget {
+  final DataAggregation aggregation;
+  final DataDimension dimension;
   const RecentNumbersBarGraph({
     Key key,
     this.timeseries,
-    this.timeseriesKey,
+    this.aggregation,
+    this.dimension,
   }) : super(key: key);
 
-  final List timeseries;
-  final String timeseriesKey;
+  final List<StatSnapshot> timeseries;
 
   @override
   _RecentNumbersBarGraphState createState() => _RecentNumbersBarGraphState();
@@ -41,10 +44,11 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   List<BarChartRodData> _buildRods(double screenWidth) {
     List<BarChartRodData> bars = <BarChartRodData>[];
     final startDate = DateTime.utc(2020, 1, 1);
-    if (widget.timeseries != null) {
+    if (widget.timeseries != null && widget.timeseries.isNotEmpty) {
       for (var snapshot in widget.timeseries) {
         try {
-          double yAxis = snapshot[widget.timeseriesKey].toDouble();
+          double yAxis =
+              snapshot.valueBy(widget.aggregation, widget.dimension).toDouble();
           bars.add(
             BarChartRodData(
               y: yAxis,
@@ -76,14 +80,12 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 class RecentNumbersGraph extends StatefulWidget {
   final DataAggregation aggregation;
   final DataDimension dimension;
-  final List timeseries;
-  final String timeseriesKey;
+  final List<StatSnapshot> timeseries;
 
   const RecentNumbersGraph({
     Key key,
     @required this.aggregation,
     @required this.timeseries,
-    @required this.timeseriesKey,
     @required this.dimension,
   }) : super(key: key);
 
@@ -99,10 +101,12 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
   Widget build(BuildContext context) {
     graph = RecentNumbersBarGraph(
       timeseries: widget.timeseries,
-      timeseriesKey: widget.timeseriesKey,
+      dimension: widget.dimension,
+      aggregation: widget.aggregation,
     );
     try {
-      titleData = widget.timeseries.last[widget.timeseriesKey];
+      titleData =
+          widget.timeseries.last.valueBy(widget.aggregation, widget.dimension);
     } catch (e) {
       titleData = 0;
     }

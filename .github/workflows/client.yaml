@@ -10,6 +10,7 @@ on:
       - 'client/flutter/**'
       - 'content/**'
       - 'tools/**'
+      - 'LICENSE'
   pull_request:
     branches: [ master ]
     paths:
@@ -19,6 +20,7 @@ on:
       - 'client/flutter/**'
       - 'content/**'
       - 'tools/**'
+      - 'LICENSE'
 jobs:
   test:
     name: Test client on ${{ matrix.os }}
@@ -38,6 +40,31 @@ jobs:
         working-directory: ./client/app
       - run: flutter test --no-pub
         working-directory: ./client/app
+  autogen_update_check:
+    name: Check auto-generated client files are up-to-date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
+      - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
+      - run: flutter pub get
+        working-directory: ./client/app
+      - run: echo PHASE 1 - Ensure auto-gened MobX stores
+      - run: flutter packages pub run build_runner build --delete-conflicting-outputs
+        working-directory: ./client/app
+      - run: flutter format lib/**
+        working-directory: ./client/app
+      - run: git diff --exit-code
+      - run: echo PHASE 2 - Ensure auto-gened protocol buffers
+      - run: sudo apt install -y protobuf-compiler
+      - run: protoc --version
+      - run: flutter pub global activate protoc_plugin ^19.0.1
+        working-directory: ./client/app
+      - run: echo "::add-path::$HOME/.pub-cache/bin"
+      - run: ./tools/gen-client-protos.sh
+      - run: flutter format lib/**
+        working-directory: ./client/app
+      - run: git diff --exit-code
   build_ios:
     name: Build iOS app
     runs-on: macos-latest

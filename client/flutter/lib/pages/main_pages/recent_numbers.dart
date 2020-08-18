@@ -1,19 +1,60 @@
 import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
+import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
 import 'package:who_app/components/stat_card.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:who_app/api/who_service.dart';
+import 'package:who_app/proto/api/who/who.pb.dart';
 
 enum DataAggregation { daily, total }
 enum DataDimension { cases, deaths }
 
+extension StatSnapshotSlicing on StatSnapshot {
+  int valueBy(DataAggregation agg, DataDimension dim) {
+    switch (agg) {
+      case DataAggregation.daily:
+        switch (dim) {
+          case DataDimension.cases:
+            return this.dailyCases.toInt();
+          case DataDimension.deaths:
+            return this.dailyDeaths.toInt();
+        }
+        throw UnsupportedError("Unknown dimension");
+      case DataAggregation.total:
+        switch (dim) {
+          case DataDimension.cases:
+            return this.totalCases.toInt();
+          case DataDimension.deaths:
+            return this.totalDeaths.toInt();
+        }
+        throw UnsupportedError("Unknown dimension");
+    }
+    throw UnsupportedError("Unknown aggregation");
+  }
+}
+
+extension CaseStatsSlicing on CaseStats {
+  int valueBy(DataDimension dim) {
+    switch (dim) {
+      case DataDimension.cases:
+        return this.hasCases() ? this.cases.toInt() : null;
+      case DataDimension.deaths:
+        return this.hasDeaths() ? this.deaths.toInt() : null;
+    }
+    throw UnsupportedError("Unknown dimension");
+  }
+}
+
 class RecentNumbersPage extends StatefulWidget {
   final FirebaseAnalytics analytics = FirebaseAnalytics();
+  final StatsStore statsStore;
+
+  RecentNumbersPage({Key key, @required this.statsStore}) : super(key: key);
 
   @override
   _RecentNumbersPageState createState() => _RecentNumbersPageState();
@@ -23,39 +64,10 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   var aggregation = DataAggregation.total;
   var dimension = DataDimension.cases;
 
-  Map globalStats = Map();
-  DateTime lastUpdated;
-
-  String get timeseriesKey {
-    String aggregationPart;
-    String dimensionPart;
-    switch (this.aggregation) {
-      case DataAggregation.daily:
-        aggregationPart = 'daily';
-        break;
-      case DataAggregation.total:
-        aggregationPart = 'total';
-        break;
-      default:
-        aggregationPart = '';
-    }
-    switch (this.dimension) {
-      case DataDimension.cases:
-        dimensionPart = 'Cases';
-        break;
-      case DataDimension.deaths:
-        dimensionPart = 'Deaths';
-        break;
-      default:
-        dimensionPart = '';
-    }
-    return '${aggregationPart}${dimensionPart}';
-  }
-
   @override
   void initState() {
     super.initState();
-    fetchStats();
+    widget.statsStore.update();
   }
 
   @override
@@ -88,7 +100,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
           },
           onRefresh: () async {
             await widget.analytics.logEvent(name: 'RecentNumberRefresh');
-            await fetchStats();
+            await widget.statsStore.update();
           },
           refreshIndicatorExtent: 100,
           refreshTriggerPullDistance: 100,
@@ -119,12 +131,13 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   ),
                   Container(height: 16.0),
                   ConstrainedBox(
-                    child: RecentNumbersGraph(
-                      aggregation: this.aggregation,
-                      timeseries: this.globalStats['timeseries'],
-                      timeseriesKey: this.timeseriesKey,
-                      dimension: this.dimension,
-                    ),
+                    child: Observer(
+                        builder: (ctx) => RecentNumbersGraph(
+                              aggregation: this.aggregation,
+                              timeseries:
+                                  widget.statsStore.globalStats?.timeseries,
+                              dimension: this.dimension,
+                            )),
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
                 ],
@@ -134,27 +147,18 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
             Container(height: 28.0),
-            _buildTappableStatCard(context, DataDimension.cases),
+            Observer(
+                builder: (ctx) => _buildTappableStatCard(
+                    ctx, DataDimension.cases, widget.statsStore.globalStats)),
             Container(height: 16.0),
-            _buildTappableStatCard(context, DataDimension.deaths),
+            Observer(
+                builder: (ctx) => _buildTappableStatCard(
+                    ctx, DataDimension.deaths, widget.statsStore.globalStats)),
           ]),
         )
       ],
       title: S.of(context).latestNumbersPageTitle,
     );
-  }
-
-  void fetchStats() async {
-    Map statsResponse = await WhoService.getCaseStats();
-    final globalStats = statsResponse['globalStats'];
-    final lastUpdated = globalStats != null
-        ? DateTime.fromMicrosecondsSinceEpoch(globalStats['lastUpdated'])
-        : DateTime.now();
-
-    setState(() {
-      this.globalStats = globalStats;
-      this.lastUpdated = lastUpdated;
-    });
   }
 
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
@@ -183,24 +187,21 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
-  Widget _buildTappableStatCard(BuildContext context, DataDimension dimension) {
-    String statKey;
+  Widget _buildTappableStatCard(
+      BuildContext context, DataDimension dimension, CaseStats globalStats) {
     String title;
     switch (dimension) {
       case DataDimension.cases:
-        statKey = 'cases';
         title = S.of(context).latestNumbersPageCasesDimension;
         break;
       case DataDimension.deaths:
-        statKey = 'deaths';
         title = S.of(context).latestNumbersPageDeathsDimension;
         break;
       default:
-        statKey = '';
     }
     final numFmt = NumberFormat.decimalPattern();
-    final stat = this.globalStats != null && this.globalStats[statKey] != null
-        ? numFmt.format(globalStats[statKey])
+    final stat = globalStats != null && globalStats.valueBy(dimension) != null
+        ? numFmt.format(globalStats.valueBy(dimension))
         : '-';
     return Padding(
       child: _TappableStatCard(
