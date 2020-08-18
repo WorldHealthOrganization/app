@@ -21,7 +21,7 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
   $async.Future<$0.Void> putLocation(
       $pb.ServerContext ctx, $0.PutLocationRequest request);
   $async.Future<$0.GetCaseStatsResponse> getCaseStats(
-      $pb.ServerContext ctx, $0.Void request);
+      $pb.ServerContext ctx, $0.GetCaseStatsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -30,7 +30,7 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
       case 'putLocation':
         return $0.PutLocationRequest();
       case 'getCaseStats':
-        return $0.Void();
+        return $0.GetCaseStatsRequest();
       default:
         throw $core.ArgumentError('Unknown method: $method');
     }

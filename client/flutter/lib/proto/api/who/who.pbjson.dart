@@ -47,6 +47,35 @@ const PutLocationRequest$json = const {
   ],
 };
 
+const JurisdictionId$json = const {
+  '1': 'JurisdictionId',
+  '2': const [
+    const {
+      '1': 'jurisdictionType',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.who.JurisdictionType',
+      '10': 'jurisdictionType'
+    },
+    const {'1': 'code', '3': 1, '4': 1, '5': 9, '10': 'code'},
+  ],
+};
+
+const GetCaseStatsRequest$json = const {
+  '1': 'GetCaseStatsRequest',
+  '2': const [
+    const {
+      '1': 'jurisdictions',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.who.JurisdictionId',
+      '10': 'jurisdictions'
+    },
+  ],
+};
+
 const GetCaseStatsResponse$json = const {
   '1': 'GetCaseStatsResponse',
   '2': const [
@@ -56,7 +85,16 @@ const GetCaseStatsResponse$json = const {
       '4': 1,
       '5': 11,
       '6': '.who.CaseStats',
-      '10': 'globalStats'
+      '8': const {'3': true},
+      '10': 'globalStats',
+    },
+    const {
+      '1': 'jurisdictionStats',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.who.CaseStats',
+      '10': 'jurisdictionStats'
     },
     const {'1': 'ttl', '3': 2, '4': 1, '5': 4, '10': 'ttl'},
   ],
@@ -130,7 +168,7 @@ const WhoServiceBase$json = const {
     },
     const {
       '1': 'getCaseStats',
-      '2': '.who.Void',
+      '2': '.who.GetCaseStatsRequest',
       '3': '.who.GetCaseStatsResponse'
     },
   ],
@@ -140,6 +178,8 @@ const WhoServiceBase$messageJson = const {
   '.who.PutDeviceTokenRequest': PutDeviceTokenRequest$json,
   '.who.Void': Void$json,
   '.who.PutLocationRequest': PutLocationRequest$json,
+  '.who.GetCaseStatsRequest': GetCaseStatsRequest$json,
+  '.who.JurisdictionId': JurisdictionId$json,
   '.who.GetCaseStatsResponse': GetCaseStatsResponse$json,
   '.who.CaseStats': CaseStats$json,
   '.who.StatSnapshot': StatSnapshot$json,

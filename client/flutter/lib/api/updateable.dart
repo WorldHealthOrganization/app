@@ -10,10 +10,11 @@ class PeriodicUpdater with WidgetsBindingObserver {
   final Updateable updateable;
   final WidgetsBinding binding;
 
-  PeriodicUpdater(
-      {@required this.updateable,
-      @required this.binding,
-      bool installImmediately}) {
+  PeriodicUpdater({
+    @required this.updateable,
+    @required this.binding,
+    bool installImmediately = false,
+  }) {
     if (installImmediately) {
       install();
     }

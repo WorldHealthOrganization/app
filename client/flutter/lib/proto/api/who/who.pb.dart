@@ -126,6 +126,97 @@ class PutLocationRequest extends $pb.GeneratedMessage {
   void clearIsoCountryCode() => clearField(12);
 }
 
+class JurisdictionId extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('JurisdictionId',
+      package: const $pb.PackageName('who'), createEmptyInstance: create)
+    ..aOS(1, 'code')
+    ..e<JurisdictionType>(2, 'jurisdictionType', $pb.PbFieldType.OE,
+        protoName: 'jurisdictionType',
+        defaultOrMaker: JurisdictionType.GLOBAL,
+        valueOf: JurisdictionType.valueOf,
+        enumValues: JurisdictionType.values)
+    ..hasRequiredFields = false;
+
+  JurisdictionId._() : super();
+  factory JurisdictionId() => create();
+  factory JurisdictionId.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory JurisdictionId.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  JurisdictionId clone() => JurisdictionId()..mergeFromMessage(this);
+  JurisdictionId copyWith(void Function(JurisdictionId) updates) =>
+      super.copyWith((message) => updates(message as JurisdictionId));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static JurisdictionId create() => JurisdictionId._();
+  JurisdictionId createEmptyInstance() => create();
+  static $pb.PbList<JurisdictionId> createRepeated() =>
+      $pb.PbList<JurisdictionId>();
+  @$core.pragma('dart2js:noInline')
+  static JurisdictionId getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<JurisdictionId>(create);
+  static JurisdictionId _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get code => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set code($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasCode() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCode() => clearField(1);
+
+  @$pb.TagNumber(2)
+  JurisdictionType get jurisdictionType => $_getN(1);
+  @$pb.TagNumber(2)
+  set jurisdictionType(JurisdictionType v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasJurisdictionType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearJurisdictionType() => clearField(2);
+}
+
+class GetCaseStatsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('GetCaseStatsRequest',
+      package: const $pb.PackageName('who'), createEmptyInstance: create)
+    ..pc<JurisdictionId>(1, 'jurisdictions', $pb.PbFieldType.PM,
+        subBuilder: JurisdictionId.create)
+    ..hasRequiredFields = false;
+
+  GetCaseStatsRequest._() : super();
+  factory GetCaseStatsRequest() => create();
+  factory GetCaseStatsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetCaseStatsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  GetCaseStatsRequest clone() => GetCaseStatsRequest()..mergeFromMessage(this);
+  GetCaseStatsRequest copyWith(void Function(GetCaseStatsRequest) updates) =>
+      super.copyWith((message) => updates(message as GetCaseStatsRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetCaseStatsRequest create() => GetCaseStatsRequest._();
+  GetCaseStatsRequest createEmptyInstance() => create();
+  static $pb.PbList<GetCaseStatsRequest> createRepeated() =>
+      $pb.PbList<GetCaseStatsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetCaseStatsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetCaseStatsRequest>(create);
+  static GetCaseStatsRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<JurisdictionId> get jurisdictions => $_getList(0);
+}
+
 class GetCaseStatsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('GetCaseStatsResponse',
       package: const $pb.PackageName('who'), createEmptyInstance: create)
@@ -133,6 +224,8 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
         protoName: 'globalStats', subBuilder: CaseStats.create)
     ..a<$fixnum.Int64>(2, 'ttl', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..pc<CaseStats>(3, 'jurisdictionStats', $pb.PbFieldType.PM,
+        protoName: 'jurisdictionStats', subBuilder: CaseStats.create)
     ..hasRequiredFields = false;
 
   GetCaseStatsResponse._() : super();
@@ -158,17 +251,22 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<GetCaseStatsResponse>(create);
   static GetCaseStatsResponse _defaultInstance;
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   CaseStats get globalStats => $_getN(0);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   set globalStats(CaseStats v) {
     setField(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $core.bool hasGlobalStats() => $_has(0);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   void clearGlobalStats() => clearField(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   CaseStats ensureGlobalStats() => $_ensure(0);
 
@@ -183,6 +281,9 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
   $core.bool hasTtl() => $_has(1);
   @$pb.TagNumber(2)
   void clearTtl() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<CaseStats> get jurisdictionStats => $_getList(2);
 }
 
 class StatSnapshot extends $pb.GeneratedMessage {
@@ -452,7 +553,7 @@ class WhoServiceApi {
   }
 
   $async.Future<GetCaseStatsResponse> getCaseStats(
-      $pb.ClientContext ctx, Void request) {
+      $pb.ClientContext ctx, GetCaseStatsRequest request) {
     var emptyResponse = GetCaseStatsResponse();
     return _client.invoke<GetCaseStatsResponse>(
         ctx, 'WhoService', 'getCaseStats', request, emptyResponse);

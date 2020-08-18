@@ -22,6 +22,7 @@ abstract class _StatsStore with Store implements Updateable {
 
   @computed
   CaseStats get globalStats {
+    // ignore: deprecated_member_use_from_same_package
     return caseStatsResponse?.globalStats;
   }
 
