@@ -46,6 +46,9 @@ public class WhoServletModule extends ServletModule {
       }
     }
 
+
+    filter("/content/bundles/*").through(ContentCachingFilter.class);
+
     // Set up Objectify
     filter("/*").through(ObjectifyFilter.class);
     bind(ObjectifyFilter.class).in(Singleton.class);
