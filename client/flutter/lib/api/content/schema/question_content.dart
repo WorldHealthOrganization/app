@@ -1,7 +1,6 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
-import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 
 typedef QuestionIndexDataSource = Future<QuestionContent> Function(Locale);
@@ -10,11 +9,6 @@ typedef QuestionIndexDataSource = Future<QuestionContent> Function(Locale);
 /// Question data contains a series of text-only title and body pairs.
 class QuestionContent extends ContentBase {
   List<QuestionItem> items;
-
-  static Future<QuestionContent> yourQuestionsAnswered(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "your_questions_answered");
-    return QuestionContent(bundle);
-  }
 
   QuestionContent(ContentBundle bundle) : super(bundle, schemaName: "qa") {
     try {

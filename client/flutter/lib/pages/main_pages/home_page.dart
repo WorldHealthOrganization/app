@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
-import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/api/stats_store.dart';
-import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/home_page_sections/home_page_donate.dart';
 import 'package:who_app/components/home_page_sections/home_page_header.dart';
 import 'package:who_app/components/home_page_sections/home_page_information_card.dart';
@@ -16,88 +15,56 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class HomePage extends StatefulWidget {
-  final IndexDataSource dataSource;
-
-  const HomePage({@required this.dataSource, Key key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  IndexContent _content;
-  LogicContext _logicContext;
+class HomePage extends ContentWidget<IndexContent> {
+  HomePage({@required ContentStore dataSource, Key key})
+      : super(key: key, dataSource: dataSource);
 
   @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await _loadIndex();
-  }
+  Widget buildImpl(context, content, logicContext) {
+    List<Widget> _buildPromo() {
+      List<Widget> preHeader = [];
+      IndexPromo p = content?.promos
+          ?.firstWhere((element) => element.isDisplayed(logicContext));
+      if (p != null) {
+        preHeader.add(_HomePageSection(
+          content: HomePageHeader(
+            headerType: p.type,
+            title: p.title,
+            subtitle: p.subtitle,
+            buttonText: p.buttonText,
+            link: p.link,
+            imageName: p.imageName,
+          ),
+        ));
+      }
+      return preHeader;
+    }
 
-  Future _loadIndex() async {
-    if (_content != null) {
-      return;
+    List<Widget> _buildBody(BuildContext ctx) {
+      List<IndexItem> items = content?.items;
+      if (items == null) {
+        return [LoadingIndicator()];
+      }
+      List<Widget> bundleWidgets = items
+          .where((item) => item.isDisplayed(logicContext))
+          .map((item) => _buildItem(ctx, item))
+          .toList();
+      return [
+        ...bundleWidgets,
+        // TODO: do we want to drive donate section via the content bundle too?
+        _buildDonate(),
+      ];
     }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _content = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
-    } catch (err) {
-      print("Error loading home index data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return PageScaffold(
       showHeader: false,
       // For background scroll bleed only - white background set on _HomePageSection widgets
-      color: _content?.items != null
+      color: content?.items != null
           ? Constants.primaryDarkColor
           : CupertinoColors.white,
       beforeHeader: _buildPromo(),
       body: _buildBody(context),
     );
-  }
-
-  List<Widget> _buildPromo() {
-    List<Widget> preHeader = [];
-    IndexPromo p = _content?.promos
-        ?.firstWhere((element) => element.isDisplayed(_logicContext));
-    if (p != null) {
-      preHeader.add(_HomePageSection(
-        content: HomePageHeader(
-          headerType: p.type,
-          title: p.title,
-          subtitle: p.subtitle,
-          buttonText: p.buttonText,
-          link: p.link,
-          imageName: p.imageName,
-        ),
-      ));
-    }
-    return preHeader;
-  }
-
-  List<Widget> _buildBody(BuildContext ctx) {
-    List<IndexItem> items = _content?.items;
-    if (items == null) {
-      return [LoadingIndicator()];
-    }
-    List<Widget> bundleWidgets = items
-        .where((item) => item.isDisplayed(_logicContext))
-        .map((item) => _buildItem(ctx, item))
-        .toList();
-    return [
-      ...bundleWidgets,
-      // TODO: do we want to drive donate section via the content bundle too?
-      _buildDonate(),
-    ];
   }
 
   Widget _buildItem(BuildContext ctx, IndexItem item) {
@@ -137,7 +104,7 @@ class _HomePageState extends State<HomePage> {
         link: item.link,
       ),
       content: HomePageProtectYourself(
-        dataSource: FactContent.protectYourself,
+        dataSource: dataSource,
       ),
     );
   }
@@ -161,6 +128,11 @@ class _HomePageState extends State<HomePage> {
       padding: EdgeInsets.only(top: 64.0),
       content: HomePageDonate(),
     );
+  }
+
+  @override
+  IndexContent getContent() {
+    return dataSource.homeIndex;
   }
 }
 

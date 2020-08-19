@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:who_app/api/user_preferences.dart';
 
 abstract class Updateable {
   Future<void> update();
@@ -45,10 +44,7 @@ class PeriodicUpdater with WidgetsBindingObserver {
 
   void _update() async {
     print('updating $this');
-    // TODO: UserPreferences should be injected dependency.
-    if (await UserPreferences().getTermsOfServiceCompleted()) {
-      await updateable.update();
-    }
+    await updateable.update();
   }
 
   @override

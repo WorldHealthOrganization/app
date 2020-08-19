@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:who_app/api/content/schema/index_content.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/constants.dart';
@@ -15,11 +15,11 @@ import 'package:flutter/material.dart';
 class AppTabRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
-          dataSource: IndexContent.homeIndex,
+          dataSource: Provider.of<ContentStore>(context),
         ),
     (context) => CheckUpIntroPage(),
     (context) => LearnPage(
-          dataSource: IndexContent.learnIndex,
+          dataSource: Provider.of<ContentStore>(context),
         ),
     (context) => RecentNumbersPage(
           statsStore: Provider.of<StatsStore>(context),

@@ -1,7 +1,6 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
-import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 
 typedef FactsDataSource = Future<FactContent> Function(Locale);
@@ -11,16 +10,6 @@ typedef FactsDataSource = Future<FactContent> Function(Locale);
 /// image or animation.
 class FactContent extends ContentBase {
   List<FactItem> items;
-
-  static Future<FactContent> getTheFacts(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "get_the_facts");
-    return FactContent(bundle);
-  }
-
-  static Future<FactContent> protectYourself(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "protect_yourself");
-    return FactContent(bundle);
-  }
 
   FactContent(ContentBundle bundle) : super(bundle, schemaName: "fact") {
     try {

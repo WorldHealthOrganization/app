@@ -4,6 +4,7 @@ mixin ConditionalItem {
   String displayCondition;
 
   bool isDisplayed(LogicContext ctx) {
-    return Logic().evaluateCondition(condition: displayCondition, context: ctx);
+    return ctx != null &&
+        Logic().evaluateCondition(condition: displayCondition, context: ctx);
   }
 }

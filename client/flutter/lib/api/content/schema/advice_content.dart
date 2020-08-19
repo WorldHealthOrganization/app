@@ -1,5 +1,4 @@
 import 'package:who_app/api/content/content_bundle.dart';
-import 'package:who_app/api/content/content_loading.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
@@ -11,11 +10,6 @@ typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 /// and a series of advice items comprising text and image pairs.
 class AdviceContent extends ContentBase {
   List<AdviceItem> items;
-
-  static Future<AdviceContent> travelAdvice(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "travel_advice");
-    return AdviceContent(bundle);
-  }
 
   AdviceContent(ContentBundle bundle) : super(bundle, schemaName: "advice") {
     try {

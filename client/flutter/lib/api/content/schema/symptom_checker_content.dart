@@ -2,7 +2,6 @@ import 'package:who_app/api/content/content_bundle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 import 'package:who_app/api/linking.dart';
-import '../content_loading.dart';
 
 /// Interpret a content bundle as symptom checker data.
 /// Symptom checker data comprises a series of question and answers with metadata
@@ -12,11 +11,6 @@ class SymptomCheckerContent extends ContentBase {
   List<SymptomCheckerQuestion> questions;
   List<SymptomCheckerResult> results;
   Map<String, SymptomCheckerResultCard> cards;
-
-  static Future<SymptomCheckerContent> load(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "symptom_checker");
-    return SymptomCheckerContent(bundle);
-  }
 
   SymptomCheckerContent(ContentBundle bundle)
       : super(bundle, schemaName: "symptom_checker") {

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:who_app/api/display_conditions.dart';
+import 'package:who_app/api/content/content_store.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/learn_page_promo.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
 import 'package:who_app/api/linking.dart';
-import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -13,20 +13,13 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class LearnPage extends StatefulWidget {
-  final IndexDataSource dataSource;
+class LearnPage extends ContentWidget<IndexContent> {
+  LearnPage({Key key, @required ContentStore dataSource})
+      : super(key: key, dataSource: dataSource);
 
-  const LearnPage({Key key, @required this.dataSource}) : super(key: key);
-
-  @override
-  _LearnPageState createState() => _LearnPageState();
-}
-
-class _LearnPageState extends State<LearnPage> {
   final header =
       TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800);
-  IndexContent _content;
-  LogicContext _logicContext;
+
   final List<_MenuItemTheme> menuColors = [
     _MenuItemTheme(
       backgroundColor: Constants.primaryDarkColor,
@@ -46,38 +39,54 @@ class _LearnPageState extends State<LearnPage> {
     ),
   ];
 
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await _loadIndex();
-  }
+  buildImpl(context, content, logicContext) {
+    List<Widget> _buildPromo() {
+      final p = content?.promos
+          ?.firstWhere((element) => element.isDisplayed(logicContext));
+      return <Widget>[
+        if (p != null)
+          _PromoItem(
+            title: p.title,
+            subtitle: p.subtitle,
+            buttonText: p.buttonText,
+            link: p.link,
+            imageName: p.imageName,
+          ),
+      ];
+    }
 
-  Future _loadIndex() async {
-    if (_content != null) {
-      return;
-    }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _content = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _content);
-    } catch (err) {
-      print("Error loading learn index data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
+    Widget _buildPromos() =>
+        SliverList(delegate: SliverChildListDelegate(_buildPromo()));
 
-  @override
-  Widget build(BuildContext context) {
+    List<Widget> _buildMenu() {
+      return (content?.items ?? [])
+          .where((item) => item.isDisplayed(logicContext))
+          .toList()
+          .asMap()
+          .entries
+          .map((entry) {
+        final itemTheme = menuColors[entry.key % menuColors.length];
+        return _MenuItem(
+          title: entry.value.title,
+          subtitle: entry.value.subtitle,
+          link: entry.value.link,
+          color: itemTheme.backgroundColor,
+          textColor: itemTheme.textColor,
+          imageName: entry.value.imageName,
+        );
+      }).toList();
+    }
+
+    Widget _buildBody() =>
+        SliverList(delegate: SliverChildListDelegate(_buildMenu()));
+
     return PageScaffold(
       showBackButton: false,
       headingBorderColor: Color(0x0),
       heroTag: HeroTags.learn,
       // TODO: localize
       title: "Learn",
-      showHeader: _content != null,
+      showHeader: content != null,
       header: SliverToBoxAdapter(
           child: Padding(
               padding:
@@ -89,53 +98,15 @@ class _LearnPageState extends State<LearnPage> {
         _buildPromos(),
       ],
       body: <Widget>[
-        _content != null
+        content != null && logicContext != null
             ? _buildBody()
             : SliverSafeArea(sliver: LoadingIndicator()),
       ],
     );
   }
 
-  Widget _buildPromos() =>
-      SliverList(delegate: SliverChildListDelegate(_buildPromo()));
-  //Column(children:_buildPromo());
-
-  List<Widget> _buildPromo() {
-    final p = _content?.promos
-        ?.firstWhere((element) => element.isDisplayed(_logicContext));
-    return <Widget>[
-      if (p != null)
-        _PromoItem(
-          title: p.title,
-          subtitle: p.subtitle,
-          buttonText: p.buttonText,
-          link: p.link,
-          imageName: p.imageName,
-        ),
-    ];
-  }
-
-  Widget _buildBody() =>
-      SliverList(delegate: SliverChildListDelegate(_buildMenu()));
-
-  List<Widget> _buildMenu() {
-    return (_content?.items ?? [])
-        .where((item) => item.isDisplayed(_logicContext))
-        .toList()
-        .asMap()
-        .entries
-        .map((entry) {
-      final itemTheme = menuColors[entry.key % menuColors.length];
-      return _MenuItem(
-        title: entry.value.title,
-        subtitle: entry.value.subtitle,
-        link: entry.value.link,
-        color: itemTheme.backgroundColor,
-        textColor: itemTheme.textColor,
-        imageName: entry.value.imageName,
-      );
-    }).toList();
-  }
+  @override
+  IndexContent getContent() => dataSource.learnIndex;
 }
 
 class _MenuItem extends StatelessWidget {
