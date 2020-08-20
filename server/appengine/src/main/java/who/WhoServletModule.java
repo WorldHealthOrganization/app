@@ -33,19 +33,6 @@ public class WhoServletModule extends ServletModule {
     serve("/terms").with(forwardTo("/terms.pdf"));
     serve("/privacy").with(forwardTo("/privacy.pdf"));
 
-    // TODO: Make this much better.
-    final String[] bundles = new String[]{"news_index", "get_the_facts", "home_index", "learn_index", "protect_yourself", "symptom_checker", "travel_advice", "your_questions_answered"};
-    for (final String bundle : bundles) 
-    {
-      for (int i = 0; i < 26; i++) {
-        for (int j = 0; j < 26; j++) {
-          String countryCode = "" + (char)((int)('A') + i) + (char)((int)('A') + j);
-          // Wildcards don't work for the country.
-          serve("/content/bundles/" + bundle + ".en_" + countryCode + ".yaml").with(forwardTo("/content/bundles/" + bundle + ".en.yaml"));
-        }
-      }
-    }
-
     // Set up Objectify
     filter("/*").through(ObjectifyFilter.class);
     bind(ObjectifyFilter.class).in(Singleton.class);

@@ -1,26 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
-class NotificationsPage extends StatefulWidget {
+class NotificationsPage extends StatelessWidget {
   final VoidCallback onNext;
 
   const NotificationsPage({@required this.onNext}) : assert(onNext != null);
 
   @override
-  _NotificationsPageState createState() => _NotificationsPageState();
-}
-
-class _NotificationsPageState extends State<NotificationsPage> {
-  final Notifications _notifications = Notifications();
-
-  @override
   Widget build(BuildContext context) {
+    final notifications = Provider.of<Notifications>(context);
     return Material(
       color: CupertinoColors.white,
       child: SafeArea(
@@ -93,7 +88,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 children: <Widget>[
                   Button(
                     onPressed: () async {
-                      await _allowNotifications();
+                      await notifications.attemptEnableNotifications(
+                          context: context);
+                      onNext();
                     },
                     color: Constants.whoBackgroundBlueColor,
                     borderRadius: BorderRadius.circular(50.0),
@@ -116,7 +113,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   ),
                   CupertinoButton(
                     onPressed: () async {
-                      await _skipNotifications();
+                      await notifications.disableNotifications();
+                      onNext();
                     },
                     child: ThemedText(
                       S.of(context).commonPermissionRequestPageButtonSkip,
@@ -133,19 +131,5 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
       ),
     );
-  }
-
-  void _allowNotifications() async {
-    await _notifications.attemptEnableNotifications(context: context);
-    _complete();
-  }
-
-  void _skipNotifications() async {
-    await _notifications.disableNotifications();
-    _complete();
-  }
-
-  void _complete() {
-    widget.onNext();
   }
 }

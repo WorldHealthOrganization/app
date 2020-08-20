@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:who_app/api/content/content_bundle.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 import 'package:who_app/api/linking.dart';
-import 'package:who_app/api/content/content_loading.dart';
 import 'dart:ui';
 import 'package:meta/meta.dart';
 
@@ -14,21 +13,6 @@ typedef IndexDataSource = Future<IndexContent> Function(Locale);
 class IndexContent extends ContentBase {
   List<IndexItem> items;
   List<IndexPromo> promos;
-
-  static Future<IndexContent> homeIndex(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "home_index");
-    return IndexContent(bundle);
-  }
-
-  static Future<IndexContent> learnIndex(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "learn_index");
-    return IndexContent(bundle);
-  }
-
-  static Future<IndexContent> newsIndex(Locale locale) async {
-    var bundle = await ContentLoading().load(locale, "news_index");
-    return IndexContent(bundle);
-  }
 
   IndexContent(ContentBundle bundle) : super(bundle, schemaName: "index") {
     try {

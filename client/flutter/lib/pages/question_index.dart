@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
-import 'package:who_app/api/display_conditions.dart';
-import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/constants.dart';
@@ -14,80 +14,45 @@ import 'package:html/dom.dart' as dom;
 import 'package:who_app/pages/main_pages/routes.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
-class QuestionIndexPage extends StatefulWidget {
+class QuestionIndexPage extends ContentWidget<QuestionContent> {
   final String title;
-  final QuestionIndexDataSource dataSource;
 
-  const QuestionIndexPage(
-      {Key key, @required this.title, @required this.dataSource})
-      : super(key: key);
-
-  @override
-  _QuestionIndexPageState createState() => _QuestionIndexPageState();
-}
-
-class _QuestionIndexPageState extends State<QuestionIndexPage> {
-  QuestionContent _questionContent;
-  LogicContext _logicContext;
+  QuestionIndexPage(
+      {Key key, @required this.title, @required ContentStore dataSource})
+      : super(key: key, dataSource: dataSource);
 
   @override
-  void initState() {
-    super.initState();
-  }
+  Widget buildImpl(context, content, logicContext) {
+    Widget _buildPage() {
+      List items = (content?.items ?? [])
+          .where((item) => item.isDisplayed(logicContext))
+          .toList()
+          .asMap()
+          .entries
+          .map((entry) {
+        return QuestionTile(
+          questionItem: entry.value,
+          index: entry.key,
+        );
+      }).toList();
 
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-
-    // Note: this depends on the build context for the locale and hence is not
-    // Note: available at the usual initState() time.
-    await _loadQuestionData();
-  }
-
-  Future _loadQuestionData() async {
-    if (_questionContent != null) {
-      return;
+      return PageScaffold(
+        heroTag: HeroTags.learn,
+        body: [
+          items.isNotEmpty
+              ? SliverList(delegate: SliverChildListDelegate(items))
+              : LoadingIndicator(),
+        ],
+        title: title,
+      );
     }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _questionContent = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _questionContent);
-    } catch (err) {
-      print("Error loading question data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(body: _buildPage());
   }
 
-  Widget _buildPage() {
-    List items = (_questionContent?.items ?? [])
-        .where((item) => item.isDisplayed(_logicContext))
-        .toList()
-        .asMap()
-        .entries
-        .map((entry) {
-      return QuestionTile(
-        questionItem: entry.value,
-        index: entry.key,
-      );
-    }).toList();
-
-    return PageScaffold(
-      heroTag: HeroTags.learn,
-      body: [
-        items.isNotEmpty
-            ? SliverList(delegate: SliverChildListDelegate(items))
-            : LoadingIndicator(),
-      ],
-      title: widget.title,
-    );
+  @override
+  QuestionContent getContent() {
+    return dataSource.questionsAnswered;
   }
 }
 

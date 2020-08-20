@@ -1,61 +1,25 @@
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/carousel/carousel.dart';
 import 'package:who_app/components/carousel/carousel_slide.dart';
-import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
-class FactsCarouselPage extends StatefulWidget {
+abstract class FactsCarouselPage extends ContentWidget<FactContent> {
   final String title;
-  final FactsDataSource dataSource;
 
-  const FactsCarouselPage(
-      {Key key, @required this.title, @required this.dataSource})
-      : super(key: key);
-
-  @override
-  _FactsCarouselPageState createState() => _FactsCarouselPageState();
-}
-
-class _FactsCarouselPageState extends State<FactsCarouselPage> {
-  FactContent _factContent;
-  LogicContext _logicContext;
+  FactsCarouselPage(
+      {Key key, @required this.title, @required ContentStore dataSource})
+      : super(key: key, dataSource: dataSource);
 
   @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-
-    // Note: this depends on the build context for the locale and hence is not
-    // Note: available at the usual initState() time.
-    await _loadFacts();
-  }
-
-  // TODO: Move to a base class for "facts" based pages?
-  Future<void> _loadFacts() async {
-    if (_factContent != null) {
-      return;
-    }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _factContent = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
-    } catch (err) {
-      print("Error loading fact data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List items = (_factContent?.items ?? [])
-        .where((item) => item.isDisplayed(_logicContext))
+  Widget buildImpl(context, content, logicContext) {
+    List items = (content?.items ?? [])
+        .where((item) => item.isDisplayed(logicContext))
         .toList()
         .asMap()
         .entries
@@ -89,5 +53,16 @@ class _FactsCarouselPageState extends State<FactsCarouselPage> {
     return imageName != null
         ? SvgPicture.asset("assets/svg/${imageName}.svg")
         : null;
+  }
+}
+
+class GetTheFactsPage extends FactsCarouselPage {
+  GetTheFactsPage(
+      {Key key, @required String title, @required ContentStore dataSource})
+      : super(key: key, title: title, dataSource: dataSource);
+
+  @override
+  FactContent getContent() {
+    return dataSource.getTheFacts;
   }
 }

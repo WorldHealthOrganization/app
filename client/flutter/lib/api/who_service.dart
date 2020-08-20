@@ -1,21 +1,26 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:who_app/main.dart';
-import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io';
+import 'dart:io' as io;
+
+import 'package:who_app/proto/api/who/who.pb.dart';
 
 class WhoService {
-  static final String serviceUrlStaging = '${Endpoints.STAGING}/WhoService';
-  static final String serviceUrlProd = '${Endpoints.PROD}/WhoService';
-  static final String serviceUrl = serviceUrlProd;
+  final String serviceUrl;
+
+  WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
 
   /// Put device token.
-  static Future<bool> putDeviceToken(String token) async {
-    Map<String, String> headers = await _getHeaders();
-    var postBody = jsonEncode({"token": token});
-    var url = '$serviceUrl/putDeviceToken';
-    var response = await http.post(url, headers: headers, body: postBody);
+  Future<bool> putDeviceToken(String token) async {
+    final headers = await _getHeaders();
+    final req = PutDeviceTokenRequest.create();
+    req.token = token;
+    final postBody = jsonEncode(req.toProto3Json());
+
+    final url = '$serviceUrl/putDeviceToken';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
@@ -23,28 +28,40 @@ class WhoService {
   }
 
   /// Put location
-  static Future<bool> putLocation({String isoCountryCode}) async {
-    Map<String, String> headers = await _getHeaders();
-    var postBody = jsonEncode({
-      "isoCountryCode": isoCountryCode,
-    });
-    var url = '$serviceUrl/putLocation';
-    var response = await http.post(url, headers: headers, body: postBody);
+  Future<bool> putLocation({String isoCountryCode}) async {
+    final headers = await _getHeaders();
+    final req = PutLocationRequest.create();
+    req.isoCountryCode = isoCountryCode;
+    final postBody = jsonEncode(req.toProto3Json());
+    final url = '$serviceUrl/putLocation';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
     return true;
   }
 
-  static Future<Map<String, dynamic>> getCaseStats() async {
-    Map<String, String> headers = await _getHeaders();
-    var url = '$serviceUrl/getCaseStats';
-    var response = await http.post(url, headers: headers, body: '');
+  Future<GetCaseStatsResponse> getCaseStats({String isoCountryCode}) async {
+    final headers = await _getHeaders();
+    final req = GetCaseStatsRequest.create();
+    final global = JurisdictionId.create();
+    global.jurisdictionType = JurisdictionType.GLOBAL;
+    req.jurisdictions.add(global);
+    if (isoCountryCode != null) {
+      final country = JurisdictionId.create();
+      country.jurisdictionType = JurisdictionType.COUNTRY;
+      country.code = isoCountryCode;
+      req.jurisdictions.add(country);
+    }
+    final postBody = jsonEncode(req.toProto3Json());
+    final url = '$serviceUrl/getCaseStats';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
-    // TODO: Should use protobuf.
-    return jsonDecode(response.body);
+    final ret = GetCaseStatsResponse.create();
+    ret.mergeFromProto3Json(jsonDecode(response.body));
+    return ret;
   }
 
   static Future<Map<String, String>> _getHeaders() async {
@@ -64,10 +81,10 @@ class WhoService {
   }
 
   static String get _platform {
-    if (Platform.isIOS) {
+    if (io.Platform.isIOS) {
       return "IOS";
     }
-    if (Platform.isAndroid) {
+    if (io.Platform.isAndroid) {
       return "ANDROID";
     }
     return "WEB";

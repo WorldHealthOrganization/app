@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:who_app/api/content/content_loading.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/dialogs.dart';
@@ -11,6 +13,11 @@ import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
 /// This view is the container for the series of symptom checker questions.
 class SymptomCheckerView extends StatefulWidget {
+  final ContentService contentService;
+
+  const SymptomCheckerView({Key key, @required this.contentService})
+      : super(key: key);
+
   @override
   _SymptomCheckerViewState createState() => _SymptomCheckerViewState();
 }
@@ -29,6 +36,8 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     _modelChanged();
   }
 
+  // Unlike other content-based widgets, the symptom checker
+  // will not dynamically react to new content.
   Future<void> _initModel() async {
     if (_model != null) {
       return;
@@ -37,7 +46,10 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     Locale locale = Localizations.localeOf(context);
     try {
       final logicContext = await LogicContext.generate();
-      var content = await SymptomCheckerContent.load(locale);
+      final store =
+          ContentStore(service: widget.contentService, locale: locale);
+      await store.update();
+      var content = store.symptomChecker;
       await Dialogs.showUpgradeDialogIfNeededFor(context, content);
       _model = SymptomCheckerModel(content, logicContext);
     } catch (err) {

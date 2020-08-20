@@ -20,14 +20,16 @@ import 'package:who_app/pages/main_pages/routes.dart';
 ///=========================================================
 
 class SettingsPage extends StatefulWidget {
+  final Notifications notifications;
+
+  const SettingsPage({Key key, @required this.notifications}) : super(key: key);
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage>
     with WidgetsBindingObserver {
-  Notifications _notifications = Notifications();
-
   bool _analyticsEnabled;
   bool _notificationsEnabled;
   bool _attemptEnableNotificationsOnResume = false;
@@ -43,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage>
 
   _init() async {
     _analyticsEnabled = await UserPreferences().getAnalyticsEnabled();
-    _notificationsEnabled = await _notifications.isEnabled();
+    _notificationsEnabled = await widget.notifications.isEnabled();
     setState(() {});
   }
 
@@ -63,14 +65,14 @@ class _SettingsPageState extends State<SettingsPage>
   _toggleNotifications(bool setEnabled) async {
     var enabled;
     if (setEnabled) {
-      enabled = await _notifications.attemptEnableNotifications(
+      enabled = await widget.notifications.attemptEnableNotifications(
           context: context,
           showSettingsPrompt: ({showSettings}) => {
                 Dialogs.showDialogToLaunchNotificationSettings(
                     context, showSettings)
               });
     } else {
-      await _notifications.disableNotifications();
+      await widget.notifications.disableNotifications();
       enabled = false;
     }
 
@@ -96,7 +98,7 @@ class _SettingsPageState extends State<SettingsPage>
   void _attemptEnableNotifications() async {
     _attemptEnableNotificationsOnResume = false;
     var enabled =
-        await _notifications.attemptEnableNotifications(context: context);
+        await widget.notifications.attemptEnableNotifications(context: context);
 
     if (enabled != _notificationsEnabled) {
       setState(() {

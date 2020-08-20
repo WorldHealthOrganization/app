@@ -1,7 +1,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
-import 'package:who_app/api/display_conditions.dart';
-import 'package:who_app/components/dialogs.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -10,71 +10,44 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class TravelAdvice extends StatefulWidget {
-  final AdviceDataSource dataSource;
-
-  const TravelAdvice({Key key, @required this.dataSource}) : super(key: key);
-
-  @override
-  _TravelAdviceState createState() => _TravelAdviceState();
-}
-
-class _TravelAdviceState extends State<TravelAdvice> {
-  AdviceContent _adviceContent;
-  LogicContext _logicContext;
+class TravelAdvice extends ContentWidget<AdviceContent> {
+  TravelAdvice({Key key, @required ContentStore dataSource})
+      : super(key: key, dataSource: dataSource);
 
   @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await _loadAdvice();
-  }
+  Widget buildImpl(context, content, logicContext) {
+    List<Widget> _getItems(BuildContext context) {
+      return (content?.items ?? [])
+          .where((element) => element.isDisplayed(logicContext))
+          .map((item) {
+        return item.isBanner
+            ? _Banner(title: item.title, body: item.body)
+            : _TravelAdviceListItem(
+                title: item.title ?? "", description: item.body ?? "");
+      }).toList();
+    }
 
-  Future _loadAdvice() async {
-    if (_adviceContent != null) {
-      return;
+    SliverList _buildBody() {
+      return SliverList(
+          delegate: SliverChildListDelegate([
+        ..._getItems(context),
+        SizedBox(
+          height: 28,
+        ),
+      ]));
     }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _adviceContent = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _adviceContent);
-    } catch (err) {
-      print("Error loading advice data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return PageScaffold(
         heroTag: HeroTags.learn,
         body: [
-          _adviceContent != null ? _buildBody() : LoadingIndicator(),
+          content != null ? _buildBody() : LoadingIndicator(),
         ],
         title: S.of(context).homePagePageButtonTravelAdvice);
   }
 
-  SliverList _buildBody() {
-    return SliverList(
-        delegate: SliverChildListDelegate([
-      ..._getItems(context),
-      SizedBox(
-        height: 28,
-      ),
-    ]));
-  }
-
-  List<Widget> _getItems(BuildContext context) {
-    return (_adviceContent?.items ?? [])
-        .where((element) => element.isDisplayed(_logicContext))
-        .map((item) {
-      return item.isBanner
-          ? _Banner(title: item.title, body: item.body)
-          : _TravelAdviceListItem(
-              title: item.title ?? "", description: item.body ?? "");
-    }).toList();
+  @override
+  AdviceContent getContent() {
+    return dataSource.travelAdvice;
   }
 }
 

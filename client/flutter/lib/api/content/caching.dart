@@ -26,6 +26,7 @@ class WhoCacheManager extends BaseCacheManager {
     final cacheFile = await getFileFromCache(url);
     if (cacheFile != null) {
       if (cacheFile.validTill.isBefore(DateTime.now())) {
+        print('Cached $url expired ${cacheFile.validTill}');
         // Wait for the refreshed file.
         try {
           await webHelper.downloadFile(url, authHeaders: headers);
@@ -33,6 +34,8 @@ class WhoCacheManager extends BaseCacheManager {
           print(
               "Error refreshing expired file, returning cached version: $url");
         }
+      } else {
+        print('Using cached $url until ${cacheFile.validTill}');
       }
       return cacheFile.file;
     }

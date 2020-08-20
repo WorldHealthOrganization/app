@@ -1,4 +1,5 @@
-import 'package:who_app/api/content/content_loading.dart';
+import 'package:provider/provider.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
@@ -10,7 +11,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key key}) : super(key: key);
+  const OnboardingPage({Key key, @required this.service}) : super(key: key);
+
+  final WhoService service;
 
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -56,6 +59,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<ContentStore>(context);
     return WillPopScope(
       onWillPop: () async {
         // If a previous page exists
@@ -74,7 +78,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
         children: <Widget>[
-          LegalLandingPage(onNext: _onLegalDone),
+          LegalLandingPage(onNext: () => _onLegalDone(store)),
           CountrySelectPage(
             onOpenCountryList: _toNextPage,
             onNext: _onChooseCountry,
@@ -106,20 +110,24 @@ class _OnboardingPageState extends State<OnboardingPage> {
     });
     await _toNextPage();
     try {
-      await WhoService.putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+      await widget.service
+          .putLocation(isoCountryCode: _selectedCountry.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }
   }
 
-  Future<void> _onLegalDone() async {
+  Future<void> _onLegalDone(ContentStore store) async {
     await UserPreferences().setTermsOfServiceCompleted(true);
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
-    await UserPreferences().setAnalyticsEnabled(true);
+    if (!await UserPreferences().getOnboardingCompleted() ||
+        await UserPreferences().getAnalyticsEnabled()) {
+      await UserPreferences().setAnalyticsEnabled(true);
+    }
 
     // ignore: unawaited_futures
-    ContentLoading().preCacheContent(Localizations.localeOf(context));
+    store.update();
 
     await _toNextPage();
   }
@@ -139,7 +147,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   void _onDone() async {
-    await UserPreferences().setOnboardingCompleted(true);
+    await UserPreferences().setOnboardingCompletedV1(true);
     await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
       '/home',
     );

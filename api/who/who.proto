@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package who;
 
+// Run ./tools/gen-client-protos.sh from the repo root
+// when you modify this file.
+
 message Void {}
 
 // None of these responses are publicly cacheable.
@@ -27,17 +30,19 @@ message PutLocationRequest {
 
 message JurisdictionId {
   JurisdictionType jurisdictionType = 2;
-  // empty for global stats, ISO 3166-1 alpha-2 (uppercase) code for country
+  // - Global: empty
+  // - Country: ISO 3166-1 alpha-2 (uppercase) code
+  // - Region: Any of the WHO_ prefixed region codes at https://apps.who.int/gho/data/node.metadata.REGION?lang=en
   string code = 1;
 }
 
 message GetCaseStatsRequest {
-  // Request any sub-global jurisdictions 
+  // Request any jurisdictions (including global, if desired)
   repeated JurisdictionId jurisdictions = 1;
 }
 
 message GetCaseStatsResponse {
-  CaseStats globalStats = 1;
+  CaseStats globalStats = 1 [deprecated = true];
 
   // Provided in the same order as the requested jurisdictions.
   // If data in a jurisdiction is unavailable, lastUpdated will be 0.

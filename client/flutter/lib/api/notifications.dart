@@ -5,11 +5,9 @@ import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
 
 class Notifications {
-  static final Notifications _singleton = Notifications._internal();
+  final WhoService service;
 
-  factory Notifications() => _singleton;
-
-  Notifications._internal();
+  Notifications({@required this.service});
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final UserPreferences _userPrefs = UserPreferences();
@@ -104,7 +102,7 @@ class Notifications {
   Future setFirebaseToken(String newToken) async {
     var exitsingToken = await _userPrefs.getFirebaseToken();
     if (exitsingToken != newToken) {
-      await WhoService.putDeviceToken(newToken);
+      await service.putDeviceToken(newToken);
       await _userPrefs.setFirebaseToken(newToken);
     }
   }

@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:who_app/api/content/content_store.dart';
+import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -14,6 +20,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
+import 'package:who_app/generated/build.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -38,7 +45,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   final bool onboardingComplete =
-      await UserPreferences().getOnboardingCompleted();
+      await UserPreferences().getOnboardingCompletedV1();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;
@@ -60,14 +67,14 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 }
 
 Future<void> _onFlutterError(FlutterErrorDetails details) async {
-  if (await UserPreferences().getOnboardingCompleted()) {
+  if (await UserPreferences().getOnboardingCompletedV1()) {
     // Pass all uncaught errors from the framework to Crashlytics.
     await Crashlytics.instance.recordFlutterError(details);
   }
 }
 
 Future<void> _onError(Object error, StackTrace stack) async {
-  if (await UserPreferences().getOnboardingCompleted()) {
+  if (await UserPreferences().getOnboardingCompletedV1()) {
     await Crashlytics.instance.recordError(error, stack);
   }
 }
@@ -87,8 +94,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  final Notifications _notifications = Notifications();
-
   _MyAppState(this.analytics, this.observer);
 
   final FirebaseAnalytics analytics;
@@ -97,12 +102,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _notifications.configure();
-    _notifications.updateFirebaseToken();
-    _precacheContent();
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement
@@ -116,7 +117,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: GlobalWidgetsLocalizations(
-        getLocale(),
+        _getCurrentLocale(),
       ).textDirection,
       child: MaterialApp(
         title: "WHO COVID-19",
@@ -131,7 +132,52 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
 
         /// allows routing to work without a [Navigator.defaultRouteName] route
-        builder: (context, child) => child,
+        builder: (context, child) => MultiProvider(providers: [
+          ProxyProvider0(
+            lazy: false,
+            update: (ctx, _) => Localizations.localeOf(ctx),
+          ),
+          Provider(
+            create: (_) => BuildInfo.DEVELOPMENT_ONLY
+                ? Endpoint(
+                    service: Endpoints.STAGING_SERVICE,
+                    staticContent: Endpoints.STAGING_STATIC_CONTENT)
+                : Endpoint(
+                    service: Endpoints.PROD_SERVICE,
+                    staticContent: Endpoints.PROD_STATIC_CONTENT),
+          ),
+          ProxyProvider(
+              update: (_, Endpoint endpoint, __) => WhoService(
+                    endpoint: endpoint.service,
+                  )),
+          ProxyProvider(
+            update: (_, WhoService service, __) {
+              final ret = Notifications(service: service);
+              ret.configure();
+              ret.updateFirebaseToken();
+              return ret;
+            },
+          ),
+          ProxyProvider(
+            update: (_, WhoService service, __) {
+              final ret = StatsStore(service: service);
+              ret.update();
+              return ret;
+            },
+          ),
+          PeriodicUpdater.asProvider<StatsStore>(),
+          ProxyProvider(
+              update: (_, Endpoint endpoint, __) => ContentService(
+                    endpoint: endpoint.staticContent,
+                  )),
+          ProxyProvider2(
+              update: (_, ContentService service, Locale locale, __) {
+            final ret = ContentStore(service: service, locale: locale);
+            ret.update();
+            return ret;
+          }),
+          PeriodicUpdater.asProvider<ContentStore>(),
+        ], child: child),
         navigatorObservers: <NavigatorObserver>[observer],
         theme: ThemeData(
           brightness: Brightness.light,
@@ -149,38 +195,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     );
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        _precacheContent();
-        break;
-      case AppLifecycleState.inactive:
-      case AppLifecycleState.paused:
-      case AppLifecycleState.detached:
-        break;
-    }
-  }
-
-  /// Pre-cache commonly loaded content.
-  /// Called on on app lauch and return to foreground.
-  void _precacheContent() async {
-    if (await UserPreferences().getTermsOfServiceCompleted()) {
-      // ignore: unawaited_futures
-      ContentLoading().preCacheContent(getLocale());
-    }
-  }
-
   /// Construct the Locale from the Intl locale string.
   /// This allows us to get the Locale outside of the main build context.
-  Locale getLocale() {
+  Locale _getCurrentLocale() {
     var parts = Intl.getCurrentLocale().split('_');
     return Locale(parts[0], parts[1]);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
   }
 }
