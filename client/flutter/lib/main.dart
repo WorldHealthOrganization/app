@@ -138,10 +138,17 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             update: (ctx, _) => Localizations.localeOf(ctx),
           ),
           Provider(
-              create: (_) => WhoService(
-                    endpoint: BuildInfo.DEVELOPMENT_ONLY
-                        ? Endpoints.STAGING
-                        : Endpoints.PROD,
+            create: (_) => BuildInfo.DEVELOPMENT_ONLY
+                ? Endpoint(
+                    service: Endpoints.STAGING_SERVICE,
+                    staticContent: Endpoints.STAGING_STATIC_CONTENT)
+                : Endpoint(
+                    service: Endpoints.PROD_SERVICE,
+                    staticContent: Endpoints.PROD_STATIC_CONTENT),
+          ),
+          ProxyProvider(
+              update: (_, Endpoint endpoint, __) => WhoService(
+                    endpoint: endpoint.service,
                   )),
           ProxyProvider(
             update: (_, WhoService service, __) {
@@ -159,11 +166,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             },
           ),
           PeriodicUpdater.asProvider<StatsStore>(),
-          Provider(
-              create: (_) => ContentService(
-                    endpoint: BuildInfo.DEVELOPMENT_ONLY
-                        ? Endpoints.STAGING
-                        : Endpoints.PROD,
+          ProxyProvider(
+              update: (_, Endpoint endpoint, __) => ContentService(
+                    endpoint: endpoint.staticContent,
                   )),
           ProxyProvider2(
               update: (_, ContentService service, Locale locale, __) {

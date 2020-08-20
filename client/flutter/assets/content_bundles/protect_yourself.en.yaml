@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 1
+content_version: 2
 contents:
   type: fact
   items:
@@ -10,7 +10,7 @@ contents:
     -
       image_name: protect-face
       body_html: |
-        <b>Avoid touching</b> your eyes, mouth, and nose.
+        <b>Avoid touching</b> your eyes, mouth, and NOSE!
     -
       image_name: protect-cough
       body_html: |
