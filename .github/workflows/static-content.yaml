@@ -42,10 +42,10 @@ jobs:
     name: Deploy Content to GCS (Staging)
     # SECURITY: This job uses staging secrets; do not enable it for
     # pull requests.
-    if: |
-      github.repository == 'WorldHealthOrganization/app' &&
-      github.ref == 'refs/heads/master' &&
-      github.event_name == 'push'
+    #if: |
+    #  github.repository == 'WorldHealthOrganization/app' &&
+    #  github.ref == 'refs/heads/master' &&
+    #  github.event_name == 'push'
     runs-on: ubuntu-latest
     env:
       LOG_URL: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
@@ -62,7 +62,7 @@ jobs:
           name: staticContentBuildTar
           path: tools
       - run: gcloud components update
-      - run: tar -xf staticContentBuildTar.tar -C ./staticContentBuild
+      - run: tar -xf staticContentBuild.tar -C ./.
         working-directory: tools
       - run: ls -R ./staticContentBuild
         working-directory: tools
