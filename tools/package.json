@@ -1,11 +1,14 @@
 {
   "name": "app-dev-tools",
   "private": true,
-  "devDependencies": {
+  "scripts": {
+    "prepare-static-serving": "node prepare-static-serving.js"
+  },
+  "dependencies": {
     "firebase-tools": "^8.7.0",
     "husky": "^4.2.5",
+    "js-yaml": "^3.14.0",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
-  },
-  "dependencies": {}
+  }
 }

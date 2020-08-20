@@ -13,6 +13,7 @@ build
 DerivedData
 cache/
 out/
+staticContentBuild/
 
 # Android Studio
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
