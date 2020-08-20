@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 1
+content_version: 3
 contents:
   type: fact
   items:
