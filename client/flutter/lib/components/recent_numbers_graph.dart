@@ -5,6 +5,8 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 
+const double padding = 30;
+
 class RecentNumbersBarGraph extends StatefulWidget {
   const RecentNumbersBarGraph({
     Key key,
@@ -20,8 +22,12 @@ class RecentNumbersBarGraph extends StatefulWidget {
 }
 
 class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
+  final startDate = DateTime.utc(2020, 1, 1);
+
   @override
   Widget build(BuildContext context) {
+    final double cardWidth = MediaQuery.of(context).size.width - (padding * 2);
+
     return BarChart(
       BarChartData(
         axisTitleData: FlAxisTitleData(show: false),
@@ -29,7 +35,8 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
         barGroups: [
           BarChartGroupData(
             x: 0,
-            barRods: _buildRods(MediaQuery.of(context).size.width),
+            barsSpace: _buildSpace(cardWidth),
+            barRods: _buildRods(cardWidth),
           ),
         ],
         titlesData: FlTitlesData(show: false),
@@ -38,9 +45,18 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
     );
   }
 
-  List<BarChartRodData> _buildRods(double screenWidth) {
+  double _buildSpace(double cardWidth) {
+    if (widget.timeseries != null) {
+      return cardWidth * 3 / (widget.timeseries.length * 5);
+    } else {
+      return cardWidth *
+          3 /
+          DateTime.now().toUtc().difference(startDate).inDays;
+    }
+  }
+
+  List<BarChartRodData> _buildRods(double cardWidth) {
     List<BarChartRodData> bars = <BarChartRodData>[];
-    final startDate = DateTime.utc(2020, 1, 1);
     if (widget.timeseries != null) {
       for (var snapshot in widget.timeseries) {
         try {
@@ -49,7 +65,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
             BarChartRodData(
               y: yAxis,
               color: Constants.textColor.withOpacity(.3),
-              width: screenWidth / (widget.timeseries.length * 3),
+              width: cardWidth / (widget.timeseries.length * 3),
             ),
           );
         } catch (e) {
@@ -64,7 +80,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
           BarChartRodData(
             y: 0,
             color: Constants.textColor.withOpacity(.3),
-            width: screenWidth / (daysSinceStart * 3),
+            width: cardWidth / (daysSinceStart * 3),
           ),
         );
       }
@@ -107,39 +123,57 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
       titleData = 0;
     }
 
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        graph,
-        Align(
-          alignment: Alignment.topLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: padding,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: Container(
+          color: CupertinoColors.white,
+          child: Stack(
+            overflow: Overflow.clip,
+            fit: StackFit.expand,
             children: [
-              ThemedText(
-                numFmt.format(this.titleData) == "0"
-                    ? "-"
-                    : numFmt.format(this.titleData),
-                variant: TypographyVariant.h2,
-                style: TextStyle(
-                  color: widget.dimension == DataDimension.cases
-                      ? Constants.primaryDarkColor
-                      : Constants.accentColor,
-                ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: graph,
               ),
-              ThemedText(
-                this.graphTitle,
-                variant: TypographyVariant.h4,
-                style: TextStyle(
-                  color: widget.dimension == DataDimension.cases
-                      ? Constants.primaryDarkColor
-                      : Constants.accentColor,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ThemedText(
+                        numFmt.format(this.titleData) == "0"
+                            ? "-"
+                            : numFmt.format(this.titleData),
+                        variant: TypographyVariant.h2,
+                        style: TextStyle(
+                          color: widget.dimension == DataDimension.cases
+                              ? Constants.primaryDarkColor
+                              : Constants.accentColor,
+                        ),
+                      ),
+                      ThemedText(
+                        this.graphTitle,
+                        variant: TypographyVariant.h4,
+                        style: TextStyle(
+                          color: widget.dimension == DataDimension.cases
+                              ? Constants.primaryDarkColor
+                              : Constants.accentColor,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 

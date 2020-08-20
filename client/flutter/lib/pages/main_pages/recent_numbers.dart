@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
 import 'package:who_app/components/stat_card.dart';
+import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/api/who_service.dart';
@@ -98,45 +99,57 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
             Container(
               child: Column(
                 children: <Widget>[
-                  CupertinoSlidingSegmentedControl(
-                    backgroundColor: Color(0xffEFEFEF),
-                    children:
-                        _buildSegmentControlChildren(context, this.aggregation),
-                    groupValue: this.aggregation,
-                    onValueChanged: (value) {
-                      widget.analytics.logEvent(
-                          name: 'RecentNumberAggregation',
-                          parameters: {'index': this.aggregation.index});
-                      setState(
-                        () {
-                          this.aggregation = value;
-                        },
-                      );
-                    },
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-                    thumbColor: Constants.greyBackgroundColor,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                      vertical: 8,
+                    ),
+                    child: CupertinoSlidingSegmentedControl(
+                      backgroundColor: Color(0xffEFEFEF),
+                      children: _buildSegmentControlChildren(
+                          context, this.aggregation),
+                      groupValue: this.aggregation,
+                      onValueChanged: (value) {
+                        widget.analytics.logEvent(
+                            name: 'RecentNumberAggregation',
+                            parameters: {'index': this.aggregation.index});
+                        setState(
+                          () {
+                            this.aggregation = value;
+                          },
+                        );
+                      },
+                      thumbColor: Constants.greyBackgroundColor,
+                    ),
                   ),
                   Container(height: 16.0),
+                  RegionText(
+                    country: "Nigeria",
+                    emoji: "🇳🇬",
+                  ),
                   ConstrainedBox(
                     child: RecentNumbersGraph(
                       aggregation: this.aggregation,
                       timeseries: this.globalStats['timeseries'],
                       timeseriesKey: this.timeseriesKey,
-                      dimension: this.dimension,
+                      dimension: DataDimension.cases,
+                    ),
+                    constraints: BoxConstraints(maxHeight: 224.0),
+                  ),
+                  Container(height: 24.0),
+                  ConstrainedBox(
+                    child: RecentNumbersGraph(
+                      aggregation: this.aggregation,
+                      timeseries: this.globalStats['timeseries'],
+                      timeseriesKey: this.timeseriesKey,
+                      dimension: DataDimension.deaths,
                     ),
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
               ),
-              color: CupertinoColors.white,
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             ),
-            Container(height: 28.0),
-            _buildTappableStatCard(context, DataDimension.cases),
-            Container(height: 16.0),
-            _buildTappableStatCard(context, DataDimension.deaths),
           ]),
         )
       ],
@@ -182,77 +195,24 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
           ));
     });
   }
-
-  Widget _buildTappableStatCard(BuildContext context, DataDimension dimension) {
-    String statKey;
-    String title;
-    switch (dimension) {
-      case DataDimension.cases:
-        statKey = 'cases';
-        title = S.of(context).latestNumbersPageCasesDimension;
-        break;
-      case DataDimension.deaths:
-        statKey = 'deaths';
-        title = S.of(context).latestNumbersPageDeathsDimension;
-        break;
-      default:
-        statKey = '';
-    }
-    final numFmt = NumberFormat.decimalPattern();
-    final stat = this.globalStats != null && this.globalStats[statKey] != null
-        ? numFmt.format(globalStats[statKey])
-        : '-';
-    return Padding(
-      child: _TappableStatCard(
-        isSelected: dimension == this.dimension,
-        onTap: () {
-          setState(() {
-            this.dimension = dimension;
-          });
-        },
-        stat: stat,
-        title: title,
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-    );
-  }
 }
 
-class _TappableStatCard extends StatelessWidget {
-  const _TappableStatCard({
-    @required this.isSelected,
-    @required this.onTap,
-    @required this.stat,
-    @required this.title,
+class RegionText extends StatelessWidget {
+  final String country;
+  final String emoji;
+
+  const RegionText({
+    @required this.country,
+    @required this.emoji,
   });
-
-  final bool isSelected;
-  final Function onTap;
-  final String stat;
-  final String title;
-
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      child: GestureDetector(
-        child: Container(
-          child: StatCard(
-            stat: this.stat,
-            title: this.title,
-          ),
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: this.isSelected
-                    ? Constants.primaryColor
-                    : CupertinoColors.white,
-                width: 2.0),
-            borderRadius: BorderRadius.all(Radius.circular(12.0)),
-          ),
-        ),
-        onTap: this.onTap,
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: ThemedText(
+        "$emoji $country",
+        variant: TypographyVariant.h3,
       ),
-      label: this.title,
     );
   }
 }
