@@ -121,7 +121,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await UserPreferences().setTermsOfServiceCompleted(true);
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
-    await UserPreferences().setAnalyticsEnabled(true);
+    if (!await UserPreferences().getOnboardingCompleted() ||
+        await UserPreferences().getAnalyticsEnabled()) {
+      await UserPreferences().setAnalyticsEnabled(true);
+    }
 
     // ignore: unawaited_futures
     store.update();
@@ -144,7 +147,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   void _onDone() async {
-    await UserPreferences().setOnboardingCompleted(true);
+    await UserPreferences().setOnboardingCompletedV1(true);
     await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
       '/home',
     );

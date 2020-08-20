@@ -28,6 +28,19 @@ class UserPreferences {
         .setBool(UserPreferenceKey.OnboardingCompleted.toString(), value);
   }
 
+  /// Was the user shown the introductory pages as part of onboarding, using updated key for V1 launch
+  Future<bool> getOnboardingCompletedV1() async {
+    return (await SharedPreferences.getInstance())
+            .getBool(UserPreferenceKey.OnboardingCompletedV1.toString()) ??
+        false;
+  }
+
+  /// Was the user shown the introductory pages as part of onboarding, using updated key for V1 launch
+  Future<bool> setOnboardingCompletedV1(bool value) async {
+    return (await SharedPreferences.getInstance())
+        .setBool(UserPreferenceKey.OnboardingCompletedV1.toString(), value);
+  }
+
   Future<bool> getTermsOfServiceCompleted() async {
     return (await SharedPreferences.getInstance())
             .getBool(UserPreferenceKey.TermsOfServiceCompleted.toString()) ??
@@ -114,6 +127,7 @@ class UserPreferences {
 
 enum UserPreferenceKey {
   OnboardingCompleted,
+  OnboardingCompletedV1,
   TermsOfServiceCompleted,
   AnalyticsEnabled,
   NotificationsEnabled,
