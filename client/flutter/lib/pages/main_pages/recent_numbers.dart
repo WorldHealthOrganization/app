@@ -1,12 +1,9 @@
 import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:intl/intl.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/recent_numbers_graph.dart';
-import 'package:who_app/components/stat_card.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -142,8 +139,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   ConstrainedBox(
                     child: RecentNumbersGraph(
                       aggregation: this.aggregation,
-                      timeseries: this.globalStats['timeseries'],
-                      timeseriesKey: this.timeseriesKey,
+                      timeseries: widget.statsStore.globalStats?.timeseries,
                       dimension: DataDimension.cases,
                     ),
                     constraints: BoxConstraints(maxHeight: 224.0),
@@ -195,6 +191,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     });
   }
 
+}
 
 class RegionText extends StatelessWidget {
   final String country;
