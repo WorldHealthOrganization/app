@@ -20,10 +20,10 @@ const destDir = __dirname + '/staticContentBuild';
 fs.mkdirSync(destDir);
 
 for (const file of files) {
-  const regex = /^(?<base>.+)\.(?<lang>[^.]+)\.yaml$/;
+  const regex = /^(?<base>.+)\.(?<lang>[^._]+)(?:_(?<country>[^.]+))?\.yaml$/;
   const m = file.match(regex).groups;
   console.log(m);
-  const expanded = countries.map((c) => `${m.base}.${m.lang}_${c}.yaml`);
+  const expanded = m.country ? [`${m.base}.${m.lang}_${country}`] : countries.map((c) => `${m.base}.${m.lang}_${c}.yaml`);
   console.log(expanded);
   for (const dest of expanded) {
     const destPath = destDir + '/' + dest;
