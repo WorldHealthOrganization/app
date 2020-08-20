@@ -45,7 +45,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   final bool onboardingComplete =
-      await UserPreferences().getOnboardingCompleted();
+      await UserPreferences().getOnboardingCompletedV1();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;
@@ -67,14 +67,14 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 }
 
 Future<void> _onFlutterError(FlutterErrorDetails details) async {
-  if (await UserPreferences().getOnboardingCompleted()) {
+  if (await UserPreferences().getOnboardingCompletedV1()) {
     // Pass all uncaught errors from the framework to Crashlytics.
     await Crashlytics.instance.recordFlutterError(details);
   }
 }
 
 Future<void> _onError(Object error, StackTrace stack) async {
-  if (await UserPreferences().getOnboardingCompleted()) {
+  if (await UserPreferences().getOnboardingCompletedV1()) {
     await Crashlytics.instance.recordError(error, stack);
   }
 }
