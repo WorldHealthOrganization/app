@@ -29,7 +29,7 @@ jobs:
           node-version: 12
       - run: npm install
         working-directory: tools
-      - run: DONT_PUSH=true ./_deploy-static-serving.sh
+      - run: DONT_PUSH=true ./build-and-push-static-serving.sh
         working-directory: tools
       - run: tar -cvf staticContentBuild.tar staticContentBuild
         working-directory: tools
