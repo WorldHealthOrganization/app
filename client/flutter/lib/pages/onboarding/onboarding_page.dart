@@ -1,4 +1,5 @@
-import 'package:who_app/api/content/content_loading.dart';
+import 'package:provider/provider.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
@@ -58,6 +59,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<ContentStore>(context);
     return WillPopScope(
       onWillPop: () async {
         // If a previous page exists
@@ -76,7 +78,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
         children: <Widget>[
-          LegalLandingPage(onNext: _onLegalDone),
+          LegalLandingPage(onNext: () => _onLegalDone(store)),
           CountrySelectPage(
             onOpenCountryList: _toNextPage,
             onNext: _onChooseCountry,
@@ -115,14 +117,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
     }
   }
 
-  Future<void> _onLegalDone() async {
+  Future<void> _onLegalDone(ContentStore store) async {
     await UserPreferences().setTermsOfServiceCompleted(true);
     // Enable auto init so that analytics will work
     await _firebaseMessaging.setAutoInitEnabled(true);
     await UserPreferences().setAnalyticsEnabled(true);
 
     // ignore: unawaited_futures
-    ContentLoading().preCacheContent(Localizations.localeOf(context));
+    store.update();
 
     await _toNextPage();
   }

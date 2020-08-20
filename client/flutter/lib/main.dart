@@ -5,6 +5,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/updateable.dart';
@@ -101,10 +102,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _precacheContent();
   }
 
   // TODO: Issue #902 This is not essential for basic operation but we should implement
@@ -118,10 +117,26 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: GlobalWidgetsLocalizations(
-        getLocale(),
+        _getCurrentLocale(),
       ).textDirection,
-      child: MultiProvider(
-        providers: [
+      child: MaterialApp(
+        title: "WHO COVID-19",
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          S.delegate
+        ],
+        routes: widget.routes,
+        // FIXME Issue #1012 - disabled supported languages for P0
+        //supportedLocales: S.delegate.supportedLocales,
+        initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
+
+        /// allows routing to work without a [Navigator.defaultRouteName] route
+        builder: (context, child) => MultiProvider(providers: [
+          ProxyProvider0(
+            lazy: false,
+            update: (ctx, _) => Localizations.localeOf(ctx),
+          ),
           Provider(
               create: (_) => WhoService(
                     endpoint: BuildInfo.DEVELOPMENT_ONLY
@@ -129,7 +144,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                         : Endpoints.PROD,
                   )),
           ProxyProvider(
-            update: (_, WhoService service, old) {
+            update: (_, WhoService service, __) {
               final ret = Notifications(service: service);
               ret.configure();
               ret.updateFirebaseToken();
@@ -137,35 +152,37 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             },
           ),
           ProxyProvider(
-            update: (_, WhoService service, __) => StatsStore(service: service),
+            update: (_, WhoService service, __) {
+              final ret = StatsStore(service: service);
+              ret.update();
+              return ret;
+            },
           ),
           PeriodicUpdater.asProvider<StatsStore>(),
-        ],
-        child: MaterialApp(
-          title: "WHO COVID-19",
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            S.delegate
-          ],
-          routes: widget.routes,
-          // FIXME Issue #1012 - disabled supported languages for P0
-          //supportedLocales: S.delegate.supportedLocales,
-          initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
-
-          /// allows routing to work without a [Navigator.defaultRouteName] route
-          builder: (context, child) => child,
-          navigatorObservers: <NavigatorObserver>[observer],
-          theme: ThemeData(
+          Provider(
+              create: (_) => ContentService(
+                    endpoint: BuildInfo.DEVELOPMENT_ONLY
+                        ? Endpoints.STAGING
+                        : Endpoints.PROD,
+                  )),
+          ProxyProvider2(
+              update: (_, ContentService service, Locale locale, __) {
+            final ret = ContentStore(service: service, locale: locale);
+            ret.update();
+            return ret;
+          }),
+          PeriodicUpdater.asProvider<ContentStore>(),
+        ], child: child),
+        navigatorObservers: <NavigatorObserver>[observer],
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Constants.primaryDarkColor,
+          textTheme: TextTheme(),
+          cupertinoOverrideTheme: CupertinoThemeData(
             brightness: Brightness.light,
             primaryColor: Constants.primaryDarkColor,
-            textTheme: TextTheme(),
-            cupertinoOverrideTheme: CupertinoThemeData(
-              brightness: Brightness.light,
-              primaryColor: Constants.primaryDarkColor,
-              textTheme: CupertinoTextThemeData(
-                textStyle: ThemedText.styleForVariant(TypographyVariant.body),
-              ),
+            textTheme: CupertinoTextThemeData(
+              textStyle: ThemedText.styleForVariant(TypographyVariant.body),
             ),
           ),
         ),
@@ -173,38 +190,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     );
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        _precacheContent();
-        break;
-      case AppLifecycleState.inactive:
-      case AppLifecycleState.paused:
-      case AppLifecycleState.detached:
-        break;
-    }
-  }
-
-  /// Pre-cache commonly loaded content.
-  /// Called on on app lauch and return to foreground.
-  void _precacheContent() async {
-    if (await UserPreferences().getTermsOfServiceCompleted()) {
-      // ignore: unawaited_futures
-      ContentLoading().preCacheContent(getLocale());
-    }
-  }
-
   /// Construct the Locale from the Intl locale string.
   /// This allows us to get the Locale outside of the main build context.
-  Locale getLocale() {
+  Locale _getCurrentLocale() {
     var parts = Intl.getCurrentLocale().split('_');
     return Locale(parts[0], parts[1]);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:who_app/api/updateable.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
 
@@ -31,7 +32,13 @@ abstract class _StatsStore with Store implements Updateable {
     return globalStats?.cases?.toInt();
   }
 
+  @action
   Future<void> update() async {
+    // TODO: UserPreferences should be injected dependency.
+    if (!await UserPreferences().getTermsOfServiceCompleted()) {
+      print('StatsStore update skipped');
+      return;
+    }
     print('StatsStore update');
     /** How to test that the periodic updating works:
     final caseStatsResponse2 = await service.getCaseStats();

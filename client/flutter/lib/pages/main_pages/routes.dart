@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:who_app/api/content/schema/advice_content.dart';
-import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/api/content/schema/index_content.dart';
-import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/api/content/content_loading.dart';
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -29,25 +27,26 @@ class Routes {
     '/onboarding': (context) =>
         OnboardingPage(service: Provider.of<WhoService>(context)),
     '/travel-advice': (context) => TravelAdvice(
-          dataSource: AdviceContent.travelAdvice,
+          dataSource: Provider.of<ContentStore>(context),
         ),
     '/protect-yourself': (context) => ProtectYourself(
-          dataSource: FactContent.protectYourself,
+          dataSource: Provider.of<ContentStore>(context),
         ),
     '/qa': (context) => QuestionIndexPage(
-          dataSource: QuestionContent.yourQuestionsAnswered,
+          dataSource: Provider.of<ContentStore>(context),
           title: S.of(context).homePagePageButtonQuestions,
         ),
     '/symptom-checker': (context) => CheckUpIntroPage(),
-    '/symptom-checker-survey': (context) => SymptomCheckerView(),
+    '/symptom-checker-survey': (context) => SymptomCheckerView(
+        contentService: Provider.of<ContentService>(context)),
     '/symptom-checker-results': (context) => SymptomCheckerResultsPage(
         model:
             ModalRoute.of(context).settings.arguments as SymptomCheckerModel),
     '/news': (context) => NewsIndexPage(
-          dataSource: IndexContent.newsIndex,
+          dataSource: Provider.of<ContentStore>(context),
         ),
-    '/get-the-facts': (context) => FactsCarouselPage(
-          dataSource: FactContent.getTheFacts,
+    '/get-the-facts': (context) => GetTheFactsPage(
+          dataSource: Provider.of<ContentStore>(context),
           title: S.of(context).homePagePageButtonWHOMythBusters,
         ),
     '/recent-numbers': (context) =>

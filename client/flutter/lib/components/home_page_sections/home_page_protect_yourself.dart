@@ -2,12 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/api/display_conditions.dart';
+import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
-
-import 'package:who_app/components/dialogs.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -16,46 +15,27 @@ import 'package:who_app/components/dialogs.dart';
 ///   3. Navigate to Protect Yourself page on tap of card, scrolled to tapped card
 ///=========================================================
 
-class HomePageProtectYourself extends StatefulWidget {
-  final FactsDataSource dataSource;
-
-  const HomePageProtectYourself({Key key, @required this.dataSource})
-      : super(key: key);
+class HomePageProtectYourself extends ContentWidget<FactContent> {
+  HomePageProtectYourself({Key key, @required ContentStore dataSource})
+      : super(key: key, dataSource: dataSource);
 
   @override
-  _HomePageProtectYourself createState() => _HomePageProtectYourself();
-}
-
-class _HomePageProtectYourself extends State<HomePageProtectYourself> {
-  FactContent _factContent;
-  LogicContext _logicContext;
-
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    await _loadFacts();
-  }
-
-  Future _loadFacts() async {
-    if (_factContent != null) {
-      return;
+  Widget buildImpl(context, content, logicContext) {
+    List<Widget> _buildCards() {
+      final screenWidth = MediaQuery.of(context).size.width;
+      return (content?.items ?? [])
+          .where((item) => item.isDisplayed(logicContext))
+          .map((fact) => SizedBox(
+                width: screenWidth * 0.75,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: _HomeProtectYourselfCard(fact: fact),
+                ),
+              ))
+          .toList();
     }
-    Locale locale = Localizations.localeOf(context);
-    try {
-      _logicContext = await LogicContext.generate();
-      _factContent = await widget.dataSource(locale);
-      await Dialogs.showUpgradeDialogIfNeededFor(context, _factContent);
-    } catch (err) {
-      print("Error loading fact data: $err");
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    if (_factContent == null) {
+    if (content == null || logicContext == null) {
       return Padding(
         padding: EdgeInsets.all(64.0),
         child: Center(
@@ -78,18 +58,9 @@ class _HomePageProtectYourself extends State<HomePageProtectYourself> {
     );
   }
 
-  List<Widget> _buildCards() {
-    final screenWidth = MediaQuery.of(context).size.width;
-    return (_factContent?.items ?? [])
-        .where((item) => item.isDisplayed(_logicContext))
-        .map((fact) => SizedBox(
-              width: screenWidth * 0.75,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
-                child: _HomeProtectYourselfCard(fact: fact),
-              ),
-            ))
-        .toList();
+  @override
+  FactContent getContent() {
+    return dataSource.protectYourself;
   }
 }
 

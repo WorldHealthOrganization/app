@@ -14,10 +14,13 @@ class WhoService {
 
   /// Put device token.
   Future<bool> putDeviceToken(String token) async {
-    Map<String, String> headers = await _getHeaders();
-    var postBody = jsonEncode({"token": token});
-    var url = '$serviceUrl/putDeviceToken';
-    var response = await http.post(url, headers: headers, body: postBody);
+    final headers = await _getHeaders();
+    final req = PutDeviceTokenRequest.create();
+    req.token = token;
+    final postBody = jsonEncode(req.toProto3Json());
+
+    final url = '$serviceUrl/putDeviceToken';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
@@ -26,22 +29,33 @@ class WhoService {
 
   /// Put location
   Future<bool> putLocation({String isoCountryCode}) async {
-    Map<String, String> headers = await _getHeaders();
-    var postBody = jsonEncode({
-      "isoCountryCode": isoCountryCode,
-    });
-    var url = '$serviceUrl/putLocation';
-    var response = await http.post(url, headers: headers, body: postBody);
+    final headers = await _getHeaders();
+    final req = PutLocationRequest.create();
+    req.isoCountryCode = isoCountryCode;
+    final postBody = jsonEncode(req.toProto3Json());
+    final url = '$serviceUrl/putLocation';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }
     return true;
   }
 
-  Future<GetCaseStatsResponse> getCaseStats() async {
-    Map<String, String> headers = await _getHeaders();
-    var url = '$serviceUrl/getCaseStats';
-    var response = await http.post(url, headers: headers, body: '');
+  Future<GetCaseStatsResponse> getCaseStats({String isoCountryCode}) async {
+    final headers = await _getHeaders();
+    final req = GetCaseStatsRequest.create();
+    final global = JurisdictionId.create();
+    global.jurisdictionType = JurisdictionType.GLOBAL;
+    req.jurisdictions.add(global);
+    if (isoCountryCode != null) {
+      final country = JurisdictionId.create();
+      country.jurisdictionType = JurisdictionType.COUNTRY;
+      country.code = isoCountryCode;
+      req.jurisdictions.add(country);
+    }
+    final postBody = jsonEncode(req.toProto3Json());
+    final url = '$serviceUrl/getCaseStats';
+    final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception("Error status code: ${response.statusCode}");
     }

@@ -1,10 +1,4 @@
 import 'dart:io';
-import 'package:who_app/api/content/schema/advice_content.dart';
-import 'package:who_app/api/content/schema/fact_content.dart';
-import 'package:who_app/api/content/schema/index_content.dart';
-import 'package:who_app/api/content/schema/question_content.dart';
-import 'package:who_app/api/content/schema/symptom_checker_content.dart';
-import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -14,32 +8,15 @@ import 'content_bundle.dart';
 
 /// Utilities for loading content bundles (localized YAML files) from the network
 /// with fallback to local assets.
-class ContentLoading {
+class ContentService {
   static final networkLoadingEnabled = true;
-  static final ContentLoading _singleton = ContentLoading._internal();
 
-  static final String baseContentURL =
-      '${Endpoints.PROD}/content/bundles'; // no trailing slash
-  static final Duration networkTimeout = Duration(seconds: 3);
+  final String baseContentURL;
+  static final Duration networkTimeout = Duration(seconds: 30);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
-  factory ContentLoading() {
-    return _singleton;
-  }
-
-  ContentLoading._internal();
-
-  /// Pre-cache commonly used content bundles to ameliorate loading delay.
-  /// This method may be called at any time and will only load content when needed.
-  void preCacheContent(Locale locale) {
-    print("preCachecontent for locale: ${locale}");
-    AdviceContent.travelAdvice(locale);
-    FactContent.getTheFacts(locale);
-    IndexContent.homeIndex(locale);
-    IndexContent.learnIndex(locale);
-    QuestionContent.yourQuestionsAnswered(locale);
-    SymptomCheckerContent.load(locale);
-  }
+  ContentService({@required String endpoint})
+      : baseContentURL = '$endpoint/content/bundles';
 
   /// Load a localized content bundle loaded preferentially from the network, falling back
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
@@ -107,6 +84,7 @@ class ContentLoading {
     if (file == null) {
       throw Exception("File not retrieved from network or cache: $url");
     }
+    print('loaded $url');
     return ContentBundle.fromBytes(await file.readAsBytes());
   }
 
