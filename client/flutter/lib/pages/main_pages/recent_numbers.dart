@@ -151,7 +151,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                       timeseries: widget.statsStore.globalStats?.timeseries,
                       dimension: DataDimension.deaths,
                     ),
-
                     constraints: BoxConstraints(maxHeight: 224.0),
                   ),
                 ],
@@ -190,7 +189,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
           ));
     });
   }
-
 }
 
 class RegionText extends StatelessWidget {
