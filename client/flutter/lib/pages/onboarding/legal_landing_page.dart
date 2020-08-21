@@ -39,6 +39,7 @@ class LegalLandingPage extends StatelessWidget {
                     child: ThemedText(
                       S.of(context).legalLandingPageTitle,
                       variant: TypographyVariant.body,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Constants.primaryColor,
                         fontSize: 18,
