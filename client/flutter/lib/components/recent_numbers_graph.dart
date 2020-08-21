@@ -133,7 +133,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         horizontal: padding,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(16),
         child: Container(
           color: CupertinoColors.white,
           child: Stack(
