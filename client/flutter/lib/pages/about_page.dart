@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
@@ -111,17 +112,26 @@ class AboutPage extends StatelessWidget {
                     dynamic yaml =
                         loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
                     var team = List<String>.from(yaml['team'] as YamlList);
-                    team.sort(
-                        (x, y) => (x.toLowerCase().compareTo(y.toLowerCase())));
-                    final founders = [
+                    // Sort order is random A-Z or Z-A.
+                    final orderSign = Random.secure().nextBool() ? 1 : -1;
+                    final strategyTeam = [
+                      "Advay Mengle",
+                      "Bob Lee",
                       "Bruno Bowden",
                       "Daniel Kraft",
-                      "Dean Hachamovitch"
+                      "David Kaneda",
+                      "Dean Hachamovitch",
+                      "Hunter Spinks",
+                      "Jessica Ladd",
+                      "Karen Wong",
                     ];
-                    founders.forEach((x) => team.remove(x));
-                    team.insertAll(0, founders);
-                    var teamNames =
-                        S.of(context).aboutPageThanksToText(team.join(", "));
+                    strategyTeam.sort((x, y) => (orderSign *
+                        x.toLowerCase().compareTo(y.toLowerCase())));
+                    strategyTeam.forEach((x) => team.remove(x));
+                    team.sort(
+                        (x, y) => x.toLowerCase().compareTo(y.toLowerCase()));
+                    var teamNames = S.of(context).aboutPageThanksToText(
+                        '${strategyTeam.join(", ")}; and\n\n${team.join(", ")}');
                     return ThemedText(
                       teamNames,
                       variant: TypographyVariant.body,
