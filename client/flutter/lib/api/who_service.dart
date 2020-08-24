@@ -16,7 +16,11 @@ class WhoService {
   Future<bool> putDeviceToken(String token) async {
     final headers = await _getHeaders();
     final req = PutDeviceTokenRequest.create();
-    req.token = token;
+    if (token != null) {
+      req.token = token;
+    } else {
+      req.clearToken();
+    }
     final postBody = jsonEncode(req.toProto3Json());
 
     final url = '$serviceUrl/putDeviceToken';
