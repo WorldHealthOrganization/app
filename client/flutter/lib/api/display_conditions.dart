@@ -26,12 +26,13 @@ class LogicContext {
 
   static final _refDate = DateTime(2020);
 
-  static Future<LogicContext> generate() async {
+  static Future<LogicContext> generate(
+      {@required String isoCountryCode}) async {
     final now = DateTime.now().toUtc();
     final diff = now.toLocal().difference(_refDate).inDays;
     return LogicContext(
       cohort: await UserPreferences().getCohort(),
-      isoCountryCode: await UserPreferences().getCountryIsoCode(),
+      isoCountryCode: isoCountryCode,
       isoDateTimeUTC: now.toIso8601String(),
       localDays: diff,
     );

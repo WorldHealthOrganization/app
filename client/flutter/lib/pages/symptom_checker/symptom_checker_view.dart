@@ -4,6 +4,7 @@ import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -45,9 +46,16 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     // TODO: Reduce this boilerplate
     Locale locale = Localizations.localeOf(context);
     try {
-      final logicContext = await LogicContext.generate();
-      final store =
-          ContentStore(service: widget.contentService, locale: locale);
+      final countryIsoCode =
+          (await UserPreferencesStore.readFromSharedPreferences())
+              .countryIsoCode;
+      final logicContext =
+          await LogicContext.generate(isoCountryCode: countryIsoCode);
+      final store = ContentStore(
+        service: widget.contentService,
+        locale: locale,
+        countryIsoCode: countryIsoCode,
+      );
       await store.update();
       var content = store.symptomChecker;
       await Dialogs.showUpgradeDialogIfNeededFor(context, content);

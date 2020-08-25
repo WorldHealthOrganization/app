@@ -427,6 +427,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.4"
+  observer_provider:
+    dependency: "direct main"
+    description:
+      name: observer_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1+2"
   package_config:
     dependency: transitive
     description:

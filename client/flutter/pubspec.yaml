@@ -53,6 +53,7 @@ dependencies:
   fl_chart: ^0.8.7
   notification_permissions: ^0.4.4
   expressions: 0.1.5
+  observer_provider: 0.0.1+2
 
   intl: ^0.16.0
   flutter_localizations:

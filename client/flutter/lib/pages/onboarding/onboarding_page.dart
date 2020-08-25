@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/pages/onboarding/country_list_page.dart';
 import 'package:who_app/pages/onboarding/country_select_page.dart';
@@ -11,9 +12,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key key, @required this.service}) : super(key: key);
+  const OnboardingPage({Key key, @required this.service, @required this.prefs})
+      : super(key: key);
 
   final WhoService service;
+  final UserPreferencesStore prefs;
 
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -80,7 +83,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: <Widget>[
           LegalLandingPage(onNext: () => _onLegalDone(store)),
           CountrySelectPage(
-            onOpenCountryList: _toNextPage,
+            onOpenCountryList: () async {
+              await setState(() {
+                _showCountryListPage = true;
+              });
+              await _toNextPage();
+            },
             onNext: _onChooseCountry,
             countryName: _selectedCountry?.name,
           ),
@@ -104,7 +112,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Future<void> _onChooseCountry() async {
-    await UserPreferences().setCountryIsoCode(_selectedCountry.alpha2Code);
+    await widget.prefs.setCountryIsoCode(_selectedCountry.alpha2Code);
     await setState(() {
       _showCountryListPage = false;
     });

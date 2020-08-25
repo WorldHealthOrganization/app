@@ -6,6 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 
+// TODO: Delete this class.  The use of this class directly by new UI code is discouraged.
+// Instead, rely on a Provider-supplied UserPreferencesStore and manipulate the properties therein.
+// To avoid inconsistencies, a user preference must be implemented either in this class
+// or UserPreferencesStore, but not both.
 class UserPreferences {
   static final UserPreferences _singleton = UserPreferences._internal();
 
@@ -112,16 +116,6 @@ class UserPreferences {
       await prefs.setInt(UserPreferenceKey.ExperimentCohort.toString(), cohort);
     }
     return cohort;
-  }
-
-  Future<bool> setCountryIsoCode(String value) async {
-    return (await SharedPreferences.getInstance())
-        .setString(UserPreferenceKey.CountryISOCode.toString(), value);
-  }
-
-  Future<String> getCountryIsoCode() async {
-    return (await SharedPreferences.getInstance())
-        .getString(UserPreferenceKey.CountryISOCode.toString());
   }
 }
 
