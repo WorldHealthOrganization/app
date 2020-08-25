@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/about_page.dart';
@@ -24,8 +25,10 @@ class Routes {
     '/home': (context) =>
         AppTabRouter(AppTabRouter.defaultTabs, AppTabRouter.defaultNavItems),
     '/about': (context) => AboutPage(),
-    '/onboarding': (context) =>
-        OnboardingPage(service: Provider.of<WhoService>(context)),
+    '/onboarding': (context) => OnboardingPage(
+          service: Provider.of<WhoService>(context),
+          prefs: Provider.of<UserPreferencesStore>(context),
+        ),
     '/travel-advice': (context) => TravelAdvice(
           dataSource: Provider.of<ContentStore>(context),
         ),

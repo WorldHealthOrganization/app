@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/cupertino.dart';
@@ -20,10 +19,10 @@ class ContentService {
 
   /// Load a localized content bundle loaded preferentially from the network, falling back
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
-  Future<ContentBundle> load(Locale locale, String name) async {
+  Future<ContentBundle> load(
+      Locale locale, String countryIsoCode, String name) async {
     var languageCode = locale.languageCode;
-    var countryCode =
-        (await UserPreferences().getCountryIsoCode()) ?? locale.countryCode;
+    var countryCode = countryIsoCode ?? locale.countryCode;
     var languageAndCountry = "${languageCode}_${countryCode}";
     var unsupportedSchemaVersionAvailable = false;
 

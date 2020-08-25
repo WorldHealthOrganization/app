@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:observer_provider/observer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -146,6 +148,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                     service: Endpoints.PROD_SERVICE,
                     staticContent: Endpoints.PROD_STATIC_CONTENT),
           ),
+          FutureProvider(
+            create: (_) => UserPreferencesStore.readFromSharedPreferences(),
+            initialData: UserPreferencesStore.empty(),
+          ),
           ProxyProvider(
               update: (_, Endpoint endpoint, __) => WhoService(
                     endpoint: endpoint.service,
@@ -170,9 +176,17 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               update: (_, Endpoint endpoint, __) => ContentService(
                     endpoint: endpoint.staticContent,
                   )),
-          ProxyProvider2(
-              update: (_, ContentService service, Locale locale, __) {
-            final ret = ContentStore(service: service, locale: locale);
+          ObserverProvider3(observerFn: (
+            _,
+            ContentService service,
+            Locale locale,
+            UserPreferencesStore prefs,
+          ) {
+            final ret = ContentStore(
+              service: service,
+              locale: locale,
+              countryIsoCode: prefs.countryIsoCode,
+            );
             ret.update();
             return ret;
           }),
