@@ -3,7 +3,8 @@ package who;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import present.rpc.ClientException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.regex.Pattern;
 import java.util.TreeSet;
@@ -12,6 +13,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 public class WhoServiceImpl implements WhoService {
   NotificationsManager nm;
+  private static final Logger logger = LoggerFactory.getLogger(WhoServiceImpl.class);
 
   @Inject WhoServiceImpl(NotificationsManager nm) {
     this.nm = nm;
@@ -50,8 +52,16 @@ public class WhoServiceImpl implements WhoService {
   // 10 mins
   private static final long STATS_TTL_SECONDS = 60 * 10;
 
+  // 36 hrs
+  private static final long STATS_TOO_OLD_MSEC = 1000 * 60 * 60 * 36;
+
   @Override public GetCaseStatsResponse getCaseStats(GetCaseStatsRequest request) throws IOException {
     CaseStats global = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+
+    if (global.lastUpdated < System.currentTimeMillis() - STATS_TOO_OLD_MSEC) {
+      // Log to watch on monitoring, but we'll still return results to the user.
+      logger.error("Case stats are too old - last updated at msec epoch: " + global.lastUpdated);
+    }
 
     // TODO(brunob): Add jurisdiction-specifc stats in response.
 

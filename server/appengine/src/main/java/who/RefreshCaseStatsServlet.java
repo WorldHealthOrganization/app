@@ -4,6 +4,8 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,18 +19,20 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RefreshCaseStatsServlet extends HttpServlet {
-  private static final String WHO_CASE_STATS_URL = "https://services.arcgis.com/5T5nSi527N4F7luB/arcgis/rest/services/COVID19_hist_cases_adm0_v5_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=";
-
+  private static final String WHO_CASE_STATS_URL = "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
+  private static final Logger logger = LoggerFactory.getLogger(RefreshCaseStatsServlet.class);
   private static final OkHttpClient HTTP_CLIENT = new OkHttpClient();
 
-  private String getDashboardContents() throws IOException {
+  private String getDashboardContents(int offset) throws IOException {
     Request request = new Request.Builder()
-        .url(WHO_CASE_STATS_URL)
+        // Safe because the value is an integer and does not need to be escaped
+        .url(WHO_CASE_STATS_URL + "&resultOffset=" + offset)
         .build();
     try (Response response = HTTP_CLIENT.newCall(request).execute()) {
       return response.body().string();
     }
   }
+
 
   @Override protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws IOException {
@@ -40,57 +44,70 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       return;
     }
 
-    String jsonString = getDashboardContents();
-
-    JsonObject root = new JsonParser().parse(jsonString).getAsJsonObject();
-
-    JsonArray rows = root.getAsJsonArray("features");
-
     long globalTotalCases = 0L, globalTotalDeaths = 0L;
     long lastUpdated = 0L;
-
+    int numItems = 0;
     Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
-    // Given that each row has heterogeneous elements, not sure there is much benefit
-    // to using gson with reflection here.
-    for (JsonElement feature : rows) {
 
-      JsonObject featureAsJsonObject = feature.getAsJsonObject();
-      JsonElement attributesElement = featureAsJsonObject.get("attributes");
+    while (true) {
+      String jsonString = getDashboardContents(numItems);
 
-      JsonObject attributes = attributesElement.getAsJsonObject();
+      JsonObject root = new JsonParser().parse(jsonString).getAsJsonObject();
 
-      long timestamp = attributes.get("date_epicrv").getAsLong();
-
-      if (timestamp>lastUpdated){
-        lastUpdated = timestamp;
+      JsonArray rows = root.getAsJsonArray("features");
+      if (rows == null || rows.size() == 0) {
+        break;
+      }
+      numItems += rows.size();
+      if (numItems > 100000) {
+        // We may no longer be able to process this in the 30-seconds allocated to cron requests.
+        logger.error("Ending processing - Will not update stats - More than 100000 features returned by ArcGIS endpoint.");
+        // Throw a 500.
+        throw new RuntimeException("Ending processing - Will not update stats - More than 100000 features returned by ArcGIS endpoint.");
       }
 
-      long dailyDeaths = attributes.get("NewDeath").getAsLong();
+      // Given that each row has heterogeneous elements, not sure there is much benefit
+      // to using gson with reflection here.
+      for (JsonElement feature : rows) {
 
-      long totalDeaths = attributes.get("CumDeath").getAsLong();
+        JsonObject featureAsJsonObject = feature.getAsJsonObject();
+        JsonElement attributesElement = featureAsJsonObject.get("attributes");
 
-      long dailyCases = attributes.get("NewCase").getAsLong();
+        JsonObject attributes = attributesElement.getAsJsonObject();
 
-      long totalCases = attributes.get("CumCase").getAsLong();
+        long timestamp = attributes.get("date_epicrv").getAsLong();
 
-      globalTotalCases += dailyCases;
-      globalTotalDeaths += dailyDeaths;
+        if (timestamp>lastUpdated){
+          lastUpdated = timestamp;
+        }
 
-      StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(timestamp);
+        long dailyDeaths = attributes.get("NewDeath").getAsLong();
 
-      if (snapshot == null) {
-        snapshot = new StoredCaseStats.StoredStatSnapshot();
-        snapshot.epochMsec = timestamp;
-        snapshot.dailyCases = 0L;
-        snapshot.dailyDeaths = 0L;
-        snapshot.totalCases = 0L;
-        snapshot.totalDeaths = 0L;
-        globalSnapshots.put(timestamp, snapshot);
+        long totalDeaths = attributes.get("CumDeath").getAsLong();
+
+        long dailyCases = attributes.get("NewCase").getAsLong();
+
+        long totalCases = attributes.get("CumCase").getAsLong();
+
+        globalTotalCases += dailyCases;
+        globalTotalDeaths += dailyDeaths;
+
+        StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(timestamp);
+
+        if (snapshot == null) {
+          snapshot = new StoredCaseStats.StoredStatSnapshot();
+          snapshot.epochMsec = timestamp;
+          snapshot.dailyCases = 0L;
+          snapshot.dailyDeaths = 0L;
+          snapshot.totalCases = 0L;
+          snapshot.totalDeaths = 0L;
+          globalSnapshots.put(timestamp, snapshot);
+        }
+        snapshot.dailyCases += dailyCases;
+        snapshot.dailyDeaths += dailyDeaths;
+        snapshot.totalCases += totalCases;
+        snapshot.totalDeaths += totalDeaths;
       }
-      snapshot.dailyCases += dailyCases;
-      snapshot.dailyDeaths += dailyDeaths;
-      snapshot.totalCases += totalCases;
-      snapshot.totalDeaths += totalDeaths;
     }
 
     CaseStats.Builder global = new CaseStats.Builder()
