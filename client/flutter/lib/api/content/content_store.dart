@@ -6,8 +6,8 @@ import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
+import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
-import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -46,7 +46,7 @@ abstract class _ContentStore with Store implements Updateable {
         learnIndex,
         newsIndex,
         questionsAnswered,
-        symptomChecker,
+        symptomPoster,
       ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
 
   @observable
@@ -74,7 +74,7 @@ abstract class _ContentStore with Store implements Updateable {
   QuestionContent questionsAnswered;
 
   @observable
-  SymptomCheckerContent symptomChecker;
+  PosterContent symptomPoster;
 
   @action
   Future<void> update() async {
@@ -86,6 +86,7 @@ abstract class _ContentStore with Store implements Updateable {
     print('ContentStore update');
 
     logicContext = await LogicContext.generate(isoCountryCode: countryIsoCode);
+
     // Note the logic enforcing that only *newer* versions replace older versions in
     // the *cache* must be enforced elsewhere.
     final travelAdvice2 = AdviceContent(
@@ -130,11 +131,11 @@ abstract class _ContentStore with Store implements Updateable {
         questionsAnswered2?.bundle?.contentVersion) {
       questionsAnswered = questionsAnswered2;
     }
-    final symptomChecker2 = SymptomCheckerContent(
-        await service.load(locale, countryIsoCode, 'symptom_checker'));
-    if (symptomChecker?.bundle?.contentVersion !=
-        symptomChecker2?.bundle?.contentVersion) {
-      symptomChecker = symptomChecker2;
+    final symptomPoster2 = PosterContent(
+        await service.load(locale, countryIsoCode, 'symptom_poster'));
+    if (symptomPoster?.bundle?.contentVersion !=
+        symptomPoster2?.bundle?.contentVersion) {
+      symptomPoster = symptomPoster2;
     }
   }
 }
