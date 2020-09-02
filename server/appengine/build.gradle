@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.googlecode.objectify:objectify:5.1.22'
 
     // Force older version of okio
-    implementation 'com.squareup.okio:okio:1.13.0'
+    implementation 'com.squareup.okio:okio:2.8.0'
 
     implementation deps.gson
     implementation deps.wire.gson
