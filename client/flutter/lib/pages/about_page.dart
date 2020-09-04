@@ -122,7 +122,6 @@ class AboutPage extends StatelessWidget {
                       "David Kaneda",
                       "Dean Hachamovitch",
                       "Hunter Spinks",
-                      "Jessica Ladd",
                       "Karen Wong",
                     ];
                     strategyTeam.sort((x, y) => (orderSign *
