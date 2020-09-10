@@ -80,7 +80,8 @@ abstract class _ContentStore with Store implements Updateable {
       T Function(ContentBundle) constructor, void Function(T) setter) async {
     final newValue =
         constructor(await service.load(locale, countryIsoCode, name));
-    if (newValue?.bundle?.contentVersion != old?.bundle?.contentVersion) {
+    if ((newValue?.bundle?.contentVersion ?? 0) >
+        (old?.bundle?.contentVersion ?? 0)) {
       setter(newValue);
     }
   }
