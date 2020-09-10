@@ -1,14 +1,14 @@
 schema_version: 1
-content_version: 3
+content_version: 4
 contents:
   type: index
   promos:
     -
-      promo_type: check_your_symptoms
-      title: Track Your Symptoms
-      subtitle: Keep track of how you're feeling to stay on top of your health
-      button_text: Track Now
-      href: /symptom-checker
+      promo_type: protect_yourself
+      title: Protect yourself
+      subtitle: Learn how to keep yourself safe during this pandemic.
+      button_text: Learn more
+      href: /protect-yourself
       image_name: undraw-home-promo-symptoms
   items:
     -

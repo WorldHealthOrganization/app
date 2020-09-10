@@ -21,31 +21,59 @@ class ContentService {
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
   Future<ContentBundle> load(
       Locale locale, String countryIsoCode, String name) async {
-    var languageCode = locale.languageCode;
-    var countryCode = countryIsoCode ?? locale.countryCode;
-    var languageAndCountry = "${languageCode}_${countryCode}";
+    final languageCode = locale.languageCode;
+    final countryCode = countryIsoCode ?? locale.countryCode;
+    final languageAndCountry = "${languageCode}_${countryCode}";
     var unsupportedSchemaVersionAvailable = false;
+
+    ContentBundle networkBundle;
 
     // Attempt to load the full language and country path from the network.
     // The content server contains linked / duplicated paths as needed such that
     // no explicit fallback to language-only is required.
     if (networkLoadingEnabled) {
       try {
-        return await _loadFromNetwork(name, languageAndCountry);
+        networkBundle = await _loadFromNetwork(name, languageAndCountry);
       } catch (err) {
-        print("Network bundle for $languageAndCountry not found: $err");
+        print(
+            "Loading $name : Network bundle for $languageAndCountry not found: $err");
         if (err is ContentBundleSchemaVersionException) {
           unsupportedSchemaVersionAvailable = true;
         }
       }
     }
 
+    final localBundle = await _loadFromAssetsWithFallback(name,
+        languageAndCountry, unsupportedSchemaVersionAvailable, languageCode);
+
+    if (localBundle == null && networkBundle == null) {
+      // No bundle found.
+      throw ContentBundleNotFoundException(
+          "Loading $name : Content bundle not found");
+    } else if ((networkBundle?.contentVersion ?? 0) >
+        (localBundle?.contentVersion ?? 0)) {
+      print(
+          "Loading $name : Using #network bundle v${networkBundle?.contentVersion ?? 0} instead of local v${localBundle?.contentVersion ?? 0}");
+      return networkBundle;
+    } else {
+      print(
+          "Loading $name : Using *local bundle v${localBundle?.contentVersion ?? 0} instead of network v${networkBundle?.contentVersion ?? 0}");
+      return localBundle;
+    }
+  }
+
+  Future<ContentBundle> _loadFromAssetsWithFallback(
+      String name,
+      String languageAndCountry,
+      bool unsupportedSchemaVersionAvailable,
+      String languageCode) async {
     // Attempt to load the full language and country path from local resources.
     try {
       return await _loadFromAssets(
           name, languageAndCountry, unsupportedSchemaVersionAvailable);
     } catch (err) {
-      print("Local asset bundle for $languageAndCountry not found: $err");
+      print(
+          "Loading $name : Local asset bundle for $languageAndCountry not found: $err");
     }
 
     // Attempt to load the language-only path from local resources.
@@ -53,7 +81,8 @@ class ContentService {
       return await _loadFromAssets(
           name, languageCode, unsupportedSchemaVersionAvailable);
     } catch (err) {
-      print("Local asset bundle for $languageCode not found: $err");
+      print(
+          "Loading $name : Local asset bundle for $languageCode not found: $err");
     }
 
     // Attempt to load the English bundle from local resources.
@@ -61,12 +90,10 @@ class ContentService {
       return await _loadFromAssets(
           name, 'en', unsupportedSchemaVersionAvailable);
     } catch (err) {
-      print("Local asset bundle for $languageCode not found: $err");
+      print("Loading $name : Local asset bundle for en not found: $err");
     }
 
-    // No bundle found.
-    throw ContentBundleNotFoundException(
-        "Content bundle not found for name: $name");
+    return null;
   }
 
   /// Load a localized content bundle from the network, throwing an exception if not found.

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
+import 'package:who_app/main.dart';
 
 // TODO: Delete this class.  The use of this class directly by new UI code is discouraged.
 // Instead, rely on a Provider-supplied UserPreferencesStore and manipulate the properties therein.
@@ -18,6 +19,18 @@ class UserPreferences {
   }
 
   UserPreferences._internal();
+
+  Future<String> getLastRunVersion() async {
+    return (await SharedPreferences.getInstance())
+            .getString(UserPreferenceKey.LastRunVersion.toString()) ??
+        false;
+  }
+
+  Future<bool> setLastRunVersion() async {
+    return (await SharedPreferences.getInstance()).setString(
+        UserPreferenceKey.LastRunVersion.toString(),
+        '${packageInfo.version}+${packageInfo.buildNumber}');
+  }
 
   /// Was the user shown the introductory pages as part of onboarding
   Future<bool> getOnboardingCompleted() async {
@@ -129,4 +142,5 @@ enum UserPreferenceKey {
   FirebaseToken,
   CountryISOCode,
   ExperimentCohort,
+  LastRunVersion,
 }
