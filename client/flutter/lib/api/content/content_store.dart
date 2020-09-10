@@ -76,6 +76,16 @@ abstract class _ContentStore with Store implements Updateable {
   @observable
   PosterContent symptomPoster;
 
+  Future<void> updateBundle<T extends ContentBase>(String name, T old,
+      T Function(ContentBundle) constructor, void Function(T) setter) async {
+    final newValue =
+        constructor(await service.load(locale, countryIsoCode, name));
+    if ((newValue?.bundle?.contentVersion ?? 0) >
+        (old?.bundle?.contentVersion ?? 0)) {
+      setter(newValue);
+    }
+  }
+
   @action
   Future<void> update() async {
     // TODO: UserPreferences should be injected dependency.
@@ -89,53 +99,39 @@ abstract class _ContentStore with Store implements Updateable {
 
     // Note the logic enforcing that only *newer* versions replace older versions in
     // the *cache* must be enforced elsewhere.
-    final travelAdvice2 = AdviceContent(
-        await service.load(locale, countryIsoCode, 'travel_advice'));
-    if (travelAdvice?.bundle?.contentVersion !=
-        travelAdvice2?.bundle?.contentVersion) {
-      travelAdvice = travelAdvice2;
-    }
-    final getTheFacts2 = FactContent(
-        await service.load(locale, countryIsoCode, 'get_the_facts'));
-    if (getTheFacts?.bundle?.contentVersion !=
-        getTheFacts2?.bundle?.contentVersion) {
-      getTheFacts = getTheFacts2;
-    }
-    final protectYourself2 = FactContent(
-        await service.load(locale, countryIsoCode, 'protect_yourself'));
-    if (protectYourself?.bundle?.contentVersion !=
-        protectYourself2?.bundle?.contentVersion) {
-      protectYourself = protectYourself2;
-    }
-    final homeIndex2 =
-        IndexContent(await service.load(locale, countryIsoCode, 'home_index'));
-    if (homeIndex?.bundle?.contentVersion !=
-        homeIndex2?.bundle?.contentVersion) {
-      homeIndex = homeIndex2;
-    }
-    final learnIndex2 =
-        IndexContent(await service.load(locale, countryIsoCode, 'learn_index'));
-    if (learnIndex?.bundle?.contentVersion !=
-        learnIndex2?.bundle?.contentVersion) {
-      learnIndex = learnIndex2;
-    }
-    final newsIndex2 =
-        IndexContent(await service.load(locale, countryIsoCode, 'news_index'));
-    if (newsIndex?.bundle?.contentVersion !=
-        newsIndex2?.bundle?.contentVersion) {
-      newsIndex = newsIndex2;
-    }
-    final questionsAnswered2 = QuestionContent(
-        await service.load(locale, countryIsoCode, 'your_questions_answered'));
-    if (questionsAnswered?.bundle?.contentVersion !=
-        questionsAnswered2?.bundle?.contentVersion) {
-      questionsAnswered = questionsAnswered2;
-    }
-    final symptomPoster2 = PosterContent(
-        await service.load(locale, countryIsoCode, 'symptom_poster'));
-    if (symptomPoster?.bundle?.contentVersion !=
-        symptomPoster2?.bundle?.contentVersion) {
-      symptomPoster = symptomPoster2;
-    }
+    await Future.wait([
+      updateBundle<IndexContent>(
+          'home_index', homeIndex, (cb) => IndexContent(cb), (v) {
+        homeIndex = v;
+      }),
+      updateBundle<AdviceContent>(
+          'travel_advice', travelAdvice, (cb) => AdviceContent(cb), (v) {
+        travelAdvice = v;
+      }),
+      updateBundle<FactContent>(
+          'get_the_facts', getTheFacts, (cb) => FactContent(cb), (v) {
+        getTheFacts = v;
+      }),
+      updateBundle<FactContent>(
+          'protect_yourself', protectYourself, (cb) => FactContent(cb), (v) {
+        protectYourself = v;
+      }),
+      updateBundle<IndexContent>(
+          'learn_index', learnIndex, (cb) => IndexContent(cb), (v) {
+        learnIndex = v;
+      }),
+      updateBundle<IndexContent>(
+          'news_index', newsIndex, (cb) => IndexContent(cb), (v) {
+        newsIndex = v;
+      }),
+      updateBundle<QuestionContent>('your_questions_answered',
+          questionsAnswered, (cb) => QuestionContent(cb), (v) {
+        questionsAnswered = v;
+      }),
+      updateBundle<PosterContent>(
+          'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
+        symptomPoster = v;
+      })
+    ]);
   }
 }

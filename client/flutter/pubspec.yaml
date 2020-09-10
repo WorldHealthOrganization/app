@@ -54,6 +54,7 @@ dependencies:
   notification_permissions: ^0.4.4
   expressions: 0.1.5
   observer_provider: 0.0.1+2
+  connectivity: '>=0.4.9+2 <2.0.0'
 
   intl: ^0.16.0
   flutter_localizations:
