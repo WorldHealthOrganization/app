@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter_html/rich_text_parser.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class LegalLandingPage extends StatelessWidget {
@@ -78,7 +78,7 @@ class LegalLandingPage extends StatelessWidget {
                         style: TextStyle(decoration: TextDecoration.underline),
                         url:
                             S.of(context).legalLandingPageTermsOfServiceLinkUrl,
-                        onLinkTap: (v) => launch(v),
+                        onLinkTap: (v) => launchUrl(v),
                       ),
                       TextSpan(text: S.of(context).legalLandingPageAnd),
                       LinkTextSpan(
@@ -86,7 +86,7 @@ class LegalLandingPage extends StatelessWidget {
                             S.of(context).legalLandingPagePrivacyPolicyLinkText,
                         style: TextStyle(decoration: TextDecoration.underline),
                         url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
-                        onLinkTap: (v) => launch(v),
+                        onLinkTap: (v) => launchUrl(v),
                       ),
                       TextSpan(text: "."),
                     ],

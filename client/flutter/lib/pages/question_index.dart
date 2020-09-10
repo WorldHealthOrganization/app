@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -9,7 +10,6 @@ import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:who_app/pages/main_pages/routes.dart';
 
@@ -159,7 +159,7 @@ class _QuestionTileState extends State<QuestionTile>
         color: Colors.deepPurple,
       ),
       onLinkTap: (url) {
-        launch(url, forceSafariVC: false);
+        launchUrl(url);
       },
       onImageTap: (src) {},
       // This is our css :)

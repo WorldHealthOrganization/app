@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/button.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -11,7 +12,6 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/build.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/main.dart';
 import 'package:who_app/pages/license_page.dart' as who;
 import 'package:who_app/pages/main_pages/routes.dart';
@@ -33,13 +33,13 @@ class AboutPage extends StatelessWidget {
 
     Future<void> _openTermsOfService(BuildContext context) async {
       final String url = S.of(context).aboutPageTermsOfServiceLinkUrl;
-      await launch(url);
+      await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'TermsOfService');
     }
 
     Future<void> _openPrivacyPolicy(BuildContext context) async {
       final String url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
-      await launch(url);
+      await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
     }
 
@@ -130,7 +130,7 @@ class AboutPage extends StatelessWidget {
                     team.sort(
                         (x, y) => x.toLowerCase().compareTo(y.toLowerCase()));
                     var teamNames = S.of(context).aboutPageThanksToText(
-                        '${strategyTeam.join(", ")}; and\n\n${team.join(", ")}');
+                        '${strategyTeam.join(", ")}; and ${team.join(", ")}');
                     return ThemedText(
                       teamNames,
                       variant: TypographyVariant.body,

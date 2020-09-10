@@ -2,7 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/dialogs.dart';
@@ -110,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage>
   Future<void> _provideFeedback() async {
     const String issueUrl =
         'https://github.com/WorldHealthOrganization/app/issues/new/choose';
-    await launch(issueUrl);
+    await launchUrl(issueUrl);
   }
 
   @override
