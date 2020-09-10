@@ -5,7 +5,7 @@ import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/constants.dart';
-import 'package:who_app/pages/main_pages/check_up_intro_page.dart';
+import 'package:who_app/pages/main_pages/check_up_poster_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
@@ -17,7 +17,9 @@ class AppTabRouter extends StatelessWidget {
     (context) => HomePage(
           dataSource: Provider.of<ContentStore>(context),
         ),
-    (context) => CheckUpIntroPage(),
+    (context) => CheckUpPosterPage(
+          dataSource: Provider.of<ContentStore>(context),
+        ),
     (context) => LearnPage(
           dataSource: Provider.of<ContentStore>(context),
         ),

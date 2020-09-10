@@ -1,0 +1,11 @@
+schema_version: 1
+content_version: 1
+contents:
+  type: poster
+  items:
+    - title: TODO
+      body_html: <p><ul><li>TODO</li><li>TODO</li><li>TODO</li></ol></p><p>TODO</p>
+      icon_name: monitor
+      severe: true
+    - title: TODO
+      icon_name: monitor
