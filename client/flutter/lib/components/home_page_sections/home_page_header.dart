@@ -145,6 +145,7 @@ class _LogoRow extends StatelessWidget {
           children: <Widget>[
             Container(
               width: 112.0,
+              height: 34.0,
               child: SvgPicture.asset('assets/svg/who-logo-white.svg'),
             ),
             Container(
