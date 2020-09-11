@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en_US locale. All the
+// This is a library that provides messages for a en locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -152,9 +152,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
         "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
             "Official WHO COVID-19 Information App"),
-        "locationSharingPageBackgroundImage":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/onboarding/onboarding_location.png"),
         "locationSharingPageButton":
             MessageLookupByLibrary.simpleMessage("Allow Location Sharing"),
         "locationSharingPageDescription": MessageLookupByLibrary.simpleMessage(
@@ -173,18 +170,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsFeedSliverListNewsFeedItemDescription4":
             MessageLookupByLibrary.simpleMessage(
                 "Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts."),
-        "newsFeedSliverListNewsFeedItemImagePath1":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/news_situation_reports.png"),
-        "newsFeedSliverListNewsFeedItemImagePath2":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/rolling_updates.png"),
-        "newsFeedSliverListNewsFeedItemImagePath3":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/news_articles.png"),
-        "newsFeedSliverListNewsFeedItemImagePath4":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/press_briefings.png"),
         "newsFeedSliverListNewsFeedItemTitle1":
             MessageLookupByLibrary.simpleMessage("Situation Reports"),
         "newsFeedSliverListNewsFeedItemTitle2":
@@ -210,9 +195,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Open Settings"),
         "notificationsEnableDialogText": MessageLookupByLibrary.simpleMessage(
             "As you\'ve previously disabled notifications, we\'ll need you to manually re-enable notifications via the system settings for the app"),
-        "notificationsPagePermissionRequestBackgroundImage":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/onboarding/onboarding_notifications.png"),
         "notificationsPagePermissionRequestPageButton":
             MessageLookupByLibrary.simpleMessage("Allow Notifications"),
         "notificationsPagePermissionRequestPageDescription":
@@ -249,16 +231,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "travelAdvicePageButtonGeneralRecommendationsLink":
             MessageLookupByLibrary.simpleMessage(
                 "https://www.who.int/emergencies/diseases/novel-coronavirus-2019"),
-        "travelAdvicePageListItem1Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/self-monitor.png"),
         "travelAdvicePageListItem1Text": MessageLookupByLibrary.simpleMessage(
             "Self-monitor for symptoms for 14 days and follow national protocols of receiving countries."),
-        "travelAdvicePageListItem2Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/quarantine.png"),
         "travelAdvicePageListItem2Text": MessageLookupByLibrary.simpleMessage(
             "Some countries may require returning travellers to enter quarantine."),
-        "travelAdvicePageListItem3Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/doctor.png"),
         "travelAdvicePageListItem3Text": MessageLookupByLibrary.simpleMessage(
             "If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history."),
         "travelAdvicePageListTitle": MessageLookupByLibrary.simpleMessage(

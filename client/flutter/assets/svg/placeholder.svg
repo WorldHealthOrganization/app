@@ -1,9 +1,0 @@
-<svg width="145" height="145" viewBox="0 0 145 145" xmlns="http://www.w3.org/2000/svg">
-    <text x="20" y="20" style="font-weight: bold; font-size: 20px">Placeholder</text>
-    <text x="40" y="40" style="font-weight: bold; font-size: 20px">image</text>
-    <text x="5" y="60" style="font-weight: bold; font-size: 12px">this asset is replaced</text>
-    <text x="5" y="70" style="font-weight: bold; font-size: 12px">in the final build with</text>
-    <text x="5" y="82" style="font-weight: bold; font-size: 12px">assets that have the</text>
-    <text x="5" y="94" style="font-weight: bold; font-size: 12px">exact same dimensions</text>
-    <rect width="145" height="145" style="fill:none; stroke-width: 3px; stroke: purple"></rect>
-</svg>

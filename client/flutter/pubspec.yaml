@@ -75,9 +75,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/animations/
-    - assets/news_press/
     - assets/onboarding/
-    - assets/travel_advice/
     - assets/content_bundles/
 
 flutter_intl:

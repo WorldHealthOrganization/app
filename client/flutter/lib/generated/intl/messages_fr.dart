@@ -140,9 +140,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
         "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
             "Application Officielle COVID-19 de l\'OMS"),
-        "locationSharingPageBackgroundImage":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/onboarding/onboarding_location.png"),
         "locationSharingPageButton": MessageLookupByLibrary.simpleMessage(
             "Activer le partage de localisation"),
         "locationSharingPageDescription": MessageLookupByLibrary.simpleMessage(
@@ -161,18 +158,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "newsFeedSliverListNewsFeedItemDescription4":
             MessageLookupByLibrary.simpleMessage(
                 "Conférences de presse sur la maladie à coronavirus (COVID-19) avec des contenus audio-visuels et des transcriptions."),
-        "newsFeedSliverListNewsFeedItemImagePath1":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/news_situation_reports.png"),
-        "newsFeedSliverListNewsFeedItemImagePath2":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/rolling_updates.png"),
-        "newsFeedSliverListNewsFeedItemImagePath3":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/news_articles.png"),
-        "newsFeedSliverListNewsFeedItemImagePath4":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/news_press/press_briefings.png"),
         "newsFeedSliverListNewsFeedItemTitle1":
             MessageLookupByLibrary.simpleMessage("Rapports de situation"),
         "newsFeedSliverListNewsFeedItemTitle2":
@@ -191,9 +176,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings"),
         "newsFeedTitle":
             MessageLookupByLibrary.simpleMessage("Actualités et presse"),
-        "notificationsPagePermissionRequestBackgroundImage":
-            MessageLookupByLibrary.simpleMessage(
-                "assets/onboarding/onboarding_notifications.png"),
         "notificationsPagePermissionRequestPageButton":
             MessageLookupByLibrary.simpleMessage("Autoriser les notifications"),
         "notificationsPagePermissionRequestPageDescription":
@@ -231,16 +213,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "travelAdvicePageButtonGeneralRecommendationsLink":
             MessageLookupByLibrary.simpleMessage(
                 "https://www.who.int/emergencies/diseases/novel-coronavirus-2019"),
-        "travelAdvicePageListItem1Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/self-monitor.png"),
         "travelAdvicePageListItem1Text": MessageLookupByLibrary.simpleMessage(
             "Surveiller l\'apparition de symptômes pendant 14 jours et respecter les protocoles nationaux des pays d\'accueil."),
-        "travelAdvicePageListItem2Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/quarantine.png"),
         "travelAdvicePageListItem2Text": MessageLookupByLibrary.simpleMessage(
             "Certains pays peuvent exiger des voyageurs de retour de l\'étranger d\'être placés en quarantaine."),
-        "travelAdvicePageListItem3Image": MessageLookupByLibrary.simpleMessage(
-            "assets/travel_advice/doctor.png"),
         "travelAdvicePageListItem3Text": MessageLookupByLibrary.simpleMessage(
             "En cas de survenue de symptômes, les voyageurs sont invités à contacter les professionnels de santé locaux, de préférence par téléphone, et de les informer de leurs symptômes et de leur historique de voyage."),
         "travelAdvicePageListTitle": MessageLookupByLibrary.simpleMessage(
