@@ -14,6 +14,7 @@ class PageHeader extends StatelessWidget {
   final Widget trailing;
 
   final bool showBackButton;
+  final bool primary;
 
   PageHeader({
     @required this.title,
@@ -24,6 +25,7 @@ class PageHeader extends StatelessWidget {
     this.appBarColor,
     this.inSliver = true,
     this.trailing,
+    this.primary = true,
   });
 
   @override
@@ -56,6 +58,7 @@ class PageHeader extends StatelessWidget {
             shape: bottomBorder,
             elevation: 0,
             pinned: true,
+            primary: primary,
           )
         : AppBar(
             centerTitle: false,
@@ -67,6 +70,7 @@ class PageHeader extends StatelessWidget {
             actions: actions,
             shape: bottomBorder,
             elevation: 0,
+            primary: primary,
           );
   }
 
