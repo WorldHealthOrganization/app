@@ -25,8 +25,9 @@ jobs:
           FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
           python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
-  doc_formatting:
-    name: Documentation formatting
+  formatting:
+    # Dart is handled in the client CI
+    name: Prettier Formatting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,5 +36,6 @@ jobs:
           node-version: 12
       - run: npm install
         working-directory: ./tools
+      # Match the tools/.lintstagedrc.json file
       - run: npx prettier -c '../**/*.md'
         working-directory: ./tools
