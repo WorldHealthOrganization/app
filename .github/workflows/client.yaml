@@ -1,26 +1,26 @@
 name: Client CI
 env:
-  FLUTTER_VERSION: '1.20.2'
+  FLUTTER_VERSION: "1.20.2"
 on:
   push:
     paths:
-      - '.github/workflows/**'
-      - 'api/**'
-      - 'client/app/**'
-      - 'client/flutter/**'
-      - 'content/**'
-      - 'tools/**'
-      - 'LICENSE'
+      - ".github/workflows/**"
+      - "api/**"
+      - "client/app/**"
+      - "client/flutter/**"
+      - "content/**"
+      - "tools/**"
+      - "LICENSE"
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
-      - '.github/workflows/**'
-      - 'api/**'
-      - 'client/app/**'
-      - 'client/flutter/**'
-      - 'content/**'
-      - 'tools/**'
-      - 'LICENSE'
+      - ".github/workflows/**"
+      - "api/**"
+      - "client/app/**"
+      - "client/flutter/**"
+      - "content/**"
+      - "tools/**"
+      - "LICENSE"
 jobs:
   test:
     name: Test client on ${{ matrix.os }}
@@ -36,7 +36,7 @@ jobs:
         working-directory: ./client/app
       - run: flutter analyze --no-pub
         working-directory: ./client/app
-      - run: flutter format lib/** --set-exit-if-changed 
+      - run: flutter format lib/** --set-exit-if-changed
         working-directory: ./client/app
       - run: flutter test --no-pub
         working-directory: ./client/app
@@ -85,7 +85,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: "12.x"
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
@@ -112,7 +112,7 @@ jobs:
       github.ref == 'refs/heads/master' &&
       github.event_name == 'push'
     env:
-      FIREBASE_STAGING_APP_ID: '1:1057717871229:android:4fbe832a3de230450dc714'
+      FIREBASE_STAGING_APP_ID: "1:1057717871229:android:4fbe832a3de230450dc714"
       LOG_URL: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
     steps:
       - uses: actions/checkout@v2

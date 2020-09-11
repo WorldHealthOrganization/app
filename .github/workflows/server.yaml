@@ -3,19 +3,19 @@ name: Server CI
 on:
   push:
     paths:
-      - '.github/workflows/**'
-      - 'content/**'
-      - 'api/**'
-      - 'server/**'
-      - 'tools/**'
+      - ".github/workflows/**"
+      - "content/**"
+      - "api/**"
+      - "server/**"
+      - "tools/**"
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
-      - '.github/workflows/**'
-      - 'content/**'
-      - 'api/**'
-      - 'server/**'
-      - 'tools/**'
+      - ".github/workflows/**"
+      - "content/**"
+      - "api/**"
+      - "server/**"
+      - "tools/**"
 
 jobs:
   test:
@@ -25,14 +25,14 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '12.0.2'
-        architecture: x86
-    - uses: gradle/wrapper-validation-action@v1
-    - run: ./gradlew test
-      working-directory: server
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.0.2"
+          architecture: x86
+      - uses: gradle/wrapper-validation-action@v1
+      - run: ./gradlew test
+        working-directory: server
   deploy_to_appengine_staging:
     # Only push if tests are successful
     needs: test
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.0.2'
+          java-version: "12.0.2"
           architecture: x86
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.2
       - run: gcloud components install beta app-engine-java && gcloud components update

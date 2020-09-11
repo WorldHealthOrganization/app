@@ -7,15 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ForwardingServlet extends HttpServlet {
-
   private final String path;
 
   private ForwardingServlet(String path) {
     this.path = path;
   }
 
-  @Override protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  @Override
+  protected void doGet(
+    HttpServletRequest request,
+    HttpServletResponse response
+  )
+    throws ServletException, IOException {
     request.getRequestDispatcher(path).forward(request, response);
   }
 

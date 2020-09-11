@@ -11,12 +11,14 @@ import present.rpc.RpcInterceptorChain;
  *
  * @author Bob Lee
  */
-@Singleton public class WhoRpcFilter extends RpcFilter  {
+@Singleton
+public class WhoRpcFilter extends RpcFilter {
 
-  @Inject WhoRpcFilter(WhoServiceImpl service) {
+  @Inject
+  WhoRpcFilter(WhoServiceImpl service) {
     RpcInterceptorChain chain = new RpcInterceptorChain()
-        .add(new ClientInterceptor());
-    
+    .add(new ClientInterceptor());
+
     if (!Environment.isProduction()) {
       chain = chain.add(new LoggingInterceptor());
     }

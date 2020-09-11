@@ -1,4 +1,4 @@
 cron:
-- description: "refresh case stats from WHO dashboard"
-  url: /internal/cron/refreshCaseStats
-  schedule: every 5 minutes
+  - description: "refresh case stats from WHO dashboard"
+    url: /internal/cron/refreshCaseStats
+    schedule: every 5 minutes

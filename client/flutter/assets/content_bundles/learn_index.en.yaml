@@ -3,26 +3,21 @@ content_version: 3
 contents:
   type: index
   promos:
-    -
-      title: Get the Facts
+    - title: Get the Facts
       subtitle: Busting myths about COVID-19
       button_text: View
       href: /get-the-facts
       image_name: undraw-learn-promo
   items:
-    -
-      title: Travel Advice
+    - title: Travel Advice
       href: /travel-advice
       image_name: undraw-learn-travel-advice
-    -
-      title: Protect Yourself
+    - title: Protect Yourself
       href: /protect-yourself
       image_name: undraw-learn-protect-yourself
-    -
-      title: Questions & Answers
+    - title: Questions & Answers
       href: /qa
       image_name: undraw-learn-qa
-    -
-      title: News & Press
+    - title: News & Press
       href: /news
       image_name: undraw-learn-news-press

@@ -58,7 +58,6 @@ limitPerRun: 30
 # Optionally, specify configuration settings that are specific to just 'issues' or 'pulls':
 pulls:
   daysUntilStale: 7
-
 # issues:
 #   exemptLabels:
 #     - confirmed
