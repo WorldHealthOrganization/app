@@ -2,7 +2,19 @@
   "../**/*.md": [
     "prettier --write"
   ],
-  "../client/**/*.dart": [
+  "../**/*.yaml": [
+    "prettier --write"
+  ],
+  "../**/*.yml": [
+    "prettier --write"
+  ],
+  "../**/*.js": [
+    "prettier --write"
+  ],
+  "../**/*.java": [
+    "prettier --write"
+  ],
+  "../**/*.dart": [
     "flutter format"
   ],
   "../client/**": [
