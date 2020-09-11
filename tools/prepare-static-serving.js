@@ -10,7 +10,8 @@ try {
   throw e;
 }
 
-const countries = doc.countries.map((x) => x.alpha_2_code);
+const countries = doc.countries.map((x) => 
+x.alpha_2_code);
 console.log(countries);
 
 const srcPath = __dirname + '/../client/flutter/assets/content_bundles';
