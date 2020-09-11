@@ -209,15 +209,6 @@ class S {
     );
   }
 
-  String get locationSharingPageBackgroundImage {
-    return Intl.message(
-      'assets/onboarding/onboarding_location.png',
-      name: 'locationSharingPageBackgroundImage',
-      desc: '',
-      args: [],
-    );
-  }
-
   String get notificationsPagePermissionRequestPageTitle {
     return Intl.message(
       'Stay up to date on COVID-19',
@@ -240,15 +231,6 @@ class S {
     return Intl.message(
       'Allow Notifications',
       name: 'notificationsPagePermissionRequestPageButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get notificationsPagePermissionRequestBackgroundImage {
-    return Intl.message(
-      'assets/onboarding/onboarding_notifications.png',
-      name: 'notificationsPagePermissionRequestBackgroundImage',
       desc: '',
       args: [],
     );
@@ -560,15 +542,6 @@ class S {
     );
   }
 
-  String get travelAdvicePageListItem1Image {
-    return Intl.message(
-      'assets/travel_advice/self-monitor.png',
-      name: 'travelAdvicePageListItem1Image',
-      desc: '',
-      args: [],
-    );
-  }
-
   String get travelAdvicePageListItem2Text {
     return Intl.message(
       'Some countries may require returning travellers to enter quarantine.',
@@ -578,28 +551,10 @@ class S {
     );
   }
 
-  String get travelAdvicePageListItem2Image {
-    return Intl.message(
-      'assets/travel_advice/quarantine.png',
-      name: 'travelAdvicePageListItem2Image',
-      desc: '',
-      args: [],
-    );
-  }
-
   String get travelAdvicePageListItem3Text {
     return Intl.message(
       'If symptoms occur, travellers are advised to contact local health care providers, preferably by phone, and inform them of their symptoms and travel history.',
       name: 'travelAdvicePageListItem3Text',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get travelAdvicePageListItem3Image {
-    return Intl.message(
-      'assets/travel_advice/doctor.png',
-      name: 'travelAdvicePageListItem3Image',
       desc: '',
       args: [],
     );
@@ -803,15 +758,6 @@ class S {
     );
   }
 
-  String get newsFeedSliverListNewsFeedItemImagePath1 {
-    return Intl.message(
-      'assets/news_press/news_situation_reports.png',
-      name: 'newsFeedSliverListNewsFeedItemImagePath1',
-      desc: '',
-      args: [],
-    );
-  }
-
   String get newsFeedSliverListNewsFeedItemUrl1 {
     return Intl.message(
       'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/',
@@ -834,15 +780,6 @@ class S {
     return Intl.message(
       'Rolling updates on coronavirus disease (COVID-19) sourced from across WHO media.',
       name: 'newsFeedSliverListNewsFeedItemDescription2',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get newsFeedSliverListNewsFeedItemImagePath2 {
-    return Intl.message(
-      'assets/news_press/rolling_updates.png',
-      name: 'newsFeedSliverListNewsFeedItemImagePath2',
       desc: '',
       args: [],
     );
@@ -875,15 +812,6 @@ class S {
     );
   }
 
-  String get newsFeedSliverListNewsFeedItemImagePath3 {
-    return Intl.message(
-      'assets/news_press/news_articles.png',
-      name: 'newsFeedSliverListNewsFeedItemImagePath3',
-      desc: '',
-      args: [],
-    );
-  }
-
   String get newsFeedSliverListNewsFeedItemUrl3 {
     return Intl.message(
       'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news',
@@ -906,15 +834,6 @@ class S {
     return Intl.message(
       'Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts.',
       name: 'newsFeedSliverListNewsFeedItemDescription4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  String get newsFeedSliverListNewsFeedItemImagePath4 {
-    return Intl.message(
-      'assets/news_press/press_briefings.png',
-      name: 'newsFeedSliverListNewsFeedItemImagePath4',
       desc: '',
       args: [],
     );
