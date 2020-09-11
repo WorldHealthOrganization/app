@@ -130,7 +130,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           GlobalWidgetsLocalizations.delegate,
           S.delegate
         ],
-        routes: (widget.routes),
+        routes: widget.routes,
         // FIXME Issue #1012 - disabled supported languages for P0
         //supportedLocales: S.delegate.supportedLocales,
         initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
