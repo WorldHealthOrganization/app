@@ -1,20 +1,20 @@
 {
-  "../**/*.md": [
+  "../**/*.md|*.md": [
     "prettier --write"
   ],
-  "../**/*.yaml": [
+  "../**/*.yaml|*.yaml": [
     "prettier --write"
   ],
-  "../**/*.yml": [
+  "../**/*.yml|*.yml": [
     "prettier --write"
   ],
-  "../**/*.js": [
+  "../**/*.js|*.js": [
     "prettier --write"
   ],
-  "../**/*.java": [
+  "../**/*.java|*.java": [
     "prettier --write"
   ],
-  "../**/*.dart": [
+  "../**/*.dart|*.dart": [
     "flutter format"
   ],
   "../client/**": [
