@@ -6,6 +6,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:observer_provider/observer_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:who_app/api/alerts.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/stats_store.dart';
@@ -13,6 +14,7 @@ import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
+import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -134,64 +136,93 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
 
         /// allows routing to work without a [Navigator.defaultRouteName] route
-        builder: (context, child) => MultiProvider(providers: [
-          ProxyProvider0(
-            lazy: false,
-            update: (ctx, _) => Localizations.localeOf(ctx),
-          ),
-          Provider(
-            create: (_) => BuildInfo.DEVELOPMENT_ONLY
-                ? Endpoint(
-                    service: Endpoints.STAGING_SERVICE,
-                    staticContent: Endpoints.STAGING_STATIC_CONTENT)
-                : Endpoint(
-                    service: Endpoints.PROD_SERVICE,
-                    staticContent: Endpoints.PROD_STATIC_CONTENT),
-          ),
-          FutureProvider(
-            create: (_) => UserPreferencesStore.readFromSharedPreferences(),
-            initialData: UserPreferencesStore.empty(),
-          ),
-          ProxyProvider(
-              update: (_, Endpoint endpoint, __) => WhoService(
-                    endpoint: endpoint.service,
-                  )),
-          ProxyProvider(
-            update: (_, WhoService service, __) {
-              final ret = Notifications(service: service);
-              ret.configure();
-              ret.updateFirebaseToken();
-              return ret;
-            },
-          ),
-          ProxyProvider(
-            update: (_, WhoService service, __) {
-              final ret = StatsStore(service: service);
+        builder: (context, child) => MultiProvider(
+          providers: [
+            ProxyProvider0(
+              lazy: false,
+              update: (ctx, _) => Localizations.localeOf(ctx),
+            ),
+            Provider(
+              create: (_) => BuildInfo.DEVELOPMENT_ONLY
+                  ? Endpoint(
+                      service: Endpoints.STAGING_SERVICE,
+                      staticContent: Endpoints.STAGING_STATIC_CONTENT)
+                  : Endpoint(
+                      service: Endpoints.PROD_SERVICE,
+                      staticContent: Endpoints.PROD_STATIC_CONTENT),
+            ),
+            FutureProvider(
+              create: (_) => UserPreferencesStore.readFromSharedPreferences(),
+              initialData: UserPreferencesStore.empty(),
+            ),
+            ProxyProvider(
+                update: (_, Endpoint endpoint, __) => WhoService(
+                      endpoint: endpoint.service,
+                    )),
+            ProxyProvider(
+              update: (_, WhoService service, __) {
+                final ret = Notifications(service: service);
+                ret.configure();
+                ret.updateFirebaseToken();
+                return ret;
+              },
+            ),
+            ProxyProvider(
+              update: (_, WhoService service, __) {
+                final ret = StatsStore(service: service);
+                ret.update();
+                return ret;
+              },
+            ),
+            PeriodicUpdater.asProvider<StatsStore>(),
+            ProxyProvider(
+                update: (_, Endpoint endpoint, __) => ContentService(
+                      endpoint: endpoint.staticContent,
+                    )),
+            ObserverProvider3(observerFn: (
+              _,
+              ContentService service,
+              Locale locale,
+              UserPreferencesStore prefs,
+            ) {
+              final ret = ContentStore(
+                service: service,
+                locale: locale,
+                countryIsoCode: prefs.countryIsoCode,
+              );
               ret.update();
               return ret;
-            },
-          ),
-          PeriodicUpdater.asProvider<StatsStore>(),
-          ProxyProvider(
-              update: (_, Endpoint endpoint, __) => ContentService(
-                    endpoint: endpoint.staticContent,
-                  )),
-          ObserverProvider3(observerFn: (
-            _,
-            ContentService service,
-            Locale locale,
-            UserPreferencesStore prefs,
-          ) {
-            final ret = ContentStore(
-              service: service,
-              locale: locale,
-              countryIsoCode: prefs.countryIsoCode,
+            }),
+            PeriodicUpdater.asProvider<ContentStore>(),
+            ObserverProvider1<ContentStore, List<Alert>>(
+                observerFn: (_, ContentStore content) {
+              return [
+                if (content.unsupportedSchemaVersionAvailable)
+                  Alert("App Update Required",
+                      "This information may be outdated. You must update this app to receive more recent COVID-19 info."),
+              ];
+            }),
+          ],
+          child: child,
+          builder: (ctx, child) {
+            final alerts = Provider.of<List<Alert>>(ctx);
+            return Material(
+              child: Column(
+                children: [
+                  if (alerts.isNotEmpty)
+                    Alerts(
+                      alerts: alerts,
+                    ),
+                  Expanded(
+                      child: MediaQuery.removePadding(
+                          removeTop: alerts.isNotEmpty,
+                          context: ctx,
+                          child: child)),
+                ],
+              ),
             );
-            ret.update();
-            return ret;
-          }),
-          PeriodicUpdater.asProvider<ContentStore>(),
-        ], child: child),
+          },
+        ),
         navigatorObservers: <NavigatorObserver>[observer],
         theme: ThemeData(
           brightness: Brightness.light,

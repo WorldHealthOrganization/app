@@ -6,11 +6,17 @@ import 'package:who_app/constants.dart';
 
 class PageHeader extends StatelessWidget {
   final String title;
+
+  /// A unique tag to animate a header between pages.
   final String heroTag;
   final Color borderColor;
   final TextStyle titleStyle;
   final Color appBarColor;
+
+  /// Whether this header must be wrapped in a sliver
   final bool inSliver;
+
+  /// An extra widget to show on the trailing side of the header
   final Widget trailing;
 
   final bool showBackButton;
@@ -56,6 +62,7 @@ class PageHeader extends StatelessWidget {
             shape: bottomBorder,
             elevation: 0,
             pinned: true,
+            primary: true,
           )
         : AppBar(
             centerTitle: false,
@@ -67,6 +74,7 @@ class PageHeader extends StatelessWidget {
             actions: actions,
             shape: bottomBorder,
             elevation: 0,
+            primary: true,
           );
   }
 
