@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+Future<bool> launchUrl(String url) async {
+  return launch(url, forceSafariVC: false, forceWebView: false);
+}
+
 class RouteLink {
   Uri _url;
   String route;
@@ -23,7 +27,7 @@ class RouteLink {
 
   Future open(BuildContext context) {
     return this.isExternal
-        ? launch(this.url)
+        ? launchUrl(this.url)
         : Navigator.of(context, rootNavigator: true)
             .pushNamed(this.route, arguments: this.args);
   }
