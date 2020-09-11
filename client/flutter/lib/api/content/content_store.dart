@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
@@ -47,7 +49,7 @@ abstract class _ContentStore with Store implements Updateable {
         newsIndex,
         questionsAnswered,
         symptomPoster,
-      ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
+      ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b) || Random().nextBool();
 
   @observable
   LogicContext logicContext;
