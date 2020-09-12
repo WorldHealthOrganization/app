@@ -1,20 +1,6 @@
 {
-  "../**/*.md|*.md": [
-    "prettier --write"
-  ],
-  "../**/*.yaml|*.yaml": [
-    "prettier --write"
-  ],
-  "../**/*.yml|*.yml": [
-    "prettier --write"
-  ],
-  "../**/*.js|*.js": [
-    "prettier --write"
-  ],
-  "../**/*.java|*.java": [
-    "prettier --write"
-  ],
-  "../**/*.sh|*.sh": [
+  
+  "../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}": [
     "prettier --write"
   ],
   "../**/*.dart|*.dart": [

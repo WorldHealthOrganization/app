@@ -37,5 +37,5 @@ jobs:
       - run: npm install
         working-directory: ./tools
       # Match the tools/.lintstagedrc.json file
-      - run: npx --no-install prettier -c '../**/*.md|*.md' '../**/*.yaml|*.yaml' '../**/*.yml|*.yml' '../**/*.js|*.js' '../**/*.java|*.java' '../**/*.sh|*.sh'
+      - run: npx --no-install prettier -c '../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}'
         working-directory: ./tools
