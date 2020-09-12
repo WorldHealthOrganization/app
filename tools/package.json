@@ -8,10 +8,12 @@
     "js-yaml": "^3.14.0"
   },
   "devDependencies": {
+    "@prettier/plugin-ruby": "^0.20.1",
     "firebase-tools": "^8.9.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.13",
     "prettier": "^2.1.1",
-    "prettier-plugin-java": "^0.8.0"
+    "prettier-plugin-java": "^0.8.0",
+    "prettier-plugin-sh": "^0.6.0"
   }
 }

@@ -14,6 +14,9 @@
   "../**/*.java|*.java": [
     "prettier --write"
   ],
+  "../**/*.sh|*.sh": [
+    "prettier --write"
+  ],
   "../**/*.dart|*.dart": [
     "flutter format"
   ],
