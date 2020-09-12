@@ -84,8 +84,8 @@ public class StoredCaseStats {
       stats.jurisdictionType.getValue() + ":" + stats.jurisdiction;
     s.timeseries =
       stats.timeseries != null
-        ? stats
-          .timeseries.stream()
+        ? stats.timeseries
+          .stream()
           .map(t -> StoredStatSnapshot.fromStatSnapshot(t))
           .collect(Collectors.toList())
         : new ArrayList<>();
@@ -102,8 +102,8 @@ public class StoredCaseStats {
       return null;
     }
     List<StatSnapshot> timeseries = ret.timeseries != null
-      ? ret
-        .timeseries.stream()
+      ? ret.timeseries
+        .stream()
         .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
         .collect(Collectors.toList())
       : new ArrayList<>();
