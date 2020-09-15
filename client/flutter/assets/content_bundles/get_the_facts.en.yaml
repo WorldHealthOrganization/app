@@ -3,91 +3,77 @@ content_version: 3
 contents:
   type: fact
   items:
-    -
-      title_html: |
+    - title_html: |
         Hot and humid climates <b><u>do not</u></b> make it easier for COVID-19 to spread.
       body_html: |
         <p>COVID-19 can spread in any climate, regardless of whether the temperature is hot and humid or cold and dry.</p>
         <p>No matter where you live, the best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.</p>
       image_name: streamline-gtf-hot-climates
-    -
-      title_html: |
+    - title_html: |
         COVID-19 <b><u>is not</u></b> transmitted by mosquitoes.
       body_html: |
         <p>There's no evidence that people can get the virus from mosquitoes or household pets.</p>
         <p>COVID-19 is a respiratory virus that spreads through the small amounts of liquid that an infected person sneezes or coughs into the air. To protect yourself, avoid contact with anyone who is coughing or sneezing.</p>
       image_name: streamline-gtf-mosquito
-    -
-      title_html: |
+    - title_html: |
         Cold weather <b><u>does not</u></b> kill COVID-19 or other diseases.
       body_html: |
         Regardless of the temperature outside, the best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.
       image_name: streamline-gtf-cold-weather
-    -
-      title_html: |
+    - title_html: |
         Hot baths <b><u>cannot</u></b> prevent people from getting COVID-19.
       body_html: |
         <p>Taking hot baths doesn't prevent illness, and can even be harmful if the water temperature is hot enough to burn your skin.</p>
         <p>The best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.</p>
       image_name: streamline-gtf-bath
-    -
-      title_html: |
+    - title_html: |
         Hand dryers <b><u>do not</u></b> kill the new coronavirus.
       body_html: |
         The best way to protect yourself against COVID-19 is to wash your hands frequently. Washing your hands helps gets rid of viruses, which prevents infections that can happen when you touch your eyes, mouth, or nose.
       image_name: streamline-gtf-hand-dryer
-    -
-      title_html: |
+    - title_html: |
         Ultraviolet (UV) lamps <b><u>do not</u></b> kill the new coronavirus.
       body_html: |
         UV lamps shouldn't be used to disinfect or sterilize hands or other parts of the body. UV radiation can irritate the skin and won't help prevent COVID-19.
       image_name: streamline-gtf-uv-lamp
-    -
-      title_html: |
+    - title_html: |
         Spraying alcohol or chlorine on your body <b><u>does not</u></b> kill the new coronavirus.
       body_html: |
         Alcohol and chlorine can be used to clean surfaces, but spraying your body with it will not prevent the virus, and won't kill the virus if it's already in your body. Alcohol and chlorine can harm your eyes and mouth, as well as your clothes, when it's sprayed on your body.
       image_name: streamline-gtf-spray
-    -
-      title_html: |
+    - title_html: |
         Pneumonia vaccines <b><u>do not</u></b> protect against the new coronavirus.
       body_html: |
         <p>There are no vaccines for the new coronavirus yet. WHO supports researchers currently working to develop a new vaccine against the virus.</p>
         <p>Although vaccines against pneumonia do not prevent or protect people from the new coronavirus, they're highly recommended for other respiratory illnesses.</p>
       image_name: streamline-gtf-pneumonia-vaccine
-    -
-      title_html: |
+    - title_html: |
         Rinsing the nose with saline <b><u>does not</u></b> prevent people from getting COVID-19.
       body_html: |
         There is some evidence that regularly rinsing the nose with saline can help people recover faster from a common cold, but it will not prevent COVID-19 or other respiratory infections.
       image_name: streamline-gtf-nose-rinse
-    -
-      title_html: |
+    - title_html: |
         Eating garlic <b><u>does not</u></b> prevent people from getting COVID-19.
       body_html: |
         Although garlic is a healthy food, there's no evidence that eating it will protect people from the new coronavirus.
       image_name: streamline-gtf-garlic-2
-    -
-      title_html: |
+    - title_html: |
         Thermal scanners <b><u>cannot</u></b> detect if people are infected with COVID-19 when they do not have a fever.
       body_html: |
         <p>Thermal scanners can read body temperatures in order to identify if a person has a fever, which is a symptom of COVID-19.</p>
         <p>Thermal scanners can't detect COVID-19 when people are infected but do not have a fever. It can take 2-10 days before an infected person becomes sick and has a fever.</p>
       image_name: streamline-gtf-thermal-scanner
-    -
-      title_html: |
+    - title_html: |
         The new coronavirus affects people of <b><u>all</u></b> ages.
       body_html: |
         People of all ages, not just the elderly, can be infected with the new coronavirus and should take care to protect themselves. Older people and anyone with medical conditions (asthma, diabetes, heart disease, etc.) may be more vulnerable.
       image_name: streamline-gtf-elderly
-    -
-      title_html: |
+    - title_html: |
         Antibiotics <b><u>do not</u></b> prevent or treat COVID-19.
       body_html: |
         COVID-19 is a virus and cannot be killed with antibiotics. Antibiotics work against bacteria and should not be used to prevent the virus.
       image_name: streamline-gtf-antibiotics
-    -
-      title_html: |
+    - title_html: |
         Currently, there's <b><u>no</u></b> medicine that's recommended for preventing or treating the new coronavirus.
       body_html: |
         People who are infected with the virus should receive care for their symptoms, but medicines and vaccines that treat COVID-19 have not been developed yet. WHO is working with researchers and partners to develop new treatments.

@@ -3,29 +3,24 @@ content_version: 4
 contents:
   type: index
   promos:
-    -
-      promo_type: protect_yourself
+    - promo_type: protect_yourself
       title: Protect yourself
       subtitle: Learn how to keep yourself safe during this pandemic.
       button_text: Learn more
       href: /protect-yourself
       image_name: undraw-home-promo-symptoms
   items:
-    -
-      item_type: recent_numbers
+    - item_type: recent_numbers
       title: Recent Numbers
-      button_text: 'See All ›'
+      button_text: "See All ›"
       href: /recent-numbers
-    -
-      item_type: protect_yourself
+    - item_type: protect_yourself
       title: Protect Yourself
-      button_text: 'Learn More ›'
+      button_text: "Learn More ›"
       href: /protect-yourself
-    -
-      item_type: information_card
+    - item_type: information_card
       title: Get the Facts
       subtitle: Spraying alcohol or chlorine all over your body does not kill the new coronavirus.
       href: /get-the-facts
       button_text: Learn More
       image_name: streamline-gtf-spray
-

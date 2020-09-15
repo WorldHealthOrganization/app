@@ -1,8 +1,9 @@
 {
-  "../**/*.md": [
+  
+  "../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}": [
     "prettier --write"
   ],
-  "../client/**/*.dart": [
+  "../**/*.dart|*.dart": [
     "flutter format"
   ],
   "../client/**": [

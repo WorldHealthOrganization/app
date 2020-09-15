@@ -3,23 +3,19 @@ content_version: 3
 contents:
   type: index
   items:
-    -
-      item_type: menu_list_tile
+    - item_type: menu_list_tile
       title: Situation Reports
       subtitle: Situation reports provide the latest updates on the novel coronavirus outbreak.
       href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/
-    -
-      item_type: menu_list_tile
+    - item_type: menu_list_tile
       title: Rolling Updates
       subtitle: Rolling updates on coronavirus disease (COVID-19) sourced from across WHO media.
       href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen
-    -
-      item_type: menu_list_tile
+    - item_type: menu_list_tile
       title: News Articles
       subtitle: All news releases, statements, and notes for the media.
       href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news
-    -
-      item_type: menu_list_tile
+    - item_type: menu_list_tile
       title: Press Briefings
       subtitle: Coronavirus disease (COVID-19) press briefings including videos, audio and transcripts.
       href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings

@@ -1,5 +1,7 @@
 package who;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -7,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
-
-@Entity @Cache(expirationSeconds=120)
+@Entity
+@Cache(expirationSeconds = 120)
 public class StoredCaseStats {
   // $jurisdictionType:$jurisdiction
-  @Id String jurisdictionKey;
+  @Id
+  String jurisdictionKey;
 
   // The protobuf itself lacks a no-arg constructor so
   // we have to copy all the fields here.
@@ -78,22 +80,33 @@ public class StoredCaseStats {
     s.deaths = stats.deaths;
     s.recoveries = stats.recoveries;
     s.attribution = stats.attribution;
-    s.jurisdictionKey = stats.jurisdictionType.getValue() + ":" + stats.jurisdiction;
-    s.timeseries = stats.timeseries != null ?
-        stats.timeseries.stream().map(t -> StoredStatSnapshot.fromStatSnapshot(t))
-            .collect(Collectors.toList()) :
-        new ArrayList<>();
+    s.jurisdictionKey =
+      stats.jurisdictionType.getValue() + ":" + stats.jurisdiction;
+    s.timeseries =
+      stats.timeseries != null
+        ? stats.timeseries
+          .stream()
+          .map(t -> StoredStatSnapshot.fromStatSnapshot(t))
+          .collect(Collectors.toList())
+        : new ArrayList<>();
     ofy().save().entities(s).now();
   }
 
   public static CaseStats load(JurisdictionType type, String jurisdiction) {
-    StoredCaseStats ret = ofy().load().type(StoredCaseStats.class).id(type.getValue() + ":" + jurisdiction).now();
+    StoredCaseStats ret = ofy()
+      .load()
+      .type(StoredCaseStats.class)
+      .id(type.getValue() + ":" + jurisdiction)
+      .now();
     if (ret == null) {
       return null;
     }
-    List<StatSnapshot> timeseries = ret.timeseries != null ?
-        ret.timeseries.stream().map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot).collect(Collectors.toList()) :
-        new ArrayList<>();
+    List<StatSnapshot> timeseries = ret.timeseries != null
+      ? ret.timeseries
+        .stream()
+        .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
+        .collect(Collectors.toList())
+      : new ArrayList<>();
     return new CaseStats.Builder()
       .jurisdictionType(ret.jurisdictionType)
       .jurisdiction(ret.jurisdiction)

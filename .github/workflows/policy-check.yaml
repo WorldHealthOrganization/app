@@ -2,38 +2,40 @@ name: Policy Check
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   policy_check:
     name: Check source code for policy violations
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-    - name: Install dependencies
-      run: |
-        pip install scikit-learn==0.22.2 profanity-check==1.0.3
-    - name: Lint with profanity-check
-      run: |
-        # Every file in the repo that is treated as text
-        FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          pip install scikit-learn==0.22.2 profanity-check==1.0.3
+      - name: Lint with profanity-check
+        run: |
+          # Every file in the repo that is treated as text
+          FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
-        python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
-  doc_formatting:
-    name: Documentation formatting
+          python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
+  formatting:
+    # Dart is handled in the client CI
+    name: Prettier Formatting
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-    - run: npm install
-      working-directory: ./tools
-    - run: npx prettier -c '../**/*.md'
-      working-directory: ./tools
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+        working-directory: ./tools
+      # Match the tools/.lintstagedrc.json file
+      - run: npx --no-install prettier -c '../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}'
+        working-directory: ./tools

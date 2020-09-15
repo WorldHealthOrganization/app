@@ -8,7 +8,7 @@ cd $(dirname "$0")/..
 # Some people use gcloud installation, others use brew.
 APPSERVER=/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/java_dev_appserver.sh
 if [ ! -f "$FILE" ]; then
-    APPSERVER=java_dev_appserver.sh
+  APPSERVER=java_dev_appserver.sh
 fi
 
 $APPSERVER \
