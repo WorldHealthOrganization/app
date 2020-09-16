@@ -23,7 +23,7 @@ def main(argv):
           key = '{} {}'.format(hashlib.sha256(keysrc).hexdigest(), fn)
           if key not in ignoreds:
             ret = ret + 1
-            print("\n\n\n❌ L{} of {}:\n{}".format(i + 1, fn, lines[i]), file=sys.stdout)
+            print("\n\n\n❌ L{} of {}:\n{}".format(i + 1, fn, lines[i]), file=sys.stderr)
             print("ℹ️ Add '{}' to {} to ignore this issue".format(key, sys.argv[2]), file=sys.stderr)
           else:
             print("\n\n\nℹ️ IGNORED: L{} of {}:\n{}".format(i + 1, fn, lines[i]))
