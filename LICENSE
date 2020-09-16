@@ -1,5 +1,7 @@
  https://github.com/WorldHealthOrganization/app
 
+Copyright (c) 2020 World Health Organization
+
 Built by the WHO COVID-19 App Collective (see content/credits.yaml).
 
 The WHO visual identity assets, including but not limited to the
@@ -17,7 +19,6 @@ assets, including but not limited to files prefixed with `agency-`, are
 the property of the respective mark owners, and are not licensed under,
 and are excluded from the terms of, the Apache 2.0 License and any other
 use of such assets must be obtained from the rights holder.
-
 
                                  Apache License
                            Version 2.0, January 2004
