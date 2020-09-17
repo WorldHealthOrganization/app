@@ -72,7 +72,7 @@ dependencies {
 
     // Newer versions
     implementation 'com.google.oauth-client:google-oauth-client:1.31.0'
-    implementation 'commons-codec:commons-codec:1.14'
+    implementation 'commons-codec:commons-codec:1.15'
 
     testCompile 'junit:junit:4.13'
     testCompile "org.mockito:mockito-core:1.+"
