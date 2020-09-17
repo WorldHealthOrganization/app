@@ -4,7 +4,7 @@ First, make sure you've followed the [onboarding documentation](ONBOARDING.md).
 
 ## Process Guidelines
 
-While we're working quickly, please abide by a few rules to keep us safe and sane:
+Please abide by a few rules to keep us safe and sane:
 
 - Enable 2FA for your account, and use hardware keys if possible (mandatory if you are a committer)
 - Assign issues to yourself before you begin work to avoid duplicate effort. If someone else already has the issue, please sync up before-hand.
