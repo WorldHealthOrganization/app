@@ -17,6 +17,7 @@ class PageScaffold extends StatelessWidget {
   final TextStyle headerTitleStyle;
   final Widget header;
   final Widget trailing;
+  final Widget appBarBottom;
 
   final bool showHeader;
 
@@ -36,6 +37,7 @@ class PageScaffold extends StatelessWidget {
     this.showBackButton = true,
     this.headerTitleStyle,
     this.trailing,
+    this.appBarBottom,
   });
 
   @override
@@ -60,6 +62,7 @@ class PageScaffold extends StatelessWidget {
                         showBackButton: showBackButton,
                         titleStyle: headerTitleStyle,
                         appBarColor: appBarColor ?? color,
+                        appBarBottom: appBarBottom,
                         trailing: trailing,
                       )),
                 ...this.body,

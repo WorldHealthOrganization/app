@@ -79,6 +79,39 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
       builder: (context) => PageScaffold(
         appBarColor: Constants.backgroundColor,
         showBackButton: ModalRoute.of(context).canPop ?? false,
+        appBarBottom: PreferredSize(
+          preferredSize: Size(200, 66),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              24,
+              0,
+              24,
+              24,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CupertinoSlidingSegmentedControl(
+                  backgroundColor: Color(0xffEFEFEF),
+                  children:
+                      _buildSegmentControlChildren(context, this.aggregation),
+                  groupValue: this.aggregation,
+                  onValueChanged: (value) {
+                    widget.analytics.logEvent(
+                        name: 'RecentNumberAggregation',
+                        parameters: {'index': this.aggregation.index});
+                    setState(
+                      () {
+                        this.aggregation = value;
+                      },
+                    );
+                  },
+                  thumbColor: Constants.greyBackgroundColor,
+                ),
+              ],
+            ),
+          ),
+        ),
         body: <Widget>[
           CupertinoSliverRefreshControl(
             builder: (context, refreshIndicatorMode, pulledExtent, b, c) {
@@ -114,30 +147,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               Container(
                 child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24.0,
-                        vertical: 8,
-                      ),
-                      child: CupertinoSlidingSegmentedControl(
-                        backgroundColor: Color(0xffEFEFEF),
-                        children: _buildSegmentControlChildren(
-                            context, this.aggregation),
-                        groupValue: this.aggregation,
-                        onValueChanged: (value) {
-                          widget.analytics.logEvent(
-                              name: 'RecentNumberAggregation',
-                              parameters: {'index': this.aggregation.index});
-                          setState(
-                            () {
-                              this.aggregation = value;
-                            },
-                          );
-                        },
-                        thumbColor: Constants.greyBackgroundColor,
-                      ),
-                    ),
-                    Container(height: 16.0),
                     if (countryCode != null) ...[
                       _JurisdictionStats(
                         aggregation: aggregation,
@@ -172,7 +181,8 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
       BuildContext context, DataAggregation selectedValue) {
     Map<DataAggregation, String> valueToDisplayText = {
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
-      DataAggregation.daily: S.of(context).latestNumbersPageDailyToggle,
+      // TODO: This string changed, so we must change regenerate translation keys someday.
+      DataAggregation.daily: 'Daily',
     };
     return valueToDisplayText.map((value, displayText) {
       return MapEntry<DataAggregation, Widget>(
