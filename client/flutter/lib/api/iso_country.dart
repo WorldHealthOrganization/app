@@ -4,18 +4,14 @@ import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 class IsoCountryList {
-  Map<String, IsoCountry> _countries;
+  final Map<String, IsoCountry> _countries;
   Map<String, IsoCountry> get countries => _countries;
 
   static const isoFilePath = 'assets/onboarding/iso_countries.en.yaml';
 
-  static final IsoCountryList _singleton = IsoCountryList._internal();
+  IsoCountryList._(this._countries);
 
-  factory IsoCountryList() {
-    return _singleton;
-  }
-
-  IsoCountryList._internal();
+  IsoCountryList.empty() : this._({});
 
   static Future<Map<String, IsoCountry>> _countriesFromYaml(
       String csvPath) async {
@@ -32,17 +28,15 @@ class IsoCountryList {
     return countries;
   }
 
-  Future<bool> loadCountries() async {
-    if (_countries?.isNotEmpty ?? false) {
-      return true;
-    }
+  static Future<IsoCountryList> load() async {
+    Map<String, IsoCountry> countries;
     try {
-      _countries = await _countriesFromYaml(IsoCountryList.isoFilePath);
-      return true;
+      countries = await _countriesFromYaml(IsoCountryList.isoFilePath);
+      return IsoCountryList._(countries);
     } catch (error) {
       print('Error loading countries: $error');
     }
-    return false;
+    return IsoCountryList.empty();
   }
 }
 
@@ -50,8 +44,17 @@ class IsoCountry {
   final String name;
   final String alpha2Code;
 
-  const IsoCountry({
+  // https://en.wikipedia.org/wiki/Regional_indicator_symbol
+  static final regionalIndicatorOffset = 0x1F1E6 - 'A'.codeUnits.single;
+  String get emoji {
+    return String.fromCharCodes(
+        alpha2Code.codeUnits.map((c) => c + regionalIndicatorOffset));
+  }
+
+  static final alpha2CodeRe = RegExp('^[A-Z][A-Z]\$');
+
+  IsoCountry({
     @required this.name,
     @required this.alpha2Code,
-  });
+  }) : assert(alpha2CodeRe.hasMatch(alpha2Code));
 }

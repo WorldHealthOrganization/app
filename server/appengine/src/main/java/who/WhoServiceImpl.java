@@ -5,6 +5,8 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
@@ -66,20 +68,33 @@ public class WhoServiceImpl implements WhoService {
   @Override
   public GetCaseStatsResponse getCaseStats(GetCaseStatsRequest request)
     throws IOException {
-    CaseStats global = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
-
-    if (global.lastUpdated < System.currentTimeMillis() - STATS_TOO_OLD_MSEC) {
-      // Log to watch on monitoring, but we'll still return results to the user.
-      logger.error(
-        "Case stats are too old - last updated at msec epoch: " +
-        global.lastUpdated
+    List<CaseStats> stats = new ArrayList<>();
+    for (JurisdictionId j : request.jurisdictions) {
+      if (j.code != null && j.code.length() > 2) {
+        throw new ClientException("Invalid jurisdiction code");
+      }
+      CaseStats data = StoredCaseStats.load(
+        j.jurisdictionType,
+        j.code == null ? "" : j.code
       );
+      if (data != null) {
+        if (
+          data.lastUpdated < System.currentTimeMillis() - STATS_TOO_OLD_MSEC
+        ) {
+          // Log to watch on monitoring, but we'll still return results to the user.
+          logger.error(
+            "Case stats are too old - last updated at msec epoch: " +
+            data.lastUpdated
+          );
+        }
+        stats.add(data);
+      } else {
+        stats.add(new CaseStats.Builder().lastUpdated(0L).build());
+      }
     }
 
-    // TODO(brunob): Add jurisdiction-specifc stats in response.
-
     return new GetCaseStatsResponse.Builder()
-      .globalStats(global)
+      .jurisdictionStats(stats)
       .ttl(STATS_TTL_SECONDS)
       .build();
   }

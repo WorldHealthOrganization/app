@@ -29,8 +29,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final PageController _pageController = PageController();
 
-  Map<String, IsoCountry> _countries;
-  bool _couldLoadCountries;
   IsoCountry _selectedCountry;
   bool _showCountryListPage = true;
 
@@ -44,25 +42,29 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      setupCountries();
+      //setupCountries();
     });
   }
 
-  void setupCountries() async {
-    _couldLoadCountries = await IsoCountryList().loadCountries();
-    if (_couldLoadCountries) {
-      _countries = IsoCountryList().countries;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final countryList = Provider.of<IsoCountryList>(context);
+    if (_selectedCountry == null && countryList.countries.isNotEmpty) {
+      // On first load of country list, the default is the locale country.
       final currentCountryCode = Localizations.localeOf(context).countryCode;
-      _selectedCountry = _countries[currentCountryCode];
-    }
-    if (this.mounted) {
-      setState(() {});
+      if (this.mounted) {
+        setState(() {
+          _selectedCountry = countryList.countries[currentCountryCode];
+        });
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final store = Provider.of<ContentStore>(context);
+    final countryList = Provider.of<IsoCountryList>(context);
     return WillPopScope(
       onWillPop: () async {
         // If a previous page exists
@@ -94,7 +96,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
           if (_showCountryListPage)
             CountryListPage(
-              countries: _countries,
+              countries: countryList.countries,
               onBack: _toPreviousPage,
               selectedCountryCode: _selectedCountry?.alpha2Code,
               onCountrySelected: _selectCountry,

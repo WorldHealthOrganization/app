@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:who_app/api/alerts.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
+import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -152,6 +153,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                       staticContent: Endpoints.PROD_STATIC_CONTENT),
             ),
             FutureProvider(
+              create: (_) => IsoCountryList.load(),
+              initialData: IsoCountryList.empty(),
+            ),
+            FutureProvider(
               create: (_) => UserPreferencesStore.readFromSharedPreferences(),
               initialData: UserPreferencesStore.empty(),
             ),
@@ -167,13 +172,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 return ret;
               },
             ),
-            ProxyProvider(
-              update: (_, WhoService service, __) {
-                final ret = StatsStore(service: service);
-                ret.update();
-                return ret;
-              },
-            ),
+            ObserverProvider2(observerFn: (
+              _,
+              WhoService service,
+              UserPreferencesStore prefs,
+            ) {
+              final ret = StatsStore(
+                service: service,
+                countryIsoCode: prefs.countryIsoCode,
+              );
+              ret.update();
+              return ret;
+            }),
             PeriodicUpdater.asProvider<StatsStore>(),
             ProxyProvider(
                 update: (_, Endpoint endpoint, __) => ContentService(

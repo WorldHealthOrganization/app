@@ -10,26 +10,37 @@ import 'package:who_app/proto/api/who/who.pb.dart';
 part 'stats_store.g.dart';
 
 class StatsStore extends _StatsStore with _$StatsStore {
-  StatsStore({@required WhoService service}) : super(service: service);
+  StatsStore({@required WhoService service, @required String countryIsoCode})
+      : super(service: service, countryIsoCode: countryIsoCode);
 }
 
 abstract class _StatsStore with Store implements Updateable {
   final WhoService service;
+  final String countryIsoCode;
 
-  _StatsStore({@required this.service});
+  _StatsStore({@required this.service, @required this.countryIsoCode});
 
   @observable
   GetCaseStatsResponse caseStatsResponse;
 
   @computed
   CaseStats get globalStats {
-    // ignore: deprecated_member_use_from_same_package
-    return caseStatsResponse?.globalStats;
+    return caseStatsResponse?.jurisdictionStats?.first;
   }
 
   @computed
   int get globalCases {
     return globalStats?.cases?.toInt();
+  }
+
+  @computed
+  CaseStats get countryStats {
+    return caseStatsResponse?.jurisdictionStats?.last;
+  }
+
+  @computed
+  int get countryCases {
+    return countryStats?.cases?.toInt();
   }
 
   @action
@@ -39,12 +50,13 @@ abstract class _StatsStore with Store implements Updateable {
       print('StatsStore update skipped');
       return;
     }
-    print('StatsStore update');
+    print('StatsStore update with country ${countryIsoCode}');
     /** How to test that the periodic updating works:
-    final caseStatsResponse2 = await service.getCaseStats();
+    final caseStatsResponse2 = await service.getCaseStats(isoCountryCode: countryIsoCode);
     caseStatsResponse2.globalStats.cases = Int64(caseStatsResponse2.globalStats.cases.toInt() + Random().nextInt(100000));
     caseStatsResponse = caseStatsResponse2;
     */
-    caseStatsResponse = await service.getCaseStats();
+    caseStatsResponse =
+        await service.getCaseStats(isoCountryCode: countryIsoCode);
   }
 }

@@ -2,6 +2,7 @@ package who;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.IOException;
@@ -19,8 +20,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RefreshCaseStatsServlet extends HttpServlet {
+
+  private static final class JurisdictionData {
+    long totalCases = 0L, totalDeaths = 0L;
+    long lastUpdated = 0L;
+    Map<Long, StoredCaseStats.StoredStatSnapshot> snapshots = new HashMap<>();
+  }
+
   private static final String WHO_CASE_STATS_URL =
-    "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
+    "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
   private static final Logger logger = LoggerFactory.getLogger(
     RefreshCaseStatsServlet.class
   );
@@ -34,6 +42,35 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     try (Response response = HTTP_CLIENT.newCall(request).execute()) {
       return response.body().string();
     }
+  }
+
+  private static void updateData(
+    JurisdictionData data,
+    long timestamp,
+    long dailyDeaths,
+    long totalDeaths,
+    long dailyCases,
+    long totalCases
+  ) {
+    if (timestamp > data.lastUpdated) {
+      data.lastUpdated = timestamp;
+    }
+    data.totalCases += dailyCases;
+    data.totalDeaths += dailyDeaths;
+    StoredCaseStats.StoredStatSnapshot snapshot = data.snapshots.get(timestamp);
+    if (snapshot == null) {
+      snapshot = new StoredCaseStats.StoredStatSnapshot();
+      snapshot.epochMsec = timestamp;
+      snapshot.dailyCases = 0L;
+      snapshot.dailyDeaths = 0L;
+      snapshot.totalCases = 0L;
+      snapshot.totalDeaths = 0L;
+      data.snapshots.put(timestamp, snapshot);
+    }
+    snapshot.dailyCases += dailyCases;
+    snapshot.dailyDeaths += dailyDeaths;
+    snapshot.totalCases += totalCases;
+    snapshot.totalDeaths += totalDeaths;
   }
 
   @Override
@@ -55,10 +92,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       return;
     }
 
-    long globalTotalCases = 0L, globalTotalDeaths = 0L;
-    long lastUpdated = 0L;
+    JurisdictionData globalData = new JurisdictionData();
+    Map<String, JurisdictionData> countryData = new HashMap<>();
+
     int numItems = 0;
-    Map<Long, StoredCaseStats.StoredStatSnapshot> globalSnapshots = new HashMap<>();
 
     while (true) {
       String jsonString = getDashboardContents(numItems);
@@ -90,51 +127,48 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         JsonObject attributes = attributesElement.getAsJsonObject();
 
         long timestamp = attributes.get("date_epicrv").getAsLong();
-
-        if (timestamp > lastUpdated) {
-          lastUpdated = timestamp;
-        }
-
         long dailyDeaths = attributes.get("NewDeath").getAsLong();
-
         long totalDeaths = attributes.get("CumDeath").getAsLong();
-
         long dailyCases = attributes.get("NewCase").getAsLong();
-
         long totalCases = attributes.get("CumCase").getAsLong();
 
-        globalTotalCases += dailyCases;
-        globalTotalDeaths += dailyDeaths;
-
-        StoredCaseStats.StoredStatSnapshot snapshot = globalSnapshots.get(
-          timestamp
+        updateData(
+          globalData,
+          timestamp,
+          dailyDeaths,
+          totalDeaths,
+          dailyCases,
+          totalCases
         );
 
-        if (snapshot == null) {
-          snapshot = new StoredCaseStats.StoredStatSnapshot();
-          snapshot.epochMsec = timestamp;
-          snapshot.dailyCases = 0L;
-          snapshot.dailyDeaths = 0L;
-          snapshot.totalCases = 0L;
-          snapshot.totalDeaths = 0L;
-          globalSnapshots.put(timestamp, snapshot);
+        if (!(attributes.get("ISO_2_CODE") instanceof JsonNull)) {
+          String isoCode = attributes.get("ISO_2_CODE").getAsString();
+          JurisdictionData country = countryData.get(isoCode);
+          if (country == null) {
+            country = new JurisdictionData();
+            countryData.put(isoCode, country);
+          }
+          updateData(
+            country,
+            timestamp,
+            dailyDeaths,
+            totalDeaths,
+            dailyCases,
+            totalCases
+          );
         }
-        snapshot.dailyCases += dailyCases;
-        snapshot.dailyDeaths += dailyDeaths;
-        snapshot.totalCases += totalCases;
-        snapshot.totalDeaths += totalDeaths;
       }
     }
 
     CaseStats.Builder global = new CaseStats.Builder()
       .jurisdictionType(JurisdictionType.GLOBAL)
       .jurisdiction("")
-      .cases(globalTotalCases)
-      .deaths(globalTotalDeaths)
-      .lastUpdated(lastUpdated)
+      .cases(globalData.totalCases)
+      .deaths(globalData.totalDeaths)
+      .lastUpdated(globalData.lastUpdated)
       .recoveries(-1L)
       .timeseries(
-        globalSnapshots
+        globalData.snapshots
           .entrySet()
           .stream()
           .sorted(Comparator.comparing(Map.Entry::getKey))
@@ -143,7 +177,28 @@ public class RefreshCaseStatsServlet extends HttpServlet {
           .collect(Collectors.toList())
       )
       .attribution("WHO");
-
     StoredCaseStats.save(global.build());
+
+    for (Map.Entry<String, JurisdictionData> entry : countryData.entrySet()) {
+      JurisdictionData data = entry.getValue();
+      CaseStats.Builder countryStats = new CaseStats.Builder()
+        .jurisdictionType(JurisdictionType.COUNTRY)
+        .jurisdiction(entry.getKey())
+        .cases(data.totalCases)
+        .deaths(data.totalDeaths)
+        .lastUpdated(data.lastUpdated)
+        .recoveries(-1L)
+        .timeseries(
+          data.snapshots
+            .entrySet()
+            .stream()
+            .sorted(Comparator.comparing(Map.Entry::getKey))
+            .map(Map.Entry::getValue)
+            .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
+            .collect(Collectors.toList())
+        )
+        .attribution("WHO");
+      StoredCaseStats.save(countryStats.build());
+    }
   }
 }
