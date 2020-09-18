@@ -25,7 +25,8 @@ abstract class _StatsStore with Store implements Updateable {
 
   @computed
   CaseStats get globalStats {
-    return caseStatsResponse?.jurisdictionStats?.first;
+    final statsList = caseStatsResponse?.jurisdictionStats ?? [];
+    return statsList.isEmpty ? null : statsList.first;
   }
 
   @computed
@@ -35,7 +36,8 @@ abstract class _StatsStore with Store implements Updateable {
 
   @computed
   CaseStats get countryStats {
-    return caseStatsResponse?.jurisdictionStats?.last;
+    final statsList = caseStatsResponse?.jurisdictionStats ?? [];
+    return statsList.isEmpty ? null : statsList.last;
   }
 
   @computed

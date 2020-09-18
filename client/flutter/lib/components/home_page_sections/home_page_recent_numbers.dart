@@ -67,7 +67,6 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 5));
     _animationController.addStatusListener((status) {
-      print(fadeState);
       if (mounted) {
         setState(() {
           fadeState = !fadeState;
