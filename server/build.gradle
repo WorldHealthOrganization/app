@@ -18,7 +18,7 @@ buildscript {
             'api': "org.slf4j:slf4j-api:${versions.slf4j}",
             'jdk14': "org.slf4j:slf4j-jdk14:${versions.slf4j}",
         ],
-        'firebase': "com.google.firebase:firebase-admin:6.14.0",
+        'firebase': "com.google.firebase:firebase-admin:7.0.0",
         'netty': 'io.netty:netty-codec-http:4.1.52.Final',
         'guava': "com.google.guava:guava:29.0-jre",
         'gson': "com.google.code.gson:gson:2.8.6",
