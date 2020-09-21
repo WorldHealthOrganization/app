@@ -1,0 +1,212 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1,Text Area 2,Text Area 3,Text Area 4,Text Area 5,Text Area 6,Text Area 7,Text Area 8,Text Area 9,Text Area 10,Text Area 11,Text Area 12,Text Area 13,Text Area 14,Text Area 15,Text Area 16,Text Area 17,Text Area 18,Text Area 19,Text Area 20,Text Area 21,Text Area 22,Text Area 23,Text Area 24
+1,Page,,,,,,,,,Page 1,,,,,,,,,,,,,,,,,,,,,,,
+2,System 1,Google Cloud Platform,1,,181,,,,,              End-User Device,,,,,,,,,,,,,,,,,,,,,,,
+3,Smart Phone,Network Infrastructure,1,2,181,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Text,Standard,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,System 1,Google Cloud Platform,1,,,,,,,End-User Device,,,,,,,,,,,,,,,,,,,,,,,
+6,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+7,Google Cloud Platform,Google Cloud Platform,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+8,Text,Standard,1,7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9,AWS General User,AWS Architecture 2019,1,,,,,,,End-User,,,,,,,,,,,,,,,,,,,,,,,
+10,Blue Hexagon,Google Cloud Platform,1,7,182,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+11,SVGPathBlock2,,1,7,182,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+12,Local Storage,Google Cloud Platform,1,7,,,,,,Cloud Firestore (in datastore mode) (in Europe),,,,,,,,,,,,,,,,,,,,,,,
+13,Memcache,Google Cloud Platform,1,7,,,,,,Memcache,,,,,,,,,,,,,,,,,,,,,,,
+14,Push Notifications,Google Cloud Platform,1,7,,,,,,Push Notifications,,,,,,,,,,,,,,,,,,,,,,,
+15,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,Apple APNS,,,,,,,,,,,,,,,,,,,,,,,
+16,Virtual Server,Network Infrastructure,1,15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+17,App Engine,Google Cloud Platform,1,7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18,App Engine,Google Cloud Platform,1,7,,,,,,App Engine (in Europe),,,,,,,,,,,,,,,,,,,,,,,
+19,Scheduled Tasks,Google Cloud Platform,1,7,,,,,,Cron: refreshCaseStats,,,,,,,,,,,,,,,,,,,,,,,
+20,Front End Platform Services,Google Cloud Platform,1,7,,,,,,"/WhoService
+All RPCs receive WHO Client ID from device,
+and are able to use all per-Client info in DB",,,,,,,,,,,,,,,,,,,,,,,
+21,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/putLocation,,,,,,,,,,,,,,,,,,,,,,,
+22,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/putDeviceToken,,,,,,,,,,,,,,,,,,,,,,,
+23,Text,Standard,1,,,,,,,WHO COVID-19 App System Architecture,,,,,,,,,,,,,,,,,,,,,,,
+24,Table,Tables,1,,,,,,,Version,Author,Notes,V0.0 - 2020 Apr 12,Advay Mengle,First draft,V0.1 - 2020 Apr 18,Advay Mengle,Reflects change in how location is tracked,V0.2 - 2020 May 6,Advay Mengle,Add planned changes for v1 launch except user feedback,V0.3 - 2020 May 13,Hunter Spinks,Added various Firebase & Google Cloud services,V0.4 - 2020 Aug 19,Advay Mengle,Now serving content bundles from Google Cloud Storage,V0.5 - 2020 Aug 31,Advay Mengle,Various updates,Date,NAME,Describe change
+25,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/getCaseStats,,,,,,,,,,,,,,,,,,,,,,,
+26,Entity,Entity Relationship,1,7,,,,,,Client,Id,UUID,Location,Country code,Token,FCM token for push notif.,Topics,Which FCM topics this device is subscribed to,Platform,iOS/Android,,,,,,,,,,,,,
+27,Entity,Entity Relationship,1,7,,,,,,StoredCaseStats,Jurisdiction,"Total Stats: Deaths, Cases",Timeseries of stats per day,,,,,,,,,,,,,,,,,,,,
+28,Text,Standard,1,,,,,,,DRAFT,,,,,,,,,,,,,,,,,,,,,,,
+29,Cloud Console,Google Cloud Platform,1,7,,,,,,Cloud Console (Global),,,,,,,,,,,,,,,,,,,,,,,
+30,AWS General Users,AWS Architecture 2019,1,7,,,,,,Authorized Admins,,,,,,,,,,,,,,,,,,,,,,,
+31,Connector,Flowchart Shapes,1,7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+32,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,services.arcgis.com,,,,,,,,,,,,,,,,,,,,,,,
+33,Web Service,Network Infrastructure,1,32,,,,,,WHO Data Pipeline (COVID-19 stats),,,,,,,,,,,,,,,,,,,,,,,
+34,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,Apple App Store,,,,,,,,,,,,,,,,,,,,,,,
+35,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,Google Play Store,,,,,,,,,,,,,,,,,,,,,,,
+36,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,GitHub,,,,,,,,,,,,,,,,,,,,,,,
+37,Infrastructure System 2,Google Cloud Platform,1,7,,,,,,Our Server - Java  Code: /server/appengine/,,,,,,,,,,,,,,,,,,,,,,,
+38,Infrastructure System 2,Google Cloud Platform,1,2,,,,,,Our App - Flutter/Dart Code: /client/flutter,,,,,,,,,,,,,,,,,,,,,,,
+39,Text,Standard,1,,,,,,,https://github.com/WorldHealthOrganization/app,,,,,,,,,,,,,,,,,,,,,,,
+40,Infrastructure System 2,Google Cloud Platform,1,36,,,,,,Public Repo - Client Code and Content Bundles,,,,,,,,,,,,,,,,,,,,,,,
+41,ImageSearchBlock2,Standard,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+42,ImageSearchBlock2,Standard,1,2|38,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+43,Front End Platform Services,Google Cloud Platform,1,2|38,,,,,,Dynamically Updatable Screens (including Symptom Tracker),,,,,,,,,,,,,,,,,,,,,,,
+44,Service Discovery,Google Cloud Platform,1,2|38,,,,,,Location-Awareness,,,,,,,,,,,,,,,,,,,,,,,
+45,Logs API,Google Cloud Platform,1,2|38,,,,,,Firebase Analytics,,,,,,,,,,,,,,,,,,,,,,,
+46,Push Notifications,Google Cloud Platform,1,2|38,,,,,,Push Notifications,,,,,,,,,,,,,,,,,,,,,,,
+47,Edge Pop,Google Cloud Platform,1,2|5,,,,,,Platform Store/Updater App,,,,,,,,,,,,,,,,,,,,,,,
+48,ImageSearchBlock2,Standard,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+49,AWS General Users,AWS Architecture 2019,1,,,,,,,Public Repo Committers,,,,,,,,,,,,,,,,,,,,,,,
+50,AWS General Users,AWS Architecture 2019,1,,,,,,,App Store Admins,,,,,,,,,,,,,,,,,,,,,,,
+51,User Image,User Images,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+52,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+53,AWS General Users,AWS Architecture 2019,1,,,,,,,AppEngine Admins,,,,,,,,,,,,,,,,,,,,,,,
+54,Cloud SDK,Google Cloud Platform,1,,,,,,,AppEngine SDK,,,,,,,,,,,,,,,,,,,,,,,
+55,GitHub,Azure 2015,1,36,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+56,Infrastructure System 2,Google Cloud Platform,1,36,,,,,,Public Repo - Server Code and Content Bundles,,,,,,,,,,,,,,,,,,,,,,,
+57,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+58,AWS General Users,AWS Architecture 2019,1,,,,,,,Google Cloud Admins,,,,,,,,,,,,,,,,,,,,,,,
+59,Local Storage,Google Cloud Platform,1,2|38,,,,,,Signed Package Contents  Built binary Embedded text and image assets,,,,,,,,,,,,,,,,,,,,,,,
+60,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+61,AWS General Users,AWS Architecture 2019,1,,,,,,,Google Cloud Readers,,,,,,,,,,,,,,,,,,,,,,,
+62,Blue Hexagon,Google Cloud Platform,1,,183,,,,,Firebase Crashlytics (Global),,,,,,,,,,,,,,,,,,,,,,,
+63,SVGPathBlock2,,1,,183,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+64,Blue Hexagon,Google Cloud Platform,1,7,184,,,,,Firebase Cloud Messaging & mtalk.google.com (Global),,,,,,,,,,,,,,,,,,,,,,,
+65,SVGPathBlock2,,1,7,184,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+66,Blue Hexagon,Google Cloud Platform,1,,185,,,,,Firebase/Google Analytics  (Global),,,,,,,,,,,,,,,,,,,,,,,
+67,SVGPathBlock2,,1,,185,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+68,Virtual machine,Azure 2015,1,36,,,,,,CI/Actions,,,,,,,,,,,,,,,,,,,,,,,
+69,Text,Standard,1,,,,,,,"This diagram intends to represent each flow and system that:
+(a) can affect the code or data on production end-users’ devices or (b) can read or write those users’ information.
+ The document is contributed under the MIT License (except the third-party icons/graphics): https://raw.githubusercontent.com/WorldHealthOrganization/app/50166a23032781619ed69e63a09292bf985cf63d/LICENSE",,,,,,,,,,,,,,,,,,,,,,,
+70,Google Cloud Platform Lockup,Google Cloud Platform,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+71,Blank,Google Cloud Platform,1,2|38,,,,,,Firebase Crash Reporter,,,,,,,,,,,,,,,,,,,,,,,
+72,User Image,User Images,1,2|38,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+73,ImageSearchBlock2,Standard,1,7|37,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+74,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,pub.dev Dart Package Repository,,,,,,,,,,,,,,,,,,,,,,,
+75,User Image,User Images,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+76,Local Storage,Google Cloud Platform,1,36,,,,,,Community Forks,,,,,,,,,,,,,,,,,,,,,,,
+77,AWS General Users,AWS Architecture 2019,1,,,,,,,Community Contributors,,,,,,,,,,,,,,,,,,,,,,,
+78,Virtual File System,Google Cloud Platform,1,74,,,,,,Approved 3rd Party Libraries,,,,,,,,,,,,,,,,,,,,,,,
+79,Virtual File System,Google Cloud Platform,1,74,,,,,,Unreviewed 3rd Party Libraries,,,,,,,,,,,,,,,,,,,,,,,
+80,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,AppStore Connect,,,,,,,,,,,,,,,,,,,,,,,
+81,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,Play Dev Console,,,,,,,,,,,,,,,,,,,,,,,
+82,MFA Token,AWS Architecture 2019,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+83,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,"jcenter, bintray, sonatype, et al. Java JAR Repository",,,,,,,,,,,,,,,,,,,,,,,
+84,Virtual File System,Google Cloud Platform,1,83,,,,,,Approved 3rd Party Libraries,,,,,,,,,,,,,,,,,,,,,,,
+85,Virtual File System,Google Cloud Platform,1,83,,,,,,Unreviewed 3rd Party Libraries,,,,,,,,,,,,,,,,,,,,,,,
+86,System 1,Google Cloud Platform,1,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+87,Local Storage,Google Cloud Platform,1,2,,,,,,"Device Local Storage
+
+Onboarding completion flag Google Analytics id and opt-out setting
+WHO Client ID (UUID)
+Firebase installation id
+Cached content bundles from server
+FCM device token for notifications User-selected location (country)
+",,,,,,,,,,,,,,,,,,,,,,,
+88,AWS General User,AWS Architecture 2019,1,,,,,,,Adversary,,,,,,,,,,,,,,,,,,,,,,,
+89,Local Storage,Google Cloud Platform,1,2|38|86,,,,,,"Device Configuration
+
+Device locale",,,,,,,,,,,,,,,,,,,,,,,
+90,AWS General Users,AWS Architecture 2019,1,,,,,,,Add'l Analytics Readers,,,,,,,,,,,,,,,,,,,,,,,
+91,Stackdriver,Google Cloud Platform,1,7,,,,,,Stackdriver & Cloud Logging (Global),,,,,,,,,,,,,,,,,,,,,,,
+92,Monitoring,Google Cloud Platform,1,7,,,,,,Monitoring (Global),,,,,,,,,,,,,,,,,,,,,,,
+93,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+94,AWS General Users,AWS Architecture 2019,1,,,,,,,Service Reliability Engineers,,,,,,,,,,,,,,,,,,,,,,,
+95,App Engine,Google Cloud Platform,1,7,,,,,,"App Engine, continued (in Europe)",,,,,,,,,,,,,,,,,,,,,,,
+96,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/app (redirects to Google Play or App Store),,,,,,,,,,,,,,,,,,,,,,,
+97,Front End Platform Services,Google Cloud Platform,1,7,,,,,,"/terms, /privacy",,,,,,,,,,,,,,,,,,,,,,,
+98,AWS General User,AWS Architecture 2019,1,,,,,,,End-User,,,,,,,,,,,,,,,,,,,,,,,
+99,Blank,Google Cloud Platform,1,2|38,186,,,,,Firebase SDK,,,,,,,,,,,,,,,,,,,,,,,
+100,ImageSearchBlock2,Standard,1,2|38,186,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,Laptop computer,Azure 2015,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,Cloud Console,Google Cloud Platform,1,,,,,,,Firebase Installations (Global),,,,,,,,,,,,,,,,,,,,,,,
+104,User 1 (Default),Google Cloud Platform,1,,187,,,,,Legend,,,,,,,,,,,,,,,,,,,,,,,
+105,External Infrastructure 3rd Party,Google Cloud Platform,1,104,187,,,,,3rd Party Networked Infrastructure,,,,,,,,,,,,,,,,,,,,,,,
+106,Google Cloud Platform,Google Cloud Platform,1,104,188,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+107,System 1,Google Cloud Platform,1,104,187,,,,,End-User Device,,,,,,,,,,,,,,,,,,,,,,,
+108,Infrastructure System 2,Google Cloud Platform,1,104,187,,,,,Our Code/Content,,,,,,,,,,,,,,,,,,,,,,,
+109,Text,Standard,1,104,187,,,,,"Presumed
+Trusted
+We must rely on the trustworthiness of these components",,,,,,,,,,,,,,,,,,,,,,,
+110,Text,Standard,1,104,187,,,,,"Untrusted
+No reliance on the trustworthiness of these components is assumed",,,,,,,,,,,,,,,,,,,,,,,
+111,User Image,User Images,1,7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+112,Local Storage,Google Cloud Platform,1,7,,,,,,Cloud Storage (in Europe)  Static Content Bundles,,,,,,,,,,,,,,,,,,,,,,,
+113,Cloud SDK,Google Cloud Platform,1,,,,,,,Google Cloud SDK,,,,,,,,,,,,,,,,,,,,,,,
+114,AWS General User,AWS Architecture 2019,1,,,,,,,Adversary,,,,,,,,,,,,,,,,,,,,,,,
+115,Text,Standard,1,,,,,,,"v0.5: This document: https://app.lucidchart.com/documents/edit/3ce4e176-551f-4e71-9ec5-1c2e38071dea/0_0
+As a PDF: https://drive.google.com/file/d/1bgTcZKqHWrLYfhQIM-l--ZpuH2NCGvjV/view
+As a Visio: https://drive.google.com/file/d/1BgeRzAIs0-gmyPqpd_iZ2b1ABFGg9CQb/view",,,,,,,,,,,,,,,,,,,,,,,
+116,Line,,1,,,13,18,Arrow,None,Transient Cache,,,,,,,,,,,,,,,,,,,,,,,
+117,Line,,1,,,18,10,None,Arrow,Durable Stroage,,,,,,,,,,,,,,,,,,,,,,,
+118,Line,,1,,,19,12,None,Arrow,[F-2] Aggregate and store,,,,,,,,,,,,,,,,,,,,,,,
+119,Line,,1,,,31,26,None,Arrow,[C-1] Client fields updated,,,,,,,,,,,,,,,,,,,,,,,
+120,Line,,1,,,27,25,None,Arrow,[E-2],,,,,,,,,,,,,,,,,,,,,,,
+121,Line,,1,,,31,64,None,Arrow,"[C-2] Sub/unsub clients
+to notification topics based on location",,,,,,,,,,,,,,,,,,,,,,,
+122,Line,,1,,,21,31,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+123,Line,,1,,,29,14,None,Arrow,[D-2],,,,,,,,,,,,,,,,,,,,,,,
+124,Line,,1,,,30,29,None,Arrow,[D-1] Admins post notifications targeted to certain topics,,,,,,,,,,,,,,,,,,,,,,,
+125,Line,,1,,,22,31,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+126,Line,,1,,,19,32,None,Arrow,"[F-1] Get COVID-19
+per-country/day stats",,,,,,,,,,,,,,,,,,,,,,,
+127,Line,,1,,,14,16,None,Arrow,[D-3a] iOS Push Notif.,,,,,,,,,,,,,,,,,,,,,,,
+128,Line,,1,,,45,66,None,Arrow,[H-1] App Usage Info (incl. initiation & completion  of symptom checker),,,,,,,,,,,,,,,,,,,,,,,
+129,Line,,1,,,43,112,None,Arrow,[G-1] Retrieve dynamic content bundles specific to language/country,,,,,,,,,,,,,,,,,,,,,,,
+130,Line,,1,,,43,25,None,Arrow,"[E-1] Retrieve global and
+location-specific COVID stats",,,,,,,,,,,,,,,,,,,,,,,
+131,Line,,1,,,64,46,None,Arrow,[A-3] Send updated FCM tokens,,,,,,,,,,,,,,,,,,,,,,,
+132,Line,,1,,,46,64,None,Arrow,"[A-1] Register for push notifications,
+get FCM token",,,,,,,,,,,,,,,,,,,,,,,
+133,Line,,1,,,44,21,None,Arrow,[B-2] Store user-selected country,,,,,,,,,,,,,,,,,,,,,,,
+134,Line,,1,,,46,22,None,Arrow,"[A-2] Whenever token changes, Store FCM token",,,,,,,,,,,,,,,,,,,,,,,
+135,Line,,1,,,14,46,None,Arrow,[D-3c] Android Push Notif.,,,,,,,,,,,,,,,,,,,,,,,
+136,Line,,1,,,16,135,None,None,[D-3b] iOS Push Notif.,,,,,,,,,,,,,,,,,,,,,,,
+137,Line,,1,,,47,59,None,Arrow,Install/Update,,,,,,,,,,,,,,,,,,,,,,,
+138,Line,,1,,,56,52,None,Arrow,Repository Contents,,,,,,,,,,,,,,,,,,,,,,,
+139,Line,,1,,,146,40,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+140,Line,,1,,,40,6,None,Arrow,Repository Contents,,,,,,,,,,,,,,,,,,,,,,,
+141,Line,,1,,,52,18,None,Arrow,Build and Deploy to AppEngine and Cloud Storage,,,,,,,,,,,,,,,,,,,,,,,
+142,Line,,1,,,6,80,None,Arrow,Build and Deploy packages,,,,,,,,,,,,,,,,,,,,,,,
+143,Line,,1,,,142,81,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+144,Line,,1,,,34,47,None,Arrow,Packages,,,,,,,,,,,,,,,,,,,,,,,
+145,Line,,1,,,35,47,None,Arrow,Packages,,,,,,,,,,,,,,,,,,,,,,,
+146,Line,,1,,,49,56,None,Arrow,Commit,,,,,,,,,,,,,,,,,,,,,,,
+147,Line,,1,,,57,7,None,Arrow,Complete Admin Control,,,,,,,,,,,,,,,,,,,,,,,
+148,Line,,1,,,60,,None,Arrow,Read Data,,,,,,,,,,,,,,,,,,,,,,,
+149,Line,,1,,,71,62,None,Arrow,[H-2] Crash reports and non-fatal errors,,,,,,,,,,,,,,,,,,,,,,,
+150,Line,,1,,,68,40,None,Arrow,Read/Write,,,,,,,,,,,,,,,,,,,,,,,
+151,Line,,1,,,150,56,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+152,Line,,1,,,78,6,None,Arrow,Dependencies for build,,,,,,,,,,,,,,,,,,,,,,,
+153,Line,,1,,,77,76,None,Arrow,Commit,,,,,,,,,,,,,,,,,,,,,,,
+154,Line,,1,,,40,78,None,Arrow,References,,,,,,,,,,,,,,,,,,,,,,,
+155,Line,,1,,,76,79,None,Arrow,References,,,,,,,,,,,,,,,,,,,,,,,
+156,Line,,1,,,43,59,None,Arrow,[G-2] Use package assets if not overridden by server,,,,,,,,,,,,,,,,,,,,,,,
+157,Line,,1,,,81,35,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+158,Line,,1,,,,34,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+159,Line,,1,,,56,84,None,Arrow,References,,,,,,,,,,,,,,,,,,,,,,,
+160,Line,,1,,,76,49,None,Arrow,Pull Request Review,,,,,,,,,,,,,,,,,,,,,,,
+161,Line,,1,,,76,85,None,Arrow,References,,,,,,,,,,,,,,,,,,,,,,,
+162,Line,,1,,,84,52,None,Arrow,Dependencies for build,,,,,,,,,,,,,,,,,,,,,,,
+163,Line,,1,,,87,38,Arrow,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+164,Line,,1,,,88,18,None,Arrow,Any request,,,,,,,,,,,,,,,,,,,,,,,
+165,Line,,1,,,44,89,Arrow,None,[B-1] Default country,,,,,,,,,,,,,,,,,,,,,,,
+166,Line,,1,,,43,89,Arrow,None,[G-1] Default language,,,,,,,,,,,,,,,,,,,,,,,
+167,Line,,1,,,102,66,None,Arrow,Read ,,,,,,,,,,,,,,,,,,,,,,,
+168,Line,,1,,,18,91,None,Arrow,Server Logs,,,,,,,,,,,,,,,,,,,,,,,
+169,Line,,1,,,92,91,Arrow,None,Analysis,,,,,,,,,,,,,,,,,,,,,,,
+170,Line,,1,,,93,,None,Arrow,Read/Debug,,,,,,,,,,,,,,,,,,,,,,,
+171,Line,,1,,,93,91,None,Arrow,Read,,,,,,,,,,,,,,,,,,,,,,,
+172,Line,,1,,,95,91,None,Arrow,Server Logs,,,,,,,,,,,,,,,,,,,,,,,
+173,Line,,1,,,101,95,None,Arrow,Browse on the web,,,,,,,,,,,,,,,,,,,,,,,
+174,Line,,1,,,92,93,None,Arrow,Alerts,,,,,,,,,,,,,,,,,,,,,,,
+175,Line,,1,,,99,103,None,Arrow,Provisioning metadata,,,,,,,,,,,,,,,,,,,,,,,
+176,Line,,1,,187,,,None,Arrow,Run-time Flow,,,,,,,,,,,,,,,,,,,,,,,
+177,Line,,1,,187,,,None,Arrow,  Deployment/Development  ,,,,,,,,,,,,,,,,,,,,,,,
+178,Line,,1,,,52,112,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+179,Line,,1,,,112,91,None,Arrow,,,,,,,,,,,,,,,,,,,,,,,,
+180,Line,,1,,,114,112,None,Arrow,Publicly readable,,,,,,,,,,,,,,,,,,,,,,,
+181,Group 1,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+182,Group 2,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+183,Group 3,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+184,Group 4,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+185,Group 5,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+186,Group 6,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+187,Group 7,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+188,Group 8,,1,,187,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+189,Page,,,,,,,,,Page 2,,,,,,,,,,,,,,,,,,,,,,,
