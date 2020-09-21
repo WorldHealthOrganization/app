@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/button.dart';
@@ -67,10 +68,13 @@ class _HomePageInformationCardInner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: ClipRRect(
+      child: Button(
+        color: Constants.illustrationBlue1Color,
+        onPressed: () {
+          return this.link.open(context);
+        },
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
-          color: Constants.illustrationBlue1Color,
           padding: EdgeInsets.fromLTRB(16.0, 36.0, 12.0, 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

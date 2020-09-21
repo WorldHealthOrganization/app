@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
+import 'package:who_app/api/linking.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -16,7 +18,9 @@ import 'package:who_app/constants.dart';
 ///=========================================================
 
 class HomePageProtectYourself extends ContentWidget<FactContent> {
-  HomePageProtectYourself({Key key, @required ContentStore dataSource})
+  final RouteLink link;
+  HomePageProtectYourself(
+      {Key key, @required ContentStore dataSource, @required this.link})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -29,7 +33,7 @@ class HomePageProtectYourself extends ContentWidget<FactContent> {
                 width: screenWidth * 0.75,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: _HomeProtectYourselfCard(fact: fact),
+                  child: _HomeProtectYourselfCard(fact: fact, link: link),
                 ),
               ))
           .toList();
@@ -66,35 +70,46 @@ class HomePageProtectYourself extends ContentWidget<FactContent> {
 
 class _HomeProtectYourselfCard extends StatelessWidget {
   final FactItem fact;
+  final RouteLink link;
 
   const _HomeProtectYourselfCard({
     @required this.fact,
+    @required this.link,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return Button(
+      onPressed: link != null
+          ? () {
+              link.open(context);
+            }
+          : null,
       borderRadius: BorderRadius.circular(16.0),
-      child: Container(
-        color: Constants.primaryDarkColor,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(28.0, 36.0, 28.0, 20.0),
-              child: _buildBody(context, this.fact.body),
-            ),
-            Expanded(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                child: AspectRatio(
-                  aspectRatio: 316 / 240,
-                  child:
-                      SvgPicture.asset('assets/svg/${this.fact.imageName}.svg'),
-                ),
+      color: Constants.primaryDarkColor,
+      padding: EdgeInsets.zero,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.0),
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(28.0, 36.0, 28.0, 20.0),
+                child: _buildBody(context, this.fact.body),
               ),
-            )
-          ],
+              Expanded(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  child: AspectRatio(
+                    aspectRatio: 316 / 240,
+                    child: SvgPicture.asset(
+                        'assets/svg/${this.fact.imageName}.svg'),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
