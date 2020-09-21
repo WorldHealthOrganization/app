@@ -19,6 +19,8 @@ class PageHeader extends StatelessWidget {
   /// An extra widget to show on the trailing side of the header
   final Widget trailing;
 
+  final Widget appBarBottom;
+
   final bool showBackButton;
 
   PageHeader({
@@ -30,6 +32,7 @@ class PageHeader extends StatelessWidget {
     this.appBarColor,
     this.inSliver = true,
     this.trailing,
+    this.appBarBottom,
   });
 
   @override
@@ -63,6 +66,7 @@ class PageHeader extends StatelessWidget {
             elevation: 0,
             pinned: true,
             primary: true,
+            bottom: appBarBottom,
           )
         : AppBar(
             centerTitle: false,
@@ -75,6 +79,7 @@ class PageHeader extends StatelessWidget {
             shape: bottomBorder,
             elevation: 0,
             primary: true,
+            bottom: appBarBottom,
           );
   }
 

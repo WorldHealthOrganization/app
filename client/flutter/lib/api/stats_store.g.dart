@@ -23,6 +23,20 @@ mixin _$StatsStore on _StatsStore, Store {
       (_$globalCasesComputed ??= Computed<int>(() => super.globalCases,
               name: '_StatsStore.globalCases'))
           .value;
+  Computed<CaseStats> _$countryStatsComputed;
+
+  @override
+  CaseStats get countryStats =>
+      (_$countryStatsComputed ??= Computed<CaseStats>(() => super.countryStats,
+              name: '_StatsStore.countryStats'))
+          .value;
+  Computed<int> _$countryCasesComputed;
+
+  @override
+  int get countryCases =>
+      (_$countryCasesComputed ??= Computed<int>(() => super.countryCases,
+              name: '_StatsStore.countryCases'))
+          .value;
 
   final _$caseStatsResponseAtom = Atom(name: '_StatsStore.caseStatsResponse');
 
@@ -51,7 +65,9 @@ mixin _$StatsStore on _StatsStore, Store {
     return '''
 caseStatsResponse: ${caseStatsResponse},
 globalStats: ${globalStats},
-globalCases: ${globalCases}
+globalCases: ${globalCases},
+countryStats: ${countryStats},
+countryCases: ${countryCases}
     ''';
   }
 }

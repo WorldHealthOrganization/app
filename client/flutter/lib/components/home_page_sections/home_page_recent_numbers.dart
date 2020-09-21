@@ -32,21 +32,90 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Observer(
-            builder: (ctx) => _HomeStatCard(
-              stat: widget.statsStore.globalCases != null &&
-                      widget.statsStore.globalCases > 0
-                  ? numFmt.format(widget.statsStore.globalCases)
-                  : '',
-              // TODO: localize
-              title: widget.statsStore.globalCases != null &&
-                      widget.statsStore.globalCases > 0
-                  ? 'Global Cases'
-                  : '',
-            ),
+          _HomeStatsFader(
+            statsStore: widget.statsStore,
+            numFmt: numFmt,
           ),
         ],
       ),
+    );
+  }
+}
+
+class _HomeStatsFader extends StatefulWidget {
+  const _HomeStatsFader({
+    Key key,
+    @required this.statsStore,
+    @required this.numFmt,
+  }) : super(key: key);
+
+  final NumberFormat numFmt;
+  final StatsStore statsStore;
+
+  @override
+  __HomeStatsFaderState createState() => __HomeStatsFaderState();
+}
+
+class __HomeStatsFaderState extends State<_HomeStatsFader>
+    with SingleTickerProviderStateMixin {
+  bool fadeState = true;
+
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 5));
+    _animationController.addStatusListener((status) {
+      print(fadeState);
+      if (mounted) {
+        setState(() {
+          fadeState = !fadeState;
+        });
+      }
+    });
+    _animationController.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedCrossFade(
+      firstChild: Observer(
+        builder: (_) => _HomeStatCard(
+          stat: widget.statsStore.countryStats != null &&
+                  widget.statsStore.countryCases > 0
+              ? widget.numFmt.format(widget.statsStore.countryCases)
+              : '',
+          // TODO: localize
+          title: widget.statsStore.countryStats != null &&
+                  widget.statsStore.countryCases > 0
+              ? 'National Cases'
+              : '',
+        ),
+      ),
+      duration: Duration(seconds: 1),
+      secondChild: Observer(
+        builder: (_) => _HomeStatCard(
+          stat: widget.statsStore.globalCases != null &&
+                  widget.statsStore.globalCases > 0
+              ? widget.numFmt.format(widget.statsStore.globalCases)
+              : '',
+          // TODO: localize
+          title: widget.statsStore.globalCases != null &&
+                  widget.statsStore.globalCases > 0
+              ? 'Global Cases'
+              : '',
+        ),
+      ),
+      crossFadeState:
+          fadeState ? CrossFadeState.showFirst : CrossFadeState.showSecond,
     );
   }
 }
