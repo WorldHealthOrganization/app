@@ -45,6 +45,7 @@ class AboutPage extends StatelessWidget {
 
     String _buildInfoText(BuildContext bc) {
       return [
+        'Debug Info:',
         'Pkg info: ${packageInfo.appName}, ${packageInfo.packageName}, ${packageInfo.version}, ${packageInfo.buildNumber}',
         'Git commit: ${BuildInfo.GIT_SHA}',
         'Built at: ${BuildInfo.BUILT_AT}',
