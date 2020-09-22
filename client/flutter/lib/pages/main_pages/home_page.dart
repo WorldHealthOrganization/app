@@ -105,6 +105,7 @@ class HomePage extends ContentWidget<IndexContent> {
       ),
       content: HomePageProtectYourself(
         dataSource: dataSource,
+        link: item.link,
       ),
     );
   }
@@ -119,6 +120,7 @@ class HomePage extends ContentWidget<IndexContent> {
       ),
       content: HomePageRecentNumbers(
         statsStore: Provider.of<StatsStore>(ctx),
+        link: item.link,
       ),
     );
   }

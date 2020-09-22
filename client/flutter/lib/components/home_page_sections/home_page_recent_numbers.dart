@@ -2,14 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:who_app/api/linking.dart';
 import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
   final StatsStore statsStore;
+  final RouteLink link;
 
-  const HomePageRecentNumbers({Key key, @required this.statsStore})
+  const HomePageRecentNumbers(
+      {Key key, @required this.statsStore, @required this.link})
       : super(key: key);
 
   @override
@@ -35,6 +39,7 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
           _HomeStatsFader(
             statsStore: widget.statsStore,
             numFmt: numFmt,
+            link: widget.link,
           ),
         ],
       ),
@@ -47,10 +52,12 @@ class _HomeStatsFader extends StatefulWidget {
     Key key,
     @required this.statsStore,
     @required this.numFmt,
+    @required this.link,
   }) : super(key: key);
 
   final NumberFormat numFmt;
   final StatsStore statsStore;
+  final RouteLink link;
 
   @override
   __HomeStatsFaderState createState() => __HomeStatsFaderState();
@@ -67,7 +74,6 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 5));
     _animationController.addStatusListener((status) {
-      print(fadeState);
       if (mounted) {
         setState(() {
           fadeState = !fadeState;
@@ -86,37 +92,45 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-      firstChild: Observer(
-        builder: (_) => _HomeStatCard(
-          stat: widget.statsStore.countryStats != null &&
-                  widget.statsStore.countryCases > 0
-              ? widget.numFmt.format(widget.statsStore.countryCases)
-              : '',
-          // TODO: localize
-          title: widget.statsStore.countryStats != null &&
-                  widget.statsStore.countryCases > 0
-              ? 'National Cases'
-              : '',
-        ),
-      ),
-      duration: Duration(seconds: 1),
-      secondChild: Observer(
-        builder: (_) => _HomeStatCard(
-          stat: widget.statsStore.globalCases != null &&
-                  widget.statsStore.globalCases > 0
-              ? widget.numFmt.format(widget.statsStore.globalCases)
-              : '',
-          // TODO: localize
-          title: widget.statsStore.globalCases != null &&
-                  widget.statsStore.globalCases > 0
-              ? 'Global Cases'
-              : '',
-        ),
-      ),
-      crossFadeState:
-          fadeState ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-    );
+    return Button(
+        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+        onPressed: widget.link != null
+            ? () {
+                return widget.link.open(context);
+              }
+            : null,
+        padding: EdgeInsets.zero,
+        child: AnimatedCrossFade(
+          firstChild: Observer(
+            builder: (_) => _HomeStatCard(
+              stat: widget.statsStore.countryStats != null &&
+                      widget.statsStore.countryCases > 0
+                  ? widget.numFmt.format(widget.statsStore.countryCases)
+                  : '',
+              // TODO: localize
+              title: widget.statsStore.countryStats != null &&
+                      widget.statsStore.countryCases > 0
+                  ? 'National Cases'
+                  : '',
+            ),
+          ),
+          duration: Duration(seconds: 1),
+          secondChild: Observer(
+            builder: (_) => _HomeStatCard(
+              stat: widget.statsStore.globalCases != null &&
+                      widget.statsStore.globalCases > 0
+                  ? widget.numFmt.format(widget.statsStore.globalCases)
+                  : '',
+              // TODO: localize
+              title: widget.statsStore.globalCases != null &&
+                      widget.statsStore.globalCases > 0
+                  ? 'Global Cases'
+                  : '',
+            ),
+          ),
+          crossFadeState:
+              fadeState ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+        ));
   }
 }
 
