@@ -31,7 +31,7 @@ This is very much a team effort, and we are moving quickly enough that we have t
 - Design Lead: TBD
 - Engineering Lead: TBD
 
-- Alumni: Dean Hachamovitch, David Kaneda, Bob Lee, Advay Mengle, Hunter Spinks, Karen Wong
+- Alumni Leads: Dean Hachamovitch, David Kaneda, Bob Lee, Advay Mengle, Hunter Spinks, Karen Wong
 
 # Development
 
