@@ -4,18 +4,23 @@ _Note these instructions are for manual submission to the app stores, not for bu
 
 These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), [Android Studio](https://developer.android.com/studio/index.html), [XCode](https://developer.apple.com/xcode/), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed. You must use a macOS system to build the iOS app.
 
-- _Note: this was tested using CocoaPods version `1.9.1`_
-
 ## Verify your tool versions
 
-Run `flutter --version` and ensure your output is exactly:
+Verify your tool versions by running and checking all of these values:
 
 ```sh
 > flutter --version
-Flutter 1.17.4 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 1ad9baa8b9 (29 hours ago) • 2020-06-17 14:41:16 -0700
-Engine • revision ee76268252
-Tools • Dart 2.8.4
+Flutter 1.20.4 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision fba99f6cf9 (8 days ago) • 2020-09-14 15:32:52 -0700
+Engine • revision d1bc06f032
+Tools • Dart 2.9.2
+
+> xcodebuild -version
+Xcode 12.0
+Build version 12A7209
+
+> pod --version
+1.9.3
 ```
 
 ## Clone the Repo
