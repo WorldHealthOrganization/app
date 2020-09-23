@@ -50,7 +50,7 @@ dependencies {
     implementation 'com.google.inject:guice:4.2.2:no_aop'
     implementation 'com.google.inject.extensions:guice-servlet:4.2.3'
 
-    implementation 'com.googlecode.objectify:objectify:5.1.22'
+    implementation 'com.googlecode.objectify:objectify:6.0.7'
 
     // Force older version of okio
     implementation 'com.squareup.okio:okio:1.13.0'
