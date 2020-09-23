@@ -3,9 +3,37 @@ content_version: 1
 contents:
   type: poster
   items:
-    - title: TODO
-      body_html: <p><ul><li>TODO</li><li>TODO</li><li>TODO</li></ol></p><p>TODO</p>
-      icon_name: monitor
+    - title: Emergencies
+      body_html: |
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis nec arcu at semper.</p>
+        <ul>
+          <li>Quisque finibus non dolor non semper.</li>
+          <li>Morbi ultrices pellentesque odio vitae semper.</li>
+          <li>Fusce nunc lacus, porta id leo eget, tempus euismod velit.</li>
+        </ul>
+        <p><b>Sed non quam fringilla leo vehicula lobortis vel fringilla sapien.</b></p>
+      icon_name: alert-triangle
       severe: true
-    - title: TODO
+    - title: COVID-19 Symptoms
+      body_html: |
+        <p>Vestibulum vestibulum, mi et mollis convallis, nunc lorem semper orci, ac dictum nunc risus quis mauris.</p>
+        <p><b>Nulla sed ex id nulla dignissim imperdiet:</b></p>
+        <ul>
+          <li>curabitur.</li>
+          <li>in aliquet.</li>
+          <li>ligula.</li>
+        </ul>
+        <p><b>Vivamus semper:</b></p>
+        <ul>
+          <li>urna in viverra venenatis.</li>
+          <li>ante tortor.</li>
+          <li>tincidunt.</li>
+          <li>neque.</li>
+          <li>eu sollicitudin.</li>
+          <li>dui nibh ut nisl.</li>
+          <li>phasellus ut nibh venenatis, dignissim ligula a.</li>
+        </ul>
+        <p><br/>Sed non lectus condimentum, ultrices libero eu, rhoncus augue. Etiam consectetur lectus eget dui fermentum, id iaculis mauris ornare.<br/></p>
+        <p>Curabitur tincidunt ligula ac metus efficitur gravida. In nec cursus arcu, sit amet fermentum elit.<br/></p>
+        <p>Nulla eu tellus posuere, venenatis dui ac, rhoncus purus. Etiam a sem et orci dictum pellentesque sed sed nunc.</p>
       icon_name: monitor
