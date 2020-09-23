@@ -207,6 +207,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ObserverProvider1<ContentStore, List<Alert>>(
                 observerFn: (_, ContentStore content) {
               return [
+                if (BuildInfo.DEVELOPMENT_ONLY)
+                  Alert(null,
+                      'You are using a development-only build of this app not intended for public use. You agree that you have no expectation of privacy when using this build and understand that the app contents may not have been reviewed by the World Health Organization.',
+                      dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
                   Alert("App Update Required",
                       "This information may be outdated. You must update this app to receive more recent COVID-19 info."),
@@ -216,21 +220,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           child: child,
           builder: (ctx, child) {
             final alerts = Provider.of<List<Alert>>(ctx);
-            return Material(
-              child: Column(
-                children: [
-                  if (alerts.isNotEmpty)
-                    Alerts(
-                      alerts: alerts,
-                    ),
-                  Expanded(
-                      child: MediaQuery.removePadding(
-                          removeTop: alerts.isNotEmpty,
-                          context: ctx,
-                          child: child)),
-                ],
-              ),
-            );
+            return AlertsWrapper(alerts: alerts, child: child);
           },
         ),
         navigatorObservers: <NavigatorObserver>[observer],
