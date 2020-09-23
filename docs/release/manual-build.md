@@ -1,5 +1,7 @@
 # Building the App for App Store Submission
 
+⚠️⚠️⚠️ WARNING: This documentation has been updated for the pre-release v0.12.0 to point to development servers. For future releases, `DEVELOPMENT_ONLY=false` should be changed to `DEVELOPMENT_ONLY=true` to point to prod servers.
+
 _Note these instructions are for manual submission to the app stores, not for building the app during development. For the latter, see [here](../ONBOARDING.md)._
 
 These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), [Android Studio](https://developer.android.com/studio/index.html), [XCode](https://developer.apple.com/xcode/), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed. You must use a macOS system to build the iOS app.
@@ -57,7 +59,7 @@ Prepare the Flutter release:
 
 ```
 cd $(git rev-parse --show-toplevel)
-DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
 cd $(git rev-parse --show-toplevel)/client/flutter
 flutter build ios
 ```
@@ -91,7 +93,7 @@ Build the app bundle:
 
 ```
 cd $(git rev-parse --show-toplevel)
-DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
 cd $(git rev-parse --show-toplevel)/client/flutter
 flutter build appbundle
 ```
