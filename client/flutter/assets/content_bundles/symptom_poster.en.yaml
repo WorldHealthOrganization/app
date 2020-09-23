@@ -5,35 +5,35 @@ contents:
   items:
     - title: Emergencies
       body_html: |
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas iaculis nec arcu at semper.</p>
+        <p>Seek immediate medical attention if you have any of the following severe symptoms. Always call before visiting your doctor or health facility.</p>
         <ul>
-          <li>Quisque finibus non dolor non semper.</li>
-          <li>Morbi ultrices pellentesque odio vitae semper.</li>
-          <li>Fusce nunc lacus, porta id leo eget, tempus euismod velit.</li>
+          <li>Difficulty breathing or shortness of breath</li>
+          <li>Chest pain or pressure</li>
+          <li>Loss of speech or movement</li>
         </ul>
-        <p><b>Sed non quam fringilla leo vehicula lobortis vel fringilla sapien.</b></p>
+        <p><b>Please call your local emergency services. Please use this only for emergencies.</b></p>
       icon_name: alert-triangle
       severe: true
     - title: COVID-19 Symptoms
       body_html: |
-        <p>Vestibulum vestibulum, mi et mollis convallis, nunc lorem semper orci, ac dictum nunc risus quis mauris.</p>
-        <p><b>Nulla sed ex id nulla dignissim imperdiet:</b></p>
+        <p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.</p>
+        <p><b>Most common symptoms:</b></p>
         <ul>
-          <li>curabitur.</li>
-          <li>in aliquet.</li>
-          <li>ligula.</li>
+          <li>Fever</li>
+          <li>Dry cough</li>
+          <li>Tiredness</li>
         </ul>
-        <p><b>Vivamus semper:</b></p>
+        <p><b>Less common symptoms:</b></p>
         <ul>
-          <li>urna in viverra venenatis.</li>
-          <li>ante tortor.</li>
-          <li>tincidunt.</li>
-          <li>neque.</li>
-          <li>eu sollicitudin.</li>
-          <li>dui nibh ut nisl.</li>
-          <li>phasellus ut nibh venenatis, dignissim ligula a.</li>
+          <li>Aches and pains</li>
+          <li>Sore throat</li>
+          <li>Diarrhoea</li>
+          <li>Conjunctivitis</li>
+          <li>Headache</li>
+          <li>Loss of taste or smell</li>
+          <li>A rash on skin, or discolouration of fingers or toes</li>
         </ul>
-        <p><br/>Sed non lectus condimentum, ultrices libero eu, rhoncus augue. Etiam consectetur lectus eget dui fermentum, id iaculis mauris ornare.<br/></p>
-        <p>Curabitur tincidunt ligula ac metus efficitur gravida. In nec cursus arcu, sit amet fermentum elit.<br/></p>
-        <p>Nulla eu tellus posuere, venenatis dui ac, rhoncus purus. Etiam a sem et orci dictum pellentesque sed sed nunc.</p>
+        <p><br/>Seek immediate medical attention if you have serious symptoms. Always call before visiting your doctor or health facility.<br/></p>
+        <p>People with mild symptoms who are otherwise healthy should manage their symptoms at home.<br/></p>
+        <p>On average it takes 5-6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days.</p>
       icon_name: monitor
