@@ -45,7 +45,7 @@ Engineering design documents are kept in [devdesign](devdesign/README.md).
 
 Clone the repo and run from the root of the local clone:
 
-```
+```sh
 ./dev-setup.sh
 ```
 

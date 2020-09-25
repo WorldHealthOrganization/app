@@ -1,5 +1,6 @@
 # Temp files
 *~
+\#*#
 
 # Don't save away IntelliJ config, except code-style which all commits must follow.
 .idea/*
