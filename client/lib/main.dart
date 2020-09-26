@@ -73,13 +73,13 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 Future<void> _onFlutterError(FlutterErrorDetails details) async {
   if (await UserPreferences().getOnboardingCompletedV1()) {
     // Pass all uncaught errors from the framework to Crashlytics.
-    await Crashlytics.instance.recordFlutterError(details);
+    await FirebaseCrashlytics.instance.recordFlutterError(details);
   }
 }
 
 Future<void> _onError(Object error, StackTrace stack) async {
   if (await UserPreferences().getOnboardingCompletedV1()) {
-    await Crashlytics.instance.recordError(error, stack);
+    await FirebaseCrashlytics.instance.recordError(error, stack);
   }
 }
 
