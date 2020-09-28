@@ -9,21 +9,21 @@
 # These owners will be the default owners for everything in
 # the repo, unless a later match takes precedence.
 
-* @brunobowden
+* @brunobowden @crazybob @yukuairoy
 
 # Feature areas:
 
 # Client UI
-/client/flutter/ @britannio @brunobowden @theswerd
+/client/flutter/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
 
 # Team-wide processes
-/docs/ @brunobowden
+/docs/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
 
 # Server
-/server/ @brunobowden
+/server/ @brunobowden @crazybob @yukuairoy
 
 # API
-/api/ @brunobowden
+/api/ @brunobowden @crazybob @yukuairoy
 
 # ***** Security-sensitive - always keep these at the end. *****
 
