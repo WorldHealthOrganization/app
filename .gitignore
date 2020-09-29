@@ -73,6 +73,9 @@ project.xcworkspace
 .gradle
 *.iml
 
+# Flutter
+**/ios/Flutter/.last_build_id
+
 # node.js
 #
 node_modules/
