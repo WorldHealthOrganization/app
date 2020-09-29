@@ -96,7 +96,7 @@ Note: We run on Java 12 but target Java 8.
 
 ### Install Google Cloud SDK
 
-Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
+Follow the directions [here](https://cloud.google.com/sdk/docs/install?hl=en_US).
 
 ### Log In
 
@@ -104,7 +104,7 @@ Follow the directions [here](https://cloud.google.com/sdk/?hl=en_US).
 
 And, if you want to be able to manipulate Firebase:
 
-    	$ gcloud auth application-default login
+    $ gcloud auth application-default login
 
 ### Install the most up-to-date App Engine Component
 
@@ -116,4 +116,4 @@ And, if you want to be able to manipulate Firebase:
 
 Open the project in IntelliJ:
 
-\$ open -a /Applications/IntelliJ\ IDEA\ CE.app/ .
+    $ open -a /Applications/IntelliJ\ IDEA\ CE.app/ .
