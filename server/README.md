@@ -47,7 +47,7 @@ curl -i \
 	-H 'Who-Client-ID: 00000000-0000-0000-0000-000000000000' \
 	-H 'Who-Platform: WEB' \
 	-X POST \
-	-d '{latitude: 37.7625244, longitude: -122.4449224}' \
+	-d '{isoCountryCode: CH}' \
 	'https://whoapp.org/WhoService/putLocation'
 ```
 
