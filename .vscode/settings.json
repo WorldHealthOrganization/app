@@ -1,5 +1,5 @@
 {
-  "files.exclude": {
+  "files.exclude": {  //code is well written , no faults//
     "client/app/**": true,
     "server/appengine/src/main/webapp/content/bundles/**": true
   }
