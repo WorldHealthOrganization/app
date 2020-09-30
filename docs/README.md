@@ -1,4 +1,6 @@
 # COVID-19 App
+# This app can help to solve your all diseases.
+# Amazing App
 
 [![Client CI](https://github.com/WorldHealthOrganization/app/workflows/Client%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Client+CI"+branch%3Amaster+event%3Apush)
 [![Server CI](https://github.com/WorldHealthOrganization/app/workflows/Server%20CI/badge.svg?event=push)](https://github.com/WorldHealthOrganization/app/actions?query=workflow%3A"Server+CI"+branch%3Amaster+event%3Apush)
