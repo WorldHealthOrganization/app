@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 3
+content_version: 4
 contents:
   type: fact
   items:
@@ -14,7 +14,7 @@ contents:
         <b>Cover your mouth and nose</b> with your bent elbow or tissue when you cough or sneeze.
     - image_name: protect-distance
       body_html: |
-        <b>Stay more than</b> 1 meter (>3 feet) away from a person who is sick.
+        <b>Stay more than</b> 1 meter (3 feet) away from a person who is sick.
     - image_name: protect-mask
       body_html: |
         Only wear a mask if you or someone you are looking after are ill with COVID-19 symptoms (especially coughing).
