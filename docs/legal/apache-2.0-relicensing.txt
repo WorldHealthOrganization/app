@@ -3,3 +3,36 @@
 By adding my name below, I hereby additionally license under the Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt) all of my contributions to this repository (including all prior contributions) licensed under the MIT License. I have contributed via the following name and email addresses:
 
 Bruno Bowden - github@brunobowden.com
+
+
+
+# WHO
+
+From World Health Organization's Ayman Badr, original can be found at:
+https://groups.google.com/d/msg/who-app-strategy/A-qWSUJ27tw/wVTqtG4HAwAJ
+
+> From: "'BADR, Ayman' via who-app-strategy" <who-app-strategy@googlegroups.com>
+> To: Bruno Bowden <brunob@gmail.com>, "AUERT, Joris" <auertj@who.int>, "BOROWIEC, Thierry" <borowiecth@who.int>, "CRAMPTON, Kevin" <cramptonk@who.int>
+> CC: "who-app-strategy@googlegroups.com" <who-app-strategy@googlegroups.com>
+> Subject: [who-app-strategy] RE: [EXT] TOS, PN and Apache 2.0 Relicensing
+> Date: Tue, 22 Sep 2020 07:30:17 +0000
+> X-Original-From: "BADR, Ayman" <abadr@who.int>
+>
+> Hi All,
+> 
+> Further to my email below, for the purpose of clarity, please consider this formal acceptance from WHO.
+> 
+> 
+> WHO accepts the past and future contributions to the MyHealth app and [repository](https://github.com/WorldHealthOrganization/app)
+> under the Apache 2.0 License with exceptions, as specified in [Change 1474](https://github.com/WorldHealthOrganization/app/pull/1474/files)
+> ([full license text](https://raw.githubusercontent.com/WorldHealthOrganization/app/4d1a611bfa5ea807a8c3d2551beecfe8bc7f8cb2/LICENSE)), and
+> WHO also agrees to license all of WHO's past and future contributions to the project (including but not limited to WHO graphics and textual
+> advice content) under [that same license](https://raw.githubusercontent.com/WorldHealthOrganization/app/4d1a611bfa5ea807a8c3d2551beecfe8bc7f8cb2/LICENSE).
+> This includes but is not limited to all of the limitations of liability and disclaimers of warranty therein that apply to all of the contributors.
+> If the team is not successful in completing the relicensing, then the project will continue under the existing
+> [license](https://raw.githubusercontent.com/WorldHealthOrganization/app/8a24a46b3c2edb72a2fdb0664c91f4ca504c3f7f/LICENSE), and WHO accepts
+> the past and future contributions to the MyHealth app under that license.
+> 
+> Best,
+>
+> Ayman
