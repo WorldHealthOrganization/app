@@ -1,9 +1,9 @@
 schema_version: 1
-content_version: 1
+content_version: 2
 contents:
   type: poster
   items:
-    - title: Emergencies
+    - title: Serious Symptoms
       body_html: |
         <p>Seek immediate medical attention if you have any of the following severe symptoms. Always call before visiting your doctor or health facility.</p>
         <ul>
@@ -11,7 +11,7 @@ contents:
           <li>Chest pain or pressure</li>
           <li>Loss of speech or movement</li>
         </ul>
-        <p><b>Please call your local emergency services. Please use this only for emergencies.</b></p>
+        <p>If it is an emergency, please call your local emergency services. Please use this only for emergencies.</p>
       icon_name: alert-triangle
       severe: true
     - title: COVID-19 Symptoms

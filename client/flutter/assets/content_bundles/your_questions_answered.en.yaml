@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 3
+content_version: 4
 contents:
   type: qa
   items:
@@ -112,7 +112,7 @@ contents:
     - title_html: |
         What should I do if I have visited an area where COVID-19 is spreading?
       body_html: |
-        <p>If you have recently visited (past 14 days) areas where COVID-19 is spreading follow the guidance outlined in question 15. (What can I do to protect myself and prevent the spread of disease?) and do the following:</p>
+        <p>If you have recently visited (past 14 days) areas where COVID-19 is spreading follow the guidance outlined in the earlier question: "What can I do to protect myself and prevent the spread of disease?" You should also do the following:</p>
 
         <p>🏠 <b>Self-isolate by staying at home if you begin to feel unwell, even with mild symptoms such as headache, low grade fever (37.3°C or above) and slight runny nose, until you recover.</b> </p>
 
@@ -148,26 +148,43 @@ contents:
     - title_html: |
         Should I wear a mask to protect myself?
       body_html: |
-        <p>Only wear a mask if you are ill with COVID-19 symptoms (especially coughing) or looking after someone who may have COVID-19. Disposable face mask can only be used once. If you are not ill or looking after someone who is ill then you are wasting a mask. There is a world-wide shortage of masks, so WHO urges people to use masks wisely.</p>
+        <p>WHO recommends that people always consult local authorities on recommended practices in their area. This may require wearing of masks in public when you can't physically distance.</p>
 
-        <p>WHO advises rational use of medical masks to avoid unnecessary wastage of precious resources and mis-use of masks.</p>
-
-        <p>The most effective ways to protect yourself and others against COVID-19 are to frequently clean your hands, cover your cough with the bend of elbow or tissue and maintain a distance of at least 1 meter (3 feet) from people who are coughing or sneezing. </p>
-
-        <p>🚮 <b>How to put on, use, take off and dispose of a mask?</b></p>
+        <p>WHO recommends the use of masks for the following individuals:
 
         <ol>
-          <li>Remember, a mask should only be used by health workers, care takers, and individuals with respiratory symptoms, such as fever and cough.</li>
-          <li>Before touching the mask, clean hands with an alcohol-based hand rub or soap and water</li>
-          <li>Take the mask and inspect it for tears or holes.</li>
-          <li>Orient which side is the top side (where the metal strip is).</li>
-          <li>Ensure the proper side of the mask faces outwards (the coloured side).</li>
-          <li>Place the mask to your face. Pinch the metal strip or stiff edge of the mask so it moulds to the shape of your nose.</li>
-          <li>Pull down the mask’s bottom so it covers your mouth and your chin.</li>
-          <li>After use, take off the mask; remove the elastic loops from behind the ears while keeping the mask away from your face and clothes, to avoid touching potentially contaminated surfaces of the mask.</li>
-          <li>Discard the mask in a closed bin immediately after use.</li>
-          <li>Perform hand hygiene after touching or discarding the mask – Use alcohol-based hand rub or, if visibly soiled, wash your hands with soap and water.</li>
+          <li>Health workers</li>
+          <li>Anyone with symptoms suggestive of COVID-19, including mildly ill people </li>
+          <li>People caring for suspect or confirmed cases of COVID-19</li>
+          <li>People aged 60 or over
+          <li>People pre-existing medical condition (such as diabetes, high blood pressure, heart disease, lung disease, or cancer)</li>
         </ol>
+
+        <p>The most effective ways to protect yourself and others against COVID-19 are to frequently clean your hands, cover your cough with the bend of elbow or tissue and maintain a distance of at least 1 meter (3 feet) from other people.</p>
+
+        <p>🚮 <b>How to put on a medical mask:</b></p>
+
+        <ol>
+          <li>Before touching the mask, clean your hands with an alcohol-based hand rub or soap and water</li>
+          <li>Inspect the mask for tears or holes; do not use a mask that has previously been worn or is damaged</li>
+          <li>Verify which side is the top – this is usually where the metal strip is</li>
+          <li>Then, identify the inside of the mask, which is usually the white side</li>
+          <li>Place the mask on your face covering your nose, mouth and chin, making sure that there are no gaps between your face and the mask</li>
+          <li>Pinch the metal strip so it moulds to the shape of your nose</li>
+          <li>Remember, do not touch the front of the mask while using it to avoid contamination; if you accidentally touch it, clean your hands</li>
+        </ol>
+
+        <p>🚮 <b>How to take off a medical mask:</b></p>
+
+        <ol>
+          <li>Before touching the mask, clean your hands with an alcohol-based hand rub or soap and water</li>
+          <li>Remove the straps from behind the head or ears, without touching the front of the mask</li>
+          <li>As you remove the mask, lean forward and pull the mask away from your face</li>
+          <li>Medical masks are for single use only; discard the mask immediately, preferably into a closed bin</li>
+          <li>Clean your hands after touching the mask</li>
+          <li>Be aware of the condition of the mask; replace it if it gets soiled or damp</li>
+        </ol>
+
     - title_html: |
         Is there anything I should not do?
       body_html: |
@@ -176,7 +193,7 @@ contents:
         <ul>
           <li>🚭 Smoking</li>
           <li>😷 Wearing multiple masks</li>
-          <li>💊 Taking antibiotics</li>
+          <li>💊 Taking antibiotics - Unless taken under direction of a doctor</li>
         </ul>
 
         <p>In any case, if you have fever, cough and difficulty breathing seek medical care early to reduce the risk of developing a more severe infection and be sure to share your recent travel history with your health care provider.</p>
