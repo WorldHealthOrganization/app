@@ -56,3 +56,26 @@ See [client/flutter/README.md](../client/flutter/README.md).
 ## Server
 
 See [server/README.md](../server/README.md).
+
+## Troubleshooting
+
+List of common problems and solutions during development.
+
+### PR Checks
+
+#### Policy Check
+
+Error: "Policy Check / Check source code for policy violations"
+
+Solution: Click on the "Details" link to the right and search for the **second** "Add" to find the issue:
+
+```sh
+❌ L172 of client/flutter/assets/content_bundles/your_questions_answered.en.yaml:
+<li>Place the mask on your face covering your nose, mouth and chin, making sure that there are no gaps between your face and the mask</li>
+
+ℹ️ Add '8731da43a61f8fae0293d877c558ad655fa242fcb74eba16ad001272bae3bfe6 client/flutter/assets/content_bundles/your_questions_answered.en.yaml' to ./.github/workflows/policy-ignored-lines.txt to ignore this issue
+```
+
+Check the prior line from the source code to see it's a mistaken use of profanity. If it is, then update the PR and the profanity check will then pass.
+
+In the above example, it's a false positive. In which case follow the instructions to add a line to [.github/workflows/policy-ignored-lines.txt](../.github/workflows/policy-ignored-lines.txt). See this example [PR 1550](https://github.com/WorldHealthOrganization/app/pull/1550).
