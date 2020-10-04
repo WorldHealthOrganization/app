@@ -24,7 +24,7 @@ and are able to use all per-Client info in DB",,,,,,,,,,,,,,,,,,,,,,,
 21,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/putLocation,,,,,,,,,,,,,,,,,,,,,,,
 22,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/putDeviceToken,,,,,,,,,,,,,,,,,,,,,,,
 23,Text,Standard,1,,,,,,,WHO COVID-19 App System Architecture,,,,,,,,,,,,,,,,,,,,,,,
-24,Table,Tables,1,,,,,,,Version,Author,Notes,V0.0 - 2020 Apr 12,Advay Mengle,First draft,V0.1 - 2020 Apr 18,Advay Mengle,Reflects change in how location is tracked,V0.2 - 2020 May 6,Advay Mengle,Add planned changes for v1 launch except user feedback,V0.3 - 2020 May 13,Hunter Spinks,Added various Firebase & Google Cloud services,V0.4 - 2020 Aug 19,Advay Mengle,Now serving content bundles from Google Cloud Storage,V0.5 - 2020 Aug 31,Advay Mengle,Various updates,Date,NAME,Describe change
+24,Table,Tables,1,,,,,,,Version,Author,Notes,V0.0 - 2020 Apr 12,Advay Mengle,First draft,V0.1 - 2020 Apr 18,Advay Mengle,Reflects change in how location is tracked,V0.2 - 2020 May 6,Advay Mengle,Add planned changes for v1 launch except user feedback,V0.3 - 2020 May 13,Hunter Spinks,Added various Firebase & Google Cloud services,V0.4 - 2020 Aug 19,Advay Mengle,Now serving content bundles from Google Cloud Storage,V0.5 - 2020 Aug 31,Advay Mengle,Various updates,V0.6 - 2020 Sep 23,Advay Mengle,Clarify that client build uses not just pub.dev dependencies
 25,Front End Platform Services,Google Cloud Platform,1,7,,,,,,/getCaseStats,,,,,,,,,,,,,,,,,,,,,,,
 26,Entity,Entity Relationship,1,7,,,,,,Client,Id,UUID,Location,Country code,Token,FCM token for push notif.,Topics,Which FCM topics this device is subscribed to,Platform,iOS/Android,,,,,,,,,,,,,
 27,Entity,Entity Relationship,1,7,,,,,,StoredCaseStats,Jurisdiction,"Total Stats: Deaths, Cases",Timeseries of stats per day,,,,,,,,,,,,,,,,,,,,
@@ -76,7 +76,7 @@ and are able to use all per-Client info in DB",,,,,,,,,,,,,,,,,,,,,,,
 71,Blank,Google Cloud Platform,1,2|38,,,,,,Firebase Crash Reporter,,,,,,,,,,,,,,,,,,,,,,,
 72,User Image,User Images,1,2|38,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 73,ImageSearchBlock2,Standard,1,7|37,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-74,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,pub.dev Dart Package Repository,,,,,,,,,,,,,,,,,,,,,,,
+74,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,"pub.dev, CocoaPods, gradle and other repositories",,,,,,,,,,,,,,,,,,,,,,,
 75,User Image,User Images,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 76,Local Storage,Google Cloud Platform,1,36,,,,,,Community Forks,,,,,,,,,,,,,,,,,,,,,,,
 77,AWS General Users,AWS Architecture 2019,1,,,,,,,Community Contributors,,,,,,,,,,,,,,,,,,,,,,,
@@ -129,7 +129,7 @@ No reliance on the trustworthiness of these components is assumed",,,,,,,,,,,,,,
 112,Local Storage,Google Cloud Platform,1,7,,,,,,Cloud Storage (in Europe)  Static Content Bundles,,,,,,,,,,,,,,,,,,,,,,,
 113,Cloud SDK,Google Cloud Platform,1,,,,,,,Google Cloud SDK,,,,,,,,,,,,,,,,,,,,,,,
 114,AWS General User,AWS Architecture 2019,1,,,,,,,Adversary,,,,,,,,,,,,,,,,,,,,,,,
-115,Text,Standard,1,,,,,,,"v0.5: This document: https://app.lucidchart.com/documents/edit/3ce4e176-551f-4e71-9ec5-1c2e38071dea/0_0
+115,Text,Standard,1,,,,,,,"v0.6: This document: https://app.lucidchart.com/documents/edit/3ce4e176-551f-4e71-9ec5-1c2e38071dea/0_0
 As a PDF: https://drive.google.com/file/d/1bgTcZKqHWrLYfhQIM-l--ZpuH2NCGvjV/view
 As a Visio: https://drive.google.com/file/d/1BgeRzAIs0-gmyPqpd_iZ2b1ABFGg9CQb/view",,,,,,,,,,,,,,,,,,,,,,,
 116,Line,,1,,,13,18,Arrow,None,Transient Cache,,,,,,,,,,,,,,,,,,,,,,,
