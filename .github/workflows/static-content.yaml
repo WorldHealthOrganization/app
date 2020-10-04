@@ -5,14 +5,14 @@ on:
     branches: [master]
     paths:
       - ".github/workflows/**"
-      - "content/**"
+      - "docs/**"
       - "client/flutter/assets/content_bundles/**"
       - "LICENSE"
       - "tools/**"
   push:
     paths:
       - ".github/workflows/**"
-      - "content/**"
+      - "docs/**"
       - "client/flutter/assets/content_bundles/**"
       - "LICENSE"
       - "tools/**"

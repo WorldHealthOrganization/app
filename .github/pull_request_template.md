@@ -42,4 +42,4 @@ List each added dependency and justifications (see the Guidelines)
 - [ ] Included any relevant screenshots of UI updates.
 - [ ] Followed the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/docs/CONTRIBUTING.md).
 - [ ] Verified all contributions are properly licensed pursuant to the [LICENSE](https://github.com/WorldHealthOrganization/app/blob/master/LICENSE) file in the root of the repository.
-- [ ] Verified your name is in the [content/credits.yaml](https://github.com/WorldHealthOrganization/app/blob/master/content/credits.yaml) file (if you want it to be).
+- [ ] Verified your name is in the [docs/credits.yaml](https://github.com/WorldHealthOrganization/app/blob/master/docs/credits.yaml) file (if you want it to be).

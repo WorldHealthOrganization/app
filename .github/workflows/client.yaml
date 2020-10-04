@@ -8,7 +8,7 @@ on:
       - "api/**"
       - "client/app/**"
       - "client/flutter/**"
-      - "content/**"
+      - "docs/**"
       - "tools/**"
       - "LICENSE"
   pull_request:
@@ -18,7 +18,7 @@ on:
       - "api/**"
       - "client/app/**"
       - "client/flutter/**"
-      - "content/**"
+      - "docs/**"
       - "tools/**"
       - "LICENSE"
 jobs:
