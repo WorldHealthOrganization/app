@@ -41,7 +41,4 @@ for (const file of files) {
 }
 
 fs.copyFileSync(__dirname + "/../LICENSE", destDir + "/LICENSE");
-fs.copyFileSync(
-  __dirname + "/../content/credits.yaml",
-  destDir + "/credits.yaml"
-);
+fs.copyFileSync(__dirname + "/../docs/credits.yaml", destDir + "/credits.yaml");

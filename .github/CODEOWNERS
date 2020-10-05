@@ -11,19 +11,17 @@
 
 * @brunobowden @crazybob @yukuairoy
 
-# Feature areas:
-
-# Client UI
-/client/flutter/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
-
-# Team-wide processes
+# Shared
 /docs/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
+# Legal files
+/docs/legal/ @brunobowden @crazybob @yukuairoy
+
+# Client
+/client/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
 
 # Server
-/server/ @brunobowden @crazybob @yukuairoy
-
-# API
 /api/ @brunobowden @crazybob @yukuairoy
+/server/ @brunobowden @crazybob @yukuairoy
 
 # ***** Security-sensitive - always keep these at the end. *****
 
