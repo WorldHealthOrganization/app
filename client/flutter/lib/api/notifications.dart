@@ -20,7 +20,10 @@ class Notifications {
     var granted;
     switch (permissionStatus) {
       case PermissionStatus.unknown:
-        // if a status is 'unknown' it means we're on iOS and we haven't requested the permission before
+      case PermissionStatus.provisional:
+        // 'unknown': iOS before permission is requested
+        // 'provisional': iOS notifications that don't alert user
+        // https://developer.apple.com/documentation/usernotifications/asking_permission_to_use_notifications
         granted =
             await requestNotificationPermissions() == PermissionStatus.granted;
         break;

@@ -97,7 +97,7 @@ class AppTabRouter extends StatelessWidget {
         assetName,
         color: activeColor,
       ),
-      title: Text(title),
+      label: title,
     );
   }
 }
