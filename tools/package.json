@@ -11,7 +11,7 @@
     "firebase-tools": "^8.9.2",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "prettier-plugin-java": "^0.8.0",
     "prettier-plugin-sh": "^0.6.0"
   }
