@@ -23,7 +23,7 @@ class StatCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              this.title.toUpperCase(),
+              title.toUpperCase(),
               style: TextStyle(
                 color: Constants.neutralTextLightColor,
                 fontSize: 13,
@@ -35,7 +35,7 @@ class StatCard extends StatelessWidget {
               height: 8.0,
             ),
             ThemedText(
-              this.stat,
+              stat,
               variant: TypographyVariant.h2,
               softWrap: true,
               style: TextStyle(

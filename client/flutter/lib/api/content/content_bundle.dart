@@ -30,8 +30,8 @@ class ContentBundle {
 
   void _init(String yamlString,
       {bool unsupportedSchemaVersionAvailable = false}) {
-    this.yaml = loadYaml(yamlString);
-    this.unsupportedSchemaVersionAvailable = unsupportedSchemaVersionAvailable;
+    yaml = loadYaml(yamlString);
+    unsupportedSchemaVersionAvailable = unsupportedSchemaVersionAvailable;
     if (schemaVersion > maxSupportedSchemaVersion) {
       throw ContentBundleSchemaVersionException();
     }
@@ -110,7 +110,7 @@ class ContentBase {
 
   ContentBase(this.bundle, {@required String schemaName}) {
     if (bundle.contentType != schemaName) {
-      throw Exception("Unsupported content type: ${bundle.contentType}");
+      throw Exception('Unsupported content type: ${bundle.contentType}');
     }
   }
 }

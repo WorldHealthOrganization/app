@@ -92,7 +92,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
         child: Row(
           children: <Widget>[
             SizedBox(width: 4.0),
-            Text("Learn More", style: titleStyle.copyWith(fontSize: 18.0)),
+            Text('Learn More', style: titleStyle.copyWith(fontSize: 18.0)),
             SizedBox(width: 6.0),
             Icon(Icons.lightbulb_outline, color: titleStyle.color)
           ],
@@ -110,13 +110,13 @@ class _CarouselSlideState extends State<CarouselSlide> {
   TextStyle _titleHtmlStyle(dom.Node node, TextStyle baseStyle) {
     if (node is dom.Element) {
       switch (node.localName) {
-        case "em":
+        case 'em':
           return baseStyle.merge(TextStyle(
               fontStyle: FontStyle.normal,
               decoration: TextDecoration.underline));
-        case "b":
+        case 'b':
           return baseStyle.merge(TextStyle(fontWeight: FontWeight.w800));
-        case "u":
+        case 'u':
           return baseStyle
               .merge(TextStyle(decoration: TextDecoration.underline));
       }

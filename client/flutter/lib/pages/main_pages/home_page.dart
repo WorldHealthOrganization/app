@@ -154,13 +154,10 @@ class _HomePageSection extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         color: CupertinoColors.white,
-        padding: this.padding,
+        padding: padding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            if (this.header != null) this.header,
-            this.content
-          ],
+          children: <Widget>[if (header != null) header, content],
         ),
       ),
     );
@@ -188,20 +185,20 @@ class _HomePageSectionHeader extends StatelessWidget {
         spacing: 16.0,
         children: <Widget>[
           ThemedText(
-            this.title,
+            title,
             variant: TypographyVariant.h3,
           ),
           CupertinoButton(
             padding: EdgeInsets.zero,
             child: ThemedText(
-              this.linkText,
+              linkText,
               variant: TypographyVariant.button,
               style: TextStyle(
                 color: Constants.neutralTextLightColor,
               ),
             ),
             onPressed: () {
-              return this.link.open(context);
+              return link.open(context);
             },
           ),
         ],

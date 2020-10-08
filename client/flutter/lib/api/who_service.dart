@@ -26,7 +26,7 @@ class WhoService {
     final url = '$serviceUrl/putDeviceToken';
     final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
-      throw Exception("Error status code: ${response.statusCode}");
+      throw Exception('Error status code: ${response.statusCode}');
     }
     return true;
   }
@@ -40,7 +40,7 @@ class WhoService {
     final url = '$serviceUrl/putLocation';
     final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
-      throw Exception("Error status code: ${response.statusCode}");
+      throw Exception('Error status code: ${response.statusCode}');
     }
     return true;
   }
@@ -61,7 +61,7 @@ class WhoService {
     final url = '$serviceUrl/getCaseStats';
     final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
-      throw Exception("Error status code: ${response.statusCode}");
+      throw Exception('Error status code: ${response.statusCode}');
     }
     final ret = GetCaseStatsResponse.create();
     ret.mergeFromProto3Json(jsonDecode(response.body));
@@ -86,11 +86,11 @@ class WhoService {
 
   static String get _platform {
     if (io.Platform.isIOS) {
-      return "IOS";
+      return 'IOS';
     }
     if (io.Platform.isAndroid) {
-      return "ANDROID";
+      return 'ANDROID';
     }
-    return "WEB";
+    return 'WEB';
   }
 }

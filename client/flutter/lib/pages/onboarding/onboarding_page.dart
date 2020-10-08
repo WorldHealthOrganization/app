@@ -53,7 +53,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (_selectedCountry == null && countryList.countries.isNotEmpty) {
       // On first load of country list, the default is the locale country.
       final currentCountryCode = Localizations.localeOf(context).countryCode;
-      if (this.mounted) {
+      if (mounted) {
         setState(() {
           _selectedCountry = countryList.countries[currentCountryCode];
         });

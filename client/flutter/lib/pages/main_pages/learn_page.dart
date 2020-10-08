@@ -39,7 +39,7 @@ class LearnPage extends ContentWidget<IndexContent> {
     ),
   ];
 
-  buildImpl(context, content, logicContext) {
+  PageScaffold buildImpl(context, content, logicContext) {
     List<Widget> _buildPromo() {
       final p = content?.promos
           ?.firstWhere((element) => element.isDisplayed(logicContext));
@@ -85,14 +85,14 @@ class LearnPage extends ContentWidget<IndexContent> {
       headingBorderColor: Color(0x0),
       heroTag: HeroTags.learn,
       // TODO: localize
-      title: "Learn",
+      title: 'Learn',
       showHeader: content != null,
       header: SliverToBoxAdapter(
           child: Padding(
               padding:
                   EdgeInsets.only(left: 16, right: 16, top: 36, bottom: 12),
               // TODO: localize
-              child: PageHeader.buildTitle("Learn",
+              child: PageHeader.buildTitle('Learn',
                   textStyle: TextStyle(fontSize: 40)))),
       beforeHeader: <Widget>[
         _buildPromos(),
@@ -127,7 +127,7 @@ class _MenuItem extends StatelessWidget {
   final String imageName;
 
   String get assetName {
-    return imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
+    return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
   @override

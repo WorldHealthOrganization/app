@@ -96,15 +96,14 @@ class _HomeProtectYourselfCard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(28.0, 36.0, 28.0, 20.0),
-                child: _buildBody(context, this.fact.body),
+                child: _buildBody(context, fact.body),
               ),
               Expanded(
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   child: AspectRatio(
                     aspectRatio: 316 / 240,
-                    child: SvgPicture.asset(
-                        'assets/svg/${this.fact.imageName}.svg'),
+                    child: SvgPicture.asset('assets/svg/${fact.imageName}.svg'),
                   ),
                 ),
               )

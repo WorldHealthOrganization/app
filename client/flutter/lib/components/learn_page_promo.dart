@@ -14,7 +14,7 @@ class LearnPagePromo extends StatelessWidget {
   final String imageName;
 
   String get assetName {
-    return this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
+    return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
   const LearnPagePromo(
@@ -36,9 +36,8 @@ class LearnPagePromo extends StatelessWidget {
             color: Constants.primaryDarkColor,
           ),
         ),
-        if (this.assetName != null)
-          Positioned.fill(
-              child: FittedBox(child: SvgPicture.asset(this.assetName))),
+        if (assetName != null)
+          Positioned.fill(child: FittedBox(child: SvgPicture.asset(assetName))),
         SafeArea(
             bottom: false,
             child: Container(
@@ -80,7 +79,7 @@ class LearnPagePromo extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    return this.link.open(context);
+                    return link.open(context);
                   },
                 ),
                 SizedBox(

@@ -10,7 +10,7 @@ class PromoCurvedBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: _BackgroundClipper(),
-      child: Container(color: this.color),
+      child: Container(color: color),
     );
   }
 }

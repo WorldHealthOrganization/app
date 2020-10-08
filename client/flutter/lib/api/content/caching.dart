@@ -6,7 +6,7 @@ import 'package:path/path.dart' as paths;
 
 class WhoCacheManager extends BaseCacheManager {
   // Change this key when the cache database becomes incompatible with the prior cache.
-  static const key = "whoCache2";
+  static const key = 'whoCache2';
 
   static WhoCacheManager _instance;
 
@@ -41,12 +41,12 @@ class WhoCacheManager extends BaseCacheManager {
               ConnectivityResult.none) {
             // Avoid waiting until timeout
             throw Exception(
-                "No internet connectivity - will not attempt download");
+                'No internet connectivity - will not attempt download');
           }
           return (await webHelper.downloadFile(url, authHeaders: headers)).file;
         } catch (err) {
           print(
-              "Error refreshing expired file, returning cached version: $url");
+              'Error refreshing expired file, returning cached version: $url');
         }
       } else {
         print('Using cached $url until ${cacheFile.validTill}');
@@ -56,13 +56,13 @@ class WhoCacheManager extends BaseCacheManager {
     try {
       if (await Connectivity().checkConnectivity() == ConnectivityResult.none) {
         // Avoid waiting until timeout
-        throw Exception("No internet connectivity - will not attempt download");
+        throw Exception('No internet connectivity - will not attempt download');
       }
-      print("Downloading file: $url");
+      print('Downloading file: $url');
       final download = await webHelper.downloadFile(url, authHeaders: headers);
       return download.file;
     } catch (e) {
-      print("Error downloading file: $url, $e");
+      print('Error downloading file: $url, $e');
       return null;
     }
   }

@@ -23,7 +23,7 @@ class ContentService {
       Locale locale, String countryIsoCode, String name) async {
     final languageCode = locale.languageCode;
     final countryCode = countryIsoCode ?? locale.countryCode;
-    final languageAndCountry = "${languageCode}_${countryCode}";
+    final languageAndCountry = '${languageCode}_${countryCode}';
     var unsupportedSchemaVersionAvailable = false;
 
     ContentBundle networkBundle;
@@ -36,7 +36,7 @@ class ContentService {
         networkBundle = await _loadFromNetwork(name, languageAndCountry);
       } catch (err) {
         print(
-            "Loading $name : Network bundle for $languageAndCountry not found: $err");
+            'Loading $name : Network bundle for $languageAndCountry not found: $err');
         if (err is ContentBundleSchemaVersionException) {
           unsupportedSchemaVersionAvailable = true;
         }
@@ -49,15 +49,15 @@ class ContentService {
     if (localBundle == null && networkBundle == null) {
       // No bundle found.
       throw ContentBundleNotFoundException(
-          "Loading $name : Content bundle not found");
+          'Loading $name : Content bundle not found');
     } else if ((networkBundle?.contentVersion ?? 0) >
         (localBundle?.contentVersion ?? 0)) {
       print(
-          "Loading $name : Using #network bundle v${networkBundle?.contentVersion ?? 0} instead of local v${localBundle?.contentVersion ?? 0}");
+          'Loading $name : Using #network bundle v${networkBundle?.contentVersion ?? 0} instead of local v${localBundle?.contentVersion ?? 0}');
       return networkBundle;
     } else {
       print(
-          "Loading $name : Using *local bundle v${localBundle?.contentVersion ?? 0} instead of network v${networkBundle?.contentVersion ?? 0}");
+          'Loading $name : Using *local bundle v${localBundle?.contentVersion ?? 0} instead of network v${networkBundle?.contentVersion ?? 0}');
       return localBundle;
     }
   }
@@ -73,7 +73,7 @@ class ContentService {
           name, languageAndCountry, unsupportedSchemaVersionAvailable);
     } catch (err) {
       print(
-          "Loading $name : Local asset bundle for $languageAndCountry not found: $err");
+          'Loading $name : Local asset bundle for $languageAndCountry not found: $err');
     }
 
     // Attempt to load the language-only path from local resources.
@@ -82,7 +82,7 @@ class ContentService {
           name, languageCode, unsupportedSchemaVersionAvailable);
     } catch (err) {
       print(
-          "Loading $name : Local asset bundle for $languageCode not found: $err");
+          'Loading $name : Local asset bundle for $languageCode not found: $err');
     }
 
     // Attempt to load the English bundle from local resources.
@@ -90,7 +90,7 @@ class ContentService {
       return await _loadFromAssets(
           name, 'en', unsupportedSchemaVersionAvailable);
     } catch (err) {
-      print("Loading $name : Local asset bundle for en not found: $err");
+      print('Loading $name : Local asset bundle for en not found: $err');
     }
 
     return null;
@@ -100,15 +100,15 @@ class ContentService {
   Future<ContentBundle> _loadFromNetwork(String name, String suffix) async {
     var url = '$baseContentURL/${_fileName(name, suffix)}';
     final headers = {
-      "Accept": "application/yaml",
-      "Accept-Encoding": "gzip",
-      "User-Agent": WhoService.userAgent,
+      'Accept': 'application/yaml',
+      'Accept-Encoding': 'gzip',
+      'User-Agent': WhoService.userAgent,
     };
     File file = await WhoCacheManager()
         .getSingleFile(url, headers: headers)
         .timeout(networkTimeout);
     if (file == null) {
-      throw Exception("File not retrieved from network or cache: $url");
+      throw Exception('File not retrieved from network or cache: $url');
     }
     print('loaded $url');
     return ContentBundle.fromBytes(await file.readAsBytes());

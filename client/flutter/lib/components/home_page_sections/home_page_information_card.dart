@@ -14,7 +14,7 @@ class HomePageInformationCard extends StatelessWidget {
   final String imageName;
 
   String get assetName =>
-      this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
+      imageName != null ? 'assets/svg/${imageName}.svg' : null;
 
   const HomePageInformationCard({
     @required this.buttonText,
@@ -28,12 +28,12 @@ class HomePageInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inner = _HomePageInformationCardInner(
-      buttonText: this.buttonText,
-      link: this.link,
-      subtitle: this.subtitle,
-      title: this.title,
+      buttonText: buttonText,
+      link: link,
+      subtitle: subtitle,
+      title: title,
     );
-    return this.assetName != null
+    return assetName != null
         ? Stack(
             children: <Widget>[
               Container(
@@ -42,8 +42,8 @@ class HomePageInformationCard extends StatelessWidget {
               ),
               Positioned(
                 right: 28.0,
-                child: Container(
-                    height: 96, child: SvgPicture.asset(this.assetName)),
+                child:
+                    Container(height: 96, child: SvgPicture.asset(assetName)),
               )
             ],
           )
@@ -71,7 +71,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
       child: Button(
         color: Constants.illustrationBlue1Color,
         onPressed: () {
-          return this.link.open(context);
+          return link.open(context);
         },
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
@@ -80,7 +80,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               ThemedText(
-                this.title,
+                title,
                 variant: TypographyVariant.h3,
                 style: TextStyle(
                   color: Constants.primaryDarkColor,
@@ -90,7 +90,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
                 height: 6.0,
               ),
               ThemedText(
-                this.subtitle,
+                subtitle,
                 variant: TypographyVariant.body,
                 style: TextStyle(
                   color: Constants.neutralTextDarkColor,
@@ -108,14 +108,14 @@ class _HomePageInformationCardInner extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
                     child: ThemedText(
-                      this.buttonText,
+                      buttonText,
                       variant: TypographyVariant.button,
                       style: TextStyle(
                         color: Constants.primaryColor,
                       ),
                     ),
                     onPressed: () {
-                      return this.link.open(context);
+                      return link.open(context);
                     },
                   )
                 ],

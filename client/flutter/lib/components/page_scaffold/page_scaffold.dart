@@ -43,21 +43,21 @@ class PageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: this.color,
+      color: color,
       child: Padding(
-        padding: this.padding,
+        padding: padding,
         child: Stack(
           children: <Widget>[
             CustomScrollView(
               // Disables scrolling when there's insufficient content to scroll
               primary: false,
               slivers: [
-                ...this.beforeHeader,
-                if (this.showHeader)
-                  (this.header ??
+                ...beforeHeader,
+                if (showHeader)
+                  (header ??
                       PageHeader(
-                        title: this.title,
-                        heroTag: this.heroTag ?? this.title,
+                        title: title,
+                        heroTag: heroTag ?? title,
                         borderColor: headingBorderColor,
                         showBackButton: showBackButton,
                         titleStyle: headerTitleStyle,
@@ -65,7 +65,7 @@ class PageScaffold extends StatelessWidget {
                         appBarBottom: appBarBottom,
                         trailing: trailing,
                       )),
-                ...this.body,
+                ...body,
                 SliverToBoxAdapter(
                   child: SizedBox(height: 170),
                 ),

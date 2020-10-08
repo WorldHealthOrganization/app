@@ -54,12 +54,12 @@ class ProtectYourselfCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: this.borderRadius,
+      borderRadius: borderRadius,
       child: Container(
         color: CupertinoColors.white,
         child: Column(
           children: <Widget>[
-            this.child,
+            child,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
               child: message,

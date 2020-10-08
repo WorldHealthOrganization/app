@@ -13,7 +13,7 @@ void main() {
 
   Widget testableWidget({Widget child}) {
     return CupertinoApp(
-      title: "WHO",
+      title: 'WHO',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -34,6 +34,6 @@ void main() {
       notifications: Notifications(service: WhoService(endpoint: '')),
     )));
     await tester.pumpAndSettle();
-    expect(find.text("Settings"), findsWidgets);
+    expect(find.text('Settings'), findsWidgets);
   });
 }

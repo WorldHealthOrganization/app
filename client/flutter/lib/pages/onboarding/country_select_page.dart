@@ -96,7 +96,7 @@ class CountrySelectPage extends StatelessWidget {
                   ),
                   child: Material(
                     child: FlatButton(
-                      onPressed: this.countryName != null ? this.onNext : null,
+                      onPressed: countryName != null ? onNext : null,
                       color: Constants.whoBackgroundBlueColor,
                       disabledColor:
                           Constants.neutralTextLightColor.withOpacity(0.3),
@@ -133,7 +133,7 @@ class CountrySelectPage extends StatelessWidget {
     return Material(
       color: CupertinoColors.white,
       child: InkWell(
-        onTap: this.onOpenCountryList,
+        onTap: onOpenCountryList,
         child: Container(
           decoration: BoxDecoration(
               border: Border(
@@ -174,10 +174,10 @@ class CountrySelectPage extends StatelessWidget {
                   ),
                   // TODO: localize
                   child: ThemedText(
-                    this.countryName ?? 'Select',
+                    countryName ?? 'Select',
                     variant: TypographyVariant.body,
                     style: TextStyle(
-                      color: this.countryName != null
+                      color: countryName != null
                           ? Constants.neutralTextColor
                           : Constants.emergencyRedColor,
                     ),
