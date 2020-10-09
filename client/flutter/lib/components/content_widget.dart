@@ -20,7 +20,7 @@ abstract class ContentWidget<T extends ContentBase> extends StatelessWidget {
         final content = getContent();
         final logicContext = dataSource.logicContext;
         print(
-            '$this rebuild / ${this.hashCode} / content: ${content.hashCode} v${content?.bundle?.contentVersion} / logicContext: ${logicContext.hashCode}');
+            '$this rebuild / ${hashCode} / content: ${content.hashCode} v${content?.bundle?.contentVersion} / logicContext: ${logicContext.hashCode}');
         return buildImpl(context, content, logicContext);
       },
     );

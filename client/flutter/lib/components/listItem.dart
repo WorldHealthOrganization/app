@@ -4,7 +4,7 @@ class ListItem extends StatelessWidget {
   final Widget titleWidget;
   final String message;
 
-  ListItem({this.titleWidget, this.message = ""});
+  ListItem({this.titleWidget, this.message = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,9 @@ class ListItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          this.titleWidget ?? Container(),
+          titleWidget ?? Container(),
           Text(
-            this.message,
+            message,
             style: TextStyle(fontSize: 21),
             textAlign: TextAlign.center,
           ),

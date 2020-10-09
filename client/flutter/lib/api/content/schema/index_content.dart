@@ -14,11 +14,11 @@ class IndexContent extends ContentBase {
   List<IndexItem> items;
   List<IndexPromo> promos;
 
-  IndexContent(ContentBundle bundle) : super(bundle, schemaName: "index") {
+  IndexContent(ContentBundle bundle) : super(bundle, schemaName: 'index') {
     try {
       final yamlPromos = bundle.contentPromos;
       if (yamlPromos != null) {
-        this.promos = bundle.contentPromos
+        promos = bundle.contentPromos
             .map((yamlPromo) => IndexPromo(
                   promoType: yamlPromo['promo_type'],
                   buttonText: yamlPromo['button_text'],
@@ -30,7 +30,7 @@ class IndexContent extends ContentBase {
                 ))
             .toList();
       }
-      this.items = bundle.contentItems
+      items = bundle.contentItems
           .map((item) => IndexItem(
                 itemType: item['item_type'],
                 title: item['title'],
@@ -42,7 +42,7 @@ class IndexContent extends ContentBase {
               ))
           .toList();
     } catch (err) {
-      print("Error loading Index data: $err");
+      print('Error loading Index data: $err');
       throw ContentBundleDataException();
     }
   }
@@ -70,7 +70,7 @@ class IndexPromo with ConditionalItem {
   });
 
   IndexPromoType get type {
-    switch (this.promoType) {
+    switch (promoType) {
       case 'check_your_symptoms':
         return IndexPromoType.CheckYourSymptoms;
       case 'protect_yourself':
@@ -108,7 +108,7 @@ class IndexItem with ConditionalItem {
   });
 
   IndexItemType get type {
-    switch (this.itemType) {
+    switch (itemType) {
       case 'recent_numbers':
         return IndexItemType.recent_numbers;
       case 'protect_yourself':

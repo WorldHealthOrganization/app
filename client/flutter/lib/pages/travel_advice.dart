@@ -23,7 +23,7 @@ class TravelAdvice extends ContentWidget<AdviceContent> {
         return item.isBanner
             ? _Banner(title: item.title, body: item.body)
             : _TravelAdviceListItem(
-                title: item.title ?? "", description: item.body ?? "");
+                title: item.title ?? '', description: item.body ?? '');
       }).toList();
     }
 
@@ -128,13 +128,13 @@ class _TravelAdviceListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                 ThemedText(
-                  this.title,
+                  title,
                   variant: TypographyVariant.h4,
                   style:
                       TextStyle(height: 1.37, color: Constants.bodyTextColor),
                 ),
                 ThemedText(
-                  this.description,
+                  description,
                   variant: TypographyVariant.body,
                   style:
                       TextStyle(fontSize: 18, color: Constants.bodyTextColor),

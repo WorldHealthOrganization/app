@@ -152,9 +152,9 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ThemedText(
-                        numFmt.format(this.titleData) == "0"
-                            ? "-"
-                            : numFmt.format(this.titleData),
+                        numFmt.format(titleData) == '0'
+                            ? '-'
+                            : numFmt.format(titleData),
                         variant: TypographyVariant.h2,
                         style: TextStyle(
                           color: widget.dimension == DataDimension.cases
@@ -163,7 +163,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                         ),
                       ),
                       ThemedText(
-                        this.graphTitle,
+                        graphTitle,
                         variant: TypographyVariant.h4,
                         style: TextStyle(
                           color: widget.dimension == DataDimension.cases
@@ -182,26 +182,26 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     );
   }
 
-  String get graphTitle => "$graphAggregation $graphDimension";
+  String get graphTitle => '$graphAggregation $graphDimension';
   String get graphAggregation {
     switch (widget.aggregation) {
       case DataAggregation.total:
-        return "Total";
+        return 'Total';
       case DataAggregation.daily:
-        return "Daily";
+        return 'Daily';
       default:
-        return "";
+        return '';
     }
   }
 
   String get graphDimension {
     switch (widget.dimension) {
       case DataDimension.cases:
-        return "cases";
+        return 'cases';
       case DataDimension.deaths:
-        return "deaths";
+        return 'deaths';
       default:
-        return "";
+        return '';
     }
   }
 }

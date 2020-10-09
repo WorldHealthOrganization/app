@@ -43,7 +43,7 @@ class _SettingsPageState extends State<SettingsPage>
     }
   }
 
-  _init() async {
+  void _init() async {
     _analyticsEnabled = await UserPreferences().getAnalyticsEnabled();
     _notificationsEnabled = await widget.notifications.isEnabled();
     setState(() {});
@@ -55,14 +55,14 @@ class _SettingsPageState extends State<SettingsPage>
     super.dispose();
   }
 
-  _toggleAnalytics(bool value) async {
+  void _toggleAnalytics(bool value) async {
     await UserPreferences().setAnalyticsEnabled(value);
     setState(() {
       _analyticsEnabled = value;
     });
   }
 
-  _toggleNotifications(bool setEnabled) async {
+  void _toggleNotifications(bool setEnabled) async {
     var enabled;
     if (setEnabled) {
       enabled = await widget.notifications.attemptEnableNotifications(

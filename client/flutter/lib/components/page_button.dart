@@ -23,7 +23,7 @@ class PageButton extends StatefulWidget {
     this.backgroundColor,
     this.title,
     this.onPressed, {
-    this.description = "",
+    this.description = '',
     this.borderRadius = 16,
     this.verticalPadding = 15.0,
     this.horizontalPadding = 8.0,
@@ -71,15 +71,15 @@ class _PageButtonState extends State<PageButton> {
       color: widget.backgroundColor,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: this.widget.verticalPadding,
-          horizontal: this.widget.horizontalPadding,
+          vertical: widget.verticalPadding,
+          horizontal: widget.horizontalPadding,
         ),
         child: Column(
-          crossAxisAlignment: this.widget.crossAxisAlignment,
-          mainAxisAlignment: this.widget.mainAxisAlignment,
+          crossAxisAlignment: widget.crossAxisAlignment,
+          mainAxisAlignment: widget.mainAxisAlignment,
           children: <Widget>[
             Text(
-              this.widget.title,
+              widget.title,
               textAlign: TextAlign.left,
               style: widget.titleStyle?.copyWith(
                     letterSpacing: Constants.buttonTextSpacing,
@@ -92,9 +92,9 @@ class _PageButtonState extends State<PageButton> {
             ),
             // Makes sure text is centered properly when no description is provided
             SizedBox(height: widget.description.isNotEmpty ? 4 : 0),
-            this.widget.description.isNotEmpty
+            widget.description.isNotEmpty
                 ? Text(
-                    this.widget.description,
+                    widget.description,
                     textAlign: TextAlign.left,
                     textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
                         MediaQuery.textScaleFactorOf(context),

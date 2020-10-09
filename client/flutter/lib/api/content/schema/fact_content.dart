@@ -11,9 +11,9 @@ typedef FactsDataSource = Future<FactContent> Function(Locale);
 class FactContent extends ContentBase {
   List<FactItem> items;
 
-  FactContent(ContentBundle bundle) : super(bundle, schemaName: "fact") {
+  FactContent(ContentBundle bundle) : super(bundle, schemaName: 'fact') {
     try {
-      this.items = bundle.contentItems
+      items = bundle.contentItems
           .map((item) => FactItem(
                 title: item['title_html'],
                 body: item['body_html'],
@@ -23,7 +23,7 @@ class FactContent extends ContentBase {
               ))
           .toList();
     } catch (err) {
-      print("Error loading fact data: $err");
+      print('Error loading fact data: $err');
       throw ContentBundleDataException();
     }
   }

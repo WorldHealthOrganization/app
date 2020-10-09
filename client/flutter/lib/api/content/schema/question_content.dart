@@ -10,9 +10,9 @@ typedef QuestionIndexDataSource = Future<QuestionContent> Function(Locale);
 class QuestionContent extends ContentBase {
   List<QuestionItem> items;
 
-  QuestionContent(ContentBundle bundle) : super(bundle, schemaName: "qa") {
+  QuestionContent(ContentBundle bundle) : super(bundle, schemaName: 'qa') {
     try {
-      this.items = bundle.contentItems
+      items = bundle.contentItems
           .map((item) => QuestionItem(
                 title: item['title_html'],
                 body: item['body_html'],
@@ -20,7 +20,7 @@ class QuestionContent extends ContentBase {
               ))
           .toList();
     } catch (err) {
-      print("Error loading question data: $err");
+      print('Error loading question data: $err');
       throw ContentBundleDataException();
     }
   }

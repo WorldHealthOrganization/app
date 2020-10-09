@@ -167,7 +167,7 @@ class _HomeStatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 ThemedText(
-                  this.stat,
+                  stat,
                   variant: TypographyVariant.h2,
                   softWrap: true,
                   style: TextStyle(
@@ -180,7 +180,7 @@ class _HomeStatCard extends StatelessWidget {
                   height: 4.0,
                 ),
                 ThemedText(
-                  this.title,
+                  title,
                   variant: TypographyVariant.button,
                   style: TextStyle(
                     color: Constants.primaryDarkColor,

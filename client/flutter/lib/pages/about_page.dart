@@ -116,14 +116,14 @@ class AboutPage extends StatelessWidget {
                     // Sort order is random A-Z or Z-A.
                     final orderSign = Random.secure().nextBool() ? 1 : -1;
                     final strategyTeam = [
-                      "Advay Mengle",
-                      "Bob Lee",
-                      "Bruno Bowden",
-                      "Daniel Kraft",
-                      "David Kaneda",
-                      "Dean Hachamovitch",
-                      "Hunter Spinks",
-                      "Karen Wong",
+                      'Advay Mengle',
+                      'Bob Lee',
+                      'Bruno Bowden',
+                      'Daniel Kraft',
+                      'David Kaneda',
+                      'Dean Hachamovitch',
+                      'Hunter Spinks',
+                      'Karen Wong',
                     ];
                     strategyTeam.sort((x, y) => (orderSign *
                         x.toLowerCase().compareTo(y.toLowerCase())));
@@ -131,7 +131,7 @@ class AboutPage extends StatelessWidget {
                     team.sort(
                         (x, y) => x.toLowerCase().compareTo(y.toLowerCase()));
                     var teamNames = S.of(context).aboutPageThanksToText(
-                        '${strategyTeam.join(", ")}; and ${team.join(", ")}');
+                        '${strategyTeam.join(', ')}; and ${team.join(', ')}');
                     return ThemedText(
                       teamNames,
                       variant: TypographyVariant.body,

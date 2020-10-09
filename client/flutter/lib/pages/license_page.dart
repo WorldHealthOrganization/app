@@ -103,7 +103,7 @@ class _LicensePageState extends State<LicensePage> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: "Licenses",
+      title: 'Licenses',
       body: [
         SliverPadding(
           padding: EdgeInsets.all(24.0),

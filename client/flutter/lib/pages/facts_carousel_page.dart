@@ -51,7 +51,7 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
 
   SvgPicture _getSVG(String imageName) {
     return imageName != null
-        ? SvgPicture.asset("assets/svg/${imageName}.svg")
+        ? SvgPicture.asset('assets/svg/${imageName}.svg')
         : null;
   }
 }

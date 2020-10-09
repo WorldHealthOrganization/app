@@ -68,7 +68,7 @@ class CheckUpPosterPage extends ContentWidget<PosterContent> {
     return PageScaffold(
       showBackButton: !inHomePage,
       // TODO: localize
-      title: "Check-Up",
+      title: 'Check-Up',
       body: <Widget>[
         content != null && logicContext != null
             ? _buildBody()
@@ -86,8 +86,8 @@ class _Card extends StatelessWidget {
   final Color iconColor;
 
   String get assetName {
-    return this.content.iconName != null
-        ? 'assets/svg/streamline-sc-${this.content.iconName}.svg'
+    return content.iconName != null
+        ? 'assets/svg/streamline-sc-${content.iconName}.svg'
         : null;
   }
 
@@ -100,7 +100,7 @@ class _Card extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SvgPicture.asset(
-          this.assetName,
+          assetName,
           color: iconColor,
           width: iconSize,
           height: iconSize,
