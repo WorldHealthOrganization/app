@@ -32,6 +32,7 @@ class AdviceContent extends ContentBase {
 class AdviceItem with ConditionalItem {
   final String title;
   final String body;
+  @override
   final String displayCondition;
   final bool isBanner;
 

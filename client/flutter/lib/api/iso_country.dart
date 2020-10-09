@@ -15,7 +15,7 @@ class IsoCountryList {
 
   static Future<Map<String, IsoCountry>> _countriesFromYaml(
       String csvPath) async {
-    Map<String, IsoCountry> countries = {};
+    var countries = <String, IsoCountry>{};
     final yamlString = await rootBundle.loadString(IsoCountryList.isoFilePath);
     final yaml = loadYaml(yamlString);
     yaml['countries'].forEach((countryYaml) {

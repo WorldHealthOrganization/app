@@ -49,8 +49,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  final bool onboardingComplete =
-      await UserPreferences().getOnboardingCompletedV1();
+  final onboardingComplete = await UserPreferences().getOnboardingCompletedV1();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;

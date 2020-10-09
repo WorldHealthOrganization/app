@@ -57,6 +57,7 @@ class _Banner extends StatelessWidget {
 
   _Banner({@required this.title, @required this.body});
 
+  @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(

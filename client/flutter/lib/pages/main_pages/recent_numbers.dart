@@ -114,7 +114,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
         body: <Widget>[
           CupertinoSliverRefreshControl(
             builder: (context, refreshIndicatorMode, pulledExtent, b, c) {
-              double topPadding = max(pulledExtent - 25.0, 0.0);
+              final topPadding = max(pulledExtent - 25.0, 0.0);
               switch (refreshIndicatorMode) {
                 case RefreshIndicatorMode.drag:
                   return pulledExtent > 10
@@ -178,7 +178,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
 
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
       BuildContext context, DataAggregation selectedValue) {
-    Map<DataAggregation, String> valueToDisplayText = {
+    var valueToDisplayText = {
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
       // TODO: This string changed, so we must change regenerate translation keys someday.
       DataAggregation.daily: 'Daily',

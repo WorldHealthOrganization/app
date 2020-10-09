@@ -16,7 +16,7 @@ class ContentBundle {
   /// Construct a bundle from utf-8 bytes containing YAML
   ContentBundle.fromBytes(Uint8List bytes,
       {bool unsupportedSchemaVersionAvailable = false}) {
-    String yamlString = Encoding.getByName('utf-8').decode(bytes);
+    var yamlString = Encoding.getByName('utf-8').decode(bytes);
     _init(yamlString,
         unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }

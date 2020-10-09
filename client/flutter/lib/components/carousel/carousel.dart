@@ -60,8 +60,8 @@ class CarouselView extends StatelessWidget {
               // Anything not effected by the value of the notifier
               child: _buildPageViewIndicator(context),
               builder: (context, index, child) {
-                final bool isFirstPage = index == 0;
-                final bool isLastPage = index + 1 == items.length;
+                final isFirstPage = index == 0;
+                final isLastPage = index + 1 == items.length;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,

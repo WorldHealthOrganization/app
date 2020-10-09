@@ -102,6 +102,7 @@ class _AlertsWrapperState extends State<AlertsWrapper>
 
   final List<Alert> _alerts;
 
+  @override
   void removeAlert(Alert a) {
     if (mounted) {
       setState(() {

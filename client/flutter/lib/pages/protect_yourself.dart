@@ -20,7 +20,7 @@ class ProtectYourself extends ContentWidget<FactContent> {
   @override
   Widget buildImpl(context, content, logicContext) {
     List<Widget> _buildCards() {
-      final TextStyle normalText = TextStyle(
+      final normalText = TextStyle(
         color: Constants.textColor,
         fontSize: 16 * MediaQuery.textScaleFactorOf(context),
         height: 1.4,

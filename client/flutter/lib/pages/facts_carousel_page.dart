@@ -24,8 +24,8 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
         .asMap()
         .entries
         .map((entry) {
-      int index = entry.key;
-      FactItem fact = entry.value;
+      final index = entry.key;
+      final fact = entry.value;
       return CarouselSlide(
         key: UniqueKey(),
         title: fact.title,

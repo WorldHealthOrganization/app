@@ -22,23 +22,23 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var devInfo = false;
 
-    final String versionString = packageInfo != null
+    final versionString = packageInfo != null
         ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
             packageInfo.version, packageInfo.buildNumber)
         : null;
 
-    final String copyrightString = S
+    final copyrightString = S
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
     Future<void> _openTermsOfService(BuildContext context) async {
-      final String url = S.of(context).aboutPageTermsOfServiceLinkUrl;
+      final url = S.of(context).aboutPageTermsOfServiceLinkUrl;
       await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'TermsOfService');
     }
 
     Future<void> _openPrivacyPolicy(BuildContext context) async {
-      final String url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
+      final url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
       await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
     }

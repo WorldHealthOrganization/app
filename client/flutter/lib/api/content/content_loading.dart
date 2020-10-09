@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:who_app/api/who_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/cupertino.dart';
@@ -104,7 +103,7 @@ class ContentService {
       'Accept-Encoding': 'gzip',
       'User-Agent': WhoService.userAgent,
     };
-    File file = await WhoCacheManager()
+    var file = await WhoCacheManager()
         .getSingleFile(url, headers: headers)
         .timeout(networkTimeout);
     if (file == null) {

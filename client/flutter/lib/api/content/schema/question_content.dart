@@ -30,6 +30,7 @@ class QuestionContent extends ContentBase {
 class QuestionItem with ConditionalItem {
   final String title;
   final String body;
+  @override
   final String displayCondition;
 
   QuestionItem(

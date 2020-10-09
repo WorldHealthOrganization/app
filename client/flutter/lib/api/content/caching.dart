@@ -21,9 +21,7 @@ class WhoCacheManager extends BaseCacheManager {
             maxNrOfCacheObjects: 10000);
 
   factory WhoCacheManager() {
-    if (_instance == null) {
-      _instance = WhoCacheManager._init();
-    }
+    _instance ??= WhoCacheManager._init();
     return _instance;
   }
 
@@ -68,6 +66,7 @@ class WhoCacheManager extends BaseCacheManager {
   }
 
   // Store files in the temporary system path (default behavior)
+  @override
   Future<String> getFilePath() async {
     var directory = await getTemporaryDirectory();
     return paths.join(directory.path, key);

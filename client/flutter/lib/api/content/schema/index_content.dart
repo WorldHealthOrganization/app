@@ -57,6 +57,7 @@ class IndexPromo with ConditionalItem {
   final RouteLink link;
   final String buttonText;
   final String imageName;
+  @override
   final String displayCondition;
 
   IndexPromo({
@@ -95,6 +96,7 @@ class IndexItem with ConditionalItem {
   final RouteLink link;
   final String buttonText;
   final String imageName;
+  @override
   final String displayCondition;
 
   IndexItem({

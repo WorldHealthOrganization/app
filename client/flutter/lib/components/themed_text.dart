@@ -142,15 +142,14 @@ class ThemedText extends StatelessWidget {
 
   static TextStyle htmlStyleForVariant(TypographyVariant variant,
       {double textScaleFactor, TextStyle overrides = const TextStyle()}) {
-    TextStyle baseStyle =
-        ThemedText.styleForVariant(variant, overrides: overrides);
+    final baseStyle = ThemedText.styleForVariant(variant, overrides: overrides);
     return baseStyle
         .merge(TextStyle(fontSize: baseStyle.fontSize * textScaleFactor));
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle styleVariant = ThemedText.styleForVariant(variant).merge(style);
+    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
     return Text(
       data,
       locale: locale,
@@ -218,7 +217,7 @@ class AutoSizeThemedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle styleVariant = ThemedText.styleForVariant(variant).merge(style);
+    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
     return AutoSizeText(
       data,
       group: group,
