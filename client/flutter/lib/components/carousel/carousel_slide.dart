@@ -37,15 +37,15 @@ class _CarouselSlideState extends State<CarouselSlide> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
 
-    final TextStyle titleStyle = TextStyle(
+    final titleStyle = TextStyle(
       color: Constants.primaryDarkColor,
       fontSize: 36.0,
       fontWeight: FontWeight.w600,
       letterSpacing: -.5,
     );
-    final TextStyle bodyStyle = TextStyle(
+    final bodyStyle = TextStyle(
       color: Constants.textColor,
       fontSize: 16.0,
       height: 1.4,

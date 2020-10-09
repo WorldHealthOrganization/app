@@ -19,7 +19,7 @@ class CheckUpPosterPage extends ContentWidget<PosterContent> {
   @override
   Widget buildImpl(
       BuildContext context, PosterContent content, LogicContext logicContext) {
-    final bool inHomePage = !ModalRoute.of(context).canPop;
+    final inHomePage = !ModalRoute.of(context).canPop;
 
     List<Widget> _getCards() {
       return [

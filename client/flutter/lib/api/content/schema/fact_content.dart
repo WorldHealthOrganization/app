@@ -36,6 +36,7 @@ class FactItem with ConditionalItem {
   final String body;
   final String imageName;
   final String animationName;
+  @override
   final String displayCondition;
 
   FactItem(

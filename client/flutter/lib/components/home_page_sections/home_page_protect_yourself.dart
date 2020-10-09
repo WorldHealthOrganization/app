@@ -115,12 +115,12 @@ class _HomeProtectYourselfCard extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context, String body) {
-    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+    final defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context),
         overrides: TextStyle(
             color: CupertinoColors.white, fontWeight: FontWeight.w500));
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return Html(
       data: fact.body ?? '',

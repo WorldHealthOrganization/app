@@ -39,6 +39,7 @@ class LearnPage extends ContentWidget<IndexContent> {
     ),
   ];
 
+  @override
   PageScaffold buildImpl(context, content, logicContext) {
     List<Widget> _buildPromo() {
       final p = content?.promos

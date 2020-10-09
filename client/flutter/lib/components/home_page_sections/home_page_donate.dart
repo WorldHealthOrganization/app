@@ -87,7 +87,7 @@ class _DonateBackground extends StatelessWidget {
 class _BackgroundClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path = Path();
+    var path = Path();
 
     path.moveTo(0, 46.0);
     path.arcToPoint(Offset(size.width, 79.0),

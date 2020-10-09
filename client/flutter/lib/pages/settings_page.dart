@@ -108,7 +108,7 @@ class _SettingsPageState extends State<SettingsPage>
   }
 
   Future<void> _provideFeedback() async {
-    const String issueUrl =
+    const issueUrl =
         'https://github.com/WorldHealthOrganization/app/issues/new/choose';
     await launchUrl(issueUrl);
   }
@@ -164,7 +164,7 @@ class _SettingsPageState extends State<SettingsPage>
 
   Widget menu(BuildContext context) {
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Column(children: <Widget>[
       divider,
       MenuListTile(

@@ -32,9 +32,9 @@ class _LicensePageState extends State<LicensePage> {
   bool _loaded = false;
 
   Future<void> _initLicenses() async {
-    int debugFlowId = -1;
+    var debugFlowId = -1;
     assert(() {
-      final Flow flow = Flow.begin();
+      final flow = Flow.begin();
       Timeline.timeSync('_initLicenses()', () {}, flow: flow);
       debugFlowId = flow.id;
       return true;
@@ -48,7 +48,7 @@ class _LicensePageState extends State<LicensePage> {
             flow: Flow.step(debugFlowId));
         return true;
       }());
-      final List<LicenseParagraph> paragraphs =
+      final paragraphs =
           await SchedulerBinding.instance.scheduleTask<List<LicenseParagraph>>(
         license.paragraphs.toList,
         Priority.animation,
@@ -70,7 +70,7 @@ class _LicensePageState extends State<LicensePage> {
             textAlign: TextAlign.center,
           ),
         ));
-        for (final LicenseParagraph paragraph in paragraphs) {
+        for (final paragraph in paragraphs) {
           if (paragraph.indent == LicenseParagraph.centeredIndent) {
             _licenses.add(Padding(
               padding: const EdgeInsets.only(top: 16.0),

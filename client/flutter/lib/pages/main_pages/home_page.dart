@@ -22,8 +22,8 @@ class HomePage extends ContentWidget<IndexContent> {
   @override
   Widget buildImpl(context, content, logicContext) {
     List<Widget> _buildPromo() {
-      List<Widget> preHeader = [];
-      IndexPromo p = content?.promos
+      var preHeader = <Widget>[];
+      var p = content?.promos
           ?.firstWhere((element) => element.isDisplayed(logicContext));
       if (p != null) {
         preHeader.add(_HomePageSection(
@@ -41,11 +41,11 @@ class HomePage extends ContentWidget<IndexContent> {
     }
 
     List<Widget> _buildBody(BuildContext ctx) {
-      List<IndexItem> items = content?.items;
+      var items = content?.items;
       if (items == null) {
         return [LoadingIndicator()];
       }
-      List<Widget> bundleWidgets = items
+      var bundleWidgets = items
           .where((item) => item.isDisplayed(logicContext))
           .map((item) => _buildItem(ctx, item))
           .toList();

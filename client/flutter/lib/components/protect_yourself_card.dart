@@ -24,7 +24,7 @@ class ProtectYourselfCard extends StatelessWidget {
       TextStyle defaultTextStyle = const TextStyle(
           color: Constants.textColor, fontSize: 16, height: 1.4)}) {
     Widget media = SvgPicture.asset('assets/svg/${fact.imageName}.svg');
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return ProtectYourselfCard(
       child: AspectRatio(

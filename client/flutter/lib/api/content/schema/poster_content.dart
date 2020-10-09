@@ -29,6 +29,7 @@ class PosterCard with ConditionalItem {
   final String title;
   final String bodyHtml;
   final String iconName;
+  @override
   final String displayCondition;
   final bool severe;
 

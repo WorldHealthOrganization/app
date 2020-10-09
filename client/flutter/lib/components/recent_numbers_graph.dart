@@ -29,7 +29,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 
   @override
   Widget build(BuildContext context) {
-    final double cardWidth = MediaQuery.of(context).size.width - (padding * 2);
+    final cardWidth = MediaQuery.of(context).size.width - (padding * 2);
 
     return BarChart(
       BarChartData(
@@ -59,12 +59,12 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   }
 
   List<BarChartRodData> _buildRods(double cardWidth) {
-    List<BarChartRodData> bars = <BarChartRodData>[];
+    var bars = <BarChartRodData>[];
 
     if (widget.timeseries != null && widget.timeseries.isNotEmpty) {
       for (var snapshot in widget.timeseries) {
         try {
-          double yAxis =
+          final yAxis =
               snapshot.valueBy(widget.aggregation, widget.dimension).toDouble();
           bars.add(
             BarChartRodData(
@@ -80,7 +80,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
     } else {
       final daysSinceStart =
           DateTime.now().toUtc().difference(startDate).inDays;
-      for (int i = 0; i < daysSinceStart; i++) {
+      for (var i = 0; i < daysSinceStart; i++) {
         bars.add(
           BarChartRodData(
             y: 0,
