@@ -95,13 +95,24 @@ class CountrySelectPage extends StatelessWidget {
                     12.0,
                   ),
                   child: Material(
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: countryName != null ? onNext : null,
-                      color: Constants.whoBackgroundBlueColor,
-                      disabledColor:
-                          Constants.neutralTextLightColor.withOpacity(0.3),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) {
+                            if (states.contains(MaterialState.disabled)) {
+                              return Constants.neutralTextLightColor
+                                  .withOpacity(0.3);
+                            } else {
+                              return Constants.whoBackgroundBlueColor;
+                            }
+                          },
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                        ),
                       ),
                       // TODO: localize
                       child: Container(

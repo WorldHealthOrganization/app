@@ -136,11 +136,23 @@ class _MenuItem extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(minHeight: 64, minWidth: double.infinity),
       margin: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
-      child: FlatButton(
+      child: TextButton(
         onPressed: () => link.open(context),
-        padding: EdgeInsets.zero,
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all(
+            EdgeInsets.zero,
+          ),
+          backgroundColor: MaterialStateProperty.all(
+            color,
+          ),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                8,
+              ),
+            ),
+          ),
+        ),
         clipBehavior: Clip.antiAlias,
         child: SizedBox(
           width: double.infinity,

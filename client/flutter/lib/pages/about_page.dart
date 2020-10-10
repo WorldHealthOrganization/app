@@ -141,32 +141,35 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                  color: CupertinoColors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) =>
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Button(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 24),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.code,
-                                    size: 14,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      devInfo = !devInfo;
-                                    });
-                                  },
-                                ),
-                                if (devInfo)
-                                  ThemedText(
-                                    _buildInfoText(context),
-                                    variant: TypographyVariant.bodySmall,
-                                  )
-                              ])))
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) =>
+                      Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Button(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                        child: FaIcon(
+                          FontAwesomeIcons.code,
+                          size: 14,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            devInfo = !devInfo;
+                          });
+                        },
+                      ),
+                      if (devInfo)
+                        ThemedText(
+                          _buildInfoText(context),
+                          variant: TypographyVariant.bodySmall,
+                        ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

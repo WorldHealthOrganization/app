@@ -18,9 +18,10 @@ class Dialogs {
           title: Text(title),
           content: body ?? Text(bodyText),
           actions: <Widget>[
-            FlatButton(
-              // TODO: Localize
-              child: Text(S.of(context).commonDialogButtonOk),
+            TextButton(
+              child: Text(
+                S.of(context).commonDialogButtonOk,
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -61,13 +62,13 @@ class Dialogs {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(S.of(context).notificationsEnableDialogOptionLater),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text(
                   S.of(context).notificationsEnableDialogOptionOpenSettings),
               onPressed: () {

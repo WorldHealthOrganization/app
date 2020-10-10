@@ -61,51 +61,61 @@ class _PageButtonState extends State<PageButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       onPressed: widget.onPressed != null ? _onPressed : null,
-      disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
-      disabledTextColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith(
+          (states) {
+            if (states.contains(MaterialState.disabled)) {
+              return Constants.neutralTextLightColor.withOpacity(0.4);
+            } else {
+              return widget.backgroundColor;
+            }
+          },
+        ),
+        padding: MaterialStateProperty.all(
+          EdgeInsets.symmetric(
+            vertical: widget.verticalPadding,
+            horizontal: widget.horizontalPadding,
+          ),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+          ),
+        ),
       ),
-      color: widget.backgroundColor,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: widget.verticalPadding,
-          horizontal: widget.horizontalPadding,
-        ),
-        child: Column(
-          crossAxisAlignment: widget.crossAxisAlignment,
-          mainAxisAlignment: widget.mainAxisAlignment,
-          children: <Widget>[
-            Text(
-              widget.title,
-              textAlign: TextAlign.left,
-              style: widget.titleStyle?.copyWith(
-                    letterSpacing: Constants.buttonTextSpacing,
-                  ) ??
-                  TextStyle(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: Constants.buttonTextSpacing,
-                    fontSize: 18,
+      child: Column(
+        crossAxisAlignment: this.widget.crossAxisAlignment,
+        mainAxisAlignment: this.widget.mainAxisAlignment,
+        children: <Widget>[
+          Text(
+            this.widget.title,
+            textAlign: TextAlign.left,
+            style: widget.titleStyle?.copyWith(
+                  letterSpacing: Constants.buttonTextSpacing,
+                ) ??
+                TextStyle(
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: Constants.buttonTextSpacing,
+                  fontSize: 18,
+                ),
+          ),
+          // Makes sure text is centered properly when no description is provided
+          SizedBox(height: widget.description.isNotEmpty ? 4 : 0),
+          this.widget.description.isNotEmpty
+              ? Text(
+                  this.widget.description,
+                  textAlign: TextAlign.left,
+                  textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
+                      MediaQuery.textScaleFactorOf(context),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: widget.descriptionColor ?? Color(0xFFC9CDD6),
                   ),
-            ),
-            // Makes sure text is centered properly when no description is provided
-            SizedBox(height: widget.description.isNotEmpty ? 4 : 0),
-            widget.description.isNotEmpty
-                ? Text(
-                    widget.description,
-                    textAlign: TextAlign.left,
-                    textScaleFactor: (0.9 + 0.5 * contentScale(context)) *
-                        MediaQuery.textScaleFactorOf(context),
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: widget.descriptionColor ?? Color(0xFFC9CDD6),
-                    ),
-                  )
-                : Container()
-          ],
-        ),
+                )
+              : Container()
+        ],
       ),
     );
   }
