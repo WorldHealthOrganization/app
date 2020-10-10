@@ -22,23 +22,23 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var devInfo = false;
 
-    final String versionString = packageInfo != null
+    final versionString = packageInfo != null
         ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
             packageInfo.version, packageInfo.buildNumber)
         : null;
 
-    final String copyrightString = S
+    final copyrightString = S
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
     Future<void> _openTermsOfService(BuildContext context) async {
-      final String url = S.of(context).aboutPageTermsOfServiceLinkUrl;
+      final url = S.of(context).aboutPageTermsOfServiceLinkUrl;
       await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'TermsOfService');
     }
 
     Future<void> _openPrivacyPolicy(BuildContext context) async {
-      final String url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
+      final url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
       await launchUrl(url);
       await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
     }
@@ -116,14 +116,14 @@ class AboutPage extends StatelessWidget {
                     // Sort order is random A-Z or Z-A.
                     final orderSign = Random.secure().nextBool() ? 1 : -1;
                     final strategyTeam = [
-                      "Advay Mengle",
-                      "Bob Lee",
-                      "Bruno Bowden",
-                      "Daniel Kraft",
-                      "David Kaneda",
-                      "Dean Hachamovitch",
-                      "Hunter Spinks",
-                      "Karen Wong",
+                      'Advay Mengle',
+                      'Bob Lee',
+                      'Bruno Bowden',
+                      'Daniel Kraft',
+                      'David Kaneda',
+                      'Dean Hachamovitch',
+                      'Hunter Spinks',
+                      'Karen Wong',
                     ];
                     strategyTeam.sort((x, y) => (orderSign *
                         x.toLowerCase().compareTo(y.toLowerCase())));
@@ -131,7 +131,7 @@ class AboutPage extends StatelessWidget {
                     team.sort(
                         (x, y) => x.toLowerCase().compareTo(y.toLowerCase()));
                     var teamNames = S.of(context).aboutPageThanksToText(
-                        '${strategyTeam.join(", ")}; and ${team.join(", ")}');
+                        '${strategyTeam.join(', ')}; and ${team.join(', ')}');
                     return ThemedText(
                       teamNames,
                       variant: TypographyVariant.body,
@@ -141,32 +141,35 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                  color: CupertinoColors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) =>
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Button(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 24),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.code,
-                                    size: 14,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      devInfo = !devInfo;
-                                    });
-                                  },
-                                ),
-                                if (devInfo)
-                                  ThemedText(
-                                    _buildInfoText(context),
-                                    variant: TypographyVariant.bodySmall,
-                                  )
-                              ])))
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) =>
+                      Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Button(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+                        child: FaIcon(
+                          FontAwesomeIcons.code,
+                          size: 14,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            devInfo = !devInfo;
+                          });
+                        },
+                      ),
+                      if (devInfo)
+                        ThemedText(
+                          _buildInfoText(context),
+                          variant: TypographyVariant.bodySmall,
+                        ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

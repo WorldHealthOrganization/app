@@ -29,7 +29,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 
   @override
   Widget build(BuildContext context) {
-    final double cardWidth = MediaQuery.of(context).size.width - (padding * 2);
+    final cardWidth = MediaQuery.of(context).size.width - (padding * 2);
 
     return BarChart(
       BarChartData(
@@ -59,12 +59,12 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   }
 
   List<BarChartRodData> _buildRods(double cardWidth) {
-    List<BarChartRodData> bars = <BarChartRodData>[];
+    var bars = <BarChartRodData>[];
 
     if (widget.timeseries != null && widget.timeseries.isNotEmpty) {
       for (var snapshot in widget.timeseries) {
         try {
-          double yAxis =
+          var yAxis =
               snapshot.valueBy(widget.aggregation, widget.dimension).toDouble();
           bars.add(
             BarChartRodData(
@@ -80,7 +80,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
     } else {
       final daysSinceStart =
           DateTime.now().toUtc().difference(startDate).inDays;
-      for (int i = 0; i < daysSinceStart; i++) {
+      for (var i = 0; i < daysSinceStart; i++) {
         bars.add(
           BarChartRodData(
             y: 0,
@@ -137,7 +137,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         child: Container(
           color: CupertinoColors.white,
           child: Stack(
-            overflow: Overflow.clip,
+            clipBehavior: Clip.hardEdge,
             fit: StackFit.expand,
             children: [
               Align(
@@ -152,9 +152,9 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ThemedText(
-                        numFmt.format(this.titleData) == "0"
-                            ? "-"
-                            : numFmt.format(this.titleData),
+                        numFmt.format(titleData) == '0'
+                            ? '-'
+                            : numFmt.format(titleData),
                         variant: TypographyVariant.h2,
                         style: TextStyle(
                           color: widget.dimension == DataDimension.cases
@@ -163,7 +163,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                         ),
                       ),
                       ThemedText(
-                        this.graphTitle,
+                        graphTitle,
                         variant: TypographyVariant.h4,
                         style: TextStyle(
                           color: widget.dimension == DataDimension.cases
@@ -182,26 +182,26 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     );
   }
 
-  String get graphTitle => "$graphAggregation $graphDimension";
+  String get graphTitle => '$graphAggregation $graphDimension';
   String get graphAggregation {
     switch (widget.aggregation) {
       case DataAggregation.total:
-        return "Total";
+        return 'Total';
       case DataAggregation.daily:
-        return "Daily";
+        return 'Daily';
       default:
-        return "";
+        return '';
     }
   }
 
   String get graphDimension {
     switch (widget.dimension) {
       case DataDimension.cases:
-        return "cases";
+        return 'cases';
       case DataDimension.deaths:
-        return "deaths";
+        return 'deaths';
       default:
-        return "";
+        return '';
     }
   }
 }

@@ -90,14 +90,14 @@ class AppTabRouter extends StatelessWidget {
 
   static BottomNavigationBarItem _buildSvgNavItem(
       {String iconName, String title, Color activeColor}) {
-    final String assetName = 'assets/svg/${iconName}.svg';
+    final assetName = 'assets/svg/${iconName}.svg';
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(assetName),
       activeIcon: SvgPicture.asset(
         assetName,
         color: activeColor,
       ),
-      title: Text(title),
+      label: title,
     );
   }
 }

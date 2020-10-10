@@ -95,13 +95,24 @@ class CountrySelectPage extends StatelessWidget {
                     12.0,
                   ),
                   child: Material(
-                    child: FlatButton(
-                      onPressed: this.countryName != null ? this.onNext : null,
-                      color: Constants.whoBackgroundBlueColor,
-                      disabledColor:
-                          Constants.neutralTextLightColor.withOpacity(0.3),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
+                    child: TextButton(
+                      onPressed: countryName != null ? onNext : null,
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) {
+                            if (states.contains(MaterialState.disabled)) {
+                              return Constants.neutralTextLightColor
+                                  .withOpacity(0.3);
+                            } else {
+                              return Constants.whoBackgroundBlueColor;
+                            }
+                          },
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                        ),
                       ),
                       // TODO: localize
                       child: Container(
@@ -133,7 +144,7 @@ class CountrySelectPage extends StatelessWidget {
     return Material(
       color: CupertinoColors.white,
       child: InkWell(
-        onTap: this.onOpenCountryList,
+        onTap: onOpenCountryList,
         child: Container(
           decoration: BoxDecoration(
               border: Border(
@@ -174,10 +185,10 @@ class CountrySelectPage extends StatelessWidget {
                   ),
                   // TODO: localize
                   child: ThemedText(
-                    this.countryName ?? 'Select',
+                    countryName ?? 'Select',
                     variant: TypographyVariant.body,
                     style: TextStyle(
-                      color: this.countryName != null
+                      color: countryName != null
                           ? Constants.neutralTextColor
                           : Constants.emergencyRedColor,
                     ),
