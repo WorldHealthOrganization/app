@@ -21,7 +21,7 @@ import Flutter
     }
 
     if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().delegate = self
+      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
