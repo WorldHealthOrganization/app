@@ -49,8 +49,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  final bool onboardingComplete =
-      await UserPreferences().getOnboardingCompletedV1();
+  final onboardingComplete = await UserPreferences().getOnboardingCompletedV1();
 
   // Comment the above lines out and uncomment this to force onboarding in development
   // final bool onboardingComplete = false;
@@ -125,7 +124,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         _getCurrentLocale(),
       ).textDirection,
       child: MaterialApp(
-        title: "WHO COVID-19",
+        title: 'WHO COVID-19',
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -212,8 +211,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                       'You are using a development-only build of this app not intended for public use. You agree that you have no expectation of privacy when using this build and understand that the app contents may not have been reviewed by the World Health Organization.',
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
-                  Alert("App Update Required",
-                      "This information may be outdated. You must update this app to receive more recent COVID-19 info."),
+                  Alert('App Update Required',
+                      'This information may be outdated. You must update this app to receive more recent COVID-19 info.'),
               ];
             }),
           ],

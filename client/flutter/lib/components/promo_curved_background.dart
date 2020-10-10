@@ -10,7 +10,7 @@ class PromoCurvedBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: _BackgroundClipper(),
-      child: Container(color: this.color),
+      child: Container(color: color),
     );
   }
 }
@@ -18,7 +18,7 @@ class PromoCurvedBackground extends StatelessWidget {
 class _BackgroundClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path = Path();
+    var path = Path();
 
     path.lineTo(0, size.height);
     path.arcToPoint(Offset(size.width, size.height - 33.0),

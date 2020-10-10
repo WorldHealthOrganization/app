@@ -17,7 +17,7 @@ class PermissionRequestPage extends StatelessWidget {
   const PermissionRequestPage(
       {Key key,
       @required this.pageTitle,
-      this.pageDescription = "",
+      this.pageDescription = '',
       @required this.buttonTitle,
       @required this.onGrantPermission,
       @required this.onSkip,
@@ -32,7 +32,7 @@ class PermissionRequestPage extends StatelessWidget {
           Align(
             alignment: Alignment(1, -0.3),
             child: Image.asset(
-              this.backgroundImageSrc,
+              backgroundImageSrc,
               fit: BoxFit.fitWidth,
               alignment: Alignment.center,
             ),
@@ -59,7 +59,7 @@ class PermissionRequestPage extends StatelessWidget {
                             header: true,
                             container: true,
                             child: Text(
-                              this.pageTitle,
+                              pageTitle,
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 color: Color(0xff1A458E),
@@ -74,7 +74,7 @@ class PermissionRequestPage extends StatelessWidget {
                           Semantics(
                             container: true,
                             child: Text(
-                              this.pageDescription,
+                              pageDescription,
                               style: TextStyle(
                                 color: Constants.textColor,
                                 height: 1.4,

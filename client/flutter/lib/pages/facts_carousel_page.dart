@@ -24,8 +24,8 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
         .asMap()
         .entries
         .map((entry) {
-      int index = entry.key;
-      FactItem fact = entry.value;
+      final index = entry.key;
+      final fact = entry.value;
       return CarouselSlide(
         key: UniqueKey(),
         title: fact.title,
@@ -51,7 +51,7 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
 
   SvgPicture _getSVG(String imageName) {
     return imageName != null
-        ? SvgPicture.asset("assets/svg/${imageName}.svg")
+        ? SvgPicture.asset('assets/svg/${imageName}.svg')
         : null;
   }
 }

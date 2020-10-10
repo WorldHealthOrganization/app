@@ -21,21 +21,21 @@ extension StatSnapshotSlicing on StatSnapshot {
       case DataAggregation.daily:
         switch (dim) {
           case DataDimension.cases:
-            return this.dailyCases.toInt();
+            return dailyCases.toInt();
           case DataDimension.deaths:
-            return this.dailyDeaths.toInt();
+            return dailyDeaths.toInt();
         }
-        throw UnsupportedError("Unknown dimension");
+        throw UnsupportedError('Unknown dimension');
       case DataAggregation.total:
         switch (dim) {
           case DataDimension.cases:
-            return this.totalCases.toInt();
+            return totalCases.toInt();
           case DataDimension.deaths:
-            return this.totalDeaths.toInt();
+            return totalDeaths.toInt();
         }
-        throw UnsupportedError("Unknown dimension");
+        throw UnsupportedError('Unknown dimension');
     }
-    throw UnsupportedError("Unknown aggregation");
+    throw UnsupportedError('Unknown aggregation');
   }
 }
 
@@ -43,11 +43,11 @@ extension CaseStatsSlicing on CaseStats {
   int valueBy(DataDimension dim) {
     switch (dim) {
       case DataDimension.cases:
-        return this.hasCases() ? this.cases.toInt() : null;
+        return hasCases() ? cases.toInt() : null;
       case DataDimension.deaths:
-        return this.hasDeaths() ? this.deaths.toInt() : null;
+        return hasDeaths() ? deaths.toInt() : null;
     }
-    throw UnsupportedError("Unknown dimension");
+    throw UnsupportedError('Unknown dimension');
   }
 }
 
@@ -93,16 +93,15 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               children: [
                 CupertinoSlidingSegmentedControl(
                   backgroundColor: Color(0xffEFEFEF),
-                  children:
-                      _buildSegmentControlChildren(context, this.aggregation),
-                  groupValue: this.aggregation,
+                  children: _buildSegmentControlChildren(context, aggregation),
+                  groupValue: aggregation,
                   onValueChanged: (value) {
                     widget.analytics.logEvent(
                         name: 'RecentNumberAggregation',
-                        parameters: {'index': this.aggregation.index});
+                        parameters: {'index': aggregation.index});
                     setState(
                       () {
-                        this.aggregation = value;
+                        aggregation = value;
                       },
                     );
                   },
@@ -115,7 +114,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
         body: <Widget>[
           CupertinoSliverRefreshControl(
             builder: (context, refreshIndicatorMode, pulledExtent, b, c) {
-              double topPadding = max(pulledExtent - 25.0, 0.0);
+              final topPadding = max(pulledExtent - 25.0, 0.0);
               switch (refreshIndicatorMode) {
                 case RefreshIndicatorMode.drag:
                   return pulledExtent > 10
@@ -150,7 +149,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                     if (countryCode != null) ...[
                       _JurisdictionStats(
                         aggregation: aggregation,
-                        emoji: countryList.countries[countryCode]?.emoji ?? "",
+                        emoji: countryList.countries[countryCode]?.emoji ?? '',
                         name: countryList.countries[countryCode]?.name ??
                             countryCode,
                         stats: widget.statsStore.countryStats,
@@ -179,7 +178,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
 
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
       BuildContext context, DataAggregation selectedValue) {
-    Map<DataAggregation, String> valueToDisplayText = {
+    var valueToDisplayText = {
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
       // TODO: This string changed, so we must change regenerate translation keys someday.
       DataAggregation.daily: 'Daily',
@@ -228,7 +227,7 @@ class _JurisdictionStats extends StatelessWidget {
         ),
         ConstrainedBox(
           child: RecentNumbersGraph(
-            aggregation: this.aggregation,
+            aggregation: aggregation,
             timeseries: stats?.timeseries,
             dimension: DataDimension.cases,
           ),
@@ -237,7 +236,7 @@ class _JurisdictionStats extends StatelessWidget {
         Container(height: 24.0),
         ConstrainedBox(
           child: RecentNumbersGraph(
-            aggregation: this.aggregation,
+            aggregation: aggregation,
             timeseries: stats?.timeseries,
             dimension: DataDimension.deaths,
           ),
@@ -262,7 +261,7 @@ class RegionText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: ThemedText(
-        "$emoji $country",
+        '$emoji $country',
         variant: TypographyVariant.h3,
       ),
     );

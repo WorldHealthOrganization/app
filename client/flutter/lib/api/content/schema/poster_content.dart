@@ -5,11 +5,11 @@ import 'package:who_app/api/content/schema/conditional_content.dart';
 class PosterContent extends ContentBase {
   List<PosterCard> cards;
 
-  PosterContent(ContentBundle bundle) : super(bundle, schemaName: "poster") {
+  PosterContent(ContentBundle bundle) : super(bundle, schemaName: 'poster') {
     try {
-      this.cards = bundle.contentItems.map(_cardFromContent).toList();
+      cards = bundle.contentItems.map(_cardFromContent).toList();
     } catch (err) {
-      print("Error loading poster data: $err");
+      print('Error loading poster data: $err');
       throw ContentBundleDataException();
     }
   }
@@ -29,6 +29,7 @@ class PosterCard with ConditionalItem {
   final String title;
   final String bodyHtml;
   final String iconName;
+  @override
   final String displayCondition;
   final bool severe;
 

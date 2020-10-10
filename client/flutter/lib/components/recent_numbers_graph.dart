@@ -64,7 +64,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
     if (widget.timeseries != null && widget.timeseries.isNotEmpty) {
       for (var snapshot in widget.timeseries) {
         try {
-          var yAxis =
+          final yAxis =
               snapshot.valueBy(widget.aggregation, widget.dimension).toDouble();
           bars.add(
             BarChartRodData(

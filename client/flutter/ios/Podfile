@@ -37,5 +37,11 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    # TODO: Flutter fix to force inheriting project target, once available it should
+    # be possible to remove the following code to set the target
+    # https://github.com/flutter/flutter/pull/66590
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "9.0"
+    end
   end
 end

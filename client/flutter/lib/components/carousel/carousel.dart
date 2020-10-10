@@ -49,7 +49,7 @@ class CarouselView extends StatelessWidget {
           child: PageView(
             controller: pageController,
             onPageChanged: (i) => pageIndexNotifier.value = i,
-            children: this.items,
+            children: items,
           ),
         ),
         Align(
@@ -60,8 +60,8 @@ class CarouselView extends StatelessWidget {
               // Anything not effected by the value of the notifier
               child: _buildPageViewIndicator(context),
               builder: (context, index, child) {
-                final bool isFirstPage = index == 0;
-                final bool isLastPage = index + 1 == items.length;
+                final isFirstPage = index == 0;
+                final isLastPage = index + 1 == items.length;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +93,7 @@ class CarouselView extends StatelessWidget {
 
   Future<void> goToLastPage() {
     analytics.logEvent(name: 'CarouselLastPage');
-    return pageController.animateToPage(this.items.length - 1,
+    return pageController.animateToPage(items.length - 1,
         duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
@@ -128,7 +128,7 @@ class CarouselView extends StatelessWidget {
               child: FittedBox(
                 child: PageViewIndicator(
                   pageIndexNotifier: pageIndexNotifier,
-                  length: this.items.length,
+                  length: items.length,
                   normalBuilder: (animationController, index) => Circle(
                     size: 20.0,
                     color: Constants.neutralTextLightColor.withOpacity(0.2),

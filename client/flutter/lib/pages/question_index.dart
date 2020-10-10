@@ -150,7 +150,7 @@ class _QuestionTileState extends State<QuestionTile>
 
   // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
 
     return Html(
       data: html,
@@ -166,7 +166,7 @@ class _QuestionTileState extends State<QuestionTile>
       customEdgeInsets: (dom.Node node) {
         if (node is dom.Element) {
           switch (node.localName) {
-            case "p":
+            case 'p':
               return EdgeInsets.only(bottom: 8);
               break;
             default:
@@ -179,12 +179,12 @@ class _QuestionTileState extends State<QuestionTile>
       customTextStyle: (dom.Node node, TextStyle baseStyle) {
         if (node is dom.Element) {
           switch (node.localName) {
-            case "h2":
+            case 'h2':
               return baseStyle.merge(TextStyle(
                   fontSize: 20,
                   color: Color(0xff3C4245),
                   fontWeight: FontWeight.w500));
-            case "b":
+            case 'b':
               return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
           }
         }

@@ -11,18 +11,18 @@ typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 class AdviceContent extends ContentBase {
   List<AdviceItem> items;
 
-  AdviceContent(ContentBundle bundle) : super(bundle, schemaName: "advice") {
+  AdviceContent(ContentBundle bundle) : super(bundle, schemaName: 'advice') {
     try {
-      this.items = bundle.contentItems
+      items = bundle.contentItems
           .map((item) => AdviceItem(
                 isBanner: item['is_banner'] ?? false,
-                title: (item['title'] ?? "").trim(),
-                body: (item['body'] ?? "").trim(), // remove trailing newline
+                title: (item['title'] ?? '').trim(),
+                body: (item['body'] ?? '').trim(), // remove trailing newline
                 displayCondition: item['display_condition'],
               ))
           .toList();
     } catch (err) {
-      print("Error loading fact data: $err");
+      print('Error loading fact data: $err');
       throw ContentBundleDataException();
     }
   }
@@ -32,6 +32,7 @@ class AdviceContent extends ContentBase {
 class AdviceItem with ConditionalItem {
   final String title;
   final String body;
+  @override
   final String displayCondition;
   final bool isBanner;
 

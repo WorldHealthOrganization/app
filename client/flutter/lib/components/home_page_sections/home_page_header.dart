@@ -25,7 +25,7 @@ class HomePageHeader extends StatelessWidget {
   });
 
   String get svgAssetName {
-    return this.imageName != null ? 'assets/svg/${this.imageName}.svg' : null;
+    return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
   Color get backgroundColor {
@@ -49,7 +49,7 @@ class HomePageHeader extends StatelessWidget {
       children: <Widget>[
         Positioned.fill(
           child: PromoCurvedBackground(
-            color: this.backgroundColor,
+            color: backgroundColor,
           ),
         ),
         SafeArea(
@@ -66,8 +66,8 @@ class HomePageHeader extends StatelessWidget {
                     Positioned(
                       bottom: 0.0,
                       right: 0.0,
-                      child: this.svgAssetName != null
-                          ? SvgPicture.asset(this.svgAssetName)
+                      child: svgAssetName != null
+                          ? SvgPicture.asset(svgAssetName)
                           : Container(),
                     ),
                     Container(
@@ -78,7 +78,7 @@ class HomePageHeader extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(top: 28.0),
                             child: AutoSizeThemedText(
-                              this.title,
+                              title,
                               variant: TypographyVariant.title,
                               maxFontSize: 40,
                               style: TextStyle(
@@ -89,7 +89,7 @@ class HomePageHeader extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
                             child: ThemedText(
-                              this.subtitle,
+                              subtitle,
                               variant: TypographyVariant.body,
                               style: TextStyle(
                                 color: CupertinoColors.white,
@@ -108,7 +108,7 @@ class HomePageHeader extends StatelessWidget {
                               color: CupertinoColors.white,
                               child: Container(
                                 child: ThemedText(
-                                  this.buttonText,
+                                  buttonText,
                                   variant: TypographyVariant.button,
                                   style:
                                       TextStyle(color: Constants.primaryColor),
@@ -116,7 +116,7 @@ class HomePageHeader extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                return this.link.open(context);
+                                return link.open(context);
                               },
                             ),
                           ),

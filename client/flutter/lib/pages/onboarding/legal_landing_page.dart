@@ -88,7 +88,7 @@ class LegalLandingPage extends StatelessWidget {
                         url: S.of(context).legalLandingPagePrivacyPolicyLinkUrl,
                         onLinkTap: (v) => launchUrl(v),
                       ),
-                      TextSpan(text: "."),
+                      TextSpan(text: '.'),
                     ],
                   ),
                   textAlign: TextAlign.center,

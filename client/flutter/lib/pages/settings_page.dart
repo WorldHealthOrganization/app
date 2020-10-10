@@ -43,7 +43,7 @@ class _SettingsPageState extends State<SettingsPage>
     }
   }
 
-  _init() async {
+  void _init() async {
     _analyticsEnabled = await UserPreferences().getAnalyticsEnabled();
     _notificationsEnabled = await widget.notifications.isEnabled();
     setState(() {});
@@ -55,14 +55,14 @@ class _SettingsPageState extends State<SettingsPage>
     super.dispose();
   }
 
-  _toggleAnalytics(bool value) async {
+  void _toggleAnalytics(bool value) async {
     await UserPreferences().setAnalyticsEnabled(value);
     setState(() {
       _analyticsEnabled = value;
     });
   }
 
-  _toggleNotifications(bool setEnabled) async {
+  void _toggleNotifications(bool setEnabled) async {
     var enabled;
     if (setEnabled) {
       enabled = await widget.notifications.attemptEnableNotifications(
@@ -108,7 +108,7 @@ class _SettingsPageState extends State<SettingsPage>
   }
 
   Future<void> _provideFeedback() async {
-    const String issueUrl =
+    const issueUrl =
         'https://github.com/WorldHealthOrganization/app/issues/new/choose';
     await launchUrl(issueUrl);
   }
@@ -164,7 +164,7 @@ class _SettingsPageState extends State<SettingsPage>
 
   Widget menu(BuildContext context) {
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
-    final Size size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     return Column(children: <Widget>[
       divider,
       MenuListTile(

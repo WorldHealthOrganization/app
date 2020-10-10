@@ -26,10 +26,10 @@ class RouteLink {
   });
 
   Future open(BuildContext context) {
-    return this.isExternal
-        ? launchUrl(this.url)
+    return isExternal
+        ? launchUrl(url)
         : Navigator.of(context, rootNavigator: true)
-            .pushNamed(this.route, arguments: this.args);
+            .pushNamed(route, arguments: args);
   }
 
   RouteLink.fromUri(String uri) {

@@ -18,8 +18,8 @@ issue_tracker: https://github.com/WorldHealthOrganization/app/issues
 # you must update /.github/workflows/flutter-*.yml to use same min Flutter version
 
 environment:
-  sdk: ">=2.9.1 <3.0.0"
-  flutter: ">=1.20.2 <2.0.0"
+  sdk: ">=2.10.0 <3.0.0"
+  flutter: ">=1.22.1 <2.0.0"
 
 dependencies:
   flutter:
@@ -31,7 +31,8 @@ dependencies:
   fixnum: ^0.10.11
   protobuf: ^1.0.1
   cupertino_icons: ^0.1.3
-  share: ^0.6.3+6
+  # TODO: upgrade to ^0.6.5+2, build warning treated as error
+  share: 0.6.3+6
   url_launcher: ^5.4.2
   page_view_indicator: ^2.0.4
   flutter_html: ^0.11.1
@@ -48,7 +49,8 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   firebase_crashlytics: ^0.1.3+3
   auto_size_text: 2.1.0
-  flutter_cache_manager: ^1.1.3
+  # TODO: upgrade to ^1.4.0, breaking API change
+  flutter_cache_manager: 1.1.3
   path_provider: ^1.6.5
   fl_chart: ^0.8.7
   notification_permissions: ^0.4.4

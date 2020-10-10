@@ -142,29 +142,27 @@ class ThemedText extends StatelessWidget {
 
   static TextStyle htmlStyleForVariant(TypographyVariant variant,
       {double textScaleFactor, TextStyle overrides = const TextStyle()}) {
-    TextStyle baseStyle =
-        ThemedText.styleForVariant(variant, overrides: overrides);
+    final baseStyle = ThemedText.styleForVariant(variant, overrides: overrides);
     return baseStyle
         .merge(TextStyle(fontSize: baseStyle.fontSize * textScaleFactor));
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style =
-        ThemedText.styleForVariant(this.variant).merge(this.style);
+    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
     return Text(
-      this.data,
-      locale: this.locale,
-      maxLines: this.maxLines,
-      overflow: this.overflow,
-      semanticsLabel: this.semanticsLabel,
-      softWrap: this.softWrap,
-      strutStyle: this.strutStyle,
-      style: style,
-      textAlign: this.textAlign,
-      textDirection: this.textDirection,
-      textScaleFactor: this.textScaleFactor,
-      textWidthBasis: this.textWidthBasis,
+      data,
+      locale: locale,
+      maxLines: maxLines,
+      overflow: overflow,
+      semanticsLabel: semanticsLabel,
+      softWrap: softWrap,
+      strutStyle: strutStyle,
+      style: styleVariant,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      textScaleFactor: textScaleFactor,
+      textWidthBasis: textWidthBasis,
     );
   }
 }
@@ -219,28 +217,27 @@ class AutoSizeThemedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style =
-        ThemedText.styleForVariant(this.variant).merge(this.style);
+    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
     return AutoSizeText(
-      this.data,
-      group: this.group,
-      locale: this.locale,
-      maxFontSize: this.maxFontSize,
-      maxLines: this.maxLines,
-      minFontSize: this.minFontSize,
-      overflow: this.overflow,
-      overflowReplacement: this.overflowReplacement,
-      presetFontSizes: this.presetFontSizes,
-      semanticsLabel: this.semanticsLabel,
-      softWrap: this.softWrap,
-      stepGranularity: this.stepGranularity,
-      strutStyle: this.strutStyle,
-      style: style,
-      textAlign: this.textAlign,
-      textDirection: this.textDirection,
-      textKey: this.textKey,
-      textScaleFactor: this.textScaleFactor,
-      wrapWords: this.wrapWords,
+      data,
+      group: group,
+      locale: locale,
+      maxFontSize: maxFontSize,
+      maxLines: maxLines,
+      minFontSize: minFontSize,
+      overflow: overflow,
+      overflowReplacement: overflowReplacement,
+      presetFontSizes: presetFontSizes,
+      semanticsLabel: semanticsLabel,
+      softWrap: softWrap,
+      stepGranularity: stepGranularity,
+      strutStyle: strutStyle,
+      style: styleVariant,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      textKey: textKey,
+      textScaleFactor: textScaleFactor,
+      wrapWords: wrapWords,
     );
   }
 }

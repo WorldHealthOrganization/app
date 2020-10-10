@@ -32,10 +32,10 @@ class CountryListPage extends StatelessWidget {
   }
 
   List<Widget> _buildCountries() {
-    if (this.countries == null || this.countries.isEmpty) {
+    if (countries == null || countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return (this.countries?.values ?? [])
+    return (countries?.values ?? [])
         .map((country) => _buildCountryItem(country))
         .toList();
   }
@@ -46,7 +46,7 @@ class CountryListPage extends StatelessWidget {
         color: CupertinoColors.white,
         child: InkWell(
           onTap: () async {
-            await this.onCountrySelected(country);
+            await onCountrySelected(country);
           },
           child: Column(
             children: <Widget>[
@@ -67,7 +67,7 @@ class CountryListPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (this.selectedCountryCode == country.alpha2Code)
+                  if (selectedCountryCode == country.alpha2Code)
                     Container(
                       padding:
                           EdgeInsets.only(top: 16.0, bottom: 16.0, right: 12.0),

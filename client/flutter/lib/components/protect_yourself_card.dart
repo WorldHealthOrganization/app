@@ -24,7 +24,7 @@ class ProtectYourselfCard extends StatelessWidget {
       TextStyle defaultTextStyle = const TextStyle(
           color: Constants.textColor, fontSize: 16, height: 1.4)}) {
     Widget media = SvgPicture.asset('assets/svg/${fact.imageName}.svg');
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return ProtectYourselfCard(
       child: AspectRatio(
@@ -54,12 +54,12 @@ class ProtectYourselfCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: this.borderRadius,
+      borderRadius: borderRadius,
       child: Container(
         color: CupertinoColors.white,
         child: Column(
           children: <Widget>[
-            this.child,
+            child,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
               child: message,

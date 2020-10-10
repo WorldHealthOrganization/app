@@ -96,15 +96,14 @@ class _HomeProtectYourselfCard extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(28.0, 36.0, 28.0, 20.0),
-                child: _buildBody(context, this.fact.body),
+                child: _buildBody(context, fact.body),
               ),
               Expanded(
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   child: AspectRatio(
                     aspectRatio: 316 / 240,
-                    child: SvgPicture.asset(
-                        'assets/svg/${this.fact.imageName}.svg'),
+                    child: SvgPicture.asset('assets/svg/${fact.imageName}.svg'),
                   ),
                 ),
               )
@@ -116,12 +115,12 @@ class _HomeProtectYourselfCard extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context, String body) {
-    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+    final defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context),
         overrides: TextStyle(
             color: CupertinoColors.white, fontWeight: FontWeight.w500));
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return Html(
       data: fact.body ?? '',
