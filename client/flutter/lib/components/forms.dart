@@ -160,19 +160,25 @@ class ToggleOption extends StatelessWidget {
       padding: const EdgeInsets.only(
         top: 12,
       ),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1.5,
-            color: value
-                ? Constants.whoBackgroundBlueColor
-                : Constants.itemBorderColor,
+      child: TextButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              side: BorderSide(
+                width: 1.5,
+                color: value
+                    ? Constants.whoBackgroundBlueColor
+                    : Constants.itemBorderColor,
+              ),
+              borderRadius: BorderRadius.all(
+                Radius.circular(16),
+              ),
+            ),
           ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(16),
+          padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
         onPressed: () {
           if (onPressed != null) {
             onPressed();

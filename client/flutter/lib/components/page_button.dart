@@ -61,14 +61,34 @@ class _PageButtonState extends State<PageButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       onPressed: widget.onPressed != null ? _onPressed : null,
-      disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
-      disabledTextColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-      ),
-      color: widget.backgroundColor,
+      style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.resolveWith(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return Colors.white;
+              } else {
+                return null;
+              }
+            },
+          ),
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return Constants.neutralTextLightColor.withOpacity(0.4);
+              } else {
+                return widget.backgroundColor;
+              }
+            },
+          ),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                widget.borderRadius,
+              ),
+            ),
+          )),
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: widget.verticalPadding,

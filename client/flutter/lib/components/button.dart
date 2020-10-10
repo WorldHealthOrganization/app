@@ -24,10 +24,20 @@ class Button extends StatelessWidget {
       debounceDuration: debounceDuration,
       onCallback: onPressed,
       builder: (context, callback) {
-        return FlatButton(
-          shape: RoundedRectangleBorder(borderRadius: borderRadius),
-          color: color,
-          padding: padding,
+        return TextButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: borderRadius,
+              ),
+            ),
+            backgroundColor: MaterialStateProperty.all(
+              color,
+            ),
+            padding: MaterialStateProperty.all(
+              padding,
+            ),
+          ),
           child: child,
           onPressed: callback,
         );
