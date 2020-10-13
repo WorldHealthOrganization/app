@@ -1,9 +1,3 @@
-## Summary
-
-Add description here
-
-Closes #XXXX
-
 ## Screenshots
 
 <details>
@@ -22,5 +16,4 @@ Add any relevant before/after screenshots here
 
 ## Checklist:
 
-- [ ] Followed the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/docs/CONTRIBUTING.md).
-- [ ] Verify all contributions are properly licensed pursuant to the [LICENSE](https://github.com/WorldHealthOrganization/app/blob/master/LICENSE) file in the root of the repository.
+- [ ] Followed the [Contributor Guidelines](https://github.com/WorldHealthOrganization/app/blob/master/docs/CONTRIBUTING.md) and verified that all contributions are properly licensed pursuant to the [LICENSE](https://github.com/WorldHealthOrganization/app/blob/master/LICENSE).
