@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import present.rpc.ClientException;
 
 public class WhoServiceImpl implements WhoService {
+
   NotificationsManager nm;
   private static final Logger logger = LoggerFactory.getLogger(
     WhoServiceImpl.class

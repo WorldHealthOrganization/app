@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Entity
 @Cache(expirationSeconds = 120)
 public class StoredCaseStats {
+
   // $jurisdictionType:$jurisdiction
   @Id
   String jurisdictionKey;
@@ -36,6 +37,7 @@ public class StoredCaseStats {
   public List<StoredStatSnapshot> timeseries = new ArrayList<>();
 
   public static class StoredStatSnapshot {
+
     public Long epochMsec;
 
     public Long dailyCases;

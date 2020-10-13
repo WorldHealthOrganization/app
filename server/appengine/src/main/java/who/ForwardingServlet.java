@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ForwardingServlet extends HttpServlet {
+
   private final String path;
 
   private ForwardingServlet(String path) {

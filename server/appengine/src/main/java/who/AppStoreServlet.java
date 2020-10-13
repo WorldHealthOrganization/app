@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Bob Lee
  */
 public class AppStoreServlet extends HttpServlet {
+
   static final String GOOGLE_PLAY_STORE_LINK =
     "https://play.google.com/store/apps/details?id=org.who.WHOMyHealth";
   static final String APPLE_APP_STORE_LINK =

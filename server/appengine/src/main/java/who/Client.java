@@ -16,6 +16,7 @@ import java.util.TreeSet;
 @Entity
 @Cache
 public class Client {
+
   @Id
   String uuid;
 

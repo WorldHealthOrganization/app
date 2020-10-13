@@ -13,6 +13,7 @@ import present.rpc.RpcInvocation;
  * Looks up Client based on HTTP headers.
  */
 public class ClientInterceptor implements RpcInterceptor {
+
   private static final String CLIENT_ID = "Who-Client-ID";
   private static final String PLATFORM = "Who-Platform";
 

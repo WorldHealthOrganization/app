@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 public class AppStoreServletTest {
+
   private static final String SAMPLE_ANDROID_USER_AGENT =
     "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1";
   private static final String SAMPLE_IOS_USER_AGENT =
