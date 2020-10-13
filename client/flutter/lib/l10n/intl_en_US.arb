@@ -20,7 +20,7 @@
   "legalLandingPagePrivacyPolicyLinkUrl": "https://whoapp.org/privacy",
   "@section": "Location Sharing Permission",
   "locationSharingPageTitle": "Get the latest news from your community",
-  "locationSharingPageDescription": "To get local news and information, allow location sharing.",
+  "locationSharingPageDescription": "To get local news and information, select your home country.",
   "locationSharingPageButton": "Allow Location Sharing",
   "@section": "Notification Permission",
   "notificationsPagePermissionRequestPageTitle": "Stay up to date on COVID-19",

@@ -193,7 +193,7 @@ class S {
 
   String get locationSharingPageDescription {
     return Intl.message(
-      'To get local news and information, allow location sharing.',
+      'To get local news and information, select your home country.',
       name: 'locationSharingPageDescription',
       desc: '',
       args: [],
