@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 
 public abstract class WhoTestSupport {
+
   protected final LocalServiceTestHelper helper = new LocalServiceTestHelper(
     new LocalDatastoreServiceTestConfig().setApplyAllHighRepJobPolicy()
   );

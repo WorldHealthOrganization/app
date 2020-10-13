@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
  * Guice and web configuration. Use this instead of web.xml.
  */
 public class WhoServletModule extends ServletModule {
+
   private static final Logger logger = LoggerFactory.getLogger(
     WhoServletModule.class
   );

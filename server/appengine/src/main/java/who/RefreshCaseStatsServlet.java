@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 public class RefreshCaseStatsServlet extends HttpServlet {
 
   private static final class JurisdictionData {
+
     long totalCases = 0L, totalDeaths = 0L;
     long lastUpdated = 0L;
     Map<Long, StoredCaseStats.StoredStatSnapshot> snapshots = new HashMap<>();
