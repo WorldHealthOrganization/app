@@ -29,11 +29,12 @@ Services:
 - Production App Engine
 - Production Cloud Datastore
 
-## Curl Examples
+## Curl Testing
 
 Against staging:
 
 ```
+# App Engine
 curl -i \
 	-H 'Content-Type: application/json' \
 	-H 'Who-Client-ID: 00000000-0000-0000-0000-000000000000' \
@@ -49,6 +50,10 @@ curl -i \
 	-X POST \
 	-d '{isoCountryCode: CH}' \
 	'https://whoapp.org/WhoService/putLocation'
+
+# Static Content - served from Google Cloud Storage
+curl https://storage.googleapis.com/who-myhealth-staging-static-content-01/\
+content/bundles/protect_yourself.en_US.yaml
 ```
 
 ## Building and Deploying
@@ -70,6 +75,12 @@ Then open [http://localhost:8080/]().
     $ ./bin/deploy-staging.sh
 
 Then open [https://who-app-staging.appspot.com/]().
+
+### Deploy to Staging - Static Content
+
+Deployed automatically on push to master by [.github/workflows/static-content.yaml](.github/workflows/static-content.yaml). Or pushed manually with:
+
+    $ tools/deploy-staging-static-serving.sh
 
 ### Deploy to Production
 
