@@ -37,6 +37,7 @@ public enum Environment {
         return PRODUCTION;
       // Workaround for bug in App Engine. Not sure where those 2 chars at the beginning come from.
       case "o~who-myhealth-europe":
+      case "o~myhealthapp-291008":
         return PRODUCTION;
       case "test":
         return TEST;
