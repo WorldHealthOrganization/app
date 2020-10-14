@@ -1,0 +1,387 @@
+countries:
+  - name: أفغانستان
+    alpha_2_code: AF
+  - name: ألبانيا
+    alpha_2_code: AL
+  - name: الجزائر
+    alpha_2_code: DZ
+  - name: أندورا
+    alpha_2_code: AD
+  - name: أنغولا
+    alpha_2_code: AO
+  - name: الأرجنتين
+    alpha_2_code: AR
+  - name: أرمينيا
+    alpha_2_code: AM
+  - name: أستراليا
+    alpha_2_code: AU
+  - name: النمسا
+    alpha_2_code: AT
+  - name: أذربيجان
+    alpha_2_code: AZ
+  - name: البحرين
+    alpha_2_code: BH
+  - name: بنغلاديش
+    alpha_2_code: BD
+  - name: بربادوس
+    alpha_2_code: BB
+  - name: بيلاروس
+    alpha_2_code: BY
+  - name: بلجيكا
+    alpha_2_code: BE
+  - name: بليز
+    alpha_2_code: BZ
+  - name: بنن
+    alpha_2_code: BJ
+  - name: بوتان
+    alpha_2_code: BT
+  - name: بوتسوانا
+    alpha_2_code: BW
+  - name: البرازيل
+    alpha_2_code: BR
+  - name: بلغاريا
+    alpha_2_code: BG
+  - name: بوروندي
+    alpha_2_code: BI
+  - name: كمبوديا
+    alpha_2_code: KH
+  - name: الكاميرون
+    alpha_2_code: CM
+  - name: كندا
+    alpha_2_code: CA
+  - name: تشاد
+    alpha_2_code: TD
+  - name: شيلي
+    alpha_2_code: CL
+  - name: الصين
+    alpha_2_code: CN
+  - name: كولومبيا
+    alpha_2_code: CO
+  - name: الكونغو
+    alpha_2_code: CG
+  - name: كوستاريكا
+    alpha_2_code: CR
+  - name: كرواتيا
+    alpha_2_code: HR
+  - name: كوبا
+    alpha_2_code: CU
+  - name: قبرص
+    alpha_2_code: CY
+  - name: تشيكيا
+    alpha_2_code: CZ
+  - name: الدانمرك
+    alpha_2_code: DK
+  - name: جيبوتي
+    alpha_2_code: DJ
+  - name: دومينيكا
+    alpha_2_code: DM
+  - name: إكوادور
+    alpha_2_code: EC
+  - name: مصر
+    alpha_2_code: EG
+  - name: السلفادور
+    alpha_2_code: SV
+  - name: إريتريا
+    alpha_2_code: ER
+  - name: إستونيا
+    alpha_2_code: EE
+  - name: إثيوبيا
+    alpha_2_code: ET
+  - name: فيجي
+    alpha_2_code: FJ
+  - name: فنلندا
+    alpha_2_code: FI
+  - name: فرنسا
+    alpha_2_code: FR
+  - name: غابون
+    alpha_2_code: GA
+  - name: غامبيا
+    alpha_2_code: GM
+  - name: جورجيا
+    alpha_2_code: GE
+  - name: ألمانيا
+    alpha_2_code: DE
+  - name: غانا
+    alpha_2_code: GH
+  - name: اليونان
+    alpha_2_code: GR
+  - name: غرينادا
+    alpha_2_code: GD
+  - name: غواتيمالا
+    alpha_2_code: GT
+  - name: غينيا
+    alpha_2_code: GN
+  - name: غيانا
+    alpha_2_code: GY
+  - name: هايتي
+    alpha_2_code: HT
+  - name: هندوراس
+    alpha_2_code: HN
+  - name: هنغاريا
+    alpha_2_code: HU
+  - name: آيسلندا
+    alpha_2_code: IS
+  - name: الهند
+    alpha_2_code: IN
+  - name: إندونيسيا
+    alpha_2_code: ID
+  - name: العراق
+    alpha_2_code: IQ
+  - name: آيرلندا
+    alpha_2_code: IE
+  - name: إسرائيل
+    alpha_2_code: IL
+  - name: إيطاليا
+    alpha_2_code: IT
+  - name: جامايكا
+    alpha_2_code: JM
+  - name: اليابان
+    alpha_2_code: JP
+  - name: الأردن
+    alpha_2_code: JO
+  - name: كازاخستان
+    alpha_2_code: KZ
+  - name: كينيا
+    alpha_2_code: KE
+  - name: كيريباس
+    alpha_2_code: KI
+  - name: الكويت
+    alpha_2_code: KW
+  - name: قيرغيزستان
+    alpha_2_code: KG
+  - name: لاتفيا
+    alpha_2_code: LV
+  - name: لبنان
+    alpha_2_code: LB
+  - name: ليسوتو
+    alpha_2_code: LS
+  - name: ليبريا
+    alpha_2_code: LR
+  - name: ليبيا
+    alpha_2_code: LY
+  - name: ليتوانيا
+    alpha_2_code: LT
+  - name: لكسمبرغ
+    alpha_2_code: LU
+  - name: مدغشقر
+    alpha_2_code: MG
+  - name: ملاوي
+    alpha_2_code: MW
+  - name: ماليزيا
+    alpha_2_code: MY
+  - name: ملديف
+    alpha_2_code: MV
+  - name: مالي
+    alpha_2_code: ML
+  - name: مالطة
+    alpha_2_code: MT
+  - name: موريتانيا
+    alpha_2_code: MR
+  - name: موريشيوس
+    alpha_2_code: MU
+  - name: المكسيك
+    alpha_2_code: MX
+  - name: موناكو
+    alpha_2_code: MC
+  - name: منغوليا
+    alpha_2_code: MN
+  - name: المغرب
+    alpha_2_code: MA
+  - name: موزامبيق
+    alpha_2_code: MZ
+  - name: ميانمار
+    alpha_2_code: MM
+  - name: ناميبيا
+    alpha_2_code: NA
+  - name: ناورو
+    alpha_2_code: NR
+  - name: نيبال
+    alpha_2_code: NP
+  - name: هولندا
+    alpha_2_code: NL
+  - name: نيوزيلندا
+    alpha_2_code: NZ
+  - name: نيكاراغوا
+    alpha_2_code: NI
+  - name: النيجر
+    alpha_2_code: NE
+  - name: نيجيريا
+    alpha_2_code: NG
+  - name: نيوي
+    alpha_2_code: NU
+  - name: النرويج
+    alpha_2_code: NO
+  - name: عمان
+    alpha_2_code: OM
+  - name: باكستان
+    alpha_2_code: PK
+  - name: بالاو
+    alpha_2_code: PW
+  - name: بنما
+    alpha_2_code: PA
+  - name: باراغواي
+    alpha_2_code: PY
+  - name: بيرو
+    alpha_2_code: PE
+  - name: الفلبين
+    alpha_2_code: PH
+  - name: بولندا
+    alpha_2_code: PL
+  - name: البرتغال
+    alpha_2_code: PT
+  - name: قطر
+    alpha_2_code: QA
+  - name: رومانيا
+    alpha_2_code: RO
+  - name: رواندا
+    alpha_2_code: RW
+  - name: ساموا
+    alpha_2_code: WS
+  - name: السنغال
+    alpha_2_code: SN
+  - name: صربيا
+    alpha_2_code: RS
+  - name: سيشيل
+    alpha_2_code: SC
+  - name: سيراليون
+    alpha_2_code: SL
+  - name: سنغافورة
+    alpha_2_code: SG
+  - name: سلوفاكيا
+    alpha_2_code: SK
+  - name: سلوفينيا
+    alpha_2_code: SI
+  - name: الصومال
+    alpha_2_code: SO
+  - name: إسبانيا
+    alpha_2_code: ES
+  - name: السودان
+    alpha_2_code: SD
+  - name: سورينام
+    alpha_2_code: SR
+  - name: السويد
+    alpha_2_code: SE
+  - name: سويسرا
+    alpha_2_code: CH
+  - name: طاجيكستان
+    alpha_2_code: TJ
+  - name: تايلند
+    alpha_2_code: TH
+  - name: توغو
+    alpha_2_code: TG
+  - name: تونغا
+    alpha_2_code: TO
+  - name: تونس
+    alpha_2_code: TN
+  - name: تركيا
+    alpha_2_code: TR
+  - name: تركمانستان
+    alpha_2_code: TM
+  - name: توفالو
+    alpha_2_code: TV
+  - name: أوغندا
+    alpha_2_code: UG
+  - name: أوكرانيا
+    alpha_2_code: UA
+  - name: أوروغواي
+    alpha_2_code: UY
+  - name: أوزبكستان
+    alpha_2_code: UZ
+  - name: فانواتو
+    alpha_2_code: VU
+  - name: فنزويلا
+    alpha_2_code: VE
+  - name: اليمن
+    alpha_2_code: YE
+  - name: زامبيا
+    alpha_2_code: ZM
+  - name: زمبابوي
+    alpha_2_code: ZW
+  - name: أنتيغوا وبربودا
+    alpha_2_code: AG
+  - name: جزر البهاما
+    alpha_2_code: BS
+  - name: البوسنة والهرسك
+    alpha_2_code: BA
+  - name: بوركينا فاسو
+    alpha_2_code: BF
+  - name: كابو فيردي
+    alpha_2_code: CV
+  - name: جزر القمر
+    alpha_2_code: KM
+  - name: جزر كوك
+    alpha_2_code: CK
+  - name: كوت ديفوار
+    alpha_2_code: CI
+  - name: الجمهورية الدومينيكية
+    alpha_2_code: DO
+  - name: غينيا الاستوائية
+    alpha_2_code: GQ
+  - name: جزر مارشال
+    alpha_2_code: MH
+  - name: الجبل الأسود
+    alpha_2_code: ME
+  - name: جمهورية كوريا
+    alpha_2_code: KR
+  - name: جمهورية مولدوفا
+    alpha_2_code: MD
+  - name: الاتحاد الروسي
+    alpha_2_code: RU
+  - name: سانت لوسيا
+    alpha_2_code: LC
+  - name: سان مارينو
+    alpha_2_code: SM
+  - name: جزر سليمان
+    alpha_2_code: SB
+  - name: جنوب أفريقيا
+    alpha_2_code: ZA
+  - name: جنوب السودان
+    alpha_2_code: SS
+  - name: سري لانكا
+    alpha_2_code: LK
+  - name: ترينيداد وتوباغو
+    alpha_2_code: TT
+  - name: فييت نام
+    alpha_2_code: VN
+  - name: بروني دار السلام
+    alpha_2_code: BN
+  - name: جمهورية أفريقيا الوسطى
+    alpha_2_code: CF
+  - name: جمهورية الكونغو الديمقراطية
+    alpha_2_code: CD
+  - name: بابوا غينيا الجديدة
+    alpha_2_code: PG
+  - name: سانت كيتس ونيفس
+    alpha_2_code: KN
+  - name: سان تومي وبرينسيبي
+    alpha_2_code: ST
+  - name: المملكة العربية السعودية
+    alpha_2_code: SA
+  - name: الجمهورية العربية السورية
+    alpha_2_code: SY
+  - name: الإمارات العربية المتحدة
+    alpha_2_code: AE
+  - name: جمهورية تنزانيا المتحدة
+    alpha_2_code: TZ
+  - name: الولايات المتحدة الأمريكية
+    alpha_2_code: US
+  - name: جمهورية كوريا الشعبية الديمقراطية
+    alpha_2_code: KP
+  - name: جمهورية لاوس الديمقراطية الشعبية
+    alpha_2_code: LA
+  - name: جمهورية مقدونيا اليوغوسلافية سابقاً
+    alpha_2_code: MK
+  - name: سانت فنسنت وجزر غرينادين
+    alpha_2_code: VC
+  - name: المملكة المتحدة لبريطانيا العظمى وآيرلندا الشمالية
+    alpha_2_code: GB
+  - name: بوليفيا (دولة - المتعددة القوميات)
+    alpha_2_code: BO
+  - name: إيران (جمهورية - الإسلامية)
+    alpha_2_code: IR
+  - name: ميكرونيزيا (ولايات - الموحدة)
+    alpha_2_code: FM
+  - name: غينيا - بيساو
+    alpha_2_code: GW
+  - name: تيمور- ليشتي
+    alpha_2_code: TL
