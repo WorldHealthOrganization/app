@@ -24,7 +24,7 @@ jobs:
           # Every file in the repo that is treated as text
           FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
 
-          python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/workflows/policy-ignored-lines.txt $FILES2CHECK
+          python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/policy-ignored-lines.txt $FILES2CHECK
   formatting:
     # Dart is handled in the client CI
     name: Prettier Formatting
