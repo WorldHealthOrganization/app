@@ -33,8 +33,6 @@ public class WhoServletModule extends ServletModule {
     serve("/remote_api").with(new RemoteApiServlet());
 
     serve("/app").with(new AppStoreServlet());
-    serve("/terms").with(forwardTo("/terms.pdf"));
-    serve("/privacy").with(forwardTo("/privacy.pdf"));
 
     // Set up Objectify
     filter("/*").through(ObjectifyFilter.class);
