@@ -155,7 +155,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "locationSharingPageButton":
             MessageLookupByLibrary.simpleMessage("Allow Location Sharing"),
         "locationSharingPageDescription": MessageLookupByLibrary.simpleMessage(
-            "To get local news and information, allow location sharing."),
+            "To get local news and information, select your home country."),
         "locationSharingPageTitle": MessageLookupByLibrary.simpleMessage(
             "Get the latest news from your community"),
         "newsFeedSliverListNewsFeedItemDescription1":
