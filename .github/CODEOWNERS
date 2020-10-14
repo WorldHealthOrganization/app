@@ -9,12 +9,10 @@
 # These owners will be the default owners for everything in
 # the repo, unless a later match takes precedence.
 
-* @brunobowden @crazybob @yukuairoy
+* @brunobowden @crazybob @yukuairoy @theswerd
 
 # Shared
 /docs/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
-# Legal files
-/docs/legal/ @brunobowden @crazybob @yukuairoy
 
 # Client
 /client/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
@@ -24,7 +22,6 @@
 /server/ @brunobowden @crazybob @yukuairoy
 
 # ***** Security-sensitive - always keep these at the end. *****
-
 # CI and CD; Note no production secrets shall be stored in this GitHub repo.
-/.github/workflows/ @brunobowden
-/.github/CODEOWNERS @brunobowden
+/.github/workflows/ @brunobowden @crazybob @yukuairoy
+/.github/CODEOWNERS @brunobowden @crazybob @yukuairoy
