@@ -1,0 +1,387 @@
+countries:
+  - name: Афганистан
+    alpha_2_code: AF
+  - name: Албания
+    alpha_2_code: AL
+  - name: Алжир
+    alpha_2_code: DZ
+  - name: Германия
+    alpha_2_code: DE
+  - name: Андорра
+    alpha_2_code: AD
+  - name: Ангола
+    alpha_2_code: AO
+  - name: Аргентина
+    alpha_2_code: AR
+  - name: Армения
+    alpha_2_code: AM
+  - name: Австралия
+    alpha_2_code: AU
+  - name: Австрия
+    alpha_2_code: AT
+  - name: Азербайджан
+    alpha_2_code: AZ
+  - name: Бахрейн
+    alpha_2_code: BH
+  - name: Бангладеш
+    alpha_2_code: BD
+  - name: Барбадос
+    alpha_2_code: BB
+  - name: Беларусь
+    alpha_2_code: BY
+  - name: Бельгия
+    alpha_2_code: BE
+  - name: Белиз
+    alpha_2_code: BZ
+  - name: Бенин
+    alpha_2_code: BJ
+  - name: Бутан
+    alpha_2_code: BT
+  - name: Ботсвана
+    alpha_2_code: BW
+  - name: Бразилия
+    alpha_2_code: BR
+  - name: Болгария
+    alpha_2_code: BG
+  - name: Бурунди
+    alpha_2_code: BI
+  - name: Камбоджа
+    alpha_2_code: KH
+  - name: Камерун
+    alpha_2_code: CM
+  - name: Канада
+    alpha_2_code: CA
+  - name: Чили
+    alpha_2_code: CL
+  - name: Китай
+    alpha_2_code: CN
+  - name: Кипр
+    alpha_2_code: CY
+  - name: Колумбия
+    alpha_2_code: CO
+  - name: Конго
+    alpha_2_code: CG
+  - name: Хорватия
+    alpha_2_code: HR
+  - name: Куба
+    alpha_2_code: CU
+  - name: Дания
+    alpha_2_code: DK
+  - name: Джибути
+    alpha_2_code: DJ
+  - name: Доминика
+    alpha_2_code: DM
+  - name: Египет
+    alpha_2_code: EG
+  - name: Сальвадор
+    alpha_2_code: SV
+  - name: Эквадор
+    alpha_2_code: EC
+  - name: Эритрея
+    alpha_2_code: ER
+  - name: Испания
+    alpha_2_code: ES
+  - name: Эстония
+    alpha_2_code: EE
+  - name: Эфиопия
+    alpha_2_code: ET
+  - name: Фиджи
+    alpha_2_code: FJ
+  - name: Финляндия
+    alpha_2_code: FI
+  - name: Франция
+    alpha_2_code: FR
+  - name: Габон
+    alpha_2_code: GA
+  - name: Гамбия
+    alpha_2_code: GM
+  - name: Грузия
+    alpha_2_code: GE
+  - name: Гана
+    alpha_2_code: GH
+  - name: Греция
+    alpha_2_code: GR
+  - name: Гренада
+    alpha_2_code: GD
+  - name: Гватемала
+    alpha_2_code: GT
+  - name: Гвинея
+    alpha_2_code: GN
+  - name: Гайана
+    alpha_2_code: GY
+  - name: Гаити
+    alpha_2_code: HT
+  - name: Гондурас
+    alpha_2_code: HN
+  - name: Венгрия
+    alpha_2_code: HU
+  - name: Индия
+    alpha_2_code: IN
+  - name: Индонезия
+    alpha_2_code: ID
+  - name: Ирак
+    alpha_2_code: IQ
+  - name: Ирландия
+    alpha_2_code: IE
+  - name: Исландия
+    alpha_2_code: IS
+  - name: Израиль
+    alpha_2_code: IL
+  - name: Италия
+    alpha_2_code: IT
+  - name: Ямайка
+    alpha_2_code: JM
+  - name: Япония
+    alpha_2_code: JP
+  - name: Иордания
+    alpha_2_code: JO
+  - name: Казахстан
+    alpha_2_code: KZ
+  - name: Кения
+    alpha_2_code: KE
+  - name: Кыргызстан
+    alpha_2_code: KG
+  - name: Кирибати
+    alpha_2_code: KI
+  - name: Кувейт
+    alpha_2_code: KW
+  - name: Лесото
+    alpha_2_code: LS
+  - name: Латвия
+    alpha_2_code: LV
+  - name: Ливан
+    alpha_2_code: LB
+  - name: Либерия
+    alpha_2_code: LR
+  - name: Ливия
+    alpha_2_code: LY
+  - name: Литва
+    alpha_2_code: LT
+  - name: Люксембург
+    alpha_2_code: LU
+  - name: Мадагаскар
+    alpha_2_code: MG
+  - name: Малайзия
+    alpha_2_code: MY
+  - name: Малави
+    alpha_2_code: MW
+  - name: Мали
+    alpha_2_code: ML
+  - name: Мальта
+    alpha_2_code: MT
+  - name: Марокко
+    alpha_2_code: MA
+  - name: Маврикий
+    alpha_2_code: MU
+  - name: Мавритания
+    alpha_2_code: MR
+  - name: Мексика
+    alpha_2_code: MX
+  - name: Монако
+    alpha_2_code: MC
+  - name: Монголия
+    alpha_2_code: MN
+  - name: Черногория
+    alpha_2_code: ME
+  - name: Мозамбик
+    alpha_2_code: MZ
+  - name: Мьянма
+    alpha_2_code: MM
+  - name: Намибия
+    alpha_2_code: NA
+  - name: Науру
+    alpha_2_code: NR
+  - name: Непал
+    alpha_2_code: NP
+  - name: Никарагуа
+    alpha_2_code: NI
+  - name: Нигер
+    alpha_2_code: NE
+  - name: Нигерия
+    alpha_2_code: NG
+  - name: Ниуэ
+    alpha_2_code: NU
+  - name: Норвегия
+    alpha_2_code: NO
+  - name: Оман
+    alpha_2_code: OM
+  - name: Уганда
+    alpha_2_code: UG
+  - name: Узбекистан
+    alpha_2_code: UZ
+  - name: Пакистан
+    alpha_2_code: PK
+  - name: Палау
+    alpha_2_code: PW
+  - name: Панама
+    alpha_2_code: PA
+  - name: Парагвай
+    alpha_2_code: PY
+  - name: Нидерланды
+    alpha_2_code: NL
+  - name: Перу
+    alpha_2_code: PE
+  - name: Филиппины
+    alpha_2_code: PH
+  - name: Польша
+    alpha_2_code: PL
+  - name: Португалия
+    alpha_2_code: PT
+  - name: Катар
+    alpha_2_code: QA
+  - name: Румыния
+    alpha_2_code: RO
+  - name: Руанда
+    alpha_2_code: RW
+  - name: Самоа
+    alpha_2_code: WS
+  - name: Сенегал
+    alpha_2_code: SN
+  - name: Сербия
+    alpha_2_code: RS
+  - name: Сингапур
+    alpha_2_code: SG
+  - name: Словакия
+    alpha_2_code: SK
+  - name: Словения
+    alpha_2_code: SI
+  - name: Сомали
+    alpha_2_code: SO
+  - name: Судан
+    alpha_2_code: SD
+  - name: Швеция
+    alpha_2_code: SE
+  - name: Швейцария
+    alpha_2_code: CH
+  - name: Суринам
+    alpha_2_code: SR
+  - name: Таджикистан
+    alpha_2_code: TJ
+  - name: Чад
+    alpha_2_code: TD
+  - name: Чехия
+    alpha_2_code: CZ
+  - name: Таиланд
+    alpha_2_code: TH
+  - name: Того
+    alpha_2_code: TG
+  - name: Тонга
+    alpha_2_code: TO
+  - name: Тунис
+    alpha_2_code: TN
+  - name: Туркменистан
+    alpha_2_code: TM
+  - name: Турция
+    alpha_2_code: TR
+  - name: Тувалу
+    alpha_2_code: TV
+  - name: Украина
+    alpha_2_code: UA
+  - name: Уругвай
+    alpha_2_code: UY
+  - name: Вануату
+    alpha_2_code: VU
+  - name: Вьетнам
+    alpha_2_code: VN
+  - name: Йемен
+    alpha_2_code: YE
+  - name: Замбия
+    alpha_2_code: ZM
+  - name: Зимбабве
+    alpha_2_code: ZW
+  - name: Южная Африка
+    alpha_2_code: ZA
+  - name: Саудовская Аравия
+    alpha_2_code: SA
+  - name: Багамские Острова
+    alpha_2_code: BS
+  - name: Коморские Острова
+    alpha_2_code: KM
+  - name: Российская Федерация
+    alpha_2_code: RU
+  - name: Экваториальная Гвинея
+    alpha_2_code: GQ
+  - name: Острова Кука
+    alpha_2_code: CK
+  - name: Маршалловы Острова
+    alpha_2_code: MH
+  - name: Соломоновы Острова
+    alpha_2_code: SB
+  - name: Мальдивские Острова
+    alpha_2_code: MV
+  - name: Новая Зеландия
+    alpha_2_code: NZ
+  - name: Центральноафриканская Республика
+    alpha_2_code: CF
+  - name: Республика Корея
+    alpha_2_code: KR
+  - name: Республика Молдова
+    alpha_2_code: MD
+  - name: Доминиканская Республика
+    alpha_2_code: DO
+  - name: Сейшельские Острова
+    alpha_2_code: SC
+  - name: Южный Судан
+    alpha_2_code: SS
+  - name: Антигуа и Барбуда
+    alpha_2_code: AG
+  - name: Многонациональное Государство Боливия
+    alpha_2_code: BO
+  - name: Босния и Герцеговина
+    alpha_2_code: BA
+  - name: Объединенные Арабские Эмираты
+    alpha_2_code: AE
+  - name: Соединенные Штаты Америки
+    alpha_2_code: US
+  - name: Сирийская Арабская Республика
+    alpha_2_code: SY
+  - name: Демократическая Республика Конго
+    alpha_2_code: CD
+  - name: Объединенная Республика Танзания
+    alpha_2_code: TZ
+  - name: Тринидад и Тобаго
+    alpha_2_code: TT
+  - name: бывшая югославская Республика Македония
+    alpha_2_code: MK
+  - name: Соединенное Королевство Великобритании и Северной Ирландии
+    alpha_2_code: GB
+  - name: Иран (Исламская Республика)
+    alpha_2_code: IR
+  - name: Микронезия (Федеративные Штаты)
+    alpha_2_code: FM
+  - name: Венесуэла (Боливарианская Республика)
+    alpha_2_code: VE
+  - name: Лаосская Народно-Демократическая Республика
+    alpha_2_code: LA
+  - name: Корейская Народно-Демократическая Республика
+    alpha_2_code: KP
+  - name: Бруней-Даруссалам
+    alpha_2_code: BN
+  - name: Буркина-Фасо
+    alpha_2_code: BF
+  - name: Кабо-Верде
+    alpha_2_code: CV
+  - name: Коста-Рика
+    alpha_2_code: CR
+  - name: Гвинея-Бисау
+    alpha_2_code: GW
+  - name: Сан-Марино
+    alpha_2_code: SM
+  - name: Сент-Люсия
+    alpha_2_code: LC
+  - name: Сьерра-Леоне
+    alpha_2_code: SL
+  - name: Шри-Ланка
+    alpha_2_code: LK
+  - name: Тимор-Лешти
+    alpha_2_code: TL
+  - name: Папуа-Новая Гвинея
+    alpha_2_code: PG
+  - name: Сент-Китс и Невис
+    alpha_2_code: KN
+  - name: Сент-Винсент и Гренадины
+    alpha_2_code: VC
+  - name: Сан-Томе и Принсипи
+    alpha_2_code: ST
+  - name: Кот-д'Ивуар
+    alpha_2_code: CI

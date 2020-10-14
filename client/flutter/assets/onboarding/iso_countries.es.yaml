@@ -1,0 +1,387 @@
+countries:
+  - name: Afganistán
+    alpha_2_code: AF
+  - name: Albania
+    alpha_2_code: AL
+  - name: Alemania
+    alpha_2_code: DE
+  - name: Andorra
+    alpha_2_code: AD
+  - name: Angola
+    alpha_2_code: AO
+  - name: Antigua y Barbuda
+    alpha_2_code: AG
+  - name: Arabia Saudita
+    alpha_2_code: SA
+  - name: Argelia
+    alpha_2_code: DZ
+  - name: Argentina
+    alpha_2_code: AR
+  - name: Armenia
+    alpha_2_code: AM
+  - name: Australia
+    alpha_2_code: AU
+  - name: Austria
+    alpha_2_code: AT
+  - name: Azerbaiyán
+    alpha_2_code: AZ
+  - name: Bahamas
+    alpha_2_code: BS
+  - name: Bahrein
+    alpha_2_code: BH
+  - name: Bangladesh
+    alpha_2_code: BD
+  - name: Barbados
+    alpha_2_code: BB
+  - name: Belarús
+    alpha_2_code: BY
+  - name: Bélgica
+    alpha_2_code: BE
+  - name: Belice
+    alpha_2_code: BZ
+  - name: Benin
+    alpha_2_code: BJ
+  - name: Bhután
+    alpha_2_code: BT
+  - name: Bolivia (Estado Plurinacional de)
+    alpha_2_code: BO
+  - name: Bosnia y Herzegovina
+    alpha_2_code: BA
+  - name: Botswana
+    alpha_2_code: BW
+  - name: Brasil
+    alpha_2_code: BR
+  - name: Brunei Darussalam
+    alpha_2_code: BN
+  - name: Bulgaria
+    alpha_2_code: BG
+  - name: Burkina Faso
+    alpha_2_code: BF
+  - name: Burundi
+    alpha_2_code: BI
+  - name: Cabo Verde
+    alpha_2_code: CV
+  - name: Camboya
+    alpha_2_code: KH
+  - name: Camerún
+    alpha_2_code: CM
+  - name: Canadá
+    alpha_2_code: CA
+  - name: Chad (el)
+    alpha_2_code: TD
+  - name: Chequia
+    alpha_2_code: CZ
+  - name: Chile
+    alpha_2_code: CL
+  - name: China
+    alpha_2_code: CN
+  - name: Chipre
+    alpha_2_code: CY
+  - name: Colombia
+    alpha_2_code: CO
+  - name: Comoras
+    alpha_2_code: KM
+  - name: Congo (el)
+    alpha_2_code: CG
+  - name: Costa Rica
+    alpha_2_code: CR
+  - name: Côte d'Ivoire
+    alpha_2_code: CI
+  - name: Croacia
+    alpha_2_code: HR
+  - name: Cuba
+    alpha_2_code: CU
+  - name: Dinamarca
+    alpha_2_code: DK
+  - name: Djibouti
+    alpha_2_code: DJ
+  - name: Dominica
+    alpha_2_code: DM
+  - name: Ecuador
+    alpha_2_code: EC
+  - name: Egipto
+    alpha_2_code: EG
+  - name: El Salvador
+    alpha_2_code: SV
+  - name: Emiratos Árabes Unidos
+    alpha_2_code: AE
+  - name: Eritrea
+    alpha_2_code: ER
+  - name: Eslovaquia
+    alpha_2_code: SK
+  - name: Eslovenia
+    alpha_2_code: SI
+  - name: España
+    alpha_2_code: ES
+  - name: Estados Unidos de América
+    alpha_2_code: US
+  - name: Estonia
+    alpha_2_code: EE
+  - name: Etiopía
+    alpha_2_code: ET
+  - name: Federación de Rusia
+    alpha_2_code: RU
+  - name: Fiji
+    alpha_2_code: FJ
+  - name: Filipinas
+    alpha_2_code: PH
+  - name: Finlandia
+    alpha_2_code: FI
+  - name: Francia
+    alpha_2_code: FR
+  - name: Gabón
+    alpha_2_code: GA
+  - name: Gambia
+    alpha_2_code: GM
+  - name: Georgia
+    alpha_2_code: GE
+  - name: Ghana
+    alpha_2_code: GH
+  - name: Granada
+    alpha_2_code: GD
+  - name: Grecia
+    alpha_2_code: GR
+  - name: Guatemala
+    alpha_2_code: GT
+  - name: Guinea
+    alpha_2_code: GN
+  - name: Guinea Ecuatorial
+    alpha_2_code: GQ
+  - name: Guinea-Bissau
+    alpha_2_code: GW
+  - name: Guyana
+    alpha_2_code: GY
+  - name: Haití
+    alpha_2_code: HT
+  - name: Honduras
+    alpha_2_code: HN
+  - name: Hungría
+    alpha_2_code: HU
+  - name: India
+    alpha_2_code: IN
+  - name: Indonesia
+    alpha_2_code: ID
+  - name: Iran (República Islámica del)
+    alpha_2_code: IR
+  - name: Iraq
+    alpha_2_code: IQ
+  - name: Irlanda
+    alpha_2_code: IE
+  - name: Islandia
+    alpha_2_code: IS
+  - name: Islas Cook
+    alpha_2_code: CK
+  - name: Islas Marshall
+    alpha_2_code: MH
+  - name: Islas Salomón
+    alpha_2_code: SB
+  - name: Israel
+    alpha_2_code: IL
+  - name: Italia
+    alpha_2_code: IT
+  - name: Jamaica
+    alpha_2_code: JM
+  - name: Japón
+    alpha_2_code: JP
+  - name: Jordania
+    alpha_2_code: JO
+  - name: Kazajstán
+    alpha_2_code: KZ
+  - name: Kenya
+    alpha_2_code: KE
+  - name: Kirguistán
+    alpha_2_code: KG
+  - name: Kiribati
+    alpha_2_code: KI
+  - name: Kuwait
+    alpha_2_code: KW
+  - name: la República de Moldova
+    alpha_2_code: MD
+  - name: Lesotho
+    alpha_2_code: LS
+  - name: Letonia
+    alpha_2_code: LV
+  - name: Líbano
+    alpha_2_code: LB
+  - name: Liberia
+    alpha_2_code: LR
+  - name: Libia
+    alpha_2_code: LY
+  - name: Lituania
+    alpha_2_code: LT
+  - name: Luxemburgo
+    alpha_2_code: LU
+  - name: Macedonia del Norte
+    alpha_2_code: MK
+  - name: Madagascar
+    alpha_2_code: MG
+  - name: Malasia
+    alpha_2_code: MY
+  - name: Malawi
+    alpha_2_code: MW
+  - name: Maldivas
+    alpha_2_code: MV
+  - name: Malí
+    alpha_2_code: ML
+  - name: Malta
+    alpha_2_code: MT
+  - name: Marruecos
+    alpha_2_code: MA
+  - name: Mauricio
+    alpha_2_code: MU
+  - name: Mauritania
+    alpha_2_code: MR
+  - name: México
+    alpha_2_code: MX
+  - name: Micronesia (Estados Federados de)
+    alpha_2_code: FM
+  - name: Mónaco
+    alpha_2_code: MC
+  - name: Mongolia
+    alpha_2_code: MN
+  - name: Montenegro
+    alpha_2_code: ME
+  - name: Mozambique
+    alpha_2_code: MZ
+  - name: Myanmar
+    alpha_2_code: MM
+  - name: Namibia
+    alpha_2_code: NA
+  - name: Nauru
+    alpha_2_code: NR
+  - name: Nepal
+    alpha_2_code: NP
+  - name: Nicaragua
+    alpha_2_code: NI
+  - name: Níger
+    alpha_2_code: NE
+  - name: Nigeria
+    alpha_2_code: NG
+  - name: Niue
+    alpha_2_code: NU
+  - name: Noruega
+    alpha_2_code: NO
+  - name: Nueva Zelandia
+    alpha_2_code: NZ
+  - name: Omán
+    alpha_2_code: OM
+  - name: Países Bajos
+    alpha_2_code: NL
+  - name: Pakistán
+    alpha_2_code: PK
+  - name: Palau
+    alpha_2_code: PW
+  - name: Panamá
+    alpha_2_code: PA
+  - name: Papua Nueva Guinea
+    alpha_2_code: PG
+  - name: Paraguay
+    alpha_2_code: PY
+  - name: Perú
+    alpha_2_code: PE
+  - name: Polonia
+    alpha_2_code: PL
+  - name: Portugal
+    alpha_2_code: PT
+  - name: Qatar
+    alpha_2_code: QA
+  - name: Reino Unido
+    alpha_2_code: GB
+  - name: República Árabe Siria
+    alpha_2_code: SY
+  - name: República Centroafricana
+    alpha_2_code: CF
+  - name: República de Corea
+    alpha_2_code: KR
+  - name: República Democrática del Congo
+    alpha_2_code: CD
+  - name: República Democrática Popular Lao
+    alpha_2_code: LA
+  - name: República Dominicana
+    alpha_2_code: DO
+  - name: República Popular Democrática de Corea
+    alpha_2_code: KP
+  - name: República Unida de Tanzanía
+    alpha_2_code: TZ
+  - name: Rumania
+    alpha_2_code: RO
+  - name: Rwanda
+    alpha_2_code: RW
+  - name: Saint Kitts y Nevis
+    alpha_2_code: KN
+  - name: Samoa
+    alpha_2_code: WS
+  - name: San Marino
+    alpha_2_code: SM
+  - name: San Vicente y las Granadinas
+    alpha_2_code: VC
+  - name: Santa Lucía
+    alpha_2_code: LC
+  - name: Santo Tomé y Príncipe
+    alpha_2_code: ST
+  - name: Senegal
+    alpha_2_code: SN
+  - name: Serbia
+    alpha_2_code: RS
+  - name: Seychelles
+    alpha_2_code: SC
+  - name: Sierra Leona
+    alpha_2_code: SL
+  - name: Singapur
+    alpha_2_code: SG
+  - name: Somalia
+    alpha_2_code: SO
+  - name: Sri Lanka
+    alpha_2_code: LK
+  - name: Sudáfrica
+    alpha_2_code: ZA
+  - name: Sudán
+    alpha_2_code: SD
+  - name: Sudán del Sur
+    alpha_2_code: SS
+  - name: Suecia
+    alpha_2_code: SE
+  - name: Suiza
+    alpha_2_code: CH
+  - name: Suriname
+    alpha_2_code: SR
+  - name: Tailandia
+    alpha_2_code: TH
+  - name: Tayikistán
+    alpha_2_code: TJ
+  - name: Timor-Leste
+    alpha_2_code: TL
+  - name: Togo (el)
+    alpha_2_code: TG
+  - name: Tonga
+    alpha_2_code: TO
+  - name: Trinidad y Tabago
+    alpha_2_code: TT
+  - name: Túnez
+    alpha_2_code: TN
+  - name: Turkmenistán
+    alpha_2_code: TM
+  - name: Turquía
+    alpha_2_code: TR
+  - name: Tuvalu
+    alpha_2_code: TV
+  - name: Ucrania
+    alpha_2_code: UA
+  - name: Uganda
+    alpha_2_code: UG
+  - name: Uruguay
+    alpha_2_code: UY
+  - name: Uzbekistán
+    alpha_2_code: UZ
+  - name: Vanuatu
+    alpha_2_code: VU
+  - name: Venezuela (República Bolivariana de)
+    alpha_2_code: VE
+  - name: Viet Nam
+    alpha_2_code: VN
+  - name: Yemen
+    alpha_2_code: YE
+  - name: Zambia
+    alpha_2_code: ZM
+  - name: Zimbabwe
+    alpha_2_code: ZW

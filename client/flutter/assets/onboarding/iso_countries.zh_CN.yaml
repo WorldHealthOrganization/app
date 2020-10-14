@@ -1,0 +1,387 @@
+countries:
+  - name: 阿富汗
+    alpha_2_code: AF
+  - name: 阿尔巴尼亚
+    alpha_2_code: AL
+  - name: 阿尔及利亚
+    alpha_2_code: DZ
+  - name: 德国
+    alpha_2_code: DE
+  - name: 安道尔
+    alpha_2_code: AD
+  - name: 安哥拉
+    alpha_2_code: AO
+  - name: 阿根廷
+    alpha_2_code: AR
+  - name: 亚美尼亚
+    alpha_2_code: AM
+  - name: 澳大利亚
+    alpha_2_code: AU
+  - name: 奥地利
+    alpha_2_code: AT
+  - name: 阿塞拜疆
+    alpha_2_code: AZ
+  - name: 巴林
+    alpha_2_code: BH
+  - name: 孟加拉国
+    alpha_2_code: BD
+  - name: 巴巴多斯
+    alpha_2_code: BB
+  - name: 白俄罗斯
+    alpha_2_code: BY
+  - name: 比利时
+    alpha_2_code: BE
+  - name: 伯利兹
+    alpha_2_code: BZ
+  - name: 贝宁
+    alpha_2_code: BJ
+  - name: 不丹
+    alpha_2_code: BT
+  - name: 博茨瓦纳
+    alpha_2_code: BW
+  - name: 巴西
+    alpha_2_code: BR
+  - name: 保加利亚
+    alpha_2_code: BG
+  - name: 布隆迪
+    alpha_2_code: BI
+  - name: 柬埔寨
+    alpha_2_code: KH
+  - name: 喀麦隆
+    alpha_2_code: CM
+  - name: 加拿大
+    alpha_2_code: CA
+  - name: 智利
+    alpha_2_code: CL
+  - name: 中国
+    alpha_2_code: CN
+  - name: 塞浦路斯
+    alpha_2_code: CY
+  - name: 哥伦比亚
+    alpha_2_code: CO
+  - name: 刚果
+    alpha_2_code: CG
+  - name: 克罗地亚
+    alpha_2_code: HR
+  - name: 古巴
+    alpha_2_code: CU
+  - name: 丹麦
+    alpha_2_code: DK
+  - name: 吉布提
+    alpha_2_code: DJ
+  - name: 多米尼克
+    alpha_2_code: DM
+  - name: 埃及
+    alpha_2_code: EG
+  - name: 萨尔瓦多
+    alpha_2_code: SV
+  - name: 厄瓜多尔
+    alpha_2_code: EC
+  - name: 厄立特里亚
+    alpha_2_code: ER
+  - name: 西班牙
+    alpha_2_code: ES
+  - name: 爱沙尼亚
+    alpha_2_code: EE
+  - name: 埃塞俄比亚
+    alpha_2_code: ET
+  - name: 斐济
+    alpha_2_code: FJ
+  - name: 芬兰
+    alpha_2_code: FI
+  - name: 法国
+    alpha_2_code: FR
+  - name: 加蓬
+    alpha_2_code: GA
+  - name: 冈比亚
+    alpha_2_code: GM
+  - name: 格鲁吉亚
+    alpha_2_code: GE
+  - name: 加纳
+    alpha_2_code: GH
+  - name: 希腊
+    alpha_2_code: GR
+  - name: 格林纳达
+    alpha_2_code: GD
+  - name: 危地马拉
+    alpha_2_code: GT
+  - name: 几内亚
+    alpha_2_code: GN
+  - name: 圭亚那
+    alpha_2_code: GY
+  - name: 海地
+    alpha_2_code: HT
+  - name: 洪都拉斯
+    alpha_2_code: HN
+  - name: 匈牙利
+    alpha_2_code: HU
+  - name: 印度
+    alpha_2_code: IN
+  - name: 印度尼西亚
+    alpha_2_code: ID
+  - name: 伊拉克
+    alpha_2_code: IQ
+  - name: 爱尔兰
+    alpha_2_code: IE
+  - name: 冰岛
+    alpha_2_code: IS
+  - name: 以色列
+    alpha_2_code: IL
+  - name: 意大利
+    alpha_2_code: IT
+  - name: 牙买加
+    alpha_2_code: JM
+  - name: 日本
+    alpha_2_code: JP
+  - name: 约旦
+    alpha_2_code: JO
+  - name: 哈萨克斯坦
+    alpha_2_code: KZ
+  - name: 肯尼亚
+    alpha_2_code: KE
+  - name: 吉尔吉斯斯坦
+    alpha_2_code: KG
+  - name: 基里巴斯
+    alpha_2_code: KI
+  - name: 科威特
+    alpha_2_code: KW
+  - name: 莱索托
+    alpha_2_code: LS
+  - name: 拉脱维亚
+    alpha_2_code: LV
+  - name: 黎巴嫩
+    alpha_2_code: LB
+  - name: 利比里亚
+    alpha_2_code: LR
+  - name: 利比亚
+    alpha_2_code: LY
+  - name: 立陶宛
+    alpha_2_code: LT
+  - name: 卢森堡
+    alpha_2_code: LU
+  - name: 马达加斯加
+    alpha_2_code: MG
+  - name: 马来西亚
+    alpha_2_code: MY
+  - name: 马拉维
+    alpha_2_code: MW
+  - name: 马里
+    alpha_2_code: ML
+  - name: 马耳他
+    alpha_2_code: MT
+  - name: 摩洛哥
+    alpha_2_code: MA
+  - name: 毛里求斯
+    alpha_2_code: MU
+  - name: 毛里塔尼亚
+    alpha_2_code: MR
+  - name: 墨西哥
+    alpha_2_code: MX
+  - name: 摩纳哥
+    alpha_2_code: MC
+  - name: 蒙古
+    alpha_2_code: MN
+  - name: 黑山
+    alpha_2_code: ME
+  - name: 莫桑比克
+    alpha_2_code: MZ
+  - name: 缅甸
+    alpha_2_code: MM
+  - name: 纳米比亚
+    alpha_2_code: NA
+  - name: 瑙鲁
+    alpha_2_code: NR
+  - name: 尼泊尔
+    alpha_2_code: NP
+  - name: 尼加拉瓜
+    alpha_2_code: NI
+  - name: 尼日尔
+    alpha_2_code: NE
+  - name: 尼日利亚
+    alpha_2_code: NG
+  - name: 纽埃
+    alpha_2_code: NU
+  - name: 挪威
+    alpha_2_code: NO
+  - name: 阿曼
+    alpha_2_code: OM
+  - name: 乌干达
+    alpha_2_code: UG
+  - name: 乌兹别克斯坦
+    alpha_2_code: UZ
+  - name: 巴基斯坦
+    alpha_2_code: PK
+  - name: 帕劳
+    alpha_2_code: PW
+  - name: 巴拿马
+    alpha_2_code: PA
+  - name: 巴拉圭
+    alpha_2_code: PY
+  - name: 荷兰
+    alpha_2_code: NL
+  - name: 秘鲁
+    alpha_2_code: PE
+  - name: 菲律宾
+    alpha_2_code: PH
+  - name: 波兰
+    alpha_2_code: PL
+  - name: 葡萄牙
+    alpha_2_code: PT
+  - name: 卡塔尔
+    alpha_2_code: QA
+  - name: 罗马尼亚
+    alpha_2_code: RO
+  - name: 卢旺达
+    alpha_2_code: RW
+  - name: 萨摩亚
+    alpha_2_code: WS
+  - name: 塞内加尔
+    alpha_2_code: SN
+  - name: 塞尔维亚
+    alpha_2_code: RS
+  - name: 新加坡
+    alpha_2_code: SG
+  - name: 斯洛伐克
+    alpha_2_code: SK
+  - name: 斯洛文尼亚
+    alpha_2_code: SI
+  - name: 索马里
+    alpha_2_code: SO
+  - name: 苏丹
+    alpha_2_code: SD
+  - name: 瑞典
+    alpha_2_code: SE
+  - name: 瑞士
+    alpha_2_code: CH
+  - name: 苏里南
+    alpha_2_code: SR
+  - name: 塔吉克斯坦
+    alpha_2_code: TJ
+  - name: 乍得
+    alpha_2_code: TD
+  - name: 捷克
+    alpha_2_code: CZ
+  - name: 泰国
+    alpha_2_code: TH
+  - name: 多哥
+    alpha_2_code: TG
+  - name: 汤加
+    alpha_2_code: TO
+  - name: 突尼斯
+    alpha_2_code: TN
+  - name: 土库曼斯坦
+    alpha_2_code: TM
+  - name: 土耳其
+    alpha_2_code: TR
+  - name: 图瓦卢
+    alpha_2_code: TV
+  - name: 乌克兰
+    alpha_2_code: UA
+  - name: 乌拉圭
+    alpha_2_code: UY
+  - name: 瓦努阿图
+    alpha_2_code: VU
+  - name: 越南
+    alpha_2_code: VN
+  - name: 也门
+    alpha_2_code: YE
+  - name: 赞比亚
+    alpha_2_code: ZM
+  - name: 津巴布韦
+    alpha_2_code: ZW
+  - name: 南非
+    alpha_2_code: ZA
+  - name: 沙特阿拉伯
+    alpha_2_code: SA
+  - name: 巴哈马
+    alpha_2_code: BS
+  - name: 科摩罗
+    alpha_2_code: KM
+  - name: 俄罗斯联邦
+    alpha_2_code: RU
+  - name: 赤道几内亚
+    alpha_2_code: GQ
+  - name: 库克群岛
+    alpha_2_code: CK
+  - name: 马绍尔群岛
+    alpha_2_code: MH
+  - name: 所罗门群岛
+    alpha_2_code: SB
+  - name: 马尔代夫
+    alpha_2_code: MV
+  - name: 新西兰
+    alpha_2_code: NZ
+  - name: 中非共和国
+    alpha_2_code: CF
+  - name: 大韩民国
+    alpha_2_code: KR
+  - name: 摩尔多瓦共和国
+    alpha_2_code: MD
+  - name: 多米尼加
+    alpha_2_code: DO
+  - name: 塞舌尔
+    alpha_2_code: SC
+  - name: 南苏丹
+    alpha_2_code: SS
+  - name: 安提瓜和巴布达
+    alpha_2_code: AG
+  - name: 波斯尼亚和黑塞哥维那
+    alpha_2_code: BA
+  - name: 阿拉伯联合酋长国
+    alpha_2_code: AE
+  - name: 美利坚合众国
+    alpha_2_code: US
+  - name: 阿拉伯叙利亚共和国
+    alpha_2_code: SY
+  - name: 刚果民主共和国
+    alpha_2_code: CD
+  - name: 坦桑尼亚联合共和国
+    alpha_2_code: TZ
+  - name: 特立尼达和多巴哥
+    alpha_2_code: TT
+  - name: 前南斯拉夫的马其顿共和国
+    alpha_2_code: MK
+  - name: 大不列颠及北爱尔兰联合王国
+    alpha_2_code: GB
+  - name: 老挝人民民主共和国
+    alpha_2_code: LA
+  - name: 朝鲜民主主义人民共和国
+    alpha_2_code: KP
+  - name: 文莱达鲁萨兰国
+    alpha_2_code: BN
+  - name: 布基纳法索
+    alpha_2_code: BF
+  - name: 佛得角
+    alpha_2_code: CV
+  - name: 哥斯达黎加
+    alpha_2_code: CR
+  - name: 几内亚比绍
+    alpha_2_code: GW
+  - name: 圣马力诺
+    alpha_2_code: SM
+  - name: 圣卢西亚
+    alpha_2_code: LC
+  - name: 塞拉利昂
+    alpha_2_code: SL
+  - name: 斯里兰卡
+    alpha_2_code: LK
+  - name: 东帝汶
+    alpha_2_code: TL
+  - name: 巴布亚新几内亚
+    alpha_2_code: PG
+  - name: 圣基茨和尼维斯
+    alpha_2_code: KN
+  - name: 圣文森特和格林纳丁斯
+    alpha_2_code: VC
+  - name: 圣多美和普林西比
+    alpha_2_code: ST
+  - name: 科特迪瓦
+    alpha_2_code: CI
+  - name: 玻利维亚（多民族国）
+    alpha_2_code: BO
+  - name: 伊朗（伊斯兰共和国）
+    alpha_2_code: IR
+  - name: 密克罗尼西亚（联邦）
+    alpha_2_code: FM
+  - name: 委内瑞拉(玻利瓦尔共和国)
+    alpha_2_code: VE
