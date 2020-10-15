@@ -45,8 +45,16 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
               final date = DateTime.fromMillisecondsSinceEpoch(
                   widget.timeseries[index].epochMsec.toInt());
               final formattedDate = DateFormat('MMMM d, yyyy').format(date);
+              final formattedCount =
+                  barRodData.y.toStringAsFixed(0).replaceAllMapped(
+                        RegExp(
+                          r'(\d{1,3})(?=(\d{3})+(?!\d))',
+                        ),
+                        (Match m) => '${m[1]},',
+                      );
+
               return BarTooltipItem(
-                formattedDate,
+                '$formattedDate\n$formattedCount',
                 TextStyle(
                   color: Constants.bodyTextColor,
                 ),
