@@ -2,7 +2,9 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/button.dart';
@@ -11,7 +13,6 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/generated/build.dart';
 import 'package:who_app/generated/l10n.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:who_app/main.dart';
 import 'package:who_app/pages/license_page.dart' as who;
 import 'package:who_app/pages/main_pages/routes.dart';
@@ -20,8 +21,6 @@ import 'package:yaml/yaml.dart';
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var devInfo = false;
-
     final versionString = packageInfo != null
         ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
             packageInfo.version, packageInfo.buildNumber)
@@ -152,20 +151,18 @@ class AboutPage extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 24, vertical: 24),
                                   child: FaIcon(
-                                    FontAwesomeIcons.code,
+                                    FontAwesomeIcons.copy,
                                     size: 14,
                                   ),
                                   onPressed: () {
-                                    setState(() {
-                                      devInfo = !devInfo;
-                                    });
+                                    Clipboard.setData(ClipboardData(
+                                        text: _buildInfoText(context)));
                                   },
                                 ),
-                                if (devInfo)
-                                  ThemedText(
-                                    _buildInfoText(context),
-                                    variant: TypographyVariant.bodySmall,
-                                  )
+                                ThemedText(
+                                  _buildInfoText(context),
+                                  variant: TypographyVariant.bodySmall,
+                                )
                               ])))
             ],
           ),
