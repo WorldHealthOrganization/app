@@ -1,7 +1,26 @@
-## Client Flutter implementations
+# who_app
 
-### Structure
+## Getting Started
 
-- `app/` - Production mobile application.
-- `app_en/` - Development-only mobile application with exposure notification. This is experimental work that is not currently used within the production app. We are actively investigating the Apple / Google exposure notification protocol and will share more information in the future.
-- `exposure_notifications/` - Flutter plugin that integrates with the platform-specific EN protocol.
+Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
+
+Clone the repo and from this `client/flutter` directory, run
+
+```
+flutter run
+```
+
+### iOS
+
+```
+cd $(git rev-parse --show-toplevel)
+cd client/flutter
+flutter pub get
+
+cd ios
+sudo gem install cocoapods   # if needed
+pod install
+open Runner.xcworkspace
+```
+
+### Android Studio
