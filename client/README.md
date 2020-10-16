@@ -4,9 +4,10 @@
 
 Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
 
-Clone the repo and from this `client/flutter` directory, run
+Clone the repo then:
 
 ```
+cd client
 flutter run
 ```
 
@@ -14,7 +15,7 @@ flutter run
 
 ```
 cd $(git rev-parse --show-toplevel)
-cd client/flutter
+cd client
 flutter pub get
 
 cd ios

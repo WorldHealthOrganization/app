@@ -6,14 +6,14 @@ on:
     paths:
       - ".github/workflows/**"
       - "docs/**"
-      - "client/flutter/assets/content_bundles/**"
+      - "client/assets/content_bundles/**"
       - "LICENSE"
       - "tools/**"
   push:
     paths:
       - ".github/workflows/**"
       - "docs/**"
-      - "client/flutter/assets/content_bundles/**"
+      - "client/assets/content_bundles/**"
       - "LICENSE"
       - "tools/**"
 

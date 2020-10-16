@@ -37,7 +37,7 @@ This is very much a team effort, and we are moving quickly enough that we have t
 
 Please review the [Contributor Guidelines](CONTRIBUTING.md) before making any contributions to the code.
 
-This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client/flutter` directory is used).
+This app uses a monorepo structure with the client application in the `client` directory and all server-related code in the `server` directory (currently only the `client` directory is used).
 
 Engineering design documents are kept in [devdesign](devdesign/README.md).
 
@@ -51,7 +51,7 @@ Clone the repo and run from the root of the local clone:
 
 ## Client
 
-See [client/flutter/README.md](../client/flutter/README.md).
+See [client/README.md](../client/README.md).
 
 ## Server
 
@@ -70,10 +70,10 @@ Error: "Policy Check / Check source code for policy violations"
 Solution: Click on the "Details" link to the right and search for the **second** "Add" to find the issue:
 
 ```sh
-❌ L172 of client/flutter/assets/content_bundles/your_questions_answered.en.yaml:
+❌ L172 of client/assets/content_bundles/your_questions_answered.en.yaml:
 <li>Place the mask on your face covering your nose, mouth and chin, making sure that there are no gaps between your face and the mask</li>
 
-ℹ️ Add '8731da43a61f8fae0293d877c558ad655fa242fcb74eba16ad001272bae3bfe6 client/flutter/assets/content_bundles/your_questions_answered.en.yaml' to ./.github/policy-ignored-lines.txt to ignore this issue
+ℹ️ Add '8731da43a61f8fae0293d877c558ad655fa242fcb74eba16ad001272bae3bfe6 client/assets/content_bundles/your_questions_answered.en.yaml' to ./.github/policy-ignored-lines.txt to ignore this issue
 ```
 
 Check the prior line from the source code to see it's a mistaken use of profanity. If it is, then update the PR and the profanity check will then pass.

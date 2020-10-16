@@ -39,7 +39,7 @@ These instructions assume that an app record has already been added to the App S
 ### Install Flutter Dependencies
 
 ```
-cd $(git rev-parse --show-toplevel)/client/flutter
+cd $(git rev-parse --show-toplevel)/client
 flutter pub get
 cd ios
 pod install
@@ -58,7 +58,7 @@ Prepare the Flutter release:
 ```
 cd $(git rev-parse --show-toplevel)
 DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
-cd $(git rev-parse --show-toplevel)/client/flutter
+cd $(git rev-parse --show-toplevel)/client
 flutter build ios
 ```
 
@@ -92,11 +92,11 @@ Build the app bundle:
 ```
 cd $(git rev-parse --show-toplevel)
 DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
-cd $(git rev-parse --show-toplevel)/client/flutter
+cd $(git rev-parse --show-toplevel)/client
 flutter build appbundle
 ```
 
-The release bundle for your app is created at `client/flutter/build/app/outputs/bundle/release/app.aab`.
+The release bundle for your app is created at `client/build/app/outputs/bundle/release/app.aab`.
 
 ### Upload the bundle to Google Play
 

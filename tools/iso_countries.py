@@ -21,7 +21,7 @@ substitutions = {
     ' ': '',
     'The United Kingdom': 'United Kingdom'}
 
-output = 'client/flutter/assets/onboarding/iso_countries.{}.yaml'
+output = 'client/assets/onboarding/iso_countries.{}.yaml'
 output_hdr = 'countries:\n'
 output_str = (
     '  - name: {}\n'

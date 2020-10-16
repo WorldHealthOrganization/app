@@ -5,7 +5,7 @@ let doc;
 try {
   doc = yaml.safeLoad(
     fs.readFileSync(
-      __dirname + "/../client/flutter/assets/onboarding/iso_countries.en.yaml",
+      __dirname + "/../client/assets/onboarding/iso_countries.en.yaml",
       "utf8"
     )
   );
@@ -18,7 +18,7 @@ try {
 const countries = doc.countries.map((x) => x.alpha_2_code);
 console.log(countries);
 
-const srcPath = __dirname + "/../client/flutter/assets/content_bundles";
+const srcPath = __dirname + "/../client/assets/content_bundles";
 const files = fs.readdirSync(srcPath);
 
 const destDir = __dirname + "/staticContentBuild";

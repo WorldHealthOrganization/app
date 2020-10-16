@@ -5,7 +5,7 @@ git diff --exit-code
 GIT_SHA="$(git rev-parse --verify HEAD)"
 BUILT_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
-cat <<EOF >client/flutter/lib/generated/build.dart
+cat <<EOF >client/lib/generated/build.dart
 class BuildInfo {
   static const POPULATED = true;
   static const GIT_SHA = "$GIT_SHA";
@@ -15,4 +15,4 @@ class BuildInfo {
 }
 EOF
 
-cat client/flutter/lib/generated/build.dart
+cat client/lib/generated/build.dart
