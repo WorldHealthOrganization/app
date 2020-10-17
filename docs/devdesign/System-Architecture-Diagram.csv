@@ -38,7 +38,7 @@ and are able to use all per-Client info in DB",,,,,,,,,,,,,,,,,,,,,,,
 35,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,Google Play Store,,,,,,,,,,,,,,,,,,,,,,,
 36,External Infrastructure 3rd Party,Google Cloud Platform,1,,,,,,,GitHub,,,,,,,,,,,,,,,,,,,,,,,
 37,Infrastructure System 2,Google Cloud Platform,1,7,,,,,,Our Server - Java  Code: /server/appengine/,,,,,,,,,,,,,,,,,,,,,,,
-38,Infrastructure System 2,Google Cloud Platform,1,2,,,,,,Our App - Flutter/Dart Code: /client/flutter,,,,,,,,,,,,,,,,,,,,,,,
+38,Infrastructure System 2,Google Cloud Platform,1,2,,,,,,Our App - Flutter/Dart Code: /client,,,,,,,,,,,,,,,,,,,,,,,
 39,Text,Standard,1,,,,,,,https://github.com/WorldHealthOrganization/app,,,,,,,,,,,,,,,,,,,,,,,
 40,Infrastructure System 2,Google Cloud Platform,1,36,,,,,,Public Repo - Client Code and Content Bundles,,,,,,,,,,,,,,,,,,,,,,,
 41,ImageSearchBlock2,Standard,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

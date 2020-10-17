@@ -2,10 +2,10 @@
 
 ## Localizable Content Streams:
 
-- [Flutter Application Resource Bundles (client/flutter/lib/l10n)](../../client/flutter/lib/l10n)
+- [Flutter Application Resource Bundles (client/lib/l10n)](../../client/lib/l10n)
 
   The `.arb` files externalize strings from the app and `flutter_intl` takes care of generating the messages in
-  [client/flutter/lib/generated/intl](../../client/flutter/lib/generated/intl)
+  [client/lib/generated/intl](../../client/lib/generated/intl)
 
   Application Resource Bundle (abbr. `ARB`) is a localization resource format that is simple (based on `JSON`).
 
@@ -15,7 +15,7 @@
 
   Versions packaged in the app are not updated dynamically.
 
-- [Dynamic Assets: content_bundles (client/flutter/assets/content_bundles)](../client/flutter/assets/content_bundles)
+- [Dynamic Assets: content_bundles (client/assets/content_bundles)](../client/assets/content_bundles)
 
   The `.yaml` files in this folder packaged in the app for users without internet connectivity, but the app
   attempts to fetch updated versions online if available.

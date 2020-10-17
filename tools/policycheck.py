@@ -13,6 +13,7 @@ def main(argv):
   ignoreds = [v.strip() for v in ignoreds]
   print(ignoreds)
 
+  summary = ''
   for fn in sys.argv[3:]:
     with open(fn, 'r') as f:
       lines = f.readlines()
@@ -21,13 +22,12 @@ def main(argv):
         if ps[i] >= min_prob:
           keysrc = "{}\n{}".format(fn, lines[i]).encode()
           key = '{} {}'.format(hashlib.sha256(keysrc).hexdigest(), fn)
+          summary += key +'\n'
           if key not in ignoreds:
             ret = ret + 1
-            print("\n\n\n❌ L{} of {}:\n{}".format(i + 1, fn, lines[i]), file=sys.stderr)
-            print("ℹ️ Add '{}' to {} to ignore this issue".format(key, sys.argv[2]), file=sys.stderr)
-          else:
-            print("\n\n\nℹ️ IGNORED: L{} of {}:\n{}".format(i + 1, fn, lines[i]))
-            print("ℹ️ Remove '{}' from {} to stop ignoring this issue".format(key, sys.argv[2]))
+            print("\n❌ L{} of {}:\n{}".format(i + 1, fn, lines[i][:-1]), file=sys.stderr)
+            print("ℹ️  Add '{}' to {} to ignore this issue".format(key, sys.argv[2]), file=sys.stderr)
+  print('\n\n\nSummary to ignore everything using {}:\n{}'.format(sys.argv[2], summary))
   return ret
 
 

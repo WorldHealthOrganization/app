@@ -6,8 +6,7 @@ on:
     paths:
       - ".github/workflows/**"
       - "api/**"
-      - "client/app/**"
-      - "client/flutter/**"
+      - "client/**"
       - "docs/**"
       - "tools/**"
       - "LICENSE"
@@ -16,8 +15,7 @@ on:
     paths:
       - ".github/workflows/**"
       - "api/**"
-      - "client/app/**"
-      - "client/flutter/**"
+      - "client/**"
       - "docs/**"
       - "tools/**"
       - "LICENSE"
@@ -33,13 +31,13 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/app
+        working-directory: ./client
       - run: flutter analyze --no-pub
-        working-directory: ./client/app
+        working-directory: ./client
       - run: flutter format lib/** --set-exit-if-changed
-        working-directory: ./client/app
+        working-directory: ./client
       - run: flutter test --no-pub
-        working-directory: ./client/app
+        working-directory: ./client
   autogen_update_check:
     name: Check auto-generated client files are up-to-date
     runs-on: ubuntu-latest
@@ -48,22 +46,22 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/app
+        working-directory: ./client
       - run: echo PHASE 1 - Ensure auto-gened MobX stores
       - run: flutter packages pub run build_runner build --delete-conflicting-outputs
-        working-directory: ./client/app
+        working-directory: ./client
       - run: flutter format lib/**
-        working-directory: ./client/app
+        working-directory: ./client
       - run: git diff --exit-code
       - run: echo PHASE 2 - Ensure auto-gened protocol buffers
       - run: sudo apt install -y protobuf-compiler
       - run: protoc --version
       - run: flutter pub global activate protoc_plugin ^19.0.1
-        working-directory: ./client/app
+        working-directory: ./client
       - run: echo "::add-path::$HOME/.pub-cache/bin"
       - run: ./tools/gen-client-protos.sh
       - run: flutter format lib/**
-        working-directory: ./client/app
+        working-directory: ./client
       - run: git diff --exit-code
   build_ios:
     name: Build iOS app
@@ -73,9 +71,9 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/app
+        working-directory: ./client
       - run: flutter build ios --release --no-codesign
-        working-directory: ./client/app
+        working-directory: ./client
       - run: git diff --exit-code
   build_android:
     # Firebase requires fat APKs, not AABs.
@@ -89,16 +87,16 @@ jobs:
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "::add-path::$GITHUB_WORKSPACE/_flutter/bin"
       - run: flutter pub get
-        working-directory: ./client/app
+        working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
       - run: flutter build apk
-        working-directory: ./client/app
+        working-directory: ./client
       - name: Upload Staging APK artifact
         uses: actions/upload-artifact@v2
         with:
           name: staging-apk
-          path: ./client/app/build/app/outputs/apk/release/app-release.apk
+          path: ./client/build/app/outputs/apk/release/app-release.apk
   deploy_apk_to_firebase_staging:
     name: Deploy APK to Firebase App Distribution (Staging)
     runs-on: ubuntu-latest

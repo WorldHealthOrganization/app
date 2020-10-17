@@ -88,7 +88,7 @@ Modified and original Streamline Icons:
 Assets from Webalys LLC (including files prefixed with `streamline-`) are not governed by the MIT License, but instead are the property of Webalys LLC, and can be used only in the context of this open source project.
 
 --------------------------------------------------------------------------------
-For client/flutter/lib/pages/license_page.dart:
+For client/lib/pages/license_page.dart:
 
 Copyright 2014 The Flutter Authors. All rights reserved.
 
