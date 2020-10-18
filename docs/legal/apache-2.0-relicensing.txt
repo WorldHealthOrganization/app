@@ -6,6 +6,7 @@ By adding my name below, I hereby additionally license under the Apache License 
 following name and email addresses:
 
 Bruno Bowden - github@brunobowden.com
+Jason Telanoff - jason.telanoff@gmail.com, 57235796+jasonTelanoff@users.noreply.github.com
 
 
 
