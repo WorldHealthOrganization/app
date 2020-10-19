@@ -23,7 +23,7 @@ buildscript {
         'guava': "com.google.guava:guava:29.0-jre",
         'gson': "com.google.code.gson:gson:2.8.6",
         'servlet': "javax.servlet:javax.servlet-api:3.1.0",
-        'junit': "junit:junit:4.13",
+        'junit': "junit:junit:4.13.1",
         'wire': [
             'compiler': "com.squareup.wire:wire-compiler:${versions.wire}",
             'gson': "com.squareup.wire:wire-gson-support:${versions.wire}",

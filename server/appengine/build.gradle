@@ -74,7 +74,7 @@ dependencies {
     implementation 'com.google.oauth-client:google-oauth-client:1.31.0'
     implementation 'commons-codec:commons-codec:1.15'
 
-    testCompile 'junit:junit:4.13'
+    testCompile 'junit:junit:4.13.1'
     testCompile "org.mockito:mockito-core:1.+"
     testCompile 'com.google.appengine:appengine-testing:+'
     testCompile 'com.google.appengine:appengine-api-stubs:+'
