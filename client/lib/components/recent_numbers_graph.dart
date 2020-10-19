@@ -33,8 +33,33 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 
     return BarChart(
       BarChartData(
-        axisTitleData: FlAxisTitleData(show: false),
-        borderData: FlBorderData(show: false),
+        axisTitleData: FlAxisTitleData(
+          show: false,
+        ),
+        borderData: FlBorderData(
+          show: false,
+        ),
+        barTouchData: BarTouchData(
+          touchTooltipData: BarTouchTooltipData(
+            fitInsideHorizontally: true,
+            fitInsideVertically: true,
+            getTooltipItem: (barChartGroupData, _, barRodData, index) {
+              final date = DateTime.fromMillisecondsSinceEpoch(
+                  widget.timeseries[index].epochMsec.toInt());
+              // Abbr to fit on single line: e.g. "Oct 18, 2020"
+              final formattedDate = DateFormat.yMMMd().format(date);
+
+              final formattedCount = NumberFormat().format(barRodData.y);
+
+              return BarTooltipItem(
+                '$formattedDate\n$formattedCount',
+                TextStyle(
+                  color: Constants.bodyTextColor,
+                ),
+              );
+            },
+          ),
+        ),
         barGroups: [
           BarChartGroupData(
             x: 0,
