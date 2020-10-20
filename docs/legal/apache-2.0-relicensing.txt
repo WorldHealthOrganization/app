@@ -8,6 +8,28 @@ following name and email addresses:
 Bruno Bowden - brunob@gmail.com, github@brunobowden.com
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Apache 2.0 and MIT Licensing
 
 I hereby license under the Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
@@ -17,12 +39,16 @@ project (https://github.com/WorldHealthOrganization/app).
 Alexandra Hays
 Amanda Lin
 Anshul Patria
+Bill Pugh
 Daniel Kraft
+David Kaneda
 Effie Seiberg
 Eulalia García Jimenez
 Jessica Ladd
 Kellie Menendez
+Marie Troisfontaine
 Piotr Wicherski
+Spencer Gabor
 Vivian Cromwell
 
 
