@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:who_app/api/content/content_store.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/learn_page_promo.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
@@ -136,12 +137,11 @@ class _MenuItem extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(minHeight: 64, minWidth: double.infinity),
       margin: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
-      child: FlatButton(
+      child: Button(
         onPressed: () => link.open(context),
         padding: EdgeInsets.zero,
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        clipBehavior: Clip.antiAlias,
+        backgroundColor: color,
+        borderRadius: BorderRadius.circular(8),
         child: SizedBox(
           width: double.infinity,
           child: Stack(

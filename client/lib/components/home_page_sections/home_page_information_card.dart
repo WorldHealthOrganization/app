@@ -69,7 +69,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Button(
-        color: Constants.illustrationBlue1Color,
+        backgroundColor: Constants.illustrationBlue1Color,
         onPressed: () {
           return link.open(context);
         },
@@ -103,7 +103,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Button(
-                    color: CupertinoColors.white,
+                    backgroundColor: CupertinoColors.white,
                     borderRadius: BorderRadius.circular(50.0),
                     padding:
                         EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
