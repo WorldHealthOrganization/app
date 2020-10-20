@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -94,33 +95,29 @@ class CountrySelectPage extends StatelessWidget {
                     24.0,
                     12.0,
                   ),
-                  child: Material(
-                    child: FlatButton(
-                      onPressed: countryName != null ? onNext : null,
-                      color: Constants.whoBackgroundBlueColor,
-                      disabledColor:
-                          Constants.neutralTextLightColor.withOpacity(0.3),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
+                  child: Button(
+                    onPressed: countryName != null ? onNext : null,
+                    backgroundColor: Constants.whoBackgroundBlueColor,
+                    disabledBackgroundColor:
+                        Constants.neutralTextLightColor.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(50.0),
+                    // TODO: localize
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 32.0,
+                        vertical: 12.0,
                       ),
-                      // TODO: localize
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 32.0,
-                          vertical: 12.0,
+                      child: ThemedText(
+                        'Next',
+                        variant: TypographyVariant.button,
+                        style: TextStyle(
+                          color: CupertinoColors.white,
                         ),
-                        child: ThemedText(
-                          'Next',
-                          variant: TypographyVariant.button,
-                          style: TextStyle(
-                            color: CupertinoColors.white,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             )
           ],

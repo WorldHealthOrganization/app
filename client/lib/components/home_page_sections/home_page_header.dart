@@ -105,7 +105,7 @@ class HomePageHeader extends StatelessWidget {
                                 horizontal: 32,
                                 vertical: 12,
                               ),
-                              color: CupertinoColors.white,
+                              backgroundColor: CupertinoColors.white,
                               child: Container(
                                 child: ThemedText(
                                   buttonText,

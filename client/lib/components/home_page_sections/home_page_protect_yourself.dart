@@ -87,7 +87,7 @@ class _HomeProtectYourselfCard extends StatelessWidget {
             }
           : null,
       borderRadius: BorderRadius.circular(16.0),
-      color: Constants.primaryDarkColor,
+      backgroundColor: Constants.primaryDarkColor,
       padding: EdgeInsets.zero,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),

@@ -65,12 +65,13 @@ class LearnPagePromo extends StatelessWidget {
                   height: 16.0,
                 ),
                 Button(
-                  color: CupertinoColors.white,
+                  backgroundColor: CupertinoColors.white,
                   borderRadius: BorderRadius.circular(50),
                   padding: EdgeInsets.symmetric(
                     horizontal: 32,
                     vertical: 8,
                   ),
+                  buttonType: ButtonType.Elevated,
                   child: ThemedText(
                     buttonText,
                     variant: TypographyVariant.button,

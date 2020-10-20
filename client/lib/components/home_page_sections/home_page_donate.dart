@@ -33,7 +33,7 @@ class HomePageDonate extends StatelessWidget {
           ),
           child: Button(
             borderRadius: BorderRadius.circular(50.0),
-            color: Constants.accentTealColor,
+            backgroundColor: Constants.accentTealColor,
             padding: EdgeInsets.symmetric(horizontal: 88.0, vertical: 12.0),
             child: ThemedText(
               // TODO: localize

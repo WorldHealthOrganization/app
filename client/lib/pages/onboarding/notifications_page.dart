@@ -92,7 +92,7 @@ class NotificationsPage extends StatelessWidget {
                           context: context);
                       onNext();
                     },
-                    color: Constants.whoBackgroundBlueColor,
+                    backgroundColor: Constants.whoBackgroundBlueColor,
                     borderRadius: BorderRadius.circular(50.0),
                     child: Container(
                       padding: EdgeInsets.symmetric(

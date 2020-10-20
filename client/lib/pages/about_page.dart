@@ -98,7 +98,9 @@ class AboutPage extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(24, 24, 24, 8),
                 child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
-                      copyrightString, versionString),
+                        copyrightString,
+                        versionString,
+                      ),
                   variant: TypographyVariant.body,
                 ),
               ),
@@ -149,7 +151,9 @@ class AboutPage extends StatelessWidget {
                               children: [
                                 Button(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 24),
+                                    horizontal: 24,
+                                    vertical: 24,
+                                  ),
                                   child: FaIcon(
                                     FontAwesomeIcons.copy,
                                     size: 14,

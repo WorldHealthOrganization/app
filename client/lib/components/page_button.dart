@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:who_app/components/button.dart';
 import 'package:who_app/constants.dart';
 
 class PageButton extends StatefulWidget {
@@ -61,14 +62,14 @@ class _PageButtonState extends State<PageButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return Button(
       onPressed: widget.onPressed != null ? _onPressed : null,
-      disabledColor: Constants.neutralTextLightColor.withOpacity(0.4),
-      disabledTextColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
+      disabledBackgroundColor: Constants.neutralTextLightColor.withOpacity(0.4),
+      disabledForegroundColor: Colors.white,
+      borderRadius: BorderRadius.circular(
+        widget.borderRadius,
       ),
-      color: widget.backgroundColor,
+      backgroundColor: widget.backgroundColor,
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: widget.verticalPadding,
