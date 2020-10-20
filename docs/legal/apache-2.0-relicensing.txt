@@ -14,7 +14,16 @@ I hereby license under the Apache License 2.0 (https://www.apache.org/licenses/L
 and MIT License (https://opensource.org/licenses/MIT) all of my contributions to the WHO App
 project (https://github.com/WorldHealthOrganization/app).
 
+Alexandra Hays
+Amanda Lin
+Anshul Patria
 Daniel Kraft
+Effie Seiberg
+Eulalia García Jimenez
+Jessica Ladd
+Kellie Menendez
+Piotr Wicherski
+Vivian Cromwell
 
 
 # WHO
