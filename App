@@ -1,0 +1,106 @@
+
+
+{
+‏    "version": "2.0",
+‏    "extensionBundle": {
+‏        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+‏        "version": "[1.*, 2.0.0)"
+    }
+}
+
+
+
+
+
+‏<!-- Accepts any version 6.1 and above. -->
+‏<PackageReference Include="ExamplePackage" Version="6.1" />
+
+‏<!-- Accepts any 6.x.y version. -->
+‏<PackageReference Include="ExamplePackage" Version="6.*" />
+‏<PackageReference Include="ExamplePackage" Version="[6,7)" />
+
+‏<!-- Accepts any version above, but not including 4.1.3. Could be
+‏     used to guarantee a dependency with a specific bug fix. -->
+‏<PackageReference Include="ExamplePackage" Version="(4.1.3,)" />
+
+‏<!-- Accepts any version up below 5.x, which might be used to prevent pulling in a later
+‏     version of a dependency that changed its interface. However, this form is not
+‏     recommended because it can be difficult to determine the lowest version. -->
+‏<PackageReference Include="ExamplePackage" Version="(,5.0)" />
+
+‏<!-- Accepts any 1.x or 2.x version, but not 0.x or 3.x and higher. -->
+‏<PackageReference Include="ExamplePackage" Version="[1,3)" />
+
+‏<!-- Accepts 1.3.2 up to 1.4.x, but not 1.5 and higher. -->
+‏<PackageReference Include="ExamplePackage" Version="[1.3.2,1.5)" />
+
+
+
+
+
+
+
+‏<!-- Install/restore version 6.1.0, accept any version 6.1.0 and above on update. -->
+‏<package id="ExamplePackage" version="6.1.0" allowedVersions="6.1.0" />
+
+‏<!-- Install/restore version 6.1.0, and do not change during update. -->
+‏<package id="ExamplePackage" version="6.1.0" allowedVersions="[6.1.0]" />
+
+‏<!-- Install/restore version 6.1.0, accept any 6.x version during update. -->
+‏<package id="ExamplePackage" version="6.1.0" allowedVersions="[6,7)" />
+
+‏<!-- Install/restore version 4.1.4, accept any version above, but not including, 4.1.3.
+‏     Could be used to guarantee a dependency with a specific bug fix. -->
+‏<package id="ExamplePackage" version="4.1.4" allowedVersions="(4.1.3,)" />
+
+‏<!-- Install/restore version 3.1.2, accept any version up below 5.x on update, which might be
+‏     used to prevent pulling in a later version of a dependency that changed its interface.
+‏     However, this form is not recommended because it can be difficult to determine the lowest version. -->
+‏<package id="ExamplePackage" version="3.1.2" allowedVersions="(,5.0)" />
+
+‏<!-- Install/restore version 1.1.4, accept any 1.x or 2.x version on update, but not
+‏     0.x or 3.x and higher. -->
+‏<package id="ExamplePackage" version="1.1.4" allowedVersions="[1,3)" />
+
+‏<!-- Install/restore version 1.3.5, accepts 1.3.2 up to 1.4.x on update, but not 1.5 and higher. -->
+‏<package id="ExamplePackage" version="1.3.5" allowedVersions="[1.3.2,1.5)" />
+
+
+
+‏<!-- Accepts any version 6.1 and above. -->
+‏<dependency id="ExamplePackage" version="6.1" />
+
+‏<!-- Accepts any version above, but not including 4.1.3. Could be
+‏     used to guarantee a dependency with a specific bug fix. -->
+‏<dependency id="ExamplePackage" version="(4.1.3,)" />
+
+‏<!-- Accepts any version up below 5.x, which might be used to prevent pulling in a later
+‏     version of a dependency that changed its interface. However, this form is not
+‏     recommended because it can be difficult to determine the lowest version. -->
+‏<dependency id="ExamplePackage" version="(,5.0)" />
+
+‏<!-- Accepts any 1.x or 2.x version, but not 0.x or 3.x and higher. -->
+‏<dependency id="ExamplePackage" version="[1,3)" />
+
+‏<!-- Accepts 1.3.2 up to 1.4.x, but not 1.5 and higher. -->
+‏<dependency id="ExamplePackage" version="[1.3.2,1.5)" />
+
+
+
+
+
+
+‏1.00 is treated as 1.0
+‏  1.01.1 is treated as 1.1.1
+‏  1.00.0.1 is treated as 1.0.0.1
+
+
+‏1.0.0.0 is treated as 1.0.0
+‏  1.0.01.0 is treated as 1.0.1
+
+
+
+
+‏1.0.7+r3456 is treated as 1.0.7
+
+
