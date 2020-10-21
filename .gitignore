@@ -107,3 +107,8 @@ buck-out/
 .classpath
 .project
 .settings
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+server/terraform/.terraform

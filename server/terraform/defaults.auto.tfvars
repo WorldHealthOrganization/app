@@ -1,0 +1,1 @@
+location_id = "europe-west6" # Switzerland is the preferred location for WHO

@@ -121,6 +121,10 @@ And, if you want to be able to manipulate Firebase:
 
     $  gcloud components install beta app-engine-java && gcloud components update
 
+### Install Terraform
+
+Follow the directions [here](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/gcp-get-started)
+
 ### Install IntelliJ IDE (Optional)
 
     $ brew cask install intellij-idea-ce

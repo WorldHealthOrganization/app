@@ -1,10 +1,12 @@
 {
-  
   "../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}": [
     "prettier --write"
   ],
   "../**/*.dart|*.dart": [
     "flutter format"
+  ],
+  "../server/terraform/": [
+    "terraform fmt -recursive"
   ],
   "../client/**": [
     "./verify-client.sh"

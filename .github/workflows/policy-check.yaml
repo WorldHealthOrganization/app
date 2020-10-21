@@ -39,3 +39,5 @@ jobs:
       # Match the tools/.lintstagedrc.json file
       - run: npx --no-install prettier -c '../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}'
         working-directory: ./tools
+      - run: terraform fmt -check -recursive .
+        working-directory: ./server/terraform
