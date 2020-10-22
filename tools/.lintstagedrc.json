@@ -6,7 +6,7 @@
     "flutter format"
   ],
   "../server/terraform/**": [
-    "terraform-fmt-validate.sh"
+    "./terraform-fmt-validate.sh"
   ],
   "../client/**": [
     "./verify-client.sh"
