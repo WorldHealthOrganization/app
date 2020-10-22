@@ -38,6 +38,7 @@ project (https://github.com/WorldHealthOrganization/app).
 
 Alexandra Hays
 Amanda Lin
+Angela Yeung
 Anshul Patria
 Bill Pugh
 Daniel Kraft
@@ -45,10 +46,11 @@ David Kaneda
 Effie Seiberg
 Eulalia García Jimenez
 Jessica Ladd
+Karen Wong
 Kellie Menendez
 Kristina Plummer
 Marie Troisfontaine
-Mohit Saina
+Mohit Saini
 Piotr Wicherski
 Spencer Gabor
 Stephanie Liu
