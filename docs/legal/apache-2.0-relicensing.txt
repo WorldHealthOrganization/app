@@ -16,18 +16,22 @@ Bruno Bowden - brunob@gmail.com, github@brunobowden.com
 
 
 
+# Limited Consent
 
+By adding my name and email addresses below, I additionally license under the Apache
+License 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt) each original
+contribution I have made to this git repository that meets all of the following
+conditions:
+1) The contribution was submitted to this repository under any of my listed email addresses,
+2) The contribution was previously licensed under the MIT License that existed at the root of
+   this repository at the time of the original contribution, and
+3) All rights in the contribution are either owned entirely by me OR owned entirely by me and
+   other persons, all of whom have consented in writing as recorded in this document to also
+   license their contributions under the Apache License 2.0.
+My consent is conditioned on the preservation of this notice, this document, and all associated
+agreement commits within the repository.
 
-
-
-
-
-
-
-
-
-
-
+Advay Mengle - Oct. 22, 2020 (see notes in associated commit) - source@madvay.com, 11729521+advayDev1@users.noreply.github.com, advay.mengle.dev1@gmail.com, advayDev1@users.noreply.github.com
 
 
 # Apache 2.0 and MIT Licensing
