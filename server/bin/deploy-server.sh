@@ -1,9 +1,11 @@
 #!/bin/sh
 
-set -e
+set -euv
 cd $(dirname "$0")/..
 
-PROJECT=who-myhealth-europe
+PROJECT=$1
+
+../tools/verify-server.sh
 
 ./gradlew build
 gcloud beta app deploy --quiet --project=$PROJECT appengine/build/war

@@ -91,7 +91,7 @@ jobs:
             });
             return deployment.id;
       - shell: bash
-        run: ./bin/deploy-staging.sh
+        run: ./bin/deploy-server.sh who-myhealth-staging
         working-directory: server
       - name: Destroy GCP Credentials File
         run: rm $APPLICATION_CREDENTIALS
