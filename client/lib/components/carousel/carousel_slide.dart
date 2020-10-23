@@ -41,7 +41,7 @@ class _CarouselSlideState extends State<CarouselSlide> {
 
     final titleStyle = TextStyle(
       color: Constants.primaryDarkColor,
-      fontSize: 36.0,
+      fontSize: 36.0 * screenSize.width.clamp(275, 550) / 550,
       fontWeight: FontWeight.w600,
       letterSpacing: -.5,
     );
