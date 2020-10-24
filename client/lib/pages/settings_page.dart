@@ -1,10 +1,14 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:share/share.dart';
+import 'package:who_app/api/iso_country.dart';
 import 'package:who_app/api/linking.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences_store.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -12,6 +16,7 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
+import 'package:who_app/pages/onboarding/country_list_page.dart';
 
 ///========================================================
 /// TODO SUMMARY:
@@ -22,7 +27,15 @@ import 'package:who_app/pages/main_pages/routes.dart';
 class SettingsPage extends StatefulWidget {
   final Notifications notifications;
 
-  const SettingsPage({Key key, @required this.notifications}) : super(key: key);
+  final UserPreferencesStore prefs;
+  final WhoService service;
+
+  const SettingsPage({
+    Key key,
+    @required this.notifications,
+    @required this.prefs,
+    @required this.service,
+  }) : super(key: key);
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -33,6 +46,8 @@ class _SettingsPageState extends State<SettingsPage>
   bool _analyticsEnabled;
   bool _notificationsEnabled;
   bool _attemptEnableNotificationsOnResume = false;
+
+  IsoCountry _selectedCountry;
 
   @override
   void initState() {
@@ -162,10 +177,44 @@ class _SettingsPageState extends State<SettingsPage>
     );
   }
 
+  void _selectCountry(IsoCountry country) async {
+    Navigator.pop(
+      context,
+    );
+
+    await setCountry(country);
+  }
+
   Widget menu(BuildContext context) {
     final divider = Container(height: 1, color: Color(0xffC9CDD6));
     final size = MediaQuery.of(context).size;
+
+    final countryList = Provider.of<IsoCountryList>(context);
+    final currentCountryCode = widget.prefs.countryIsoCode;
+    _selectedCountry = countryList.countries[currentCountryCode];
     return Column(children: <Widget>[
+      divider,
+      //TODO: LOCALIZE
+      MenuListTile(
+        title: 'Country',
+        subtitle: _selectedCountry?.name ?? '-',
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => CountryListPage(
+                onBack: () async {
+                  Navigator.pop(
+                    context,
+                  );
+                },
+                onCountrySelected: _selectCountry,
+                selectedCountryCode: _selectedCountry?.alpha2Code,
+                countries: countryList.countries,
+              ),
+            ),
+          );
+        },
+      ),
       divider,
       MenuListTile(
         title: S.of(context).homePagePageSliverListShareTheApp,
@@ -196,6 +245,20 @@ class _SettingsPageState extends State<SettingsPage>
       ),
       divider,
     ]);
+  }
+
+  Future<void> setCountry(IsoCountry country) async {
+    await setState(() {
+      _selectedCountry = country;
+    });
+    await widget.prefs.setCountryIsoCode(_selectedCountry.alpha2Code);
+
+    try {
+      await widget.service
+          .putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+    } catch (error) {
+      print('Error sending location to API: $error');
+    }
   }
 
   Widget switchItem(

@@ -7,7 +7,7 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class CountryListPage extends StatelessWidget {
+class CountryListPage extends StatefulWidget {
   final String selectedCountryCode;
   final Function onBack;
   final Function onCountrySelected;
@@ -22,6 +22,20 @@ class CountryListPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _CountryListPageState createState() => _CountryListPageState();
+}
+
+class _CountryListPageState extends State<CountryListPage> {
+  String selectedCountryCode;
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedCountryCode = widget.selectedCountryCode;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PageScaffold(
       // TODO: localize?
@@ -32,10 +46,10 @@ class CountryListPage extends StatelessWidget {
   }
 
   List<Widget> _buildCountries() {
-    if (countries == null || countries.isEmpty) {
+    if (widget.countries == null || widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return (countries?.values ?? [])
+    return (widget.countries?.values ?? [])
         .map((country) => _buildCountryItem(country))
         .toList();
   }
@@ -43,10 +57,15 @@ class CountryListPage extends StatelessWidget {
   Widget _buildCountryItem(IsoCountry country) {
     return SliverToBoxAdapter(
       child: Material(
-        color: CupertinoColors.white,
+        color: Colors.white,
         child: InkWell(
           onTap: () async {
-            await onCountrySelected(country);
+            setState(() {
+              selectedCountryCode = country.alpha2Code;
+            });
+            await widget.onCountrySelected(
+              country,
+            );
           },
           child: Column(
             children: <Widget>[
