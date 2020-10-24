@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/stats_store.dart';
+import 'package:who_app/api/user_preferences_store.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/check_up_poster_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
@@ -28,6 +30,8 @@ class AppTabRouter extends StatelessWidget {
         ),
     (context) => SettingsPage(
           notifications: Provider.of<Notifications>(context),
+          service: Provider.of<WhoService>(context),
+          prefs: Provider.of<UserPreferencesStore>(context),
         ),
   ];
 

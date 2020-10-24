@@ -38,7 +38,6 @@ class MenuListTile extends StatelessWidget {
                 variant: TypographyVariant.body,
               )
             : null,
-        isThreeLine: subtitle != null,
         trailing: hasArrow
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
