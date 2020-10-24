@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
@@ -7,15 +8,20 @@ import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
 
 const double padding = 30;
+const Duration defaultSwapDuration = Duration(
+  milliseconds: 750,
+);
 
 class RecentNumbersBarGraph extends StatefulWidget {
   final DataAggregation aggregation;
   final DataDimension dimension;
+  final Color graphColor;
   const RecentNumbersBarGraph({
     Key key,
-    this.timeseries,
-    this.aggregation,
-    this.dimension,
+    @required this.timeseries,
+    @required this.aggregation,
+    @required this.dimension,
+    @required this.graphColor,
   }) : super(key: key);
 
   final List<StatSnapshot> timeseries;
@@ -26,11 +32,20 @@ class RecentNumbersBarGraph extends StatefulWidget {
 
 class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   final startDate = DateTime.utc(2020, 1, 1);
+  List<BarChartRodData> rods;
+  int selectedIndex;
+  Duration swapDuration;
+
+  @override
+  void initState() {
+    super.initState();
+
+    swapDuration = defaultSwapDuration;
+  }
 
   @override
   Widget build(BuildContext context) {
     final cardWidth = MediaQuery.of(context).size.width - (padding * 2);
-
     return BarChart(
       BarChartData(
         axisTitleData: FlAxisTitleData(
@@ -40,6 +55,19 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
           show: false,
         ),
         barTouchData: BarTouchData(
+          touchCallback: (touchResponse) {
+            setState(() {
+              swapDuration = Duration(microseconds: 1);
+              if (touchResponse.spot != null &&
+                  touchResponse.touchInput is! FlPanEnd &&
+                  touchResponse.touchInput is! FlLongPressEnd) {
+                selectedIndex = touchResponse.spot.touchedRodDataIndex;
+              } else {
+                selectedIndex = null;
+                swapDuration = defaultSwapDuration;
+              }
+            });
+          },
           touchTooltipData: BarTouchTooltipData(
             fitInsideHorizontally: true,
             fitInsideVertically: true,
@@ -69,7 +97,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
         ],
         titlesData: FlTitlesData(show: false),
       ),
-      swapAnimationDuration: Duration(milliseconds: 750),
+      swapAnimationDuration: swapDuration,
     );
   }
 
@@ -94,7 +122,11 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
           bars.add(
             BarChartRodData(
               y: yAxis,
-              color: Constants.textColor.withOpacity(.3),
+              color: selectedIndex == bars.length
+                  ? widget.graphColor
+                  : Constants.textColor.withOpacity(
+                      .3,
+                    ),
               width: cardWidth / (widget.timeseries.length * 3),
             ),
           );
@@ -145,6 +177,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
       timeseries: widget.timeseries,
       dimension: widget.dimension,
       aggregation: widget.aggregation,
+      graphColor: graphColor,
     );
     try {
       titleData =
@@ -218,6 +251,10 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         return '';
     }
   }
+
+  Color get graphColor => widget.dimension == DataDimension.cases
+      ? Constants.primaryDarkColor
+      : Constants.accentColor;
 
   String get graphDimension {
     switch (widget.dimension) {
