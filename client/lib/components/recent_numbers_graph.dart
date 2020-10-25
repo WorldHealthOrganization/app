@@ -171,6 +171,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
   Widget graph;
   final numFmt = NumberFormat.decimalPattern();
   int titleData;
+
   @override
   Widget build(BuildContext context) {
     graph = RecentNumbersBarGraph(
@@ -210,9 +211,11 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ThemedText(
-                        numFmt.format(titleData) == '0'
+                        loading
                             ? '-'
-                            : numFmt.format(titleData),
+                            : numFmt.format(
+                                titleData,
+                              ),
                         variant: TypographyVariant.h2,
                         style: TextStyle(
                           color: widget.dimension == DataDimension.cases
@@ -251,6 +254,8 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         return '';
     }
   }
+
+  bool get loading => widget.timeseries == null;
 
   Color get graphColor => widget.dimension == DataDimension.cases
       ? Constants.primaryDarkColor
