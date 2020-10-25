@@ -26,10 +26,7 @@ dependencies:
     sdk: flutter
 
   auto_size_text: 2.1.0
-  simple_connectivity: 0.1.1
-  # TODO: Replace with connectivity plugin:
-  # connectivity: ^2.0.0
-  # https://github.com/WorldHealthOrganization/app/issues/1532
+  connectivity: ^2.0.0
   cupertino_icons: ^0.1.3
   expressions: 0.1.5
   firebase_analytics: ^6.0.0
