@@ -29,14 +29,14 @@ Only needed for terraform service account setup. The account must have these per
 
 ### Create or update a GCP project
 
-- Change directory into `terraform/` and deploy
+The `apply` can be used to both create or update the server config.
 
 ```sh
 # setup
 cd server/terraform
 terraform init
 
-# create resource
+# create/update resource
 terraform apply -var-file staging.tfvars
 ```
 
