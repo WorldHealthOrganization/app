@@ -62,7 +62,7 @@ class RecentNumbersPage extends StatefulWidget {
 }
 
 class _RecentNumbersPageState extends State<RecentNumbersPage> {
-  var aggregation = DataAggregation.total;
+  var aggregation = DataAggregation.daily;
   var dimension = DataDimension.cases;
 
   @override
@@ -179,9 +179,9 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
       BuildContext context, DataAggregation selectedValue) {
     var valueToDisplayText = {
+      DataAggregation.daily: 'Daily',
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
       // TODO: This string changed, so we must change regenerate translation keys someday.
-      DataAggregation.daily: 'Daily',
     };
     return valueToDisplayText.map((value, displayText) {
       return MapEntry<DataAggregation, Widget>(
