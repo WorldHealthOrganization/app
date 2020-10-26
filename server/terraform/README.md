@@ -27,9 +27,9 @@ Only needed for terraform service account setup. The account must have these per
 - Billing Account User
 - Project Creator
 
-### Create or update a GCP project
+### Create / update GCP project
 
-The `apply` can be used to both create or update the server config.
+The `apply` can be used to both create and update the server config.
 
 ```sh
 # setup
@@ -40,11 +40,11 @@ terraform init
 terraform apply -var-file staging.tfvars
 ```
 
-### Don't Destroy Project
+### DO NOT Destroy Project
 
 Destroying the project may leave the App Engine instance in a broken state: https://github.com/hashicorp/terraform-provider-google/issues/1973
 
 ```
-# delete resource
+# DO NOT DESTROY: may make the project unrecoverable
 # terraform destroy
 ```
