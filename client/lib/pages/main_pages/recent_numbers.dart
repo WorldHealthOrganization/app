@@ -179,6 +179,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
       BuildContext context, DataAggregation selectedValue) {
     var valueToDisplayText = {
+      // TODO: Localize - need to regenerate translation keys as this string was changed
       DataAggregation.daily: 'Daily',
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
     };
