@@ -181,7 +181,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     var valueToDisplayText = {
       DataAggregation.daily: 'Daily',
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
-      // TODO: This string changed, so we must change regenerate translation keys someday.
     };
     return valueToDisplayText.map((value, displayText) {
       return MapEntry<DataAggregation, Widget>(
