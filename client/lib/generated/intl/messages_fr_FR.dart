@@ -39,15 +39,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Politique de confidentialité"),
         "aboutPageTermsOfServiceLinkText":
             MessageLookupByLibrary.simpleMessage("Conditions d\'utilisation"),
-        "aboutPageTermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
+        "aboutPageTermsOfServiceLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/terms-of-use"),
         "aboutPageThanksToText": m1,
         "aboutPageTitle":
             MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("Afficher les licences"),
-        "aboutPagetermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/privacy"),
+        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/privacy-notice"),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
                 "Veuillez mettre à jour vers la dernière version de l\'application afin de recevoir les dernières informations et mises à jour."),
@@ -135,9 +135,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Politique de confidentialité"),
         "legalLandingPagePrivacyPolicyLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/privacy"),
+            MessageLookupByLibrary.simpleMessage(
+                "https://www.who.int/myhealthapp/privacy-notice"),
         "legalLandingPageTermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
+            MessageLookupByLibrary.simpleMessage(
+                "https://www.who.int/myhealthapp/terms-of-use"),
         "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
             "Application Officielle COVID-19 de l\'OMS"),
         "locationSharingPageButton": MessageLookupByLibrary.simpleMessage(

@@ -148,7 +148,7 @@ class S {
 
   String get legalLandingPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whoapp.org/terms',
+      'https://www.who.int/myhealthapp/terms-of-use',
       name: 'legalLandingPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -175,7 +175,7 @@ class S {
 
   String get legalLandingPagePrivacyPolicyLinkUrl {
     return Intl.message(
-      'https://whoapp.org/privacy',
+      'https://www.who.int/myhealthapp/privacy-notice',
       name: 'legalLandingPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
@@ -868,7 +868,7 @@ class S {
 
   String get aboutPageTermsOfServiceLinkUrl {
     return Intl.message(
-      'https://whoapp.org/terms',
+      'https://www.who.int/myhealthapp/terms-of-use',
       name: 'aboutPageTermsOfServiceLinkUrl',
       desc: '',
       args: [],
@@ -884,10 +884,10 @@ class S {
     );
   }
 
-  String get aboutPagetermsOfServiceLinkUrl {
+  String get aboutPagePrivacyPolicyLinkUrl {
     return Intl.message(
-      'https://whoapp.org/privacy',
-      name: 'aboutPagetermsOfServiceLinkUrl',
+      'https://www.who.int/myhealthapp/privacy-notice',
+      name: 'aboutPagePrivacyPolicyLinkUrl',
       desc: '',
       args: [],
     );

@@ -41,14 +41,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "aboutPageTermsOfServiceLinkText":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
-        "aboutPageTermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
+        "aboutPageTermsOfServiceLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/terms-of-use"),
         "aboutPageThanksToText": m1,
         "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About the App"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("View Licenses"),
-        "aboutPagetermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/privacy"),
+        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/privacy-notice"),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
                 "Please update to the latest version of the app in order to receive the latest information and updates."),
@@ -147,9 +147,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "legalLandingPagePrivacyPolicyLinkText":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "legalLandingPagePrivacyPolicyLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/privacy"),
+            MessageLookupByLibrary.simpleMessage(
+                "https://www.who.int/myhealthapp/privacy-notice"),
         "legalLandingPageTermsOfServiceLinkUrl":
-            MessageLookupByLibrary.simpleMessage("https://whoapp.org/terms"),
+            MessageLookupByLibrary.simpleMessage(
+                "https://www.who.int/myhealthapp/terms-of-use"),
         "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
             "Official WHO COVID-19 Information App"),
         "locationSharingPageButton":
