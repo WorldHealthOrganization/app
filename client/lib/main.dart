@@ -208,7 +208,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               return [
                 if (BuildInfo.DEVELOPMENT_ONLY)
                   Alert(null,
-                      'You are using a development-only build of this app not intended for public use. You agree that you have no expectation of privacy when using this build and understand that the app contents may not have been reviewed by the World Health Organization.',
+                      'No privacy on development only builds. Content not reviewed by WHO.',
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
                   Alert('App Update Required',
