@@ -1,29 +1,44 @@
+# Add yourself here when you make a contribution
 team:
   - Advay Mengle
   - Aishwarya Vardhana
+  - Alan Court
   - Alex Hays
+  - Alex Ng
   - Alexa Grafera
   - Alfred Whitehead
   - Alfredo Hernández
   - Amanda Lin
+  - Andrew Nebus
+  - Andy Pattison
   - Angela Yeung
+  - Anika Raghuvanshi
+  - Anshul Patria
   - Ari Schaefer
+  - Armand Bejtullahu
   - Arthur Klepchukov
   - Ashwin Ramaswami
   - Augustin Reille
   - Ayush Bherwani
   - Ayush Ranjan
+  - Ayman Badr
   - Ben Sadeghipour
   - Benjamin Swerdlow
+  - Bernardo Mariano Junior
+  - Bill Pugh
+  - Biswa Gurubacharya
+  - Bernardo Mariano Junior
   - Bob Lee
   - Britannio Jarrett
+  - Bruce Aylward
   - Bruno Bowden
   - Chris Grey
   - Chris Hosmer
-  - Clement Mouchet
+  - Clément Mouchet
   - creativecreatorormaybenot
   - Dan Field
   - Dana Stoica
+  - Daniel Greff
   - Daniel Kraft
   - Daniel Timbrell
   - Darish Joy
@@ -32,15 +47,28 @@ team:
   - Devon Carew
   - Dhruvil Patel
   - Diana Alayon
+  - Effie Seiberg
+  - Ellen Jewell
+  - Eulalia García Jimenez
   - Evan Pye
+  - Flavio Aggio
+  - Florian Jeggle
+  - Francesca Krihely
   - Graeme Fordyce
   - Guido Rosso
   - Guillermo Varela
+  - Henry Marks
+  - Hulk Su
   - Hunter Spinks
   - Jaime Blasco
+  - Janet Diaz
   - Jason Telanoff
+  - Javier Elkin
   - Jessica Reuter Castrogiovanni
   - Jobert Abma
+  - Jochem Bökkers
+  - Johan Pelgrim
+  - Joris Auert
   - Josh Holtz
   - Juan Carlos Cruz Santana
   - Kalyanaraman Shankari
@@ -48,43 +76,79 @@ team:
   - Kassim Maguire
   - Kellie Menendez
   - Kerry Owens
+  - Kevin Crampton
   - Kieran Uddin
   - Kristina Plummer
+  - Kuai Yu
+  - Laetitia Chaniol
   - Leerom Segal
+  - Liran Tal
   - Louie Mantia
   - Lucas de Oliveira Mesquita
+  - Lucas Mesquita
   - Luciano Corsalini
   - Luigi Rosso
   - Manoj Narayan Bisarahalli
+  - Marc McLaughlin
   - Marc Quebrar Tan
+  - Marc Tan
   - Marco Rivoli
+  - Maria Grazia Pollarini
+  - Maria Grazia Frontoso
+  - Marie Debard
+  - Marie Troisfontaine
   - Mark Graves, Jr
+  - Matt Hollidge
   - Matt Sullivan
   - Maxime Cheminade
+  - Megan Weir
   - Melvin Lammerts
-  - Moosphon
+  - Michael Nichols
+  - Michelle Thulkanam
+  - Michelle Yu
+  - Michiel Prins
+  - Mike Ryan
+  - Mohit Saini
+  - Moosphan
+  - Nii Teiko Hammond
+  - Oliver Morgan
+  - Omar Ashraf
+  - Pat Drury
   - Pat Niemeyer
   - Patrik Fehrenbach
+  - Peter Nancarrow
   - Peter Singer
   - Pieter Otten
   - Piotr Wicherski
   - Prageeth Jayathissa
+  - purpledrosophila
   - Ray Chambers
+  - Renee "Reinhilde" Van De Weerdt
+  - Robert Valadez
+  - Rohan Talip
+  - Ryan Mast
+  - Ryan Speers
   - Sam Mousa
+  - Samuel Petragallo
   - Sameer Pujari
+  - Shankari
+  - Sharone Zitzman
   - Shilpa Apte
   - Shivam Singhania
   - Simon Sturmer
+  - Sitora Serverova
   - Spencer Gabor
+  - Stephanie Liu
+  - Stephen Elson
   - Stevan Milovanovic
+  - Stoney Gamble
+  - Tedros Adhanom Ghebreyesus
+  - Toby Felgenner
+  - Thierry Borowiec
   - Tom Gilder
+  - Tricia Wang
   - Ursula Zhao
   - Vivian Cromwell
+  - Will Ackerly
   - Yosua Ian Sebastian
-
-# Add yourself here when you first submit a contribution.
-
-# TODO: Pre-launch, review above list to add in the full team that doesn't make git commits!
-
-# TODO: Add businesses supporting us with donated resources.
-supporters: []
+  - Yu Zhao
