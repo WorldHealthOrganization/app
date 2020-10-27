@@ -11,6 +11,21 @@ part of 'stats_store.dart';
 mixin _$StatsStore on _StatsStore, Store {
   Computed<CaseStats> _$globalStatsComputed;
 
+  Computed<int> _$countryDailyCasesComputed;
+
+  @override
+  int get countryDailyCases => (_$countryDailyCasesComputed ??= Computed<int>(
+          () => super.countryDailyCases,
+          name: '_StatsStore.countryDailyCases'))
+      .value;
+  Computed<int> _$globalDailyCasesComputed;
+
+  @override
+  int get globalDailyCases => (_$globalDailyCasesComputed ??= Computed<int>(
+          () => super.globalDailyCases,
+          name: '_StatsStore.globalDailyCases'))
+      .value;
+
   @override
   CaseStats get globalStats =>
       (_$globalStatsComputed ??= Computed<CaseStats>(() => super.globalStats,
@@ -67,7 +82,9 @@ caseStatsResponse: ${caseStatsResponse},
 globalStats: ${globalStats},
 globalCases: ${globalCases},
 countryStats: ${countryStats},
-countryCases: ${countryCases}
+countryCases: ${countryCases},
+countryDailyCases: ${countryDailyCases},
+globalDailyCases: ${globalDailyCases}
     ''';
   }
 }
