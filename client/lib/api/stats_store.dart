@@ -45,6 +45,14 @@ abstract class _StatsStore with Store implements Updateable {
     return countryStats?.cases?.toInt();
   }
 
+  @computed
+  int get countryDailyCases =>
+      countryStats?.timeseries?.last?.dailyCases?.toInt();
+
+  @computed
+  int get globalDailyCases =>
+      globalStats?.timeseries?.last?.dailyCases?.toInt();
+
   @action
   @override
   Future<void> update() async {
