@@ -208,7 +208,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               return [
                 if (BuildInfo.DEVELOPMENT_ONLY)
                   Alert(null,
-                      'No privacy on development only builds. Content not reviewed by WHO.',
+                      'No privacy on development builds. Content not reviewed by WHO.',
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
                   Alert('App Update Required',
