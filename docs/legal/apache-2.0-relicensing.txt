@@ -1,19 +1,73 @@
 # Apache 2.0 Relicensing
 
-By adding my name below, I hereby additionally license under the Apache License 2.0
-(https://www.apache.org/licenses/LICENSE-2.0.txt) all of my contributions to this repository
-(including all prior contributions) licensed under the MIT License. I have contributed via the
-following name and email addresses:
+Git record of consents given on GitHub:
+https://github.com/WorldHealthOrganization/app/issues/1645
 
-Bruno Bowden - brunob@gmail.com, github@brunobowden.com
+I have used or may have used the email addresses listed alongside my GitHub username
+below. I consent to change the current license contained in the License file at
+https://github.com/WorldHealthOrganization/app/blob/master/LICENSE
+from the MIT License to the Apache License 2.0 with respect to all of my contributions
+to the WHO App.
 
+Please comment with corrected name / email address(es) if needed. By granting this
+permission, you are confirming that you have the right to make your contribution(s)
+to the WHO App and to grant this permission, and that if you made your contribution(s)
+in the course of your employment, that such contributions and consent have been
+authorized by your employer.
 
-
-
-
-
-
-
+Anika Raghuvanshi: @anikaraghu - anikaraghu@users.noreply.github.com
+Augustin Reille: @areille - 32739983+areille@users.noreply.github.com, 32739983+augustinreille@users.noreply.github.com
+Arthur Klepchukov: @avkvirtru - 44370126+avkvirtru@users.noreply.github.com
+Ayush Bherwani: @AyushBherwani1998 - ayush.bherwani1998@gmail.com
+Ayush Ranjan: @ayushr2 - ayush.ranjan98@gmail.com
+Britannio Jarrett: @britannio - britanniojarrett@gmail.com, 33752528+britannio@users.noreply.github.com
+Bruno Bowden: @brunobowden - brunob@gmail.com, github@brunobowden.com
+Chris Grey: @cbgrey - chris@wingtip.dev, thechrisgrey@gmail.com
+Clément Mouchet: @clementmouchet - clement.mouchet@gmail.com
+Bob Lee: @crazybob - bob@present.co, crazybob@crazybob.org. bob@whocoronavirus.org, crazyboblee@gmail.com
+creativecreatorormaybenot: @creativecreatorormaybenot - 19204050+creativecreatorormaybenot@users.noreply.github.com
+Yosua Ian Sebastian: @darcien - yosua.ian.sebastian@gmail.com
+Darish: @darish - 7066963+darish@users.noreply.github.com
+David Kaneda: @davidkaneda - dk@morfunk.com
+Dean Hachamovitch: @deanhach - deanhach@users.noreply.github.com
+Alfredo Hernández: @devamhdz - ahernandez@nyva.mx, 54552940+devamhdz@users.noreply.github.com
+Devon Carew: @devoncarew - devoncarew@google.com
+Dhruvil Patel: @dhruvilp - 38077836+dhruvilp@users.noreply.github.com
+Dan Field: @dnfield - dfield@gmail.com, dnfield@google.com
+Ashwin Ramaswami: @epicfaace - aramaswamis@gmail.com
+Guillermo Varela: @guillermo-varela - guille.varela3.16@gmail.com
+Henry Marks: @henrymarks1 - 58492005+Henrymarks1@users.noreply.github.com
+Hunter Spinks: @hspinks - hspinks@gmail.com
+Jaime Blasco: @jamesblasco - jaimeblasco97@gmail.com
+Jason Telanoff: @jasonTelanoff - 57235796+jasonTelanoff@users.noreply.github.com, jason.telanoff@gmail.com
+Josh Holtz: @joshdholtz - josh@rokkincat.com
+Johan Pelgrim: @jpelgrim - johan.pelgrim@gmail.com
+Kassim Maguire: @kassim - kassim@users.noreply.github.com, okmaguire@gmail.com
+Kieran Uddin: @kieranbehn - kieranbehn@users.noreply.github.com
+Lucas Mesquita: @Luccasoli - lucasoliveira98@outlook.com
+Luigi Rosso: @luigi-rosso - luigi-rosso@users.noreply.github.com
+Marc Tan: @marctan - marcqtan@gmail.com
+Matt Sullivan: @mjohnsullivan - matt.j.sullivan@gmail.com, matt@rive.app
+Hulk Su: @Moosphan - 2301230182@qq.com
+Mark: @myiremark - 62413667+myiremark@users.noreply.github.com
+Ryan Mast: @nightlark - nightlark@users.noreply.github.com
+Dan: @orchardbirds - daniel.timbrell@ing.com, 49144672+orchardbirds@users.noreply.github.com
+Pat Niemeyer: @patniemeyer - pat@pat.net, patniemeyer@gmail.com
+Pieter Otten: @PieterAelse - pieterotten@gmail.com
+Prageeth Jayathissa: @pjayathissa - p.jayathissa@gmail.com
+purpledrosophila: @purpledrosophila - 55105187+purpledrosophila@users.noreply.github.com
+Piotr Wicherski: @pwicherski - pwicherski@gmail.com
+Rohan Talip: @RohanTalip - RohanTalip@users.noreply.github.com
+Manoj Narayan Bisarahalli: @Samaritan1011001 - manojnb95@gmail.com
+Sam Mousa: @SamMousa - sam@mousa.nl
+Shilpa Apte: @sapte91 - shilpa.apte09@gmail.com, 2432064+sapte91@users.noreply.github.com
+Shankari: @shankari - shankari@eecs.berkeley.edu
+Shivam Singhania: @ShivamSinghania - 30895841+ShivamSinghania@users.noreply.github.com
+Simon Sturmer: @sstur - sstur@me.com
+Stevan Milovanovic: @stevan-milovanovic - stevanm993@gmail.com
+Benjamin Swerdlow: @theswerd - swerdlowbenjamin@gmail.com
+Tom Gilder: @tomgilder - tom.gilder@codemate.com, tom@tom.me.uk
+Kuai Yu: @yukuairoy - yukuairoy@gmail.com
 
 
 # Limited Consent
@@ -36,24 +90,33 @@ Advay Mengle - Oct. 22, 2020 (see notes in associated commit) - source@madvay.co
 
 # Apache 2.0 and MIT Licensing
 
+Git record of consents sent by email to Bruno Bowden
+
 I hereby license under the Apache License 2.0 (https://www.apache.org/licenses/LICENSE-2.0.txt)
 and MIT License (https://opensource.org/licenses/MIT) all of my contributions to the WHO App
 project (https://github.com/WorldHealthOrganization/app).
 
+Aishwarya Vardhana
 Alexandra Hays
 Amanda Lin
 Angela Yeung
 Anshul Patria
 Bill Pugh
+Chris Hosmer
 Daniel Kraft
 David Kaneda
+Diana Alayon
 Effie Seiberg
+Ellen Jewell
 Eulalia García Jimenez
+Graeme Fordyce
 Jessica Ladd
 Karen Wong
 Kellie Menendez
 Kristina Plummer
 Marie Troisfontaine
+Megan Weir
+Michelle Yu
 Mohit Saini
 Piotr Wicherski
 Spencer Gabor
