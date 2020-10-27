@@ -25,41 +25,41 @@ dependencies:
   flutter:
     sdk: flutter
 
-  provider: ^4.3.2
-  mobx: ^1.2.1+2
-  flutter_mobx: ^1.1.0+2
-  fixnum: ^0.10.11
-  protobuf: ^1.0.1
-  cupertino_icons: ^0.1.3
-  # TODO: upgrade to ^0.6.5+2, build warning treated as error
-  share: 0.6.3+6
-  url_launcher: ^5.4.2
-  page_view_indicator: ^2.0.4
-  flutter_html: ^0.11.1
-  firebase_analytics: ^6.0.0
-  visibility_detector: ^0.1.4
-  path_drawing: ^0.4.1
-  shared_preferences: ^0.5.6
-  firebase_messaging: ^7.0.0
-  yaml: ^2.2.0
-  http: ^0.12.0+3
-  uuid: 2.0.4
-  package_info: ">=0.4.0+16 <2.0.0"
-  flutter_svg: ^0.18.0
-  font_awesome_flutter: ^8.8.1
-  firebase_crashlytics: ^0.2.0
   auto_size_text: 2.1.0
+  simple_connectivity: 0.1.1
+  # TODO: Replace with connectivity plugin:
+  # connectivity: ^2.0.0
+  # https://github.com/WorldHealthOrganization/app/issues/1532
+  cupertino_icons: ^0.1.3
+  expressions: 0.1.5
+  firebase_analytics: ^6.0.0
+  firebase_crashlytics: ^0.2.0
+  firebase_messaging: ^7.0.0
+  fixnum: ^0.10.11
+  fl_chart: ^0.8.7
   # TODO: upgrade to ^1.4.0, breaking API change
   flutter_cache_manager: 1.1.3
-  path_provider: ^1.6.5
-  fl_chart: ^0.8.7
+  flutter_html: ^0.11.1
+  flutter_mobx: ^1.1.0+2
+  flutter_svg: ^0.18.0
+  font_awesome_flutter: ^8.8.1
+  http: ^0.12.0+3
+  mobx: ^1.2.1+2
   notification_permissions: ^0.4.4
-  expressions: 0.1.5
   observer_provider: 0.0.1+2
-  simple_connectivity: 0.1.1
-  # TODO: Use connectivity plugin after location permission removed
-  # https://github.com/WorldHealthOrganization/app/issues/1532
-  # connectivity: ">=0.4.9+2 <2.0.0"
+  package_info: ">=0.4.0+16 <2.0.0"
+  page_view_indicator: ^2.0.4
+  path_drawing: ^0.4.1
+  path_provider: ^1.6.5
+  protobuf: ^1.0.1
+  provider: ^4.3.2
+  # TODO: upgrade to ^0.6.5+2, build warning treated as error
+  share: 0.6.3+6
+  shared_preferences: ^0.5.6
+  url_launcher: ^5.4.2
+  uuid: 2.0.4
+  visibility_detector: ^0.1.4
+  yaml: ^2.2.0
 
   intl: ^0.16.0
   flutter_localizations:
