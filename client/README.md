@@ -14,7 +14,6 @@ flutter run
 ### iOS
 
 ```
-cd $(git rev-parse --show-toplevel)
 cd client
 flutter pub get
 

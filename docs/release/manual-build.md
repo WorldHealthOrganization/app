@@ -10,10 +10,10 @@ Verify your tool versions by running and checking all of these values:
 
 ```sh
 > flutter --version
-Flutter 1.20.4 • channel stable • https://github.com/flutter/flutter.git
+Flutter 1.22.1 • channel stable • https://github.com/flutter/flutter.git
 Framework • revision fba99f6cf9 (8 days ago) • 2020-09-14 15:32:52 -0700
 Engine • revision d1bc06f032
-Tools • Dart 2.9.2
+Tools • Dart 2.10.1
 
 > xcodebuild -version
 Xcode 12.0
@@ -39,7 +39,7 @@ These instructions assume that an app record has already been added to the App S
 ### Install Flutter Dependencies
 
 ```
-cd $(git rev-parse --show-toplevel)/client
+cd client
 flutter pub get
 cd ios
 pod install
@@ -56,9 +56,8 @@ Follow Apple's instructions on [preparing for app distribution](https://help.app
 Prepare the Flutter release:
 
 ```
-cd $(git rev-parse --show-toplevel)
 DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
-cd $(git rev-parse --show-toplevel)/client
+cd client
 flutter build ios
 ```
 
@@ -90,9 +89,8 @@ Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/dep
 Build the app bundle:
 
 ```
-cd $(git rev-parse --show-toplevel)
 DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
-cd $(git rev-parse --show-toplevel)/client
+cd client
 flutter build appbundle
 ```
 
