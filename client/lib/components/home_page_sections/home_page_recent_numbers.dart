@@ -104,12 +104,12 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
           firstChild: Observer(
             builder: (_) => _HomeStatCard(
               stat: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryCases > 0
-                  ? widget.numFmt.format(widget.statsStore.countryCases)
+                      widget.statsStore.countryDailyCases > 0
+                  ? widget.numFmt.format(widget.statsStore.countryDailyCases)
                   : '',
               // TODO: localize
               title: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryCases > 0
+                      widget.statsStore.countryDailyCases > 0
                   ? 'National Cases'
                   : '',
             ),
@@ -117,9 +117,9 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
           duration: Duration(seconds: 1),
           secondChild: Observer(
             builder: (_) => _HomeStatCard(
-              stat: widget.statsStore.globalCases != null &&
-                      widget.statsStore.globalCases > 0
-                  ? widget.numFmt.format(widget.statsStore.globalCases)
+              stat: widget.statsStore.globalDailyCases != null &&
+                      widget.statsStore.globalDailyCases > 0
+                  ? widget.numFmt.format(widget.statsStore.globalDailyCases)
                   : '',
               // TODO: localize
               title: widget.statsStore.globalCases != null &&
