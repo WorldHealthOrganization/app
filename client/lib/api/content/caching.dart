@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:simple_connectivity/simple_connectivity.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as paths;

@@ -1,4 +1,7 @@
 PODS:
+  - connectivity (0.0.1):
+    - Flutter
+    - Reachability
   - Firebase/Analytics (6.26.0):
     - Firebase/Core
   - Firebase/Core (6.26.0):
@@ -128,9 +131,6 @@ PODS:
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - simple_connectivity (0.0.1):
-    - Flutter
-    - Reachability
   - sqflite (0.0.1):
     - Flutter
     - FMDB (~> 2.7.2)
@@ -138,6 +138,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
@@ -148,7 +149,6 @@ DEPENDENCIES:
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
-  - simple_connectivity (from `.symlinks/plugins/simple_connectivity/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
@@ -175,6 +175,8 @@ SPEC REPOS:
     - Reachability
 
 EXTERNAL SOURCES:
+  connectivity:
+    :path: ".symlinks/plugins/connectivity/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_core:
@@ -195,14 +197,13 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/share/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
-  simple_connectivity:
-    :path: ".symlinks/plugins/simple_connectivity/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
+  connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Firebase: 7cf5f9c67f03cb3b606d1d6535286e1080e57eb6
   firebase_analytics: 31b66f23a42fa62bdf6a134af1d3a3a50bf5ac3e
   firebase_core: 00e54a4744164a6b5a250b96dd1ad5afaba7a342
@@ -232,7 +233,6 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   share: bae0a282aab4483288913fc4dc0b935d4b491f2e
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  simple_connectivity: 84a7221f5ca3d54ebf18faa4d74f0bb6cc757cbe
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
