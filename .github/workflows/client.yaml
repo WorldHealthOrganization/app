@@ -90,7 +90,7 @@ jobs:
         working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
-      - run: flutter build apk
+      - run: flutter build -v apk
         working-directory: ./client
       - name: Upload Staging APK artifact
         uses: actions/upload-artifact@v2
