@@ -3,7 +3,7 @@
 //  source: api/who/who.proto
 //
 // @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
 import 'dart:core' as $core;
@@ -16,8 +16,15 @@ import 'who.pbenum.dart';
 export 'who.pbenum.dart';
 
 class Void extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Void',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Void',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
     ..hasRequiredFields = false;
 
   Void._() : super();
@@ -28,9 +35,15 @@ class Void extends $pb.GeneratedMessage {
   factory Void.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Void clone() => Void()..mergeFromMessage(this);
-  Void copyWith(void Function(Void) updates) =>
-      super.copyWith((message) => updates(message as Void));
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Void copyWith(void Function(Void) updates) => super.copyWith(
+      (message) => updates(message as Void)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Void create() => Void._();
@@ -43,9 +56,20 @@ class Void extends $pb.GeneratedMessage {
 }
 
 class PutDeviceTokenRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('PutDeviceTokenRequest',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..aOS(1, 'token')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PutDeviceTokenRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'token')
     ..hasRequiredFields = false;
 
   PutDeviceTokenRequest._() : super();
@@ -56,11 +80,18 @@ class PutDeviceTokenRequest extends $pb.GeneratedMessage {
   factory PutDeviceTokenRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   PutDeviceTokenRequest clone() =>
       PutDeviceTokenRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   PutDeviceTokenRequest copyWith(
           void Function(PutDeviceTokenRequest) updates) =>
-      super.copyWith((message) => updates(message as PutDeviceTokenRequest));
+      super.copyWith((message) => updates(
+          message as PutDeviceTokenRequest)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PutDeviceTokenRequest create() => PutDeviceTokenRequest._();
@@ -86,9 +117,21 @@ class PutDeviceTokenRequest extends $pb.GeneratedMessage {
 }
 
 class PutLocationRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('PutLocationRequest',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..aOS(12, 'isoCountryCode', protoName: 'isoCountryCode')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PutLocationRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOS(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'isoCountryCode',
+        protoName: 'isoCountryCode')
     ..hasRequiredFields = false;
 
   PutLocationRequest._() : super();
@@ -99,9 +142,16 @@ class PutLocationRequest extends $pb.GeneratedMessage {
   factory PutLocationRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   PutLocationRequest clone() => PutLocationRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   PutLocationRequest copyWith(void Function(PutLocationRequest) updates) =>
-      super.copyWith((message) => updates(message as PutLocationRequest));
+      super.copyWith((message) => updates(
+          message as PutLocationRequest)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PutLocationRequest create() => PutLocationRequest._();
@@ -127,10 +177,26 @@ class PutLocationRequest extends $pb.GeneratedMessage {
 }
 
 class JurisdictionId extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('JurisdictionId',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..aOS(1, 'code')
-    ..e<JurisdictionType>(2, 'jurisdictionType', $pb.PbFieldType.OE,
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'JurisdictionId',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'code')
+    ..e<JurisdictionType>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'jurisdictionType',
+        $pb.PbFieldType.OE,
         protoName: 'jurisdictionType',
         defaultOrMaker: JurisdictionType.GLOBAL,
         valueOf: JurisdictionType.valueOf,
@@ -145,9 +211,16 @@ class JurisdictionId extends $pb.GeneratedMessage {
   factory JurisdictionId.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   JurisdictionId clone() => JurisdictionId()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   JurisdictionId copyWith(void Function(JurisdictionId) updates) =>
-      super.copyWith((message) => updates(message as JurisdictionId));
+      super.copyWith((message) =>
+          updates(message as JurisdictionId)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static JurisdictionId create() => JurisdictionId._();
@@ -185,9 +258,21 @@ class JurisdictionId extends $pb.GeneratedMessage {
 }
 
 class GetCaseStatsRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('GetCaseStatsRequest',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..pc<JurisdictionId>(1, 'jurisdictions', $pb.PbFieldType.PM,
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetCaseStatsRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..pc<JurisdictionId>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'jurisdictions',
+        $pb.PbFieldType.PM,
         subBuilder: JurisdictionId.create)
     ..hasRequiredFields = false;
 
@@ -199,9 +284,16 @@ class GetCaseStatsRequest extends $pb.GeneratedMessage {
   factory GetCaseStatsRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   GetCaseStatsRequest clone() => GetCaseStatsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   GetCaseStatsRequest copyWith(void Function(GetCaseStatsRequest) updates) =>
-      super.copyWith((message) => updates(message as GetCaseStatsRequest));
+      super.copyWith((message) => updates(
+          message as GetCaseStatsRequest)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetCaseStatsRequest create() => GetCaseStatsRequest._();
@@ -218,13 +310,22 @@ class GetCaseStatsRequest extends $pb.GeneratedMessage {
 }
 
 class GetCaseStatsResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('GetCaseStatsResponse',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..aOM<CaseStats>(1, 'globalStats',
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetCaseStatsResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOM<CaseStats>(
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'globalStats',
         protoName: 'globalStats', subBuilder: CaseStats.create)
-    ..a<$fixnum.Int64>(2, 'ttl', $pb.PbFieldType.OU6,
+    ..a<$fixnum.Int64>(
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ttl', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
-    ..pc<CaseStats>(3, 'jurisdictionStats', $pb.PbFieldType.PM,
+    ..pc<CaseStats>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'jurisdictionStats', $pb.PbFieldType.PM,
         protoName: 'jurisdictionStats', subBuilder: CaseStats.create)
     ..hasRequiredFields = false;
 
@@ -236,10 +337,17 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
   factory GetCaseStatsResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   GetCaseStatsResponse clone() =>
       GetCaseStatsResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   GetCaseStatsResponse copyWith(void Function(GetCaseStatsResponse) updates) =>
-      super.copyWith((message) => updates(message as GetCaseStatsResponse));
+      super.copyWith((message) => updates(
+          message as GetCaseStatsResponse)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetCaseStatsResponse create() => GetCaseStatsResponse._();
@@ -287,16 +395,30 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
 }
 
 class StatSnapshot extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StatSnapshot',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, 'epochMsec', $pb.PbFieldType.OU6,
-        protoName: 'epochMsec', defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aInt64(2, 'dailyCases', protoName: 'dailyCases')
-    ..aInt64(3, 'dailyDeaths', protoName: 'dailyDeaths')
-    ..aInt64(4, 'dailyRecoveries', protoName: 'dailyRecoveries')
-    ..aInt64(5, 'totalCases', protoName: 'totalCases')
-    ..aInt64(6, 'totalDeaths', protoName: 'totalDeaths')
-    ..aInt64(7, 'totalRecoveries', protoName: 'totalRecoveries')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'StatSnapshot',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..a<$fixnum.Int64>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'epochMsec',
+        $pb.PbFieldType.OU6,
+        protoName: 'epochMsec',
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dailyCases',
+        protoName: 'dailyCases')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dailyDeaths', protoName: 'dailyDeaths')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dailyRecoveries', protoName: 'dailyRecoveries')
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalCases', protoName: 'totalCases')
+    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalDeaths', protoName: 'totalDeaths')
+    ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalRecoveries', protoName: 'totalRecoveries')
     ..hasRequiredFields = false;
 
   StatSnapshot._() : super();
@@ -307,9 +429,16 @@ class StatSnapshot extends $pb.GeneratedMessage {
   factory StatSnapshot.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   StatSnapshot clone() => StatSnapshot()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   StatSnapshot copyWith(void Function(StatSnapshot) updates) =>
-      super.copyWith((message) => updates(message as StatSnapshot));
+      super.copyWith((message) =>
+          updates(message as StatSnapshot)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static StatSnapshot create() => StatSnapshot._();
@@ -407,22 +536,35 @@ class StatSnapshot extends $pb.GeneratedMessage {
 }
 
 class CaseStats extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('CaseStats',
-      package: const $pb.PackageName('who'), createEmptyInstance: create)
-    ..aOS(1, 'jurisdiction')
-    ..a<$fixnum.Int64>(2, 'lastUpdated', $pb.PbFieldType.OU6,
-        protoName: 'lastUpdated', defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aInt64(3, 'cases')
-    ..aInt64(4, 'deaths')
-    ..aInt64(5, 'recoveries')
-    ..aOS(6, 'attribution')
-    ..e<JurisdictionType>(7, 'jurisdictionType', $pb.PbFieldType.OE,
-        protoName: 'jurisdictionType',
-        defaultOrMaker: JurisdictionType.GLOBAL,
-        valueOf: JurisdictionType.valueOf,
-        enumValues: JurisdictionType.values)
-    ..pc<StatSnapshot>(8, 'timeseries', $pb.PbFieldType.PM,
-        subBuilder: StatSnapshot.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'CaseStats',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'jurisdiction')
+    ..a<$fixnum.Int64>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'lastUpdated',
+        $pb.PbFieldType.OU6,
+        protoName: 'lastUpdated',
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aInt64(
+        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cases')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deaths')
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recoveries')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'attribution')
+    ..e<JurisdictionType>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'jurisdictionType', $pb.PbFieldType.OE, protoName: 'jurisdictionType', defaultOrMaker: JurisdictionType.GLOBAL, valueOf: JurisdictionType.valueOf, enumValues: JurisdictionType.values)
+    ..pc<StatSnapshot>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timeseries', $pb.PbFieldType.PM, subBuilder: StatSnapshot.create)
     ..hasRequiredFields = false;
 
   CaseStats._() : super();
@@ -433,9 +575,16 @@ class CaseStats extends $pb.GeneratedMessage {
   factory CaseStats.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   CaseStats clone() => CaseStats()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
   CaseStats copyWith(void Function(CaseStats) updates) =>
-      super.copyWith((message) => updates(message as CaseStats));
+      super.copyWith((message) =>
+          updates(message as CaseStats)); // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CaseStats create() => CaseStats._();

@@ -7,5 +7,6 @@ cd $(dirname "$0")/../server
 
 # Terraform Checks
 cd ./terraform
+terraform init
 terraform validate .
 terraform fmt -check -recursive .
