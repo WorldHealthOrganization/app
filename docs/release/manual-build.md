@@ -20,7 +20,7 @@ Xcode 12.0
 Build version 12A7209
 
 > pod --version
-1.9.3
+1.10.0
 ```
 
 ## Clone the Repo
