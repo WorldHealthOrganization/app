@@ -2,102 +2,68 @@
 
 ## Introduction
 
-The idea of this Test Plan is to communicate the test approach to team members.
+This is the test plan for the WHO COVID-19 App and server.
 
-As the team works with the product, they will define the needs for the vNext.
-
-### Objectives
-
-We are focusing on manual testing and automated checks.
-
-App milestones for 1.0:  
+Release Milestone - v1.0:  
 [https://github.com/WorldHealthOrganization/app/milestone/4](https://github.com/WorldHealthOrganization/app/milestone/4)
 
-### Application architecture
+## Automated Tests
 
-Application is built using Flutter framework. We need to have this in mind and choose appropriate tools and approach.
+We plan to use [Firebase Test Lab](https://firebase.google.com/docs/test-lab/android/overview) for as much test functionality as possible. That's for integration tests using Espresso binding for Flutter and Firebase Robo test crawler. We may also use others cloud device labs as support in performing various test types.
 
-We're supporting Android and iOS mobile operating systems.
+## Manual tests
 
-- IOS from 8 to 13
-- Android from 4.1\(API 16\) to 10.0 \(API 29\);
+Basic principle is to focus the manual testing on what would improve the broadest number of users that are using the app. In particular this involves testing on older, low powered devices, slow or no internet connection and small screen sizes.
 
-## Plan
+### Minimum Requirements
 
-### Manual tests
+It's important for the app to support as wide a userbase as possible. That means supporting a wide variety of operating systems, devices, particularly older and lower powered Android devices that are common in low and middle income countries.
 
-#### Scope
+These are the oldest OSs and some example devices that the app should support:
 
-In manual testing, we should focus on all user interface interactions:
+| OS                                 | Release Date  | Notes                                                  |
+| ---------------------------------- | ------------- | ------------------------------------------------------ |
+| **iOS 9.0**                        | Sept 16, 2015 | XCode 12 requires iOS 9.0,<br>Flutter supports iOS 8.0 |
+| **Android 4.4<br>KitKat (API 19)** | Oct 31, 2013  | Flutter 1.22 requirement                               |
 
-- Protect yourself
-- Your questions answered
-- Individual questions
-- News & press
-- External links w/titles/brief text
-- Travel advice
-- Myth-busters
-- Latest numbers
+| Example Device                                                                  |      OS | Release Date |    Screen |      RAM | Note                |
+| ------------------------------------------------------------------------------- | ------: | -----------: | --------: | -------: | ------------------- |
+| [iPhone 4s](https://en.wikipedia.org/wiki/IPhone_4S)                            | iOS 9.0 | Oct 14, 2011 | 960 x 640 |   512 MB |                     |
+| [Samsung Galaxy SII](https://en.wikipedia.org/wiki/Samsung_Galaxy_S_II)         |  API 19 |  May 2, 2011 | 800 x 480 | 1,000 MB |                     |
+| [Karbonn Alfa A110](https://www.gadgetsnow.com/mobile-phones/Karbonn-Alfa-A110) |  API 19 |  Aug 3, 2015 | 480 x 320 | 256 MB\* | India value phone   |
+| [Tecno H3](https://parktelonline.com/blog/tecno-h3-price-review-nigeria/        |  API 19 | Oct 27, 2014 | 320 x 480 |   512 MB | Nigeria value phone |
 
-#### Examples of configurations to focus on;
+[*] Doesn't meet Android CDD requirement of 512 MB but we must serve as many devices as possible
 
-- Android GO - Nokia 2.1
-- Older devices such as Samsung Galaxy Nexus (on Android 4.1 - 4.X) and iPhone 4s (on iOS 8.X)
-- Smaller screen devices - iPhone 5
-- Big screen with smaller resolution - iPhone XR
-- Devices with custom user interface - Huawei P10 Lite
+### Scope
 
-#### Android devices
+Manual testing should cover all parts of the user interface:
 
-- Samsung Galaxy Nexus
-- Samsung Galaxy A40
-- Samsung Galaxy S20
-- Samsung Galaxy S10
-- Samsung Galaxy S9
-- Samsung Galaxy S8
-- Samsung Galaxy S7
-- Xiaomi Redmi 4A
-- Xiaomi Redmi 5
-- Xiaomi Redmi Note 7
-- Huawei P20 Lite
-- Huawei P10 Lite
-- Nokia 2.1
-- HTC U11
-- LG G6
-- BQ Aquaris M5
+- Visit every page (external website links should be correct but are otherwise out of scope)
+- Toggle all settings
 
-#### iOS devices
+### Display
 
-- Apple iPhone 4s
-- Apple iPhone 5
-- Apple iPhone 6
-- Apple iPhone 8
-- Apple iPhone SE
-- Apple iPhone XR
-- Apple iPhone XS
+- The app scales all user interface elements according to current screen density and size
+- User interface elements do not overlap
+- Usability or touch issues do not occur
+- There is no problematic shrinkage of images because of high DPI/PPI
 
-### Automated checks
+### Permissions
 
-We plan to use [Firebase Test Lab](https://firebase.google.com/docs/test-lab/android/overview) for as much test functionality as possible.
-
-That's for integration tests using Espresso binding for Flutter and Firebase Robo test crawler.
-
-We will also use others cloud device labs as support in performing various test types.
-
-### Compatibility with Device Hardware
-
-#### Different screen sizes and resolutions;
-
-- The app scales all user interface elements according to current screen density and size.
-- User interface elements do not overlap.
-- Usability or touch issues do not occur.
-- There is no problematic shrinkage of images because of high DPI/PPI.
-
-#### App permissions;
-
-- The app can work with reduced permissions. It asks the user to grant these permissions and does not fail in an unexplained manner.
-- Permissions are only requested for the resources which are relevant to the app’s functionality.
-- The app functionality responds correctly if permission is withdrawn or rejected.
+- App responds correctly if permission, rejected, withdrawn or re-enabled
+- Android Permissions:
+  - Notifications
+- iOS Permissions:
+  - Background App Refresh (fetch data and process)
+  - Notifications
+- Permission never requested for:
+  - Bluetooth
+  - Camera
+  - File access
+  - GPS Precise Location ([Privacy Policy](https://www.who.int/myhealthapp/privacy-notice) allows IP geolocation for approximate location)
+  - Microphone
+  - Photos
 
 ### Compatibility with Device Software
 
@@ -105,85 +71,53 @@ We will also use others cloud device labs as support in performing various test 
 
 - The correct handling of notifications received when the app is in the foreground or background, especially under low battery conditions.
 
-#### User Preferences
+### User Preferences
 
-- Users can amend typical preference options such as sound, brightness, network, power save mode, date and time, time zone, languages, access type and notifications.
-- The apps adhere to the set preferences by behaving accordingly.
+- Settings are remembered between app and device restart but not across multiple devices
+- Changing setting changes the app behaviour
 
-#### Interoperability
+### Internet Connectivity
 
-- Various system overlays made by manufacturers
-  - Samsung TouchWiz;
-  - Samsung OneUI;
-  - Huawei EMUI;
-  - HTC Sense;
-  - LG UX;
-  - Google Pixel UI;
-  - Sony Xperia UI;
+- No internet => report to user that app is offline
+- Slow internet => report to user if app functionality is limited
+- Cellular vs. wifi connectivity switching
 
-### Various Connectivity Methods
+### Installation
 
-#### Low/mid/high internet speed;
+- Intuitive install process
+- Uninstall
+- Re-installation should not restore any user data
 
-- How the app behaves without internet.
-- How the app behaves with slow internet.
-- Correct app functionality with different connectivity modes.
-- Switching between modes does not cause any unexpected behaviour or data loss.
-- Clear information is given to the user if the functionality is restricted due to limited or no network connection or if bandwidth is low. The message should state the limitations and their reasons.
+### Screen Overlays
 
-### Test Types to perform
+Various system overlays made by manufacturers:
 
-#### Installability testing
+- Samsung TouchWiz
+- Samsung OneUI
+- Huawei EMUI
+- HTC Sense
+- LG UX
+- Google Pixel UI
+- Sony Xperia UI
 
-- Is the installation process easy to understand.
-- Re-installation.
-- Uninstall.
+### Accessibility: Visual
 
-#### Stress testing
+- High contrast colours
+- Black and white screen colours
+- Minimum color contrast ratios of 3:1 for 18pt text and larger and 4.5:1 of any smaller text
+- Touch targets are at least 44pt on iOS and 48dp on Android (in the smallest dimension)
+- All interactive elements are labeled as such with accessibility traits that reflect interactive state and text labels
 
-- Low disk space.
-- High CPU-usage.
-- Device with slow CPU.
+### Accessibility: Audio
 
-#### Performance testing
+Support for VoiceOver / TalkBack systems:
 
-- Check slow and older devices.
-
-#### Usability testing
-
-- Be self-explanatory and intuitive.
-- Allow user mistakes.
-- Be consistent in wording and behaviour.
-- Make necessary information visible and reachable in each screen size and type.
-
-#### Accessibility testing
-
-- Check screen readers.
-- Check high contrast colours.
-- Check black and white screen colours.
-- Minimum color contrast ratios of 3:1 for 18pt text and larger and 4.5:1 of any smaller text.
-- Touch targets are at least 44pt on iOS and 48dp on Android (in the smallest dimension).
-- All interactive elements are labeled as such with accessibility traits that reflect interactive state and text labels.
 - Images provide text descriptions
-- Screens MUST have meaningful titles.
-- The reading order of a screen as conveyed by VoiceOver / TalkBack MUST be logical and intuitive.
-- When content is added or deleted from a screen, VoiceOver / TalkBack focus MUST be managed logically and never be lost.
-- Fonts should be resizable without breaking layout.
-
-### Test procedures
-
-#### Coverage
-
-After performing tests fill Device Coverage Sheet, so we could estimate our Device/OS/Overlay coverage.
-
-#### Bug bash
-
-Bug bashes will have their procedure which will be sent to invited users.
+- Screens MUST have meaningful titles
+- Reading order of a screen MUST be logical and intuitive
+- When content is added or deleted from a screen MUST be managed logically and never be lost
+- Fonts should be resizable without breaking layout
 
 ### Risks
 
-#### We don't exactly know what devices our users will use.
-
-That's our main risk. We need to assume that they could use anything ranging from Samsung Galaxy Nexus \(Android 4.X\) and iPhone 4s \(iOS 9.3.5\) to Samsung Galaxy Folder 2 \(3.8" screen\), Samsung Galaxy View SM-760 \(18.4" screen\) and Infinix Zero 5 Pro \(with Mediatek MT6757CD Helio P20 CPU\) ending with Xiaomi Redmi K30 Pro \(2020 release\).
-
-We must deal with multiple device types, OS versions, screen sizes, quality of display and many more.
+Unknown userbase is our main risk. We need to assume that they could use anything ranging from Samsung Galaxy Nexus \(Android 4.X\) and iPhone 4s \(iOS 9.3.5\) to Samsung Galaxy Folder 2 \(3.8" screen\), Samsung Galaxy View SM-760 \(18.4" screen\) and Infinix Zero 5 Pro \(with Mediatek MT6757CD Helio P20 CPU\) ending with Xiaomi Redmi K30 Pro \(2020 release\).
