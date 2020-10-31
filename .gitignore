@@ -21,6 +21,8 @@ staticContentBuild/
 # Note: Android Studio is a modified version of IntelliJ
 *.iws
 
+# Temporary personal files to ignore
+*-ignore.*
 
 # COCOAPODS
 Pods

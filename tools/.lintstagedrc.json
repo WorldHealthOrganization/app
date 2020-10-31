@@ -5,8 +5,8 @@
   "../**/*.dart|*.dart": [
     "flutter format"
   ],
-  "../server/terraform/**/*.{tf,tfvars}": [
-    "terraform fmt -recursive"
+  "../server/terraform/**": [
+    "terraform-fmt-validate.sh"
   ],
   "../client/**": [
     "./verify-client.sh"
