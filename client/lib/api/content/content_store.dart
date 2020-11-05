@@ -11,7 +11,7 @@ import 'package:who_app/api/content/schema/question_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
-
+import 'package:pedantic/pedantic.dart';
 // Whenever this file is modified, regenerate the .g.dart file using the command:
 // flutter packages pub run build_runner build
 part 'content_store.g.dart';
@@ -134,5 +134,10 @@ abstract class _ContentStore with Store implements Updateable {
         symptomPoster = v;
       })
     ]);
+
+    unawaited(
+      UserPreferences()
+          .setLastUpdatedContent(DateTime.now().millisecondsSinceEpoch),
+    );
   }
 }

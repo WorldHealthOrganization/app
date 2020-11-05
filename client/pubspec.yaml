@@ -53,6 +53,7 @@ dependencies:
   # TODO: upgrade to ^0.6.5+2, build warning treated as error
   share: 0.6.3+6
   shared_preferences: ^0.5.6
+  timeago: ^2.0.28
   url_launcher: ^5.4.2
   uuid: 2.0.4
   visibility_detector: ^0.1.4
