@@ -165,7 +165,7 @@ class _AlertsWrapperState extends State<AlertsWrapper>
     }
     lastUpdate = LastUpdate(
         DateTime.fromMillisecondsSinceEpoch(lastUpdatedMilliSeconds));
-    if (lastUpdate.olderThan4Hours) {
+    if (lastUpdate.isStale) {
       addAlert(
         Alert(
           'No Internet Connection',

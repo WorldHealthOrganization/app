@@ -136,8 +136,10 @@ abstract class _ContentStore with Store implements Updateable {
     ]);
 
     unawaited(
-      UserPreferences()
-          .setLastUpdatedContent(DateTime.now().millisecondsSinceEpoch),
+      UserPreferences().setLastUpdatedContent(
+        DateTime.now().millisecondsSinceEpoch,
+      ),
     );
+    print('ContentStore update finished');
   }
 }
