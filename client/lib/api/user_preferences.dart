@@ -135,7 +135,7 @@ class UserPreferences {
     final prefs = await SharedPreferences.getInstance();
     final lastUpdatedContent =
         prefs.getInt(UserPreferenceKey.LastUpdatedContent.toString());
-
+    // returns null if content has never been updated before
     return lastUpdatedContent;
   }
 
