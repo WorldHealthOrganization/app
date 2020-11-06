@@ -1,5 +1,6 @@
 # Add one entry per line.  Each entry is a hash of a filename and source code content and the filename itself.
 
+ebaebed357e161ca0d3d98b8c779a81a3f7beff25555e79ce69b9f67055b71ae LICENSE
 1c71bd5db5093d0b48b7e3f303fe80d0ca6745b3f59a26c474cbd6e1c407b4a8 client/assets/content_bundles/your_questions_answered.en.yaml
 a4db85b5d39d2de2d745fe0a5b1b8f6b214847d3bd2126b75bd4a1ad66d958e1 client/assets/content_bundles/your_questions_answered.en.yaml
 7b98e48b1ed653316ab04f41e6f8c7f4a678730545e72c8b454157120ad8bca9 client/assets/onboarding/iso_countries.ar.yaml
