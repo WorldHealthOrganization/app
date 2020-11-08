@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
@@ -100,46 +101,59 @@ abstract class _ContentStore with Store implements Updateable {
 
     // Note the logic enforcing that only *newer* versions replace older versions in
     // the *cache* must be enforced elsewhere.
-    await Future.wait([
-      updateBundle<IndexContent>(
-          'home_index', homeIndex, (cb) => IndexContent(cb), (v) {
-        homeIndex = v;
-      }),
-      updateBundle<AdviceContent>(
-          'travel_advice', travelAdvice, (cb) => AdviceContent(cb), (v) {
-        travelAdvice = v;
-      }),
-      updateBundle<FactContent>(
-          'get_the_facts', getTheFacts, (cb) => FactContent(cb), (v) {
-        getTheFacts = v;
-      }),
-      updateBundle<FactContent>(
-          'protect_yourself', protectYourself, (cb) => FactContent(cb), (v) {
-        protectYourself = v;
-      }),
-      updateBundle<IndexContent>(
-          'learn_index', learnIndex, (cb) => IndexContent(cb), (v) {
-        learnIndex = v;
-      }),
-      updateBundle<IndexContent>(
-          'news_index', newsIndex, (cb) => IndexContent(cb), (v) {
-        newsIndex = v;
-      }),
-      updateBundle<QuestionContent>('your_questions_answered',
-          questionsAnswered, (cb) => QuestionContent(cb), (v) {
-        questionsAnswered = v;
-      }),
-      updateBundle<PosterContent>(
-          'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
-        symptomPoster = v;
-      })
-    ]);
+    try {
+      await Future.wait([
+        updateBundle<IndexContent>(
+            'home_index', homeIndex, (cb) => IndexContent(cb), (v) {
+          homeIndex = v;
+        }),
+        updateBundle<AdviceContent>(
+            'travel_advice', travelAdvice, (cb) => AdviceContent(cb), (v) {
+          travelAdvice = v;
+        }),
+        updateBundle<FactContent>(
+            'get_the_facts', getTheFacts, (cb) => FactContent(cb), (v) {
+          getTheFacts = v;
+        }),
+        updateBundle<FactContent>(
+            'protect_yourself', protectYourself, (cb) => FactContent(cb), (v) {
+          protectYourself = v;
+        }),
+        updateBundle<IndexContent>(
+            'learn_index', learnIndex, (cb) => IndexContent(cb), (v) {
+          learnIndex = v;
+        }),
+        updateBundle<IndexContent>(
+            'news_index', newsIndex, (cb) => IndexContent(cb), (v) {
+          newsIndex = v;
+        }),
+        updateBundle<QuestionContent>('your_questions_answered',
+            questionsAnswered, (cb) => QuestionContent(cb), (v) {
+          questionsAnswered = v;
+        }),
+        updateBundle<PosterContent>(
+            'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
+          symptomPoster = v;
+        })
+      ]);
 
-    unawaited(
-      UserPreferences().setLastUpdatedContent(
-        DateTime.now().millisecondsSinceEpoch,
-      ),
-    );
-    print('ContentStore update finished');
+      unawaited(
+        UserPreferences().setLastUpdatedContent(
+          DateTime.now().millisecondsSinceEpoch,
+        ),
+      );
+      print(
+        'ContentStore update finished',
+      );
+    } catch (e) {
+      unawaited(
+        FirebaseCrashlytics.instance.log(
+          e,
+        ),
+      );
+      print(
+        'ContentStore update failed',
+      );
+    }
   }
 }
