@@ -152,7 +152,7 @@ abstract class _ContentStore with Store implements Updateable {
         ),
       );
       print(
-        'ContentStore update failed',
+        'ContentStore update failed:\n$e',
       );
     }
   }
