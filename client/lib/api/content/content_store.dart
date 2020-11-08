@@ -147,7 +147,7 @@ abstract class _ContentStore with Store implements Updateable {
       );
     } catch (e) {
       unawaited(
-        FirebaseCrashlytics.instance.log(e),
+        FirebaseCrashlytics.instance.recordFlutterError(e),
       );
       print(
         'ContentStore update failed',
