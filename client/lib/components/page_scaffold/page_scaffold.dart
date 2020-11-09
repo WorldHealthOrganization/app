@@ -1,4 +1,6 @@
 import 'package:who_app/api/alerts.dart';
+import 'package:who_app/api/content/last_update.dart';
+import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -94,6 +96,7 @@ class AlertsWrapper extends StatefulWidget {
 
 abstract class AlertController {
   void removeAlert(Alert a);
+  void addAlert(Alert a);
 }
 
 class _AlertsWrapperState extends State<AlertsWrapper>
@@ -101,6 +104,8 @@ class _AlertsWrapperState extends State<AlertsWrapper>
   _AlertsWrapperState(List<Alert> alerts) : _alerts = List.from(alerts);
 
   final List<Alert> _alerts;
+
+  LastUpdate lastUpdate;
 
   @override
   void removeAlert(Alert a) {
@@ -112,23 +117,36 @@ class _AlertsWrapperState extends State<AlertsWrapper>
   }
 
   @override
+  void addAlert(Alert a) {
+    if (mounted) {
+      setState(() {
+        _alerts.add(a);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkContentUpdate();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Material(
       child: Column(
         children: [
-          if (_alerts.isNotEmpty)
-            Container(
-                color: Colors.red,
-                child: SafeArea(
-                  bottom: false,
-                  maintainBottomViewPadding: true,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: _alerts
-                        .map((alert) => _Alert(alert: alert, controller: this))
-                        .toList(),
-                  ),
-                )),
+          ..._alerts.asMap().entries.map(
+            (entry) {
+              var index = entry.key;
+              var alert = entry.value;
+              return _Alert(
+                alert: alert,
+                controller: this,
+                topPadding: index == 0,
+              );
+            },
+          ),
           Expanded(
               child: MediaQuery.removePadding(
                   removeTop: _alerts.isNotEmpty,
@@ -138,66 +156,88 @@ class _AlertsWrapperState extends State<AlertsWrapper>
       ),
     );
   }
+
+  void checkContentUpdate() async {
+    var lastUpdatedMilliSeconds =
+        await UserPreferences().getLastUpdatedContent();
+    if (lastUpdatedMilliSeconds == null) {
+      return;
+    }
+    lastUpdate = LastUpdate(
+        DateTime.fromMillisecondsSinceEpoch(lastUpdatedMilliSeconds));
+    if (lastUpdate.isStale) {
+      addAlert(
+        Alert(
+          'No Internet Connection',
+          'Last update ${lastUpdate.timeDescription}',
+          dismissable: true,
+          color: Constants.primaryColor,
+        ),
+      );
+    }
+  }
 }
 
 class _Alert extends StatelessWidget {
   const _Alert({
     Key key,
-    this.topPadding = 0,
+    this.topPadding,
     @required this.alert,
     @required this.controller,
   }) : super(key: key);
 
-  final double topPadding;
+  final bool topPadding;
   final Alert alert;
   final AlertController controller;
-
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: alert.color,
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SizedBox(
-            height: topPadding,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  if (alert.title != null)
-                    ThemedText(
-                      alert.title,
-                      variant: TypographyVariant.headerSmall,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  if (alert.body != null)
-                    ThemedText(
-                      alert.body,
-                      variant: TypographyVariant.body,
-                      style: TextStyle(color: Colors.white, height: 1.2),
-                    ),
-                ],
-              )),
-              if (alert.dismissable)
-                IconButton(
-                    icon: Icon(Icons.close),
-                    color: Colors.white,
-                    onPressed: () {
-                      controller.removeAlert(alert);
-                    }),
-            ],
-          )
-        ],
+      child: SafeArea(
+        bottom: false,
+        maintainBottomViewPadding: false,
+        top: topPadding,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (alert.title != null)
+                      ThemedText(
+                        alert.title,
+                        variant: TypographyVariant.headerSmall,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    if (alert.body != null)
+                      ThemedText(
+                        alert.body,
+                        variant: TypographyVariant.body,
+                        style: TextStyle(color: Colors.white, height: 1.2),
+                      ),
+                  ],
+                )),
+                if (alert.dismissable)
+                  IconButton(
+                      icon: Icon(Icons.close),
+                      color: Colors.white,
+                      onPressed: () {
+                        controller.removeAlert(alert);
+                      }),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

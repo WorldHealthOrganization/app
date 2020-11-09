@@ -130,6 +130,22 @@ class UserPreferences {
     }
     return cohort;
   }
+
+  Future<int> getLastUpdatedContent() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lastUpdatedContent =
+        prefs.getInt(UserPreferenceKey.LastUpdatedContent.toString());
+    // returns null if content has never been updated before
+    return lastUpdatedContent;
+  }
+
+  Future<bool> setLastUpdatedContent(int milliSeconds) async {
+    final prefs = await SharedPreferences.getInstance();
+    final update = await prefs.setInt(
+        UserPreferenceKey.LastUpdatedContent.toString(), milliSeconds);
+
+    return update;
+  }
 }
 
 enum UserPreferenceKey {
@@ -143,4 +159,5 @@ enum UserPreferenceKey {
   CountryISOCode,
   ExperimentCohort,
   LastRunVersion,
+  LastUpdatedContent
 }
