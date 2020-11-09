@@ -27,24 +27,45 @@ Only needed for terraform service account setup. The account must have these per
 - Billing Account User
 - Project Creator
 
-### Create / update GCP project
+### New Project
 
-The `apply` can be used to both create and update the server config.
+When new projects are added (e.g. prod, staging, hack, ...) - for each project:
+
+1. `mkdir server/terraform/xxxx`
+1. `cd server/terraform/xxxx`
+1. Create `main.tf` (suggestion is to base it on `staging/main.tf`)
+1. `terraform init`
+1. `terraform apply` so terraform creates the project (this gives it the right permissions)
+1. Some resource creation will fail due to missing permissions but it will create the project
+1. Enable access for every API that's needed:
+   1. Repeat for each link below
+   1. Select newly created project
+   1. Click "ENABLE"
+   - https://console.developers.google.com/apis/library/compute.googleapis.com
+   - https://console.developers.google.com/apis/library/dns.googleapis.com
+   - https://console.cloud.google.com/apis/library/firebase.googleapis.com
+1. `terraform apply` again and it will complete successfully
+
+### Update Project
+
+The `apply` can be used to both create and update the server config:
 
 ```sh
 # setup
-cd server/terraform
+cd server/terraform/xxxx
 terraform init
 
-# create/update resource
-terraform apply -var-file staging.tfvars
+# update resource
+terraform apply
 ```
 
 ### DO NOT Destroy Project
 
-Destroying the project may leave the App Engine instance in a broken state: https://github.com/hashicorp/terraform-provider-google/issues/1973
+As this may leave the App Engine instance in a broken state:
+([ref](https://github.com/hashicorp/terraform-provider-google/issues/1973)) and
+destroy data and IP addresses that can't be recovered.
 
-```
-# DO NOT DESTROY: may make the project unrecoverable
+```sh
+# DO NOT DESTROY: will make the project unrecoverable
 # terraform destroy
 ```

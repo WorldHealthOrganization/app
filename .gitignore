@@ -114,4 +114,5 @@ buck-out/
 # Terraform
 *.tfstate
 *.tfstate.backup
-server/terraform/.terraform
+.terraform
+server/terraform/generated
