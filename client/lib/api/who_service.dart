@@ -5,7 +5,7 @@ import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io' as io;
 import 'package:get_proxy/get_proxy.dart';
-import 'package:htp/io_client.dart';
+import 'package:http/io_client.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
 
 class WhoService {
