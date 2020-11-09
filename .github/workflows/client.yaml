@@ -94,6 +94,9 @@ jobs:
         working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
+      - run: flutter build appbundle
+        working-directory: ./client
+      # TODO: generate apk from appbundle using bundletool
       - run: flutter build apk
         working-directory: ./client
       - name: Upload Staging APK artifact
