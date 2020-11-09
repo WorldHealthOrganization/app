@@ -4,7 +4,8 @@ import 'package:who_app/main.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io' as io;
-
+import 'package:get_proxy/get_proxy.dart';
+import 'package:htp/io_client.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
 
 class WhoService {
@@ -24,7 +25,7 @@ class WhoService {
     final postBody = jsonEncode(req.toProto3Json());
 
     final url = '$serviceUrl/putDeviceToken';
-    final response = await http.post(url, headers: headers, body: postBody);
+    final response = await httpPost(url, headers, postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');
     }
@@ -38,7 +39,7 @@ class WhoService {
     req.isoCountryCode = isoCountryCode;
     final postBody = jsonEncode(req.toProto3Json());
     final url = '$serviceUrl/putLocation';
-    final response = await http.post(url, headers: headers, body: postBody);
+    final response = await httpPost(url, headers, postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');
     }
@@ -59,7 +60,7 @@ class WhoService {
     }
     final postBody = jsonEncode(req.toProto3Json());
     final url = '$serviceUrl/getCaseStats';
-    final response = await http.post(url, headers: headers, body: postBody);
+    final response = await httpPost(url, headers, postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');
     }
@@ -92,5 +93,16 @@ class WhoService {
       return 'ANDROID';
     }
     return 'WEB';
+  }
+
+  static Future<http.Response> httpPost(dynamic url, Map<String,String> headers, dynamic body) async {
+    var httpClient = io.HttpClient();
+    var proxy = await GetProxy.getProxy;
+    if(proxy!='') {
+      httpClient.findProxy = (uri) { return proxy; };
+    }
+    var ioClient = IOClient(httpClient);
+    var response = await ioClient.post(url, headers: headers, body: body);
+    return response;
   }
 }
