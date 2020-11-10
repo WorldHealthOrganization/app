@@ -22,6 +22,8 @@ provider "google-beta" {
   project = var.project_id
 }
 
+
+# Google Project
 resource "google_project" "project" {
   provider        = google-beta
   name            = var.project_id
@@ -33,12 +35,27 @@ resource "google_project" "project" {
   #}
 }
 
+# Do `depends_on` this resource iff it requires APIs to be enabled
+resource "google_project_service" "service" {
+  for_each = toset([
+    "compute.googleapis.com",
+    "dns.googleapis.com",
+    "firebase.googleapis.com",
+  ])
+
+  service = each.key
+
+  project            = var.project_id
+  disable_on_destroy = false
+  depends_on         = [google_project.project]
+}
+
 
 # Firebase
 resource "google_firebase_project" "firebase" {
   provider   = google-beta
   project    = var.project_id
-  depends_on = [google_project.project]
+  depends_on = [google_project_service.service]
   # TODO: protect data
   #lifecycle {
   #  prevent_destroy = true
@@ -49,7 +66,7 @@ resource "google_firebase_project_location" "fireloc" {
   provider    = google-beta
   project     = var.project_id
   location_id = var.region
-  depends_on  = [google_project.project]
+  depends_on  = [google_firebase_project.firebase]
 }
 
 
@@ -76,7 +93,7 @@ module "lb" {
   dns_record_ttl     = var.dns_record_ttl
   domain             = var.domain
   enable_http        = false
-  depends_on         = [google_project.project]
+  depends_on         = [google_project_service.service]
 }
 
 
@@ -109,7 +126,7 @@ resource "google_compute_region_network_endpoint_group" "neg" {
   app_engine {
     service = "default"
   }
-  depends_on = [google_project.project]
+  depends_on = [google_project_service.service]
 }
 
 resource "google_compute_backend_service" "backend" {
