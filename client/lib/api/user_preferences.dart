@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:uuid/uuid.dart';
@@ -81,8 +82,10 @@ class UserPreferences {
       await analytics.resetAnalyticsData();
     }
     await analytics.setAnalyticsCollectionEnabled(value);
-    return (await SharedPreferences.getInstance())
+    var result = (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.AnalyticsEnabled.toString(), value);
+    await _updateFirebaseAutoInit();
+    return result;
   }
 
   Future<bool> getNotificationsEnabled() async {
@@ -92,8 +95,26 @@ class UserPreferences {
   }
 
   Future<bool> setNotificationsEnabled(bool value) async {
-    return (await SharedPreferences.getInstance())
+    var result = (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.NotificationsEnabled.toString(), value);
+    await _updateFirebaseAutoInit();
+    return result;
+  }
+
+  Future<void> _updateFirebaseAutoInit() async {
+    // Updates the firebase auto init option. This method is called
+    // after a user modifies either analytics or notifications.
+    var analyticsEnabled = await getAnalyticsEnabled();
+    var notificationsEnabled = await getNotificationsEnabled();
+
+    var firebaseMessaging = FirebaseMessaging();
+    if (!analyticsEnabled && !notificationsEnabled) {
+      // If a user disables both analytics and notifications, set to false
+      await firebaseMessaging.setAutoInitEnabled(false);
+    } else {
+      // If either analytics or notifications are enabled, set to true
+      await firebaseMessaging.setAutoInitEnabled(true);
+    }
   }
 
   Future<String> getFirebaseToken() async {
