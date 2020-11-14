@@ -84,7 +84,10 @@ resource "google_app_engine_application" "gae" {
 
 # Logging storage
 # The _Default logging bucket is created automatically and set to 30 
-# days retention; this resource ensures it is kept at that length.
+# Logging Storage 30 Days Retention
+# Ensures that logging records are retained for 30 days only
+# Matches the standard retention period of the _Default logging bucket: 
+# https://cloud.google.com/logging/docs/buckets#overview
 resource "google_logging_project_bucket_config" "default" {
   project        = var.project_id # google_project.project.name
   location       = "global"
