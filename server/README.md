@@ -58,21 +58,37 @@ content/bundles/protect_yourself.en_US.yaml
 
 ## Building and Deploying
 
-_Note:_ The deployment scripts run the build automatically.
+**Note:** The deployment scripts run the build automatically.
+
+All commands run from the server folder:
+
+    cd server
 
 ### Build Only
 
-    $ gradle build
+    gradle build
 
-### Run the Server Locally
+### Local Development Server
 
-    $ ./bin/run-dev-server.sh
+    ./bin/run-dev-server.sh
 
 Then open [http://localhost:8080/]().
 
+### Gcloud Auth
+
+Either login with the service account or your personal account:
+
+    # personal account
+    gcloud auth
+
+Service Account:
+
+    # service account
+    gcloud auth activate-service-account --key-file xxxx.json
+
 ### Deploy to Staging
 
-    $ ./bin/deploy-staging.sh
+    ./bin/deploy-server.sh who-mh-staging
 
 Then open [https://who-app-staging.appspot.com/]().
 
@@ -80,11 +96,11 @@ Then open [https://who-app-staging.appspot.com/]().
 
 Deployed automatically on push to master by [.github/workflows/static-content.yaml](.github/workflows/static-content.yaml). Or pushed manually with:
 
-    $ tools/deploy-staging-static-serving.sh
+    tools/deploy-staging-static-serving.sh
 
 ### Deploy to Production
 
-    $ ./bin/deploy-production.sh
+    ./bin/deploy-server.sh who-mh-prod
 
 Then open [https://who-app.appspot.com/]().
 
@@ -98,12 +114,12 @@ Then open [https://who-app.appspot.com/]().
 
 Note: We run on Java 12 but target Java 8.
 
-    $ brew tap adoptopenjdk/openjdk
-    $ brew cask install adoptopenjdk12
+    brew tap adoptopenjdk/openjdk
+    brew cask install adoptopenjdk12
 
 ### Install Gradle
 
-    $ brew install gradle
+    brew install gradle
 
 ### Install Google Cloud SDK
 
@@ -111,15 +127,15 @@ Follow the directions [here](https://cloud.google.com/sdk/docs/install?hl=en_US)
 
 ### Log In
 
-    $ gcloud auth login
+    gcloud auth login
 
 And, if you want to be able to manipulate Firebase:
 
-    $ gcloud auth application-default login
+    gcloud auth application-default login
 
 ### Install the most up-to-date App Engine Component
 
-    $  gcloud components install beta app-engine-java && gcloud components update
+    gcloud components install beta app-engine-java && gcloud components update
 
 ### Install Terraform
 
@@ -127,8 +143,8 @@ Follow the directions [here](https://learn.hashicorp.com/tutorials/terraform/ins
 
 ### Install IntelliJ IDE (Optional)
 
-    $ brew cask install intellij-idea-ce
+    brew cask install intellij-idea-ce
 
 Open the project in IntelliJ:
 
-    $ open -a /Applications/IntelliJ\ IDEA\ CE.app/ .
+    open -a /Applications/IntelliJ\ IDEA\ CE.app/ .

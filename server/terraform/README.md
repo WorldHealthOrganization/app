@@ -36,13 +36,23 @@ This creates a Terraform service account with the permissions for:
 - Billing Account User
 - Project Creator
 
+Secondly grant the service account access to the DNS records:
+
+1. https://www.google.com/webmasters/verification/home?hl=en
+1. Select domain you own
+1. Scroll down to bottom and select "Add an owner", example for dev org:
+
+```
+terraform@who-terraform-admin.iam.gserviceaccount.com
+```
+
 Terraform access to the WHO production project is limited to only the project
 itself and not the wider organization. The service account is created within the
 project instead. The who-mh-prod-in-dev project is used to replicate this
 environment in the development organization. Starting from a newly created empty
 project, create a `who-terraform-prod-admin`
 [service account](https://console.cloud.google.com/iam-admin/serviceaccounts)
-with the following permissions:
+with the following permissions (required to create App Engine instance):
 
 - Project Owner
 
@@ -173,7 +183,8 @@ Error: Error creating App Engine application: googleapi: Error 403: The caller d
 
 ## Manual Setup
 
-The final setup must be completed manually for each project. This configuration should be moved to terraform if it is supported in the future.
+The final setup must be completed manually for each project. This configuration
+should be moved to terraform if it is supported in the future.
 
 Production servers **MUST** be configured exactly as described here. Changes **MUST**
 be made through code and merged before being manually applied. Only exception is
