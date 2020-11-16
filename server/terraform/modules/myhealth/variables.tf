@@ -28,7 +28,14 @@ variable "org_id" {
   default = "532343229286"
 }
 
-# other settings
+# Create project: requires special permissions:
+# https://github.com/WorldHealthOrganization/app/blob/master/server/terraform/README.md#terraform-service-account
+variable "create_project" {
+  description = "Create Project. Set to false when using existing project."
+  type        = bool
+  default     = true
+}
+
 variable "create_dns_entry" {
   description = "Create a DNS A Record in Cloud DNS for the domain specified in 'domain'."
   type        = bool

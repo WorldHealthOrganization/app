@@ -26,6 +26,7 @@ provider "google-beta" {
 # Google Project
 resource "google_project" "project" {
   provider        = google-beta
+  count           = var.create_project ? 1 : 0
   name            = var.project_id
   project_id      = var.project_id
   billing_account = var.billing_account
@@ -38,13 +39,14 @@ resource "google_project" "project" {
 # Do `depends_on` this resource iff it requires APIs to be enabled
 resource "google_project_service" "service" {
   for_each = toset([
+    "appengine.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "dns.googleapis.com",
     "firebase.googleapis.com",
   ])
 
-  service = each.key
-
+  service            = each.key
   project            = var.project_id
   disable_on_destroy = false
   depends_on         = [google_project.project]
@@ -75,7 +77,7 @@ resource "google_app_engine_application" "gae" {
   project       = var.project_id
   location_id   = var.region
   database_type = "CLOUD_DATASTORE_COMPATIBILITY"
-  depends_on    = [google_project.project]
+  depends_on    = [google_project_service.service]
   # TODO: protect resource as it can't be recreated after being destroyed
   #lifecycle {
   #  prevent_destroy = true
