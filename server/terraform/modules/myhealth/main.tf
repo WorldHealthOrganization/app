@@ -85,13 +85,12 @@ resource "google_app_engine_application" "gae" {
 }
 
 
-
 # Logging Configuration: Ensure logs go to a regionalized location.
 # See: https://cloud.google.com/logging/docs/regionalized-logs
 # 
 # Logging Configuration 1/2: Bucket in regional location.
 # Note: Requires logging.admin or cloud-platform permissions for
-# terraform service acc't.
+# terraform service account.
 resource "google_logging_project_bucket_config" "regional_log_bucket" {
     project    = var.project_id # google_project.project.name
     location  = var.logs_region
@@ -107,7 +106,6 @@ resource "google_logging_project_bucket_config" "regional_log_bucket" {
 # on the first apply; you must then 'import' the sink into the tf state with:
 # terraform import module.myhealth.google_logging_project_sink.default projects/${var.project_id}/sinks/_Default
 # See: https://github.com/hashicorp/terraform-provider-google/issues/7811
-
 resource "google_logging_project_sink" "default" {
   name = "_Default"
 
