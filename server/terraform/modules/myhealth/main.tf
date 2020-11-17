@@ -92,10 +92,10 @@ resource "google_app_engine_application" "gae" {
 # Note: Requires logging.admin or cloud-platform permissions for
 # terraform service account.
 resource "google_logging_project_bucket_config" "regional_log_bucket" {
-    project    = var.project_id # google_project.project.name
-    location  = var.logs_region
-    retention_days = 30
-    bucket_id = "${var.region}-logs-bucket"
+  project        = var.project_id # google_project.project.name
+  location       = var.logs_region
+  retention_days = 30
+  bucket_id      = "${var.region}-logs-bucket"
 }
 
 
