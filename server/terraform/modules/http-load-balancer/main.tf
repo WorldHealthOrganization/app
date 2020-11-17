@@ -12,10 +12,9 @@ resource "google_compute_global_address" "ipv4" {
   name         = "${var.name}-address"
   ip_version   = "IPV4"
   address_type = "EXTERNAL"
-  # TODO: protect IP address is lost if destroyed
-  #lifecycle {
-  #  prevent_destroy = true
-  #}
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 
