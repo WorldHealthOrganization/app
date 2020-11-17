@@ -2,6 +2,6 @@
 
 module "myhealth" {
   source     = "../modules/myhealth"
-  project_id = "who-myhealth12-hack"
+  project_id = "who-mh-hack"
   domain     = "hack.whocoronavirus.org"
 }

@@ -48,6 +48,14 @@ resource "google_compute_target_https_proxy" "https-proxy" {
   name             = "${var.name}-https-proxy"
   url_map          = var.url_map
   ssl_certificates = [google_compute_managed_ssl_certificate.ssl-cert.id]
+  ssl_policy       = google_compute_ssl_policy.ssl-policy.self_link
+}
+
+resource "google_compute_ssl_policy" "ssl-policy" {
+  name            = "${var.name}-ssl-policy"
+  min_tls_version = "TLS_1_2"
+  profile         = "MODERN"
+  # https://cloud.google.com/load-balancing/docs/ssl-policies-concepts#defining_an_ssl_policy
 }
 
 resource "google_compute_global_forwarding_rule" "https-rule" {
