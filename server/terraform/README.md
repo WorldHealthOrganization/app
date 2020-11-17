@@ -83,7 +83,7 @@ terraform init
 terraform apply
 ```
 
-Note: This may fail with the following error 
+Note: This may fail with the following error
 `Error: googleapi: Error 409: Sink _Default already exists, alreadyExists`.
 due to https://github.com/hashicorp/terraform-provider-google/issues/7811.
 
