@@ -22,6 +22,19 @@ provider "google-beta" {
   project = var.project_id
 }
 
+# Pin Hashicorp Dependencies
+provider "external" {
+  version = "~> 2.0.0"
+}
+
+provider "null" {
+  version = "~> 3.0.0"
+}
+
+provider "random" {
+  version = "~> 3.0.0"
+}
+
 
 # Google Project
 resource "google_project" "project" {
@@ -31,9 +44,9 @@ resource "google_project" "project" {
   project_id      = var.project_id
   billing_account = var.billing_account
   org_id          = var.org_id
-  #lifecycle {
-  #  prevent_destroy = true
-  #}
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Do `depends_on` this resource iff it requires APIs to be enabled
@@ -59,9 +72,9 @@ resource "google_firebase_project" "firebase" {
   project    = var.project_id
   depends_on = [google_project_service.service]
   # TODO: protect data
-  #lifecycle {
-  #  prevent_destroy = true
-  #}
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "google_firebase_project_location" "fireloc" {
@@ -79,9 +92,9 @@ resource "google_app_engine_application" "gae" {
   database_type = "CLOUD_DATASTORE_COMPATIBILITY"
   depends_on    = [google_project_service.service]
   # TODO: protect resource as it can't be recreated after being destroyed
-  #lifecycle {
-  #  prevent_destroy = true
-  #}
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 
