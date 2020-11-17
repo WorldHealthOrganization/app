@@ -18,6 +18,12 @@ variable "region" {
   default = "europe-west6"
 }
 
+# Logs buckets are not available in all regions, so may vary from "region". 
+variable "logs_region" {
+  type    = string
+  default = "europe-west1"
+}
+
 # whocoronavirus.org development accounts used by default
 variable "billing_account" {
   type    = string
