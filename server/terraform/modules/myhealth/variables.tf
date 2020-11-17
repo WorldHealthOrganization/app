@@ -21,7 +21,8 @@ variable "region" {
 # Logs buckets are not available in all regions, so may vary from "region". 
 variable "logs_region" {
   type    = string
-  default = "europe-west1"
+  # TODO: default to Switzerland: https://github.com/WorldHealthOrganization/app/issues/1754
+  default = "europe-west1"  # Belgium
 }
 
 # whocoronavirus.org development accounts used by default
