@@ -173,7 +173,18 @@ module "ingress" {
   create_cmd_body       = "beta app services update default --ingress internal-and-cloud-load-balancing"
 
   # Appears to run when resource is replaced but not when it is destroyed
-  # Don't revert setting so it can't be accidentally removed
+  # Don't revert setting so it can't be accidentally be left insecure
   destroy_cmd_entrypoint = "gcloud"
   destroy_cmd_body       = "info"
+
+  # Command fails if App Engine instance doesn't exist... but adding dependency causes error
+  # depends_on = [google_app_engine_application.gae]
+  #
+  #Error: Invalid count argument
+  #  on .terraform/modules/myhealth.ingress/main.tf line 57, in resource "random_id" "cache":
+  #  57:   count = (! local.skip_download) ? 1 : 0
+  #The "count" value depends on resource attributes that cannot be determined
+  #until apply, so Terraform cannot predict how many instances will be created.
+  #To work around this, use the -target argument to first apply only the
+  #resources that the count depends on.
 }
