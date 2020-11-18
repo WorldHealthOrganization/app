@@ -95,7 +95,7 @@ resource "google_logging_project_bucket_config" "regional_log_bucket" {
   project        = var.project_id # google_project.project.name
   location       = var.logs_region
   retention_days = 30
-  bucket_id      = "${var.region}-logs-bucket"
+  bucket_id      = "${var.logs_region}-logs-bucket"
 }
 
 
@@ -109,7 +109,10 @@ resource "google_logging_project_bucket_config" "regional_log_bucket" {
 resource "google_logging_project_sink" "default" {
   name = "_Default"
 
-  destination = "logging.googleapis.com/projects/${var.project_id}/locations/${var.logs_region}/buckets/${var.logs_region}-logs-bucket"
+  destination = join("",
+    ["logging.googleapis.com/",
+    google_logging_project_bucket_config.regional_log_bucket.id]
+  )
 
   unique_writer_identity = true
 
