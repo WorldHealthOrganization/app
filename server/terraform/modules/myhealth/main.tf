@@ -85,6 +85,49 @@ resource "google_app_engine_application" "gae" {
 }
 
 
+# Logging Configuration: Ensure logs go to a regionalized location.
+# See: https://cloud.google.com/logging/docs/regionalized-logs
+# 
+# Logging Configuration 1/2: Bucket in regional location.
+# Note: Requires logging.admin or cloud-platform permissions for
+# terraform service account.
+resource "google_logging_project_bucket_config" "regional_log_bucket" {
+  project        = var.project_id # google_project.project.name
+  location       = var.logs_region
+  retention_days = 30
+  bucket_id      = "${var.logs_region}-logs-bucket"
+}
+
+
+# Logging Configuration 2/2: Set default sink to regional bucket.
+# Redirects App Engine and other non-audit logs to a regional bucket.
+# 
+# Note: Terraform does not currently handle _Default buckets well. It will fail
+# on the first apply; you must then 'import' the sink into the tf state with:
+# terraform import module.myhealth.google_logging_project_sink.default projects/${var.project_id}/sinks/_Default
+# See: https://github.com/hashicorp/terraform-provider-google/issues/7811
+resource "google_logging_project_sink" "default" {
+  name = "_Default"
+
+  destination = join("",
+    ["logging.googleapis.com/",
+    google_logging_project_bucket_config.regional_log_bucket.id]
+  )
+
+  unique_writer_identity = true
+
+  # While this is the default filter, it must be re-set explicitly.
+  filter = <<-endfilter
+    NOT LOG_ID("cloudaudit.googleapis.com/activity") AND 
+    NOT LOG_ID("externalaudit.googleapis.com/activity") AND
+    NOT LOG_ID("cloudaudit.googleapis.com/system_event") AND
+    NOT LOG_ID("externalaudit.googleapis.com/system_event") AND
+    NOT LOG_ID("cloudaudit.googleapis.com/access_transparency") AND
+    NOT LOG_ID("externalaudit.googleapis.com/access_transparency")
+  endfilter
+}
+
+
 # Load Balancer
 module "lb" {
   source             = "../http-load-balancer"

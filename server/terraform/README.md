@@ -83,6 +83,17 @@ terraform init
 terraform apply
 ```
 
+Note: This may fail with the following error
+`Error: googleapi: Error 409: Sink _Default already exists, alreadyExists`.
+due to https://github.com/hashicorp/terraform-provider-google/issues/7811.
+
+Run import and re-apply to continue.
+
+```sh
+terraform import module.myhealth.google_logging_project_sink.default projects/$PROJECT_ID/sinks/_Default
+terraform apply
+```
+
 See the [Production Setup](#production-setup) for special instructions for the
 `who-mh-prod` and `who-mh-prod-in-dev` projects. The other projects don't need
 any special setup.
