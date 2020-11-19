@@ -190,6 +190,52 @@ resource "google_compute_region_network_endpoint_group" "neg" {
   depends_on = [google_project_service.service]
 }
 
+
+# Google Cloud Armor security policy.
+resource "google_compute_security_policy" "policy" {
+  name = "lb-security-policy"
+
+  # IP Block list. 
+  rule {
+    action   = "deny(403)"
+    priority = "1000"
+    match {
+      versioned_expr = "SRC_IPS_V1"
+      config {
+        # Using an unused portion of the loopback block as a placeholder.
+        # Remove it once a real set of IP Ranges are present.
+        # Up to ten IP ranges can be created per rule.
+        src_ip_ranges = ["127.0.0.255/32","127.0.0.254"]
+      }
+    }
+    description = "Deny access to specified IPs"
+  }
+
+  rule {
+    action   = "allow"
+    priority = "2147483647"
+    match {
+      versioned_expr = "SRC_IPS_V1"
+      config {
+        src_ip_ranges = ["*"]
+      }
+    }
+    description = "default rule"
+  }
+
+  # In case  this resource is renamed in Terraform, the lifecycle must be:
+  #  1: Create new policy 
+  #  2: Configure backend to reference it
+  #  3: Delete old policy.
+  # To accomplish this, it is set to create_before_destroy, 
+  # then running apply twice completes the operation.
+  lifecycle {
+    create_before_destroy = true
+  }
+
+}
+
+
 resource "google_compute_backend_service" "backend" {
   name                            = "${var.project_id}-backend-appengine"
   load_balancing_scheme           = "EXTERNAL"
@@ -200,6 +246,7 @@ resource "google_compute_backend_service" "backend" {
   cdn_policy {
     signed_url_cache_max_age_sec = 3600
   }
+  security_policy = google_compute_security_policy.policy.id
   backend {
     capacity_scaler = 1
     group           = google_compute_region_network_endpoint_group.neg.id
