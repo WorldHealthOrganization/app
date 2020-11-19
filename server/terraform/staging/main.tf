@@ -1,4 +1,4 @@
-# hack - penetration testing and ethical hacking, no privacy expectation
+# staging - default development server, no privacy expectation
 
 module "myhealth" {
   source     = "../modules/myhealth"
