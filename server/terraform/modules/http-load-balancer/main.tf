@@ -68,12 +68,20 @@ resource "google_compute_global_forwarding_rule" "https-rule" {
   depends_on = [google_compute_global_address.ipv4]
 }
 
+resource "random_id" "certificate" {
+  byte_length = 4
+
+  keepers = {
+    domains = var.domain
+  }
+}
+
 resource "google_compute_managed_ssl_certificate" "ssl-cert" {
   provider = google-beta
 
   # Must change name when editing as Google provider doesn't support update in
   # place. Also need to create replacement resource before deleting old resource.
-  name = "${var.name}-ssl-cert"
+  name = "${var.name}-ssl-cert-${random_id.certificate.hex}"
   lifecycle {
     create_before_destroy = true
   }
