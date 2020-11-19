@@ -9,19 +9,19 @@
 # These owners will be the default owners for everything in
 # the repo, unless a later match takes precedence.
 
-* @brunobowden @crazybob @yukuairoy @theswerd
+* @brunobowden @crazybob @matthewblain @theswerd @yukuairoy
 
 # Shared
-/docs/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
+/docs/ @britannio @brunobowden @crazybob @matthewblain @theswerd @yukuairoy
 
 # Client
-/client/ @britannio @brunobowden @crazybob @theswerd @yukuairoy
+/client/ @britannio @brunobowden @crazybob @matthewblain @theswerd @yukuairoy
 
 # Server
-/api/ @brunobowden @crazybob @yukuairoy
-/server/ @brunobowden @crazybob @yukuairoy
+/api/ @brunobowden @crazybob @matthewblain @yukuairoy
+/server/ @brunobowden @crazybob @matthewblain @yukuairoy
 
 # ***** Security-sensitive - always keep these at the end. *****
 # CI and CD; Note no production secrets shall be stored in this GitHub repo.
-/.github/workflows/ @brunobowden @crazybob @yukuairoy
-/.github/CODEOWNERS @brunobowden @crazybob @yukuairoy
+/.github/workflows/ @brunobowden @crazybob @matthewblain
+/.github/CODEOWNERS @brunobowden @crazybob @matthewblain
