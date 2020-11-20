@@ -226,7 +226,7 @@ resource "google_compute_security_policy" "policy" {
     description = "default rule"
   }
 
-  # In case  this resource is renamed in Terraform, the lifecycle must be:
+  # In case this resource is renamed in Terraform, the lifecycle must be:
   #  1: Create new policy 
   #  2: Configure backend to reference it
   #  3: Delete old policy.
