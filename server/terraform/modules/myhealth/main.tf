@@ -213,7 +213,7 @@ resource "google_compute_security_policy" "policy" {
   }
 
   # Every security policy must re-iterate the default rule at maxint32.
-  # The action may be changed but not the other properties.
+  # The 'action' may be changed but not the other properties.
   rule {
     action   = "allow"
     priority = "2147483647"
