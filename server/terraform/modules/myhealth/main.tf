@@ -196,6 +196,8 @@ resource "google_compute_security_policy" "policy" {
   name = "lb-security-policy"
 
   # IP Block list. 
+  # Up to ten IP ranges can be created per rule.
+  # Each rule is identified by its priority, from 1=highest to maxint32=default.
   rule {
     action   = "deny(403)"
     priority = "1000"
@@ -204,13 +206,14 @@ resource "google_compute_security_policy" "policy" {
       config {
         # Using an unused portion of the loopback block as a placeholder.
         # Remove it once a real set of IP Ranges are present.
-        # Up to ten IP ranges can be created per rule.
-        src_ip_ranges = ["127.0.0.255/32","127.0.0.254"]
+        src_ip_ranges = ["127.0.0.255/32", "127.0.0.254"]
       }
     }
     description = "Deny access to specified IPs"
   }
 
+  # Every security policy must re-iterate the default rule at maxint32.
+  # The action may be changed but not the other properties.
   rule {
     action   = "allow"
     priority = "2147483647"
