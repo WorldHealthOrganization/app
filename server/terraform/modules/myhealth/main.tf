@@ -212,8 +212,7 @@ resource "google_compute_security_policy" "policy" {
     description = "Deny access to specified IPs"
   }
 
-  # Every security policy must re-iterate the default rule at maxint32.
-  # The 'action' may be changed but not the other properties.
+  # The default rule at maxint32. Should not need to be changed.
   rule {
     action   = "allow"
     priority = "2147483647"
