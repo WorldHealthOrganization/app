@@ -35,6 +35,10 @@ provider "random" {
   version = "~> 3.0.0"
 }
 
+locals {
+  content_bucket_id = (var.content_bucket_id != "" ?
+  var.content_bucket_id : "who-app-devel-${var.project_id}")
+}
 
 # Google Project
 resource "google_project" "project" {
@@ -171,6 +175,10 @@ resource "google_compute_url_map" "urlmap" {
   path_matcher {
     name            = "all"
     default_service = google_compute_backend_service.backend.self_link
+    path_rule {
+      paths   = ["/content"]
+      service = google_compute_backend_bucket.content.id
+    }
 
   }
   depends_on = [google_project.project]
@@ -207,4 +215,58 @@ resource "google_compute_backend_service" "backend" {
   # TODO: figure out what health checks are possible
   health_checks = null
   depends_on    = [google_project.project]
+}
+
+
+# Google Cloud bucket for static content assets.
+resource "google_storage_bucket" "content" {
+  name          = local.content_bucket_id
+  location      = var.bucket_location
+  force_destroy = false ### ???? The documentation on this is atrocious. I believe if this is false it will fail on destruction if there is data in the bucket?
+
+  # There should be no need for per-object ACLs with this bucket.
+  uniform_bucket_level_access = true
+
+  # Do we need to set the lifecycle rule or object versioning? I expect not, or with a single version / short lifespan?
+  # logging - is the default to use the default sink or null or something else?
+}
+
+
+## Should we use google_storage_bucket_iam_binding or google_iam_policy? 
+## google_iam_policy is really dangerous... if you 'destroy' it,  it does not return to the default, but to empty!
+
+#data "google_iam_policy" "public-viewer" {
+#  binding {
+#    role = "roles/storage.objectViewer"
+#    members = [
+#      "allUsers",
+#    ]
+#  }
+#  
+#  binding {
+#    role = "roles/storage.admin"
+#    members = [
+#      "projectOwner:${var.project_id}",
+#    ]
+#  }
+#}
+#
+#resource "google_storage_bucket_iam_policy" "content" {
+#  bucket = google_storage_bucket.content.name
+#  policy_data = data.google_iam_policy.public-viewer.policy_data
+#}
+
+resource "google_storage_bucket_iam_binding" "binding" {
+  bucket = google_storage_bucket.content.name
+  role   = "roles/storage.objectViewer"
+  members = [
+    "allUsers",
+  ]
+}
+
+# Routing
+resource "google_compute_backend_bucket" "content" {
+  name        = "static-content-backend-bucket"
+  bucket_name = google_storage_bucket.content.name
+  enable_cdn  = true
 }

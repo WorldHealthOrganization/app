@@ -10,6 +10,23 @@ variable "domain" {
   type        = string
 }
 
+variable "content_bucket_id" {
+  description = "Name of Cloud Storage bucket to provision for static content."
+  type        = string
+  # Default will generate a name using the project ID.
+  default = ""
+}
+
+# Although the bucket contains no user data, it is located close to the serving
+# code and user data by default.
+variable "bucket_location" {
+  description = "Location of Cloud Storage bucket."
+  # Options: https://cloud.google.com/storage/docs/locations
+  type    = string
+  default = "EUROPE-WEST6"
+}
+
+
 # World Health Organization policy is to locate data in Switzerland if possible
 # "europe-west6" is Google's Zurich region and has 3 zones for redundancy
 # https://cloud.google.com/compute/docs/regions-zones
