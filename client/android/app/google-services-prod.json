@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "767283588503",
+    "firebase_url": "https://who-mh-prod.firebaseio.com",
+    "project_id": "who-mh-prod",
+    "storage_bucket": "who-mh-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767283588503:android:65615175a4abb69bde68d2",
+        "android_client_info": {
+          "package_name": "org.who.WHOMyHealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767283588503-ril5410rd3t6bal1gjfe2rflh1v0fs1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXazDNd2Kqw7GO63mahJH5AjfgvlVPjuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767283588503-ril5410rd3t6bal1gjfe2rflh1v0fs1u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "767283588503-ilphq9evrvf90d03d2c67u8ef84q93h2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "int.who.WHOMyHealth",
+                "app_store_id": "1503458183"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
