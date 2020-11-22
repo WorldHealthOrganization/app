@@ -276,7 +276,7 @@ resource "google_compute_backend_service" "backend" {
 
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
-  # While the bucket name is in a flat global namespace, this pattern has 
+  # While the bucket name is in a flat global namespace, this pattern has
   # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
   location = local.storage_bucket_location
