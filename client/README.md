@@ -23,8 +23,6 @@ pod install
 open Runner.xcworkspace
 ```
 
-### Android Studio
-
 ### Firebase
 
 The client apps communicate with Firebase by using generated config files, see

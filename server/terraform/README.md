@@ -279,3 +279,17 @@ be added to the public repository.
 1. Skip "Add Firebase SDK" by clicking "Next"
 1. Skip "Add initialization code" by clicking "Next"
 1. Run Android app in simulator to confirm Firebase setup
+
+### Crashlytics
+
+1. Crashlytics settings: https://console.firebase.google.com/u/0/project/who-mh-staging/crashlytics/
+1. Click "Enable Crashlytics"
+1. Force crash by uncommenting the lines around `FirebaseCrashlytics.instance.crash` in
+   [`main.dart`](https://github.com/WorldHealthOrganization/app/blob/master/client/lib/main.dart)
+1. Start app in simulator and watch for crash
+1. Start app again as crashes are reported upon application restart
+1. Verify crash is shown in [Firebase Console](https://console.firebase.google.com/u/0/project/who-mh-staging/crashlytics/)
+1. Repeat for:
+   - Android Simulator
+   - iOS Simulator
+1. **NOTE:** testing on multiple projects will [report crashes to wrong project](https://github.com/firebase/firebase-android-sdk/issues/2191). Only workaround is to change the `package_name` / `ApplicationId`.

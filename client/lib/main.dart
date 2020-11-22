@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:observer_provider/observer_provider.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +19,6 @@ import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/services.dart';
@@ -49,18 +50,17 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  final onboardingComplete = await UserPreferences().getOnboardingCompletedV1();
-
-  // Comment the above lines out and uncomment this to force onboarding in development
-  // final bool onboardingComplete = false;
-
-  // Set `enableInDevMode` to true to see reports while in debug mode
-  // This is only to be used for confirming that reports are being
-  // submitted as expected. It is not intended to be used for everyday
-  // development.
-  // Crashlytics.instance.enableInDevMode = true;
-
+  await Firebase.initializeApp();
   FlutterError.onError = _onFlutterError;
+
+  // TODO: verify this reliably reports crashes
+  // Crashlytics test to verify in Firebase Console (uncomment 3 lines)
+  //await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  //await FirebaseCrashlytics.instance.sendUnsentReports();
+  //FirebaseCrashlytics.instance.crash();
+
+  // Onboarding UI test, set the following to false
+  final onboardingComplete = await UserPreferences().getOnboardingCompletedV1();
 
   await runZonedGuarded<Future<void>>(
     () async {
