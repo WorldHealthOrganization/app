@@ -242,7 +242,6 @@ resource "google_compute_security_policy" "policy" {
   lifecycle {
     create_before_destroy = true
   }
-
 }
 
 
