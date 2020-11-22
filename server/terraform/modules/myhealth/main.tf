@@ -176,7 +176,7 @@ resource "google_compute_url_map" "urlmap" {
     name            = "all"
     default_service = google_compute_backend_service.backend.self_link
     path_rule {
-      paths   = ["/content"]
+      paths   = ["/content/*"]
       service = google_compute_backend_bucket.content.id
     }
 
