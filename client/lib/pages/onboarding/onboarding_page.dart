@@ -26,7 +26,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
   static const _animationDuration = Duration(milliseconds: 500);
   static const _animationCurve = Curves.easeInOut;
 
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final PageController _pageController = PageController();
 
   IsoCountry _selectedCountry;
@@ -130,7 +129,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Future<void> _onLegalDone(ContentStore store) async {
     await UserPreferences().setTermsOfServiceCompleted(true);
     // Enable auto init so that analytics will work
-    await _firebaseMessaging.setAutoInitEnabled(true);
+    await FirebaseMessaging.instance.setAutoInitEnabled(true);
     if (!await UserPreferences().getOnboardingCompleted() ||
         await UserPreferences().getAnalyticsEnabled()) {
       await UserPreferences().setAnalyticsEnabled(true);

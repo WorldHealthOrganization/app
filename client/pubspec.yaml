@@ -30,8 +30,9 @@ dependencies:
   cupertino_icons: ^0.1.3
   expressions: 0.1.5
   firebase_analytics: ^6.0.0
-  firebase_crashlytics: ^0.2.0
-  firebase_messaging: ^7.0.0
+  firebase_core: ^0.5.2
+  firebase_crashlytics: ^0.2.3
+  firebase_messaging: ^8.0.0-dev.8
   fixnum: ^0.10.11
   fl_chart: ^0.8.7
   # TODO: upgrade to ^1.4.0, breaking API change

@@ -9,7 +9,7 @@ class Notifications {
 
   Notifications({@required this.service});
 
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   final UserPreferences _userPrefs = UserPreferences();
 
   Future<bool> attemptEnableNotifications(
@@ -70,21 +70,22 @@ class Notifications {
       await NotificationPermissions.getNotificationPermissionStatus() ==
           PermissionStatus.granted;
 
+  Future<void> onBackgroundMessageHandler(RemoteMessage message) async {
+    print('onBackgroundMessage: $message');
+    return Future<void>.value();
+  }
+
   void configure() {
     // onMessage: Fires when app is foreground
     // onLaunch: Fires when user taps and app is in background.
     // onResume: Fires when user taps and app is terminated
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print('onMessage: $message');
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print('onLaunch: $message');
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print('onResume: $message');
-      },
-    );
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('onMessage: $message');
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print('onMessageOpenedApp: $message');
+    });
+    FirebaseMessaging.onBackgroundMessage(onBackgroundMessageHandler);
   }
 
   // Ask firebase for a token on every launch.
