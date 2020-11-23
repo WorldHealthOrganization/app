@@ -35,11 +35,6 @@ provider "random" {
   version = "~> 3.0.0"
 }
 
-locals {
-  content_bucket_id = (var.content_bucket_id != "" ?
-  var.content_bucket_id : "who-app-devel-${var.project_id}")
-}
-
 # Google Project
 resource "google_project" "project" {
   provider        = google-beta
@@ -268,15 +263,20 @@ resource "google_compute_backend_service" "backend" {
 
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
-  name          = local.content_bucket_id
-  location      = var.bucket_location
-  force_destroy = false ### ???? The documentation on this is atrocious. I believe if this is false it will fail on destruction if there is data in the bucket?
+  name     = "${var.project_id}-static-content" #################### Should a prefix be added to make uniqueness more likley? 
+  location = var.region
 
   # There should be no need for per-object ACLs with this bucket.
   uniform_bucket_level_access = true
 
+  ############################################################
   # Do we need to set the lifecycle rule or object versioning? I expect not, or with a single version / short lifespan?
   # logging - is the default to use the default sink or null or something else?
+
+  force_destroy = false
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 
