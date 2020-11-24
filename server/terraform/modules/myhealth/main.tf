@@ -263,7 +263,9 @@ resource "google_compute_backend_service" "backend" {
 
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
-  name     = "${var.project_id}-static-content" #################### Should a prefix be added to make uniqueness more likley? 
+  # While the bucket name is in a flat global namespace, this pattern has 
+  # has been available so far for all appids in use.
+  name     = "${var.project_id}-static-content"
   location = var.region
 
   # There should be no need for per-object ACLs with this bucket.
