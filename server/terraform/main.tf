@@ -11,4 +11,14 @@ module "hack" {
   source = "./hack"
 }
 
-# TODO: prod, staging
+module "prod" {
+  source = "./prod"
+}
+
+module "prod-in-dev" {
+  source = "./prod-in-dev"
+}
+
+module "staging" {
+  source = "./staging"
+}

@@ -5,5 +5,6 @@
 set -euv
 cd $(dirname "$0")/../server/terraform
 
+terraform init
 terraform fmt -recursive .
 terraform validate .
