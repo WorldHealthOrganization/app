@@ -104,12 +104,11 @@ class UserPreferences {
   Future<void> _updateFirebaseAutoInit() async {
     // Updates the firebase auto init option. This method is called
     // after a user modifies either analytics or notifications.
-    var firebaseMessaging = FirebaseMessaging();
 
     // Enable Firebase Auto Init iff either notifications or analytics is enabled
     var firebase_auto_init =
         (await getNotificationsEnabled()) || (await getAnalyticsEnabled());
-    await firebaseMessaging.setAutoInitEnabled(firebase_auto_init);
+    await FirebaseMessaging.instance.setAutoInitEnabled(firebase_auto_init);
   }
 
   Future<String> getFirebaseToken() async {
