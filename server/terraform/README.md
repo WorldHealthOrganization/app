@@ -131,6 +131,10 @@ emacs main.tf
 terraform init
 terraform apply
 # Should create all resources without any errors
+
+# Add server reference in top level terraform to ensure validation
+# server/terraform/main.tf
+# `terraform apply` should not be used here, instead only individual projects
 ```
 
 ### Terraform Apply
