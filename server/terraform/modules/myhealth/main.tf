@@ -264,16 +264,12 @@ resource "google_compute_backend_service" "backend" {
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
   # While the bucket name is in a flat global namespace, this pattern has 
-  # has been available so far for all appids in use.
+  # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
   location = var.region
 
   # There should be no need for per-object ACLs with this bucket.
   uniform_bucket_level_access = true
-
-  ############################################################
-  # Do we need to set the lifecycle rule or object versioning? I expect not, or with a single version / short lifespan?
-  # logging - is the default to use the default sink or null or something else?
 
   force_destroy = false
   lifecycle {
@@ -281,31 +277,7 @@ resource "google_storage_bucket" "content" {
   }
 }
 
-
-## Should we use google_storage_bucket_iam_binding or google_iam_policy? 
-## google_iam_policy is really dangerous... if you 'destroy' it,  it does not return to the default, but to empty!
-
-#data "google_iam_policy" "public-viewer" {
-#  binding {
-#    role = "roles/storage.objectViewer"
-#    members = [
-#      "allUsers",
-#    ]
-#  }
-#  
-#  binding {
-#    role = "roles/storage.admin"
-#    members = [
-#      "projectOwner:${var.project_id}",
-#    ]
-#  }
-#}
-#
-#resource "google_storage_bucket_iam_policy" "content" {
-#  bucket = google_storage_bucket.content.name
-#  policy_data = data.google_iam_policy.public-viewer.policy_data
-#}
-
+# Object are all world-readable. Set using the simplest mechanism.
 resource "google_storage_bucket_iam_binding" "binding" {
   bucket = google_storage_bucket.content.name
   role   = "roles/storage.objectViewer"

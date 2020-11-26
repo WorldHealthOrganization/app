@@ -10,13 +10,6 @@ variable "domain" {
   type        = string
 }
 
-variable "content_bucket_id" {
-  description = "Name of Cloud Storage bucket to provision for static content."
-  type        = string
-  # Default will generate a name using the project ID.
-  default = ""
-}
-
 
 # World Health Organization policy is to locate data in Switzerland if possible
 # "europe-west6" is Google's Zurich region and has 3 zones for redundancy
