@@ -271,10 +271,8 @@ resource "google_storage_bucket" "content" {
   # There should be no need for per-object ACLs with this bucket.
   uniform_bucket_level_access = true
 
+  # Prevent Terraform from destroying the bucket if any content is present.
   force_destroy = false
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 # Object are all world-readable. Set using the simplest mechanism.
