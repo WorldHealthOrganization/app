@@ -35,7 +35,6 @@ provider "random" {
   version = "~> 3.0.0"
 }
 
-
 # Google Project
 resource "google_project" "project" {
   provider        = google-beta
@@ -171,6 +170,10 @@ resource "google_compute_url_map" "urlmap" {
   path_matcher {
     name            = "all"
     default_service = google_compute_backend_service.backend.self_link
+    path_rule {
+      paths   = ["/content/*"]
+      service = google_compute_backend_bucket.content.id
+    }
 
   }
   depends_on = [google_project.project]
@@ -234,7 +237,6 @@ resource "google_compute_security_policy" "policy" {
   lifecycle {
     create_before_destroy = true
   }
-
 }
 
 
@@ -256,4 +258,35 @@ resource "google_compute_backend_service" "backend" {
   # TODO: figure out what health checks are possible
   health_checks = null
   depends_on    = [google_project.project]
+}
+
+
+# Google Cloud bucket for static content assets.
+resource "google_storage_bucket" "content" {
+  # While the bucket name is in a flat global namespace, this pattern has 
+  # been available so far for all appids in use.
+  name     = "${var.project_id}-static-content"
+  location = var.region
+
+  # There should be no need for per-object ACLs with this bucket.
+  uniform_bucket_level_access = true
+
+  # Prevent Terraform from destroying the bucket if any content is present.
+  force_destroy = false
+}
+
+# Object are all world-readable. Set using the simplest mechanism.
+resource "google_storage_bucket_iam_binding" "binding" {
+  bucket = google_storage_bucket.content.name
+  role   = "roles/storage.objectViewer"
+  members = [
+    "allUsers",
+  ]
+}
+
+# Routing
+resource "google_compute_backend_bucket" "content" {
+  name        = "static-content-backend-bucket"
+  bucket_name = google_storage_bucket.content.name
+  enable_cdn  = true
 }
