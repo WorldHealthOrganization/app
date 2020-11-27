@@ -7,7 +7,20 @@
 # DNS Entry
 
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.13"
+}
+
+locals {
+  # We want the storage bucket to be multi-region. Lookup the location for that
+  # using var.region prefix; falls back to var.region. Based on current list:
+  # https://cloud.google.com/storage/docs/locations
+  storage_location_prefixes = {
+    "EUROPE" = "EU",
+    "US"     = "US",
+    "ASIA"   = "ASIA"
+  }
+  storage_bucket_location = lookup(local.storage_location_prefixes,
+  upper(split("-", var.region)[0]), var.region)
 }
 
 provider "google" {
@@ -266,7 +279,7 @@ resource "google_storage_bucket" "content" {
   # While the bucket name is in a flat global namespace, this pattern has 
   # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
-  location = var.region
+  location = local.storage_bucket_location
 
   # There should be no need for per-object ACLs with this bucket.
   uniform_bucket_level_access = true
@@ -282,6 +295,7 @@ resource "google_storage_bucket_iam_binding" "binding" {
   members = [
     "allUsers",
   ]
+  depends_on = [google_storage_bucket.content]
 }
 
 # Routing
