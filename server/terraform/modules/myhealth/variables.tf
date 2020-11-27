@@ -10,7 +10,6 @@ variable "domain" {
   type        = string
 }
 
-
 # World Health Organization policy is to locate data in Switzerland if possible
 # "europe-west6" is Google's Zurich region and has 3 zones for redundancy
 # https://cloud.google.com/compute/docs/regions-zones
