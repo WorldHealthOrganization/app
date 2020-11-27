@@ -23,19 +23,6 @@ locals {
   upper(split("-", var.region)[0]), var.region)
 }
 
-locals {
-  # We want the storage bucket to be multi-region. Lookup the location for that
-  # using var.region prefix; based on current list at:
-  # https://cloud.google.com/storage/docs/locations
-  storage_location_prefixes = {
-    "EUROPE" = "EU",
-    "US"     = "US",
-    "ASIA"   = "ASIA"
-  }
-  storage_bucket_location = lookup(local.storage_location_prefixes,
-  upper(split("-", var.region)[0]), var.region)
-}
-
 provider "google" {
   version = "~> 3.46.0"
   region  = var.region
@@ -289,7 +276,7 @@ resource "google_compute_backend_service" "backend" {
 
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
-  # While the bucket name is in a flat global namespace, this pattern has
+  # While the bucket name is in a flat global namespace, this pattern has 
   # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
   location = local.storage_bucket_location
