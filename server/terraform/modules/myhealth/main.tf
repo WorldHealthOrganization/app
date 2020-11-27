@@ -23,6 +23,19 @@ locals {
   upper(split("-", var.region)[0]), var.region)
 }
 
+locals {
+  # We want the storage bucket to be multi-region. Lookup the location for that
+  # using var.region prefix; based on current list at:
+  # https://cloud.google.com/storage/docs/locations
+  storage_location_prefixes = {
+    "EUROPE" = "EU",
+    "US"     = "US",
+    "ASIA"   = "ASIA"
+  }
+  storage_bucket_location = lookup(local.storage_location_prefixes,
+  upper(split("-", var.region)[0]), var.region)
+}
+
 provider "google" {
   version = "~> 3.46.0"
   region  = var.region
