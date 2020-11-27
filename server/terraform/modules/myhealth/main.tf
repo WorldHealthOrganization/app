@@ -7,12 +7,12 @@
 # DNS Entry
 
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.13"
 }
 
 locals {
   # We want the storage bucket to be multi-region. Lookup the location for that
-  # using var.region prefix; based on current list at:
+  # using var.region prefix; falls back to var.region. Based on current list:
   # https://cloud.google.com/storage/docs/locations
   storage_location_prefixes = {
     "EUROPE" = "EU",
