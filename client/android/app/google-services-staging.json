@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "562267591486",
+    "firebase_url": "https://who-mh-staging.firebaseio.com",
+    "project_id": "who-mh-staging",
+    "storage_bucket": "who-mh-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562267591486:android:6808e0851b1381e9fe526f",
+        "android_client_info": {
+          "package_name": "org.who.WHOMyHealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562267591486-it0ud40n0h8q29nrp05trronsnbqulia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnRB7kdD3djNeuoi9Gd5mswQySF2QA8IA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562267591486-it0ud40n0h8q29nrp05trronsnbqulia.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "562267591486-c1a4ujatlna692cevnjrmr8oocleb08r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "int.who.WHOMyHealth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

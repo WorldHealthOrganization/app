@@ -67,7 +67,7 @@
 	<array>
 		<string>en</string>
 	</array>
-	<key>firebase_crashlytics_collection_enabled</key>
+	<key>FirebaseCrashlyticsCollectionEnabled</key>
 	<false/>
 </dict>
 </plist>

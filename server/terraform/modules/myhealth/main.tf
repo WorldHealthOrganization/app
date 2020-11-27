@@ -279,7 +279,7 @@ resource "google_storage_bucket" "content" {
   # While the bucket name is in a flat global namespace, this pattern has 
   # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
-  location = local.storage_bucket_location
+  location = var.region
 
   # There should be no need for per-object ACLs with this bucket.
   uniform_bucket_level_access = true
