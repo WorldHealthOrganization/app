@@ -104,8 +104,7 @@ jobs:
               log_url: process.env.LOG_URL,
             });
             return deployment.id;
-      - run: DONT_BUILD=true ./deploy-staging-static-serving.sh
-        working-directory: tools
+      - run: DONT_BUILD=true ./tools/build-and-push-static-serving.sh who-myhealth-staging-static-content-01
       - name: Destroy GCP Credentials File
         run: rm $APPLICATION_CREDENTIALS
         if: ${{ always() }}
