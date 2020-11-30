@@ -16,7 +16,7 @@ if (flutterRoot == null) {
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 
-def app = server
+def server = "server"
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
