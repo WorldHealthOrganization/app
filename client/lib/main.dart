@@ -51,7 +51,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   var app = await Firebase.initializeApp();
-  print('PROJECT ID: ${app.options.projectId}');
+  print('Firebase ProjectID: ${app.options.projectId}');
   FlutterError.onError = _onFlutterError;
 
   // TODO: verify this reliably reports crashes
