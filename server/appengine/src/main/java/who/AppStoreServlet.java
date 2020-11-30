@@ -21,8 +21,7 @@ public class AppStoreServlet extends HttpServlet {
   protected void doGet(
     HttpServletRequest request,
     HttpServletResponse response
-  )
-    throws IOException {
+  ) throws IOException {
     if (request.getHeader("User-Agent").toLowerCase().contains("android")) {
       response.sendRedirect(GOOGLE_PLAY_STORE_LINK);
     } else {
