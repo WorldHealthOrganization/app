@@ -31,7 +31,7 @@ Services:
 
 ## Curl Testing
 
-Against staging:
+#### App Engine:
 
 ```
 # App Engine
@@ -50,8 +50,13 @@ curl -i \
 	-X POST \
 	-d '{isoCountryCode: CH}' \
 	'https://whoapp.org/WhoService/putLocation'
+```
 
-# Static Content - served from Google Cloud Storage
+#### Static Content
+
+Served from Google Cloud Storage:
+
+```
 curl https://storage.googleapis.com/who-myhealth-staging-static-content-01/\
 content/bundles/protect_yourself.en_US.yaml
 ```
@@ -86,23 +91,22 @@ Service Account:
     # service account
     gcloud auth activate-service-account --key-file xxxx.json
 
-### Deploy to Staging
+### Deploy
+
+Deployment is organized by ProjectId.
+
+#### Server
 
     ./bin/deploy-server.sh who-mh-staging
 
-Then open [https://who-app-staging.appspot.com/]().
+Then open [https://staging.whocoronavirus.org/app]() for a redirect to the app store.
 
-### Deploy to Staging - Static Content
+#### Static Content
 
-Deployed automatically on push to master by [.github/workflows/static-content.yaml](.github/workflows/static-content.yaml). Or pushed manually with:
+Deployed automatically on push to master by [.github/workflows/static-content.yaml](.github/workflows/static-content.yaml)
+(NOTE: old staging server). Or pushed manually with (new staging server):
 
-    tools/deploy-staging-static-serving.sh
-
-### Deploy to Production
-
-    ./bin/deploy-server.sh who-mh-prod
-
-Then open [https://who-app.appspot.com/]().
+    ./tools/build-and-push-static-serving.sh who-mh-staging
 
 ## Dev Environment
 
