@@ -95,11 +95,14 @@ class WhoService {
     return 'WEB';
   }
 
-  static Future<http.Response> httpPost(dynamic url, Map<String,String> headers, dynamic body) async {
+  static Future<http.Response> httpPost(
+      dynamic url, Map<String, String> headers, dynamic body) async {
     var httpClient = io.HttpClient();
     var proxy = await GetProxy.getProxy;
-    if(proxy!='') {
-      httpClient.findProxy = (uri) { return proxy; };
+    if (proxy != '') {
+      httpClient.findProxy = (uri) {
+        return proxy;
+      };
     }
     var ioClient = IOClient(httpClient);
     var response = await ioClient.post(url, headers: headers, body: body);
