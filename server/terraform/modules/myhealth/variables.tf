@@ -15,13 +15,15 @@ variable "domain" {
 # https://cloud.google.com/compute/docs/regions-zones
 variable "region" {
   type    = string
-  default = "europe-west6"
+  default = "europe-west6" # Switzerland
 }
 
-# Logs buckets are not available in all regions, so may vary from "region". 
+# Regionalized Logs available in limited regions, so may vary from "region" variable
 variable "logs_region" {
   type = string
-  # TODO: default to Switzerland: https://github.com/WorldHealthOrganization/app/issues/1754
+  # TODO: move to Switzerland when technically possible
+  # https://github.com/WorldHealthOrganization/app/issues/1754
+  # TODO: remove variable once Regionalized Logs is universally available
   default = "europe-west1" # Belgium
 }
 
