@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get_proxy/get_proxy.dart';
 
@@ -28,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       proxy = await GetProxy.getProxy;
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       proxy = e.toString();
     }
 
