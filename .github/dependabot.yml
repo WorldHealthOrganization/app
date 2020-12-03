@@ -10,12 +10,12 @@ updates:
     schedule:
       interval: "daily"
     labels:
-      - "t:deps"
-      - "a:dev-workflow"
+      - "deps"
+      - "dev-workflow"
   - package-ecosystem: "gradle"
     directory: "/server"
     schedule:
       interval: "daily"
     labels:
-      - "t:deps"
-      - "c:server"
+      - "deps"
+      - "server"
