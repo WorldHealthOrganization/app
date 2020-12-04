@@ -69,6 +69,26 @@ android {
             getIsDefault().set(true)
         }
     }
+
+/*
+    https://github.com/flutter/flutter/issues/65264#issuecomment-707013948
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def taskSuffix = variant.name.capitalize()
+            def bundleTaskName = "bundle${taskSuffix}"
+            if (tasks.findByName(bundleTaskName)) {
+                def copyAABTask = tasks.create(name: "copyAndRenameAab${taskSuffix}", type: Copy) {
+                    def bundleBuildDir = "${buildDir}/outputs/bundle"
+                    def originalDirPath = "${variant.productFlavors.name.join()}${variant.buildType.name}"
+                    def originalFileName = "${project.archivesBaseName}-${variant.productFlavors.name.join('-')}-${variant.buildType.name}.aab"
+                    from "${bundleBuildDir}/${originalDirPath}/${originalFileName}"
+                    into "${bundleBuildDir}/${variant.buildType.name}/"
+                    rename ("${originalFileName}", "app.aab")
+                }
+                tasks[bundleTaskName].finalizedBy = [copyAABTask]
+            }
+        }
+    }*/
 }
 
 flutter {

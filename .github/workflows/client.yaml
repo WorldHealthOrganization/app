@@ -94,8 +94,10 @@ jobs:
         working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
-      - run: flutter build appbundle
+      - run: flutter build appbundle || echo "SILENCED NON-ZERO EXIT"
         working-directory: ./client
+      # DO NOT MERGE - shouldn't silently fail, or output build output list
+      - run: find client/build/app/outputs
       # TODO: generate apk from appbundle using bundletool
       - run: flutter build apk
         working-directory: ./client
