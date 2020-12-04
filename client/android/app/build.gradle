@@ -16,8 +16,6 @@ if (flutterRoot == null) {
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 
-def server = "server"
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -54,19 +52,20 @@ android {
         }
     }
 
-    flavorDimensions server
+    flavorDimensions 'server'
 
     productFlavors {
         hack {
-            dimension server
+            dimension 'server'
             versionNameSuffix '-hack'
         }
         prod {
-            dimension server
-            versionNameSuffix '-prod'
+            dimension 'server'
         }
+        // Default
         staging {
-            dimension server
+            dimension 'server'
+            versionNameSuffix '-staging'
             getIsDefault().set(true)
         }
     }
