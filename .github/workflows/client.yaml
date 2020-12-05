@@ -89,13 +89,13 @@ jobs:
           java-version: "11.0.9"
       - run: git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION _flutter
       - run: echo "$GITHUB_WORKSPACE/_flutter/bin" >> $GITHUB_PATH
-      #DO NOT MERGE- run: flutter doctor -v
+      - run: flutter doctor -v
       - run: flutter pub get
         working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
-      #DO NOT MERGE- run: flutter build appbundle
-      #  working-directory: ./client
+      - run: flutter build appbundle
+        working-directory: ./client
       # TODO: generate apk from appbundle using bundletool
       - run: flutter build apk --flavor staging
         working-directory: ./client
