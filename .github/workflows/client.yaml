@@ -97,7 +97,7 @@ jobs:
       #DO NOT MERGE- run: flutter build appbundle
       #  working-directory: ./client
       # TODO: generate apk from appbundle using bundletool
-      - run: flutter build apk -flavor staging
+      - run: flutter build apk --flavor staging
         working-directory: ./client
       - name: Upload Staging APK artifact
         uses: actions/upload-artifact@v2
