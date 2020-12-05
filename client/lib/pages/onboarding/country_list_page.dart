@@ -40,6 +40,10 @@ class _CountryListPageState extends State<CountryListPage> {
     return PageScaffold(
       // TODO: localize?
       title: 'Country',
+      headerWidget: TextField(
+        decoration: InputDecoration(
+            border: InputBorder.none, hintText: 'Enter your country'),
+      ),
       color: Constants.backgroundColor,
       body: _buildCountries(),
     );

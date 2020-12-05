@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
   final String title;
+  final Widget headerWidget;
   final String heroTag;
   final List<Widget> body;
   final List<Widget> beforeHeader;
@@ -28,6 +29,7 @@ class PageScaffold extends StatelessWidget {
   PageScaffold({
     @required this.body,
     this.title,
+    this.headerWidget,
     this.heroTag,
     this.header,
     this.showHeader = true,
@@ -59,6 +61,7 @@ class PageScaffold extends StatelessWidget {
                   (header ??
                       PageHeader(
                         title: title,
+                        headerWidget: headerWidget,
                         heroTag: heroTag ?? title,
                         borderColor: headingBorderColor,
                         showBackButton: showBackButton,
