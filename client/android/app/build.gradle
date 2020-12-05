@@ -105,8 +105,6 @@ android {
                     from "${bundleBuildDir}/${originalDirPath}/${originalFileName}"
                     into "${bundleBuildDir}/${variant.buildType.name}/"
                     rename ("${originalFileName}", "app-${variant.buildType.name}.apk")
-                    println "From: ${bundleBuildDir}/${originalDirPath}/${originalFileName}"
-                    println "To:   ${bundleBuildDir}/${variant.buildType.name}/"
                 }
                 tasks[apkTaskName].finalizedBy = [copyApkTask]
             }
