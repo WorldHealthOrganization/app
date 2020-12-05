@@ -72,7 +72,8 @@ android {
     }
 
     // Bundle and Apk copied to expected location for all variants
-    // https://github.com/flutter/flutter/issues/65264#issuecomment-707013948
+    // TODO: remove once fixed: https://github.com/flutter/flutter/issues/65264
+    // Based on: https://github.com/flutter/flutter/issues/65264#issuecomment-707013948
     applicationVariants.all { variant ->
         variant.outputs.all {
             def taskSuffix = variant.name.capitalize()
