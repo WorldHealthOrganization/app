@@ -78,7 +78,7 @@ android {
             def bundleTaskName = "bundle${taskSuffix}"
             if (tasks.findByName(bundleTaskName)) {
                 def copyAABTask = tasks.create(name: "copyAndRenameAab${taskSuffix}", type: Copy) {
-                    // Cmd:  `flutter build appbundle --flavor prod`
+                    // Cmd:  flutter build appbundle --release --flavor prod
                     // Task: copyAndRenameAabProdRelease
                     // Src:  build/app/outputs/bundle/prodRelease/app-prod-release.aab
                     // Dst:  build/app/outputs/bundle/release/app.aab
@@ -95,9 +95,9 @@ android {
             def apkTaskName = "assemble${taskSuffix}"
             if (tasks.findByName(apkTaskName)) {
                 def copyApkTask = tasks.create(name: "copyAndRenameApk${taskSuffix}", type: Copy) {
-                    // Cmd:  `flutter build apk --flavor prod`
+                    // Cmd:  flutter build apk --flavor prod --release
                     // Task: copyAndRenameApkProdRelease
-                    // Src:  apk/prod/release/app-prod-release.apk
+                    // Src:  build/app/outputs/apk/prod/release/app-prod-release.apk
                     // Dst:  build/app/outputs/apk/release/app-release.apk
                     def bundleBuildDir = "${buildDir}/outputs/apk"
                     def originalDirPath = "${variant.productFlavors.name.join()}/${variant.buildType.name}"
