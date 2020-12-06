@@ -27,7 +27,7 @@ class PageHeader extends StatelessWidget {
   final bool showBackButton;
 
   PageHeader({
-    @required this.title,
+    this.title,
     this.headerWidget,
     this.heroTag,
     this.showBackButton = true,
@@ -46,15 +46,15 @@ class PageHeader extends StatelessWidget {
             ? EdgeInsets.zero
             : EdgeInsets.symmetric(horizontal: 8),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: TextStyle(color: Constants.accentNavyColor),
-            ),
-            Container(
-              child: headerWidget,
-            )
+            title != null
+                ? Text(
+                    title,
+                    style: TextStyle(color: Constants.accentNavyColor),
+                  )
+                : Container(
+                    child: headerWidget,
+                  ),
           ],
         ));
     final leading = showBackButton ? BackButton() : null;
@@ -101,7 +101,7 @@ class PageHeader extends StatelessWidget {
       header: true,
       namesRoute: true,
       child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           child: AutoSizeThemedText(title,
               variant: variant,
               maxLines: 1,

@@ -39,7 +39,7 @@ class _CountryListPageState extends State<CountryListPage> {
   Widget build(BuildContext context) {
     return PageScaffold(
       // TODO: localize?
-      title: 'Country',
+      // title: 'Country',
       headerWidget: TextField(
         decoration: InputDecoration(
             border: InputBorder.none, hintText: 'Enter your country'),
