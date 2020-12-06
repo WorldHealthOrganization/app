@@ -94,16 +94,16 @@ jobs:
         working-directory: ./client
       - run: git diff --exit-code
       - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
-      - run: flutter build appbundle
+      - run: flutter build appbundle --release --flavor staging
         working-directory: ./client
       # TODO: generate apk from appbundle using bundletool
-      - run: flutter build apk
+      - run: flutter build apk --release --flavor staging
         working-directory: ./client
       - name: Upload Staging APK artifact
         uses: actions/upload-artifact@v2
         with:
           name: staging-apk
-          path: ./client/build/app/outputs/apk/release/app-release.apk
+          path: ./client/build/app/outputs/flutter-apk/app-staging-release.apk
   deploy_apk_to_firebase_staging:
     name: Deploy APK to Firebase App Distribution (Staging)
     runs-on: ubuntu-latest
@@ -170,7 +170,7 @@ jobs:
       - name: Run Firebase App Distribution
         shell: bash
         run: |
-          npx firebase appdistribution:distribute --app "$FIREBASE_STAGING_APP_ID" --release-notes "$RELEASE_NOTES" --groups "every-build" app-release.apk
+          npx firebase appdistribution:distribute --app "$FIREBASE_STAGING_APP_ID" --release-notes "$RELEASE_NOTES" --groups "every-build" app-staging-release.apk
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${{ runner.temp }}/fbappdeploy.json"
           RELEASE_NOTES: "https://github.com/${{ github.repository }}/tree/${{ github.sha }} . Any prior version of this app will need to be uninstalled prior to installing this build."

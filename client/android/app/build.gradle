@@ -5,12 +5,12 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 } else {
-  throw new FileNotFoundException("local.properties not found, ensure app is built via Flutter")
+    throw new FileNotFoundException('local.properties not found, ensure app is built via Flutter')
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new GradleException('Flutter SDK not found. Define location with flutter.sdk in the local.properties file.')
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -36,12 +36,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "org.who.WHOMyHealth"
+        applicationId 'org.who.WHOMyHealth'
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     buildTypes {
@@ -49,6 +49,70 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+        }
+    }
+
+    flavorDimensions 'server'
+
+    // "hack", "prod" and "staging" flavors, based on:
+    // https://medium.com/@animeshjain/build-flavors-in-flutter-android-and-ios-with-different-firebase-projects-per-flavor-27c5c5dac10b
+    productFlavors {
+        hack {
+            dimension 'server'
+            versionNameSuffix '-hack'
+        }
+        prod {
+            dimension 'server'
+        }
+        staging {
+            dimension 'server'
+            versionNameSuffix '-staging'
+            getIsDefault().set(true)  // Default Flavor
+        }
+    }
+
+    // Bundle and Apk copied to expected location for all variants
+    // TODO: remove once fixed: https://github.com/flutter/flutter/issues/65264
+    // Based on: https://github.com/flutter/flutter/issues/65264#issuecomment-707013948
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def taskSuffix = variant.name.capitalize()
+
+            def bundleTaskName = "bundle${taskSuffix}"
+            if (tasks.findByName(bundleTaskName)) {
+                def copyAABTask = tasks.create(name: "copyAndRenameAab${taskSuffix}", type: Copy) {
+                    // Cmd:     flutter build appbundle --release --flavor prod
+                    // Depends: bundleProdRelease
+                    // Task:    copyAndRenameAabProdRelease
+                    // Src:     build/app/outputs/bundle/prodRelease/app-prod-release.aab
+                    // Dst:     build/app/outputs/bundle/release/app.aab
+                    def bundleBuildDir = "${buildDir}/outputs/bundle"
+                    def originalDirPath = "${variant.productFlavors.name.join()}${variant.buildType.name}"
+                    def originalFileName = "${project.archivesBaseName}-${variant.productFlavors.name.join('-')}-${variant.buildType.name}.aab"
+                    from "${bundleBuildDir}/${originalDirPath}/${originalFileName}"
+                    into "${bundleBuildDir}/${variant.buildType.name}/"
+                    rename ("${originalFileName}", "app.aab")
+                }
+                tasks[bundleTaskName].finalizedBy = [copyAABTask]
+            }
+
+            def apkTaskName = "assemble${taskSuffix}"
+            if (tasks.findByName(apkTaskName)) {
+                def copyApkTask = tasks.create(name: "copyAndRenameApk${taskSuffix}", type: Copy) {
+                    // Cmd:     flutter build apk --flavor prod --release
+                    // Depends: assembleProdRelease (builds the apk)
+                    // Task:    copyAndRenameApkProdRelease
+                    // Src:     build/app/outputs/apk/prod/release/app-prod-release.apk
+                    // Dst:     build/app/outputs/apk/release/app-release.apk
+                    def bundleBuildDir = "${buildDir}/outputs/apk"
+                    def originalDirPath = "${variant.productFlavors.name.join()}/${variant.buildType.name}"
+                    def originalFileName = "${project.archivesBaseName}-${variant.productFlavors.name.join('-')}-${variant.buildType.name}.apk"
+                    from "${bundleBuildDir}/${originalDirPath}/${originalFileName}"
+                    into "${bundleBuildDir}/${variant.buildType.name}/"
+                    rename ("${originalFileName}", "app-${variant.buildType.name}.apk")
+                }
+                tasks[apkTaskName].finalizedBy = [copyApkTask]
+            }
         }
     }
 }
