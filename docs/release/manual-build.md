@@ -53,15 +53,22 @@ Follow Apple's instructions on [preparing for app distribution](https://help.app
 
 ### Create a Build Archive
 
-Prepare the Flutter release:
+Clean build and then build the Flutter release:
 
 ```
-DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+./tools/gen-client-buildinfo.sh
 cd client
-flutter build ios
+
+flutter clean
+
+flutter build ios --release --flavor prod
 ```
 
-_Note: if you are on Xcode version 8.2 or earlier, you will need to close and re-open Xcode to ensure that the release configuration mode is refreshed_
+The release archive is located here:
+
+```
+TODO: FILL OUT, DO NOT MERGE
+```
 
 Follow Apple's instructions to [create an archive](https://help.apple.com/xcode/mac/current/#/devf37a1db04), [validate the app](https://help.apple.com/xcode/mac/current/#/dev37441e273), and [upload it to App Store Connect](https://help.apple.com/xcode/mac/current/#/dev442d7f2ca).
 
@@ -89,12 +96,16 @@ Follow Flutter's [instructions for signing the app](https://flutter.dev/docs/dep
 Build the app bundle:
 
 ```
-DEVELOPMENT_ONLY=false ./tools/gen-client-buildinfo.sh
+./tools/gen-client-buildinfo.sh
 cd client
-flutter build appbundle
+flutter build appbundle --release --flavor prod
 ```
 
-The release bundle for your app is created at `client/build/app/outputs/bundle/release/app.aab`.
+The release bundle for your app is created at:
+
+```
+build/app/outputs/bundle/prodRelease/app-prod-release.aab
+```
 
 ### Upload the bundle to Google Play
 
