@@ -1,3 +1,4 @@
+import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/cupertino.dart';
@@ -13,8 +14,8 @@ class ContentService {
   static final Duration networkTimeout = Duration(seconds: 30);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
-  ContentService({@required String endpoint})
-      : baseContentURL = '$endpoint/content/bundles';
+  ContentService({@required Endpoint endpoint})
+      : baseContentURL = '${endpoint.service}/content/bundles';
 
   /// Load a localized content bundle loaded preferentially from the network, falling back
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
