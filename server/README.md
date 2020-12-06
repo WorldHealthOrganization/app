@@ -57,8 +57,9 @@ curl -i \
 Served from Google Cloud Storage:
 
 ```
-curl https://storage.googleapis.com/who-myhealth-staging-static-content-01/\
-content/bundles/protect_yourself.en_US.yaml
+curl https://staging.whocoronavirus.org/content/bundles/protect_yourself.en_US.yaml
+
+curl https://covid19app.who.int/content/bundles/protect_yourself.en_US.yaml
 ```
 
 ## Building and Deploying
