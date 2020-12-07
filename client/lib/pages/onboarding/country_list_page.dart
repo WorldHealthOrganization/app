@@ -31,7 +31,6 @@ class _CountryListPageState extends State<CountryListPage> {
   @override
   void initState() {
     super.initState();
-
     selectedCountryCode = widget.selectedCountryCode;
   }
 
@@ -41,9 +40,17 @@ class _CountryListPageState extends State<CountryListPage> {
       // TODO: localize?
       // title: 'Country',
       headerWidget: TextField(
-        decoration: InputDecoration(
-            border: InputBorder.none, hintText: 'Enter your country'),
-      ),
+          decoration: InputDecoration(
+              border: InputBorder.none, hintText: 'Enter your country'),
+          onChanged: (String value) async {
+            List sorted = (widget.countries.values).map((country) {
+              var newCountry = country.name.toString();
+              if (newCountry.startsWith(value)) {
+                return newCountry;
+              }
+            }).toList();
+            print(sorted);
+          }),
       color: Constants.backgroundColor,
       body: _buildCountries(),
     );
