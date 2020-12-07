@@ -9,21 +9,27 @@ class Endpoint {
     return projectId == _prodProjectId;
   }
 
+  static String _projectIdShort(String projectId) {
+    if (!projectId.startsWith(_whoMhPrefix)) {
+      throw Exception(
+          "Project: $projectId doesn't match prefix: $_whoMhPrefix");
+    }
+    return projectId.substring(_whoMhPrefix.length);
+  }
+
   static String _serviceUrl(String projectId) {
     if (_isProd(projectId)) {
       return _prodServiceUrl;
     }
-    if (projectId.startsWith(_whoMhPrefix)) {
-      final subdomain = projectId.substring(_whoMhPrefix.length);
-      return 'https://${subdomain}.whocoronavirus.org';
-    }
-    throw Exception("Project: $projectId doesn't match prefix: $_whoMhPrefix");
+    return 'https://${_projectIdShort(projectId)}.whocoronavirus.org';
   }
 
-  final String service;
   final bool isProd;
+  final String projectIdShort;
+  final String serviceUrl;
 
   Endpoint(String projectId)
-      : service = _serviceUrl(projectId),
-        isProd = _isProd(projectId);
+      : isProd = _isProd(projectId),
+        projectIdShort = _projectIdShort(projectId),
+        serviceUrl = _serviceUrl(projectId);
 }
