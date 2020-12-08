@@ -171,7 +171,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               update: (_, WhoService service, __) {
                 final ret = Notifications(service: service);
                 ret.configure();
-                ret.updateFirebaseToken();
+                updateFirebaseToken(ret);
                 return ret;
               },
             ),
@@ -247,4 +247,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     var parts = Intl.getCurrentLocale().split('_');
     return Locale(parts[0], parts[1]);
   }
+
+  // To avoid a race condition where the Firebase Token and the user's
+  // location are set simultaneously, leading to an inconsistent result
+  // on the server, call updateFirebaseToken in a synchronous fashion.
+  // Note that the RPC will only occur when the value actually changes.
+  void updateFirebaseToken(Notifications ret) async {
+    await ret.updateFirebaseToken();
+  }
+
 }
