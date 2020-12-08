@@ -255,5 +255,4 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void updateFirebaseToken(Notifications ret) async {
     await ret.updateFirebaseToken();
   }
-
 }
