@@ -17,6 +17,8 @@ command will deploy the app to Android and iOS, simulator or connected device:
 flutter run --flavor hack
 ```
 
+**NOTE:** this isn't yet support for iOS builds but will soon be.
+
 It should not be an issue if you break the hack server but please be thoughtful in doing
 so. Please keep treat any server data as confidential but by design it shouldn't contain
 any private data.
