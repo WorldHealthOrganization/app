@@ -81,6 +81,7 @@ resource "google_compute_managed_ssl_certificate" "ssl-cert" {
 
   # Must change name when editing as Google provider doesn't support update in
   # place. Also need to create replacement resource before deleting old resource.
+  # `terraform apply` must be done twice. 1st error: resourceInUseByAnotherResource
   name = "${var.name}-ssl-cert-${random_id.certificate.hex}"
   lifecycle {
     create_before_destroy = true
