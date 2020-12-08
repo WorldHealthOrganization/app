@@ -165,7 +165,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ),
             ProxyProvider(
                 update: (_, Endpoint endpoint, __) => WhoService(
-                      endpoint: endpoint.service,
+                      endpoint: endpoint.serviceUrl,
                     )),
             ProxyProvider(
               update: (_, WhoService service, __) {
@@ -211,7 +211,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 observerFn: (_, ContentStore content) {
               return [
                 if (!endpoint.isProd)
-                  Alert(null, 'No privacy on test builds.', dismissable: true),
+                  Alert(
+                      null, 'No privacy on server - ${endpoint.projectIdShort}',
+                      dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
                   Alert('App Update Required',
                       'This information may be outdated. You must update this app to receive more recent COVID-19 info.'),
