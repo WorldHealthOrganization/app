@@ -27,11 +27,13 @@ class CountryListPage extends StatefulWidget {
 
 class _CountryListPageState extends State<CountryListPage> {
   String selectedCountryCode;
+  var listData;
 
   @override
   void initState() {
     super.initState();
     selectedCountryCode = widget.selectedCountryCode;
+    listData = (widget.countries?.values ?? []);
   }
 
   @override
@@ -43,25 +45,27 @@ class _CountryListPageState extends State<CountryListPage> {
           decoration: InputDecoration(
               border: InputBorder.none, hintText: 'Enter your country'),
           onChanged: (String value) async {
-            List sorted = (widget.countries.values).map((country) {
-              var newCountry = country.name.toString();
-              if (newCountry.startsWith(value)) {
-                return newCountry;
-              }
+            List filtered = (widget.countries?.values ?? []).where((element) {
+              return element.name
+                  .toString()
+                  .toUpperCase()
+                  .startsWith(value.toUpperCase());
             }).toList();
-            print(sorted);
+            setState(() {
+              listData = filtered;
+            });
           }),
       color: Constants.backgroundColor,
-      body: _buildCountries(),
+      body: _buildCountries(listData),
     );
   }
 
-  List<Widget> _buildCountries() {
+  List<Widget> _buildCountries(listData) {
     if (widget.countries == null || widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return (widget.countries?.values ?? [])
-        .map((country) => _buildCountryItem(country))
+    return (listData)
+        .map<Widget>((country) => _buildCountryItem(country))
         .toList();
   }
 
