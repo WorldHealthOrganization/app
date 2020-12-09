@@ -46,10 +46,14 @@ class _CountryListPageState extends State<CountryListPage> {
               border: InputBorder.none, hintText: 'Enter your country'),
           onChanged: (String value) async {
             List filtered = (widget.countries?.values ?? []).where((element) {
-              return element.name
+              var listItem = element.name
                   .toString()
                   .toUpperCase()
                   .startsWith(value.toUpperCase());
+              if (listItem || selectedCountryCode == element.alpha2Code) {
+                return true;
+              }
+              return false;
             }).toList();
             setState(() {
               listData = filtered;
