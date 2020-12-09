@@ -75,7 +75,7 @@ jobs:
       - run: flutter doctor -v
       - run: flutter pub get
         working-directory: ./client
-      - run: flutter build ios --release --no-codesign
+      - run: flutter build ios --release --flavor staging --no-codesign
         working-directory: ./client
       - run: git diff --exit-code
   build_android:
