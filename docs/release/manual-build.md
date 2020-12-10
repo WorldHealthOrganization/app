@@ -2,7 +2,14 @@
 
 _Note these instructions are for manual submission to the app stores, not for building the app during development. For the latter, see [here](../ONBOARDING.md)._
 
-These instructions will assume that you have the up-to-date [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [Flutter](https://flutter.dev/docs/get-started/install), [Android Studio](https://developer.android.com/studio/index.html), [XCode](https://developer.apple.com/xcode/), and [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation) already installed. You must use a macOS system to build the iOS app.
+These instructions will assume that you have the up-to-date.
+You'll need a Mac system for doing iOS builds.
+
+- [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Flutter](https://flutter.dev/docs/get-started/install)
+- [Android Studio](https://developer.android.com/studio/index.html)
+- [XCode](https://developer.apple.com/xcode/)
+- [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#installation)
 
 ## Verify your tool versions
 
@@ -67,17 +74,21 @@ flutter build ios --release --flavor prod
 The release archive is located here:
 
 ```
-TODO: FILL OUT, DO NOT MERGE
+client/build/ios/iphoneos/Runner.app
 ```
 
-Follow Apple's instructions to [create an archive](https://help.apple.com/xcode/mac/current/#/devf37a1db04), [validate the app](https://help.apple.com/xcode/mac/current/#/dev37441e273), and [upload it to App Store Connect](https://help.apple.com/xcode/mac/current/#/dev442d7f2ca).
+Follow Apple's instructions to:
+
+1. [Create Archive](https://help.apple.com/xcode/mac/current/#/devf37a1db04)
+1. [Validate the App](https://help.apple.com/xcode/mac/current/#/dev37441e273)
+1. [App Store Connect Upload](https://help.apple.com/xcode/mac/current/#/dev442d7f2ca)
 
 You should receive an email within 30 minutes notifying you that your build has been validated.
 
 ### Production vs Development Push Settings
 
-In file Runner.entitlements change 'aps-environment' to either 'development' or 'production' to select either the
-Sandbox or Production Apple Push Notification Service.
+In file Runner.entitlements change 'aps-environment' to either 'development' or 'production'
+to select either the Sandbox or Production Apple Push Notification Service.
 
 ### Submit For Review
 
