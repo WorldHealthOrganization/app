@@ -75,9 +75,10 @@ jobs:
       - run: flutter doctor -v
       - run: flutter pub get
         working-directory: ./client
+      - run: git diff --exit-code
+      - run: ./tools/gen-client-buildinfo.sh
       - run: flutter build ios --release --flavor staging --no-codesign
         working-directory: ./client
-      - run: git diff --exit-code
   build_android:
     # Firebase requires fat APKs, not AABs.
     name: Build Android APK (Staging)
@@ -93,7 +94,7 @@ jobs:
       - run: flutter pub get
         working-directory: ./client
       - run: git diff --exit-code
-      - run: DEVELOPMENT_ONLY=true ./tools/gen-client-buildinfo.sh
+      - run: ./tools/gen-client-buildinfo.sh
       - run: flutter build appbundle --release --flavor staging
         working-directory: ./client
       # TODO: generate apk from appbundle using bundletool
