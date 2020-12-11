@@ -118,9 +118,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
       _showCountryListPage = false;
     });
     await _toNextPage();
+    var fcmToken = await UserPreferences().getFirebaseToken();
     try {
       await widget.service
-          .putLocation(isoCountryCode: _selectedCountry.alpha2Code);
+          .putNotificationSettings(
+          token: fcmToken,
+          isoCountryCode: _selectedCountry.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }
