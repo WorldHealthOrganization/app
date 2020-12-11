@@ -63,11 +63,11 @@ public class NotificationsManager {
         } else {
           if (!Environment.isProduction()) {
             logger.info(
-                "FAILED - Subscribed " + client.token + " to topic " + topic
-              );
+              "FAILED - Subscribed " + client.token + " to topic " + topic
+            );
             List<TopicManagementResponse.Error> errors = resp.getErrors();
             for (TopicManagementResponse.Error error : errors) {
-                logger.info("FAILED - Reason - "     + error);
+              logger.info("FAILED - Reason - " + error);
             }
           }
         }

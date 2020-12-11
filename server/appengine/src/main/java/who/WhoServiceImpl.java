@@ -61,12 +61,13 @@ public class WhoServiceImpl implements WhoService {
     nm.updateSubscriptions(client);
     return new Void();
   }
-  
+
   @Override
-  public Void putNotificationSettings(PutNotificationSettingsRequest request) throws IOException {
+  public Void putNotificationSettings(PutNotificationSettingsRequest request)
+    throws IOException {
     // TODO: Consider doing this in some form of datastore transaction. THe trick being that the firebase and datastore may get out of sync...
     Client client = Client.current();
-    
+
     // The underlying "Topics" system allows for a null country code; would that be OK to allow here too? ?????????????????????????????????????????????
     if (
       request.isoCountryCode == null ||
@@ -77,12 +78,11 @@ public class WhoServiceImpl implements WhoService {
     }
     client.isoCountryCode = request.isoCountryCode;
     client.token = Strings.emptyToNull(request.token);
-    
+
     ofy().save().entities(client);
     nm.updateSubscriptions(client);
     return new Void();
-    
-  }  
+  }
 
   // 10 mins
   private static final long STATS_TTL_SECONDS = 60 * 10;
