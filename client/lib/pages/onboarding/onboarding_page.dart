@@ -120,10 +120,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await _toNextPage();
     var fcmToken = await UserPreferences().getFirebaseToken();
     try {
-      await widget.service
-          .putNotificationSettings(
-          token: fcmToken,
-          isoCountryCode: _selectedCountry.alpha2Code);
+      await widget.service.putNotificationSettings(
+          token: fcmToken, isoCountryCode: _selectedCountry.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }

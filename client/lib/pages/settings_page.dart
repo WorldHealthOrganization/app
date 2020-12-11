@@ -254,12 +254,9 @@ class _SettingsPageState extends State<SettingsPage>
     await widget.prefs.setCountryIsoCode(_selectedCountry.alpha2Code);
     var fcmToken = await UserPreferences().getFirebaseToken();
 
-
     try {
-      await widget.service
-          .putNotificationSettings(
-            token: fcmToken,
-            isoCountryCode: _selectedCountry.alpha2Code);
+      await widget.service.putNotificationSettings(
+          token: fcmToken, isoCountryCode: _selectedCountry.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }

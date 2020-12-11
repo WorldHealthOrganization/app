@@ -13,7 +13,8 @@ class WhoService {
   WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
 
   /// Put Notification Settings
-  Future<bool> putNotificationSettings({String token, String isoCountryCode}) async {
+  Future<bool> putNotificationSettings(
+      {String token, String isoCountryCode}) async {
     final headers = await _getHeaders();
     final req = PutNotificationSettingsRequest.create();
     if (token != null) {
