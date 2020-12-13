@@ -11,16 +11,18 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class JurisdictionType extends $pb.ProtobufEnum {
   static const JurisdictionType GLOBAL = JurisdictionType._(0, 'GLOBAL');
-  static const JurisdictionType WHO_REGION = JurisdictionType._(1, 'WHO_REGION');
+  static const JurisdictionType WHO_REGION =
+      JurisdictionType._(1, 'WHO_REGION');
   static const JurisdictionType COUNTRY = JurisdictionType._(2, 'COUNTRY');
 
-  static const $core.List<JurisdictionType> values = <JurisdictionType> [
+  static const $core.List<JurisdictionType> values = <JurisdictionType>[
     GLOBAL,
     WHO_REGION,
     COUNTRY,
   ];
 
-  static final $core.Map<$core.int, JurisdictionType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, JurisdictionType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static JurisdictionType valueOf($core.int value) => _byValue[value];
 
   const JurisdictionType._($core.int v, $core.String n) : super(v, n);
@@ -31,15 +33,15 @@ class Platform extends $pb.ProtobufEnum {
   static const Platform ANDROID = Platform._(1, 'ANDROID');
   static const Platform WEB = Platform._(2, 'WEB');
 
-  static const $core.List<Platform> values = <Platform> [
+  static const $core.List<Platform> values = <Platform>[
     IOS,
     ANDROID,
     WEB,
   ];
 
-  static final $core.Map<$core.int, Platform> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Platform> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Platform valueOf($core.int value) => _byValue[value];
 
   const Platform._($core.int v, $core.String n) : super(v, n);
 }
-

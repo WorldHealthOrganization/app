@@ -13,10 +13,9 @@ class WhoService {
   WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
 
   /// Put Notification Settings
-  Future<bool> putNotificationSettings(
-      {String token, String isoCountryCode}) async {
+  Future<bool> putClientSettings({String token, String isoCountryCode}) async {
     final headers = await _getHeaders();
-    final req = PutNotificationSettingsRequest.create();
+    final req = PutClientSettingsRequest.create();
     if (token != null) {
       req.token = token;
     } else {
@@ -24,7 +23,7 @@ class WhoService {
     }
     req.isoCountryCode = isoCountryCode;
     final postBody = jsonEncode(req.toProto3Json());
-    final url = '$serviceUrl/putNotificationSettings';
+    final url = '$serviceUrl/putClientSettings';
     final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');

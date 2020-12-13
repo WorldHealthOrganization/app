@@ -25,7 +25,7 @@ public class WhoServiceImpl implements WhoService {
     this.nm = nm;
   }
 
-  // TODO: Delete this method once all clients are moved to putNotificationSettings.
+  // TODO: Delete this method once all clients are moved to putClientSettings.
   @Override
   public Void putDeviceToken(PutDeviceTokenRequest request) throws IOException {
     Client client = Client.current();
@@ -44,7 +44,7 @@ public class WhoServiceImpl implements WhoService {
 
   private static final Pattern COUNTRY_CODE = Pattern.compile("^[A-Z][A-Z]$");
 
-  // TODO: Delete this method once all clients are moved to putNotificationSettings.
+  // TODO: Delete this method once all clients are moved to putClientSettings.
   @Override
   public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
@@ -63,7 +63,7 @@ public class WhoServiceImpl implements WhoService {
   }
 
   @Override
-  public Void putNotificationSettings(PutNotificationSettingsRequest request)
+  public Void putClientSettings(PutClientSettingsRequest request)
     throws IOException {
     // TODO: Consider doing this in some form of datastore transaction. THe trick being that the firebase and datastore may get out of sync...
     Client client = Client.current();
