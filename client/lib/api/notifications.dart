@@ -105,8 +105,7 @@ class Notifications {
   Future setFirebaseToken(String newToken) async {
     var existingToken = await _userPrefs.getFirebaseToken();
     var countryCode = await prefs.countryIsoCode;
-    // If countryCode has not yet been set, no need to update the server.
-    if (existingToken != newToken && countryCode != null) {
+    if (existingToken != newToken) {
       await service.putClientSettings(
           token: newToken, isoCountryCode: countryCode);
       await _userPrefs.setFirebaseToken(newToken);
