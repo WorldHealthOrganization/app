@@ -65,18 +65,25 @@ public class WhoServiceImpl implements WhoService {
   @Override
   public Void putClientSettings(PutClientSettingsRequest request)
     throws IOException {
-    // TODO: Consider doing this in some form of datastore transaction. THe trick being that the firebase and datastore may get out of sync...
+    // TODO: Consider doing this in some form of datastore transaction. The trick being that the firebase and datastore may get out of sync...
     Client client = Client.current();
 
-    // The underlying "Topics" system allows for a null country code; would that be OK to allow here too? ?????????????????????????????????????????????
+    // The client may not yet have set a country code, or may somehow have removed it.
+    // The server can handle this scenario, so the information provided will be recorded.
     if (
-      request.isoCountryCode == null ||
-      request.isoCountryCode.length() != 2 ||
-      !COUNTRY_CODE.matcher(request.isoCountryCode).matches()
+      request.isoCountryCode == null || request.isoCountryCode.length() == 0
     ) {
-      throw new ClientException("Invalid isoCountryCode");
+      client.isoCountryCode = "";
+    } else {
+      // Don't even run a regex on a very long string.
+      if (
+        request.isoCountryCode.length() != 2 ||
+        !COUNTRY_CODE.matcher(request.isoCountryCode).matches()
+      ) {
+        throw new ClientException("Invalid isoCountryCode");
+      }
+      client.isoCountryCode = request.isoCountryCode;
     }
-    client.isoCountryCode = request.isoCountryCode;
     client.token = Strings.emptyToNull(request.token);
 
     ofy().save().entities(client);
