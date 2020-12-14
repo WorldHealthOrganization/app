@@ -78,8 +78,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
   protected void doGet(
     HttpServletRequest request,
     HttpServletResponse response
-  )
-    throws IOException {
+  ) throws IOException {
     // App Engine strips all external X-* request headers, so we can trust this is set by App Engine.
     // https://cloud.google.com/appengine/docs/flexible/java/scheduling-jobs-with-cron-yaml#validating_cron_requests
     if (

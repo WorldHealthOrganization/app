@@ -47,6 +47,20 @@ const PutLocationRequest$json = const {
   ],
 };
 
+const PutClientSettingsRequest$json = const {
+  '1': 'PutClientSettingsRequest',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {
+      '1': 'isoCountryCode',
+      '3': 12,
+      '4': 1,
+      '5': 9,
+      '10': 'isoCountryCode'
+    },
+  ],
+};
+
 const JurisdictionId$json = const {
   '1': 'JurisdictionId',
   '2': const [
@@ -167,6 +181,11 @@ const WhoServiceBase$json = const {
       '3': '.who.Void'
     },
     const {
+      '1': 'putClientSettings',
+      '2': '.who.PutClientSettingsRequest',
+      '3': '.who.Void'
+    },
+    const {
       '1': 'getCaseStats',
       '2': '.who.GetCaseStatsRequest',
       '3': '.who.GetCaseStatsResponse'
@@ -178,6 +197,7 @@ const WhoServiceBase$messageJson = const {
   '.who.PutDeviceTokenRequest': PutDeviceTokenRequest$json,
   '.who.Void': Void$json,
   '.who.PutLocationRequest': PutLocationRequest$json,
+  '.who.PutClientSettingsRequest': PutClientSettingsRequest$json,
   '.who.GetCaseStatsRequest': GetCaseStatsRequest$json,
   '.who.JurisdictionId': JurisdictionId$json,
   '.who.GetCaseStatsResponse': GetCaseStatsResponse$json,

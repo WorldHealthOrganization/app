@@ -1,19 +1,35 @@
-import 'package:flutter/foundation.dart';
-
-class Endpoints {
-  static final String STAGING_SERVICE = 'https://staging.whocoronavirus.org';
-  // TODO: Move this to who.int.
-  static final String PROD_SERVICE = 'https://whoapp.org';
-
-  static final String STAGING_STATIC_CONTENT =
-      'https://storage.googleapis.com/who-myhealth-staging-static-content-01';
-  // TODO: Move this to GCS too.
-  static final String PROD_STATIC_CONTENT = 'https://whoapp.org';
-}
+// Endpoint for service
 
 class Endpoint {
-  final String service;
-  final String staticContent;
+  static const _whoMhPrefix = 'who-mh-';
+  static const _prodProjectId = 'who-mh-prod';
+  static const _prodServiceUrl = 'https://covid19app.who.int';
 
-  Endpoint({@required this.service, @required this.staticContent});
+  static bool _isProd(String projectId) {
+    return projectId == _prodProjectId;
+  }
+
+  static String _projectIdShort(String projectId) {
+    if (!projectId.startsWith(_whoMhPrefix)) {
+      throw Exception(
+          "Project: $projectId doesn't match prefix: $_whoMhPrefix");
+    }
+    return projectId.substring(_whoMhPrefix.length);
+  }
+
+  static String _serviceUrl(String projectId) {
+    if (_isProd(projectId)) {
+      return _prodServiceUrl;
+    }
+    return 'https://${_projectIdShort(projectId)}.whocoronavirus.org';
+  }
+
+  final bool isProd;
+  final String projectIdShort;
+  final String serviceUrl;
+
+  Endpoint(String projectId)
+      : isProd = _isProd(projectId),
+        projectIdShort = _projectIdShort(projectId),
+        serviceUrl = _serviceUrl(projectId);
 }

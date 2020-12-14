@@ -31,6 +31,6 @@ The files are generated per project, indicated by the appendix on the filename.
 For example to access the `staging` server (the default), the files are:
 
 ```
-Android: client/android/app/google-services-staging.json
-iOS:     client/ios/Runner/GoogleService-Info-staging.plist
+Android: client/android/app/src/<flavor>/google-services.json
+iOS:     client/ios/config/<flavor>/GoogleService-Info.plist
 ```

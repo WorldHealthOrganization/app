@@ -211,9 +211,9 @@ promptly updated with any permanent changes to the server. The motivation is:
 
 ### Analytics
 
-Analytics may be disabled by the user on their device.
+Analytics may be disabled by the user on the client app on the Settings page.
 
-#### Project Settings
+#### Firebase Settings
 
 1. Firebase Console Integrations: https://console.firebase.google.com/u/0/project/who-mh-staging/settings/integrations
 1. Click on "Google Analytics" => "Enable"
@@ -222,19 +222,33 @@ Analytics may be disabled by the user on their device.
    - Prod: use WHO existing analytics account
    - For both, click "Enable Google Analytics"
 1. Click on link below "Linked Google Analytics account"
+
+#### Analytics Account Settings
+
+1. Visit Analytics Page (same as above link):
+   - Dev: https://analytics.google.com/analytics/web/?authuser=0#/a183548134p253618398/admin
+   - Prod: ????
 1. Select "Account Settings"
-1. Configure "Country of Business" (doesn't change where data is processed)
-   - Dev: United States
-   - Prod: Switzerland
-1. Click "Save" at bottom of the page
+   1. Configure "Country of Business" (doesn't change where data is processed)
+      - Dev: United States
+      - Prod: Switzerland
+   1. For "Data Sharing Settings", disable "Google products & services"
+   1. For "Data Processing Amendment", click "Review Amendment" and accept
+   1. Click "Save" at bottom of the page
 
 #### Property Settings
 
 1. Click on the left arrow to show the "Account" and "Property" columns
 1. Click "Data Settings" from the "Property" column on the right
-1. Click "Data Retention"
-1. "Event data retention" => 2 months
-1. "Reset user data on new activity" => Off
+   1. Click "Data Collection"
+      - Do not enable "Google signals data collection"
+      - For "Advanced Settings to Allow for Ads Personalization", disallow all countries then "Apply"
+      - For "User Data Collection Acknowledgement", click "I acknowldge"
+   1. Click "Data Retention":
+      - For "Event data retention" => 2 months
+      - For "Reset user data on new activity" => Off
+1. Click "Default Reporting Identity"
+   1. Click "By device only"
 1. Click "Save"
 
 ### Firebase App Registration
@@ -277,9 +291,7 @@ be added to the public repository.
    - Prod: ????
 1. "Register app"
 1. "Download google-services.json"
-1. Append project name to filename, e.g. "google-services-staging.json"
-1. Add to repo: `client/android/app/`
-1. TODO: need mechanism to switch between Firebase instances, default is staging server
+1. Add to repo: `client/android/app/src/<flavor>`
 1. Skip "Add Firebase SDK" by clicking "Next"
 1. Skip "Add initialization code" by clicking "Next"
 1. Run Android app in simulator to confirm Firebase setup
@@ -296,4 +308,3 @@ be added to the public repository.
 1. Repeat for:
    - Android Simulator
    - iOS Simulator
-1. **NOTE:** testing on multiple projects will [report crashes to wrong project](https://github.com/firebase/firebase-android-sdk/issues/2191). Only workaround is to change the `package_name` / `ApplicationId`.
