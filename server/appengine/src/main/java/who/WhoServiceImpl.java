@@ -25,6 +25,7 @@ public class WhoServiceImpl implements WhoService {
     this.nm = nm;
   }
 
+  // TODO: Delete this method once all clients are moved to putClientSettings.
   @Override
   public Void putDeviceToken(PutDeviceTokenRequest request) throws IOException {
     Client client = Client.current();
@@ -43,6 +44,7 @@ public class WhoServiceImpl implements WhoService {
 
   private static final Pattern COUNTRY_CODE = Pattern.compile("^[A-Z][A-Z]$");
 
+  // TODO: Delete this method once all clients are moved to putClientSettings.
   @Override
   public Void putLocation(PutLocationRequest request) throws IOException {
     Client client = Client.current();
@@ -55,6 +57,35 @@ public class WhoServiceImpl implements WhoService {
       throw new ClientException("Invalid isoCountryCode");
     }
     client.isoCountryCode = request.isoCountryCode;
+    ofy().save().entities(client);
+    nm.updateSubscriptions(client);
+    return new Void();
+  }
+
+  @Override
+  public Void putClientSettings(PutClientSettingsRequest request)
+    throws IOException {
+    // TODO: Consider doing this in some form of datastore transaction. The trick being that the firebase and datastore may get out of sync...
+    Client client = Client.current();
+
+    // The client may not yet have set a country code, or may somehow have removed it.
+    // The server can handle this scenario, so the information provided will be recorded.
+    if (
+      request.isoCountryCode == null || request.isoCountryCode.length() == 0
+    ) {
+      client.isoCountryCode = "";
+    } else {
+      // Don't even run a regex on a very long string.
+      if (
+        request.isoCountryCode.length() != 2 ||
+        !COUNTRY_CODE.matcher(request.isoCountryCode).matches()
+      ) {
+        throw new ClientException("Invalid isoCountryCode");
+      }
+      client.isoCountryCode = request.isoCountryCode;
+    }
+    client.token = Strings.emptyToNull(request.token);
+
     ofy().save().entities(client);
     nm.updateSubscriptions(client);
     return new Void();

@@ -167,9 +167,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 update: (_, Endpoint endpoint, __) => WhoService(
                       endpoint: endpoint.serviceUrl,
                     )),
-            ProxyProvider(
-              update: (_, WhoService service, __) {
-                final ret = Notifications(service: service);
+            ProxyProvider2(
+              update: (_, WhoService service, UserPreferencesStore prefs, __) {
+                final ret = Notifications(service: service, prefs: prefs);
                 ret.configure();
                 ret.updateFirebaseToken();
                 return ret;

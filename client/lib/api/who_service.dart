@@ -12,32 +12,18 @@ class WhoService {
 
   WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
 
-  /// Put device token.
-  Future<bool> putDeviceToken(String token) async {
+  /// Put Client Settings
+  Future<bool> putClientSettings({String token, String isoCountryCode}) async {
     final headers = await _getHeaders();
-    final req = PutDeviceTokenRequest.create();
+    final req = PutClientSettingsRequest.create();
     if (token != null) {
       req.token = token;
     } else {
       req.clearToken();
     }
-    final postBody = jsonEncode(req.toProto3Json());
-
-    final url = '$serviceUrl/putDeviceToken';
-    final response = await http.post(url, headers: headers, body: postBody);
-    if (response.statusCode != 200) {
-      throw Exception('Error status code: ${response.statusCode}');
-    }
-    return true;
-  }
-
-  /// Put location
-  Future<bool> putLocation({String isoCountryCode}) async {
-    final headers = await _getHeaders();
-    final req = PutLocationRequest.create();
     req.isoCountryCode = isoCountryCode;
     final postBody = jsonEncode(req.toProto3Json());
-    final url = '$serviceUrl/putLocation';
+    final url = '$serviceUrl/putClientSettings';
     final response = await http.post(url, headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');

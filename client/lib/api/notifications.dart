@@ -2,12 +2,14 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:notification_permissions/notification_permissions.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 
 class Notifications {
   final WhoService service;
+  final UserPreferencesStore prefs;
 
-  Notifications({@required this.service});
+  Notifications({@required this.service, @required this.prefs});
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   final UserPreferences _userPrefs = UserPreferences();
@@ -97,16 +99,15 @@ class Notifications {
     final tokenToSet =
         notificationsEnabled ? await _firebaseMessaging.getToken() : null;
 
-    final storedToken = await _userPrefs.getFirebaseToken();
-    if (tokenToSet != storedToken) {
-      await setFirebaseToken(tokenToSet);
-    }
+    await setFirebaseToken(tokenToSet);
   }
 
   Future setFirebaseToken(String newToken) async {
-    var exitsingToken = await _userPrefs.getFirebaseToken();
-    if (exitsingToken != newToken) {
-      await service.putDeviceToken(newToken);
+    var existingToken = await _userPrefs.getFirebaseToken();
+    var countryCode = await prefs.countryIsoCode;
+    if (existingToken != newToken) {
+      await service.putClientSettings(
+          token: newToken, isoCountryCode: countryCode);
       await _userPrefs.setFirebaseToken(newToken);
     }
   }

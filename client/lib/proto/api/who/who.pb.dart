@@ -176,6 +176,85 @@ class PutLocationRequest extends $pb.GeneratedMessage {
   void clearIsoCountryCode() => clearField(12);
 }
 
+class PutClientSettingsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PutClientSettingsRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'who'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'token')
+    ..aOS(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'isoCountryCode',
+        protoName: 'isoCountryCode')
+    ..hasRequiredFields = false;
+
+  PutClientSettingsRequest._() : super();
+  factory PutClientSettingsRequest() => create();
+  factory PutClientSettingsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PutClientSettingsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PutClientSettingsRequest clone() =>
+      PutClientSettingsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PutClientSettingsRequest copyWith(
+          void Function(PutClientSettingsRequest) updates) =>
+      super.copyWith((message) => updates(message
+          as PutClientSettingsRequest)); // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PutClientSettingsRequest create() => PutClientSettingsRequest._();
+  PutClientSettingsRequest createEmptyInstance() => create();
+  static $pb.PbList<PutClientSettingsRequest> createRepeated() =>
+      $pb.PbList<PutClientSettingsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static PutClientSettingsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PutClientSettingsRequest>(create);
+  static PutClientSettingsRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get token => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set token($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => clearField(1);
+
+  @$pb.TagNumber(12)
+  $core.String get isoCountryCode => $_getSZ(1);
+  @$pb.TagNumber(12)
+  set isoCountryCode($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasIsoCountryCode() => $_has(1);
+  @$pb.TagNumber(12)
+  void clearIsoCountryCode() => clearField(12);
+}
+
 class JurisdictionId extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -699,6 +778,13 @@ class WhoServiceApi {
     var emptyResponse = Void();
     return _client.invoke<Void>(
         ctx, 'WhoService', 'putLocation', request, emptyResponse);
+  }
+
+  $async.Future<Void> putClientSettings(
+      $pb.ClientContext ctx, PutClientSettingsRequest request) {
+    var emptyResponse = Void();
+    return _client.invoke<Void>(
+        ctx, 'WhoService', 'putClientSettings', request, emptyResponse);
   }
 
   $async.Future<GetCaseStatsResponse> getCaseStats(
