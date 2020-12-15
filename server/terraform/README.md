@@ -232,7 +232,7 @@ Analytics may be disabled by the user on the client app on the Settings page.
    1. Configure "Country of Business" (doesn't change where data is processed)
       - Dev: United States
       - Prod: Switzerland
-   1. For "Data Sharing Settings", disable "Google products & services"
+   1. For "Data Sharing Settings", enable "Google products & services"
    1. For "Data Processing Amendment", click "Review Amendment" and accept
    1. Click "Save" at bottom of the page
 
