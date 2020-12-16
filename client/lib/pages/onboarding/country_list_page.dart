@@ -46,7 +46,7 @@ class _CountryListPageState extends State<CountryListPage> {
               border: InputBorder.none, hintText: 'Enter your country'),
           onChanged: (String value) async {
             List filtered = (widget.countries?.values ?? []).where((element) {
-              var listItem = element.name
+              var nameMatch = element.name
                   .toString()
                   .toUpperCase()
                   .contains(value.toUpperCase());
