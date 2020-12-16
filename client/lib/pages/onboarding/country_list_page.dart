@@ -60,7 +60,7 @@ class _CountryListPageState extends State<CountryListPage> {
             });
           }),
       color: Constants.backgroundColor,
-      body: _buildCountries(listData),
+      body: _buildCountries(),
     );
   }
 
