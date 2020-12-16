@@ -8,7 +8,7 @@ publish_to: none
 # next expected version, and the `-git` suffix is a
 # pre-release indicator.
 # https://dart.dev/tools/pub/pubspec#version
-version: 0.15.0+26-git
+version: 0.16.0+27-git
 
 repository: https://github.com/WorldHealthOrganization/app
 
