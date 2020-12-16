@@ -101,7 +101,7 @@ class PageHeader extends StatelessWidget {
       header: true,
       namesRoute: true,
       child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          padding: EdgeInsets.symmetric(horizontal: 8),
           child: AutoSizeThemedText(title,
               variant: variant,
               maxLines: 1,
