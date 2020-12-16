@@ -50,10 +50,8 @@ class _CountryListPageState extends State<CountryListPage> {
                   .toString()
                   .toUpperCase()
                   .contains(value.toUpperCase());
-              if (listItem || selectedCountryCode == element.alpha2Code) {
-                return true;
-              }
-              return false;
+              return nameMatch ||
+                  selectedCountryCode == element.alpha2Code;
             }).toList();
             setState(() {
               selectedCountries = filtered;
