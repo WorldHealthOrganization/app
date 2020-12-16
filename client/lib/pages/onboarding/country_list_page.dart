@@ -64,7 +64,7 @@ class _CountryListPageState extends State<CountryListPage> {
     );
   }
 
-  List<Widget> _buildCountries(listData) {
+  List<Widget> _buildCountries() {
     if (widget.countries == null || widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
