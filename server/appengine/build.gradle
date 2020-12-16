@@ -63,9 +63,6 @@ dependencies {
     // Linked from https://github.com/google/s2-geometry-library-java/issues/7.
     implementation "io.sgr:s2-geometry-library-java:1.0.1";
 
-    // Not sure why this didn't come in with present-engine...
-    implementation 'com.google.appengine:appengine-remote-api:+'
-
     implementation 'com.google.firebase:firebase-admin:7.0.1'
     // 4.1.34.Final included in Firebase, which has vulnerabilities.
     implementation 'io.netty:netty-codec-http:4.1.55.Final'
