@@ -56,7 +56,7 @@ class _CountryListPageState extends State<CountryListPage> {
               return false;
             }).toList();
             setState(() {
-              listData = filtered;
+              selectedCountries = filtered;
             });
           }),
       color: Constants.backgroundColor,
