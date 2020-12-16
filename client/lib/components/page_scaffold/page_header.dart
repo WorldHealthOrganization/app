@@ -5,6 +5,7 @@ import 'package:who_app/constants.dart';
 // Used to get latest AppBar features while remaining on Flutter's stable branch
 
 class PageHeader extends StatelessWidget {
+  ///Overrides headerWidget parameter
   final String title;
 
   /// passing a widget into the header
