@@ -27,13 +27,13 @@ class CountryListPage extends StatefulWidget {
 
 class _CountryListPageState extends State<CountryListPage> {
   String selectedCountryCode;
-  Iterable<IsoCountry> selectedCountries;
+  List<IsoCountry> selectedCountries;
 
   @override
   void initState() {
     super.initState();
     selectedCountryCode = widget.selectedCountryCode;
-    listData = (widget.countries?.values ?? []);
+    selectedCountries = (widget.countries?.values?.toList() ?? []);
   }
 
   @override
@@ -50,8 +50,7 @@ class _CountryListPageState extends State<CountryListPage> {
                   .toString()
                   .toUpperCase()
                   .contains(value.toUpperCase());
-              return nameMatch ||
-                  selectedCountryCode == element.alpha2Code;
+              return nameMatch || selectedCountryCode == element.alpha2Code;
             }).toList();
             setState(() {
               selectedCountries = filtered;
@@ -66,7 +65,7 @@ class _CountryListPageState extends State<CountryListPage> {
     if (widget.countries == null || widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return (listData)
+    return selectedCountries
         .map<Widget>((country) => _buildCountryItem(country))
         .toList();
   }
