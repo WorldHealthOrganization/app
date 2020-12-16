@@ -27,7 +27,7 @@ class CountryListPage extends StatefulWidget {
 
 class _CountryListPageState extends State<CountryListPage> {
   String selectedCountryCode;
-  var listData;
+  Iterable<IsoCountry> selectedCountries;
 
   @override
   void initState() {
