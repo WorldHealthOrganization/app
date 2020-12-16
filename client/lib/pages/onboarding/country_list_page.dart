@@ -27,19 +27,35 @@ class CountryListPage extends StatefulWidget {
 
 class _CountryListPageState extends State<CountryListPage> {
   String selectedCountryCode;
+  List<IsoCountry> selectedCountries;
 
   @override
   void initState() {
     super.initState();
-
     selectedCountryCode = widget.selectedCountryCode;
+    selectedCountries = (widget.countries?.values?.toList() ?? []);
   }
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
       // TODO: localize?
-      title: 'Country',
+      // title: 'Country',
+      headerWidget: TextField(
+          decoration: InputDecoration(
+              border: InputBorder.none, hintText: 'Enter your country'),
+          onChanged: (String value) async {
+            List filtered = (widget.countries?.values ?? []).where((element) {
+              var nameMatch = element.name
+                  .toString()
+                  .toUpperCase()
+                  .contains(value.toUpperCase());
+              return nameMatch || selectedCountryCode == element.alpha2Code;
+            }).toList();
+            setState(() {
+              selectedCountries = filtered;
+            });
+          }),
       color: Constants.backgroundColor,
       body: _buildCountries(),
     );
@@ -49,8 +65,8 @@ class _CountryListPageState extends State<CountryListPage> {
     if (widget.countries == null || widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
-    return (widget.countries?.values ?? [])
-        .map((country) => _buildCountryItem(country))
+    return selectedCountries
+        .map<Widget>((country) => _buildCountryItem(country))
         .toList();
   }
 
