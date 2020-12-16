@@ -52,9 +52,7 @@ class PageHeader extends StatelessWidget {
                     title,
                     style: TextStyle(color: Constants.accentNavyColor),
                   )
-                : Container(
-                    child: headerWidget,
-                  ),
+                : headerWidget,
           ],
         ));
     final leading = showBackButton ? BackButton() : null;
