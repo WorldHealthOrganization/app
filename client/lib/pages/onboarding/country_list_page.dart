@@ -49,7 +49,7 @@ class _CountryListPageState extends State<CountryListPage> {
               var listItem = element.name
                   .toString()
                   .toUpperCase()
-                  .startsWith(value.toUpperCase());
+                  .contains(value.toUpperCase());
               if (listItem || selectedCountryCode == element.alpha2Code) {
                 return true;
               }
