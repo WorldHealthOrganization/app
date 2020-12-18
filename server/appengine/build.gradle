@@ -63,7 +63,7 @@ dependencies {
     // Linked from https://github.com/google/s2-geometry-library-java/issues/7.
     implementation "io.sgr:s2-geometry-library-java:1.0.1";
 
-    implementation 'com.google.firebase:firebase-admin:7.0.1'
+    implementation 'com.google.firebase:firebase-admin:7.1.0'
     // 4.1.34.Final included in Firebase, which has vulnerabilities.
     implementation 'io.netty:netty-codec-http:4.1.55.Final'
 
