@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
+import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
 
@@ -10,18 +11,27 @@ import 'package:who_app/proto/api/who/who.pb.dart';
 part 'stats_store.g.dart';
 
 class StatsStore extends _StatsStore with _$StatsStore {
-  StatsStore({@required WhoService service, @required String countryIsoCode})
-      : super(service: service, countryIsoCode: countryIsoCode);
+  StatsStore(
+      {@required WhoService service, @required UserPreferencesStore prefs})
+      : super(service: service, prefs: prefs);
 }
 
 abstract class _StatsStore with Store implements Updateable {
   final WhoService service;
-  final String countryIsoCode;
+  final UserPreferencesStore prefs;
 
-  _StatsStore({@required this.service, @required this.countryIsoCode});
+  _StatsStore({@required this.service, @required this.prefs});
 
   @observable
   GetCaseStatsResponse caseStatsResponse;
+
+  // Last update millisecondsSinceEpoch.
+  int _lastUpdateTimestamp = 0;
+  // Last seen user preference.
+  String countryIsoCode;
+
+  // One hour cache.
+  static int statsUpdateFrequency = 60 * 60 * 1000;
 
   @computed
   CaseStats get globalStats {
@@ -61,13 +71,27 @@ abstract class _StatsStore with Store implements Updateable {
       print('StatsStore update skipped');
       return;
     }
-    print('StatsStore update with country ${countryIsoCode}');
-    /** How to test that the periodic updating works:
-    final caseStatsResponse2 = await service.getCaseStats(isoCountryCode: countryIsoCode);
-    caseStatsResponse2.globalStats.cases = Int64(caseStatsResponse2.globalStats.cases.toInt() + Random().nextInt(100000));
-    caseStatsResponse = caseStatsResponse2;
-    */
+
+    var now = DateTime.now().millisecondsSinceEpoch;
+    var delta = now - _lastUpdateTimestamp;
+    if (delta < statsUpdateFrequency &&
+        countryIsoCode == prefs.countryIsoCode) {
+      print('StatsStore update skipped, cached data used from ${delta}ms ago.');
+      return;
+    }
+
+    countryIsoCode = prefs.countryIsoCode;
+    if (countryIsoCode == null) {
+      // This happens at startup time (while the prefs are being loaded in?).
+      print('StatsStore update skipped, country unknown.');
+      return;
+    }
+
+    print('StatsStore update with country ${countryIsoCode}, '
+        'refreshing data last seen ${delta}ms ago.');
+
     caseStatsResponse =
         await service.getCaseStats(isoCountryCode: countryIsoCode);
+    _lastUpdateTimestamp = now;
   }
 }

@@ -182,7 +182,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ) {
               final ret = StatsStore(
                 service: service,
-                countryIsoCode: prefs.countryIsoCode,
+                prefs: prefs,
               );
               ret.update();
               return ret;
