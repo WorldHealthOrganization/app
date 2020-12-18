@@ -92,8 +92,6 @@ contents:
 
         <p><b>Do it all!</b></p>
 
-        <p><em>Read our </em><a href="/emergencies/diseases/novel-coronavirus-2019/advice-for-public"><em>public advice page</em></a><em> for more information.&nbsp;</em></p><br />
-
     - title_html: |
         When should I get a test for COVID-19?
       body_html: |
@@ -143,12 +141,12 @@ contents:
           <li>Keep the room well-ventilated.</li>
           <li>If you share a room, place beds at least 1 metre apart.</li>
           <li>Monitor yourself for any symptoms for 14 days.&nbsp; </li>
-          <li>Stay positive by keeping in touch with loved ones by phone or online, and by <a href="/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/be-active-during-covid-19">exercising at home</a>.</li>
+          <li>Stay positive by keeping in touch with loved ones by phone or online, and by exercising at home.</li>
         </ul>
 
         <p>
         <br/>
-        If you live in an area with malaria or dengue fever, seek medical help if you have a fever. While travelling to and from the health facility and during medical care, wear a mask, keep at least a 1-metre distance from other people and avoid touching surfaces with your hands. This applies to adults and children. <em>Read our </em><a href="/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/malaria-and-the-covid-19-pandemic"><em>malaria and COVID-19 Q&amp;A</em></a><em> for more information.&nbsp;</em><em></em></p>
+        If you live in an area with malaria or dengue fever, seek medical help if you have a fever. While travelling to and from the health facility and during medical care, wear a mask, keep at least a 1-metre distance from other people and avoid touching surfaces with your hands. This applies to adults and children.</p>
 
     - title_html: |
         How long does it take to develop symptoms?
@@ -158,12 +156,12 @@ contents:
     - title_html: |
         Is there a vaccine for COVID-19?
       body_html: |
-        <p>Not yet. <a href="/publications/m/item/draft-landscape-of-covid-19-candidate-vaccines">Many potential vaccines for COVID-19 are being studied</a>, and several large clinical trials may report results later this year. If a vaccine is proven safe and effective, it must be approved by national regulators, manufactured, and distributed. WHO is working with partners around the world to help coordinate key steps in this process. WHO is working through the <a href="/initiatives/act-accelerator">ACT-Accelerator</a> to facilitate equitable access to a safe and effective vaccine for the billions of people who will need it, once it is available. More information about COVID-19 vaccine development is available <a href="/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines">here</a>.</p>
+        <p>Not yet. Many potential vaccines for COVID-19 are being studied, and several large clinical trials may report results later this year. If a vaccine is proven safe and effective, it must be approved by national regulators, manufactured, and distributed. WHO is working with partners around the world to help coordinate key steps in this process. WHO is working through the ACT-Accelerator to facilitate equitable access to a safe and effective vaccine for the billions of people who will need it, once it is available.</p>
 
     - title_html: |
         What should I do if I have COVID-19 symptoms?
       body_html: |
-        <p>If you have any symptoms suggestive of COVID-19, call your health care provider or COVID-19 hotline for instructions and find out when and where to get a test, stay at home for 14 days away from others and monitor your health. </p>
+        <p>If you have any symptoms suggestive of COVID-19, call your health care provider or COVID-19 hotline for instructions and find out when and where to get a test, stay at home for 14 days away from others and monitor your health.</p>
 
         <p>If you have shortness of breath or pain or pressure in the chest, seek medical attention at a health facility immediately. Call your health care provider or hotline in advance for direction to the right health facility.</p>
 
@@ -178,11 +176,11 @@ contents:
 
         <p>Optimal supportive care includes oxygen for severely ill patients and those who are at risk for severe disease and more advanced respiratory support such as ventilation for patients who are critically ill.</p>
 
-        <p>Dexamethasone is a corticosteroid that can help reduce the length of time on a ventilator and save lives of patients with severe and critical illness. <em>Read our </em><a href="/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-dexamethasone-and-covid-19"><em>dexamethasone Q&amp;A</em></a><em> for more information.</em> &nbsp;</p>
+        <p>Dexamethasone is a corticosteroid that can help reduce the length of time on a ventilator and save lives of patients with severe and critical illness.</p>
 
-        <p>Results from the WHO&rsquo;s Solidarity Trial <a href="/news/item/15-10-2020-solidarity-therapeutics-trial-produces-conclusive-evidence-on-the-effectiveness-of-repurposed-drugs-for-covid-19-in-record-time">indicated</a> that remdesivir, hydroxychloroquine, lopinavir/ritonavir and interferon regimens appear to have little or no effect on 28-day mortality or the in-hospital course of COVID-19 among hospitalized patients. </p>
+        <p>Results from the WHO&rsquo;s Solidarity Trial indicated that remdesivir, hydroxychloroquine, lopinavir/ritonavir and interferon regimens appear to have little or no effect on 28-day mortality or the in-hospital course of COVID-19 among hospitalized patients.</p>
 
-        <p>Hydroxychloroquine has not been shown to offer any benefit for treatment of COVID-19. <em>Read our </em><a href="/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-hydroxychloroquine-and-covid-19"><em>hydroxychloroquine Q&amp;A</em></a><em> for more information. </em></p>
+        <p>Hydroxychloroquine has not been shown to offer any benefit for treatment of COVID-19.</p>
 
         <p>WHO does not recommend self-medication with any medicines, including antibiotics, as a prevention or cure for COVID-19. WHO is coordinating efforts to develop treatments for COVID-19 and will continue to provide new information as it becomes available.</p>
 
