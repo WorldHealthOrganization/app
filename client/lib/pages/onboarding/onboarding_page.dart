@@ -131,6 +131,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await UserPreferences().setLegalAccepted();
     // Enable auto init so that analytics will work
     await FirebaseMessaging.instance.setAutoInitEnabled(true);
+
     var onboardingForFirstTime =
         !await UserPreferences().getOnboardingCompleted() &&
             !await UserPreferences().getOnboardingCompletedV1();
