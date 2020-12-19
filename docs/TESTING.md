@@ -31,7 +31,7 @@ These are the oldest OSs and some example devices that the app should support:
 | [iPhone 4s](https://en.wikipedia.org/wiki/IPhone_4S)                            | iOS 9.0 | Oct 14, 2011 | 960 x 640 |   512 MB |                     |
 | [Samsung Galaxy SII](https://en.wikipedia.org/wiki/Samsung_Galaxy_S_II)         |  API 19 |  May 2, 2011 | 800 x 480 | 1,000 MB |                     |
 | [Karbonn Alfa A110](https://www.gadgetsnow.com/mobile-phones/Karbonn-Alfa-A110) |  API 19 |  Aug 3, 2015 | 480 x 320 | 256 MB\* | India value phone   |
-| [Tecno H3](https://parktelonline.com/blog/tecno-h3-price-review-nigeria/        |  API 19 | Oct 27, 2014 | 320 x 480 |   512 MB | Nigeria value phone |
+| [Tecno H3](https://parktelonline.com/blog/tecno-h3-price-review-nigeria/)       |  API 19 | Oct 27, 2014 | 320 x 480 |   512 MB | Nigeria value phone |
 
 [*] Doesn't meet Android CDD requirement of 512 MB but we must serve as many devices as possible
 
