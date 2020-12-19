@@ -1,6 +1,4 @@
 import 'package:who_app/api/alerts.dart';
-import 'package:who_app/api/content/last_update.dart';
-import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/components/themed_text.dart';
@@ -108,8 +106,6 @@ class _AlertsWrapperState extends State<AlertsWrapper>
 
   final List<Alert> _alerts;
 
-  LastUpdate lastUpdate;
-
   @override
   void removeAlert(Alert a) {
     if (mounted) {
@@ -131,7 +127,6 @@ class _AlertsWrapperState extends State<AlertsWrapper>
   @override
   void initState() {
     super.initState();
-    checkContentUpdate();
   }
 
   @override
@@ -158,26 +153,6 @@ class _AlertsWrapperState extends State<AlertsWrapper>
         ],
       ),
     );
-  }
-
-  void checkContentUpdate() async {
-    var lastUpdatedMilliSeconds =
-        await UserPreferences().getLastUpdatedContent();
-    if (lastUpdatedMilliSeconds == null) {
-      return;
-    }
-    lastUpdate = LastUpdate(
-        DateTime.fromMillisecondsSinceEpoch(lastUpdatedMilliSeconds));
-    if (lastUpdate.isStale) {
-      addAlert(
-        Alert(
-          'No Internet Connection',
-          'Last update ${lastUpdate.timeDescription}',
-          dismissable: true,
-          color: Constants.primaryColor,
-        ),
-      );
-    }
   }
 }
 
