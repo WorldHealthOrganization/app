@@ -1,9 +1,61 @@
-## Terraform
+# Server Setup
+
+Documentation on settings up the servers from the Terraform to manually configured
+settings.
+
+## Policies
+
+The team has adopted a number of policies to improve transparency, security and
+auditability of the project. The main principle is:
+
+**All Production server changes should go through review before being applied
+and should be public.**
+
+This review includes manual changes to settings, e.g. Analytics. All of which
+are documented under source control. They should be code reviewed and merged
+before being applied in production. This page including the [Terraform
+Setup](https://github.com/WorldHealthOrganization/app/blob/master/server/terraform/README.md#Terraform-Setup)
+and [Manual Setup](https://github.com/WorldHealthOrganization/app/blob/master/server/terraform/README.md#Terraform-Setup)
+are the definitive record of the server setup. Other documents should be
+updated to match this.
+
+### Infrastructure as Code (IaC)
 
 Terraform is used for [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) (Iac).
 Beyond the normal benefits of IaC, it serves essential roles for the WHO App
 for transparency and security. Team policy is to use IaC and in particular Terraform
 for as much configuration as possible. Particularly the WHO production servers.
+
+### Privacy as Code (PaC)
+
+The motivation is to improve the privacy and auditability of the server.
+This should allow for maximum transparency in the entire system from the
+server to the client code. That helps to create trust and makes it easier
+for people to discover problems and suggest improvements.
+
+This policy applies to both changes to the code and any manual server
+configuration. The policy is to prefer that manual changes are done
+programmatically where possible, e.g. using Terraform.
+
+### Exceptions
+
+The goal is to make as much of the changes and server configuration as public
+as possible. Exceptions to this should be as narrow in scope and duration as
+possible. They include the following:
+
+- Emergency actions for stability, attacks or other unforeseen event
+- Intrusion detection systems and case investigation
+- Spam, abuse, security and other controls where public disclosure of
+  certain parts would diminish the security or effectiveness of the system
+- Identity of people with server access to reduce targeted attacks on them.
+  These people are known and approved individually by WHO. They employ
+  special security practices to guard against compromise
+
+Any changes not in the public repository must be documented elsewhere and
+reviewed. Emergency actions should be reviewed as soon as possible after
+the emergency is resolved.
+
+## Terraform Setup
 
 ### Development Organization
 
@@ -201,13 +253,9 @@ Error: Error creating App Engine application: googleapi: Error 403: The caller d
 The final setup must be completed manually for each project. This configuration
 should be moved to terraform if it is supported in the future.
 
-Production servers **MUST** be configured exactly as described here. Changes **MUST**
-be made through code and merged before being manually applied. Only exception is
-emergency changes for system reliability. In that case, this documentation must be
-promptly updated with any permanent changes to the server. The motivation is:
-
-- Transparency on configuration
-- Privacy policy compliance
+Production servers must be configured exactly as described here. Changes should
+be made through code and merged before being manually applied. Exceptions to this are
+defined in https://github.com/WorldHealthOrganization/app/blob/master/server/terraform/README.md#Exceptions.
 
 ### Analytics
 
