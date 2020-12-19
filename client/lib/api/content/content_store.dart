@@ -91,7 +91,7 @@ abstract class _ContentStore with Store implements Updateable {
   @override
   Future<void> update() async {
     // TODO: UserPreferences should be injected dependency.
-    if (!await UserPreferences().getTermsOfServiceCompleted()) {
+    if (!await UserPreferences().getLegalCompleted()) {
       print('ContentStore update skipped');
       return;
     }

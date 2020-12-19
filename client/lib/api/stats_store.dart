@@ -67,7 +67,7 @@ abstract class _StatsStore with Store implements Updateable {
   @override
   Future<void> update() async {
     // TODO: UserPreferences should be injected dependency.
-    if (!await UserPreferences().getTermsOfServiceCompleted()) {
+    if (!await UserPreferences().getLegalCompleted()) {
       print('StatsStore update skipped');
       return;
     }

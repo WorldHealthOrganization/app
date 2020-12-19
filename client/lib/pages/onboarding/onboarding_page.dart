@@ -128,10 +128,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Future<void> _onLegalDone(ContentStore store) async {
-    await UserPreferences().setTermsOfServiceCompleted(true);
+    await UserPreferences().setLegalAccepted();
     // Enable auto init so that analytics will work
     await FirebaseMessaging.instance.setAutoInitEnabled(true);
     if (!await UserPreferences().getOnboardingCompleted() ||
+        !await UserPreferences().getOnboardingCompletedV1() ||
         await UserPreferences().getAnalyticsEnabled()) {
       await UserPreferences().setAnalyticsEnabled(true);
     }
@@ -157,7 +158,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   void _onDone() async {
-    await UserPreferences().setOnboardingCompletedV1(true);
+    await UserPreferences().setOnboardingCompletedV2(true);
     await Navigator.of(context, rootNavigator: true).pushReplacementNamed(
       '/home',
     );
