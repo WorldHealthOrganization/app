@@ -4,30 +4,20 @@
 
 **Organization:** [`whocoronavirus.org`](https://console.cloud.google.com/iam-admin/settings?organizationId=532343229286)
 
-### [`who-myhealth-staging`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-staging)
+All production servers - such as `who-mh-prod` - are part of the WHO Google Cloud
+organization and not the developer organization.
+
+### [`who-mh-hack`](https://console.cloud.google.com/home/dashboard?project=who-mh-hack)
+
+Domain: `hack.whocoronavirus.org`
+
+### [`who-mh-prod`](https://console.cloud.google.com/home/dashboard?project=who-mh-prod)
+
+Domain: `covid19app.who.int`
+
+### [`who-mh-staging`](https://console.cloud.google.com/home/dashboard?project=who-mh-staging)
 
 Domain: `staging.whocoronavirus.org`
-
-Services:
-
-- Staging App Engine
-- Staging Cloud Datastore
-- Staging Firebase Project
-
-### [`who-myhealth-production`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-production)
-
-Services:
-
-- Production Firebase Project
-
-### [`who-myhealth-europe`](https://console.cloud.google.com/home/dashboard?project=who-myhealth-europe)
-
-Domain: `whoapp.org`
-
-Services:
-
-- Production App Engine
-- Production Cloud Datastore
 
 ## Curl Testing
 
@@ -40,16 +30,8 @@ curl -i \
 	-H 'Who-Client-ID: 00000000-0000-0000-0000-000000000000' \
 	-H 'Who-Platform: WEB' \
 	-X POST \
-	-d '{token: 'test'}' \
-	'https://whoapp.org/WhoService/putDeviceToken'
-
-curl -i \
-	-H 'Content-Type: application/json' \
-	-H 'Who-Client-ID: 00000000-0000-0000-0000-000000000000' \
-	-H 'Who-Platform: WEB' \
-	-X POST \
-	-d '{isoCountryCode: CH}' \
-	'https://whoapp.org/WhoService/putLocation'
+	-d '{token: 'test', isoCountryCode: CH}' \
+	'https://staging.whocoronavirus.org/WhoService/putClientSettings'
 ```
 
 #### Static Content
