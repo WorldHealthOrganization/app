@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 import 'package:who_app/main.dart';
@@ -59,15 +58,39 @@ class UserPreferences {
         .setBool(UserPreferenceKey.OnboardingCompletedV1.toString(), value);
   }
 
-  Future<bool> getTermsOfServiceCompleted() async {
+  /// Was the user shown the introductory pages as part of onboarding, using updated key for V1 launch
+  Future<bool> getOnboardingCompletedV2() async {
     return (await SharedPreferences.getInstance())
-            .getBool(UserPreferenceKey.TermsOfServiceCompleted.toString()) ??
+            .getBool(UserPreferenceKey.OnboardingCompletedV2.toString()) ??
         false;
   }
 
-  Future<bool> setTermsOfServiceCompleted(bool value) async {
+  /// Was the user shown the introductory pages as part of onboarding, using updated key for V1 launch
+  Future<bool> setOnboardingCompletedV2(bool value) async {
     return (await SharedPreferences.getInstance())
-        .setBool(UserPreferenceKey.TermsOfServiceCompleted.toString(), value);
+        .setBool(UserPreferenceKey.OnboardingCompletedV2.toString(), value);
+  }
+
+  Future<bool> getLegalCompleted() async {
+    return (await SharedPreferences.getInstance())
+            .getBool(UserPreferenceKey.LegalCompleted.toString()) ??
+        false;
+  }
+
+  Future<bool> setLegalAccepted() async {
+    var now = DateTime.now().millisecondsSinceEpoch;
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(
+        UserPreferenceKey.LegalCompletedTimestamp.toString(), now);
+
+    return prefs.setBool(UserPreferenceKey.LegalCompleted.toString(), true);
+  }
+
+  // Last Time Legal Accepted. Only valid iff getLegalCompleted() == true
+  Future<int> getLegalAcceptedTimestamp() async {
+    return (await SharedPreferences.getInstance())
+            .getInt(UserPreferenceKey.LegalCompletedTimestamp.toString()) ??
+        0;
   }
 
   Future<bool> getAnalyticsEnabled() async {
@@ -166,7 +189,9 @@ class UserPreferences {
 enum UserPreferenceKey {
   OnboardingCompleted,
   OnboardingCompletedV1,
-  TermsOfServiceCompleted,
+  OnboardingCompletedV2,
+  LegalCompleted, // TOS and PN
+  LegalCompletedTimestamp,
   AnalyticsEnabled,
   NotificationsEnabled,
   ClientUUID,

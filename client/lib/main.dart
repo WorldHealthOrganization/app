@@ -63,7 +63,7 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   //FirebaseCrashlytics.instance.crash();
 
   // Onboarding UI test, set the following to false
-  final onboardingComplete = await UserPreferences().getOnboardingCompletedV1();
+  final onboardingComplete = await UserPreferences().getOnboardingCompletedV2();
 
   await runZonedGuarded<Future<void>>(
     () async {
@@ -77,14 +77,14 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 }
 
 Future<void> _onFlutterError(FlutterErrorDetails details) async {
-  if (await UserPreferences().getOnboardingCompletedV1()) {
+  if (await UserPreferences().getOnboardingCompletedV2()) {
     // Pass all uncaught errors from the framework to Crashlytics.
     await FirebaseCrashlytics.instance.recordFlutterError(details);
   }
 }
 
 Future<void> _onError(Object error, StackTrace stack) async {
-  if (await UserPreferences().getOnboardingCompletedV1()) {
+  if (await UserPreferences().getOnboardingCompletedV2()) {
     await FirebaseCrashlytics.instance.recordError(error, stack);
   }
 }
