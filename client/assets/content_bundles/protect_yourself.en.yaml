@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 4
+content_version: 5
 contents:
   type: fact
   items:
@@ -17,4 +17,4 @@ contents:
         <b>Distance at least 1 meter</b> (3 feet) with others and an even greater distance when indoors.
     - image_name: protect-mask
       body_html: |
-        <b>Wear masks when closer than 1 meter</b> (3 feet) in areas where the virus is spreading.
+        <b>Wear masks</b> in areas where the virus is spreading when closer than 1 meter (3 feet) or in rooms with poor or unknown ventilation
