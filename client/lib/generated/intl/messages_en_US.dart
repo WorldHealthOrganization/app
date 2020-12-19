@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Skip"),
         "commonWhoAppShareIconButtonDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app"),
+                "Check out the official COVID-19 app from the World Health Organization https://covid19app.who.int/app"),
         "commonWorldHealthOrganization":
             MessageLookupByLibrary.simpleMessage("World Health Organization"),
         "commonWorldHealthOrganizationCoronavirusApp":

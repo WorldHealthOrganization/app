@@ -2,7 +2,7 @@
   "@section": "Common strings",
   "commonWorldHealthOrganization": "Organisation mondiale de la Santé",
   "commonWorldHealthOrganizationCoronavirusApp": "COVID-19",
-  "commonWhoAppShareIconButtonDescription": "Découvrez l'application officielle COVID-19 de l'Organisation mondiale de la Santé https://whoapp.org/app",
+  "commonWhoAppShareIconButtonDescription": "Découvrez l'application officielle COVID-19 de l'Organisation mondiale de la Santé https://covid19app.who.int/app",
   "commonWorldHealthOrganizationCoronavirusAppVersion": "Version {version} ({buildNumber})",
   "commonWorldHealthOrganizationCoronavirusCopyright": "© {year} OMS",
   "commonPermissionRequestPageButtonSkip": "Passer à l'étape suivante",
