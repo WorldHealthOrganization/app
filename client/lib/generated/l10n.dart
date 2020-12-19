@@ -48,7 +48,7 @@ class S {
 
   String get commonWhoAppShareIconButtonDescription {
     return Intl.message(
-      'Check out the official COVID-19 app from the World Health Organization https://whoapp.org/app',
+      'Check out the official COVID-19 app from the World Health Organization https://covid19app.who.int/app',
       name: 'commonWhoAppShareIconButtonDescription',
       desc: '',
       args: [],
