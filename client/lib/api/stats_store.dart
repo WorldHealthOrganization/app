@@ -80,8 +80,8 @@ abstract class _StatsStore with Store implements Updateable {
       return;
     }
 
-    countryIsoCode = prefs.countryIsoCode;
-    if (countryIsoCode == null) {
+    var countryToLoad = prefs.countryIsoCode;
+    if (countryToLoad == null) {
       // This happens at startup time (while the prefs are being loaded in?).
       print('StatsStore update skipped, country unknown.');
       return;
@@ -91,7 +91,11 @@ abstract class _StatsStore with Store implements Updateable {
         'refreshing data last seen ${delta}ms ago.');
 
     caseStatsResponse =
-        await service.getCaseStats(isoCountryCode: countryIsoCode);
+        await service.getCaseStats(isoCountryCode: countryToLoad);
+    // On error, getCaseStats will raise an exception and the
+    // persisted values will not be updated.
     _lastUpdateTimestamp = now;
+    countryIsoCode = countryToLoad;
+
   }
 }
