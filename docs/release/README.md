@@ -35,15 +35,8 @@ Items that are still under discussion / not ready to be used for v1.0 currently 
 
 ## Release processes
 
-### Prepare to release
-
-1. [ ] Create release Slack channel for updates and announcements
-1. [ ] Create Google Drive folder to store text / image assets
-1. [ ] Check build instructions for clarity and accuracy. :construction: wrap instructions in a single script
-1. [ ] Determine the gatekeepers for the following categories (this may change as people join or leave)
-   1. [ ] Engineering
-   1. [ ] Design
-   1. [ ] Compliance
+1. Increment version in [pubspec.yaml](https://github.com/WorldHealthOrganization/app/blob/master/client/pubspec.yaml#L11)
+1. Tag release with notes using GitHub [new release](https://github.com/WorldHealthOrganization/app/releases/new)
 
 ## QA testing with Firebase App Distribution
 
@@ -67,7 +60,6 @@ We use Firebase App Distribution to distribute apps to testers before the app ge
    - Production release planned date
 
 1. [ ] Get all [checkoffs](#checkoffs).
-1. [ ] Prepare a new release version; see [prepare-release.md](prepare-release.md) for more information on the steps needed for this.
 1. [ ] WHO will check out the code from GitHub at the specified release tag. They will **build and sign** the iOS / Android binaries using **their keys**. More information on the steps WHO should perform to create a manual build is found in [manual-build.md](manual-build.md).
 1. [ ] iOS: WHO will upload build to TestFlight.
 1. [ ] Android: WHO will upload build to the Play Store and create a new "Alpha" release.

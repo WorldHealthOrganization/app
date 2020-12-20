@@ -20,6 +20,8 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
       $pb.ServerContext ctx, $0.PutDeviceTokenRequest request);
   $async.Future<$0.Void> putLocation(
       $pb.ServerContext ctx, $0.PutLocationRequest request);
+  $async.Future<$0.Void> putClientSettings(
+      $pb.ServerContext ctx, $0.PutClientSettingsRequest request);
   $async.Future<$0.GetCaseStatsResponse> getCaseStats(
       $pb.ServerContext ctx, $0.GetCaseStatsRequest request);
 
@@ -29,6 +31,8 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
         return $0.PutDeviceTokenRequest();
       case 'putLocation':
         return $0.PutLocationRequest();
+      case 'putClientSettings':
+        return $0.PutClientSettingsRequest();
       case 'getCaseStats':
         return $0.GetCaseStatsRequest();
       default:
@@ -43,6 +47,8 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
         return this.putDeviceToken(ctx, request);
       case 'putLocation':
         return this.putLocation(ctx, request);
+      case 'putClientSettings':
+        return this.putClientSettings(ctx, request);
       case 'getCaseStats':
         return this.getCaseStats(ctx, request);
       default:

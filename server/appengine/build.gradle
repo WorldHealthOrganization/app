@@ -41,7 +41,7 @@ dependencies {
     implementation deps.slf4j.jdk14
 
     // Force newer version
-    implementation 'com.google.http-client:google-http-client:1.37.0'
+    implementation 'com.google.http-client:google-http-client:1.38.0'
 
     implementation deps.guava
     implementation 'co.present.rpc:server:0.2-SNAPSHOT'
@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.googlecode.objectify:objectify:5.1.22'
 
     // Force older version of okio
-    implementation 'com.squareup.okio:okio:1.13.0'
+    implementation 'com.squareup.okio:okio:2.9.0'
 
     implementation deps.gson
     implementation deps.wire.gson
@@ -63,15 +63,12 @@ dependencies {
     // Linked from https://github.com/google/s2-geometry-library-java/issues/7.
     implementation "io.sgr:s2-geometry-library-java:1.0.1";
 
-    // Not sure why this didn't come in with present-engine...
-    implementation 'com.google.appengine:appengine-remote-api:+'
-
-    implementation 'com.google.firebase:firebase-admin:7.0.1'
+    implementation 'com.google.firebase:firebase-admin:7.1.0'
     // 4.1.34.Final included in Firebase, which has vulnerabilities.
-    implementation 'io.netty:netty-codec-http:4.1.53.Final'
+    implementation 'io.netty:netty-codec-http:4.1.56.Final'
 
     // Newer versions
-    implementation 'com.google.oauth-client:google-oauth-client:1.31.1'
+    implementation 'com.google.oauth-client:google-oauth-client:1.31.2'
     implementation 'commons-codec:commons-codec:1.15'
 
     testCompile 'junit:junit:4.13.1'

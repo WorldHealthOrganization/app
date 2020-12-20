@@ -29,9 +29,6 @@ public class WhoServletModule extends ServletModule {
   protected void configureServlets() {
     install(new FirebaseModule());
 
-    // App Engine Remote API
-    serve("/remote_api").with(new RemoteApiServlet());
-
     serve("/app").with(new AppStoreServlet());
 
     // Set up Objectify

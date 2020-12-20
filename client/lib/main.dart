@@ -26,7 +26,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info/package_info.dart';
 import 'package:who_app/api/notifications.dart';
-import 'package:who_app/generated/build.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
@@ -50,7 +49,11 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
     _packageInfo = await PackageInfo.fromPlatform();
   }
 
-  await Firebase.initializeApp();
+  var app = await Firebase.initializeApp();
+  var projectId = app.options.projectId;
+  print('Firebase ProjectID: $projectId');
+  var endpoint = Endpoint(projectId);
+
   FlutterError.onError = _onFlutterError;
 
   // TODO: verify this reliably reports crashes
@@ -64,7 +67,10 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
 
   await runZonedGuarded<Future<void>>(
     () async {
-      runApp(MyApp(showOnboarding: !onboardingComplete, routes: routes));
+      runApp(MyApp(
+          showOnboarding: !onboardingComplete,
+          endpoint: endpoint,
+          routes: routes));
     },
     _onError,
   );
@@ -84,9 +90,14 @@ Future<void> _onError(Object error, StackTrace stack) async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key, @required this.showOnboarding, @required this.routes})
+  const MyApp(
+      {Key key,
+      @required this.showOnboarding,
+      @required this.endpoint,
+      @required this.routes})
       : super(key: key);
   final bool showOnboarding;
+  final Endpoint endpoint;
   final Map<String, WidgetBuilder> routes;
 
   static FirebaseAnalytics analytics = FirebaseAnalytics();
@@ -94,14 +105,15 @@ class MyApp extends StatefulWidget {
       FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
-  _MyAppState createState() => _MyAppState(analytics, observer);
+  _MyAppState createState() => _MyAppState(analytics, observer, endpoint);
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  _MyAppState(this.analytics, this.observer);
+  _MyAppState(this.analytics, this.observer, this.endpoint);
 
   final FirebaseAnalytics analytics;
   final FirebaseAnalyticsObserver observer;
+  final Endpoint endpoint;
 
   @override
   void initState() {
@@ -142,15 +154,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               lazy: false,
               update: (ctx, _) => Localizations.localeOf(ctx),
             ),
-            Provider(
-              create: (_) => BuildInfo.DEVELOPMENT_ONLY
-                  ? Endpoint(
-                      service: Endpoints.STAGING_SERVICE,
-                      staticContent: Endpoints.STAGING_STATIC_CONTENT)
-                  : Endpoint(
-                      service: Endpoints.PROD_SERVICE,
-                      staticContent: Endpoints.PROD_STATIC_CONTENT),
-            ),
+            Provider(create: (_) => endpoint),
             FutureProvider(
               create: (_) => IsoCountryList.load(),
               initialData: IsoCountryList.empty(),
@@ -161,11 +165,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ),
             ProxyProvider(
                 update: (_, Endpoint endpoint, __) => WhoService(
-                      endpoint: endpoint.service,
+                      endpoint: endpoint.serviceUrl,
                     )),
-            ProxyProvider(
-              update: (_, WhoService service, __) {
-                final ret = Notifications(service: service);
+            ProxyProvider2(
+              update: (_, WhoService service, UserPreferencesStore prefs, __) {
+                final ret = Notifications(service: service, prefs: prefs);
                 ret.configure();
                 ret.updateFirebaseToken();
                 return ret;
@@ -186,7 +190,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             PeriodicUpdater.asProvider<StatsStore>(),
             ProxyProvider(
                 update: (_, Endpoint endpoint, __) => ContentService(
-                      endpoint: endpoint.staticContent,
+                      endpoint: endpoint,
                     )),
             ObserverProvider3(observerFn: (
               _,
@@ -206,9 +210,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ObserverProvider1<ContentStore, List<Alert>>(
                 observerFn: (_, ContentStore content) {
               return [
-                if (BuildInfo.DEVELOPMENT_ONLY)
-                  Alert(null,
-                      'No privacy on test builds. Content not reviewed by WHO.',
+                if (!endpoint.isProd)
+                  Alert(
+                      null, 'No privacy on server - ${endpoint.projectIdShort}',
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
                   Alert('App Update Required',

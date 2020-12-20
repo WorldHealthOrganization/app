@@ -3,6 +3,5 @@
 module "myhealth" {
   source     = "../modules/myhealth"
   project_id = "who-mh-staging"
-  # TODO: migrate to staging.whocoronavirus.org
-  domain = "staging-temp.whocoronavirus.org"
+  domain     = "staging.whocoronavirus.org"
 }

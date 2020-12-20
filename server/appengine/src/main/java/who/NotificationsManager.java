@@ -61,9 +61,15 @@ public class NotificationsManager {
           // If something goes wrong we'll still save the partial update.
           ofy().defer().save().entity(client);
         } else {
-          if (!Environment.isProduction()) logger.info(
-            "FAILED - Subscribed " + client.token + " to topic " + topic
-          );
+          if (!Environment.isProduction()) {
+            logger.info(
+              "FAILED - Subscribed " + client.token + " to topic " + topic
+            );
+            List<TopicManagementResponse.Error> errors = resp.getErrors();
+            for (TopicManagementResponse.Error error : errors) {
+              logger.info("FAILED - Reason - " + error);
+            }
+          }
         }
       }
 

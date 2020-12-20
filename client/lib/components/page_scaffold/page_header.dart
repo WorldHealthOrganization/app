@@ -5,7 +5,11 @@ import 'package:who_app/constants.dart';
 // Used to get latest AppBar features while remaining on Flutter's stable branch
 
 class PageHeader extends StatelessWidget {
+  ///Overrides headerWidget parameter
   final String title;
+
+  /// passing a widget into the header
+  final Widget headerWidget;
 
   /// A unique tag to animate a header between pages.
   final String heroTag;
@@ -24,7 +28,8 @@ class PageHeader extends StatelessWidget {
   final bool showBackButton;
 
   PageHeader({
-    @required this.title,
+    this.title,
+    this.headerWidget,
     this.heroTag,
     this.showBackButton = true,
     this.titleStyle,
@@ -38,14 +43,19 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleWrapper = Padding(
-      padding: showBackButton
-          ? EdgeInsets.zero
-          : EdgeInsets.symmetric(horizontal: 8),
-      child: Text(
-        title,
-        style: TextStyle(color: Constants.accentNavyColor),
-      ),
-    );
+        padding: showBackButton
+            ? EdgeInsets.zero
+            : EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          children: [
+            title != null
+                ? Text(
+                    title,
+                    style: TextStyle(color: Constants.accentNavyColor),
+                  )
+                : headerWidget,
+          ],
+        ));
     final leading = showBackButton ? BackButton() : null;
     final iconThemeData = IconThemeData(color: Constants.accentNavyColor);
     final actions = <Widget>[if (trailing != null) trailing];
