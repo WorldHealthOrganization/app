@@ -24,9 +24,10 @@ so. Please keep treat any server data as confidential but by design it shouldn't
 any private data. Please be more careful with the other `*.whocoronavirus.org` servers
 as they're used for active development.
 
-## Architecture
+## Documentation
 
-Please see the [design docs](https://github.com/WorldHealthOrganization/app/blob/master/docs/devdesign/README.md)
+- [Design Docs](https://github.com/WorldHealthOrganization/app/blob/master/docs/devdesign/README.md)
+- [Open Security Issues](https://github.com/WorldHealthOrganization/app/issues?q=is%3Aissue+is%3Aopen+label%3Asecurity)
 
 ## Supported Versions
 
