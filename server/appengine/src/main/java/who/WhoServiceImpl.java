@@ -85,9 +85,9 @@ public class WhoServiceImpl implements WhoService {
       client.isoCountryCode = request.isoCountryCode;
     }
 
-    // Null token signifies to disable notifications
     String token = Strings.emptyToNull(request.token);
     if (token == null) {
+      // Null token indicates to disable notifications
       // Leave existing token in place to unsubscribe topics
       client.disableNotifications = true;
     } else {
