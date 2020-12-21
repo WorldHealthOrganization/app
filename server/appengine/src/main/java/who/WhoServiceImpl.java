@@ -84,7 +84,16 @@ public class WhoServiceImpl implements WhoService {
       }
       client.isoCountryCode = request.isoCountryCode;
     }
-    client.token = Strings.emptyToNull(request.token);
+
+    String token = Strings.emptyToNull(request.token);
+    if (token == null) {
+      // Null token indicates to disable notifications
+      // Leave existing token in place to unsubscribe topics
+      client.disableNotifications = true;
+    } else {
+      client.token = token;
+      client.disableNotifications = false;
+    }
 
     ofy().save().entities(client);
     nm.updateSubscriptions(client);

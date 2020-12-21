@@ -79,17 +79,21 @@ public class Topics {
 
   public static ImmutableSortedSet<String> getTopicNames(Client client) {
     Preconditions.checkNotNull(client);
-    // TODO: Store these user-selected types in the Client and add
-    // an RPC to modify them.  Some day users may want to register
-    // only for news, testing centers, etc. and we must properly
-    // namespace topic names now to support that in the future.
-    NotificationType[] types = { NotificationType.ALL };
 
     ImmutableSortedSet.Builder<String> topics = new ImmutableSortedSet.Builder<>(
       Ordering.natural()
     );
-    for (NotificationType t : types) {
-      topics.addAll(getLocationTopicNames(t, client));
+
+    if (!client.disableNotifications) {
+      // TODO: Store these user-selected types in the Client and add
+      // an RPC to modify them.  Some day users may want to register
+      // only for news, testing centers, etc. and we must properly
+      // namespace topic names now to support that in the future.
+      NotificationType[] types = { NotificationType.ALL };
+
+      for (NotificationType t : types) {
+        topics.addAll(getLocationTopicNames(t, client));
+      }
     }
 
     return topics.build();
