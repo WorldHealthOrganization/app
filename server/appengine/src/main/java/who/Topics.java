@@ -84,7 +84,7 @@ public class Topics {
       Ordering.natural()
     );
 
-    if (client.token != null) {
+    if (!client.disableNotifications) {
       // TODO: Store these user-selected types in the Client and add
       // an RPC to modify them.  Some day users may want to register
       // only for news, testing centers, etc. and we must properly
