@@ -37,6 +37,8 @@ jobs:
       - run: npm install
         working-directory: ./tools
       # Match the tools/.lintstagedrc.json file
+      - run: npx --no-install prettier --version
+        working-directory: ./tools
       - run: npx --no-install prettier -c '../**/*.{md,java,js,sh,yaml,yml}|*.{md,java,js,sh,yaml,yml}'
         working-directory: ./tools
       - run: ./tools/terraform-fmt-validate.sh -check
