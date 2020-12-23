@@ -74,24 +74,27 @@ abstract class _StatsStore with Store implements Updateable {
 
     var now = DateTime.now().millisecondsSinceEpoch;
     var delta = now - _lastUpdateTimestamp;
-    if (delta < statsUpdateFrequency &&
-        countryIsoCode == prefs.countryIsoCode) {
+    var countryToLoad = prefs.countryIsoCode;
+
+    if (delta < statsUpdateFrequency && countryIsoCode == countryToLoad) {
       print('StatsStore update skipped, cached data used from ${delta}ms ago.');
       return;
     }
 
-    countryIsoCode = prefs.countryIsoCode;
-    if (countryIsoCode == null) {
+    if (countryToLoad == null) {
       // This happens at startup time (while the prefs are being loaded in?).
       print('StatsStore update skipped, country unknown.');
       return;
     }
 
-    print('StatsStore update with country ${countryIsoCode}, '
-        'refreshing data last seen ${delta}ms ago.');
+    print('StatsStore update with country ${countryToLoad}, '
+        'refreshing data last seen ${delta}ms ago for ${countryIsoCode}.');
 
     caseStatsResponse =
-        await service.getCaseStats(isoCountryCode: countryIsoCode);
+        await service.getCaseStats(isoCountryCode: countryToLoad);
+    // On error, getCaseStats will raise an exception and the
+    // persisted values will not be updated.
     _lastUpdateTimestamp = now;
+    countryIsoCode = countryToLoad;
   }
 }
