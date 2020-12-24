@@ -1,5 +1,5 @@
 schema_version: 1
-content_version: 4
+content_version: 5
 contents:
   type: index
   promos:
@@ -11,12 +11,10 @@ contents:
       image_name: undraw-home-promo-symptoms
   items:
     - item_type: recent_numbers
-      title: Recent Numbers
-      button_text: "See All ›"
+      title: Recent Numbers ›
       href: /recent-numbers
     - item_type: protect_yourself
-      title: Protect Yourself
-      button_text: "Learn More ›"
+      title: Protect Yourself ›
       href: /protect-yourself
     - item_type: information_card
       title: Get the Facts
