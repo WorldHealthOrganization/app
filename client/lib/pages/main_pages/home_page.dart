@@ -68,7 +68,6 @@ class HomePage extends ContentWidget<IndexContent> {
       ),
       onWillPop: () async {
         bool willPop;
-        
         await showCupertinoDialog(
           context: context,
           builder: (context) => CupertinoAlertDialog(
