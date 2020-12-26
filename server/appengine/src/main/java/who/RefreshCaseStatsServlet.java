@@ -70,9 +70,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       snapshot.totalCases = 0L;
       snapshot.totalDeaths = 0L;
       data.snapshots.put(timestamp, snapshot);
-    } else {
-      // There shouldn't be a snapshot already except for GlobalStats!!!
-    }
+    } 
 
     snapshot.dailyCases += dailyCases;
     snapshot.dailyDeaths += dailyDeaths;
