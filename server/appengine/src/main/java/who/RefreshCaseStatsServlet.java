@@ -1,5 +1,6 @@
 package who;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
@@ -16,12 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RefreshCaseStatsServlet extends HttpServlet {
 
-  private static final class JurisdictionData {
+  @VisibleForTesting
+  static final class JurisdictionData {
 
     long totalCases = 0L, totalDeaths = 0L;
     long lastUpdated = 0L;
@@ -68,17 +71,104 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       snapshot.totalDeaths = 0L;
       data.snapshots.put(timestamp, snapshot);
     }
+
     snapshot.dailyCases += dailyCases;
     snapshot.dailyDeaths += dailyDeaths;
     snapshot.totalCases += totalCases;
     snapshot.totalDeaths += totalDeaths;
   }
 
+  /**
+   * Process the JSON data returned by the ArcGIS server.
+   *
+   * @param rows        JSON Data from ArcGIS server
+   * @param countryData Accumulated data for each country.
+   * @param globalData  Accumulated data, sum of all countries.
+   */
+  @VisibleForTesting
+  void processWhoStats(
+    JsonArray rows,
+    Map<String, JurisdictionData> countryData,
+    JurisdictionData globalData
+  ) {
+    // Given that each row has heterogeneous elements, not sure there is much benefit
+    // to using gson with reflection here.
+    for (JsonElement feature : rows) {
+      JsonElement attributesElement = feature
+        .getAsJsonObject()
+        .get("attributes");
+
+      JsonObject attributes = attributesElement.getAsJsonObject();
+
+      long timestamp = attributes.get("date_epicrv").getAsLong();
+      long dailyDeaths = attributes.get("NewDeath").getAsLong();
+      long totalDeaths = attributes.get("CumDeath").getAsLong();
+      long dailyCases = attributes.get("NewCase").getAsLong();
+      long totalCases = attributes.get("CumCase").getAsLong();
+
+      updateData(
+        globalData,
+        timestamp,
+        dailyDeaths,
+        totalDeaths,
+        dailyCases,
+        totalCases
+      );
+
+      if (!(attributes.get("ISO_2_CODE") instanceof JsonNull)) {
+        String isoCode = attributes.get("ISO_2_CODE").getAsString();
+        JurisdictionData country = countryData.get(isoCode);
+        if (country == null) {
+          country = new JurisdictionData();
+          countryData.put(isoCode, country);
+        }
+        updateData(
+          country,
+          timestamp,
+          dailyDeaths,
+          totalDeaths,
+          dailyCases,
+          totalCases
+        );
+      }
+    }
+  }
+
+  /**
+   * Generate a CaseStats record suitable for saving to the datastore from JurisdictionData.
+   */
+  @NotNull
+  private CaseStats buildCaseStats(
+    JurisdictionType jurisdictionType,
+    String jurisdiction,
+    JurisdictionData data
+  ) {
+    CaseStats.Builder countryStats = new CaseStats.Builder()
+      .jurisdictionType(jurisdictionType)
+      .jurisdiction(jurisdiction)
+      .cases(data.totalCases)
+      .deaths(data.totalDeaths)
+      .lastUpdated(data.lastUpdated)
+      .recoveries(-1L)
+      .timeseries(
+        data.snapshots
+          .entrySet()
+          .stream()
+          .sorted(Comparator.comparing(Map.Entry::getKey))
+          .map(Map.Entry::getValue)
+          .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
+          .collect(Collectors.toList())
+      )
+      .attribution("WHO");
+    return countryStats.build();
+  }
+
   @Override
   protected void doGet(
     HttpServletRequest request,
     HttpServletResponse response
-  ) throws IOException {
+  )
+    throws IOException {
     // App Engine strips all external X-* request headers, so we can trust this is set by App Engine.
     // https://cloud.google.com/appengine/docs/flexible/java/scheduling-jobs-with-cron-yaml#validating_cron_requests
     if (
@@ -100,105 +190,30 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     while (true) {
       String jsonString = getDashboardContents(numItems);
 
-      JsonObject root = new JsonParser().parse(jsonString).getAsJsonObject();
+      JsonObject root = JsonParser.parseString(jsonString).getAsJsonObject();
 
       JsonArray rows = root.getAsJsonArray("features");
       if (rows == null || rows.size() == 0) {
         break;
       }
       numItems += rows.size();
-      if (numItems > 100000) {
-        // We may no longer be able to process this in the 30-seconds allocated to cron requests.
-        logger.error(
-          "Ending processing - Will not update stats - More than 100000 features returned by ArcGIS endpoint."
-        );
-        // Throw a 500.
-        throw new RuntimeException(
-          "Ending processing - Will not update stats - More than 100000 features returned by ArcGIS endpoint."
-        );
-      }
-
-      // Given that each row has heterogeneous elements, not sure there is much benefit
-      // to using gson with reflection here.
-      for (JsonElement feature : rows) {
-        JsonObject featureAsJsonObject = feature.getAsJsonObject();
-        JsonElement attributesElement = featureAsJsonObject.get("attributes");
-
-        JsonObject attributes = attributesElement.getAsJsonObject();
-
-        long timestamp = attributes.get("date_epicrv").getAsLong();
-        long dailyDeaths = attributes.get("NewDeath").getAsLong();
-        long totalDeaths = attributes.get("CumDeath").getAsLong();
-        long dailyCases = attributes.get("NewCase").getAsLong();
-        long totalCases = attributes.get("CumCase").getAsLong();
-
-        updateData(
-          globalData,
-          timestamp,
-          dailyDeaths,
-          totalDeaths,
-          dailyCases,
-          totalCases
-        );
-
-        if (!(attributes.get("ISO_2_CODE") instanceof JsonNull)) {
-          String isoCode = attributes.get("ISO_2_CODE").getAsString();
-          JurisdictionData country = countryData.get(isoCode);
-          if (country == null) {
-            country = new JurisdictionData();
-            countryData.put(isoCode, country);
-          }
-          updateData(
-            country,
-            timestamp,
-            dailyDeaths,
-            totalDeaths,
-            dailyCases,
-            totalCases
-          );
-        }
-      }
+      processWhoStats(rows, countryData, globalData);
     }
 
-    CaseStats.Builder global = new CaseStats.Builder()
-      .jurisdictionType(JurisdictionType.GLOBAL)
-      .jurisdiction("")
-      .cases(globalData.totalCases)
-      .deaths(globalData.totalDeaths)
-      .lastUpdated(globalData.lastUpdated)
-      .recoveries(-1L)
-      .timeseries(
-        globalData.snapshots
-          .entrySet()
-          .stream()
-          .sorted(Comparator.comparing(Map.Entry::getKey))
-          .map(Map.Entry::getValue)
-          .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
-          .collect(Collectors.toList())
-      )
-      .attribution("WHO");
-    StoredCaseStats.save(global.build());
+    CaseStats globalStats = buildCaseStats(
+      JurisdictionType.GLOBAL,
+      "",
+      globalData
+    );
+    StoredCaseStats.save(globalStats);
 
     for (Map.Entry<String, JurisdictionData> entry : countryData.entrySet()) {
-      JurisdictionData data = entry.getValue();
-      CaseStats.Builder countryStats = new CaseStats.Builder()
-        .jurisdictionType(JurisdictionType.COUNTRY)
-        .jurisdiction(entry.getKey())
-        .cases(data.totalCases)
-        .deaths(data.totalDeaths)
-        .lastUpdated(data.lastUpdated)
-        .recoveries(-1L)
-        .timeseries(
-          data.snapshots
-            .entrySet()
-            .stream()
-            .sorted(Comparator.comparing(Map.Entry::getKey))
-            .map(Map.Entry::getValue)
-            .map(StoredCaseStats.StoredStatSnapshot::toStatSnapshot)
-            .collect(Collectors.toList())
-        )
-        .attribution("WHO");
-      StoredCaseStats.save(countryStats.build());
+      CaseStats stats = buildCaseStats(
+        JurisdictionType.COUNTRY,
+        entry.getKey(),
+        entry.getValue()
+      );
+      StoredCaseStats.save(stats);
     }
   }
 }
