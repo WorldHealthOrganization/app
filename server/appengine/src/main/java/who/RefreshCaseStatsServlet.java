@@ -60,6 +60,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     if (timestamp > data.lastUpdated) {
       data.lastUpdated = timestamp;
     }
+    // Note that data.totalCases is a sum of dailyCases,
+    // while snapshot.totalCases is simply copied from the input data.
+    // The totalCases at the most recent snapshot should match
+    // data.totalCases, but this system does not verify that.
     data.totalCases += dailyCases;
     data.totalDeaths += dailyDeaths;
     StoredCaseStats.StoredStatSnapshot snapshot = data.snapshots.get(timestamp);
@@ -168,8 +172,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
   protected void doGet(
     HttpServletRequest request,
     HttpServletResponse response
-  )
-    throws IOException {
+  ) throws IOException {
     // App Engine strips all external X-* request headers, so we can trust this is set by App Engine.
     // https://cloud.google.com/appengine/docs/flexible/java/scheduling-jobs-with-cron-yaml#validating_cron_requests
     if (
