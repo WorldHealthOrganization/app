@@ -83,10 +83,11 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       snapshot.totalDeaths = 0L;
       data.snapshots.put(timestamp, snapshot);
     } else if (data.jurisdictionType != JurisdictionType.GLOBAL) {
-      // For individual jurisdictions, we should NOT see the same timestamp more than once.
-      // Raise an error, and hope that the next run of the cron job picks up good results.
-      // Note that when the bad results are doubled/trebled/etc, they have also been missing
-      // some data, suggesting failure is a better choice than silently ignoring duplicates.
+      // For individual jurisdictions, we should NOT see the same timestamp
+      // more than once.
+      // Fail and hope that the next run of the cron job succeeds.
+      // Note that when the bad results are doubled/trebled/etc, they have
+      // also been missing data, so ignoring duplicates is not safe.
       logger.error(
         "Duplicate country data found at {} for {} {}",
         timestamp,
