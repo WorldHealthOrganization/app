@@ -1,0 +1,99 @@
+{
+  "objectIdFieldName" : "OBJECTID", 
+  "uniqueIdField" : 
+  {
+    "name" : "OBJECTID", 
+    "isSystemMaintained" : true
+  }, 
+  "globalIdFieldName" : "", 
+  "geometryType" : "esriGeometryPoint", 
+  "spatialReference" : {
+    "wkid" : 4326, 
+    "latestWkid" : 4326
+  }, 
+  "fields" : [
+    {
+      "name" : "ISO_2_CODE", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ISO_2_CODE", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 2, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "date_epicrv", 
+      "type" : "esriFieldTypeDate", 
+      "alias" : "date_epicrv", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 8, 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NewCase", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "NewCase", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CumCase", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "CumCase", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "NewDeath", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "NewDeath", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "CumDeath", 
+      "type" : "esriFieldTypeInteger", 
+      "alias" : "CumDeath", 
+      "sqlType" : "sqlTypeOther", 
+      "domain" : null, 
+      "defaultValue" : null
+    }, 
+    {
+      "name" : "ADM0_NAME", 
+      "type" : "esriFieldTypeString", 
+      "alias" : "ADM0_NAME", 
+      "sqlType" : "sqlTypeOther", 
+      "length" : 255, 
+      "domain" : null, 
+      "defaultValue" : null
+    }
+  ], 
+  "features" : [
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "ZM", 
+        "date_epicrv" : 1608595200000, 
+        "NewCase" : 52, 
+        "CumCase" : 18768, 
+        "NewDeath" : 2, 
+        "CumDeath" : 375, 
+        "ADM0_NAME" : "Zambia"
+      }
+    }, 
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "ZW", 
+        "date_epicrv" : 1608595200000, 
+        "NewCase" : 97, 
+        "CumCase" : 12422, 
+        "NewDeath" : 2, 
+        "CumDeath" : 322, 
+        "ADM0_NAME" : "Zimbabwe"
+      }
+    }
+  ]
+}
