@@ -220,6 +220,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
 
       JsonArray rows = root.getAsJsonArray("features");
       if (rows == null || rows.size() == 0) {
+        logger.info("Retreived no features.");
         break;
       }
       logger.info("Retreived {} features.", rows.size());
