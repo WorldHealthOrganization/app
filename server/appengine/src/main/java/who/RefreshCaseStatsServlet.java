@@ -233,5 +233,6 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     for (Map.Entry<String, JurisdictionData> entry : countryData.entrySet()) {
       StoredCaseStats.save(buildCaseStats(entry.getValue()));
     }
+    logger.info("Results saved.");
   }
 }
