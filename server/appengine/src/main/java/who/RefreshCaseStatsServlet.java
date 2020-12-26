@@ -70,7 +70,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       snapshot.totalCases = 0L;
       snapshot.totalDeaths = 0L;
       data.snapshots.put(timestamp, snapshot);
-    } 
+    }
 
     snapshot.dailyCases += dailyCases;
     snapshot.dailyDeaths += dailyDeaths;
@@ -94,8 +94,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     // Given that each row has heterogeneous elements, not sure there is much benefit
     // to using gson with reflection here.
     for (JsonElement feature : rows) {
-      JsonObject featureAsJsonObject = feature.getAsJsonObject();
-      JsonElement attributesElement = featureAsJsonObject.get("attributes");
+      JsonElement attributesElement = feature
+        .getAsJsonObject()
+        .get("attributes");
 
       JsonObject attributes = attributesElement.getAsJsonObject();
 
