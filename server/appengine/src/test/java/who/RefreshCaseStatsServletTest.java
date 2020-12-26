@@ -1,20 +1,18 @@
 package who;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.zip.GZIPInputStream;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
 
 public class RefreshCaseStatsServletTest extends WhoTestSupport {
 
@@ -50,5 +48,30 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
       1608681600000L
     );
     assertEquals(113, s1.dailyCases.intValue());
+  }
+
+  @Test
+  public void testDec24Data() throws IOException {
+    RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
+
+    InputStream inCompressed =
+      this.getClass()
+        .getClassLoader()
+        .getResourceAsStream("who-data-24dec2020.json.gz");
+    GZIPInputStream decompressed = new GZIPInputStream(inCompressed);
+    JsonObject root = JsonParser
+      .parseReader(new InputStreamReader(decompressed, "UTF-8"))
+      .getAsJsonObject();
+    JsonArray rows = root.getAsJsonArray("features");
+
+    RefreshCaseStatsServlet.JurisdictionData globalData = new RefreshCaseStatsServlet.JurisdictionData();
+    Map<String, RefreshCaseStatsServlet.JurisdictionData> countryData = new HashMap<>();
+
+    servlet.processWhoStats(rows, countryData, globalData);
+
+    assertEquals(1608768000000L, globalData.lastUpdated);
+    // The TotalCases is a good heuristic that the data loaded correctly: it is a sum
+    // of every daily case seen in the system so far.
+    assertEquals(77530799L, globalData.totalCases);
   }
 }

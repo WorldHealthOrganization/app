@@ -59,6 +59,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     if (timestamp > data.lastUpdated) {
       data.lastUpdated = timestamp;
     }
+    // Note that data.totalCases is a sum of dailyCases,
+    // while snapshot.totalCases is simply copied from the input data.
+    // The totalCases  at the most recent snapshot should match data.totalCases, but this
+    // system does not verify that.
     data.totalCases += dailyCases;
     data.totalDeaths += dailyDeaths;
     StoredCaseStats.StoredStatSnapshot snapshot = data.snapshots.get(timestamp);
