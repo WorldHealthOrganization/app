@@ -51,10 +51,13 @@ public enum Environment {
 
   private static String getApplicationId() {
     String applicationId = AppEngine.applicationId();
-    // "o~" prefix bug in App Engine. Not sure where those 2 chars at the beginning come from.
-    final String PREFIX_BUG = "o~";
-    if (applicationId.startsWith(PREFIX_BUG)) {
-      applicationId = applicationId.substring(PREFIX_BUG.length());
+    if (applicationId == null) {
+      return null;
+    }
+    // Strip shard.
+    int tilde = applicationId.indexOf('~');
+    if (tilde >= 0) {
+      applicationId = applicationId.substring(tilde + 1);
     }
     return applicationId;
   }
