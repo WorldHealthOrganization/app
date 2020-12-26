@@ -43,6 +43,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       // Safe because the value is an integer and does not need to be escaped
       .url(WHO_CASE_STATS_URL + "&resultOffset=" + offset)
       .build();
+    logger.info(request.url().toString());
     try (Response response = HTTP_CLIENT.newCall(request).execute()) {
       return response.body().string();
     }
