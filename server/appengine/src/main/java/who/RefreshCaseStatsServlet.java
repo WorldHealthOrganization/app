@@ -26,9 +26,16 @@ public class RefreshCaseStatsServlet extends HttpServlet {
   @VisibleForTesting
   static final class JurisdictionData {
 
+    JurisdictionType jurisdictionType;
+    String jurisdiction = "";
     long totalCases = 0L, totalDeaths = 0L;
     long lastUpdated = 0L;
     Map<Long, StoredCaseStats.StoredStatSnapshot> snapshots = new HashMap<>();
+
+    JurisdictionData(JurisdictionType jurisdictionType, String jurisdiction) {
+      this.jurisdictionType = jurisdictionType;
+      this.jurisdiction = jurisdiction;
+    }
   }
 
   private static final String WHO_CASE_STATS_URL =
@@ -75,6 +82,21 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       snapshot.totalCases = 0L;
       snapshot.totalDeaths = 0L;
       data.snapshots.put(timestamp, snapshot);
+    } else if (data.jurisdictionType != JurisdictionType.GLOBAL) {
+      // For individual jurisdictions, we should NOT see the same timestamp more than once.
+      // Raise an error, and hope that the next run of the cron job picks up good results.
+      // Note that when the bad results are doubled/trebled/etc, they have also been missing
+      // some data, suggesting failure is a better choice than silently ignoring duplicates.
+      logger.error(
+        "Duplicate country data found at {} for {} {}",
+        timestamp,
+        data.jurisdictionType,
+        data.jurisdiction
+      );
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // (Should we create a proper exception?)
+
+      throw new RuntimeException("This is wrong.");
     }
 
     snapshot.dailyCases += dailyCases;
@@ -124,7 +146,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         String isoCode = attributes.get("ISO_2_CODE").getAsString();
         JurisdictionData country = countryData.get(isoCode);
         if (country == null) {
-          country = new JurisdictionData();
+          country = new JurisdictionData(JurisdictionType.COUNTRY, isoCode);
           countryData.put(isoCode, country);
         }
         updateData(
@@ -143,14 +165,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
    * Generate a CaseStats record suitable for saving to the datastore from JurisdictionData.
    */
   @NotNull
-  private CaseStats buildCaseStats(
-    JurisdictionType jurisdictionType,
-    String jurisdiction,
-    JurisdictionData data
-  ) {
+  private CaseStats buildCaseStats(JurisdictionData data) {
     CaseStats.Builder countryStats = new CaseStats.Builder()
-      .jurisdictionType(jurisdictionType)
-      .jurisdiction(jurisdiction)
+      .jurisdictionType(data.jurisdictionType)
+      .jurisdiction(data.jurisdiction)
       .cases(data.totalCases)
       .deaths(data.totalDeaths)
       .lastUpdated(data.lastUpdated)
@@ -186,7 +204,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       return;
     }
 
-    JurisdictionData globalData = new JurisdictionData();
+    JurisdictionData globalData = new JurisdictionData(
+      JurisdictionType.GLOBAL,
+      ""
+    );
     Map<String, JurisdictionData> countryData = new HashMap<>();
 
     int numItems = 0;
@@ -200,24 +221,15 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       if (rows == null || rows.size() == 0) {
         break;
       }
+      logger.info("Retreived {} features.", rows.size());
       numItems += rows.size();
       processWhoStats(rows, countryData, globalData);
     }
 
-    CaseStats globalStats = buildCaseStats(
-      JurisdictionType.GLOBAL,
-      "",
-      globalData
-    );
-    StoredCaseStats.save(globalStats);
+    StoredCaseStats.save(buildCaseStats(globalData));
 
     for (Map.Entry<String, JurisdictionData> entry : countryData.entrySet()) {
-      CaseStats stats = buildCaseStats(
-        JurisdictionType.COUNTRY,
-        entry.getKey(),
-        entry.getValue()
-      );
-      StoredCaseStats.save(stats);
+      StoredCaseStats.save(buildCaseStats(entry.getValue()));
     }
   }
 }
