@@ -27,7 +27,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
   static final class JurisdictionData {
 
     JurisdictionType jurisdictionType;
-    String jurisdiction = "";
+    String jurisdiction;
     long totalCases = 0L, totalDeaths = 0L;
     long lastUpdated = 0L;
     Map<Long, StoredCaseStats.StoredStatSnapshot> snapshots = new HashMap<>();
@@ -94,10 +94,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         data.jurisdictionType,
         data.jurisdiction
       );
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      // (Should we create a proper exception?)
 
-      throw new RuntimeException("This is wrong.");
+      // Todo: Create a proper exception.
+      throw new RuntimeException("Saw duplicated country data.");
     }
 
     snapshot.dailyCases += dailyCases;
