@@ -168,7 +168,6 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         );
       }
     }
-    fixPartialLastDayAll(countryData, globalData);
   }
 
   /**
@@ -323,7 +322,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       numItems += rows.size();
       processWhoStats(rows, countryData, globalData);
     }
+    fixPartialLastDayAll(countryData, globalData);
 
+    // Reject unexpected changes in case stats, e.g. too large an increase
     CaseStats oldCaseStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
     if (oldCaseStats != null) {
       totalCasesDeltaCheck(oldCaseStats.cases, globalData.totalCases);

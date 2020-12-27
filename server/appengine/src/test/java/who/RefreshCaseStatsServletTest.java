@@ -135,6 +135,7 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     Map<String, RefreshCaseStatsServlet.JurisdictionData> countryData = new HashMap<>();
 
     servlet.processWhoStats(rows, countryData, globalData);
+    servlet.fixPartialLastDayAll(countryData, globalData);
 
     // Global Stats
     assertEquals(1608854400000L, globalData.lastUpdated);
@@ -215,9 +216,9 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
 
     RefreshCaseStatsServlet.JurisdictionData us = countryData.get("US");
     assertEquals(357, us.snapshots.size());
-    // Rwanda: Zero numbers, so dropped as likely "No data reported yet"
+    // Last entry would be removed by fixPartialLastDayAll
     RefreshCaseStatsServlet.JurisdictionData ng = countryData.get("RW");
-    assertEquals(356, ng.snapshots.size());
+    assertEquals(357, ng.snapshots.size());
   }
 
   @Test
@@ -225,10 +226,20 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
     servlet.totalCasesDeltaCheck(1000, 2000);
     servlet.totalCasesDeltaCheck(77_000_000, 78_000_000);
-    Exception exception = assertThrows(
+
+    // Unexpected increase
+    Exception exception1 = assertThrows(
       RuntimeException.class,
       () -> {
         servlet.totalCasesDeltaCheck(77_000_000, 82_000_000);
+      }
+    );
+
+    // Unexpected decrease
+    Exception exception2 = assertThrows(
+      RuntimeException.class,
+      () -> {
+        servlet.totalCasesDeltaCheck(77_000_000, 76_999_999);
       }
     );
   }
