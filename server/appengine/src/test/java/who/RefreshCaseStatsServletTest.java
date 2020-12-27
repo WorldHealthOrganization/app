@@ -1,6 +1,7 @@
 package who;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
 import com.google.gson.JsonArray;
@@ -34,17 +35,17 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     // Test values in a cumbersome way.
     // TODO: Test against a snapshot of golden data.
     assertEquals(1608768000000L, globalData.lastUpdated);
-    assertEquals(235, globalData.totalCases);
-    assertEquals(8, globalData.totalDeaths);
+    assertEquals(302, globalData.totalCases);
+    assertEquals(32, globalData.totalDeaths);
     assertEquals(2, globalData.snapshots.size());
 
     assertEquals(2, countryData.size());
-    RefreshCaseStatsServlet.JurisdictionData zambia = countryData.get("ZM");
+    RefreshCaseStatsServlet.JurisdictionData zambia = countryData.get("AA");
     assertEquals(2, zambia.snapshots.size());
     StoredCaseStats.StoredStatSnapshot s1 = zambia.snapshots.get(
       1608681600000L
     );
-    assertEquals(113, s1.dailyCases.intValue());
+    assertEquals(100, s1.dailyCases.intValue());
   }
 
   @Test
@@ -76,8 +77,8 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
   public void testPaginatedData() throws UnsupportedEncodingException {
     RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
 
-    JsonArray rows1 = getRowsFromTestResource("smaller-who-data-earlier.json");
-    JsonArray rows2 = getRowsFromTestResource("smaller-who-data.json");
+    JsonArray rows1 = getRowsFromTestResource("smaller-who-data.json");
+    JsonArray rows2 = getRowsFromTestResource("smaller-who-data-page-2.json");
 
     RefreshCaseStatsServlet.JurisdictionData globalData = new RefreshCaseStatsServlet.JurisdictionData(
       JurisdictionType.GLOBAL,
@@ -86,13 +87,52 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     Map<String, RefreshCaseStatsServlet.JurisdictionData> countryData = new HashMap<>();
 
     servlet.processWhoStats(rows1, countryData, globalData);
-    assertEquals(1608595200000L, globalData.lastUpdated);
-    servlet.processWhoStats(rows2, countryData, globalData);
-
     assertEquals(1608768000000L, globalData.lastUpdated);
-    assertEquals(384, globalData.totalCases);
-    assertEquals(12, globalData.totalDeaths);
+    assertEquals(302, globalData.totalCases);
+    assertEquals(32, globalData.totalDeaths);
+    assertEquals(2, globalData.snapshots.size());
+
+    servlet.processWhoStats(rows2, countryData, globalData);
+    assertEquals(1608854400000L, globalData.lastUpdated);
+    assertEquals(403, globalData.totalCases);
+    assertEquals(43, globalData.totalDeaths);
     assertEquals(3, globalData.snapshots.size());
+  }
+
+  @Test
+  public void testPartialDay() throws UnsupportedEncodingException {
+    RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
+
+    JsonArray rows = getRowsFromTestResource(
+      "smaller-who-data-partial-day.json"
+    );
+
+    RefreshCaseStatsServlet.JurisdictionData globalData = new RefreshCaseStatsServlet.JurisdictionData(
+      JurisdictionType.GLOBAL,
+      ""
+    );
+    Map<String, RefreshCaseStatsServlet.JurisdictionData> countryData = new HashMap<>();
+
+    servlet.processWhoStats(rows, countryData, globalData);
+    assertEquals(1608854400000L, globalData.lastUpdated);
+    assertEquals(604, globalData.totalCases);
+    assertEquals(64, globalData.totalDeaths);
+    assertEquals(3, globalData.snapshots.size());
+
+    RefreshCaseStatsServlet.JurisdictionData aaCountry = countryData.get("AA");
+    RefreshCaseStatsServlet.JurisdictionData bbCountry = countryData.get("BB");
+    RefreshCaseStatsServlet.JurisdictionData ccCountry = countryData.get("CC");
+
+    assertNotNull(aaCountry);
+    assertNotNull(bbCountry);
+    assertNotNull(ccCountry);
+
+    // AA: non-zero data for all 3 days
+    assertEquals(3, aaCountry.snapshots.size());
+    // BB: zero numbers for last 1 day (discarded last day as likely "no data reported")
+    assertEquals(2, bbCountry.snapshots.size());
+    // CC: zero numbers for last 2 days (kept as likely "valid zero following prior zero")
+    assertEquals(3, ccCountry.snapshots.size());
   }
 
   private JsonArray getRowsFromTestResource(String filename)
@@ -131,5 +171,12 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     // The TotalCases is a good heuristic that the data loaded correctly: it is a sum
     // of every daily case seen in the system so far.
     assertEquals(77530799L, globalData.totalCases);
+    assertEquals(1724904L, globalData.totalDeaths);
+
+    RefreshCaseStatsServlet.JurisdictionData us = countryData.get("US");
+    assertEquals(357, us.snapshots.size());
+    // Rwanda: Zero numbers, so dropped as likely "No data reported yet"
+    RefreshCaseStatsServlet.JurisdictionData ng = countryData.get("RW");
+    assertEquals(356, ng.snapshots.size());
   }
 }

@@ -75,46 +75,46 @@
    "features" : [
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZW", 
+        "ISO_2_CODE" : "AA",
         "date_epicrv" : 1608681600000, 
-        "NewCase" : 122, 
-        "CumCase" : 12544, 
-        "NewDeath" : 4, 
-        "CumDeath" : 326, 
-        "ADM0_NAME" : "Zimbabwe"
+        "NewCase" : 100,
+        "CumCase" : 100,
+        "NewDeath" : 10,
+        "CumDeath" : 10,
+        "ADM0_NAME" : "ACountry"
       }
     }, 
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZM", 
+        "ISO_2_CODE" : "BB",
         "date_epicrv" : 1608681600000, 
-        "NewCase" : 113, 
-        "CumCase" : 18881, 
-        "NewDeath" : 4, 
-        "CumDeath" : 379, 
-        "ADM0_NAME" : "Zambia"
+        "NewCase" : 101,
+        "CumCase" : 101,
+        "NewDeath" : 11,
+        "CumDeath" : 11,
+        "ADM0_NAME" : "BCountry"
       }
     }, 
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZM", 
+        "ISO_2_CODE" : "AA",
         "date_epicrv" : 1608768000000, 
-        "NewCase" : 0, 
-        "CumCase" : 18881, 
-        "NewDeath" : 0, 
-        "CumDeath" : 379, 
-        "ADM0_NAME" : "Zambia"
+        "NewCase" : 50,
+        "CumCase" : 150,
+        "NewDeath" : 5,
+        "CumDeath" : 15,
+        "ADM0_NAME" : "ACountry"
       }
     }, 
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZW", 
+        "ISO_2_CODE" : "BB",
         "date_epicrv" : 1608768000000, 
-        "NewCase" : 0, 
-        "CumCase" : 12544, 
-        "NewDeath" : 0, 
-        "CumDeath" : 326, 
-        "ADM0_NAME" : "Zimbabwe"
+        "NewCase" : 51,
+        "CumCase" : 152,
+        "NewDeath" : 6,
+        "CumDeath" : 17,
+        "ADM0_NAME" : "BCountry"
       }
     }
   ]
