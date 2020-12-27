@@ -199,7 +199,9 @@ public class RefreshCaseStatsServlet extends HttpServlet {
   /**
    * Remove last day if it appears to be "No Data Reported"
    *
-   * ArcGIS data doesn't distinguish between "Zero Cases" and "No Data Reported"
+   * ArcGIS data can distinguish between "Zero Cases" and "No Data Reported"
+   * but appears to often report the former when it means the latter
+   *
    * Heuristic:
    *   if lastDayNumbers > 0 => assume up to date
    *   if lastDayNumbers == 0 && priorDayNumbers > 0 => assume "No Data Reported" and delete
