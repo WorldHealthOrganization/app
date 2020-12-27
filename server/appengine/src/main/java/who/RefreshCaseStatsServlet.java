@@ -161,7 +161,7 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         );
       }
     }
-    fixPartialLastDay(countryData, globalData);
+    fixPartialLastDayAll(countryData, globalData);
   }
 
   /**
@@ -171,9 +171,10 @@ public class RefreshCaseStatsServlet extends HttpServlet {
    * GlobalData totals to use all data, not sum of possible incomplete countries
    *
    * @param countryData Accumulated data for each country.
-   * @param globalData  Accumulated data, sum of all countries.
+   * @param globalData Accumulated data, sum of all countries.
    */
-  private void fixPartialLastDay(
+  @VisibleForTesting
+  void fixPartialLastDayAll(
     Map<String, JurisdictionData> countryData,
     who.RefreshCaseStatsServlet.JurisdictionData globalData
   ) {
@@ -185,49 +186,67 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     snapshot.totalCases = globalData.totalCases;
     snapshot.totalDeaths = globalData.totalDeaths;
 
-    // ArcGIS data doesn't distinguish between "Zero Cases" and "No Data Reported"
-    //
-    // Heuristic:
-    // if lastDayNumbers > 0 => assume up to date
-    // if lastDayNumbers == 0 && priorDayNumbers > 0 => assume "No Data Reported" and delete
-    // Will cause a 1-day delay when country goes to zero for the first time but better
-    // than erroneously reporting the numbers as zero
-    // https://github.com/WorldHealthOrganization/app/issues/1724
     String countriesLastDayRemoved = "";
     for (Map.Entry<String, JurisdictionData> countryEntry : countryData.entrySet()) {
-      long lastUpdate = 0L;
-      long priorUpdate = 0L;
-      JurisdictionData countryEntryData = countryEntry.getValue();
-      for (Map.Entry<Long, StoredCaseStats.StoredStatSnapshot> entry : countryEntryData.snapshots.entrySet()) {
-        long update = entry.getKey();
-        if (update > priorUpdate) {
-          if (update > lastUpdate) {
-            priorUpdate = lastUpdate;
-            lastUpdate = update;
-          } else {
-            priorUpdate = update;
-          }
-        }
+      boolean removed = fixPartialLastDayCountry(countryEntry.getValue());
+      if (removed) {
+        countriesLastDayRemoved += countryEntry.getKey() + ", ";
       }
-      if (lastUpdate > 0 && priorUpdate > 0) {
-        StoredCaseStats.StoredStatSnapshot lastSnapshot = countryEntryData.snapshots.get(
-          lastUpdate
-        );
-        StoredCaseStats.StoredStatSnapshot priorSnapshot = countryEntryData.snapshots.get(
-          priorUpdate
-        );
-        if (lastSnapshot.dailyCases == 0 && lastSnapshot.dailyDeaths == 0) {
-          if (priorSnapshot.dailyCases > 0 || priorSnapshot.dailyDeaths > 0) {
-            // Likely "No Data Reported"
-            countriesLastDayRemoved += countryEntry.getKey() + ", ";
-            StoredCaseStats.StoredStatSnapshot removed = countryEntryData.snapshots.remove(
-              lastUpdate
-            );
-          }
+    }
+    logger.info("Countries last day removed: " + countriesLastDayRemoved);
+  }
+
+  /**
+   * Remove last day if it appears to be "No Data Reported"
+   *
+   * ArcGIS data doesn't distinguish between "Zero Cases" and "No Data Reported"
+   * Heuristic:
+   *   if lastDayNumbers > 0 => assume up to date
+   *   if lastDayNumbers == 0 && priorDayNumbers > 0 => assume "No Data Reported" and delete
+   * Will cause a 1-day delay when country goes to zero for the first time but better
+   * than erroneously reporting the numbers as zero
+   * https://github.com/WorldHealthOrganization/app/issues/1724
+   *
+   * @param countryData Accumulated data for a country.
+   */
+  @VisibleForTesting
+  boolean fixPartialLastDayCountry(JurisdictionData countryData) {
+    long lastUpdate = 0L;
+    long priorUpdate = 0L;
+
+    // Find two highest timestamps in the snapshot map
+    for (Map.Entry<Long, StoredCaseStats.StoredStatSnapshot> entry : countryData.snapshots.entrySet()) {
+      long update = entry.getKey();
+      if (update > priorUpdate) {
+        if (update > lastUpdate) {
+          priorUpdate = lastUpdate;
+          lastUpdate = update;
+        } else {
+          priorUpdate = update;
         }
       }
     }
-    logger.info("Countries removed last day: " + countriesLastDayRemoved);
+
+    // Consider removing last day
+    if (lastUpdate > 0 && priorUpdate > 0) {
+      StoredCaseStats.StoredStatSnapshot lastSnapshot = countryData.snapshots.get(
+        lastUpdate
+      );
+      StoredCaseStats.StoredStatSnapshot priorSnapshot = countryData.snapshots.get(
+        priorUpdate
+      );
+      if (lastSnapshot.dailyCases == 0 && lastSnapshot.dailyDeaths == 0) {
+        if (priorSnapshot.dailyCases > 0 || priorSnapshot.dailyDeaths > 0) {
+          // Likely "No Data Reported"
+          StoredCaseStats.StoredStatSnapshot removed = countryData.snapshots.remove(
+            lastUpdate
+          );
+          countryData.lastUpdated = priorUpdate;
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**

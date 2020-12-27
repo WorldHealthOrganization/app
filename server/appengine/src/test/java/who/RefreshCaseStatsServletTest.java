@@ -100,13 +100,34 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
   }
 
   @Test
-  public void testPartialDay() throws UnsupportedEncodingException {
-    RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
+  public void testPartialLastDay() throws UnsupportedEncodingException {
+    /*
+    Data from json file:
+    AA: non-zero data for all 3 days
+    BB: zero numbers for last 1 day (discarded last day as likely "no data reported")
+    CC: zero numbers for last 2 days (kept as likely "valid zero following prior zero")
+    DD: no entry at all for last timestamp (incomplete timestamp for global data)
 
+    Presented here grouped by country for readability.
+    File is sorted by timestamp and then country.
+
+    Timestamp, Country, dailyCases, sumCases, dailyDeaths, sumDeaths
+    1608681600000, AA, 100, 100, 10, 10,
+    1608768000000, AA, 100, 200, 10, 20,
+    1608854400000, AA, 100, 300, 10, 30,
+    1608681600000, BB, 101, 101, 11, 11,
+    1608768000000, BB, 101, 202, 11, 22,
+    1608854400000, BB,   0, 202,  0, 22,
+    1608681600000, CC, 102, 102, 12, 12,
+    1608768000000, CC,   0, 102,  0, 12,
+    1608854400000, CC,   0, 102,  0, 12,
+    1608681600000, DD, 400, 400, 80, 80,
+     */
     JsonArray rows = getRowsFromTestResource(
-      "smaller-who-data-partial-day.json"
+      "smaller-who-data-partial-last-day.json"
     );
 
+    RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
     RefreshCaseStatsServlet.JurisdictionData globalData = new RefreshCaseStatsServlet.JurisdictionData(
       JurisdictionType.GLOBAL,
       ""
@@ -114,11 +135,30 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     Map<String, RefreshCaseStatsServlet.JurisdictionData> countryData = new HashMap<>();
 
     servlet.processWhoStats(rows, countryData, globalData);
-    assertEquals(1608854400000L, globalData.lastUpdated);
-    assertEquals(604, globalData.totalCases);
-    assertEquals(64, globalData.totalDeaths);
-    assertEquals(3, globalData.snapshots.size());
 
+    // Global Stats
+    assertEquals(1608854400000L, globalData.lastUpdated);
+    assertEquals(300 + 202 + 102 + 400, globalData.totalCases);
+    assertEquals(30 + 22 + 12 + 80, globalData.totalDeaths);
+    assertEquals(3, globalData.snapshots.size());
+    StoredCaseStats.StoredStatSnapshot g1 = globalData.snapshots.get(
+      1608681600000L
+    );
+    StoredCaseStats.StoredStatSnapshot g2 = globalData.snapshots.get(
+      1608768000000L
+    );
+    StoredCaseStats.StoredStatSnapshot g3 = globalData.snapshots.get(
+      1608854400000L
+    );
+
+    // No partial day as there's no missing data
+    assertEquals(100 + 101 + 102 + 400, (long) g1.totalCases);
+    // Partial day mistakenly misses DD: 400
+    assertEquals(200 + 202 + 102, (long) g2.totalCases);
+    // Partial day is corrected to match globalData.totalCases
+    assertEquals(300 + 202 + 102 + 400, (long) g3.totalCases);
+
+    // Country Stats
     RefreshCaseStatsServlet.JurisdictionData aaCountry = countryData.get("AA");
     RefreshCaseStatsServlet.JurisdictionData bbCountry = countryData.get("BB");
     RefreshCaseStatsServlet.JurisdictionData ccCountry = countryData.get("CC");

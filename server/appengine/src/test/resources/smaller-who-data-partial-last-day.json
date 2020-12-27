@@ -108,6 +108,17 @@
     },
     {
       "attributes" : {
+        "ISO_2_CODE" : "DD",
+        "date_epicrv" : 1608681600000,
+        "NewCase" : 400,
+        "CumCase" : 400,
+        "NewDeath" : 80,
+        "CumDeath" : 80,
+        "ADM0_NAME" : "D"
+      }
+    },
+    {
+      "attributes" : {
         "ISO_2_CODE" : "AA",
         "date_epicrv" : 1608768000000,
         "NewCase" : 100,
