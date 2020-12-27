@@ -228,7 +228,7 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     Exception exception = assertThrows(
       RuntimeException.class,
       () -> {
-        servlet.totalCasesDeltaCheck(77_000_000, 79_000_000);
+        servlet.totalCasesDeltaCheck(77_000_000, 82_000_000);
       }
     );
   }
