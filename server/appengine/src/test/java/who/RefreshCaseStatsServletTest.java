@@ -219,4 +219,17 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     RefreshCaseStatsServlet.JurisdictionData ng = countryData.get("RW");
     assertEquals(356, ng.snapshots.size());
   }
+
+  @Test
+  public void totalCasesDeltaCheck() {
+    RefreshCaseStatsServlet servlet = new RefreshCaseStatsServlet();
+    servlet.totalCasesDeltaCheck(1000, 2000);
+    servlet.totalCasesDeltaCheck(77_000_000, 78_000_000);
+    Exception exception = assertThrows(
+      RuntimeException.class,
+      () -> {
+        servlet.totalCasesDeltaCheck(77_000_000, 79_000_000);
+      }
+    );
+  }
 }

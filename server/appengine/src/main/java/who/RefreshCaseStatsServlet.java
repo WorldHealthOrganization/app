@@ -38,6 +38,8 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     }
   }
 
+  private static final double TOTAL_CASES_MAX_DAILY_INCREASE_FACTOR = 1.02;
+  private static final double TOTAL_CASES_MAX_DAILY_INCREASE_ABS = 1000;
   private static final String WHO_CASE_STATS_URL =
     "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
   private static final Logger logger = LoggerFactory.getLogger(
@@ -317,11 +319,33 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       processWhoStats(rows, countryData, globalData);
     }
 
+    CaseStats oldCaseStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+    if (oldCaseStats != null) {
+      totalCasesDeltaCheck(oldCaseStats.cases, globalData.totalCases);
+    }
+
     StoredCaseStats.save(buildCaseStats(globalData));
 
     for (Map.Entry<String, JurisdictionData> entry : countryData.entrySet()) {
       StoredCaseStats.save(buildCaseStats(entry.getValue()));
     }
     logger.info("Results saved.");
+  }
+
+  @VisibleForTesting
+  void totalCasesDeltaCheck(long oldTotalCases, long newTotalCases)
+    throws RuntimeException {
+    long thresholdTotalCases = (long) (
+      ((double) oldTotalCases * TOTAL_CASES_MAX_DAILY_INCREASE_FACTOR) +
+      TOTAL_CASES_MAX_DAILY_INCREASE_ABS
+    );
+    if (newTotalCases > thresholdTotalCases || newTotalCases < oldTotalCases) {
+      logger.error(
+        "Unexpected delta in global cases. Old total: {}, New total: {}",
+        oldTotalCases,
+        newTotalCases
+      );
+      throw new RuntimeException("Unexpected delta in global cases.");
+    }
   }
 }
