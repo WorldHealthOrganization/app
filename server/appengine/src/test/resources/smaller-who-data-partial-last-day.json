@@ -1,0 +1,187 @@
+{
+  "objectIdFieldName" : "OBJECTID",
+  "uniqueIdField" :
+  {
+    "name" : "OBJECTID",
+    "isSystemMaintained" : true
+  },
+  "globalIdFieldName" : "",
+  "geometryType" : "esriGeometryPoint",
+  "spatialReference" : {
+    "wkid" : 4326,
+    "latestWkid" : 4326
+  },
+  "fields" : [
+    {
+      "name" : "ISO_2_CODE",
+      "type" : "esriFieldTypeString",
+      "alias" : "ISO_2_CODE",
+      "sqlType" : "sqlTypeOther",
+      "length" : 2,
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "date_epicrv",
+      "type" : "esriFieldTypeDate",
+      "alias" : "date_epicrv",
+      "sqlType" : "sqlTypeOther",
+      "length" : 8,
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "NewCase",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "NewCase",
+      "sqlType" : "sqlTypeOther",
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "CumCase",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "CumCase",
+      "sqlType" : "sqlTypeOther",
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "NewDeath",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "NewDeath",
+      "sqlType" : "sqlTypeOther",
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "CumDeath",
+      "type" : "esriFieldTypeInteger",
+      "alias" : "CumDeath",
+      "sqlType" : "sqlTypeOther",
+      "domain" : null,
+      "defaultValue" : null
+    },
+    {
+      "name" : "ADM0_NAME",
+      "type" : "esriFieldTypeString",
+      "alias" : "ADM0_NAME",
+      "sqlType" : "sqlTypeOther",
+      "length" : 255,
+      "domain" : null,
+      "defaultValue" : null
+    }
+  ],
+  "features" : [
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "AA",
+        "date_epicrv" : 1608681600000,
+        "NewCase" : 100,
+        "CumCase" : 100,
+        "NewDeath" : 10,
+        "CumDeath" : 10,
+        "ADM0_NAME" : "A"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "BB",
+        "date_epicrv" : 1608681600000,
+        "NewCase" : 101,
+        "CumCase" : 101,
+        "NewDeath" : 11,
+        "CumDeath" : 11,
+        "ADM0_NAME" : "B"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "CC",
+        "date_epicrv" : 1608681600000,
+        "NewCase" : 102,
+        "CumCase" : 102,
+        "NewDeath" : 12,
+        "CumDeath" : 12,
+        "ADM0_NAME" : "C"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "DD",
+        "date_epicrv" : 1608681600000,
+        "NewCase" : 400,
+        "CumCase" : 400,
+        "NewDeath" : 80,
+        "CumDeath" : 80,
+        "ADM0_NAME" : "D"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "AA",
+        "date_epicrv" : 1608768000000,
+        "NewCase" : 100,
+        "CumCase" : 200,
+        "NewDeath" : 10,
+        "CumDeath" : 20,
+        "ADM0_NAME" : "A"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "BB",
+        "date_epicrv" : 1608768000000,
+        "NewCase" : 101,
+        "CumCase" : 202,
+        "NewDeath" : 11,
+        "CumDeath" : 22,
+        "ADM0_NAME" : "B"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "CC",
+        "date_epicrv" : 1608768000000,
+        "NewCase" : 0,
+        "CumCase" : 102,
+        "NewDeath" : 0,
+        "CumDeath" : 12,
+        "ADM0_NAME" : "C"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "AA",
+        "date_epicrv" : 1608854400000,
+        "NewCase" : 100,
+        "CumCase" : 300,
+        "NewDeath" : 10,
+        "CumDeath" : 30,
+        "ADM0_NAME" : "A"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "BB",
+        "date_epicrv" : 1608854400000,
+        "NewCase" : 0,
+        "CumCase" : 202,
+        "NewDeath" : 0,
+        "CumDeath" : 22,
+        "ADM0_NAME" : "B"
+      }
+    },
+    {
+      "attributes" : {
+        "ISO_2_CODE" : "CC",
+        "date_epicrv" : 1608854400000,
+        "NewCase" : 0,
+        "CumCase" : 102,
+        "NewDeath" : 0,
+        "CumDeath" : 12,
+        "ADM0_NAME" : "C"
+      }
+    }
+  ]
+}

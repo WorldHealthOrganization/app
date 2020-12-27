@@ -50,9 +50,11 @@ public class RefreshCaseStatsServlet extends HttpServlet {
       // Safe because the value is an integer and does not need to be escaped
       .url(WHO_CASE_STATS_URL + "&resultOffset=" + offset)
       .build();
-    logger.info(request.url().toString());
+    logger.info("ArcGIS url: " + request.url().toString());
     try (Response response = HTTP_CLIENT.newCall(request).execute()) {
-      return response.body().string();
+      String data = response.body().string();
+      logger.info("ArcGIS response length: " + data.length());
+      return data;
     }
   }
 
@@ -159,6 +161,94 @@ public class RefreshCaseStatsServlet extends HttpServlet {
         );
       }
     }
+    fixPartialLastDayAll(countryData, globalData);
+  }
+
+  /**
+   * Correct partial last day
+   *
+   * CountryData last day dropped if likely "No Data Reported"
+   * GlobalData totals to use all data, not sum of possible incomplete countries
+   *
+   * @param countryData Accumulated data for each country.
+   * @param globalData Accumulated data, sum of all countries.
+   */
+  @VisibleForTesting
+  void fixPartialLastDayAll(
+    Map<String, JurisdictionData> countryData,
+    who.RefreshCaseStatsServlet.JurisdictionData globalData
+  ) {
+    // Global last snapshot
+    // Last day snapshot daily cases and deaths may remain as partial
+    StoredCaseStats.StoredStatSnapshot snapshot = globalData.snapshots.get(
+      globalData.lastUpdated
+    );
+    snapshot.totalCases = globalData.totalCases;
+    snapshot.totalDeaths = globalData.totalDeaths;
+
+    String countriesLastDayRemoved = "";
+    for (Map.Entry<String, JurisdictionData> countryEntry : countryData.entrySet()) {
+      boolean removed = fixPartialLastDayCountry(countryEntry.getValue());
+      if (removed) {
+        countriesLastDayRemoved += countryEntry.getKey() + ", ";
+      }
+    }
+    logger.info("Countries last day removed: " + countriesLastDayRemoved);
+  }
+
+  /**
+   * Remove last day if it appears to be "No Data Reported"
+   *
+   * ArcGIS data can distinguish between "Zero Cases" and "No Data Reported"
+   * but appears to often report the former when it means the latter
+   *
+   * Heuristic:
+   *   if lastDayNumbers > 0 => assume up to date
+   *   if lastDayNumbers == 0 && priorDayNumbers > 0 => assume "No Data Reported" and delete
+   * Will cause a 1-day delay when country goes to zero for the first time but better
+   * than erroneously reporting the numbers as zero
+   * https://github.com/WorldHealthOrganization/app/issues/1724
+   *
+   * @param countryData Accumulated data for a country.
+   */
+  @VisibleForTesting
+  boolean fixPartialLastDayCountry(JurisdictionData countryData) {
+    long lastUpdate = 0L;
+    long priorUpdate = 0L;
+
+    // Find two highest timestamps in the snapshot map
+    for (Map.Entry<Long, StoredCaseStats.StoredStatSnapshot> entry : countryData.snapshots.entrySet()) {
+      long update = entry.getKey();
+      if (update > priorUpdate) {
+        if (update > lastUpdate) {
+          priorUpdate = lastUpdate;
+          lastUpdate = update;
+        } else {
+          priorUpdate = update;
+        }
+      }
+    }
+
+    // Consider removing last day
+    if (lastUpdate > 0 && priorUpdate > 0) {
+      StoredCaseStats.StoredStatSnapshot lastSnapshot = countryData.snapshots.get(
+        lastUpdate
+      );
+      StoredCaseStats.StoredStatSnapshot priorSnapshot = countryData.snapshots.get(
+        priorUpdate
+      );
+      if (lastSnapshot.dailyCases == 0 && lastSnapshot.dailyDeaths == 0) {
+        if (priorSnapshot.dailyCases > 0 || priorSnapshot.dailyDeaths > 0) {
+          // Likely "No Data Reported"
+          StoredCaseStats.StoredStatSnapshot removed = countryData.snapshots.remove(
+            lastUpdate
+          );
+          countryData.lastUpdated = priorUpdate;
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**

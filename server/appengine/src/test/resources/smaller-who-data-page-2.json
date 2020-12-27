@@ -75,24 +75,24 @@
   "features" : [
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZM", 
-        "date_epicrv" : 1608595200000, 
-        "NewCase" : 52, 
-        "CumCase" : 18768, 
-        "NewDeath" : 2, 
-        "CumDeath" : 375, 
-        "ADM0_NAME" : "Zambia"
+        "ISO_2_CODE" : "AA",
+        "date_epicrv" : 1608854400000,
+        "NewCase" : 50,
+        "CumCase" : 200,
+        "NewDeath" : 5,
+        "CumDeath" : 20,
+        "ADM0_NAME" : "ACountry"
       }
-    }, 
+    },
     {
       "attributes" : {
-        "ISO_2_CODE" : "ZW", 
-        "date_epicrv" : 1608595200000, 
-        "NewCase" : 97, 
-        "CumCase" : 12422, 
-        "NewDeath" : 2, 
-        "CumDeath" : 322, 
-        "ADM0_NAME" : "Zimbabwe"
+        "ISO_2_CODE" : "BB",
+        "date_epicrv" : 1608854400000,
+        "NewCase" : 51,
+        "CumCase" : 203,
+        "NewDeath" : 6,
+        "CumDeath" : 23,
+        "ADM0_NAME" : "BCountry"
       }
     }
   ]
