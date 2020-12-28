@@ -3,6 +3,9 @@ package who;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,9 +17,34 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 public class RefreshCaseStatsServletTest extends WhoTestSupport {
+
+  private JsonArray getRowsFromTestResource(String filename)
+    throws UnsupportedEncodingException {
+    InputStream in =
+      this.getClass().getClassLoader().getResourceAsStream(filename);
+    JsonObject root = JsonParser
+      .parseReader(new InputStreamReader(in, "UTF-8"))
+      .getAsJsonObject();
+    return root.getAsJsonArray("features");
+  }
+
+  @Test
+  public void testCronFailsOutsideDevAppserver() throws Exception {
+    HttpServletRequest request = mock(HttpServletRequest.class);
+    HttpServletResponse response = mock(HttpServletResponse.class);
+
+    new RefreshCaseStatsServlet().doGet(request, response);
+
+    ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
+    verify(response)
+      .sendError(HttpServletResponse.SC_UNAUTHORIZED, "Cron access only");
+  }
 
   @Test
   public void testParse() throws UnsupportedEncodingException {
@@ -174,16 +202,6 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
     assertEquals(2, bbCountry.snapshots.size());
     // CC: zero numbers for last 2 days (kept as likely "valid zero following prior zero")
     assertEquals(3, ccCountry.snapshots.size());
-  }
-
-  private JsonArray getRowsFromTestResource(String filename)
-    throws UnsupportedEncodingException {
-    InputStream in =
-      this.getClass().getClassLoader().getResourceAsStream(filename);
-    JsonObject root = JsonParser
-      .parseReader(new InputStreamReader(in, "UTF-8"))
-      .getAsJsonObject();
-    return root.getAsJsonArray("features");
   }
 
   @Test
