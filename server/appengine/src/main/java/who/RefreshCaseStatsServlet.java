@@ -290,10 +290,8 @@ public class RefreshCaseStatsServlet extends HttpServlet {
     // App Engine strips all external X-* request headers, so we can trust this is set by App Engine.
     // https://cloud.google.com/appengine/docs/flexible/java/scheduling-jobs-with-cron-yaml#validating_cron_requests
     if (
-      !(
-        Environment.current() == Environment.DEV_LOCAL ||
-        "true".equals(request.getHeader("X-Appengine-Cron"))
-      )
+      !Environment.isDevLocal() &&
+      !"true".equals(request.getHeader("X-Appengine-Cron"))
     ) {
       response.sendError(
         HttpServletResponse.SC_UNAUTHORIZED,

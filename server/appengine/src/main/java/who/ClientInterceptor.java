@@ -53,9 +53,7 @@ public class ClientInterceptor implements RpcInterceptor {
 
     Client client = Client.getOrCreate(clientId, platform);
     Client.currentClient.set(client);
-    if (!Environment.isProduction()) logger.info(
-      CLIENT_ID + ": " + client.uuid
-    );
+    if (Environment.isDevLocal()) logger.info(CLIENT_ID + ": " + client.uuid);
     try {
       return invocation.proceed();
     } finally {
