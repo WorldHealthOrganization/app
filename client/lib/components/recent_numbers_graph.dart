@@ -231,7 +231,16 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
                               ? Constants.primaryDarkColor
                               : Constants.accentColor,
                         ),
-                      )
+                      ),
+                      ThemedText(
+                        lastUpdated,
+                        variant: TypographyVariant.body,
+                        style: TextStyle(
+                          color: widget.dimension == DataDimension.cases
+                              ? Constants.primaryDarkColor
+                              : Constants.accentColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -252,6 +261,20 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         return 'Daily';
       default:
         return '';
+    }
+  }
+
+  String get lastUpdated {
+    var epochsMilliseconds = widget?.timeseries?.last?.epochMsec?.toInt();
+    if (epochsMilliseconds == null) {
+      return '';
+    } else {
+      return 'Last Updated ' +
+          DateFormat.yMMMd().format(
+            DateTime.fromMillisecondsSinceEpoch(
+              epochsMilliseconds,
+            ),
+          );
     }
   }
 
