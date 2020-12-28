@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-public class RefreshCaseStatsServletTest extends WhoTestSupport {
+public class RefreshCaseStatsServletTest {
 
   private JsonArray getRowsFromTestResource(String filename)
     throws UnsupportedEncodingException {
@@ -41,7 +41,6 @@ public class RefreshCaseStatsServletTest extends WhoTestSupport {
 
     new RefreshCaseStatsServlet().doGet(request, response);
 
-    ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
     verify(response)
       .sendError(HttpServletResponse.SC_UNAUTHORIZED, "Cron access only");
   }
