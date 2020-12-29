@@ -52,7 +52,7 @@ jobs:
         with:
           java-version: "12.0.2"
           architecture: x86
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.2.0
+      - uses: google-github-actions/setup-gcloud@0.2.0
       - run: gcloud components install beta app-engine-java && gcloud components update
       - name: Setup GCP Credentials
         shell: bash
