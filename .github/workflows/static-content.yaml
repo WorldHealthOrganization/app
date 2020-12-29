@@ -57,7 +57,7 @@ jobs:
         with:
           java-version: "12.0.2"
           architecture: x86
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.2
+      - uses: google-github-actions/setup-gcloud@v0.2.0
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
