@@ -269,12 +269,11 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     if (epochsMilliseconds == null) {
       return '';
     } else {
-      return 'Last Updated ' +
-          DateFormat.yMMMd().format(
-            DateTime.fromMillisecondsSinceEpoch(
-              epochsMilliseconds,
-            ),
-          );
+      return DateFormat.yMMMd().format(
+        DateTime.fromMillisecondsSinceEpoch(
+          epochsMilliseconds,
+        ),
+      );
     }
   }
 
