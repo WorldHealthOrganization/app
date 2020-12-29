@@ -104,7 +104,7 @@ jobs:
               log_url: process.env.LOG_URL,
             });
             return deployment.id;
-      - run: DONT_BUILD=true ./tools/build-and-push-static-serving.sh who-myhealth-staging-static-content-01
+      - run: DONT_BUILD=true ./tools/build-and-push-static-serving.sh who-mh-staging
       - name: Destroy GCP Credentials File
         run: rm $APPLICATION_CREDENTIALS
         if: ${{ always() }}
@@ -126,6 +126,6 @@ jobs:
               deployment_id: '${{steps.newDeployment.outputs.result}}',
               state: '${{job.status}}' === 'success' ? 'success' : 'failure',
               log_url: process.env.LOG_URL,
-              environment_url: '${{job.status}}' === 'success' ? 'https://console.cloud.google.com/storage/browser/who-myhealth-staging-static-content-01;tab=objects?project=who-myhealth-staging&prefix=' : '',
+              environment_url: '${{job.status}}' === 'success' ? 'https://console.cloud.google.com/storage/browser/who-mh-staging-static-content;tab=objects?project=who-mh-staging&prefix=' : '',
               auto_inactive: '${{job.status}}' === 'success'
             });
