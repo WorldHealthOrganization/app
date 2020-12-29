@@ -1,5 +1,9 @@
 package who;
 
+import static com.google.appengine.api.appidentity.AppIdentityServiceFactory.getAppIdentityService;
+
+import com.google.appengine.api.appidentity.AppIdentityService;
+import com.google.appengine.api.utils.SystemProperty;
 import present.engine.AppEngine;
 
 /**
@@ -33,6 +37,13 @@ public enum Environment {
 
     if (applicationId == null) return TEST;
 
+    if (
+      SystemProperty.environment.value() ==
+      SystemProperty.Environment.Value.Development
+    ) {
+      return DEV_LOCAL;
+    }
+
     switch (applicationId) {
       case "who-myhealth-staging":
         return STAGING;
@@ -42,8 +53,6 @@ public enum Environment {
         return PRODUCTION;
       case "test":
         return TEST;
-      case AppEngine.DEVELOPMENT_ID:
-        return DEV_LOCAL;
       default:
         return DEV_SERVER;
     }
@@ -54,12 +63,11 @@ public enum Environment {
     if (applicationId == null) {
       return null;
     }
-    // Strip shard.
-    int tilde = applicationId.indexOf('~');
-    if (tilde >= 0) {
-      applicationId = applicationId.substring(tilde + 1);
-    }
-    return applicationId;
+
+    // Work around https://github.com/presentco/present-engine/issues/1
+    AppIdentityService.ParsedAppId id = getAppIdentityService()
+      .parseFullAppId(applicationId);
+    return id.getId();
   }
 
   public String firebaseApplicationId() {

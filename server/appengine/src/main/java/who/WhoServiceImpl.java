@@ -29,42 +29,7 @@ public class WhoServiceImpl implements WhoService {
     this.nm = nm;
   }
 
-  // TODO: Delete this method once all clients are moved to putClientSettings.
-  @Override
-  public Void putDeviceToken(PutDeviceTokenRequest request) throws IOException {
-    Client client = Client.current();
-    if (client.token != null && client.token.equals(request.token)) {
-      // Nothing to change.
-      return new Void();
-    }
-    client.token = Strings.emptyToNull(request.token);
-    // The token changed; we will need to resubscribe to topics b/c this
-    // new token has never been subscribed to anything.
-    client.subscribedTopics = new TreeSet<String>();
-    ofy().save().entities(client);
-    nm.updateSubscriptions(client);
-    return new Void();
-  }
-
   private static final Pattern COUNTRY_CODE = Pattern.compile("^[A-Z][A-Z]$");
-
-  // TODO: Delete this method once all clients are moved to putClientSettings.
-  @Override
-  public Void putLocation(PutLocationRequest request) throws IOException {
-    Client client = Client.current();
-    // Don't even run a regex on a very long string.
-    if (
-      request.isoCountryCode == null ||
-      request.isoCountryCode.length() != 2 ||
-      !COUNTRY_CODE.matcher(request.isoCountryCode).matches()
-    ) {
-      throw new ClientException("Invalid isoCountryCode");
-    }
-    client.isoCountryCode = request.isoCountryCode;
-    ofy().save().entities(client);
-    nm.updateSubscriptions(client);
-    return new Void();
-  }
 
   @Override
   public Void putClientSettings(PutClientSettingsRequest request)
