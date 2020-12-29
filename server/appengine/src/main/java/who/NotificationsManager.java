@@ -35,9 +35,7 @@ public class NotificationsManager {
 
   public void updateSubscriptions(Client client) throws IOException {
     Preconditions.checkNotNull(client);
-    if (client.token == null) {
-      return;
-    }
+
     SortedSet<String> finalTopics = Topics.getTopicNames(client);
     Set<String> topicsToRemove = Sets
       .difference(client.subscribedTopics, finalTopics)

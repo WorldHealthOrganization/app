@@ -22,6 +22,7 @@ public class Client {
 
   /** Device token for notifications. */
   public String token;
+  public boolean disableNotifications;
 
   public Platform platform;
 

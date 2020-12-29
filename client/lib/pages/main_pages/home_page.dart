@@ -100,7 +100,6 @@ class HomePage extends ContentWidget<IndexContent> {
       padding: EdgeInsets.only(top: 44.0),
       header: _HomePageSectionHeader(
         title: item.title,
-        linkText: item.buttonText,
         link: item.link,
       ),
       content: HomePageProtectYourself(
@@ -115,7 +114,6 @@ class HomePage extends ContentWidget<IndexContent> {
       padding: EdgeInsets.only(top: 56.0),
       header: _HomePageSectionHeader(
         title: item.title,
-        linkText: item.buttonText,
         link: item.link,
       ),
       content: HomePageRecentNumbers(
@@ -166,12 +164,10 @@ class _HomePageSection extends StatelessWidget {
 
 class _HomePageSectionHeader extends StatelessWidget {
   final String title;
-  final String linkText;
   final RouteLink link;
 
   const _HomePageSectionHeader({
     @required this.title,
-    @required this.linkText,
     @required this.link,
   });
 
@@ -184,15 +180,11 @@ class _HomePageSectionHeader extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         spacing: 16.0,
         children: <Widget>[
-          ThemedText(
-            title,
-            variant: TypographyVariant.h3,
-          ),
           CupertinoButton(
             padding: EdgeInsets.zero,
             child: ThemedText(
-              linkText,
-              variant: TypographyVariant.button,
+              title,
+              variant: TypographyVariant.h3,
               style: TextStyle(
                 color: Constants.neutralTextLightColor,
               ),

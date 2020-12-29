@@ -1,5 +1,9 @@
 package who;
 
+import static com.google.appengine.api.appidentity.AppIdentityServiceFactory.getAppIdentityService;
+
+import com.google.appengine.api.appidentity.AppIdentityService;
+import com.google.appengine.api.utils.SystemProperty;
 import present.engine.AppEngine;
 
 /**
@@ -33,6 +37,13 @@ public enum Environment {
 
     if (applicationId == null) return TEST;
 
+    if (
+      SystemProperty.environment.value() ==
+      SystemProperty.Environment.Value.Development
+    ) {
+      return DEV_LOCAL;
+    }
+
     switch (applicationId) {
       case "who-myhealth-staging":
         return STAGING;
@@ -42,8 +53,6 @@ public enum Environment {
         return PRODUCTION;
       case "test":
         return TEST;
-      case AppEngine.DEVELOPMENT_ID:
-        return DEV_LOCAL;
       default:
         return DEV_SERVER;
     }
@@ -51,12 +60,14 @@ public enum Environment {
 
   private static String getApplicationId() {
     String applicationId = AppEngine.applicationId();
-    // "o~" prefix bug in App Engine. Not sure where those 2 chars at the beginning come from.
-    final String PREFIX_BUG = "o~";
-    if (applicationId.startsWith(PREFIX_BUG)) {
-      applicationId = applicationId.substring(PREFIX_BUG.length());
+    if (applicationId == null) {
+      return null;
     }
-    return applicationId;
+
+    // Work around https://github.com/presentco/present-engine/issues/1
+    AppIdentityService.ParsedAppId id = getAppIdentityService()
+      .parseFullAppId(applicationId);
+    return id.getId();
   }
 
   public String firebaseApplicationId() {

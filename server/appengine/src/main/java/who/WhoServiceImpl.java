@@ -15,6 +15,10 @@ import present.rpc.ClientException;
 
 public class WhoServiceImpl implements WhoService {
 
+  // FCM documentation doesn't specify standard but usually up to 162 chars
+  // https://stackoverflow.com/a/12502351/1509221
+  static final int FCM_TOKEN_MAX_LENGTH = 4096;
+
   NotificationsManager nm;
   private static final Logger logger = LoggerFactory.getLogger(
     WhoServiceImpl.class
@@ -84,7 +88,19 @@ public class WhoServiceImpl implements WhoService {
       }
       client.isoCountryCode = request.isoCountryCode;
     }
-    client.token = Strings.emptyToNull(request.token);
+
+    if (request.token.length() > FCM_TOKEN_MAX_LENGTH) {
+      throw new ClientException("Invalid FCM Token");
+    }
+    String token = Strings.emptyToNull(request.token);
+    if (token == null) {
+      // Null token indicates to disable notifications
+      // Leave existing token in place to unsubscribe topics
+      client.disableNotifications = true;
+    } else {
+      client.token = token;
+      client.disableNotifications = false;
+    }
 
     ofy().save().entities(client);
     nm.updateSubscriptions(client);

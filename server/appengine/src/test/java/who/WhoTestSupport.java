@@ -18,6 +18,8 @@ public abstract class WhoTestSupport {
   @Before
   public void setup() {
     helper.setUp();
+    ObjectifyService.register(Client.class);
+    ObjectifyService.register(StoredCaseStats.class);
     objectify = ObjectifyService.begin();
   }
 

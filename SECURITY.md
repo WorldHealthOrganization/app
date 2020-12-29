@@ -2,9 +2,10 @@
 
 ## Reporting a Vulnerability
 
-We are working on a Vulnerability Disclosure Program for reporting issues.
-Once launched, we will link to it here. In the mean time, temporarily email
-github@brunobowden.com with issues to report.
+HackerOne hosts our Vulnerability Disclosure Program (VDP). Do not post sensitive
+security issues on the public GitHub but report them to the HackerOne VDP instead:
+
+https://hackerone.com/who-covid-19-mobile-app
 
 ## Hacking Server
 
@@ -23,11 +24,13 @@ so. Please keep treat any server data as confidential but by design it shouldn't
 any private data. Please be more careful with the other `*.whocoronavirus.org` servers
 as they're used for active development.
 
-## Architecture
+## Documentation
 
-Please see the [design docs](https://github.com/WorldHealthOrganization/app/blob/master/docs/devdesign/README.md)
+- [Design Docs](https://github.com/WorldHealthOrganization/app/blob/master/docs/devdesign/README.md)
+- [Open Security Issues](https://github.com/WorldHealthOrganization/app/issues?q=is%3Aissue+is%3Aopen+label%3Asecurity)
 
 ## Supported Versions
 
-As a managed service, we expect to always run on the latest version. The clients
-aren't pushed to update unless there is a security issue.
+As a managed service, we expect to always run the server on a recent version.
+The mobile clients will be prompted to update as new features are released and
+in the case of a security issue.
