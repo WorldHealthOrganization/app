@@ -16,10 +16,6 @@ import 'who.pbjson.dart';
 export 'who.pb.dart';
 
 abstract class WhoServiceBase extends $pb.GeneratedService {
-  $async.Future<$0.Void> putDeviceToken(
-      $pb.ServerContext ctx, $0.PutDeviceTokenRequest request);
-  $async.Future<$0.Void> putLocation(
-      $pb.ServerContext ctx, $0.PutLocationRequest request);
   $async.Future<$0.Void> putClientSettings(
       $pb.ServerContext ctx, $0.PutClientSettingsRequest request);
   $async.Future<$0.GetCaseStatsResponse> getCaseStats(
@@ -27,10 +23,6 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'putDeviceToken':
-        return $0.PutDeviceTokenRequest();
-      case 'putLocation':
-        return $0.PutLocationRequest();
       case 'putClientSettings':
         return $0.PutClientSettingsRequest();
       case 'getCaseStats':
@@ -43,10 +35,6 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx,
       $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'putDeviceToken':
-        return this.putDeviceToken(ctx, request);
-      case 'putLocation':
-        return this.putLocation(ctx, request);
       case 'putClientSettings':
         return this.putClientSettings(ctx, request);
       case 'getCaseStats':

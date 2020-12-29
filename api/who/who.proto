@@ -9,25 +9,10 @@ message Void {}
 
 // None of these responses are publicly cacheable.
 // Clients must send a client ID header.
-service WhoService {
-
-  rpc putDeviceToken(PutDeviceTokenRequest) returns (Void);
-
-  // The client should not pass a precise location.
-  rpc putLocation(PutLocationRequest) returns (Void);
-  
+service WhoService {  
   rpc putClientSettings(PutClientSettingsRequest) returns (Void);
 
   rpc getCaseStats(GetCaseStatsRequest) returns (GetCaseStatsResponse);
-}
-
-message PutDeviceTokenRequest {
-  string token = 1;
-}
-
-message PutLocationRequest {
-  // ISO 3166-1 alpha-2 (uppercase) code
-  string isoCountryCode = 12;
 }
 
 message PutClientSettingsRequest {
