@@ -103,15 +103,14 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
         child: AnimatedCrossFade(
           firstChild: Observer(
             builder: (_) => _HomeStatCard(
-              stat: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryDailyCases > 0
+              stat: widget.statsStore.countryStats != null && widget.statsStore.countryDailyCases >= 0
                   ? widget.numFmt.format(widget.statsStore.countryDailyCases)
                   : '',
               // TODO: localize
               title: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryDailyCases > 0
+                      widget.statsStore.countryDailyCases >= 0
                   ? 'National Cases'
-                  : '',
+                  : '', 
             ),
           ),
           duration: Duration(seconds: 1),
