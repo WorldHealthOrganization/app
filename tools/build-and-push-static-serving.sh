@@ -18,7 +18,7 @@ if [ "$DONT_PUSH" != "true" ]; then
     exit 1
   fi
 
-  PROJECT_ID=$PROJECT_ID-static-content
+  BUCKET=$PROJECT_ID-static-content
   set -euv
   gsutil -m -h "Cache-Control:public, max-age=600" -h "x-goog-meta-git-sha:$(git rev-parse HEAD)" -h "Content-Type:application/x-yaml;charset=utf-8" rsync -r ./staticContentBuild/ gs://$BUCKET/content/bundles/
 fi
