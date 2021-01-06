@@ -58,6 +58,7 @@ dependencies:
   uuid: 2.0.4
   visibility_detector: ^0.1.4
   yaml: ^2.2.0
+  flutter_widget_from_html: ^0.3.2+2
 
   intl: ^0.16.0
   flutter_localizations:
