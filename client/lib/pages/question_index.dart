@@ -157,8 +157,7 @@ class _QuestionTileState extends State<QuestionTile>
           fontSize: 16 * textScaleFactor,
           color: Constants.textColor,
           fontWeight: FontWeight.w400,
-          height: 1.5
-        ),
+          height: 1.5),
       hyperlinkColor: Colors.deepPurple,
       onTapUrl: (url) {
         launchUrl(url);
