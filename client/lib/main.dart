@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
@@ -29,7 +28,6 @@ import 'package:who_app/api/notifications.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-
 import 'package:who_app/api/content/content_loading.dart';
 
 PackageInfo _packageInfo;

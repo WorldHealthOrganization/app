@@ -6,12 +6,12 @@ import 'package:who_app/api/linking.dart';
 import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
-import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:html/dom.dart' as dom;
+import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
 class QuestionIndexPage extends ContentWidget<QuestionContent> {
@@ -151,50 +151,21 @@ class _QuestionTileState extends State<QuestionTile>
   // flutter_html supports a subset of html: https://pub.dev/packages/flutter_html
   Widget html(String html) {
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
-
-    return Html(
-      data: html,
-      defaultTextStyle: TextStyle(fontSize: 16 * textScaleFactor),
-      linkStyle: const TextStyle(
-        color: Colors.deepPurple,
-      ),
-      onLinkTap: (url) {
+    return HtmlWidget(
+      html,
+      textStyle: TextStyle(
+          fontSize: 16 * textScaleFactor,
+          color: Constants.textColor,
+          fontWeight: FontWeight.w400,
+          height: 1.5),
+      hyperlinkColor: Colors.deepPurple,
+      onTapUrl: (url) {
         launchUrl(url);
       },
-      onImageTap: (src) {},
-      // This is our css :)
-      customEdgeInsets: (dom.Node node) {
-        if (node is dom.Element) {
-          switch (node.localName) {
-            case 'p':
-              return EdgeInsets.only(bottom: 8);
-              break;
-            default:
-              return EdgeInsets.zero;
-          }
-        } else {
-          return EdgeInsets.zero;
-        }
-      },
-      customTextStyle: (dom.Node node, TextStyle baseStyle) {
-        if (node is dom.Element) {
-          switch (node.localName) {
-            case 'h2':
-              return baseStyle.merge(TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff3C4245),
-                  fontWeight: FontWeight.w500));
-            case 'b':
-              return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
-          }
-        }
-        return baseStyle.merge(_bodyStyle);
-      },
+      bodyPadding: EdgeInsets.all(0.0),
+      tableCellPadding: EdgeInsets.all(0.0),
     );
   }
-
-  final _bodyStyle = TextStyle(
-      color: Constants.textColor, fontWeight: FontWeight.w400, height: 1.5);
 
   final _titleStyle = TextStyle(
       color: Color(0xff3C4245),
