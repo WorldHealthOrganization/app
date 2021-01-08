@@ -16,26 +16,35 @@ import 'who.pbjson.dart';
 export 'who.pb.dart';
 
 abstract class WhoServiceBase extends $pb.GeneratedService {
-  $async.Future<$0.Void> putClientSettings($pb.ServerContext ctx, $0.PutClientSettingsRequest request);
-  $async.Future<$0.GetCaseStatsResponse> getCaseStats($pb.ServerContext ctx, $0.GetCaseStatsRequest request);
+  $async.Future<$0.Void> putClientSettings(
+      $pb.ServerContext ctx, $0.PutClientSettingsRequest request);
+  $async.Future<$0.GetCaseStatsResponse> getCaseStats(
+      $pb.ServerContext ctx, $0.GetCaseStatsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'putClientSettings': return $0.PutClientSettingsRequest();
-      case 'getCaseStats': return $0.GetCaseStatsRequest();
-      default: throw $core.ArgumentError('Unknown method: $method');
+      case 'putClientSettings':
+        return $0.PutClientSettingsRequest();
+      case 'getCaseStats':
+        return $0.GetCaseStatsRequest();
+      default:
+        throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
-  $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
+  $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx,
+      $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'putClientSettings': return this.putClientSettings(ctx, request);
-      case 'getCaseStats': return this.getCaseStats(ctx, request);
-      default: throw $core.ArgumentError('Unknown method: $method');
+      case 'putClientSettings':
+        return this.putClientSettings(ctx, request);
+      case 'getCaseStats':
+        return this.getCaseStats(ctx, request);
+      default:
+        throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
   $core.Map<$core.String, $core.dynamic> get $json => WhoServiceBase$json;
-  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> get $messageJson => WhoServiceBase$messageJson;
+  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+      get $messageJson => WhoServiceBase$messageJson;
 }
-
