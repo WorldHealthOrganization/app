@@ -33,6 +33,7 @@ dependencies:
   firebase_core: ^0.5.2
   firebase_crashlytics: ^0.2.3
   firebase_messaging: ^8.0.0-dev.8
+  firebase_performance: ^0.4.3
   fixnum: ^0.10.11
   fl_chart: ^0.8.7
   # TODO: upgrade to ^1.4.0, breaking API change

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
@@ -53,6 +54,9 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   var projectId = app.options.projectId;
   print('Firebase ProjectID: $projectId');
   var endpoint = Endpoint(projectId);
+
+  //TODO: REMOVE WHEN LEGAL APPROVES PERFORMANCE MONITERING
+  await FirebasePerformance.instance.setPerformanceCollectionEnabled(false);
 
   FlutterError.onError = _onFlutterError;
 

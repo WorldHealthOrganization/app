@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: api/who/who.proto
 //
-// @dart = 2.3
+// @dart = 2.7
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
@@ -79,7 +79,19 @@ class PutClientSettingsRequest extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   PutClientSettingsRequest._() : super();
-  factory PutClientSettingsRequest() => create();
+  factory PutClientSettingsRequest({
+    $core.String token,
+    $core.String isoCountryCode,
+  }) {
+    final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
+    if (isoCountryCode != null) {
+      _result.isoCountryCode = isoCountryCode;
+    }
+    return _result;
+  }
   factory PutClientSettingsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -162,7 +174,19 @@ class JurisdictionId extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   JurisdictionId._() : super();
-  factory JurisdictionId() => create();
+  factory JurisdictionId({
+    $core.String code,
+    JurisdictionType jurisdictionType,
+  }) {
+    final _result = create();
+    if (code != null) {
+      _result.code = code;
+    }
+    if (jurisdictionType != null) {
+      _result.jurisdictionType = jurisdictionType;
+    }
+    return _result;
+  }
   factory JurisdictionId.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -235,7 +259,15 @@ class GetCaseStatsRequest extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   GetCaseStatsRequest._() : super();
-  factory GetCaseStatsRequest() => create();
+  factory GetCaseStatsRequest({
+    $core.Iterable<JurisdictionId> jurisdictions,
+  }) {
+    final _result = create();
+    if (jurisdictions != null) {
+      _result.jurisdictions.addAll(jurisdictions);
+    }
+    return _result;
+  }
   factory GetCaseStatsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -288,7 +320,24 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   GetCaseStatsResponse._() : super();
-  factory GetCaseStatsResponse() => create();
+  factory GetCaseStatsResponse({
+    @$core.Deprecated('This field is deprecated.') CaseStats globalStats,
+    $fixnum.Int64 ttl,
+    $core.Iterable<CaseStats> jurisdictionStats,
+  }) {
+    final _result = create();
+    if (globalStats != null) {
+      // ignore: deprecated_member_use_from_same_package
+      _result.globalStats = globalStats;
+    }
+    if (ttl != null) {
+      _result.ttl = ttl;
+    }
+    if (jurisdictionStats != null) {
+      _result.jurisdictionStats.addAll(jurisdictionStats);
+    }
+    return _result;
+  }
   factory GetCaseStatsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -380,7 +429,39 @@ class StatSnapshot extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   StatSnapshot._() : super();
-  factory StatSnapshot() => create();
+  factory StatSnapshot({
+    $fixnum.Int64 epochMsec,
+    $fixnum.Int64 dailyCases,
+    $fixnum.Int64 dailyDeaths,
+    $fixnum.Int64 dailyRecoveries,
+    $fixnum.Int64 totalCases,
+    $fixnum.Int64 totalDeaths,
+    $fixnum.Int64 totalRecoveries,
+  }) {
+    final _result = create();
+    if (epochMsec != null) {
+      _result.epochMsec = epochMsec;
+    }
+    if (dailyCases != null) {
+      _result.dailyCases = dailyCases;
+    }
+    if (dailyDeaths != null) {
+      _result.dailyDeaths = dailyDeaths;
+    }
+    if (dailyRecoveries != null) {
+      _result.dailyRecoveries = dailyRecoveries;
+    }
+    if (totalCases != null) {
+      _result.totalCases = totalCases;
+    }
+    if (totalDeaths != null) {
+      _result.totalDeaths = totalDeaths;
+    }
+    if (totalRecoveries != null) {
+      _result.totalRecoveries = totalRecoveries;
+    }
+    return _result;
+  }
   factory StatSnapshot.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -526,7 +607,43 @@ class CaseStats extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CaseStats._() : super();
-  factory CaseStats() => create();
+  factory CaseStats({
+    $core.String jurisdiction,
+    $fixnum.Int64 lastUpdated,
+    $fixnum.Int64 cases,
+    $fixnum.Int64 deaths,
+    $fixnum.Int64 recoveries,
+    $core.String attribution,
+    JurisdictionType jurisdictionType,
+    $core.Iterable<StatSnapshot> timeseries,
+  }) {
+    final _result = create();
+    if (jurisdiction != null) {
+      _result.jurisdiction = jurisdiction;
+    }
+    if (lastUpdated != null) {
+      _result.lastUpdated = lastUpdated;
+    }
+    if (cases != null) {
+      _result.cases = cases;
+    }
+    if (deaths != null) {
+      _result.deaths = deaths;
+    }
+    if (recoveries != null) {
+      _result.recoveries = recoveries;
+    }
+    if (attribution != null) {
+      _result.attribution = attribution;
+    }
+    if (jurisdictionType != null) {
+      _result.jurisdictionType = jurisdictionType;
+    }
+    if (timeseries != null) {
+      _result.timeseries.addAll(timeseries);
+    }
+    return _result;
+  }
   factory CaseStats.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);

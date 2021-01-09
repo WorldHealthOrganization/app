@@ -2,15 +2,21 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:who_app/main.dart';
 import 'package:who_app/api/user_preferences.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'dart:io' as io;
 
 import 'package:who_app/proto/api/who/who.pb.dart';
+
+import 'package:firebase_performance/firebase_performance.dart';
 
 class WhoService {
   final String serviceUrl;
 
   WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
+
+  final _MetricHttpClient http = _MetricHttpClient(
+    Client(),
+  );
 
   /// Put Client Settings
   Future<bool> putClientSettings({String token, String isoCountryCode}) async {
@@ -78,5 +84,35 @@ class WhoService {
       return 'ANDROID';
     }
     return 'WEB';
+  }
+}
+
+class _MetricHttpClient extends BaseClient {
+  _MetricHttpClient(this._inner);
+
+  final Client _inner;
+
+  @override
+  Future<StreamedResponse> send(BaseRequest request) async {
+    final metric = FirebasePerformance.instance.newHttpMetric(
+      request.url.toString(),
+      HttpMethod.Post,
+    );
+
+    await metric.start();
+
+    StreamedResponse response;
+    try {
+      response = await _inner.send(request);
+      metric
+        ..responsePayloadSize = response.contentLength
+        ..responseContentType = response.headers['Content-Type']
+        ..requestPayloadSize = request.contentLength
+        ..httpResponseCode = response.statusCode;
+    } finally {
+      await metric.stop();
+    }
+
+    return response;
   }
 }
