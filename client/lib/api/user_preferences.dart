@@ -104,7 +104,7 @@ class UserPreferences {
 
   Future<bool> setAnalyticsEnabled(bool value) async {
     var analytics = FirebaseAnalytics();
-    
+
     if (!value) {
       await analytics.resetAnalyticsData();
     }
