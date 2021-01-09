@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_performance/firebase_performance.dart';
+
+// import 'package:firebase_performance/firebase_performance.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
@@ -102,12 +104,14 @@ class UserPreferences {
 
   Future<bool> setAnalyticsEnabled(bool value) async {
     var analytics = FirebaseAnalytics();
-    var performance = FirebasePerformance.instance;
+    
     if (!value) {
       await analytics.resetAnalyticsData();
     }
     await analytics.setAnalyticsCollectionEnabled(value);
-    await performance.setPerformanceCollectionEnabled(value);
+    // TODO: ADD BACK PERFORMANCE MONITERING WHEN LEGAL APPROVES
+    // var performance = FirebasePerformance.instance;
+    // await performance.setPerformanceCollectionEnabled(value);
     var result = (await SharedPreferences.getInstance())
         .setBool(UserPreferenceKey.AnalyticsEnabled.toString(), value);
     await _updateFirebaseAutoInit();
