@@ -8,7 +8,7 @@ On every push to `master` that affects the client, an Android APK will be pushed
 
 ### Setup
 
-1.  (First time) Create [a service account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/104111540645440452578?project=who-myhealth-staging) on `who-myhealth-staging` GCP with `Firebase App Distribution Admin` role.
+1.  (First time) Create [a service account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/104111540645440452578?project=who-mh-staging) on `who-mh-staging` GCP with `Firebase App Distribution Admin` role.
 2.  Create a Key for that service account: Add Key -> Create New Key -> JSON. Save the JSON file locally as `key.json`.
 3.  Generate a random passphrase. Store that passphrase as GitHub secret `FIREBASE_APPDEPLOY_STAGING_SVCACCT_PASSPHRASE`.
 4.  Encrypt and encode the key using the generated passphrase:
@@ -26,7 +26,7 @@ On every push to `master` that affects the server, the server will be pushed to 
 
 ### Setup
 
-1.  (First time) Create [a service account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/104111540645440452578?project=who-myhealth-staging) on `who-myhealth-staging` GCP with the following role:
+1.  (First time) Create [a service account](https://console.cloud.google.com/iam-admin/serviceaccounts/details/104111540645440452578?project=who-mh-staging) on `who-mh-staging` GCP with the following role:
     `App Engine Deployer`,
     `App Engine Service Admin`,
     `Cloud Build Editor`,

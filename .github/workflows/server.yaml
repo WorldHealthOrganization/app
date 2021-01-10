@@ -91,7 +91,7 @@ jobs:
             });
             return deployment.id;
       - shell: bash
-        run: ./bin/deploy-server.sh who-myhealth-staging
+        run: ./bin/deploy-server.sh who-mh-staging
         working-directory: server
       - name: Destroy GCP Credentials File
         run: rm $APPLICATION_CREDENTIALS
@@ -114,6 +114,6 @@ jobs:
               deployment_id: '${{steps.newDeployment.outputs.result}}',
               state: '${{job.status}}' === 'success' ? 'success' : 'failure',
               log_url: process.env.LOG_URL,
-              environment_url: '${{job.status}}' === 'success' ? 'https://console.cloud.google.com/appengine?project=who-myhealth-staging&serviceId=default' : '',
+              environment_url: '${{job.status}}' === 'success' ? 'https://console.cloud.google.com/appengine?project=who-mh-staging&serviceId=default' : '',
               auto_inactive: '${{job.status}}' === 'success'
             });
