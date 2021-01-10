@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a fr locale. All the
+// This is a library that provides messages for a fr_FR locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutPageBuiltByCreditText": m0,
         "aboutPagePrivacyPolicyLinkText": MessageLookupByLibrary.simpleMessage(
             "Politique de confidentialité"),
+        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/privacy-notice"),
         "aboutPageTermsOfServiceLinkText":
             MessageLookupByLibrary.simpleMessage("Conditions d\'utilisation"),
         "aboutPageTermsOfServiceLinkUrl": MessageLookupByLibrary.simpleMessage(
@@ -46,8 +48,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("Afficher les licences"),
-        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
-            "https://www.who.int/myhealthapp/privacy-notice"),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
                 "Veuillez mettre à jour vers la dernière version de l\'application afin de recevoir les dernières informations et mises à jour."),
