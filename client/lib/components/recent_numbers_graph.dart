@@ -75,7 +75,13 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
               final date = DateTime.fromMillisecondsSinceEpoch(
                   widget.timeseries[index].epochMsec.toInt());
               // Abbr to fit on single line: e.g. "Oct 18, 2020"
-              final formattedDate = DateFormat.yMMMd().format(date);
+              final formattedDate = DateFormat.yMMMd().format(
+                date.add(
+                  Duration(
+                    days: 1,
+                  ),
+                ),
+              );
 
               final formattedCount = NumberFormat().format(barRodData.y);
 
@@ -272,6 +278,10 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
       return DateFormat.yMMMd().format(
         DateTime.fromMillisecondsSinceEpoch(
           epochsMilliseconds,
+        ).add(
+          Duration(
+            days: 1,
+          ),
         ),
       );
     }
