@@ -269,7 +269,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     if (epochsMilliseconds == null) {
       return '';
     } else {
-      return DateFormat.yMMMd().format(
+      return DateFormat.MMMd().format(
         DateTime.fromMillisecondsSinceEpoch(
           epochsMilliseconds,
         ),
