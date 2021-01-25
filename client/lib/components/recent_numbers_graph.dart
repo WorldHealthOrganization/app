@@ -6,6 +6,7 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/proto/api/who/who.pb.dart';
+import 'package:who_app/api/who_date_format.dart';
 
 const double padding = 30;
 const Duration defaultSwapDuration = Duration(
@@ -75,13 +76,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
               final date = DateTime.fromMillisecondsSinceEpoch(
                   widget.timeseries[index].epochMsec.toInt());
               // Abbr to fit on single line: e.g. "Oct 18, 2020"
-              final formattedDate = DateFormat.yMMMd().format(
-                date.add(
-                  Duration(
-                    days: 1,
-                  ),
-                ),
-              );
+              final formattedDate = date.whoFormat;
 
               final formattedCount = NumberFormat().format(barRodData.y);
 
@@ -275,15 +270,9 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     if (epochsMilliseconds == null) {
       return '';
     } else {
-      return DateFormat.yMMMd().format(
-        DateTime.fromMillisecondsSinceEpoch(
+        return DateTime.fromMillisecondsSinceEpoch(
           epochsMilliseconds,
-        ).add(
-          Duration(
-            days: 1,
-          ),
-        ),
-      );
+        ).whoFormat;
     }
   }
 
