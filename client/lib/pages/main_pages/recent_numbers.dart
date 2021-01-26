@@ -142,33 +142,44 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
             refreshTriggerPullDistance: 100,
           ),
           SliverList(
-            delegate: SliverChildListDelegate([
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    if (countryCode != null) ...[
+            delegate: SliverChildListDelegate(
+              [
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      if (countryCode != null) ...[
+                        _JurisdictionStats(
+                          aggregation: aggregation,
+                          emoji:
+                              countryList.countries[countryCode]?.emoji ?? '',
+                          name: countryList.countries[countryCode]?.name ??
+                              countryCode,
+                          stats: widget.statsStore.countryStats,
+                          key: Key(countryCode),
+                        ),
+                        Container(height: 16.0),
+                      ],
                       _JurisdictionStats(
                         aggregation: aggregation,
-                        emoji: countryList.countries[countryCode]?.emoji ?? '',
-                        name: countryList.countries[countryCode]?.name ??
-                            countryCode,
-                        stats: widget.statsStore.countryStats,
-                        key: Key(countryCode),
+                        emoji: '🌍',
+                        name: 'Global',
+                        stats: widget.statsStore.globalStats,
+                        key: Key('Global'),
                       ),
-                      Container(height: 16.0),
+                      Container(
+                        height: 24,
+                      ),
+                      ThemedText(
+                        S.of(context).latestNumbersPageDisclosure,
+                        variant: TypographyVariant.bodySmall,
+                        textAlign: TextAlign.center,
+                      ),
                     ],
-                    _JurisdictionStats(
-                      aggregation: aggregation,
-                      emoji: '🌍',
-                      name: 'Global',
-                      stats: widget.statsStore.globalStats,
-                      key: Key('Global'),
-                    ),
-                  ],
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                  ),
                 ),
-              ),
-            ]),
+              ],
+            ),
           )
         ],
         title: S.of(context).latestNumbersPageTitle,

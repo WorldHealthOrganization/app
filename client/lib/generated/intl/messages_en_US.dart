@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a en_US locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutPageBuiltByCreditText": m0,
         "aboutPagePrivacyPolicyLinkText":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
+            "https://www.who.int/myhealthapp/privacy-notice"),
         "aboutPageTermsOfServiceLinkText":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "aboutPageTermsOfServiceLinkUrl": MessageLookupByLibrary.simpleMessage(
@@ -47,8 +49,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About the App"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("View Licenses"),
-        "aboutPagePrivacyPolicyLinkUrl": MessageLookupByLibrary.simpleMessage(
-            "https://www.who.int/myhealthapp/privacy-notice"),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
                 "Please update to the latest version of the app in order to receive the latest information and updates."),
@@ -125,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New"),
         "latestNumbersPageDeathsDimension":
             MessageLookupByLibrary.simpleMessage("Global Deaths"),
+        "latestNumbersPageDisclosure": MessageLookupByLibrary.simpleMessage(
+            "Data may be incomplete for the current day or week."),
         "latestNumbersPageGlobalCasesTitle":
             MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
         "latestNumbersPageGlobalDeaths":
