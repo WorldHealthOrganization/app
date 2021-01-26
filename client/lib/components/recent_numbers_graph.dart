@@ -270,9 +270,9 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     if (epochsMilliseconds == null) {
       return '';
     } else {
-        return DateTime.fromMillisecondsSinceEpoch(
-          epochsMilliseconds,
-        ).whoFormat;
+      return DateTime.fromMillisecondsSinceEpoch(
+        epochsMilliseconds,
+      ).whoFormat;
     }
   }
 
