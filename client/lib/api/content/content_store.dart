@@ -50,7 +50,7 @@ abstract class _ContentStore with Store implements Updateable {
         questionsAnswered,
         symptomPoster,
         symptomChecker,
-  ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
+      ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
 
   @observable
   LogicContext logicContext;
@@ -140,8 +140,8 @@ abstract class _ContentStore with Store implements Updateable {
             'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
           symptomPoster = v;
         }),
-        updateBundle<SymptomCheckerContent>(
-            'symptom_checker', symptomChecker, (cb) => SymptomCheckerContent(cb), (v) {
+        updateBundle<SymptomCheckerContent>('symptom_checker', symptomChecker,
+            (cb) => SymptomCheckerContent(cb), (v) {
           symptomChecker = v;
         })
       ]);
