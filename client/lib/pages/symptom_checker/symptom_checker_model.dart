@@ -54,7 +54,7 @@ class SymptomCheckerModel with ChangeNotifier {
   List<SymptomCheckerResult> _answerQuestionImpl(Set<String> answerIds) {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
-    bool nextPageFound = false;
+    var nextPageFound = false;
     final logic = SymptomLogic();
     for (var i = pages[pages.length - 1].questionIndex + 1;
         !nextPageFound && i < _content.questions.length;

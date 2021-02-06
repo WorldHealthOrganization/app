@@ -24,7 +24,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
       trailing: FlatButton(
         padding: EdgeInsets.zero,
         child: ThemedText(
-          "Done",
+          'Done',
           variant: TypographyVariant.button,
           style: TextStyle(color: Constants.whoBackgroundBlueColor),
         ),
@@ -35,7 +35,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
       body: [
         _buildBody(context),
       ],
-      title: "Check-Up",
+      title: 'Check-Up',
     );
   }
 
@@ -65,7 +65,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
       case SymptomCheckerResultSeverity.SomeSymptoms:
         return Constants.accentColor;
     }
-    throw Exception("Unknown severity");
+    throw Exception('Unknown severity');
   }
 
   List<Widget> _getCards(BuildContext context) {
@@ -103,8 +103,8 @@ class _Card extends StatelessWidget {
   final Color iconColor;
 
   String get assetName {
-    return this.content.iconName != null
-        ? 'assets/svg/streamline-sc-${this.content.iconName}.svg'
+    return content.iconName != null
+        ? 'assets/svg/streamline-sc-${content.iconName}.svg'
         : null;
   }
 
@@ -113,7 +113,7 @@ class _Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = 24 * MediaQuery.of(context).textScaleFactor;
-    return this.content.iconName == null
+    return content.iconName == null
         ? Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: _buildCardContent(context,
@@ -132,7 +132,7 @@ class _Card extends StatelessWidget {
                       Container(
                         alignment: Alignment.center,
                         child: SvgPicture.asset(
-                          this.assetName,
+                          assetName,
                           color: iconColor,
                           width: iconSize,
                           height: iconSize,

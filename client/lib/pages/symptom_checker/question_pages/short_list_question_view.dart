@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:who_app/components/forms.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:who_app/pages/symptom_checker/question_pages/previous_next_buttons.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/next_button.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 import 'package:html/dom.dart' as dom;
 
@@ -66,7 +66,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
                   )),
               // TODO: Localize
               MultiSelectOptionItem(
-                  title: "None of the above", noneOfTheAbove: true),
+                  title: 'None of the above', noneOfTheAbove: true),
             ],
             onPressed: (idx, sel) {
               setState(() {
@@ -75,7 +75,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
                   _noneOfTheAboveSelected = true;
                 } else {
                   _noneOfTheAboveSelected = false;
-                  for (int i = 0; i < answers.length; i++) {
+                  for (var i = 0; i < answers.length; i++) {
                     if (sel[i].selected) {
                       _multipleSelections.add(answers[i].id);
                     }
@@ -103,10 +103,10 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
               });
             },
           );
-    final TextStyle defaultTextStyle = ThemedText.htmlStyleForVariant(
+    final defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context));
-    final TextStyle boldTextStyle =
+    final boldTextStyle =
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
 
     return CustomScrollView(
@@ -151,7 +151,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
               SizedBox(height: 20),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: NextButton(enableNext: _isComplete, onNext: _next)),
+                  child: NextButton(enabled: _isComplete, onNext: _next)),
               SizedBox(height: 48),
             ],
           ),

@@ -37,9 +37,6 @@ class Routes {
           dataSource: Provider.of<ContentStore>(context),
           title: S.of(context).homePagePageButtonQuestions,
         ),
-    // '/symptom-checker': (context) => CheckUpPosterPage(
-    //       dataSource: Provider.of<ContentStore>(context),
-    //     ),
     '/symptom-checker-survey': (context) => SymptomCheckerView(
           dataSource: Provider.of<ContentStore>(context),
         ),

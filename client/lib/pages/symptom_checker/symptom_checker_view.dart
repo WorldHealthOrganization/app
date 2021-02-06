@@ -50,14 +50,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
               .countryIsoCode;
       final logicContext =
           await LogicContext.generate(isoCountryCode: countryIsoCode);
-      /*
-      final store = ContentStore(
-        service: widget.contentService,
-        locale: locale,
-        countryIsoCode: countryIsoCode,
-      );
-       */
-      var store = widget.dataSource;
+      final store = widget.dataSource;
       await store.update();
       var content = store.symptomChecker;
       await Dialogs.showUpgradeDialogIfNeededFor(context, content);
@@ -99,7 +92,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
               trailing: FlatButton(
                 padding: EdgeInsets.zero,
                 child: ThemedText(
-                  "Cancel",
+                  'Cancel',
                   variant: TypographyVariant.button,
                   style: TextStyle(color: Constants.whoBackgroundBlueColor),
                 ),
@@ -116,11 +109,11 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   Widget _buildPage(BuildContext context) {
     if (_model == null) {
-      return _buildMessage("Loading...", loading: true);
+      return _buildMessage('Loading...', loading: true);
     }
     if (_model.isFatalError) {
       return _buildMessage(
-          "Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.",
+          'Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.',
           loading: false);
     }
     return PageView(
@@ -136,7 +129,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       case SymptomCheckerQuestionType.MultipleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
     }
-    throw Exception("Unsupported");
+    throw Exception('Unsupported');
   }
 
   Widget _buildMessage(String text, {bool loading = false}) {

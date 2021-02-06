@@ -11,12 +11,12 @@ import 'package:who_app/constants.dart';
 class CheckUpIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bool inHomePage = !ModalRoute.of(context).canPop;
+    final inHomePage = !ModalRoute.of(context).canPop;
     return PageScaffold(
       showBackButton: !inHomePage,
       color: CupertinoColors.white,
       // TODO: localize
-      title: "Check-Up",
+      title: 'Check-Up',
       header: inHomePage
           ? SliverSafeArea(
               top: true,
@@ -26,7 +26,7 @@ class CheckUpIntroPage extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(16, 36, 16, 20),
                   // TODO: localize
                   child: PageHeader.buildTitle(
-                    "Check-Up",
+                    'Check-Up',
                     textStyle:
                         ThemedText.styleForVariant(TypographyVariant.title)
                             .merge(
@@ -61,34 +61,34 @@ class CheckUpIntroPage extends StatelessWidget {
             top: 0,
           ),
           child: ThemedText(
-            "You should know...",
+            'You should know...',
             variant: TypographyVariant.body,
             style: TextStyle(fontWeight: FontWeight.bold),
           )),
       _ListItem(
           title:
-              "Your answers will not be shared with WHO or others without your permission.",
+              'Your answers will not be shared with WHO or others without your permission.',
           iconName: 'safe'),
       _ListItem(
         title:
-            "By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.",
+            'By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.',
         iconName: 'check',
       ),
       _ListItem(
         title:
-            "Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.",
+            'Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.',
         iconName: 'medical',
         extra: CupertinoButton(
           padding: EdgeInsets.zero,
           child: ThemedText(
-            "See terms ›",
+            'See terms ›',
             variant: TypographyVariant.body,
             style: TextStyle(
               color: Constants.whoBackgroundBlueColor,
             ),
           ),
           onPressed: () {
-            return launch("https://whoapp.org/terms");
+            return launch('https://whoapp.org/terms');
           },
         ),
       ),
@@ -105,7 +105,7 @@ class CheckUpIntroPage extends StatelessWidget {
       ),
       child: PageButton(
         Constants.whoBackgroundBlueColor,
-        "Get Started",
+        'Get Started',
         () => Navigator.of(context, rootNavigator: true)
             .pushNamed('/symptom-checker-survey'),
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -156,7 +156,7 @@ class _ListItem extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                ThemedText(this.title, variant: TypographyVariant.body),
+                ThemedText(title, variant: TypographyVariant.body),
                 if (extra != null) extra,
               ]))
         ],

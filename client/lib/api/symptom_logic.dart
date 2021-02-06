@@ -25,8 +25,8 @@ import 'package:who_app/api/display_conditions.dart';
 ///
 class SymptomLogic {
   Map<String, dynamic> _pageToContext(SymptomCheckerPageModel m) {
-    final ret = Map<String, dynamic>();
-    ret[m.question.id] = Map<String, bool>();
+    final ret = <String, dynamic>{};
+    ret[m.question.id] = <String, bool>{};
     m.question.answers.forEach((answer) {
       ret[m.question.id][answer.id] = m.selectedAnswers.contains(answer.id);
     });
@@ -35,7 +35,7 @@ class SymptomLogic {
 
   Map<String, dynamic> pagesToContext(
       List<SymptomCheckerPageModel> previousPages) {
-    final Map<String, dynamic> ret = {
+    final ret = <String, dynamic>{
       'wasDisplayed': (String qId) =>
           previousPages.any((p) => p.question.id == qId),
       'selectionCount': (String qId) => previousPages
@@ -53,8 +53,8 @@ class SymptomLogic {
 
   bool evaluateCondition(
       {@required String condition,
-        @required LogicContext context,
-        @required List<SymptomCheckerPageModel> previousPages}) {
+      @required LogicContext context,
+      @required List<SymptomCheckerPageModel> previousPages}) {
     final pagesContext = pagesToContext(previousPages);
     return Logic().evaluateCondition(
         condition: condition, context: context, extra: pagesContext);

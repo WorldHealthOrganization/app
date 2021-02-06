@@ -13,16 +13,15 @@ class SymptomCheckerContent extends ContentBase {
   Map<String, SymptomCheckerResultCard> cards;
 
   SymptomCheckerContent(ContentBundle bundle)
-      : super(bundle, schemaName: "symptom_checker") {
+      : super(bundle, schemaName: 'symptom_checker') {
     try {
-      this.questions = bundle.contentItems.map(_questionFromContent).toList();
-      this.cards = Map<String, SymptomCheckerResultCard>.fromIterable(
-          bundle.contentCards.map(_cardFromContent),
-          key: (v) => v.id,
-          value: (v) => v);
-      this.results = bundle.contentResults.map(_resultFromContent).toList();
+      questions = bundle.contentItems.map(_questionFromContent).toList();
+      cards = {
+        for (var v in bundle.contentCards.map(_cardFromContent)) v.id: v
+      };
+      results = bundle.contentResults.map(_resultFromContent).toList();
     } catch (err) {
-      print("Error loading symptom checker data: $err");
+      print('Error loading symptom checker data: $err');
       throw ContentBundleDataException();
     }
   }
@@ -30,14 +29,14 @@ class SymptomCheckerContent extends ContentBase {
   SymptomCheckerQuestion _questionFromContent(dynamic item) {
     SymptomCheckerQuestionType type;
     switch (item['type']) {
-      case "single_selection":
+      case 'single_selection':
         type = SymptomCheckerQuestionType.SingleSelection;
         break;
-      case "multiple_selection":
+      case 'multiple_selection':
         type = SymptomCheckerQuestionType.MultipleSelection;
         break;
       default:
-        throw Exception("unreognized question type");
+        throw Exception('unrecognized question type');
     }
     return SymptomCheckerQuestion(
         type: type,
@@ -53,20 +52,20 @@ class SymptomCheckerContent extends ContentBase {
     SymptomCheckerResultSeverity severity;
     if (item['severity'] != null) {
       switch (item['severity']) {
-        case "covid19_symptoms":
+        case 'covid19_symptoms':
           severity = SymptomCheckerResultSeverity.COVID19Symptoms;
           break;
-        case "some_symptoms":
+        case 'some_symptoms':
           severity = SymptomCheckerResultSeverity.SomeSymptoms;
           break;
-        case "none":
+        case 'none':
           severity = SymptomCheckerResultSeverity.None;
           break;
-        case "emergency":
+        case 'emergency':
           severity = SymptomCheckerResultSeverity.Emergency;
           break;
         default:
-          throw Exception("unrecognized result severity");
+          throw Exception('unrecognized result severity');
       }
     }
     return SymptomCheckerResult(
@@ -156,7 +155,7 @@ class SymptomCheckerQuestion {
       case SymptomCheckerQuestionType.MultipleSelection:
         return true;
     }
-    throw Exception("should be unreachable");
+    throw Exception('should be unreachable');
   }
 
   SymptomCheckerQuestion({
@@ -245,6 +244,7 @@ class SymptomCheckerAnswer with ConditionalItem {
   final String id;
 
   /// An expression indicating whether the question should be presented.
+  @override
   final String displayCondition;
 
   /// The answer
