@@ -153,6 +153,21 @@ mixin _$ContentStore on _ContentStore, Store {
     });
   }
 
+  final _$symptomCheckerAtom = Atom(name: '_ContentStore.symptomChecker');
+
+  @override
+  SymptomCheckerContent get symptomChecker {
+    _$symptomCheckerAtom.reportRead();
+    return super.symptomChecker;
+  }
+
+  @override
+  set symptomChecker(SymptomCheckerContent value) {
+    _$symptomCheckerAtom.reportWrite(value, super.symptomChecker, () {
+      super.symptomChecker = value;
+    });
+  }
+
   final _$updateAsyncAction = AsyncAction('_ContentStore.update');
 
   @override
@@ -172,6 +187,7 @@ learnIndex: ${learnIndex},
 newsIndex: ${newsIndex},
 questionsAnswered: ${questionsAnswered},
 symptomPoster: ${symptomPoster},
+symptomChecker: ${symptomChecker},
 unsupportedSchemaVersionAvailable: ${unsupportedSchemaVersionAvailable}
     ''';
   }
