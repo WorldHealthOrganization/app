@@ -3,7 +3,7 @@
 //  source: api/who/who.proto
 //
 // @dart = 2.7
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
 
 import 'dart:async' as $async;
 
@@ -36,9 +36,10 @@ abstract class WhoServiceBase extends $pb.GeneratedService {
       $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
       case 'putClientSettings':
-        return this.putClientSettings(ctx, request);
+        return this
+            .putClientSettings(ctx, request as $0.PutClientSettingsRequest);
       case 'getCaseStats':
-        return this.getCaseStats(ctx, request);
+        return this.getCaseStats(ctx, request as $0.GetCaseStatsRequest);
       default:
         throw $core.ArgumentError('Unknown method: $method');
     }

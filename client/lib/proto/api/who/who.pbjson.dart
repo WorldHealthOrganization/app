@@ -3,8 +3,13 @@
 //  source: api/who/who.proto
 //
 // @dart = 2.7
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+
+@$core.Deprecated('Use jurisdictionTypeDescriptor instead')
 const JurisdictionType$json = const {
   '1': 'JurisdictionType',
   '2': const [
@@ -14,6 +19,10 @@ const JurisdictionType$json = const {
   ],
 };
 
+/// Descriptor for `JurisdictionType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List jurisdictionTypeDescriptor = $convert.base64Decode(
+    'ChBKdXJpc2RpY3Rpb25UeXBlEgoKBkdMT0JBTBAAEg4KCldIT19SRUdJT04QARILCgdDT1VOVFJZEAI=');
+@$core.Deprecated('Use platformDescriptor instead')
 const Platform$json = const {
   '1': 'Platform',
   '2': const [
@@ -23,10 +32,17 @@ const Platform$json = const {
   ],
 };
 
+/// Descriptor for `Platform`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List platformDescriptor = $convert
+    .base64Decode('CghQbGF0Zm9ybRIHCgNJT1MQABILCgdBTkRST0lEEAESBwoDV0VCEAI=');
+@$core.Deprecated('Use voidDescriptor instead')
 const Void$json = const {
   '1': 'Void',
 };
 
+/// Descriptor for `Void`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List voidDescriptor = $convert.base64Decode('CgRWb2lk');
+@$core.Deprecated('Use putClientSettingsRequestDescriptor instead')
 const PutClientSettingsRequest$json = const {
   '1': 'PutClientSettingsRequest',
   '2': const [
@@ -41,6 +57,11 @@ const PutClientSettingsRequest$json = const {
   ],
 };
 
+/// Descriptor for `PutClientSettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List putClientSettingsRequestDescriptor =
+    $convert.base64Decode(
+        'ChhQdXRDbGllbnRTZXR0aW5nc1JlcXVlc3QSFAoFdG9rZW4YASABKAlSBXRva2VuEiYKDmlzb0NvdW50cnlDb2RlGAwgASgJUg5pc29Db3VudHJ5Q29kZQ==');
+@$core.Deprecated('Use jurisdictionIdDescriptor instead')
 const JurisdictionId$json = const {
   '1': 'JurisdictionId',
   '2': const [
@@ -56,6 +77,10 @@ const JurisdictionId$json = const {
   ],
 };
 
+/// Descriptor for `JurisdictionId`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List jurisdictionIdDescriptor = $convert.base64Decode(
+    'Cg5KdXJpc2RpY3Rpb25JZBJBChBqdXJpc2RpY3Rpb25UeXBlGAIgASgOMhUud2hvLkp1cmlzZGljdGlvblR5cGVSEGp1cmlzZGljdGlvblR5cGUSEgoEY29kZRgBIAEoCVIEY29kZQ==');
+@$core.Deprecated('Use getCaseStatsRequestDescriptor instead')
 const GetCaseStatsRequest$json = const {
   '1': 'GetCaseStatsRequest',
   '2': const [
@@ -70,6 +95,10 @@ const GetCaseStatsRequest$json = const {
   ],
 };
 
+/// Descriptor for `GetCaseStatsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getCaseStatsRequestDescriptor = $convert.base64Decode(
+    'ChNHZXRDYXNlU3RhdHNSZXF1ZXN0EjkKDWp1cmlzZGljdGlvbnMYASADKAsyEy53aG8uSnVyaXNkaWN0aW9uSWRSDWp1cmlzZGljdGlvbnM=');
+@$core.Deprecated('Use getCaseStatsResponseDescriptor instead')
 const GetCaseStatsResponse$json = const {
   '1': 'GetCaseStatsResponse',
   '2': const [
@@ -94,6 +123,10 @@ const GetCaseStatsResponse$json = const {
   ],
 };
 
+/// Descriptor for `GetCaseStatsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getCaseStatsResponseDescriptor = $convert.base64Decode(
+    'ChRHZXRDYXNlU3RhdHNSZXNwb25zZRI0CgtnbG9iYWxTdGF0cxgBIAEoCzIOLndoby5DYXNlU3RhdHNCAhgBUgtnbG9iYWxTdGF0cxI8ChFqdXJpc2RpY3Rpb25TdGF0cxgDIAMoCzIOLndoby5DYXNlU3RhdHNSEWp1cmlzZGljdGlvblN0YXRzEhAKA3R0bBgCIAEoBFIDdHRs');
+@$core.Deprecated('Use statSnapshotDescriptor instead')
 const StatSnapshot$json = const {
   '1': 'StatSnapshot',
   '2': const [
@@ -119,6 +152,10 @@ const StatSnapshot$json = const {
   ],
 };
 
+/// Descriptor for `StatSnapshot`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List statSnapshotDescriptor = $convert.base64Decode(
+    'CgxTdGF0U25hcHNob3QSHAoJZXBvY2hNc2VjGAEgASgEUgllcG9jaE1zZWMSHgoKZGFpbHlDYXNlcxgCIAEoA1IKZGFpbHlDYXNlcxIgCgtkYWlseURlYXRocxgDIAEoA1ILZGFpbHlEZWF0aHMSKAoPZGFpbHlSZWNvdmVyaWVzGAQgASgDUg9kYWlseVJlY292ZXJpZXMSHgoKdG90YWxDYXNlcxgFIAEoA1IKdG90YWxDYXNlcxIgCgt0b3RhbERlYXRocxgGIAEoA1ILdG90YWxEZWF0aHMSKAoPdG90YWxSZWNvdmVyaWVzGAcgASgDUg90b3RhbFJlY292ZXJpZXM=');
+@$core.Deprecated('Use caseStatsDescriptor instead')
 const CaseStats$json = const {
   '1': 'CaseStats',
   '2': const [
@@ -147,6 +184,9 @@ const CaseStats$json = const {
   ],
 };
 
+/// Descriptor for `CaseStats`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List caseStatsDescriptor = $convert.base64Decode(
+    'CglDYXNlU3RhdHMSQQoQanVyaXNkaWN0aW9uVHlwZRgHIAEoDjIVLndoby5KdXJpc2RpY3Rpb25UeXBlUhBqdXJpc2RpY3Rpb25UeXBlEiIKDGp1cmlzZGljdGlvbhgBIAEoCVIManVyaXNkaWN0aW9uEiAKC2xhc3RVcGRhdGVkGAIgASgEUgtsYXN0VXBkYXRlZBIUCgVjYXNlcxgDIAEoA1IFY2FzZXMSFgoGZGVhdGhzGAQgASgDUgZkZWF0aHMSHgoKcmVjb3ZlcmllcxgFIAEoA1IKcmVjb3ZlcmllcxIgCgthdHRyaWJ1dGlvbhgGIAEoCVILYXR0cmlidXRpb24SMQoKdGltZXNlcmllcxgIIAMoCzIRLndoby5TdGF0U25hcHNob3RSCnRpbWVzZXJpZXM=');
 const WhoServiceBase$json = const {
   '1': 'WhoService',
   '2': const [
@@ -163,6 +203,7 @@ const WhoServiceBase$json = const {
   ],
 };
 
+@$core.Deprecated('Use whoServiceDescriptor instead')
 const WhoServiceBase$messageJson = const {
   '.who.PutClientSettingsRequest': PutClientSettingsRequest$json,
   '.who.Void': Void$json,
@@ -172,3 +213,7 @@ const WhoServiceBase$messageJson = const {
   '.who.CaseStats': CaseStats$json,
   '.who.StatSnapshot': StatSnapshot$json,
 };
+
+/// Descriptor for `WhoService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List whoServiceDescriptor = $convert.base64Decode(
+    'CgpXaG9TZXJ2aWNlEj0KEXB1dENsaWVudFNldHRpbmdzEh0ud2hvLlB1dENsaWVudFNldHRpbmdzUmVxdWVzdBoJLndoby5Wb2lkEkMKDGdldENhc2VTdGF0cxIYLndoby5HZXRDYXNlU3RhdHNSZXF1ZXN0Ghkud2hvLkdldENhc2VTdGF0c1Jlc3BvbnNl');

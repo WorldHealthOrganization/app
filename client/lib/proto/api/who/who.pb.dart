@@ -42,8 +42,9 @@ class Void extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  Void copyWith(void Function(Void) updates) => super.copyWith(
-      (message) => updates(message as Void)); // ignore: deprecated_member_use
+  Void copyWith(void Function(Void) updates) =>
+      super.copyWith((message) => updates(message as Void))
+          as Void; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Void create() => Void._();
@@ -108,8 +109,8 @@ class PutClientSettingsRequest extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   PutClientSettingsRequest copyWith(
           void Function(PutClientSettingsRequest) updates) =>
-      super.copyWith((message) => updates(message
-          as PutClientSettingsRequest)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PutClientSettingsRequest))
+          as PutClientSettingsRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PutClientSettingsRequest create() => PutClientSettingsRequest._();
@@ -201,8 +202,8 @@ class JurisdictionId extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   JurisdictionId copyWith(void Function(JurisdictionId) updates) =>
-      super.copyWith((message) =>
-          updates(message as JurisdictionId)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as JurisdictionId))
+          as JurisdictionId; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static JurisdictionId create() => JurisdictionId._();
@@ -282,8 +283,8 @@ class GetCaseStatsRequest extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   GetCaseStatsRequest copyWith(void Function(GetCaseStatsRequest) updates) =>
-      super.copyWith((message) => updates(
-          message as GetCaseStatsRequest)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as GetCaseStatsRequest))
+          as GetCaseStatsRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetCaseStatsRequest create() => GetCaseStatsRequest._();
@@ -353,8 +354,8 @@ class GetCaseStatsResponse extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   GetCaseStatsResponse copyWith(void Function(GetCaseStatsResponse) updates) =>
-      super.copyWith((message) => updates(
-          message as GetCaseStatsResponse)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as GetCaseStatsResponse))
+          as GetCaseStatsResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetCaseStatsResponse create() => GetCaseStatsResponse._();
@@ -476,8 +477,8 @@ class StatSnapshot extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   StatSnapshot copyWith(void Function(StatSnapshot) updates) =>
-      super.copyWith((message) =>
-          updates(message as StatSnapshot)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as StatSnapshot))
+          as StatSnapshot; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static StatSnapshot create() => StatSnapshot._();
@@ -658,8 +659,8 @@ class CaseStats extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   CaseStats copyWith(void Function(CaseStats) updates) =>
-      super.copyWith((message) =>
-          updates(message as CaseStats)); // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as CaseStats))
+          as CaseStats; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CaseStats create() => CaseStats._();
