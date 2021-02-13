@@ -16,6 +16,7 @@ class PageHeader extends StatelessWidget {
   final Color borderColor;
   final TextStyle titleStyle;
   final Color appBarColor;
+  final Brightness appBarBrightness;
 
   /// Whether this header must be wrapped in a sliver
   final bool inSliver;
@@ -35,6 +36,7 @@ class PageHeader extends StatelessWidget {
     this.titleStyle,
     this.borderColor = const Color(0xffC9CDD6),
     this.appBarColor,
+    this.appBarBrightness,
     this.inSliver = true,
     this.trailing,
     this.appBarBottom,
@@ -71,6 +73,7 @@ class PageHeader extends StatelessWidget {
             iconTheme: iconThemeData,
             title: titleWrapper,
             backgroundColor: bgColor,
+            brightness: appBarBrightness,
             actions: actions,
             shape: bottomBorder,
             elevation: 0,
@@ -85,6 +88,7 @@ class PageHeader extends StatelessWidget {
             iconTheme: iconThemeData,
             title: titleWrapper,
             backgroundColor: bgColor,
+            brightness: appBarBrightness,
             actions: actions,
             shape: bottomBorder,
             elevation: 0,

@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:who_app/api/alerts.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,7 @@ class PageScaffold extends StatelessWidget {
   final List<Widget> beforeHeader;
   final Color color;
   final Color appBarColor;
+  final Brightness appBarBrightness;
   final Color headingBorderColor;
   final bool showBackButton;
   final TextStyle headerTitleStyle;
@@ -34,6 +36,7 @@ class PageScaffold extends StatelessWidget {
     this.padding = EdgeInsets.zero,
     this.color = Constants.greyBackgroundColor,
     this.appBarColor,
+    this.appBarBrightness = Brightness.light,
     this.headingBorderColor = const Color(0xffC9CDD6),
     this.beforeHeader = const <Widget>[],
     this.showBackButton = true,
@@ -65,6 +68,7 @@ class PageScaffold extends StatelessWidget {
                         showBackButton: showBackButton,
                         titleStyle: headerTitleStyle,
                         appBarColor: appBarColor ?? color,
+                        appBarBrightness: appBarBrightness,
                         appBarBottom: appBarBottom,
                         trailing: trailing,
                       )),
