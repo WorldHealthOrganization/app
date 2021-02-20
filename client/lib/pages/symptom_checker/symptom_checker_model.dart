@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
-import 'package:who_app/api/symptom_logic.dart';
 
 /// Represents a series of symptom checker pages.
 /// Notifies the listener on page changes or change of status including completion
