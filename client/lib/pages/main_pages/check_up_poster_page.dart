@@ -12,7 +12,6 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-// TODO: Remove if unused.
 class CheckUpPosterPage extends ContentWidget<PosterContent> {
   CheckUpPosterPage({Key key, @required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);

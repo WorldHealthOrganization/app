@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:who_app/components/page_button.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+
+import '../about_page.dart';
 
 class CheckUpIntroPage extends StatelessWidget {
   @override
@@ -46,11 +47,11 @@ class CheckUpIntroPage extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) => SliverList(
           delegate: SliverChildListDelegate([
-        ...optionWidgets(),
+        ..._optionWidgets(context),
         submitWidget(context),
       ]));
 
-  List<Widget> optionWidgets() {
+  List<Widget> _optionWidgets(BuildContext context) {
     // TODO: localize everything
     return <Widget>[
       Padding(
@@ -88,7 +89,7 @@ class CheckUpIntroPage extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            return launch('https://whoapp.org/terms');
+            return AboutPage.openTermsOfService(context);
           },
         ),
       ),
