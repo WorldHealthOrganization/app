@@ -22,3 +22,5 @@ contents:
       href: /get-the-facts
       button_text: Learn More
       image_name: streamline-gtf-spray
+  controls:
+    - show_symptom_checker: true

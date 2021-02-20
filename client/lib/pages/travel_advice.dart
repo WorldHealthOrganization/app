@@ -11,8 +11,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
 class TravelAdvice extends ContentWidget<AdviceContent> {
-  TravelAdvice({Key key, @required ContentStore dataSource})
-      : super(key: key, dataSource: dataSource);
+  TravelAdvice({
+    Key key,
+    @required ContentStore dataSource,
+  }) : super(key: key, dataSource: dataSource);
 
   @override
   Widget buildImpl(context, content, logicContext) {

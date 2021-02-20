@@ -22,8 +22,11 @@ import 'check_up_poster_page.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> map = {
-    '/home': (context) =>
-        AppTabRouter(AppTabRouter.defaultTabs, AppTabRouter.defaultNavItems),
+    '/home': (context) => AppTabRouter(
+          dataSource: Provider.of<ContentStore>(context),
+          tabs: AppTabRouter.defaultTabs,
+          navItems: AppTabRouter.defaultNavItems,
+        ),
     '/about': (context) => AboutPage(),
     '/onboarding': (context) => OnboardingPage(
           service: Provider.of<WhoService>(context),
