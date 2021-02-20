@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:who_app/api/content/content_store.dart';
@@ -112,6 +113,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       return _buildMessage('Loading...', loading: true);
     }
     if (_model.isFatalError) {
+      FirebaseAnalytics().logEvent(name: 'SymptomCheckerModelError');
       return _buildMessage(
           'Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.',
           loading: false);
