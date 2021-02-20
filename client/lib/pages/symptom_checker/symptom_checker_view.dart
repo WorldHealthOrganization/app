@@ -131,6 +131,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       case SymptomCheckerQuestionType.MultipleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
     }
+    FirebaseAnalytics().logEvent(name: 'SymptomCheckerModelError2');
     throw Exception('Unsupported');
   }
 
