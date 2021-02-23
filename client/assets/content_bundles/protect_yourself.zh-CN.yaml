@@ -1,0 +1,20 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: fact
+  items:
+    - image_name: protect-hands
+      body_html: |
+        用肥皂和水 <b>洗手，避免生病和感染他人。</b>
+    - image_name: protect-face
+      body_html: |
+        <b>避免触摸</b> 眼睛、口腔和鼻子。
+    - image_name: protect-cough
+      body_html: |
+        当你粘结或打喷时，用弯曲或组织 <b>覆盖你的口腔和气味</b>。
+    - image_name: protect-distance
+      body_html: |
+        与他人 <b>至少 1 米（3 英尺）的距离，室内的距离甚至更远。</b>
+    - image_name: protect-mask
+      body_html: |
+        在接近 1 米（3 英尺）时病毒正在传播的区域或通风不良或未知的客房 <b>中佩戴面具</b>

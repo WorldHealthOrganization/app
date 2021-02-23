@@ -1,0 +1,192 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: qa
+  items:
+    - title_html: |
+        Qu&#39;est - ce que COVID-19 ?
+      body_html: |
+        <p>Le grossier-19 est la maladie causée par un nouveau coronavirus appelé SARS-CoV-2.  QUI a appris ce nouveau virus le 31 décembre 2019, suite à un rapport d&#39;un groupe de cas de «pneumonie virale» à Wuhan, en République populaire de Chine.</p>
+
+    - title_html: |
+        Quels sont les symptômes de COVID-19 ?
+      body_html: |
+        <p>Les symptômes les plus courants de COVID-19 sont</p>
+        <ul>
+          <li>Fièvre</li>
+          <li>Toux sèche</li>
+          <li>Fatigue</li>
+        </ul>
+
+        <p>
+        <br/>
+        Les autres symptômes qui sont moins courants et peuvent affecter certains patients incluent :</p>
+        <ul>
+          <li>Perte de goût ou d&#39;odeur,</li>
+          <li>Congestion nasale,</li>
+          <li>Conjonctivite (également appelé yeux rouges)</li>
+          <li>Gorge de Sore,</li>
+          <li>Maux de tête,</li>
+          <li>Douleurs musculaires ou articulaires,</li>
+          <li>Différents types de bronzage cutané,</li>
+          <li>Nausées ou vomissements,</li>
+          <li>Diarrhée,</li>
+          <li>Refroidissements ou vertiges.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Les symptômes d&#39;une maladie grave de l&#39;ordre de 19 ° comprennent :</p>
+        <ul>
+          <li>Essoufflement,</li>
+          <li>Perte d&#39;appétit,</li>
+          <li>Confusion,</li>
+          <li>Douleur ou pression persistante sur la poitrine,</li>
+          <li>Haute température (supérieure à ° 38 C).</li>
+        </ul>
+
+        <p>
+        <br/>
+        D&#39;autres symptômes moins courants sont :</p>
+        <ul>
+          <li>Irritabilité,</li>
+          <li>Confusion,</li>
+          <li>Réduction de la conscience (parfois associée à des attaques),</li>
+          <li>Anxiété,</li>
+          <li>Dépression,</li>
+          <li>Troubles du sommeil,</li>
+          <li>Complications neurologiques plus graves et rares telles que les accidents vasculaires cérébraux, l&#39;inflammation cérébrale, le delirium et les lésions nerveuses.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Les personnes de tous âges qui souffrent de fièvre et/ou de toux associées à des difficultés respiratoires ou à une courte respiration, des douleurs thoraciques ou une pression, ou une perte de parole ou de mouvement, doivent immédiatement demander des soins médicaux. Si possible, appelez d&#39;abord votre fournisseur de soins de santé, votre ligne d&#39;assistance téléphonique ou votre établissement de santé, afin que vous puissiez être dirigé (e) vers la bonne clinique.</p>
+
+    - title_html: |
+        Que se passe - t-il pour les personnes qui se sentent cordiales - 19 ?
+      body_html: |
+        <p>Parmi ceux qui développent des symptômes, la plupart (environ 80%) se remettent de la maladie sans avoir besoin de traitement hospitalier. Environ 15% tombent gravement malades et nécessitent de l&#39;oxygène et 5% sont gravement malades et ont besoin de soins intensifs.</p>
+
+        <p>Les Complications entraînant la mort peuvent inclure une insuffisance respiratoire, un syndrome aigu de détresse respiratoire (ARDS), une septicémie et un choc septique, un thromboembolisme et/ou une insuffisance multiorgane, y compris une lésion cardiaque, hépatique ou rénale. </p>
+
+        <p>Dans des situations rares, les enfants peuvent développer un syndrome inflammatoire sévère quelques semaines après l&#39;infection.</p>
+
+    - title_html: |
+        Qui est le plus exposé au risque de maladie grave de la-19 ?
+      body_html: |
+        <p>Les personnes âgées de 60 ans et plus, et celles ayant des problèmes médicaux sous-jacents tels que l&#39;hypertension artérielle, les problèmes cardiaques et pulmonaires, le diabète, l&#39;obésité ou le cancer, sont plus exposées au risque de développer des maladies graves.</p>
+
+        <p>Cependant, tout le monde peut tomber malade avec Le-19 et tomber gravement malade ou mourir à n&#39;importe quel âge.</p>
+
+    - title_html: |
+        Y a-t - il des effets à long terme de l&#39;-19 ?
+      body_html: |
+        <p>Certaines personnes, qu&#39;elles aient eu besoin ou nond&#39;une hospitalisation, continuent de souffrir de symptômes, notamment de fatigue, de symptômes respiratoires et neurologiques.<br/></p>
+
+        <p>QUI travaille avec notre réseau technique mondial pour la gestion clinique du COVID-19, des chercheurs et des groupes de patients dans le monde entier pour concevoir et réaliser des études sur les patients au-delà du cours aigu initial de la maladie afin de comprendre la proportion de patients qui ont des effets à long terme, leur durée de vie et les raisons de leur survenance. Ces études serviront à développer des directives supplémentaires pour les soins aux patients.</p>
+
+    - title_html: |
+        Comment pouvons-nous protéger les autres et nous-mêmes si nous ne savons pas qui est infecté ?
+      body_html: |
+        <p>Restez en sécurité en prenant des précautions simples, par exemple en cas de détresse physique, en portant un masque, surtout lorsque cela ne peut pas être maintenu, en gardant les chambres bien aérées, en évitant les foules et les contacts étroits, en nettoyant régulièrement vos mains et en les faisant coudre dans un coude ou un tissu tordu. Consultez les conseils locaux où vous vivez et travaillez.</p>
+
+        <p><b>Faites tout cela!</b></p>
+
+    - title_html: |
+        Quand dois-je effectuer un test pour - 19 ?
+      body_html: |
+        <p>Toute personne présentant des symptômes doit être testée dans la mesure du possible. Les personnes qui n&#39;ont pas de symptômes mais qui ont eu un contact étroit avec quelqu&#39;un qui est, ou peut être, infecté peuvent également envisager de tester – contactez vos directives de santé locales et suivez leurs conseils.</p>
+
+        <p>Pendant qu&#39;une personne attend les résultats des tests, elle doit rester isolée des autres. Lorsque la capacité de dépistage est limitée, des tests doivent d&#39;abord être effectués pour les personnes à plus haut risque d&#39;infection, telles que les professionnels de santé, et celles à plus haut risque de maladies graves telles que les personnes âgées, en particulier celles qui vivent dans des résidences de personnes âgées ou des établissements de soins de longue durée.</p>
+
+    - title_html: |
+        Quel test devrais-je faire pour voir si j&#39;ai un - 19 fort ?
+      body_html: |
+        <p>Dans la plupart des cas, un test moléculaire est utilisé pour détecter le SARS-CoV-2 et confirmer l&#39;infection. La réaction de la chaîne polymérase (PCR) est le test moléculaire le plus couramment utilisé. Des échantillons sont prélevés sur le nez et/ou la gorge avec une pointe. Les tests moléculaires détectent le virus dans l&#39;échantillon en amplifiant le matériel génétique viral à des niveaux détectables. Pour cette raison, un test moléculaire est utilisé pour confirmer une infection active, généralement dans les quelques jours suivant l&#39;exposition et au moment où les symptômes peuvent commencer.</p>
+
+    - title_html: |
+        Qu&#39;en est-il des tests rapides ?
+      body_html: |
+        <p>Des tests antigènes rapides (parfois connus sous le nom de test diagnostique rapide – RDT) détectent les protéines virales (connues sous le nom d&#39;antigènes). Des échantillons sont prélevés sur le nez et/ou la gorge avec une pointe. Ces tests sont moins chers que le PCR et donneront des résultats plus rapidement, bien qu&#39;ils soient généralement moins précis. Ces tests fonctionnent mieux lorsqu&#39;il y a plus de virus circulant dans la communauté et lorsqu&#39;ils sont prélevés sur un individu au cours de la période où ils sont les plus infectieuses.</p>
+
+    - title_html: |
+        Je veux savoir si j&#39;avais - 19 PAR le passé, quel test pourrais-je effectuer ?
+      body_html: |
+        <p>Les tests d&#39;anticorps peuvent nous indiquer si quelqu&#39;un a eu une infection dans le passé, même s&#39;il n&#39;a pas eu de symptômes. Également connus sous le nom de tests séologiques et généralement réalisés sur un échantillon de sang, ces tests détectent les anticorps produits en réponse à une infection. Dans la plupart des gens, les anticorps commencent à se développer après des jours ou des semaines et peuvent indiquer si une personne a déjà été infectée. Les tests d&#39;anticorps ne peuvent pas être utilisés pour diagnostiquer un-19 GROSSIER aux premiers stades de l&#39;infection ou de la maladie, mais peuvent indiquer si quelqu&#39;un a ou non eu cette maladie par le passé.</p>
+
+    - title_html: |
+        Quelle est la différence entre isolation et quarantaine ?
+      body_html: |
+        <p>L&#39;isolation et la quarantaine sont des méthodes permettant d&#39;empêcher la propagation du-19.</p>
+
+        <p>La <b>quarantaine</b> est utilisée pour toute personne qui est en contact avec une personne infectée par le virus SARS-CoV-2, ce qui provoque un - 19 fort, que la personne infectée ait ou non des symptômes. La quarantaine signifie que vous restez séparé des autres parce que vous avez été exposé au virus et que vous pouvez être infecté (e) et que vous pouvez avoir lieu dans un établissement désigné ou chez vous. Pour COVID-19, cela signifie de rester dans l&#39;établissement ou à la maison pendant 14 jours.</p>
+
+        <p><b>L&#39;</b> Isolation est utilisée pour les personnes présentant des symptômes GROSSIERS-19 ou ayant testé le virus de manière positive. Être isolé signifie être séparé des autres, idéalement dans un établissement médical où vous pouvez recevoir des soins cliniques.  Si l&#39;isolation dans un établissement médical n&#39;est pas possible et que vous n&#39;êtes pas dans un groupe à haut risque de développer une maladie grave, l&#39;isolation peut avoir lieu à la maison. Si vous avez des symptômes, vous devez rester à l&#39;isolement pendant au moins 10 jours, plus 3 jours supplémentaires sans symptômes. Si vous êtes infecté (e) et que vous ne développez pas de symptômes, vous devez rester isolé (e) pendant 10 jours à compter du moment où vous testez positif (e).</p>
+
+    - title_html: |
+        Que dois-je faire si j&#39;ai été exposé (e) à quelqu&#39;un qui a un - 19 fort ?
+      body_html: |
+        <p>Si vous avez été exposé (e) à une personne souffrant de - 19, vous pouvez être infecté (e), même si vous vous sentez bien.</p>
+
+        <p>Après avoir été exposé à quelqu&#39;un qui a un-19 fort, procédez comme suit :</p>
+        <ul>
+          <li>Appelez votre fournisseur de soins de santé ou la ligne d&#39;assistance téléphonique-19 pour savoir où et quand effectuer un test. </li>
+          <li>Coopérer avec les procédures de localisation des contacts pour stopper la propagation du virus. </li>
+          <li>Si les tests ne sont pas disponibles, restez à la maison et loin des autres pendant 14 jours. </li>
+          <li>Pendant que vous êtes en quarantaine, ne vous rendez pas au travail, à l&#39;école ou dans des lieux publics. Demandez à quelqu&#39;un de vous apporter des fournitures.</li>
+          <li>Gardez au moins 1 mètre de distance des autres, même des membres de votre famille. </li>
+          <li>Portez un masque médical pour protéger les autres, y compris si/quand vous avez besoin de consulter un médecin.</li>
+          <li>Nettoyez fréquemment vos mains.</li>
+          <li>Séjournez dans une chambre séparée des autres membres de la famille et, si cela n&#39;est pas possible, portez un masque médical.</li>
+          <li>Gardez la pièce bien aérée.</li>
+          <li>Si vous partagez une chambre, placez des lits à au moins 1 mètre de distance.</li>
+          <li>Surveillez vous-même les symptômes pendant 14 jours.  </li>
+          <li>Restez positif (e) en restant en contact avec vos proches par téléphone ou en ligne, et en faisant de l&#39;exercice à la maison.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Si vous vivez dans une région qui souffre du paludisme ou de la dengue, demandez de l&#39;aide médicale si vous avez une fièvre. Lors de vos déplacements vers et depuis l&#39;établissement de santé et pendant les soins médicaux, portez un masque, gardez au moins 1 mètre de distance des autres personnes et évitez de toucher les surfaces avec vos mains. Cela s&#39;applique aux adultes et aux enfants.</p>
+
+    - title_html: |
+        Combien de temps faut-il pour développer des symptômes ?
+      body_html: |
+        <p>Le temps entre l&#39;exposition à l&#39;-19 élevé et le début des symptômes est, en moyenne, de 5 à 6 jours et peut varier de 1 à 14 jours. C&#39;est pourquoi il est conseillé aux personnes qui ont été exposées au virus de rester chez elles et de rester à l&#39;écart des autres pendant 14 jours, afin d&#39;empêcher la propagation du virus, en particulier lorsque les tests ne sont pas facilement disponibles.</p>
+
+    - title_html: |
+        Existe-t - il un vaccin pour COVID - 19 ?
+      body_html: |
+        <p>Pas encore. De nombreux vaccins potentiels pour COVID-19 sont en cours d&#39;étude, et plusieurs essais cliniques de grande envergure pourraient rapporter les résultats dans le courant de l&#39;année. Si un vaccin s&#39;avère sûr et efficace, il doit être approuvé par les régulateurs nationaux, fabriqué et distribué. QUI travaille avec des partenaires du monde entier pour aider à coordonner les étapes clés de ce processus. QUI travaille par le biais de l&#39;accélérateur ACT-pour faciliter un accès équitable à un vaccin sûr et efficace pour les milliards de personnes qui en auront besoin, une fois qu&#39;il sera disponible.</p>
+
+    - title_html: |
+        Que dois-je faire si j&#39;ai des symptômes GROSSIERS-19 ?
+      body_html: |
+        <p>Si vous avez des symptômes suggérant un-19, appelez votre fournisseur de soins de santé ou la ligne d&#39;assistance TÉLÉPHONIQUE-19 pour obtenir des instructions et savoir quand et où effectuer un test, rester à la maison pendant 14 jours à l&#39;écart des autres et surveiller votre santé.</p>
+
+        <p>Si vous souffrez d&#39;un essoufflement, d&#39;une douleur ou d&#39;une pression dans la poitrine, demandez immédiatement des soins médicaux dans un établissement de santé. Appelez votre fournisseur de soins de santé ou votre ligne d&#39;assistance téléphonique à l&#39;avance pour vous diriger vers le bon établissement de santé.</p>
+
+        <p>Si vous vivez dans une région souffrant de paludisme ou de dengue, cherchez des soins médicaux si vous avez une fièvre.</p>
+
+        <p>Si les conseils locaux recommandent de se rendre dans un centre médical pour le test, l&#39;évaluation ou l&#39;isolation, porter un masque médical pendant les déplacements vers et depuis l&#39;établissement et pendant les soins médicaux. Gardez également une distance d&#39;au moins 1 mètre par rapport aux autres personnes et évitez de toucher les surfaces avec vos mains.  Cela s&#39;applique aux adultes et aux enfants.</p>
+
+    - title_html: |
+        Existe - t-il des traitements pour COVID - 19 ?
+      body_html: |
+        <p>Des scientifiques du monde entier s&#39;efforcent de trouver et de développer des traitements pour COVID-19. </p>
+
+        <p>Les soins de soutien optimaux incluent l&#39;oxygène pour les patients gravement malades et ceux qui sont exposés à des maladies graves et un soutien respiratoire plus avancé comme la ventilation pour les patients gravement malades.</p>
+
+        <p>La dexaméthasone est une corticostéroïde qui peut aider à réduire la durée sur un ventilateur et à sauver la vie de patients souffrant d&#39;une maladie grave et critique.</p>
+
+        <p>Les résultats de l&#39;essai de solidarité de l&#39;Organisation mondiale de la santé () ont indiqué que la rémission Vir, l&#39;hydroxychloroquine, la lopinavir/ritonavir et les régimes d&#39;interférence semblent avoir peu ou pas d&#39;effet sur la mortalité de 28 jours ou sur le traitement hospitalier de-19 CHEZ les patients hospitalisés.</p>
+
+        <p>Il n&#39;a pas été démontré que l&#39;Hydroxychloroquine offre un quelconque avantage pour le traitement du COVID-19.</p>
+
+        <p>QUI ne recommande pas d&#39;automédication avec des médicaments, y compris des antibiotiques, à titre de prévention ou de traitement pour COVID-19. QUI coordonne les efforts pour développer des traitements pour COVID-19 et continuera à fournir de nouvelles informations dès qu&#39;elles seront disponibles.</p>
+
+    - title_html: |
+        Les antibiotiques permettent-ils de prévenir ou de traiter efficacement le - 19 ?
+      body_html: |
+        <p>Les antibiotiques ne fonctionnent pas contre les virus; ils ne fonctionnent que sur les infections bactériennes. -19 grossier est causé par un virus, donc les antibiotiques ne fonctionnent pas. Les antibiotiques ne doivent pas être utilisés comme moyen de prévention ou de traitement du COVID-19.</p>
+
+        <p>Dans les hôpitaux, les médecins utilisent parfois des antibiotiques pour prévenir ou traiter les infections bactériennes secondaires, ce qui peut être une complication d&#39;une-19 élevée chez les patients gravement malades. Ils ne doivent être utilisés que sur instruction d&#39;un médecin pour traiter une infection bactérienne.</p>

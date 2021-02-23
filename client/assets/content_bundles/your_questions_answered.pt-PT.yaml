@@ -1,0 +1,192 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: qa
+  items:
+    - title_html: |
+        O que é COVID-19?
+      body_html: |
+        <p>COVID-19 é a doença causada por um novo coronavírus chamado SARS-CoV-2.  QUE soube deste novo vírus em 31 de dezembro de 2019, após um relato de um conjunto de casos de &quot;pneumonia viral&quot; em Wuhan, República Popular da China.</p>
+
+    - title_html: |
+        Quais são os sintomas do COVID-19?
+      body_html: |
+        <p>Os sintomas mais comuns do COVID-19 são</p>
+        <ul>
+          <li>Febre</li>
+          <li>Tosse seca</li>
+          <li>Fadiga</li>
+        </ul>
+
+        <p>
+        <br/>
+        Outros sintomas que são menos comuns e podem afetar alguns pacientes incluem:</p>
+        <ul>
+          <li>Perda de gosto ou cheiro,</li>
+          <li>Congestionamento Nasal,</li>
+          <li>Conjuntivite (também conhecido como olhos vermelhos)</li>
+          <li>Garganta dolorida,</li>
+          <li>Dor de cabeça,</li>
+          <li>Dor muscular ou conjunta,</li>
+          <li>Diferentes tipos de assadura na pele,</li>
+          <li>Náusea ou vômitos,</li>
+          <li>Diarreia,</li>
+          <li>Calafrios ou tontura.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Os sintomas da grave doença COVID - 19 incluem:</p>
+        <ul>
+          <li>Falta de ar,</li>
+          <li>Perda de apetite,</li>
+          <li>Confusão,</li>
+          <li>Dor persistente ou pressão no peito,</li>
+          <li>Temperatura alta (acima de 38 °C).</li>
+        </ul>
+
+        <p>
+        <br/>
+        Outros sintomas menos comuns são:</p>
+        <ul>
+          <li>Irritabilidade,</li>
+          <li>Confusão,</li>
+          <li>Redução da consciência (algumas vezes associada a ataques),</li>
+          <li>Ansiedade,</li>
+          <li>Depressão,</li>
+          <li>Distúrbios do sono,</li>
+          <li>Complicações neurológicas mais severas e raras, como derrames, inflamação cerebral, delírio e danos nos nervos.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Pessoas de todas as idades que vivenciem febre e/ou tosse associadas à dificuldade de respirar ou falta de ar, dor no peito ou pressão, ou perda de expressão ou movimento devem buscar atendimento médico imediatamente. Se possível, ligue para o seu prestador de serviços de saúde, para a linha direta ou para o centro de saúde, para que você possa ser direcionado para a clínica certa.</p>
+
+    - title_html: |
+        O que acontece com as pessoas que ficam COVID-19?
+      body_html: |
+        <p>Entre os que desenvolvem sintomas, a maioria (cerca de 80%) se recupera da doença sem precisar de tratamento hospitalar. Cerca de 15% se tornam gravemente doentes e exigem oxigênio e 5% se tornam gravemente doentes e precisam de cuidados intensivos.</p>
+
+        <p>As complicações que levam à morte podem incluir insuficiência respiratória, Síndrome aguda do estresse respiratório (ARCOS), sepsia e choque séptico, tromboembolismo e/ou falha multiórgão, incluindo lesões cardíacas, fígado ou rins. </p>
+
+        <p>Em situações raras, as crianças podem desenvolver uma grave síndrome inflamatória algumas semanas após a infecção.</p>
+
+    - title_html: |
+        Quem está mais em risco de uma grave doença de COVID-19?
+      body_html: |
+        <p>As pessoas com 60 anos e mais de, e aquelas com problemas médicos subjacentes, como hipertensão, coração e pulmão, diabetes, obesidade ou câncer, correm maior risco de desenvolver doenças graves.</p>
+
+        <p>No entanto, qualquer pessoa pode ficar doente com COVID-19 e ficar gravemente doente ou morrer em qualquer idade.</p>
+
+    - title_html: |
+        Existem efeitos de longo prazo do COVID-19?
+      body_html: |
+        <p>Algumas pessoas que tiveram COVID-19, com necessidade de hospitalização ou não, continuam tendo sintomas, incluindo fadiga, sintomas respiratórios e neurológicos.<br/></p>
+
+        <p>QUE trabalha com nossa rede técnica Global de gestão clínica do COVID-19, pesquisadores e grupos de pacientes em todo o mundo para projetar e realizar estudos de pacientes além do curso inicial agudo da doença para entender a proporção de pacientes com efeitos de longo prazo, quanto tempo persistem e por que ocorrem. Esses estudos serão utilizados para desenvolver mais orientação para o atendimento dos pacientes.</p>
+
+    - title_html: |
+        Como podemos proteger os outros e a nós mesmos se não sabemos quem está infectado?
+      body_html: |
+        <p>Fique em segurança tomando precauções simples, como afastamento físico, usando uma máscara, especialmente quando não pode ser mantida, mantendo as salas bem ventiladas, evitando multidões e contato próximo, limpando as mãos regularmente e tossindo em um cotovelo ou tecido curvado. Verifique os conselhos locais onde você mora e trabalha.</p>
+
+        <p><b>Faça tudo!</b></p>
+
+    - title_html: |
+        Quando devo fazer um teste para COVID-19?
+      body_html: |
+        <p>Qualquer pessoa com sintomas deve ser testada, sempre que possível. As pessoas que não têm sintomas, mas tiveram contato próximo com alguém que está, ou pode estar infectada, também podem considerar testes – entrar em contato com as suas diretrizes de saúde locais e seguir suas orientações.</p>
+
+        <p>Enquanto uma pessoa espera os resultados dos testes, ela deve permanecer isolada de outras pessoas. Quando a capacidade de testes for limitada, os testes devem ser feitos primeiramente para as pessoas com maior risco de infecção, como os trabalhadores da saúde, e as pessoas com maior risco de doenças graves, como as pessoas mais velhas, especialmente aquelas que vivem nas residências dos idosos ou instalações de cuidados de longo prazo.</p>
+
+    - title_html: |
+        Que teste devo fazer para ver se tenho COVID-19?
+      body_html: |
+        <p>Na maioria das situações, um teste molecular é utilizado para detectar o SARS-CoV-2 e confirmar a infecção. A reação em cadeia da polimerase (PCR) é o teste molecular mais utilizado. As amostras são coletadas do nariz e/ou da garganta com uma amostra. Os testes moleculares detectam vírus na amostra ampliando o material genético viral a níveis detectáveis. Por isso, um teste molecular é utilizado para confirmar uma infecção ativa, geralmente em poucos dias de exposição e por volta do momento em que os sintomas podem começar.</p>
+
+    - title_html: |
+        E os testes rápidos?
+      body_html: |
+        <p>Testes rápidos de antígenos (por vezes conhecidos como teste rápido de diagnóstico – RDT) detectam proteínas virais (conhecidos como antígenos). As amostras são coletadas do nariz e/ou da garganta com uma amostra. Esses testes são mais baratos que o PCR e oferecerão resultados mais rápidos, embora geralmente sejam menos precisos. Esses testes funcionam melhor quando há mais vírus circulando na comunidade e quando amostrados de um indivíduo durante o tempo em que são mais infecciosos.</p>
+
+    - title_html: |
+        Quero descobrir se eu tinha COVID-19 no passado, que teste eu poderia fazer?
+      body_html: |
+        <p>Os testes de anticorpo podem nos dizer se alguém teve uma infecção no passado, mesmo que não tenha tido sintomas. Também conhecidos como testes sorológicos e geralmente feitos em uma amostra de sangue, esses testes detectam anticorpos produzidos em resposta a uma infecção. Na maioria das pessoas, os anticorpos começam a se desenvolver depois de dias a semanas e podem indicar se uma pessoa teve infecção passada. Os testes anticorpo não podem ser usados para diagnosticar COVID-19 nos estágios iniciais de infecção ou doença, mas podem indicar se alguém teve ou não a doença no passado.</p>
+
+    - title_html: |
+        Qual é a diferença entre isolamento e quarentena?
+      body_html: |
+        <p>Tanto o isolamento como a quarentena são métodos de prevenção da disseminação do COVID-19.</p>
+
+        <p>A <b>quarentena</b> é usada para quem é contato de alguém infectado pelo vírus SARS-CoV-2, causador do COVID-19, seja ele infectado que tenha ou não os sintomas. A quarentena significa que você permanece separado de outras pessoas porque foi exposto ao vírus e pode estar infectado e pode ocorrer em uma instalação designada ou em casa. Para COVID-19, isso significa ficar na instalação ou em casa por 14 dias.</p>
+
+        <p>O <b>isolamento</b> é usado para pessoas com sintomas COVID-19 ou que testaram positivo para o vírus. Estar isolado significa ser separado de outras pessoas, idealmente em uma instalação médica onde você pode receber atendimento clínico.  Se o isolamento em uma instalação médica não for possível e você não estiver em um grupo de alto risco de desenvolver doenças graves, o isolamento pode ser realizado em casa. Se você tiver sintomas, deverá permanecer isolado por pelo menos 10 dias, além de mais 3 dias sem sintomas. Se estiver infectado e não desenvolver sintomas, você deve permanecer isolado por 10 dias a partir do momento do teste positivo.</p>
+
+    - title_html: |
+        O que devo fazer se fui exposto a alguém que tem COVID-19?
+      body_html: |
+        <p>Se você foi exposto a alguém com COVID-19, você pode ficar infectado, mesmo que se sinta bem.</p>
+
+        <p>Após a exposição a alguém que tenha COVID-19, faça o seguinte:</p>
+        <ul>
+          <li>Ligue para o seu prestador de serviços de saúde ou para a linha direta COVID-19 para saber onde e quando fazer um teste. </li>
+          <li>Cooperar com os procedimentos de rastreamento de contato para impedir a disseminação do vírus. </li>
+          <li>Se os testes não estiverem disponíveis, fique em casa e longe dos outros por 14 dias. </li>
+          <li>Enquanto estiver em quarentena, não vá para o trabalho, para a escola ou lugares públicos. Peça que alguém lhe traga suprimentos.</li>
+          <li>Mantenha pelo menos um metro de distância de outras pessoas, até mesmo de membros da sua família. </li>
+          <li>Use uma máscara médica para proteger os outros, incluindo se/quando você precisar buscar assistência médica.</li>
+          <li>Limpe as mãos com frequência.</li>
+          <li>Fique em um quarto separado de outros membros da família, e se não for possível, use uma máscara médica.</li>
+          <li>Mantenha o quarto bem ventilado.</li>
+          <li>Se você compartilhar um quarto, coloque camas a pelo menos 1 metro de distância.</li>
+          <li>Monitore-se por quaisquer sintomas por 14 dias.  </li>
+          <li>Mantenha-se positivo mantendo contato com pessoas queridas por telefone ou on-line e fazendo exercícios em casa.</li>
+        </ul>
+
+        <p>
+        <br/>
+        Se você vive em uma área com malária ou dengue, procure ajuda médica se estiver com febre. Ao viajar para e a partir da unidade de saúde e durante a assistência médica, use uma máscara, mantenha pelo menos 1 metro de distância de outras pessoas e evite tocar em superfícies com as mãos. Isso se aplica a adultos e crianças.</p>
+
+    - title_html: |
+        Quanto tempo leva para desenvolver sintomas?
+      body_html: |
+        <p>O tempo da exposição ao COVID-19 ao momento em que os sintomas começam é, em média, de 5 a 6 dias e pode variar de 1 a 14 dias. É por isso que as pessoas que foram expostas ao vírus são aconselhadas a permanecer em casa e ficar longe de outras pessoas, por 14 dias, para evitar a disseminação do vírus, principalmente quando os testes não estão facilmente disponíveis.</p>
+
+    - title_html: |
+        Existe uma vacina para COVID-19?
+      body_html: |
+        <p>Ainda não, ainda não. Muitas vacinas potenciais para COVID-19 estão sendo estudadas, e vários grandes testes clínicos podem informar os resultados no final deste ano. Se uma vacina for comprovada segura e eficaz, ela deve ser aprovada pelos reguladores nacionais, fabricada e distribuída. QUEM está trabalhando com parceiros em todo o mundo para ajudar a coordenar as principais etapas desse processo. QUE trabalha através do ACTION-acelerador para facilitar o acesso a uma vacina segura e eficaz para os bilhões de pessoas que a necessitam, uma vez que esteja disponível.</p>
+
+    - title_html: |
+        O que devo fazer se tenho sintomas COVID-19?
+      body_html: |
+        <p>Se você tiver algum sintoma sugestivo de COVID-19, ligue para o seu prestador de serviços de saúde ou para a linha direta COVID-19 para obter instruções e descubra quando e onde fazer o teste, fique em casa por 14 dias longe de outras pessoas e monitore a sua saúde.</p>
+
+        <p>Se você tiver falta de ar, dor ou pressão no peito, procure atendimento médico em uma instalação de saúde imediatamente. Ligue para o seu prestador de serviços de saúde ou para a linha direta com antecedência para obter informações sobre o local de saúde correto.</p>
+
+        <p>Se você vive em uma área com malária ou dengue, procure cuidados médicos se estiver com febre.</p>
+
+        <p>Se a orientação local recomendar visitar um centro médico para testes, avaliações ou isolamento, use uma máscara médica enquanto viaja para, a partir da unidade e durante os cuidados médicos. Também mantenha uma distância de pelo menos 1 metro de distância de outras pessoas e evite tocar em superfícies com as mãos.  Isso se aplica a adultos e crianças.</p>
+
+    - title_html: |
+        Existem tratamentos para COVID-19?
+      body_html: |
+        <p>Cientistas em todo o mundo estão trabalhando para encontrar e desenvolver tratamentos para COVID-19. </p>
+
+        <p>O melhor suporte inclui oxigênio para pacientes doentes graves e os que estão em risco de doenças graves e suporte respiratório mais avançado, como ventilação para pacientes doentes criticamente.</p>
+
+        <p>A dexamethasona é um corticoide que pode ajudar a reduzir o tempo de duração em um ventilador e salvar vidas de pacientes com doença grave e crítica.</p>
+
+        <p>Os resultados do estudo de solidariedade da OMS indicaram que remdesivir, hidroxicloroquina, lopinavir/ritonavir e interferon regimens parecem ter pouco ou nenhum efeito na mortalidade de 28 dias ou no curso interhospitalar de COVID-19 entre os pacientes hospitalizados.</p>
+
+        <p>A hidroxicloroquina não tem demonstrado nenhum benefício para o tratamento do COVID-19.</p>
+
+        <p>QUEM não recomenda auto-medicação com medicamentos, incluindo antibióticos, como prevenção ou cura para COVID-19. QUE coordena esforços para desenvolver tratamentos para o COVID-19 e continuará a fornecer novas informações à medida que estiver disponível.</p>
+
+    - title_html: |
+        Os antibióticos são eficazes para prevenir ou tratar COVID-19?
+      body_html: |
+        <p>Antibióticos não funcionam contra vírus, só funcionam com infecções bacterianas. COVID-19 é causado por um vírus, então antibióticos não funcionam. Os antibióticos não devem ser usados como meio de prevenção ou tratamento do COVID-19.</p>
+
+        <p>Em hospitais, os médicos às vezes utilizam antibióticos para prevenir ou tratar infecções bacterianas secundárias, o que pode ser uma complicação do COVID-19 em pacientes gravemente doentes. Eles só devem ser usados como orientados por um médico para tratar uma infecção bacteriana.</p>

@@ -1,0 +1,21 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  items:
+    - item_type: menu_list_tile
+      title: Relatórios de situação
+      subtitle: Os relatórios da situação fornecem as últimas atualizações sobre o novo surto de coronavirus.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/
+    - item_type: menu_list_tile
+      title: Atualizando atualizações
+      subtitle: Atualizações sobre a doença de coronavirus (COVID-19) originadas de toda a mídia WHO.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen
+    - item_type: menu_list_tile
+      title: Artigos de notícias
+      subtitle: Todas as notícias, declarações e notas para a mídia.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news
+    - item_type: menu_list_tile
+      title: Pressione Briefings
+      subtitle: Doença do Coronavirus (COVID-19) Pressione briefings, incluindo vídeos, áudio e transcrições.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings

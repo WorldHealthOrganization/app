@@ -14,23 +14,22 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-
+  
   static S current;
-
-  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
+  
+  static const AppLocalizationDelegate delegate =
+    AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name);
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-
+      
       return S.current;
     });
-  }
+  } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -67,8 +66,7 @@ class S {
   }
 
   /// `Version {version} ({buildNumber})`
-  String commonWorldHealthOrganizationCoronavirusAppVersion(
-      Object version, Object buildNumber) {
+  String commonWorldHealthOrganizationCoronavirusAppVersion(Object version, Object buildNumber) {
     return Intl.message(
       'Version $version ($buildNumber)',
       name: 'commonWorldHealthOrganizationCoronavirusAppVersion',
@@ -1008,8 +1006,7 @@ class S {
   }
 
   /// `{copyrightString} \n\n{versionString} \nBuilt by the WHO COVID-19 App Collective.`
-  String aboutPageBuiltByCreditText(
-      Object copyrightString, Object versionString) {
+  String aboutPageBuiltByCreditText(Object copyrightString, Object versionString) {
     return Intl.message(
       '$copyrightString \n\n$versionString \nBuilt by the WHO COVID-19 App Collective.',
       name: 'aboutPageBuiltByCreditText',
@@ -1205,9 +1202,19 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
+      Locale.fromSubtags(languageCode: 'ar', countryCode: 'SA'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'es'),
+      Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'),
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
+      Locale.fromSubtags(languageCode: 'pt'),
+      Locale.fromSubtags(languageCode: 'pt', countryCode: 'PT'),
+      Locale.fromSubtags(languageCode: 'ru'),
+      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'),
+      Locale.fromSubtags(languageCode: 'zh'),
+      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

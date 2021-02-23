@@ -1,0 +1,14 @@
+schema_version: 1
+content_version: 4
+contents:
+  type: advice
+  items:
+    - title: QUE recomenda que os viajantes sempre consultem as autoridades locais sobre as práticas recomendadas em suas áreas
+      body: É prudente que os viajantes estejam doentes para adiar ou evitar viagens para áreas afetadas, em particular para idosos viajantes e pessoas com doenças crônicas ou condições de saúde subjacentes. “áreas afetadas” são consideradas esses países, províncias, territórios ou cidades que apresentam transmissão contínua de COVID-19, em contraste com áreas que relatam apenas casos importados.
+      is_banner: true
+    - title: Automonitorar por 14 dias
+      body: Monitore os sintomas e siga os protocolos nacionais de recebimento de países.
+    - title: Verifique se você deve colocar em quarentena
+      body: Alguns países podem exigir que os viajantes retornem para entrar em quarentena.
+    - title: Entre em contato com os provedores de saúde se você desenvolver sintomas
+      body: Em caso de sintomas, os viajantes são aconselhados a entrar em contato com os prestadores de serviços de saúde locais, de preferência por telefone, e a informá-los sobre seus sintomas e histórico de viagens.

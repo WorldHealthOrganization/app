@@ -1,0 +1,24 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: index
+  promos:
+    - promo_type: protect_yourself
+      title: Proteja-se
+      subtitle: Aprenda a se manter seguro durante essa panqueca.
+      button_text: Saiba mais
+      href: /protect-yourself
+      image_name: undraw-home-promo-symptoms
+  items:
+    - item_type: recent_numbers
+      title: Números recentes
+      href: /recent-numbers
+    - item_type: protect_yourself
+      title: Proteja-se
+      href: /protect-yourself
+    - item_type: information_card
+      title: Obtenha os fatos
+      subtitle: Pulverizar álcool ou cloro por todo o corpo não mata o novo coronavírus.
+      href: /get-the-facts
+      button_text: Saiba mais
+      image_name: streamline-gtf-spray

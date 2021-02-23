@@ -1,0 +1,20 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: fact
+  items:
+    - image_name: protect-hands
+      body_html: |
+        <b>Lave as mãos</b> com sabão e água para evitar ficar doente e espalhar infecções para os outros.
+    - image_name: protect-face
+      body_html: |
+        <b>Evite tocar</b> em seus olhos, boca e nariz.
+    - image_name: protect-cough
+      body_html: |
+        <b>Cubra a boca e o</b> nariz com o cotovelo dobrado ou o tecido quando tossir ou espirrar.
+    - image_name: protect-distance
+      body_html: |
+        <b>Distância pelo menos 1 metro</b> (3 pés) com outras pessoas e uma distância ainda maior quando dentro de casa.
+    - image_name: protect-mask
+      body_html: |
+        <b>Usar máscaras</b> em áreas onde o vírus está se espalhando quando há mais de 1 metro (3 pés) ou em salas com ventilação pobre ou desconhecida

@@ -1,0 +1,23 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: Obtenha os fatos
+      subtitle: Mitos sobre COVID-19
+      button_text: Modo de Exibição
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: Conselhos de viagem
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: Proteja-se
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: Perguntas e respostas
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: Notícias e imprensa
+      href: /news
+      image_name: undraw-learn-news-press

@@ -1,0 +1,80 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: fact
+  items:
+    - title_html: |
+        Climas quentes e úmidos <b><u>não facilitam a disseminação do COVID-19.</u></b>
+      body_html: |
+        <p>COVID-19 pode se espalhar em qualquer clima, independentemente de a temperatura estar quente e úmida ou fria e seca.</p>
+        <p>Não importa onde você more, a melhor maneira de se proteger contra COVID-19 é lavar as mãos com frequência. Lavar as mãos ajuda a se livrar de vírus, o que evita infecções que podem acontecer quando você toca os olhos, a boca ou o nariz.</p>
+      image_name: streamline-gtf-hot-climates
+    - title_html: |
+        O COVID-19 <b><u>não é</u></b> transmitido por mosquitos.
+      body_html: |
+        <p>Não há evidências de que as pessoas possam obter o vírus de mosquitos ou animais de estimação domésticos.</p>
+        <p>COVID-19 é um vírus respiratório que se espalha pelas pequenas quantidades de líquido que uma pessoa infectada espirra ou tosse no ar. Para se proteger, evite o contato com qualquer pessoa que esteja tossindo ou espirrando.</p>
+      image_name: streamline-gtf-mosquito
+    - title_html: |
+        O clima frio <b><u>não mata COVID-19 ou outras doenças.</u></b>
+      body_html: |
+        Independentemente da temperatura exterior, a melhor maneira de se proteger contra COVID-19 é lavar as mãos com frequência. Lavar as mãos ajuda a se livrar de vírus, o que evita infecções que podem acontecer quando você toca os olhos, a boca ou o nariz.
+      image_name: streamline-gtf-cold-weather
+    - title_html: |
+        Banhos quentes <b><u>não</u></b> podem impedir que as pessoas fiquem COVID-19.
+      body_html: |
+        <p>Tomar banho quente não evita doenças e pode até mesmo ser prejudicial se a temperatura da água for suficientemente quente para queimar a pele.</p>
+        <p>A melhor maneira de se proteger contra COVID-19 é lavar as mãos com frequência. Lavar as mãos ajuda a se livrar de vírus, o que evita infecções que podem acontecer quando você toca os olhos, a boca ou o nariz.</p>
+      image_name: streamline-gtf-bath
+    - title_html: |
+        Secadores <b><u>de mão não</u></b> matam o novo coronavírus.
+      body_html: |
+        A melhor maneira de se proteger contra COVID-19 é lavar as mãos com frequência. Lavar as mãos ajuda a se livrar de vírus, o que evita infecções que podem acontecer quando você toca os olhos, a boca ou o nariz.
+      image_name: streamline-gtf-hand-dryer
+    - title_html: |
+        Lâmpadas ultravioleta (UV) <b><u>não devem</u></b> ser usadas para desinfetar as mãos ou outras áreas da sua pele.
+      body_html: |
+        A radiação UV pode causar irritação na pele e danificar os olhos.<p>Limpar as mãos com massagem nas mãos à base de álcool ou lavar as mãos com sabão e água são as formas mais eficazes de remover o vírus.
+      image_name: streamline-gtf-uv-lamp
+    - title_html: |
+        Pulverizar álcool ou cloro em seu corpo <b><u>não mata o novo coronavírus.</u></b>
+      body_html: |
+        Álcool e cloro podem ser usados para limpar superfícies, mas pulverizar seu corpo com ele não impedirá o vírus, e não vai matar o vírus se ele já estiver em seu corpo. Álcool e cloro podem prejudicar seus olhos e boca, bem como suas roupas, quando é pulverizado em seu corpo.
+      image_name: streamline-gtf-spray
+    - title_html: |
+        Vacinas contra Pneumonia <b><u>não protegem contra o novo coronavírus.</u></b>
+      body_html: |
+        <p>Ainda não há vacinas para o novo coronavírus. QUE apoia os pesquisadores atualmente trabalhando para desenvolver uma nova vacina contra o vírus.</p>
+        <p>Embora as vacinas contra a pneumonia não impeçam ou protejam as pessoas do novo coronavírus, são altamente recomendadas para outras doenças respiratórias.</p>
+      image_name: streamline-gtf-pneumonia-vaccine
+    - title_html: |
+        Lavar o nariz com soro <b><u>não impede que as pessoas fiquem com COVID-19.</u></b>
+      body_html: |
+        Há evidências de que lavar regularmente o nariz com soro pode ajudar as pessoas a se recuperarem mais rapidamente de um resfriado comum, mas não impedirá a COVID-19 ou outras infecções respiratórias.
+      image_name: streamline-gtf-nose-rinse
+    - title_html: |
+        Comer alho <b><u>não impede que as pessoas fiquem com COVID-19.</u></b>
+      body_html: |
+        Embora o alho seja um alimento saudável, não há evidências de que comer protegerá as pessoas do novo coronavirus.
+      image_name: streamline-gtf-garlic-2
+    - title_html: |
+        Os scanners térmicos <b><u>não</u></b> podem detectar se as pessoas estão infectadas com COVID-19 quando não estão com febre.
+      body_html: |
+        <p>Os scanners térmicos podem ler as temperaturas do corpo para identificar se uma pessoa está com febre, que é um sintoma de COVID-19.</p>
+        <p>Os scanners térmicos não conseguem detectar COVID-19 quando as pessoas estão infectadas, mas não têm febre. Pode levar de 2 a 10 dias até que uma pessoa infectada fique doente e tenha uma febre.</p>
+      image_name: streamline-gtf-thermal-scanner
+    - title_html: |
+        O novo coronavirus afeta pessoas de <b><u>todas</u></b> as idades.
+      body_html: |
+        Pessoas de todas as idades, não só os idosos, podem estar infectadas com o novo coronavírus e devem ter cuidado para se proteger. Pessoas mais velhas e qualquer pessoa com doenças médicas (asma, diabetes, doenças cardíacas etc.) podem ser mais vulneráveis.
+      image_name: streamline-gtf-elderly
+    - title_html: |
+        Antibióticos <b><u>não impedem ou tratam COVID-19.</u></b>
+      body_html: |
+        COVID-19 é um vírus e não pode ser morto com antibióticos. Antibióticos funcionam contra bactérias e não devem ser usados para prevenir o vírus.
+      image_name: streamline-gtf-antibiotics
+    - title_html: |
+        Atualmente, <b><u>não</u></b> há nenhum medicamento recomendado para prevenir ou tratar o novo coronavírus.
+      body_html: |
+        As pessoas infectadas pelo vírus devem receber cuidados com seus sintomas, mas ainda não foram desenvolvidos medicamentos e vacinas que tratam o COVID-19. QUE trabalha com pesquisadores e parceiros para desenvolver novos tratamentos.
+      image_name: streamline-gtf-medicines
