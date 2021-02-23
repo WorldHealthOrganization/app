@@ -10,36 +10,61 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class JurisdictionType extends $pb.ProtobufEnum {
-  static const JurisdictionType GLOBAL = JurisdictionType._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'GLOBAL');
-  static const JurisdictionType WHO_REGION = JurisdictionType._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WHO_REGION');
-  static const JurisdictionType COUNTRY = JurisdictionType._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COUNTRY');
+  static const JurisdictionType GLOBAL = JurisdictionType._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'GLOBAL');
+  static const JurisdictionType WHO_REGION = JurisdictionType._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'WHO_REGION');
+  static const JurisdictionType COUNTRY = JurisdictionType._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'COUNTRY');
 
-  static const $core.List<JurisdictionType> values = <JurisdictionType> [
+  static const $core.List<JurisdictionType> values = <JurisdictionType>[
     GLOBAL,
     WHO_REGION,
     COUNTRY,
   ];
 
-  static final $core.Map<$core.int, JurisdictionType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, JurisdictionType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static JurisdictionType valueOf($core.int value) => _byValue[value];
 
   const JurisdictionType._($core.int v, $core.String n) : super(v, n);
 }
 
 class Platform extends $pb.ProtobufEnum {
-  static const Platform IOS = Platform._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IOS');
-  static const Platform ANDROID = Platform._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ANDROID');
-  static const Platform WEB = Platform._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'WEB');
+  static const Platform IOS = Platform._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'IOS');
+  static const Platform ANDROID = Platform._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'ANDROID');
+  static const Platform WEB = Platform._(
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'WEB');
 
-  static const $core.List<Platform> values = <Platform> [
+  static const $core.List<Platform> values = <Platform>[
     IOS,
     ANDROID,
     WEB,
   ];
 
-  static final $core.Map<$core.int, Platform> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Platform> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Platform valueOf($core.int value) => _byValue[value];
 
   const Platform._($core.int v, $core.String n) : super(v, n);
 }
-
