@@ -1,1 +1,39 @@
-symptom_poster.fr-FR.yaml
+schema_version: 1
+content_version: 2
+contents:
+  type: poster
+  items:
+    - title: Serious Symptoms
+      body_html: |
+        <p>Consulter immédiatement un médecin si vous avez l&#39;un des symptômes graves suivants. Appelez toujours avant de consulter votre médecin ou votre établissement de santé.</p>
+        <ul>
+          <li>Difficulté à respirer ou à respirer</li>
+          <li>Douleur ou pression thoracique</li>
+          <li>Perte de parole ou de mouvement</li>
+        </ul>
+        <p>S&#39;il s&#39;agit d&#39;une urgence, veuillez appeler vos services d&#39;urgence locaux. Veuillez l&#39;utiliser uniquement pour les urgences.</p>
+      icon_name: alert-triangle
+      severe: true
+    - title: COVID-19 Symptoms
+      body_html: |
+        <p>GROSSIÈREMENT-19 affecte différentes personnes de différentes manières. La plupart des personnes infectées développeront une maladie légère à modérée et se rétabliront sans hospitalisation.</p>
+        <p><b>Symptômes les plus courants:</b></p>
+        <ul>
+          <li>Fièvre</li>
+          <li>Toux sèche</li>
+          <li>Fatigue</li>
+        </ul>
+        <p><b>Symptômes moins courants:</b></p>
+        <ul>
+          <li>Douleurs et douleurs</li>
+          <li>Gorge douloureuse</li>
+          <li>Diarrhée</li>
+          <li>Conjonctivite</li>
+          <li>Maux de tête</li>
+          <li>Perte de goût ou d&#39;odeur</li>
+          <li>Un cliché sur la peau, ou une décoloration des doigts ou des orteils</li>
+        </ul>
+        <p><br/>Consulter immédiatement un médecin si vous avez des symptômes graves. Appelez toujours avant de consulter votre médecin ou votre établissement de santé.<br/></p>
+        <p>Les personnes présentant des symptômes légers qui sont autrement en bonne santé doivent gérer leurs symptômes à la maison.<br/></p>
+        <p>En moyenne, il faut 5 à 6 jours à partir du moment où quelqu&#39;un est infecté par le virus pour que les symptômes apparaissent, mais cela peut prendre jusqu&#39;à 14 jours.</p>
+      icon_name: monitor

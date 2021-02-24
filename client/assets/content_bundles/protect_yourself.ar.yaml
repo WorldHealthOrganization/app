@@ -1,1 +1,20 @@
-protect_yourself.ar-SA.yaml
+schema_version: 1
+content_version: 5
+contents:
+  type: fact
+  items:
+    - image_name: protect-hands
+      body_html: |
+        <b>اغسل يديك</b> بالصابون والماء تجنبا لالمرض وانتشار العدوى بين الآخرين.
+    - image_name: protect-face
+      body_html: |
+        <b>تجنب لمس</b> عينيك وفمك وأنفك.
+    - image_name: protect-cough
+      body_html: |
+        <b>قم بتغطية فمك وأنفك بالقوس أو النسيج الذي تنحدر منه عند السعال أو العطس.</b>
+    - image_name: protect-distance
+      body_html: |
+        <b>المسافة على الأقل متر واحد</b> (3 أقدام) مع الآخرين ومسافة أكبر عند الداخل.
+    - image_name: protect-mask
+      body_html: |
+        <b>ارتداء أقنعة</b> في المناطق التي ينتشر فيها الفيروس عندما يقترب من متر واحد (3 أقدام) أو في غرف ذات تهوية سيئة أو غير معروفة

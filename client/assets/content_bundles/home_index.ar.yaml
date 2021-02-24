@@ -1,1 +1,24 @@
-home_index.ar-SA.yaml
+schema_version: 1
+content_version: 5
+contents:
+  type: index
+  promos:
+    - promo_type: protect_yourself
+      title: احمي نفسك
+      subtitle: تعلم كيفية الحفاظ على سلامة نفسك خلال هذا الوباء.
+      button_text: تعرف على المزيد
+      href: /protect-yourself
+      image_name: undraw-home-promo-symptoms
+  items:
+    - item_type: recent_numbers
+      title: أحدث الأرقام amoto
+      href: /recent-numbers
+    - item_type: protect_yourself
+      title: احمي نفسك
+      href: /protect-yourself
+    - item_type: information_card
+      title: احصل على الحقائق
+      subtitle: رش الكحول أو الكلور في جميع أنحاء جسمك لا يقتل فيروس كورونا الجديد.
+      href: /get-the-facts
+      button_text: تعرف على المزيد
+      image_name: streamline-gtf-spray

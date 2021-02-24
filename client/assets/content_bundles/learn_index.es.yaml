@@ -1,1 +1,23 @@
-learn_index.es-ES.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: Obtén los datos
+      subtitle: Mitos sobre COVID-19
+      button_text: Ver
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: Consejo de viaje
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: Protégete a ti mismo
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: Preguntas y respuestas
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: Noticias y prensa
+      href: /news
+      image_name: undraw-learn-news-press

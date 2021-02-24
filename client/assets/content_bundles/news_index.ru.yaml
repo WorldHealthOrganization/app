@@ -1,1 +1,21 @@
-news_index.ru-RU.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  items:
+    - item_type: menu_list_tile
+      title: Ситуационные отчеты
+      subtitle: В отчетах о ситуации содержится актуальная информация о новой вспышке коронавируса.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/
+    - item_type: menu_list_tile
+      title: Скользящие обновления
+      subtitle: Постоянно обновляемая информация о коронавирусной болезни (COVID-19) , поступающая из различных СМИ.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen
+    - item_type: menu_list_tile
+      title: Новостные статьи
+      subtitle: Все новостные выпуски, заявления и Примечания для СМИ.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news
+    - item_type: menu_list_tile
+      title: Инструктаж для прессы
+      subtitle: Пресс-семинары по коронавирусной болезни (COVID - 19), включая видеоролики, аудио-и видеозаписи.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings

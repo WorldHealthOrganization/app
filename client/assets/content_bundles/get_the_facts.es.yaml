@@ -1,1 +1,80 @@
-get_the_facts.es-ES.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: fact
+  items:
+    - title_html: |
+        Los climas cálidos y húmedos <b><u>no facilitan la dispersión del COVID-19.</u></b>
+      body_html: |
+        <p>El COVID-19 puede propagarse en cualquier clima, sin importar si la temperatura es calurosa y húmeda o fría y seca.</p>
+        <p>No importa dónde vivas, la mejor manera de protegerse contra COVID-19 es lavarse las manos con frecuencia. Lavarse las manos ayuda a eliminar los virus, lo que evita infecciones que pueden ocurrir cuando se tocan los ojos, la boca o la nariz.</p>
+      image_name: streamline-gtf-hot-climates
+    - title_html: |
+        El COVID-19 <b><u>no es</u></b> transmitido por mosquitos.
+      body_html: |
+        <p>No hay pruebas de que las personas puedan obtener el virus de mosquitos o mascotas domésticas.</p>
+        <p>COVID-19 es un virus respiratorio que se propaga a través de las pequeñas cantidades de líquido que una persona infectada estornuda o toser al aire. Para protegerse, evita el contacto con cualquier persona que Tobe o estornuda.</p>
+      image_name: streamline-gtf-mosquito
+    - title_html: |
+        El clima frío <b><u>no mata COVID-19 ni otras enfermedades.</u></b>
+      body_html: |
+        Sin importar la temperatura exterior, la mejor manera de protegerse contra COVID-19 es lavarse las manos con frecuencia. Lavarse las manos ayuda a eliminar los virus, lo que evita infecciones que pueden ocurrir cuando se tocan los ojos, la boca o la nariz.
+      image_name: streamline-gtf-cold-weather
+    - title_html: |
+        Los baños calientes <b><u>no</u></b> pueden evitar que la gente reciba el COVID-19.
+      body_html: |
+        <p>Tomar baños calientes no previene las enfermedades, e incluso puede ser dañino si la temperatura del agua es lo suficientemente caliente como para quemar la piel.</p>
+        <p>La mejor manera de protegerse contra COVID-19 es lavarse las manos con frecuencia. Lavarse las manos ayuda a eliminar los virus, lo que evita infecciones que pueden ocurrir cuando se tocan los ojos, la boca o la nariz.</p>
+      image_name: streamline-gtf-bath
+    - title_html: |
+        Los secadores de manos <b><u>no matan el nuevo coronavirus.</u></b>
+      body_html: |
+        La mejor manera de protegerse contra COVID-19 es lavarse las manos con frecuencia. Lavarse las manos ayuda a eliminar los virus, lo que evita infecciones que pueden ocurrir cuando se tocan los ojos, la boca o la nariz.
+      image_name: streamline-gtf-hand-dryer
+    - title_html: |
+        <b><u>Las lámparas Ultra-violetas (UV) no deben</u></b> usarse para desinfectar las manos u otras áreas de su piel.
+      body_html: |
+        La radiación UV puede causar irritación en la piel y dañar los ojos.<p>Limpiar las manos con alcohol o lavarse las manos con jabón y agua son las formas más efectivas de eliminar el virus.
+      image_name: streamline-gtf-uv-lamp
+    - title_html: |
+        La pulverización de alcohol o cloro en el cuerpo <b><u>no mata el nuevo virus coronavirus.</u></b>
+      body_html: |
+        El Alcohol y el cloro pueden usarse para limpiar superficies, pero rociar tu cuerpo con él no evitará el virus, y no matará el virus si ya está en tu cuerpo. El Alcohol y el cloro pueden dañar los ojos y la boca, así como la ropa cuando se pulveriza sobre el cuerpo.
+      image_name: streamline-gtf-spray
+    - title_html: |
+        Las vacunas contra la neumonía <b><u>no se protegen contra el nuevo virus coronavirus.</u></b>
+      body_html: |
+        <p>Aún no hay vacunas para el nuevo coronavirus. La OMS apoya a los investigadores que actualmente trabajan para desarrollar una nueva vacuna contra el virus.</p>
+        <p>Aunque las vacunas contra la neumonía no evitan ni protegen a las personas de los nuevos coronavirus, son altamente recomendadas para otras enfermedades respiratorias.</p>
+      image_name: streamline-gtf-pneumonia-vaccine
+    - title_html: |
+        Enjuagar la nariz con solución salina <b><u>no impide que las personas se conviertan en COVID-19.</u></b>
+      body_html: |
+        Existen evidencias de que enjuagar regularmente la nariz con solución salina puede ayudar a las personas a recuperarse más rápido de un frío común, pero no evitará COVID-19 u otras infecciones respiratorias.
+      image_name: streamline-gtf-nose-rinse
+    - title_html: |
+        Comer ajo <b><u>no impide que las personas se conviertan en COVID-19.</u></b>
+      body_html: |
+        Aunque el ajo es un alimento saludable, no hay pruebas de que comerlo proteja a las personas del nuevo virus coronavirus.
+      image_name: streamline-gtf-garlic-2
+    - title_html: |
+        Los escáneres térmicos <b><u>no</u></b> pueden detectar si las personas están infectadas con COVID-19 cuando no tienen fiebre.
+      body_html: |
+        <p>Los escáneres térmicos pueden leer las temperaturas del cuerpo para identificar si una persona tiene una fiebre, que es un síntoma de COVID-19.</p>
+        <p>Los escáneres térmicos no pueden detectar COVID-19 cuando las personas están infectadas pero no tienen fiebre. Puede tardar de 2 a 10 días antes de que una persona infectada se enferme y tenga una fiebre.</p>
+      image_name: streamline-gtf-thermal-scanner
+    - title_html: |
+        El nuevo coronavirus afecta a personas de <b><u>todas</u></b> las edades.
+      body_html: |
+        Personas de todas las edades, no solo los adultos mayores, pueden infectarse con el nuevo coronavirus y deben cuidar de protegerse a sí mismos. Las personas mayores y cualquier persona con enfermedades (asma, diabetes, enfermedades cardíacas, etc.) pueden ser más vulnerables.
+      image_name: streamline-gtf-elderly
+    - title_html: |
+        Los antibióticos <b><u>no previenen ni tratan COVID-19.</u></b>
+      body_html: |
+        COVID-19 es un virus que no se puede matar con antibióticos. Los antibióticos funcionan contra las bacterias y no deben utilizarse para prevenir el virus.
+      image_name: streamline-gtf-antibiotics
+    - title_html: |
+        En la actualidad, <b><u>no</u></b> existe ningún medicamento recomendado para prevenir o tratar el nuevo virus coronavirus.
+      body_html: |
+        Las personas que están infectadas por el virus deben recibir atención por sus síntomas, pero aún no se han desarrollado medicamentos y vacunas que traten al COVID-19. La OMS está trabajando con investigadores y socios para desarrollar nuevos tratamientos.
+      image_name: streamline-gtf-medicines

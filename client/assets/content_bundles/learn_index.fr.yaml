@@ -1,1 +1,23 @@
-learn_index.fr-FR.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: Obtenir les faits
+      subtitle: Des mythes éblouissants sur le grossier-19
+      button_text: Afficher
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: Conseils de voyage
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: Se protéger
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: Questions &amp; réponses
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: Actualités et presse
+      href: /news
+      image_name: undraw-learn-news-press

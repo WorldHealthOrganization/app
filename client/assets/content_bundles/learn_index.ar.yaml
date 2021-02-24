@@ -1,1 +1,23 @@
-learn_index.ar-SA.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: احصل على الحقائق
+      subtitle: أساطير ساخرة عن كوفيد-19
+      button_text: عرض
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: نصائح السفر
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: احمي نفسك
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: أسئلة وأجوبة
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: الأخبار والصحافة
+      href: /news
+      image_name: undraw-learn-news-press

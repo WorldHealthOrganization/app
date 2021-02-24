@@ -1,1 +1,24 @@
-home_index.es-ES.yaml
+schema_version: 1
+content_version: 5
+contents:
+  type: index
+  promos:
+    - promo_type: protect_yourself
+      title: Protégete a ti mismo
+      subtitle: Aprenda cómo mantenerse a salvo durante esta epidemia.
+      button_text: Conozca más
+      href: /protect-yourself
+      image_name: undraw-home-promo-symptoms
+  items:
+    - item_type: recent_numbers
+      title: Números recientes ›
+      href: /recent-numbers
+    - item_type: protect_yourself
+      title: Protégete a ti mismo
+      href: /protect-yourself
+    - item_type: information_card
+      title: Obtén los datos
+      subtitle: La pulverización con alcohol o cloro en todo el cuerpo no mata el nuevo virus coronavirus.
+      href: /get-the-facts
+      button_text: Conozca más
+      image_name: streamline-gtf-spray

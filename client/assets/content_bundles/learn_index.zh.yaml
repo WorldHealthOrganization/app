@@ -1,1 +1,23 @@
-learn_index.zh-CN.yaml
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: 了解事实
+      subtitle: 破解有关 COVID-19 的神话
+      button_text: 查看
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: 旅行建议
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: 保护自己
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: 问题和答案
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: 新闻与新闻
+      href: /news
+      image_name: undraw-learn-news-press

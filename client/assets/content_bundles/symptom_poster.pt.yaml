@@ -1,1 +1,39 @@
-symptom_poster.pt-PT.yaml
+schema_version: 1
+content_version: 2
+contents:
+  type: poster
+  items:
+    - title: Serious Symptoms
+      body_html: |
+        <p>Procure atenção médica imediata se você tiver algum dos seguintes sintomas graves. Sempre ligue antes de visitar seu médico ou unidade de saúde.</p>
+        <ul>
+          <li>Dificuldade para respirar ou falta de ar</li>
+          <li>Dor no peito ou pressão</li>
+          <li>Perda de expressão ou movimento</li>
+        </ul>
+        <p>Se for uma emergência, ligue para o serviço de emergência local. Use-o apenas para emergências.</p>
+      icon_name: alert-triangle
+      severe: true
+    - title: COVID-19 Symptoms
+      body_html: |
+        <p>COVID-19 afeta pessoas diferentes de maneiras diferentes. A maioria das pessoas infectadas desenvolverá uma doença leve para moderar e se recuperará sem hospitalização.</p>
+        <p><b>Sintomas mais comuns:</b></p>
+        <ul>
+          <li>Febre</li>
+          <li>Tosse seca</li>
+          <li>Cansaço</li>
+        </ul>
+        <p><b>Sintomas menos comuns:</b></p>
+        <ul>
+          <li>Dores e dores</li>
+          <li>Garganta dolorida</li>
+          <li>Diarreia</li>
+          <li>Conjuntivite</li>
+          <li>Dor de cabeça</li>
+          <li>Perda de gosto ou cheiro</li>
+          <li>Uma assadura na pele, ou descoloração de dedos ou dedos</li>
+        </ul>
+        <p><br/>Procure atenção médica imediata se você tiver sintomas sérios. Sempre ligue antes de visitar seu médico ou unidade de saúde.<br/></p>
+        <p>As pessoas com sintomas leves de outra forma saudáveis devem gerenciar seus sintomas em casa.<br/></p>
+        <p>Em média demora de 5 a 6 dias de quando alguém está infectado com o vírus para que os sintomas apareçam, no entanto, pode demorar até 14 dias.</p>
+      icon_name: monitor
