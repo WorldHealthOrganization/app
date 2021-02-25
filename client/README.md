@@ -2,9 +2,13 @@
 
 ## Getting Started
 
-Follow flutter installation instructions [here](https://flutter.dev/docs/get-started/install).
+Clone the repo. We recommend using the [GitHub Desktop App](https://desktop.github.com):
 
-Clone the repo then:
+https://github.com/WorldHealthOrganization/app/
+
+## Windows
+
+Install Flutter: https://flutter.dev/docs/get-started/install/windows
 
 ```
 cd client
@@ -14,13 +18,31 @@ flutter run
 ### iOS
 
 ```
+# Dependencies
+brew install flutter
+sudo gem install cocoapods
+
+# Client
 cd client
 flutter pub get
-
 cd ios
-sudo gem install cocoapods   # if needed
-pod install
+
+if [ `uname -m` = "arm64" ]; then
+  # Apple Silicon
+  sudo arch -x86_64 gem install ffi
+  arch -x86_64 pod install
+else
+  pod install
+fi
+
+# Xcode
 open Runner.xcworkspace
+```
+
+To run the client:
+```
+cd client
+flutter run
 ```
 
 ### Firebase
