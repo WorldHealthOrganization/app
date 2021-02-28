@@ -1,4 +1,3 @@
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
@@ -146,9 +145,10 @@ abstract class _ContentStore with Store implements Updateable {
         'ContentStore update finished',
       );
     } catch (e) {
-      unawaited(
-        FirebaseCrashlytics.instance.recordFlutterError(e),
-      );
+      // TODO: This breaks on UnsupportedContentSchema exception
+      // unawaited(
+      //   FirebaseCrashlytics.instance.recordFlutterError(e),
+      // );
       print(
         'ContentStore update failed',
       );

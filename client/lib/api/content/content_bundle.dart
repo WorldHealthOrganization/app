@@ -6,7 +6,7 @@ import 'package:yaml/yaml.dart';
 /// A localized YAML file loaded preferentially from the network, falling back
 /// to a local asset.
 class ContentBundle {
-  static int maxSupportedSchemaVersion = 1;
+  static int maxSupportedSchemaVersion = 2;
   dynamic yaml;
 
   // If true indicates that a version of this content is available in a schema

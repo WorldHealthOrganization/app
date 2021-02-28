@@ -1,0 +1,39 @@
+schema_version: 2
+content_version: 2
+contents:
+  type: poster
+  items:
+    - title: Serious Symptoms
+      body_html: |
+        <p>Seek immediate medical attention if you have any of the following severe symptoms. Always call before visiting your doctor or health facility.</p>
+        <ul>
+          <li>Difficulty breathing or shortness of breath</li>
+          <li>Chest pain or pressure</li>
+          <li>Loss of speech or movement</li>
+        </ul>
+        <p>If it is an emergency, please call your local emergency services. Please use this only for emergencies.</p>
+      icon_name: alert-triangle
+      severe: true
+    - title: COVID-19 Symptoms
+      body_html: |
+        <p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.</p>
+        <p><b>Most common symptoms:</b></p>
+        <ul>
+          <li>Fever</li>
+          <li>Dry cough</li>
+          <li>Tiredness</li>
+        </ul>
+        <p><b>Less common symptoms:</b></p>
+        <ul>
+          <li>Aches and pains</li>
+          <li>Sore throat</li>
+          <li>Diarrhoea</li>
+          <li>Conjunctivitis</li>
+          <li>Headache</li>
+          <li>Loss of taste or smell</li>
+          <li>A rash on skin, or discolouration of fingers or toes</li>
+        </ul>
+        <p><br/>Seek immediate medical attention if you have serious symptoms. Always call before visiting your doctor or health facility.<br/></p>
+        <p>People with mild symptoms who are otherwise healthy should manage their symptoms at home.<br/></p>
+        <p>On average it takes 5-6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days.</p>
+      icon_name: monitor

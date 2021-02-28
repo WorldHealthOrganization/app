@@ -1,5 +1,5 @@
-schema_version: 1
-content_version: 3
+schema_version: 2
+content_version: 4
 contents:
   type: symptom_checker
 
