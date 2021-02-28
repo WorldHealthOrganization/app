@@ -138,21 +138,6 @@ mixin _$ContentStore on _ContentStore, Store {
     });
   }
 
-  final _$symptomPosterAtom = Atom(name: '_ContentStore.symptomPoster');
-
-  @override
-  PosterContent get symptomPoster {
-    _$symptomPosterAtom.reportRead();
-    return super.symptomPoster;
-  }
-
-  @override
-  set symptomPoster(PosterContent value) {
-    _$symptomPosterAtom.reportWrite(value, super.symptomPoster, () {
-      super.symptomPoster = value;
-    });
-  }
-
   final _$symptomCheckerAtom = Atom(name: '_ContentStore.symptomChecker');
 
   @override
@@ -186,7 +171,6 @@ homeIndex: ${homeIndex},
 learnIndex: ${learnIndex},
 newsIndex: ${newsIndex},
 questionsAnswered: ${questionsAnswered},
-symptomPoster: ${symptomPoster},
 symptomChecker: ${symptomChecker},
 unsupportedSchemaVersionAvailable: ${unsupportedSchemaVersionAvailable}
     ''';

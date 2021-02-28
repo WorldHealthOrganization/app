@@ -13,7 +13,6 @@ typedef IndexDataSource = Future<IndexContent> Function(Locale);
 class IndexContent extends ContentBase {
   List<IndexItem> items;
   List<IndexPromo> promos;
-  ContentControls controls;
 
   IndexContent(ContentBundle bundle) : super(bundle, schemaName: 'index') {
     try {
@@ -42,7 +41,6 @@ class IndexContent extends ContentBase {
                 displayCondition: item['display_condition'],
               ))
           .toList();
-      controls = bundle.contentControls;
     } catch (err) {
       print('Error loading Index data: $err');
       throw ContentBundleDataException();

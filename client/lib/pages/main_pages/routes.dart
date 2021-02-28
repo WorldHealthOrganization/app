@@ -18,7 +18,7 @@ import 'package:who_app/pages/symptom_checker/symptom_checker_results_page.dart'
 import 'package:who_app/pages/symptom_checker/symptom_checker_view.dart';
 import 'package:who_app/pages/travel_advice.dart';
 
-import 'check_up_poster_page.dart';
+import 'check_up/check_up_page.dart';
 
 class Routes {
   static final Map<String, WidgetBuilder> map = {
@@ -42,7 +42,7 @@ class Routes {
           dataSource: Provider.of<ContentStore>(context),
           title: S.of(context).homePagePageButtonQuestions,
         ),
-    '/symptom-checker-poster': (context) => CheckUpPosterPage(
+    '/check-up': (context) => CheckUpPage(
           dataSource: Provider.of<ContentStore>(context),
         ),
     '/symptom-checker-survey': (context) => SymptomCheckerView(

@@ -86,20 +86,11 @@ class ContentBundle {
     }
   }
 
-  // Support an open-ended map of control values in the content bundles, e.g.
-  //   controls:
-  //    - show_symptom_checker: false
-  ContentControls get contentControls {
+  YamlList get contentPoster {
     try {
-      var map = <String, String>{};
-      for (var item in yaml['contents']['controls']) {
-        for (var key in item.keys) {
-          map[key.toString()] = item[key].toString();
-        }
-      }
-      return ContentControls(map);
+      return yaml['contents']['poster'];
     } catch (err) {
-      return ContentControls({});
+      return YamlList();
     }
   }
 
@@ -137,19 +128,3 @@ class ContentBundleSchemaVersionException implements Exception {}
 
 /// Indicates an error interpreting the content bundle data according to the expected schema.
 class ContentBundleDataException implements Exception {}
-
-/// An open-ended map of control values that can be embedded into a content bundle.
-class ContentControls {
-  Map<String, String> map;
-
-  ContentControls(this.map);
-
-  String value(Object key, String defaultValue) {
-    return map[key.toString()] ?? defaultValue;
-  }
-
-  bool boolValue(Object key, bool defaultValue) {
-    var found = map[key.toString()];
-    return found != null ? (found.toLowerCase() == 'true') : defaultValue;
-  }
-}

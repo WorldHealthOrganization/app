@@ -1,6 +1,7 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
+import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/linking.dart';
 
 /// Interpret a content bundle as symptom checker data.
@@ -11,10 +12,15 @@ class SymptomCheckerContent extends ContentBase {
   List<SymptomCheckerQuestion> questions;
   List<SymptomCheckerResult> results;
   Map<String, SymptomCheckerResultCard> cards;
+  List<PosterCard> poster;
 
   SymptomCheckerContent(ContentBundle bundle)
       : super(bundle, schemaName: 'symptom_checker') {
     try {
+      // Optional poster items
+      poster = bundle.contentPoster?.map(PosterCard.cardFromContent)?.toList();
+
+      // Primary symptom checker content
       questions = bundle.contentItems.map(_questionFromContent).toList();
       cards = {
         for (var v in bundle.contentCards.map(_cardFromContent)) v.id: v

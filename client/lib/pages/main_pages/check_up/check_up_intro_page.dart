@@ -7,7 +7,7 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-import '../about_page.dart';
+import '../../about_page.dart';
 
 class CheckUpIntroPage extends StatelessWidget {
   @override

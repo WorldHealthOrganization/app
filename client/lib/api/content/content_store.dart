@@ -7,7 +7,6 @@ import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
-import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
@@ -48,7 +47,6 @@ abstract class _ContentStore with Store implements Updateable {
         learnIndex,
         newsIndex,
         questionsAnswered,
-        symptomPoster,
         symptomChecker,
       ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
 
@@ -75,9 +73,6 @@ abstract class _ContentStore with Store implements Updateable {
 
   @observable
   QuestionContent questionsAnswered;
-
-  @observable
-  PosterContent symptomPoster;
 
   @observable
   SymptomCheckerContent symptomChecker;
@@ -135,10 +130,6 @@ abstract class _ContentStore with Store implements Updateable {
         updateBundle<QuestionContent>('your_questions_answered',
             questionsAnswered, (cb) => QuestionContent(cb), (v) {
           questionsAnswered = v;
-        }),
-        updateBundle<PosterContent>(
-            'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
-          symptomPoster = v;
         }),
         updateBundle<SymptomCheckerContent>('symptom_checker', symptomChecker,
             (cb) => SymptomCheckerContent(cb), (v) {
