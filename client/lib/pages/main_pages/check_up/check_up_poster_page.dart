@@ -3,22 +3,21 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/display_conditions.dart';
-import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class CheckUpPosterPage extends ContentWidget<PosterContent> {
-  CheckUpPosterPage({Key key, @required ContentStore dataSource})
-      : super(key: key, dataSource: dataSource);
+class CheckUpPosterPage extends StatelessWidget {
+  final List<PosterCard> cards;
+  final LogicContext logicContext;
+
+  CheckUpPosterPage(this.cards, this.logicContext);
 
   @override
-  Widget buildImpl(
-      BuildContext context, PosterContent content, LogicContext logicContext) {
+  Widget build(BuildContext context) {
     final inHomePage = !ModalRoute.of(context).canPop;
 
     List<Widget> _getCards() {
@@ -26,7 +25,7 @@ class CheckUpPosterPage extends ContentWidget<PosterContent> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ...content.cards
+            ...cards
                 .where((item) => item.isDisplayed(logicContext))
                 .toList()
                 .asMap()
@@ -70,15 +69,12 @@ class CheckUpPosterPage extends ContentWidget<PosterContent> {
       // TODO: localize
       title: 'Check-Up',
       body: <Widget>[
-        content != null && logicContext != null
+        logicContext != null
             ? _buildBody()
             : SliverSafeArea(sliver: LoadingIndicator())
       ],
     );
   }
-
-  @override
-  PosterContent getContent() => dataSource.symptomPoster;
 }
 
 class _Card extends StatelessWidget {

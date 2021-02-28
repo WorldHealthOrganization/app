@@ -7,19 +7,20 @@ import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/constants.dart';
-import 'package:who_app/pages/main_pages/check_up_poster_page.dart';
 import 'package:who_app/pages/main_pages/recent_numbers.dart';
 import 'package:who_app/pages/main_pages/home_page.dart';
 import 'package:who_app/pages/main_pages/learn_page.dart';
 import 'package:who_app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
+import 'check_up/check_up_page.dart';
+
 class AppTabRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> defaultTabs = [
     (context) => HomePage(
           dataSource: Provider.of<ContentStore>(context),
         ),
-    (context) => CheckUpPosterPage(
+    (context) => CheckUpPage(
           dataSource: Provider.of<ContentStore>(context),
         ),
     (context) => LearnPage(
@@ -65,8 +66,12 @@ class AppTabRouter extends StatelessWidget {
 
   final List<Widget Function(BuildContext)> tabs;
   final List<BottomNavigationBarItem> navItems;
+  final ContentStore dataSource;
 
-  AppTabRouter(this.tabs, this.navItems);
+  AppTabRouter(
+      {@required this.dataSource,
+      @required this.tabs,
+      @required this.navItems});
 
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(

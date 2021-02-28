@@ -19,6 +19,8 @@ import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:yaml/yaml.dart';
 
 class AboutPage extends StatelessWidget {
+  static void foo() {}
+
   @override
   Widget build(BuildContext context) {
     final versionString = packageInfo != null
@@ -30,18 +32,6 @@ class AboutPage extends StatelessWidget {
         .of(context)
         .commonWorldHealthOrganizationCoronavirusCopyright(DateTime.now().year);
 
-    Future<void> _openTermsOfService(BuildContext context) async {
-      final url = S.of(context).aboutPageTermsOfServiceLinkUrl;
-      await launchUrl(url);
-      await FirebaseAnalytics().logEvent(name: 'TermsOfService');
-    }
-
-    Future<void> _openPrivacyPolicy(BuildContext context) async {
-      final url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
-      await launchUrl(url);
-      await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
-    }
-
     String _buildInfoText(BuildContext bc) {
       return [
         'Debug Info:',
@@ -52,17 +42,6 @@ class AboutPage extends StatelessWidget {
         'Flutter locale: ${Localizations.localeOf(bc).toString()}',
         'Flutter version: ${BuildInfo.FLUTTER_VERSION}',
       ].join('\n');
-    }
-
-    Future<void> _openLicenses(BuildContext context) async {
-      // Logs the page switch as it happens while avoiding any delay caused
-      // by logging.
-      // ignore: unawaited_futures
-      FirebaseAnalytics().logEvent(name: 'ViewLicenses');
-      await Navigator.push(
-        context,
-        MaterialPageRoute(builder: (BuildContext context) => who.LicensePage()),
-      );
     }
 
     // TODO add divider theme to ThemeData once we've switched to a MaterialApp
@@ -78,17 +57,17 @@ class AboutPage extends StatelessWidget {
             [
               MenuListTile(
                 title: S.of(context).aboutPageTermsOfServiceLinkText,
-                onTap: () => _openTermsOfService(context),
+                onTap: () => openTermsOfService(context),
               ),
               _divider(),
               MenuListTile(
                 title: S.of(context).aboutPagePrivacyPolicyLinkText,
-                onTap: () => _openPrivacyPolicy(context),
+                onTap: () => openPrivacyPolicy(context),
               ),
               _divider(),
               MenuListTile(
                 title: S.of(context).aboutPageViewLicensesLinkText,
-                onTap: () => _openLicenses(context),
+                onTap: () => openLicenses(context),
               ),
               _divider(),
               Container(
@@ -172,6 +151,29 @@ class AboutPage extends StatelessWidget {
       ],
       title: S.of(context).aboutPageTitle,
       heroTag: HeroTags.settings,
+    );
+  }
+
+  static Future<void> openTermsOfService(BuildContext context) async {
+    final url = S.of(context).aboutPageTermsOfServiceLinkUrl;
+    await launchUrl(url);
+    await FirebaseAnalytics().logEvent(name: 'TermsOfService');
+  }
+
+  static Future<void> openPrivacyPolicy(BuildContext context) async {
+    final url = S.of(context).legalLandingPagePrivacyPolicyLinkUrl;
+    await launchUrl(url);
+    await FirebaseAnalytics().logEvent(name: 'PrivacyPolicy');
+  }
+
+  static Future<void> openLicenses(BuildContext context) async {
+    // Logs the page switch as it happens while avoiding any delay caused
+    // by logging.
+    // ignore: unawaited_futures
+    FirebaseAnalytics().logEvent(name: 'ViewLicenses');
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (BuildContext context) => who.LicensePage()),
     );
   }
 }

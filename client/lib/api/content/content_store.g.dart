@@ -138,18 +138,18 @@ mixin _$ContentStore on _ContentStore, Store {
     });
   }
 
-  final _$symptomPosterAtom = Atom(name: '_ContentStore.symptomPoster');
+  final _$symptomCheckerAtom = Atom(name: '_ContentStore.symptomChecker');
 
   @override
-  PosterContent get symptomPoster {
-    _$symptomPosterAtom.reportRead();
-    return super.symptomPoster;
+  SymptomCheckerContent get symptomChecker {
+    _$symptomCheckerAtom.reportRead();
+    return super.symptomChecker;
   }
 
   @override
-  set symptomPoster(PosterContent value) {
-    _$symptomPosterAtom.reportWrite(value, super.symptomPoster, () {
-      super.symptomPoster = value;
+  set symptomChecker(SymptomCheckerContent value) {
+    _$symptomCheckerAtom.reportWrite(value, super.symptomChecker, () {
+      super.symptomChecker = value;
     });
   }
 
@@ -171,7 +171,7 @@ homeIndex: ${homeIndex},
 learnIndex: ${learnIndex},
 newsIndex: ${newsIndex},
 questionsAnswered: ${questionsAnswered},
-symptomPoster: ${symptomPoster},
+symptomChecker: ${symptomChecker},
 unsupportedSchemaVersionAvailable: ${unsupportedSchemaVersionAvailable}
     ''';
   }
