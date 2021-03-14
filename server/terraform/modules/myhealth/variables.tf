@@ -56,3 +56,14 @@ variable "dns_record_ttl" {
   type        = string
   default     = 3600
 }
+
+# Which version of the backend are we using?
+variable "backend_version" {
+  description = "Firestore in Datastore mode is 'v1'. Firestore in Native mode is 'v2'."
+  type        = string
+  default     = "v1"
+  validation {
+    condition     = var.backend_version == "v1" || var.backend_version == "v2"
+    error_message = "Legal backend_version values are 'v1' and 'v2'."
+  }
+}

@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Currently: do not allow any direct reads or writes.
+    // TODO: this will change as we update the client to do direct reads and writes.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

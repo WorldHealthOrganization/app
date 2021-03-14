@@ -69,6 +69,7 @@ resource "google_project_service" "service" {
     "compute.googleapis.com",
     "dns.googleapis.com",
     "firebase.googleapis.com",
+    var.backend_version == "v2" ? "firebasehosting.googleapis.com" : null,
   ])
 
   service            = each.key
@@ -97,11 +98,14 @@ resource "google_firebase_project_location" "fireloc" {
 }
 
 
-# App Engine
+# App Engine - required to create the Firestore database.
+#   See: https://firebase.google.com/docs/firestore/solutions/automate-database-create#create_a_database_with_terraform
+#   NOTE: contrary to this documentation, we seem to still need a manual step to actually create the Firestore database.
+#         That manual step is documented in `server/terraform/README.md`.
 resource "google_app_engine_application" "gae" {
   project       = var.project_id
   location_id   = var.region
-  database_type = "CLOUD_DATASTORE_COMPATIBILITY"
+  database_type = var.backend_version == "v2" ? "CLOUD_FIRESTORE" : "CLOUD_DATASTORE_COMPATIBILITY"
   depends_on    = [google_project_service.service]
   # TODO: protect resource as it can't be recreated after being destroyed
   lifecycle {
@@ -158,10 +162,11 @@ resource "google_logging_project_sink" "default" {
 
 # Load Balancer
 module "lb" {
+  count              = var.backend_version == "v1" ? 1 : 0
   source             = "../http-load-balancer"
   project_id         = var.project_id
   name               = "${var.project_id}-lb"
-  url_map            = google_compute_url_map.urlmap.self_link
+  url_map            = google_compute_url_map.urlmap[0].self_link
   create_dns_entries = var.create_dns_entry
   dns_record_ttl     = var.dns_record_ttl
   domain             = var.domain
@@ -172,20 +177,21 @@ module "lb" {
 
 # Url Map to map paths to backends
 resource "google_compute_url_map" "urlmap" {
+  count           = var.backend_version == "v1" ? 1 : 0
   project         = var.project_id
   name            = "${var.project_id}-url-map"
   description     = "URL map for ${var.project_id}"
-  default_service = google_compute_backend_service.backend.self_link
+  default_service = google_compute_backend_service.backend[0].self_link
   host_rule {
     hosts        = ["*"]
     path_matcher = "all"
   }
   path_matcher {
     name            = "all"
-    default_service = google_compute_backend_service.backend.self_link
+    default_service = google_compute_backend_service.backend[0].self_link
     path_rule {
       paths   = ["/content/*"]
-      service = google_compute_backend_bucket.content.id
+      service = google_compute_backend_bucket.content[0].id
     }
 
   }
@@ -195,6 +201,7 @@ resource "google_compute_url_map" "urlmap" {
 
 # Network Endpoint Group and App Engine Backend
 resource "google_compute_region_network_endpoint_group" "neg" {
+  count                 = var.backend_version == "v1" ? 1 : 0
   provider              = google-beta
   name                  = "${var.project_id}-neg-appengine"
   network_endpoint_type = "SERVERLESS"
@@ -209,7 +216,8 @@ resource "google_compute_region_network_endpoint_group" "neg" {
 
 # Google Cloud Armor security policy.
 resource "google_compute_security_policy" "policy" {
-  name = "lb-security-policy"
+  count = var.backend_version == "v1" ? 1 : 0
+  name  = "lb-security-policy"
 
   # IP Block list. 
   # Up to ten IP ranges can be created per rule.
@@ -254,6 +262,7 @@ resource "google_compute_security_policy" "policy" {
 
 
 resource "google_compute_backend_service" "backend" {
+  count                           = var.backend_version == "v1" ? 1 : 0
   name                            = "${var.project_id}-backend-appengine"
   load_balancing_scheme           = "EXTERNAL"
   protocol                        = "HTTPS"
@@ -263,10 +272,10 @@ resource "google_compute_backend_service" "backend" {
   cdn_policy {
     signed_url_cache_max_age_sec = 3600
   }
-  security_policy = google_compute_security_policy.policy.id
+  security_policy = google_compute_security_policy.policy[0].id
   backend {
     capacity_scaler = 1
-    group           = google_compute_region_network_endpoint_group.neg.id
+    group           = google_compute_region_network_endpoint_group.neg[0].id
   }
   # TODO: figure out what health checks are possible
   health_checks = null
@@ -276,6 +285,7 @@ resource "google_compute_backend_service" "backend" {
 
 # Google Cloud bucket for static content assets.
 resource "google_storage_bucket" "content" {
+  count = var.backend_version == "v1" ? 1 : 0
   # While the bucket name is in a flat global namespace, this pattern has 
   # been available so far for all appids in use.
   name     = "${var.project_id}-static-content"
@@ -290,7 +300,8 @@ resource "google_storage_bucket" "content" {
 
 # Object are all world-readable. Set using the simplest mechanism.
 resource "google_storage_bucket_iam_binding" "binding" {
-  bucket = google_storage_bucket.content.name
+  count  = var.backend_version == "v1" ? 1 : 0
+  bucket = google_storage_bucket.content[0].name
   role   = "roles/storage.objectViewer"
   members = [
     "allUsers",
@@ -300,7 +311,8 @@ resource "google_storage_bucket_iam_binding" "binding" {
 
 # Routing
 resource "google_compute_backend_bucket" "content" {
+  count       = var.backend_version == "v1" ? 1 : 0
   name        = "static-content-backend-bucket"
-  bucket_name = google_storage_bucket.content.name
+  bucket_name = google_storage_bucket.content[0].name
   enable_cdn  = true
 }
