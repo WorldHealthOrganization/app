@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:who_app/api/content/content_store.dart';
+import 'package:who_app/api/location_provider.dart';
+import 'package:who_app/api/place/place_service.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
@@ -47,6 +49,8 @@ class Routes {
         ),
     '/symptom-checker-survey': (context) => SymptomCheckerView(
           dataSource: Provider.of<ContentStore>(context),
+          placeService: Provider.of<PlaceService>(context),
+          locationProvider: Provider.of<LocationProvider>(context),
         ),
     '/symptom-checker-results': (context) => SymptomCheckerResultsPage(
         model:

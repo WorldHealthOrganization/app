@@ -42,6 +42,7 @@ dependencies:
   flutter_mobx: ^1.1.0+2
   flutter_svg: ^0.18.0
   font_awesome_flutter: ^8.8.1
+  google_maps_webservice: ^0.0.19
   http: ^0.12.0+3
   mobx: ^1.2.1+2
   notification_permissions: ^0.4.4

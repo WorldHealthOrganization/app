@@ -13,6 +13,8 @@ import 'package:who_app/api/alerts.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/iso_country.dart';
+import 'package:who_app/api/location_provider.dart';
+import 'package:who_app/api/place/place_service.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -171,6 +173,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 update: (_, Endpoint endpoint, __) => WhoService(
                       endpoint: endpoint.serviceUrl,
                     )),
+            ProxyProvider(
+                update: (_, UserPreferencesStore prefs, __) =>
+                    PlaceService(countryIsoCode: prefs.countryIsoCode)),
+            ProxyProvider(
+                update: (_, UserPreferencesStore prefs, __) =>
+                    LocationProvider(prefs: prefs)),
             ProxyProvider2(
               update: (_, WhoService service, UserPreferencesStore prefs, __) {
                 final ret = Notifications(service: service, prefs: prefs);

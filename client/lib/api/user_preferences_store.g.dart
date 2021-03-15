@@ -25,6 +25,22 @@ mixin _$UserPreferencesStore on _UserPreferencesStore, Store {
     });
   }
 
+  final _$obsSavedLocationAtom =
+      Atom(name: '_UserPreferencesStore.obsSavedLocation');
+
+  @override
+  Place get obsSavedLocation {
+    _$obsSavedLocationAtom.reportRead();
+    return super.obsSavedLocation;
+  }
+
+  @override
+  set obsSavedLocation(Place value) {
+    _$obsSavedLocationAtom.reportWrite(value, super.obsSavedLocation, () {
+      super.obsSavedLocation = value;
+    });
+  }
+
   final _$setCountryIsoCodeAsyncAction =
       AsyncAction('_UserPreferencesStore.setCountryIsoCode');
 
@@ -34,10 +50,20 @@ mixin _$UserPreferencesStore on _UserPreferencesStore, Store {
         .run(() => super.setCountryIsoCode(newValue));
   }
 
+  final _$setSavedLocationAsyncAction =
+      AsyncAction('_UserPreferencesStore.setSavedLocation');
+
+  @override
+  Future<bool> setSavedLocation(Place newValue) {
+    return _$setSavedLocationAsyncAction
+        .run(() => super.setSavedLocation(newValue));
+  }
+
   @override
   String toString() {
     return '''
-obsCountryIsoCode: ${obsCountryIsoCode}
+obsCountryIsoCode: ${obsCountryIsoCode},
+obsSavedLocation: ${obsSavedLocation}
     ''';
   }
 }

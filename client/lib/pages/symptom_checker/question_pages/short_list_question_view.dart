@@ -22,10 +22,10 @@ class ShortListQuestionView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ShortListQuestionViewState createState() => _ShortListQuestionViewState();
+  ShortListQuestionViewState createState() => ShortListQuestionViewState();
 }
 
-class _ShortListQuestionViewState extends State<ShortListQuestionView>
+class ShortListQuestionViewState extends State<ShortListQuestionView>
     with AutomaticKeepAliveClientMixin {
   String _singleSelection;
   Set<String> _multipleSelections = {};
@@ -151,7 +151,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
               SizedBox(height: 20),
               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: NextButton(enabled: _isComplete, onNext: _next)),
+                  child: NextButton(enabled: _isComplete, onNext: next)),
               SizedBox(height: 48),
             ],
           ),
@@ -160,7 +160,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
     );
   }
 
-  void _next() {
+  void next() {
     if (_allowsMultipleSelection) {
       widget.pageDelegate.answerQuestion(_multipleSelections);
     } else {

@@ -206,5 +206,6 @@ enum UserPreferenceKey {
   CountryISOCode,
   ExperimentCohort,
   LastRunVersion,
-  LastUpdatedContent
+  LastUpdatedContent,
+  SavedLocation
 }

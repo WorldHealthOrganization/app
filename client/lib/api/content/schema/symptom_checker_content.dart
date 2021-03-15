@@ -41,6 +41,12 @@ class SymptomCheckerContent extends ContentBase {
       case 'multiple_selection':
         type = SymptomCheckerQuestionType.MultipleSelection;
         break;
+      case 'location':
+        type = SymptomCheckerQuestionType.Location;
+        break;
+      case 'location_sharing':
+        type = SymptomCheckerQuestionType.LocationSharing;
+        break;
       default:
         throw Exception('unrecognized question type');
     }
@@ -130,6 +136,14 @@ enum SymptomCheckerQuestionType {
   /// A question with a list of answers intended to be presented together in
   /// which zero or more selections are allowed.
   MultipleSelection,
+
+  /// A question that gathers a user's location using an autocompleting text
+  /// field.
+  Location,
+
+  /// A question that asks if the user would like to share their location with
+  /// the backend.
+  LocationSharing,
 }
 
 /// SymptomChecker ('symptom_checker' schema) question items including question and
@@ -160,6 +174,10 @@ class SymptomCheckerQuestion {
         return false;
       case SymptomCheckerQuestionType.MultipleSelection:
         return true;
+      case SymptomCheckerQuestionType.Location:
+        return false;
+      case SymptomCheckerQuestionType.LocationSharing:
+        return false;
     }
     throw Exception('should be unreachable');
   }

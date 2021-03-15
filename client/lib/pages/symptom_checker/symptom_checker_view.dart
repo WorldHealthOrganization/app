@@ -4,19 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
+import 'package:who_app/api/location_provider.dart';
+import 'package:who_app/api/place/place_service.dart';
 import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/components/dialogs.dart';
 import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/location_sharing_question_view.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/short_list_question_view.dart';
+import 'package:who_app/pages/symptom_checker/question_pages/location_question_view.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
+
+import '../../api/content/schema/symptom_checker_content.dart';
 
 /// This view is the container for the series of symptom checker questions.
 class SymptomCheckerView extends StatefulWidget {
   final ContentStore dataSource;
+  final LocationProvider locationProvider;
+  final PlaceService placeService;
 
-  const SymptomCheckerView({Key key, @required this.dataSource})
+  const SymptomCheckerView(
+      {Key key,
+      @required this.dataSource,
+      @required this.placeService,
+      @required this.locationProvider})
       : super(key: key);
 
   @override
@@ -26,6 +38,7 @@ class SymptomCheckerView extends StatefulWidget {
 class _SymptomCheckerViewState extends State<SymptomCheckerView>
     implements SymptomCheckerPageDelegate {
   final PageController _controller = PageController();
+  String _countryIsoCode;
   SymptomCheckerModel _model;
   List<Widget> _pages;
   bool inTransition = false;
@@ -46,11 +59,10 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     // TODO: Reduce this boilerplate
     //Locale locale = Localizations.localeOf(context);
     try {
-      final countryIsoCode =
-          (await UserPreferencesStore.readFromSharedPreferences())
-              .countryIsoCode;
+      _countryIsoCode = (await UserPreferencesStore.readFromSharedPreferences())
+          .countryIsoCode;
       final logicContext =
-          await LogicContext.generate(isoCountryCode: countryIsoCode);
+          await LogicContext.generate(isoCountryCode: _countryIsoCode);
       final store = widget.dataSource;
       await store.update();
       var content = store.symptomChecker;
@@ -90,6 +102,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
               inSliver: false,
               title: 'Check-Up',
               appBarColor: Constants.backgroundColor,
+              appBarBrightness: Brightness.light,
               trailing: FlatButton(
                 padding: EdgeInsets.zero,
                 child: ThemedText(
@@ -130,6 +143,17 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
       case SymptomCheckerQuestionType.MultipleSelection:
         return ShortListQuestionView(pageDelegate: this, pageModel: model);
+      case SymptomCheckerQuestionType.Location:
+        return LocationQuestionView(
+            pageDelegate: this,
+            pageModel: model,
+            placeService: widget.placeService,
+            locationProvider: widget.locationProvider);
+      case SymptomCheckerQuestionType.LocationSharing:
+        return LocationSharingQuestionView(
+            pageDelegate: this,
+            pageModel: model,
+            placeService: widget.placeService);
     }
     FirebaseAnalytics().logEvent(name: 'SymptomCheckerModelError2');
     throw Exception('Unsupported');

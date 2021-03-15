@@ -17,8 +17,11 @@ class NextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('render next button, enabled: $enabled');
+    var titleColor = enabled ? CupertinoColors.white : CupertinoColors.black;
     return PageButton(
-      Constants.whoBackgroundBlueColor,
+      enabled
+          ? Constants.whoBackgroundBlueColor
+          : Constants.greyBackgroundColor,
       // TODO: Localize
       'Next',
       enabled ? onNext : null,
@@ -27,7 +30,7 @@ class NextButton extends StatelessWidget {
       verticalPadding: 12,
       borderRadius: 500,
       titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
-          .merge(TextStyle(color: CupertinoColors.white)),
+          .merge(TextStyle(color: titleColor)),
     );
   }
 }

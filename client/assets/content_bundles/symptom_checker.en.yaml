@@ -57,6 +57,32 @@ contents:
         - id: no_emergency
           title: I do not have any of these symptoms
 
+    - id: q7_location
+      type: location
+      display_condition: >-
+        has('no_emergency')
+      title: Where are you right now?
+      body_html: |
+        <p>Please enter a city or postal code and select the closest option in the list that will be displayed.</p>
+        <p>Your location will not be shared without your permission.</p>
+      answers:
+        - id: location_input
+          title: blank
+    - id: q8_location
+      type: location_sharing
+      display_condition: >-
+        has('no_emergency') &&
+        (selectionCount('q7_location') > 0)
+      title: Share your location?
+      body_html: |
+        <p>The WHO and your regional health authority may use anonymized shared locations to support public health efforts in your area.</p>
+        <p>This information will not be linked to you in any way.</p>
+      answers:
+        - id: location_yes
+          title: Yes
+        - id: location_no
+          title: No
+
     - id: q2_symptoms
       type: multiple_selection
       display_condition: >-
