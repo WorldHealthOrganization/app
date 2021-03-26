@@ -1,5 +1,22 @@
+/**
+ * This file contains unit tests for the Firestore Rules stored in
+ * the `firestore.rules` file in the root `server` directory.
+ *
+ * Note that this file therefore isn't directly about Cloud Functions,
+ * we just conveniently already have all the `node_modules` we need to
+ * run the test installed here.
+ *
+ * These tests require that the Firebase emulators are running, and are
+ * written and run using Mocha, e.g.:
+ *   $ firebase --project=$GCLOUD_PROJECT emulators:exec "mocha -r ts-node/register src/firestore_rules.spec.ts"
+ *
+ * The easiest is to just run:
+ *   $ npm run test
+ */
+
+// Instead of using the real `firebase` SDK, we'll use a fake `firebase`
+// built specifically to unittest Firestore Rules.
 import * as firebase from "@firebase/rules-unit-testing";
-import "mocha";
 
 // Connect to the local Firestore emulator. The Firestore tooling sets
 // the `GCLOUD_PROJECT` environment variable for us, so we know which

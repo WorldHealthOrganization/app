@@ -29,6 +29,15 @@ The v2 backend is based on Firebase.
 
 ### Architecture
 
+#### Firebase
+
+We use many of Firebase's services, including Firestore, Cloud Functions, and Hosting, to serve the backend.
+
+There are two standard Firebase configuration files checked in to the repo:
+
+- A firebase.json [configuration file](https://firebase.google.com/docs/cli#the_firebasejson_file) that lists our project configuration.
+- A .firebaserc file that stores our project [aliases](https://firebase.google.com/docs/cli#project_aliases).
+
 #### Database
 
 We use Firestore in Native mode. It has the following top-level collections:
@@ -43,7 +52,7 @@ Where possible, we access the database directly (using Firestore's own APIs) rat
 
 Static content is hosted by Firebase Hosting. Everything in the `app/server/public` folder is hosted. Most notable is the `content` folder; the contents of that folder are automatically produced at deploy-time.
 
-Static content will be available via a URL like `https://OUR-PROJECT-ID.web.app` as well as any of our custom domains that we attach to the project (e.g. `sometier.whocoronavirus.org`).
+Static content will be available via a URL like `https://OUR-PROJECT-ID.web.app` as well as any of our custom domains that we attach to the project (e.g. `example.whocoronavirus.org`).
 
 #### Dynamic content, HTTPS APIs, server-side code
 
@@ -60,20 +69,20 @@ Using a custom domain to invoke HTTPS functions isn't possible for us yet, since
 
 To test your Firebase code (security rules, Cloud Functions) in a local environment, we use Firebase's [Emulator Suite](https://firebase.google.com/docs/emulator-suite).
 
-To manually experiment with the emulator suite, run:
+To manually experiment with the emulator suite, run the following from the `functions` directory:
 
 ```sh
-app/server/functions$ npm run serve
+npm run serve
 ```
 
 To experiment with the HTTPS endpoints you can use the [Postman](https://www.postman.com/product/api-client/) collection of requests in `app/server/WHO.postman_collection.json`.
 
 Our unit tests (`app/server/functions/**_spec.ts`) should be the main source of truth however; they use the emulators under the hood.
 
-To run our unit tests, run:
+To run our unit tests, run the following from the `server` directory:
 
 ```sh
-app/server/functions$ npm run test
+npm run test
 ```
 
 ### Deploying
@@ -92,14 +101,17 @@ Make sure to also take the steps listed in [Manual Setup](terraform/README.md#ma
 To update the whole project to the latest version, from the `app/server` folder, run:
 
 ```sh
-app/server$ firebase deploy --project=YOUR-PROJECT-ID
+firebase deploy --project=YOUR-PROJECT-ID
 ```
 
 If you only want to update static assets, run:
 
 ```sh
-app/server$ firebase deploy --project=YOUR-PROJECT-ID --only hosting
+firebase deploy --project=YOUR-PROJECT-ID --only hosting
 ```
+
+You should always specify a `--project=YOUR-PROJECT-ID`. If you'd like you can
+use one a [project alias](https://firebase.google.com/docs/cli#project_aliases) instead of a project ID. If you forget to specify a project ID using `--project` Firebase will deploy to the `default` alias, which is aimed at our `who-mh-v2-dev1` project.
 
 ### Using the v2 backend
 
@@ -109,6 +121,7 @@ Currently, the v2 backend isn't ready for use by the client (see [Development Pl
 
 Here are some missing pieces of the v2 backend that you're very welcome to help us implement!
 
+- [ ] Redirect our `index.html` to the app store page based on platform of the requester.
 - [ ] Create a "flavor" in the client that uses our v2 projects. Note the `v1` API is served at a different path within the v2 projects; see `Dynamic content, HTTPS APIs, server-side code` above.
 - [ ] Periodically generate actual case stats (via Cloud Function) and store in Firestore ...
 - [ ] ... And have the client load the actual case stats from Firestore (replace the `getCaseStats` endpoint).

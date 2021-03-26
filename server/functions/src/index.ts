@@ -5,6 +5,8 @@ import * as fs from "fs";
 admin.initializeApp();
 const db = admin.firestore();
 
+const SERVING_REGION = "europe-west6";
+
 const COUNTRY_CODE = /^[A-Z][A-Z]$/; // Literal regex for immediate compilation.
 
 // FCM documentation doesn"t specify standard but usually up to 162 chars
@@ -29,7 +31,7 @@ interface Client {
 // Implementation of the v1 API"s `getCaseStats` method.
 // TODO: replace with direct Firestore access from the client.
 export const getCaseStats = functions
-  .region("europe-west6")
+  .region(SERVING_REGION)
   .https.onRequest((request, response) => {
     // A "fake" of the v1 API: we're just going to return a static file that we
     // happen to have on disk.
@@ -41,7 +43,7 @@ export const getCaseStats = functions
 // Implementation of the v1 API"s `putClientSettings` method.
 // TODO: replace with direct Firestore acccess from the client.
 export const putClientSettings = functions
-  .region("europe-west6")
+  .region(SERVING_REGION)
   .https.onRequest((request, response) => {
     const whoClientId = request.header("Who-Client-ID");
     if (whoClientId === undefined || whoClientId == null) {
@@ -104,7 +106,7 @@ export const putClientSettings = functions
 // Method that runs when client settings have been updated, and will make those
 // updated settings take effect.
 export const clientSettingsUpdated = functions
-  .region("europe-west6")
+  .region(SERVING_REGION)
   .firestore.document("Clients/{client_id}")
   .onWrite((change, context) => {
     console.log(`Client settings updated for ${context.params["client_id"]}`);

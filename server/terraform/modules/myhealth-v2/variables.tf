@@ -44,15 +44,3 @@ variable "create_project" {
   type        = bool
   default     = true
 }
-
-variable "create_dns_entry" {
-  description = "Create a DNS A Record in Cloud DNS for the domain specified in 'domain'."
-  type        = bool
-  default     = true
-}
-
-variable "dns_record_ttl" {
-  description = "The time-to-live for the load balancer A record (seconds)"
-  type        = string
-  default     = 3600
-}

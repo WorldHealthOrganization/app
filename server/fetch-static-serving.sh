@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ev
+set -euv
 cd $(dirname "$0")
 
 # Build the new assets.

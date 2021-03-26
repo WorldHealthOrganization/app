@@ -167,7 +167,7 @@ which are in the list below. The project renaming is still in progress:
 | who-mh-prod-in-dev | Replicates permissions and setup of who-mh-prod project |
 | who-mh-prod        | WHO Production infrastructure, Privacy Policy compliant |
 | who-mh-staging     | CI server updated from GitHub repo                      |
-| who-mh-v2-dev1     | Development (unstable) environment for v2 backend       |
+| who-mh2-dev1       | Development (unstable) environment for v2 backend       |
 
 ### New Project
 
