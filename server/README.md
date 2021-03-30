@@ -36,7 +36,8 @@ We use many of Firebase's services, including Firestore, Cloud Functions, and Ho
 There are two standard Firebase configuration files checked in to the repo:
 
 - A firebase.json [configuration file](https://firebase.google.com/docs/cli#the_firebasejson_file) that lists our project configuration.
-- A .firebaserc file that stores our project [aliases](https://firebase.google.com/docs/cli#project_aliases).
+- firebase.json - project [configuration file](https://firebase.google.com/docs/cli#the_firebasejson_file)
+- `.firebaserc` - project [aliases](https://firebase.google.com/docs/cli#project_aliases)
 
 #### Database
 
@@ -71,9 +72,7 @@ To test your Firebase code (security rules, Cloud Functions) in a local environm
 
 To manually experiment with the emulator suite, run the following from the `functions` directory:
 
-```sh
-npm run serve
-```
+    npm run serve
 
 To experiment with the HTTPS endpoints you can use the [Postman](https://www.postman.com/product/api-client/) collection of requests in `app/server/WHO.postman_collection.json`.
 

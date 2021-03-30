@@ -277,9 +277,7 @@ Create the Firestore database by...
 
 From the `app/server` folder, run:
 
-```sh
-$ firebase deploy --project=YOUR-PROJECT-ID
-```
+    firebase deploy --project=YOUR-PROJECT-ID
 
 ### Analytics
 
