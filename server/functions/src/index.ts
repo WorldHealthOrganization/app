@@ -1,11 +1,10 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 import * as fs from "fs";
+import { SERVING_REGION } from "./config";
 
 admin.initializeApp();
 const db = admin.firestore();
-
-const SERVING_REGION = "europe-west6";
 
 const COUNTRY_CODE = /^[A-Z][A-Z]$/; // Literal regex for immediate compilation.
 

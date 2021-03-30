@@ -4,6 +4,7 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "test": "firebase --project=$GCLOUD_PROJECT emulators:exec \"mocha -r ts-node/register src/**/*.spec.ts\"",
+    "check-location": "./check_location.sh",
     "serve": "npm run build && firebase emulators:start",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
