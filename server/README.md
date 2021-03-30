@@ -19,7 +19,7 @@ Domain: `covid19app.who.int`
 
 Domain: `staging.whocoronavirus.org`
 
-### [`who-mh-v2-dev1`(https://console.cloud.google.com/home/dashboard?project=who-mh-v2-dev1)
+### [`who-mh2-dev1`(https://console.cloud.google.com/home/dashboard?project=who-mh2-dev1)
 
 Domain: none yet.
 
@@ -110,23 +110,11 @@ firebase deploy --project=YOUR-PROJECT-ID --only hosting
 ```
 
 You should always specify a `--project=YOUR-PROJECT-ID`. If you'd like you can
-use one a [project alias](https://firebase.google.com/docs/cli#project_aliases) instead of a project ID. If you forget to specify a project ID using `--project` Firebase will deploy to the `default` alias, which is aimed at our `who-mh-v2-dev1` project.
+use one a [project alias](https://firebase.google.com/docs/cli#project_aliases) instead of a project ID.
 
 ### Using the v2 backend
 
-Currently, the v2 backend isn't ready for use by the client (see [Development Plan](#development-plan)).
-
-### Development Plan
-
-Here are some missing pieces of the v2 backend that you're very welcome to help us implement!
-
-- [ ] Redirect our `index.html` to the app store page based on platform of the requester.
-- [ ] Create a "flavor" in the client that uses our v2 projects. Note the `v1` API is served at a different path within the v2 projects; see `Dynamic content, HTTPS APIs, server-side code` above.
-- [ ] Periodically generate actual case stats (via Cloud Function) and store in Firestore ...
-- [ ] ... And have the client load the actual case stats from Firestore (replace the `getCaseStats` endpoint).
-- [ ] Have the client use the Firestore API directly to register its FCM token (replace the `putClientSettings` endpoint).
-- [ ] Implement the logic that uses updated FCM tokens to register clients for push notifications.
-- [ ] Associate a human-readable domain with our new v2 projects in Firebase Hosting, and implement the appstore redirect.
+Currently, the v2 backend isn't ready for use by the client.
 
 ## v1 (deprecated)
 
