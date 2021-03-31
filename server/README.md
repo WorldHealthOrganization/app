@@ -80,9 +80,7 @@ Our unit tests (`app/server/functions/**_spec.ts`) should be the main source of 
 
 To run our unit tests, run the following from the `server` directory:
 
-```sh
-npm run test
-```
+    npm run test
 
 ### Deploying
 
@@ -99,15 +97,11 @@ Make sure to also take the steps listed in [Manual Setup](terraform/README.md#ma
 
 To update the whole project to the latest version, from the `app/server` folder, run:
 
-```sh
-firebase deploy --project=YOUR-PROJECT-ID
-```
+    firebase deploy --project=YOUR-PROJECT-ID
 
 If you only want to update static assets, run:
 
-```sh
-firebase deploy --project=YOUR-PROJECT-ID --only hosting
-```
+    firebase deploy --project=YOUR-PROJECT-ID --only hosting
 
 You should always specify a `--project=YOUR-PROJECT-ID`. If you'd like you can
 use one a [project alias](https://firebase.google.com/docs/cli#project_aliases) instead of a project ID.
