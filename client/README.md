@@ -27,7 +27,7 @@ You can now run the app by running:
 
 ```
 cd client
-flutter run --flavor stag
+flutter run --flavor staging
 ```
 
 ### iOS

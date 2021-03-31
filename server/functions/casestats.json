@@ -1,0 +1,2781 @@
+{
+  "jurisdictionStats": [
+    {
+      "jurisdictionType": "GLOBAL",
+      "jurisdiction": "",
+      "lastUpdated": 1612051200000,
+      "cases": 101917147,
+      "deaths": 2205515,
+      "recoveries": -1,
+      "attribution": "WHO",
+      "timeseries": [
+        {
+          "epochMsec": 1578009600000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 0,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578096000000,
+          "dailyCases": 1,
+          "dailyDeaths": 0,
+          "totalCases": 1,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578182400000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 1,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578268800000,
+          "dailyCases": 3,
+          "dailyDeaths": 0,
+          "totalCases": 4,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578355200000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 4,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578441600000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 4,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578528000000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 4,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578614400000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 4,
+          "totalDeaths": 0
+        },
+        {
+          "epochMsec": 1578700800000,
+          "dailyCases": 41,
+          "dailyDeaths": 1,
+          "totalCases": 45,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1578787200000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 45,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1578873600000,
+          "dailyCases": 5,
+          "dailyDeaths": 0,
+          "totalCases": 50,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1578960000000,
+          "dailyCases": 1,
+          "dailyDeaths": 0,
+          "totalCases": 51,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1579046400000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 51,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1579132800000,
+          "dailyCases": 0,
+          "dailyDeaths": 0,
+          "totalCases": 51,
+          "totalDeaths": 1
+        },
+        {
+          "epochMsec": 1579219200000,
+          "dailyCases": 5,
+          "dailyDeaths": 1,
+          "totalCases": 56,
+          "totalDeaths": 2
+        },
+        {
+          "epochMsec": 1579305600000,
+          "dailyCases": 17,
+          "dailyDeaths": 0,
+          "totalCases": 73,
+          "totalDeaths": 2
+        },
+        {
+          "epochMsec": 1579392000000,
+          "dailyCases": 64,
+          "dailyDeaths": 1,
+          "totalCases": 137,
+          "totalDeaths": 3
+        },
+        {
+          "epochMsec": 1579478400000,
+          "dailyCases": 82,
+          "dailyDeaths": 1,
+          "totalCases": 219,
+          "totalDeaths": 4
+        },
+        {
+          "epochMsec": 1579564800000,
+          "dailyCases": 93,
+          "dailyDeaths": 2,
+          "totalCases": 312,
+          "totalDeaths": 6
+        },
+        {
+          "epochMsec": 1579651200000,
+          "dailyCases": 154,
+          "dailyDeaths": 3,
+          "totalCases": 466,
+          "totalDeaths": 9
+        },
+        {
+          "epochMsec": 1579737600000,
+          "dailyCases": 141,
+          "dailyDeaths": 8,
+          "totalCases": 607,
+          "totalDeaths": 17
+        },
+        {
+          "epochMsec": 1579824000000,
+          "dailyCases": 275,
+          "dailyDeaths": 8,
+          "totalCases": 882,
+          "totalDeaths": 25
+        },
+        {
+          "epochMsec": 1579910400000,
+          "dailyCases": 477,
+          "dailyDeaths": 16,
+          "totalCases": 1359,
+          "totalDeaths": 41
+        },
+        {
+          "epochMsec": 1579996800000,
+          "dailyCases": 702,
+          "dailyDeaths": 15,
+          "totalCases": 2061,
+          "totalDeaths": 56
+        },
+        {
+          "epochMsec": 1580083200000,
+          "dailyCases": 793,
+          "dailyDeaths": 24,
+          "totalCases": 2854,
+          "totalDeaths": 80
+        },
+        {
+          "epochMsec": 1580169600000,
+          "dailyCases": 1786,
+          "dailyDeaths": 26,
+          "totalCases": 4640,
+          "totalDeaths": 106
+        },
+        {
+          "epochMsec": 1580256000000,
+          "dailyCases": 1485,
+          "dailyDeaths": 26,
+          "totalCases": 6125,
+          "totalDeaths": 132
+        },
+        {
+          "epochMsec": 1580342400000,
+          "dailyCases": 1770,
+          "dailyDeaths": 38,
+          "totalCases": 7895,
+          "totalDeaths": 170
+        },
+        {
+          "epochMsec": 1580428800000,
+          "dailyCases": 2011,
+          "dailyDeaths": 43,
+          "totalCases": 9906,
+          "totalDeaths": 213
+        },
+        {
+          "epochMsec": 1580515200000,
+          "dailyCases": 2119,
+          "dailyDeaths": 46,
+          "totalCases": 12025,
+          "totalDeaths": 259
+        },
+        {
+          "epochMsec": 1580601600000,
+          "dailyCases": 2619,
+          "dailyDeaths": 46,
+          "totalCases": 14644,
+          "totalDeaths": 305
+        },
+        {
+          "epochMsec": 1580688000000,
+          "dailyCases": 2833,
+          "dailyDeaths": 57,
+          "totalCases": 17477,
+          "totalDeaths": 362
+        },
+        {
+          "epochMsec": 1580774400000,
+          "dailyCases": 3258,
+          "dailyDeaths": 64,
+          "totalCases": 20735,
+          "totalDeaths": 426
+        },
+        {
+          "epochMsec": 1580860800000,
+          "dailyCases": 3919,
+          "dailyDeaths": 66,
+          "totalCases": 24654,
+          "totalDeaths": 492
+        },
+        {
+          "epochMsec": 1580947200000,
+          "dailyCases": 3720,
+          "dailyDeaths": 73,
+          "totalCases": 28374,
+          "totalDeaths": 565
+        },
+        {
+          "epochMsec": 1581033600000,
+          "dailyCases": 3201,
+          "dailyDeaths": 73,
+          "totalCases": 31575,
+          "totalDeaths": 638
+        },
+        {
+          "epochMsec": 1581120000000,
+          "dailyCases": 3414,
+          "dailyDeaths": 86,
+          "totalCases": 34989,
+          "totalDeaths": 724
+        },
+        {
+          "epochMsec": 1581206400000,
+          "dailyCases": 2668,
+          "dailyDeaths": 89,
+          "totalCases": 37657,
+          "totalDeaths": 813
+        },
+        {
+          "epochMsec": 1581292800000,
+          "dailyCases": 3058,
+          "dailyDeaths": 97,
+          "totalCases": 40715,
+          "totalDeaths": 910
+        },
+        {
+          "epochMsec": 1581379200000,
+          "dailyCases": 2482,
+          "dailyDeaths": 108,
+          "totalCases": 43197,
+          "totalDeaths": 1018
+        },
+        {
+          "epochMsec": 1581465600000,
+          "dailyCases": 2067,
+          "dailyDeaths": 97,
+          "totalCases": 45264,
+          "totalDeaths": 1115
+        },
+        {
+          "epochMsec": 1581552000000,
+          "dailyCases": 15213,
+          "dailyDeaths": 256,
+          "totalCases": 60477,
+          "totalDeaths": 1371
+        },
+        {
+          "epochMsec": 1581638400000,
+          "dailyCases": 4077,
+          "dailyDeaths": 13,
+          "totalCases": 64554,
+          "totalDeaths": 1384
+        },
+        {
+          "epochMsec": 1581724800000,
+          "dailyCases": 2732,
+          "dailyDeaths": 144,
+          "totalCases": 67286,
+          "totalDeaths": 1528
+        },
+        {
+          "epochMsec": 1581811200000,
+          "dailyCases": 2089,
+          "dailyDeaths": 142,
+          "totalCases": 69375,
+          "totalDeaths": 1670
+        },
+        {
+          "epochMsec": 1581897600000,
+          "dailyCases": 2162,
+          "dailyDeaths": 106,
+          "totalCases": 71537,
+          "totalDeaths": 1776
+        },
+        {
+          "epochMsec": 1581984000000,
+          "dailyCases": 1993,
+          "dailyDeaths": 98,
+          "totalCases": 73530,
+          "totalDeaths": 1874
+        },
+        {
+          "epochMsec": 1582070400000,
+          "dailyCases": 1860,
+          "dailyDeaths": 138,
+          "totalCases": 75390,
+          "totalDeaths": 2012
+        },
+        {
+          "epochMsec": 1582156800000,
+          "dailyCases": 486,
+          "dailyDeaths": 118,
+          "totalCases": 75876,
+          "totalDeaths": 2130
+        },
+        {
+          "epochMsec": 1582243200000,
+          "dailyCases": 1047,
+          "dailyDeaths": 120,
+          "totalCases": 76923,
+          "totalDeaths": 2250
+        },
+        {
+          "epochMsec": 1582329600000,
+          "dailyCases": 1116,
+          "dailyDeaths": 111,
+          "totalCases": 78039,
+          "totalDeaths": 2361
+        },
+        {
+          "epochMsec": 1582416000000,
+          "dailyCases": 966,
+          "dailyDeaths": 103,
+          "totalCases": 79005,
+          "totalDeaths": 2464
+        },
+        {
+          "epochMsec": 1582502400000,
+          "dailyCases": 588,
+          "dailyDeaths": 159,
+          "totalCases": 79593,
+          "totalDeaths": 2623
+        },
+        {
+          "epochMsec": 1582588800000,
+          "dailyCases": 829,
+          "dailyDeaths": 82,
+          "totalCases": 80422,
+          "totalDeaths": 2705
+        },
+        {
+          "epochMsec": 1582675200000,
+          "dailyCases": 939,
+          "dailyDeaths": 65,
+          "totalCases": 81361,
+          "totalDeaths": 2770
+        },
+        {
+          "epochMsec": 1582761600000,
+          "dailyCases": 1190,
+          "dailyDeaths": 40,
+          "totalCases": 82551,
+          "totalDeaths": 2810
+        },
+        {
+          "epochMsec": 1582848000000,
+          "dailyCases": 1432,
+          "dailyDeaths": 60,
+          "totalCases": 83983,
+          "totalDeaths": 2870
+        },
+        {
+          "epochMsec": 1582934400000,
+          "dailyCases": 1832,
+          "dailyDeaths": 65,
+          "totalCases": 85815,
+          "totalDeaths": 2935
+        },
+        {
+          "epochMsec": 1583020800000,
+          "dailyCases": 1611,
+          "dailyDeaths": 47,
+          "totalCases": 87426,
+          "totalDeaths": 2982
+        },
+        {
+          "epochMsec": 1583107200000,
+          "dailyCases": 2418,
+          "dailyDeaths": 75,
+          "totalCases": 89844,
+          "totalDeaths": 3057
+        },
+        {
+          "epochMsec": 1583193600000,
+          "dailyCases": 2234,
+          "dailyDeaths": 68,
+          "totalCases": 92078,
+          "totalDeaths": 3125
+        },
+        {
+          "epochMsec": 1583280000000,
+          "dailyCases": 2056,
+          "dailyDeaths": 91,
+          "totalCases": 94134,
+          "totalDeaths": 3216
+        },
+        {
+          "epochMsec": 1583366400000,
+          "dailyCases": 2395,
+          "dailyDeaths": 83,
+          "totalCases": 96529,
+          "totalDeaths": 3299
+        },
+        {
+          "epochMsec": 1583452800000,
+          "dailyCases": 3654,
+          "dailyDeaths": 105,
+          "totalCases": 100183,
+          "totalDeaths": 3404
+        },
+        {
+          "epochMsec": 1583539200000,
+          "dailyCases": 3754,
+          "dailyDeaths": 106,
+          "totalCases": 103937,
+          "totalDeaths": 3510
+        },
+        {
+          "epochMsec": 1583625600000,
+          "dailyCases": 3537,
+          "dailyDeaths": 126,
+          "totalCases": 107474,
+          "totalDeaths": 3636
+        },
+        {
+          "epochMsec": 1583712000000,
+          "dailyCases": 3967,
+          "dailyDeaths": 225,
+          "totalCases": 111441,
+          "totalDeaths": 3861
+        },
+        {
+          "epochMsec": 1583798400000,
+          "dailyCases": 4767,
+          "dailyDeaths": 212,
+          "totalCases": 116208,
+          "totalDeaths": 4073
+        },
+        {
+          "epochMsec": 1583884800000,
+          "dailyCases": 5110,
+          "dailyDeaths": 292,
+          "totalCases": 121318,
+          "totalDeaths": 4365
+        },
+        {
+          "epochMsec": 1583971200000,
+          "dailyCases": 7831,
+          "dailyDeaths": 355,
+          "totalCases": 129149,
+          "totalDeaths": 4720
+        },
+        {
+          "epochMsec": 1584057600000,
+          "dailyCases": 9555,
+          "dailyDeaths": 361,
+          "totalCases": 138704,
+          "totalDeaths": 5081
+        },
+        {
+          "epochMsec": 1584144000000,
+          "dailyCases": 10765,
+          "dailyDeaths": 468,
+          "totalCases": 149469,
+          "totalDeaths": 5549
+        },
+        {
+          "epochMsec": 1584230400000,
+          "dailyCases": 11822,
+          "dailyDeaths": 450,
+          "totalCases": 161291,
+          "totalDeaths": 5999
+        },
+        {
+          "epochMsec": 1584316800000,
+          "dailyCases": 11169,
+          "dailyDeaths": 707,
+          "totalCases": 172460,
+          "totalDeaths": 6706
+        },
+        {
+          "epochMsec": 1584403200000,
+          "dailyCases": 16162,
+          "dailyDeaths": 738,
+          "totalCases": 188622,
+          "totalDeaths": 7444
+        },
+        {
+          "epochMsec": 1584489600000,
+          "dailyCases": 19359,
+          "dailyDeaths": 867,
+          "totalCases": 207981,
+          "totalDeaths": 8311
+        },
+        {
+          "epochMsec": 1584576000000,
+          "dailyCases": 22312,
+          "dailyDeaths": 1063,
+          "totalCases": 230293,
+          "totalDeaths": 9374
+        },
+        {
+          "epochMsec": 1584662400000,
+          "dailyCases": 31107,
+          "dailyDeaths": 1218,
+          "totalCases": 261400,
+          "totalDeaths": 10592
+        },
+        {
+          "epochMsec": 1584748800000,
+          "dailyCases": 27237,
+          "dailyDeaths": 1353,
+          "totalCases": 288637,
+          "totalDeaths": 11945
+        },
+        {
+          "epochMsec": 1584835200000,
+          "dailyCases": 26096,
+          "dailyDeaths": 1713,
+          "totalCases": 314733,
+          "totalDeaths": 13658
+        },
+        {
+          "epochMsec": 1584921600000,
+          "dailyCases": 43064,
+          "dailyDeaths": 1875,
+          "totalCases": 357797,
+          "totalDeaths": 15533
+        },
+        {
+          "epochMsec": 1585008000000,
+          "dailyCases": 54436,
+          "dailyDeaths": 2136,
+          "totalCases": 412233,
+          "totalDeaths": 17669
+        },
+        {
+          "epochMsec": 1585094400000,
+          "dailyCases": 32912,
+          "dailyDeaths": 2252,
+          "totalCases": 445145,
+          "totalDeaths": 19921
+        },
+        {
+          "epochMsec": 1585180800000,
+          "dailyCases": 58199,
+          "dailyDeaths": 2769,
+          "totalCases": 503344,
+          "totalDeaths": 22690
+        },
+        {
+          "epochMsec": 1585267200000,
+          "dailyCases": 43527,
+          "dailyDeaths": 2618,
+          "totalCases": 546871,
+          "totalDeaths": 25308
+        },
+        {
+          "epochMsec": 1585353600000,
+          "dailyCases": 65601,
+          "dailyDeaths": 3433,
+          "totalCases": 612472,
+          "totalDeaths": 28741
+        },
+        {
+          "epochMsec": 1585440000000,
+          "dailyCases": 62861,
+          "dailyDeaths": 3589,
+          "totalCases": 675333,
+          "totalDeaths": 32330
+        },
+        {
+          "epochMsec": 1585526400000,
+          "dailyCases": 58680,
+          "dailyDeaths": 3343,
+          "totalCases": 734013,
+          "totalDeaths": 35673
+        },
+        {
+          "epochMsec": 1585612800000,
+          "dailyCases": 57891,
+          "dailyDeaths": 3623,
+          "totalCases": 791904,
+          "totalDeaths": 39296
+        },
+        {
+          "epochMsec": 1585699200000,
+          "dailyCases": 73949,
+          "dailyDeaths": 4258,
+          "totalCases": 865853,
+          "totalDeaths": 43554
+        },
+        {
+          "epochMsec": 1585785600000,
+          "dailyCases": 73279,
+          "dailyDeaths": 5006,
+          "totalCases": 939132,
+          "totalDeaths": 48560
+        },
+        {
+          "epochMsec": 1585872000000,
+          "dailyCases": 74777,
+          "dailyDeaths": 5019,
+          "totalCases": 1013909,
+          "totalDeaths": 53579
+        },
+        {
+          "epochMsec": 1585958400000,
+          "dailyCases": 79845,
+          "dailyDeaths": 6799,
+          "totalCases": 1093754,
+          "totalDeaths": 60378
+        },
+        {
+          "epochMsec": 1586044800000,
+          "dailyCases": 81020,
+          "dailyDeaths": 5963,
+          "totalCases": 1174774,
+          "totalDeaths": 66341
+        },
+        {
+          "epochMsec": 1586131200000,
+          "dailyCases": 73382,
+          "dailyDeaths": 4963,
+          "totalCases": 1248156,
+          "totalDeaths": 71304
+        },
+        {
+          "epochMsec": 1586217600000,
+          "dailyCases": 68245,
+          "dailyDeaths": 5381,
+          "totalCases": 1316401,
+          "totalDeaths": 76685
+        },
+        {
+          "epochMsec": 1586304000000,
+          "dailyCases": 75112,
+          "dailyDeaths": 6917,
+          "totalCases": 1391513,
+          "totalDeaths": 83602
+        },
+        {
+          "epochMsec": 1586390400000,
+          "dailyCases": 82752,
+          "dailyDeaths": 6514,
+          "totalCases": 1474265,
+          "totalDeaths": 90116
+        },
+        {
+          "epochMsec": 1586476800000,
+          "dailyCases": 85487,
+          "dailyDeaths": 7551,
+          "totalCases": 1559752,
+          "totalDeaths": 97667
+        },
+        {
+          "epochMsec": 1586563200000,
+          "dailyCases": 90791,
+          "dailyDeaths": 6972,
+          "totalCases": 1650543,
+          "totalDeaths": 104639
+        },
+        {
+          "epochMsec": 1586649600000,
+          "dailyCases": 79032,
+          "dailyDeaths": 6401,
+          "totalCases": 1729575,
+          "totalDeaths": 111040
+        },
+        {
+          "epochMsec": 1586736000000,
+          "dailyCases": 73287,
+          "dailyDeaths": 5731,
+          "totalCases": 1802862,
+          "totalDeaths": 116771
+        },
+        {
+          "epochMsec": 1586822400000,
+          "dailyCases": 69435,
+          "dailyDeaths": 5469,
+          "totalCases": 1872297,
+          "totalDeaths": 122240
+        },
+        {
+          "epochMsec": 1586908800000,
+          "dailyCases": 69530,
+          "dailyDeaths": 6222,
+          "totalCases": 1941827,
+          "totalDeaths": 128462
+        },
+        {
+          "epochMsec": 1586995200000,
+          "dailyCases": 75615,
+          "dailyDeaths": 7995,
+          "totalCases": 2017442,
+          "totalDeaths": 136457
+        },
+        {
+          "epochMsec": 1587081600000,
+          "dailyCases": 81829,
+          "dailyDeaths": 12518,
+          "totalCases": 2099271,
+          "totalDeaths": 148975
+        },
+        {
+          "epochMsec": 1587168000000,
+          "dailyCases": 83286,
+          "dailyDeaths": 6684,
+          "totalCases": 2182557,
+          "totalDeaths": 155659
+        },
+        {
+          "epochMsec": 1587254400000,
+          "dailyCases": 81736,
+          "dailyDeaths": 6939,
+          "totalCases": 2264293,
+          "totalDeaths": 162598
+        },
+        {
+          "epochMsec": 1587340800000,
+          "dailyCases": 72515,
+          "dailyDeaths": 5175,
+          "totalCases": 2336808,
+          "totalDeaths": 167773
+        },
+        {
+          "epochMsec": 1587427200000,
+          "dailyCases": 74562,
+          "dailyDeaths": 5446,
+          "totalCases": 2411370,
+          "totalDeaths": 173219
+        },
+        {
+          "epochMsec": 1587513600000,
+          "dailyCases": 72995,
+          "dailyDeaths": 6765,
+          "totalCases": 2484365,
+          "totalDeaths": 179984
+        },
+        {
+          "epochMsec": 1587600000000,
+          "dailyCases": 72225,
+          "dailyDeaths": 6660,
+          "totalCases": 2556590,
+          "totalDeaths": 186644
+        },
+        {
+          "epochMsec": 1587686400000,
+          "dailyCases": 81451,
+          "dailyDeaths": 6306,
+          "totalCases": 2638041,
+          "totalDeaths": 192950
+        },
+        {
+          "epochMsec": 1587772800000,
+          "dailyCases": 93910,
+          "dailyDeaths": 5949,
+          "totalCases": 2731951,
+          "totalDeaths": 198899
+        },
+        {
+          "epochMsec": 1587859200000,
+          "dailyCases": 87094,
+          "dailyDeaths": 6239,
+          "totalCases": 2819045,
+          "totalDeaths": 205138
+        },
+        {
+          "epochMsec": 1587945600000,
+          "dailyCases": 78935,
+          "dailyDeaths": 4804,
+          "totalCases": 2897980,
+          "totalDeaths": 209942
+        },
+        {
+          "epochMsec": 1588032000000,
+          "dailyCases": 72272,
+          "dailyDeaths": 4059,
+          "totalCases": 2970252,
+          "totalDeaths": 214001
+        },
+        {
+          "epochMsec": 1588118400000,
+          "dailyCases": 67237,
+          "dailyDeaths": 5348,
+          "totalCases": 3037489,
+          "totalDeaths": 219349
+        },
+        {
+          "epochMsec": 1588204800000,
+          "dailyCases": 73449,
+          "dailyDeaths": 5897,
+          "totalCases": 3110938,
+          "totalDeaths": 225246
+        },
+        {
+          "epochMsec": 1588291200000,
+          "dailyCases": 86546,
+          "dailyDeaths": 6470,
+          "totalCases": 3197484,
+          "totalDeaths": 231716
+        },
+        {
+          "epochMsec": 1588377600000,
+          "dailyCases": 87132,
+          "dailyDeaths": 5435,
+          "totalCases": 3284616,
+          "totalDeaths": 237151
+        },
+        {
+          "epochMsec": 1588464000000,
+          "dailyCases": 83193,
+          "dailyDeaths": 8536,
+          "totalCases": 3367809,
+          "totalDeaths": 245687
+        },
+        {
+          "epochMsec": 1588550400000,
+          "dailyCases": 84632,
+          "dailyDeaths": 2942,
+          "totalCases": 3452441,
+          "totalDeaths": 248629
+        },
+        {
+          "epochMsec": 1588636800000,
+          "dailyCases": 81656,
+          "dailyDeaths": 2075,
+          "totalCases": 3534097,
+          "totalDeaths": 250704
+        },
+        {
+          "epochMsec": 1588723200000,
+          "dailyCases": 69546,
+          "dailyDeaths": 4160,
+          "totalCases": 3603643,
+          "totalDeaths": 254864
+        },
+        {
+          "epochMsec": 1588809600000,
+          "dailyCases": 81639,
+          "dailyDeaths": 6169,
+          "totalCases": 3685282,
+          "totalDeaths": 261033
+        },
+        {
+          "epochMsec": 1588896000000,
+          "dailyCases": 86414,
+          "dailyDeaths": 5247,
+          "totalCases": 3771696,
+          "totalDeaths": 266280
+        },
+        {
+          "epochMsec": 1588982400000,
+          "dailyCases": 93272,
+          "dailyDeaths": 6307,
+          "totalCases": 3864968,
+          "totalDeaths": 272587
+        },
+        {
+          "epochMsec": 1589068800000,
+          "dailyCases": 88191,
+          "dailyDeaths": 4493,
+          "totalCases": 3953159,
+          "totalDeaths": 277080
+        },
+        {
+          "epochMsec": 1589155200000,
+          "dailyCases": 86289,
+          "dailyDeaths": 4677,
+          "totalCases": 4039448,
+          "totalDeaths": 281757
+        },
+        {
+          "epochMsec": 1589241600000,
+          "dailyCases": 77273,
+          "dailyDeaths": 3536,
+          "totalCases": 4116721,
+          "totalDeaths": 285293
+        },
+        {
+          "epochMsec": 1589328000000,
+          "dailyCases": 75776,
+          "dailyDeaths": 4251,
+          "totalCases": 4192497,
+          "totalDeaths": 289544
+        },
+        {
+          "epochMsec": 1589414400000,
+          "dailyCases": 83232,
+          "dailyDeaths": 4809,
+          "totalCases": 4275729,
+          "totalDeaths": 294353
+        },
+        {
+          "epochMsec": 1589500800000,
+          "dailyCases": 88377,
+          "dailyDeaths": 5049,
+          "totalCases": 4364106,
+          "totalDeaths": 299402
+        },
+        {
+          "epochMsec": 1589587200000,
+          "dailyCases": 92347,
+          "dailyDeaths": 5128,
+          "totalCases": 4456453,
+          "totalDeaths": 304530
+        },
+        {
+          "epochMsec": 1589673600000,
+          "dailyCases": 95217,
+          "dailyDeaths": 4567,
+          "totalCases": 4551670,
+          "totalDeaths": 309097
+        },
+        {
+          "epochMsec": 1589760000000,
+          "dailyCases": 101150,
+          "dailyDeaths": 4038,
+          "totalCases": 4652820,
+          "totalDeaths": 313135
+        },
+        {
+          "epochMsec": 1589846400000,
+          "dailyCases": 73956,
+          "dailyDeaths": 2967,
+          "totalCases": 4726776,
+          "totalDeaths": 316102
+        },
+        {
+          "epochMsec": 1589932800000,
+          "dailyCases": 90598,
+          "dailyDeaths": 3892,
+          "totalCases": 4817374,
+          "totalDeaths": 319994
+        },
+        {
+          "epochMsec": 1590019200000,
+          "dailyCases": 106174,
+          "dailyDeaths": 4717,
+          "totalCases": 4923548,
+          "totalDeaths": 324711
+        },
+        {
+          "epochMsec": 1590105600000,
+          "dailyCases": 91349,
+          "dailyDeaths": 4426,
+          "totalCases": 5014897,
+          "totalDeaths": 329137
+        },
+        {
+          "epochMsec": 1590192000000,
+          "dailyCases": 106027,
+          "dailyDeaths": 4657,
+          "totalCases": 5120924,
+          "totalDeaths": 333794
+        },
+        {
+          "epochMsec": 1590278400000,
+          "dailyCases": 103735,
+          "dailyDeaths": 4999,
+          "totalCases": 5224659,
+          "totalDeaths": 338793
+        },
+        {
+          "epochMsec": 1590364800000,
+          "dailyCases": 101715,
+          "dailyDeaths": 3809,
+          "totalCases": 5326374,
+          "totalDeaths": 342602
+        },
+        {
+          "epochMsec": 1590451200000,
+          "dailyCases": 88485,
+          "dailyDeaths": 3037,
+          "totalCases": 5414859,
+          "totalDeaths": 345639
+        },
+        {
+          "epochMsec": 1590537600000,
+          "dailyCases": 91745,
+          "dailyDeaths": 3392,
+          "totalCases": 5506604,
+          "totalDeaths": 349031
+        },
+        {
+          "epochMsec": 1590624000000,
+          "dailyCases": 96535,
+          "dailyDeaths": 4349,
+          "totalCases": 5603139,
+          "totalDeaths": 353380
+        },
+        {
+          "epochMsec": 1590710400000,
+          "dailyCases": 111057,
+          "dailyDeaths": 5005,
+          "totalCases": 5714196,
+          "totalDeaths": 358385
+        },
+        {
+          "epochMsec": 1590796800000,
+          "dailyCases": 116837,
+          "dailyDeaths": 4810,
+          "totalCases": 5831033,
+          "totalDeaths": 363195
+        },
+        {
+          "epochMsec": 1590883200000,
+          "dailyCases": 115898,
+          "dailyDeaths": 4264,
+          "totalCases": 5946931,
+          "totalDeaths": 367459
+        },
+        {
+          "epochMsec": 1590969600000,
+          "dailyCases": 123249,
+          "dailyDeaths": 3777,
+          "totalCases": 6070180,
+          "totalDeaths": 371236
+        },
+        {
+          "epochMsec": 1591056000000,
+          "dailyCases": 112345,
+          "dailyDeaths": 3031,
+          "totalCases": 6182525,
+          "totalDeaths": 374267
+        },
+        {
+          "epochMsec": 1591142400000,
+          "dailyCases": 93234,
+          "dailyDeaths": 3565,
+          "totalCases": 6275759,
+          "totalDeaths": 377832
+        },
+        {
+          "epochMsec": 1591228800000,
+          "dailyCases": 127962,
+          "dailyDeaths": 4774,
+          "totalCases": 6403721,
+          "totalDeaths": 382606
+        },
+        {
+          "epochMsec": 1591315200000,
+          "dailyCases": 118062,
+          "dailyDeaths": 5060,
+          "totalCases": 6521783,
+          "totalDeaths": 387666
+        },
+        {
+          "epochMsec": 1591401600000,
+          "dailyCases": 127768,
+          "dailyDeaths": 5550,
+          "totalCases": 6649551,
+          "totalDeaths": 393216
+        },
+        {
+          "epochMsec": 1591488000000,
+          "dailyCases": 136163,
+          "dailyDeaths": 4562,
+          "totalCases": 6785714,
+          "totalDeaths": 397778
+        },
+        {
+          "epochMsec": 1591574400000,
+          "dailyCases": 131273,
+          "dailyDeaths": 3500,
+          "totalCases": 6916987,
+          "totalDeaths": 401278
+        },
+        {
+          "epochMsec": 1591660800000,
+          "dailyCases": 108353,
+          "dailyDeaths": 3551,
+          "totalCases": 7025340,
+          "totalDeaths": 404829
+        },
+        {
+          "epochMsec": 1591747200000,
+          "dailyCases": 104975,
+          "dailyDeaths": 3578,
+          "totalCases": 7130315,
+          "totalDeaths": 408407
+        },
+        {
+          "epochMsec": 1591833600000,
+          "dailyCases": 128762,
+          "dailyDeaths": 5208,
+          "totalCases": 7259077,
+          "totalDeaths": 413615
+        },
+        {
+          "epochMsec": 1591920000000,
+          "dailyCases": 136981,
+          "dailyDeaths": 4894,
+          "totalCases": 7396058,
+          "totalDeaths": 418509
+        },
+        {
+          "epochMsec": 1592006400000,
+          "dailyCases": 141057,
+          "dailyDeaths": 5024,
+          "totalCases": 7537115,
+          "totalDeaths": 423533
+        },
+        {
+          "epochMsec": 1592092800000,
+          "dailyCases": 137397,
+          "dailyDeaths": 4240,
+          "totalCases": 7674512,
+          "totalDeaths": 427773
+        },
+        {
+          "epochMsec": 1592179200000,
+          "dailyCases": 132117,
+          "dailyDeaths": 3963,
+          "totalCases": 7806629,
+          "totalDeaths": 431736
+        },
+        {
+          "epochMsec": 1592265600000,
+          "dailyCases": 118159,
+          "dailyDeaths": 3285,
+          "totalCases": 7924788,
+          "totalDeaths": 435021
+        },
+        {
+          "epochMsec": 1592352000000,
+          "dailyCases": 119390,
+          "dailyDeaths": 5388,
+          "totalCases": 8044178,
+          "totalDeaths": 440409
+        },
+        {
+          "epochMsec": 1592438400000,
+          "dailyCases": 181354,
+          "dailyDeaths": 5097,
+          "totalCases": 8225532,
+          "totalDeaths": 445506
+        },
+        {
+          "epochMsec": 1592524800000,
+          "dailyCases": 142771,
+          "dailyDeaths": 5141,
+          "totalCases": 8368303,
+          "totalDeaths": 450647
+        },
+        {
+          "epochMsec": 1592611200000,
+          "dailyCases": 140560,
+          "dailyDeaths": 5028,
+          "totalCases": 8508863,
+          "totalDeaths": 455675
+        },
+        {
+          "epochMsec": 1592697600000,
+          "dailyCases": 184880,
+          "dailyDeaths": 4726,
+          "totalCases": 8693743,
+          "totalDeaths": 460401
+        },
+        {
+          "epochMsec": 1592784000000,
+          "dailyCases": 153340,
+          "dailyDeaths": 4081,
+          "totalCases": 8847083,
+          "totalDeaths": 464482
+        },
+        {
+          "epochMsec": 1592870400000,
+          "dailyCases": 131999,
+          "dailyDeaths": 3846,
+          "totalCases": 8979082,
+          "totalDeaths": 468328
+        },
+        {
+          "epochMsec": 1592956800000,
+          "dailyCases": 134886,
+          "dailyDeaths": 3969,
+          "totalCases": 9113968,
+          "totalDeaths": 472297
+        },
+        {
+          "epochMsec": 1593043200000,
+          "dailyCases": 168192,
+          "dailyDeaths": 5240,
+          "totalCases": 9282160,
+          "totalDeaths": 477537
+        },
+        {
+          "epochMsec": 1593129600000,
+          "dailyCases": 177915,
+          "dailyDeaths": 5089,
+          "totalCases": 9460075,
+          "totalDeaths": 482626
+        },
+        {
+          "epochMsec": 1593216000000,
+          "dailyCases": 181202,
+          "dailyDeaths": 6770,
+          "totalCases": 9641277,
+          "totalDeaths": 489396
+        },
+        {
+          "epochMsec": 1593302400000,
+          "dailyCases": 191259,
+          "dailyDeaths": 4577,
+          "totalCases": 9832536,
+          "totalDeaths": 493973
+        },
+        {
+          "epochMsec": 1593388800000,
+          "dailyCases": 178109,
+          "dailyDeaths": 4170,
+          "totalCases": 10010645,
+          "totalDeaths": 498143
+        },
+        {
+          "epochMsec": 1593475200000,
+          "dailyCases": 172161,
+          "dailyDeaths": 3935,
+          "totalCases": 10182806,
+          "totalDeaths": 502078
+        },
+        {
+          "epochMsec": 1593561600000,
+          "dailyCases": 154655,
+          "dailyDeaths": 4092,
+          "totalCases": 10337461,
+          "totalDeaths": 506170
+        },
+        {
+          "epochMsec": 1593648000000,
+          "dailyCases": 175770,
+          "dailyDeaths": 4692,
+          "totalCases": 10513231,
+          "totalDeaths": 510862
+        },
+        {
+          "epochMsec": 1593734400000,
+          "dailyCases": 206103,
+          "dailyDeaths": 4986,
+          "totalCases": 10719334,
+          "totalDeaths": 515848
+        },
+        {
+          "epochMsec": 1593820800000,
+          "dailyCases": 211257,
+          "dailyDeaths": 5016,
+          "totalCases": 10930591,
+          "totalDeaths": 520864
+        },
+        {
+          "epochMsec": 1593907200000,
+          "dailyCases": 205904,
+          "dailyDeaths": 5189,
+          "totalCases": 11136495,
+          "totalDeaths": 526053
+        },
+        {
+          "epochMsec": 1593993600000,
+          "dailyCases": 201919,
+          "dailyDeaths": 4126,
+          "totalCases": 11338414,
+          "totalDeaths": 530179
+        },
+        {
+          "epochMsec": 1594080000000,
+          "dailyCases": 170955,
+          "dailyDeaths": 3402,
+          "totalCases": 11509369,
+          "totalDeaths": 533581
+        },
+        {
+          "epochMsec": 1594166400000,
+          "dailyCases": 169773,
+          "dailyDeaths": 4075,
+          "totalCases": 11679142,
+          "totalDeaths": 537656
+        },
+        {
+          "epochMsec": 1594252800000,
+          "dailyCases": 204963,
+          "dailyDeaths": 5473,
+          "totalCases": 11884105,
+          "totalDeaths": 543129
+        },
+        {
+          "epochMsec": 1594339200000,
+          "dailyCases": 228638,
+          "dailyDeaths": 5530,
+          "totalCases": 12112743,
+          "totalDeaths": 548659
+        },
+        {
+          "epochMsec": 1594425600000,
+          "dailyCases": 220169,
+          "dailyDeaths": 5248,
+          "totalCases": 12332912,
+          "totalDeaths": 553907
+        },
+        {
+          "epochMsec": 1594512000000,
+          "dailyCases": 232113,
+          "dailyDeaths": 5177,
+          "totalCases": 12565025,
+          "totalDeaths": 559084
+        },
+        {
+          "epochMsec": 1594598400000,
+          "dailyCases": 215249,
+          "dailyDeaths": 5020,
+          "totalCases": 12780274,
+          "totalDeaths": 564104
+        },
+        {
+          "epochMsec": 1594684800000,
+          "dailyCases": 194541,
+          "dailyDeaths": 3623,
+          "totalCases": 12974815,
+          "totalDeaths": 567727
+        },
+        {
+          "epochMsec": 1594771200000,
+          "dailyCases": 187487,
+          "dailyDeaths": 4100,
+          "totalCases": 13162302,
+          "totalDeaths": 571827
+        },
+        {
+          "epochMsec": 1594857600000,
+          "dailyCases": 226561,
+          "dailyDeaths": 5501,
+          "totalCases": 13388863,
+          "totalDeaths": 577328
+        },
+        {
+          "epochMsec": 1594944000000,
+          "dailyCases": 238022,
+          "dailyDeaths": 5630,
+          "totalCases": 13626885,
+          "totalDeaths": 582958
+        },
+        {
+          "epochMsec": 1595030400000,
+          "dailyCases": 259951,
+          "dailyDeaths": 6807,
+          "totalCases": 13886836,
+          "totalDeaths": 589765
+        },
+        {
+          "epochMsec": 1595116800000,
+          "dailyCases": 244732,
+          "dailyDeaths": 5687,
+          "totalCases": 14131568,
+          "totalDeaths": 595452
+        },
+        {
+          "epochMsec": 1595203200000,
+          "dailyCases": 231269,
+          "dailyDeaths": 4902,
+          "totalCases": 14362837,
+          "totalDeaths": 600354
+        },
+        {
+          "epochMsec": 1595289600000,
+          "dailyCases": 209838,
+          "dailyDeaths": 4058,
+          "totalCases": 14572675,
+          "totalDeaths": 604412
+        },
+        {
+          "epochMsec": 1595376000000,
+          "dailyCases": 203656,
+          "dailyDeaths": 4211,
+          "totalCases": 14776331,
+          "totalDeaths": 608623
+        },
+        {
+          "epochMsec": 1595462400000,
+          "dailyCases": 248472,
+          "dailyDeaths": 7017,
+          "totalCases": 15024803,
+          "totalDeaths": 615640
+        },
+        {
+          "epochMsec": 1595548800000,
+          "dailyCases": 286305,
+          "dailyDeaths": 9712,
+          "totalCases": 15311108,
+          "totalDeaths": 625352
+        },
+        {
+          "epochMsec": 1595635200000,
+          "dailyCases": 286180,
+          "dailyDeaths": 6182,
+          "totalCases": 15597288,
+          "totalDeaths": 631534
+        },
+        {
+          "epochMsec": 1595721600000,
+          "dailyCases": 277883,
+          "dailyDeaths": 5919,
+          "totalCases": 15875171,
+          "totalDeaths": 637453
+        },
+        {
+          "epochMsec": 1595808000000,
+          "dailyCases": 256108,
+          "dailyDeaths": 5497,
+          "totalCases": 16131279,
+          "totalDeaths": 642950
+        },
+        {
+          "epochMsec": 1595894400000,
+          "dailyCases": 222021,
+          "dailyDeaths": 4367,
+          "totalCases": 16353300,
+          "totalDeaths": 647317
+        },
+        {
+          "epochMsec": 1595980800000,
+          "dailyCases": 223377,
+          "dailyDeaths": 4989,
+          "totalCases": 16576677,
+          "totalDeaths": 652306
+        },
+        {
+          "epochMsec": 1596067200000,
+          "dailyCases": 263305,
+          "dailyDeaths": 5944,
+          "totalCases": 16839982,
+          "totalDeaths": 658250
+        },
+        {
+          "epochMsec": 1596153600000,
+          "dailyCases": 300199,
+          "dailyDeaths": 6754,
+          "totalCases": 17140181,
+          "totalDeaths": 665004
+        },
+        {
+          "epochMsec": 1596240000000,
+          "dailyCases": 304762,
+          "dailyDeaths": 6115,
+          "totalCases": 17444943,
+          "totalDeaths": 671119
+        },
+        {
+          "epochMsec": 1596326400000,
+          "dailyCases": 276566,
+          "dailyDeaths": 6118,
+          "totalCases": 17721509,
+          "totalDeaths": 677237
+        },
+        {
+          "epochMsec": 1596412800000,
+          "dailyCases": 267423,
+          "dailyDeaths": 5804,
+          "totalCases": 17988932,
+          "totalDeaths": 683041
+        },
+        {
+          "epochMsec": 1596499200000,
+          "dailyCases": 222583,
+          "dailyDeaths": 4056,
+          "totalCases": 18211515,
+          "totalDeaths": 687097
+        },
+        {
+          "epochMsec": 1596585600000,
+          "dailyCases": 217544,
+          "dailyDeaths": 5063,
+          "totalCases": 18429059,
+          "totalDeaths": 692160
+        },
+        {
+          "epochMsec": 1596672000000,
+          "dailyCases": 268831,
+          "dailyDeaths": 6389,
+          "totalCases": 18697890,
+          "totalDeaths": 698549
+        },
+        {
+          "epochMsec": 1596758400000,
+          "dailyCases": 288212,
+          "dailyDeaths": 6794,
+          "totalCases": 18986102,
+          "totalDeaths": 705343
+        },
+        {
+          "epochMsec": 1596844800000,
+          "dailyCases": 289755,
+          "dailyDeaths": 6510,
+          "totalCases": 19275857,
+          "totalDeaths": 711853
+        },
+        {
+          "epochMsec": 1596931200000,
+          "dailyCases": 289539,
+          "dailyDeaths": 6533,
+          "totalCases": 19565396,
+          "totalDeaths": 718386
+        },
+        {
+          "epochMsec": 1597017600000,
+          "dailyCases": 264304,
+          "dailyDeaths": 5661,
+          "totalCases": 19829700,
+          "totalDeaths": 724047
+        },
+        {
+          "epochMsec": 1597104000000,
+          "dailyCases": 226889,
+          "dailyDeaths": 4357,
+          "totalCases": 20056589,
+          "totalDeaths": 728404
+        },
+        {
+          "epochMsec": 1597190400000,
+          "dailyCases": 224880,
+          "dailyDeaths": 4877,
+          "totalCases": 20281469,
+          "totalDeaths": 733281
+        },
+        {
+          "epochMsec": 1597276800000,
+          "dailyCases": 289665,
+          "dailyDeaths": 6849,
+          "totalCases": 20571134,
+          "totalDeaths": 740130
+        },
+        {
+          "epochMsec": 1597363200000,
+          "dailyCases": 294126,
+          "dailyDeaths": 6748,
+          "totalCases": 20865260,
+          "totalDeaths": 746878
+        },
+        {
+          "epochMsec": 1597449600000,
+          "dailyCases": 305018,
+          "dailyDeaths": 10022,
+          "totalCases": 21170278,
+          "totalDeaths": 756900
+        },
+        {
+          "epochMsec": 1597536000000,
+          "dailyCases": 286181,
+          "dailyDeaths": 6253,
+          "totalCases": 21456459,
+          "totalDeaths": 763153
+        },
+        {
+          "epochMsec": 1597622400000,
+          "dailyCases": 260719,
+          "dailyDeaths": 5375,
+          "totalCases": 21717178,
+          "totalDeaths": 768528
+        },
+        {
+          "epochMsec": 1597708800000,
+          "dailyCases": 218998,
+          "dailyDeaths": 4306,
+          "totalCases": 21936176,
+          "totalDeaths": 772834
+        },
+        {
+          "epochMsec": 1597795200000,
+          "dailyCases": 223465,
+          "dailyDeaths": 4671,
+          "totalCases": 22159641,
+          "totalDeaths": 777505
+        },
+        {
+          "epochMsec": 1597881600000,
+          "dailyCases": 275749,
+          "dailyDeaths": 6482,
+          "totalCases": 22435390,
+          "totalDeaths": 783987
+        },
+        {
+          "epochMsec": 1597968000000,
+          "dailyCases": 287991,
+          "dailyDeaths": 6692,
+          "totalCases": 22723381,
+          "totalDeaths": 790679
+        },
+        {
+          "epochMsec": 1598054400000,
+          "dailyCases": 282616,
+          "dailyDeaths": 5936,
+          "totalCases": 23005997,
+          "totalDeaths": 796615
+        },
+        {
+          "epochMsec": 1598140800000,
+          "dailyCases": 262894,
+          "dailyDeaths": 5976,
+          "totalCases": 23268891,
+          "totalDeaths": 802591
+        },
+        {
+          "epochMsec": 1598227200000,
+          "dailyCases": 265695,
+          "dailyDeaths": 5418,
+          "totalCases": 23534586,
+          "totalDeaths": 808009
+        },
+        {
+          "epochMsec": 1598313600000,
+          "dailyCases": 218309,
+          "dailyDeaths": 4117,
+          "totalCases": 23752895,
+          "totalDeaths": 812126
+        },
+        {
+          "epochMsec": 1598400000000,
+          "dailyCases": 222239,
+          "dailyDeaths": 4634,
+          "totalCases": 23975134,
+          "totalDeaths": 816760
+        },
+        {
+          "epochMsec": 1598486400000,
+          "dailyCases": 279503,
+          "dailyDeaths": 6430,
+          "totalCases": 24254637,
+          "totalDeaths": 823190
+        },
+        {
+          "epochMsec": 1598572800000,
+          "dailyCases": 286977,
+          "dailyDeaths": 6179,
+          "totalCases": 24541614,
+          "totalDeaths": 829369
+        },
+        {
+          "epochMsec": 1598659200000,
+          "dailyCases": 295301,
+          "dailyDeaths": 5950,
+          "totalCases": 24836915,
+          "totalDeaths": 835319
+        },
+        {
+          "epochMsec": 1598745600000,
+          "dailyCases": 286986,
+          "dailyDeaths": 5539,
+          "totalCases": 25123901,
+          "totalDeaths": 840858
+        },
+        {
+          "epochMsec": 1598832000000,
+          "dailyCases": 276225,
+          "dailyDeaths": 5429,
+          "totalCases": 25400126,
+          "totalDeaths": 846287
+        },
+        {
+          "epochMsec": 1598918400000,
+          "dailyCases": 220155,
+          "dailyDeaths": 3917,
+          "totalCases": 25620281,
+          "totalDeaths": 850204
+        },
+        {
+          "epochMsec": 1599004800000,
+          "dailyCases": 260770,
+          "dailyDeaths": 4430,
+          "totalCases": 25881051,
+          "totalDeaths": 854634
+        },
+        {
+          "epochMsec": 1599091200000,
+          "dailyCases": 289277,
+          "dailyDeaths": 6356,
+          "totalCases": 26170328,
+          "totalDeaths": 860990
+        },
+        {
+          "epochMsec": 1599177600000,
+          "dailyCases": 294898,
+          "dailyDeaths": 6043,
+          "totalCases": 26465226,
+          "totalDeaths": 867033
+        },
+        {
+          "epochMsec": 1599264000000,
+          "dailyCases": 304875,
+          "dailyDeaths": 5943,
+          "totalCases": 26770101,
+          "totalDeaths": 872976
+        },
+        {
+          "epochMsec": 1599350400000,
+          "dailyCases": 316741,
+          "dailyDeaths": 5609,
+          "totalCases": 27086842,
+          "totalDeaths": 878585
+        },
+        {
+          "epochMsec": 1599436800000,
+          "dailyCases": 272089,
+          "dailyDeaths": 8680,
+          "totalCases": 27358931,
+          "totalDeaths": 887265
+        },
+        {
+          "epochMsec": 1599523200000,
+          "dailyCases": 228105,
+          "dailyDeaths": 5785,
+          "totalCases": 27587036,
+          "totalDeaths": 893050
+        },
+        {
+          "epochMsec": 1599609600000,
+          "dailyCases": 233976,
+          "dailyDeaths": 3946,
+          "totalCases": 27821012,
+          "totalDeaths": 896996
+        },
+        {
+          "epochMsec": 1599696000000,
+          "dailyCases": 264540,
+          "dailyDeaths": 4962,
+          "totalCases": 28085552,
+          "totalDeaths": 901958
+        },
+        {
+          "epochMsec": 1599782400000,
+          "dailyCases": 302998,
+          "dailyDeaths": 6162,
+          "totalCases": 28388550,
+          "totalDeaths": 908120
+        },
+        {
+          "epochMsec": 1599868800000,
+          "dailyCases": 313426,
+          "dailyDeaths": 5883,
+          "totalCases": 28701976,
+          "totalDeaths": 914003
+        },
+        {
+          "epochMsec": 1599955200000,
+          "dailyCases": 321742,
+          "dailyDeaths": 5676,
+          "totalCases": 29023718,
+          "totalDeaths": 919679
+        },
+        {
+          "epochMsec": 1600041600000,
+          "dailyCases": 289478,
+          "dailyDeaths": 4908,
+          "totalCases": 29313196,
+          "totalDeaths": 924587
+        },
+        {
+          "epochMsec": 1600128000000,
+          "dailyCases": 251597,
+          "dailyDeaths": 4359,
+          "totalCases": 29564793,
+          "totalDeaths": 928946
+        },
+        {
+          "epochMsec": 1600214400000,
+          "dailyCases": 263172,
+          "dailyDeaths": 4589,
+          "totalCases": 29827965,
+          "totalDeaths": 933535
+        },
+        {
+          "epochMsec": 1600300800000,
+          "dailyCases": 310039,
+          "dailyDeaths": 5957,
+          "totalCases": 30138004,
+          "totalDeaths": 939492
+        },
+        {
+          "epochMsec": 1600387200000,
+          "dailyCases": 321820,
+          "dailyDeaths": 6009,
+          "totalCases": 30459824,
+          "totalDeaths": 945501
+        },
+        {
+          "epochMsec": 1600473600000,
+          "dailyCases": 321085,
+          "dailyDeaths": 5385,
+          "totalCases": 30780909,
+          "totalDeaths": 950886
+        },
+        {
+          "epochMsec": 1600560000000,
+          "dailyCases": 334909,
+          "dailyDeaths": 5796,
+          "totalCases": 31115818,
+          "totalDeaths": 956682
+        },
+        {
+          "epochMsec": 1600646400000,
+          "dailyCases": 292528,
+          "dailyDeaths": 4820,
+          "totalCases": 31408346,
+          "totalDeaths": 961502
+        },
+        {
+          "epochMsec": 1600732800000,
+          "dailyCases": 244588,
+          "dailyDeaths": 3693,
+          "totalCases": 31652934,
+          "totalDeaths": 965195
+        },
+        {
+          "epochMsec": 1600819200000,
+          "dailyCases": 264804,
+          "dailyDeaths": 4622,
+          "totalCases": 31917738,
+          "totalDeaths": 969817
+        },
+        {
+          "epochMsec": 1600905600000,
+          "dailyCases": 323127,
+          "dailyDeaths": 5941,
+          "totalCases": 32240865,
+          "totalDeaths": 975758
+        },
+        {
+          "epochMsec": 1600992000000,
+          "dailyCases": 321513,
+          "dailyDeaths": 6386,
+          "totalCases": 32562378,
+          "totalDeaths": 982144
+        },
+        {
+          "epochMsec": 1601078400000,
+          "dailyCases": 326289,
+          "dailyDeaths": 5819,
+          "totalCases": 32888667,
+          "totalDeaths": 987963
+        },
+        {
+          "epochMsec": 1601164800000,
+          "dailyCases": 329107,
+          "dailyDeaths": 5595,
+          "totalCases": 33217774,
+          "totalDeaths": 993558
+        },
+        {
+          "epochMsec": 1601251200000,
+          "dailyCases": 299545,
+          "dailyDeaths": 5173,
+          "totalCases": 33517319,
+          "totalDeaths": 998731
+        },
+        {
+          "epochMsec": 1601337600000,
+          "dailyCases": 243093,
+          "dailyDeaths": 3904,
+          "totalCases": 33760412,
+          "totalDeaths": 1002635
+        },
+        {
+          "epochMsec": 1601424000000,
+          "dailyCases": 262202,
+          "dailyDeaths": 4440,
+          "totalCases": 34022614,
+          "totalDeaths": 1007075
+        },
+        {
+          "epochMsec": 1601510400000,
+          "dailyCases": 315623,
+          "dailyDeaths": 5879,
+          "totalCases": 34338237,
+          "totalDeaths": 1012954
+        },
+        {
+          "epochMsec": 1601596800000,
+          "dailyCases": 332079,
+          "dailyDeaths": 6275,
+          "totalCases": 34670316,
+          "totalDeaths": 1019229
+        },
+        {
+          "epochMsec": 1601683200000,
+          "dailyCases": 330291,
+          "dailyDeaths": 8708,
+          "totalCases": 35000607,
+          "totalDeaths": 1027937
+        },
+        {
+          "epochMsec": 1601769600000,
+          "dailyCases": 336278,
+          "dailyDeaths": 5269,
+          "totalCases": 35336885,
+          "totalDeaths": 1033206
+        },
+        {
+          "epochMsec": 1601856000000,
+          "dailyCases": 308883,
+          "dailyDeaths": 4600,
+          "totalCases": 35645768,
+          "totalDeaths": 1037806
+        },
+        {
+          "epochMsec": 1601942400000,
+          "dailyCases": 258906,
+          "dailyDeaths": 4265,
+          "totalCases": 35904674,
+          "totalDeaths": 1042071
+        },
+        {
+          "epochMsec": 1602028800000,
+          "dailyCases": 291275,
+          "dailyDeaths": 4538,
+          "totalCases": 36195949,
+          "totalDeaths": 1046609
+        },
+        {
+          "epochMsec": 1602115200000,
+          "dailyCases": 360748,
+          "dailyDeaths": 5648,
+          "totalCases": 36556697,
+          "totalDeaths": 1052257
+        },
+        {
+          "epochMsec": 1602201600000,
+          "dailyCases": 368076,
+          "dailyDeaths": 6351,
+          "totalCases": 36924773,
+          "totalDeaths": 1058608
+        },
+        {
+          "epochMsec": 1602288000000,
+          "dailyCases": 398453,
+          "dailyDeaths": 8548,
+          "totalCases": 37323226,
+          "totalDeaths": 1067156
+        },
+        {
+          "epochMsec": 1602374400000,
+          "dailyCases": 381983,
+          "dailyDeaths": 5821,
+          "totalCases": 37705209,
+          "totalDeaths": 1072977
+        },
+        {
+          "epochMsec": 1602460800000,
+          "dailyCases": 323763,
+          "dailyDeaths": 4580,
+          "totalCases": 38028972,
+          "totalDeaths": 1077557
+        },
+        {
+          "epochMsec": 1602547200000,
+          "dailyCases": 296742,
+          "dailyDeaths": 4267,
+          "totalCases": 38325714,
+          "totalDeaths": 1081824
+        },
+        {
+          "epochMsec": 1602633600000,
+          "dailyCases": 318814,
+          "dailyDeaths": 4334,
+          "totalCases": 38644528,
+          "totalDeaths": 1086158
+        },
+        {
+          "epochMsec": 1602720000000,
+          "dailyCases": 362534,
+          "dailyDeaths": 5360,
+          "totalCases": 39007062,
+          "totalDeaths": 1091518
+        },
+        {
+          "epochMsec": 1602806400000,
+          "dailyCases": 410132,
+          "dailyDeaths": 6082,
+          "totalCases": 39417194,
+          "totalDeaths": 1097600
+        },
+        {
+          "epochMsec": 1602892800000,
+          "dailyCases": 421905,
+          "dailyDeaths": 6206,
+          "totalCases": 39839099,
+          "totalDeaths": 1103806
+        },
+        {
+          "epochMsec": 1602979200000,
+          "dailyCases": 422759,
+          "dailyDeaths": 6216,
+          "totalCases": 40261858,
+          "totalDeaths": 1110022
+        },
+        {
+          "epochMsec": 1603065600000,
+          "dailyCases": 365430,
+          "dailyDeaths": 4771,
+          "totalCases": 40627288,
+          "totalDeaths": 1114793
+        },
+        {
+          "epochMsec": 1603152000000,
+          "dailyCases": 328509,
+          "dailyDeaths": 4284,
+          "totalCases": 40955797,
+          "totalDeaths": 1119077
+        },
+        {
+          "epochMsec": 1603238400000,
+          "dailyCases": 391849,
+          "dailyDeaths": 5390,
+          "totalCases": 41347646,
+          "totalDeaths": 1124467
+        },
+        {
+          "epochMsec": 1603324800000,
+          "dailyCases": 457045,
+          "dailyDeaths": 6584,
+          "totalCases": 41804691,
+          "totalDeaths": 1131051
+        },
+        {
+          "epochMsec": 1603411200000,
+          "dailyCases": 478033,
+          "dailyDeaths": 6626,
+          "totalCases": 42282724,
+          "totalDeaths": 1137677
+        },
+        {
+          "epochMsec": 1603497600000,
+          "dailyCases": 501342,
+          "dailyDeaths": 6724,
+          "totalCases": 42784066,
+          "totalDeaths": 1144401
+        },
+        {
+          "epochMsec": 1603584000000,
+          "dailyCases": 499711,
+          "dailyDeaths": 6248,
+          "totalCases": 43283777,
+          "totalDeaths": 1150649
+        },
+        {
+          "epochMsec": 1603670400000,
+          "dailyCases": 458505,
+          "dailyDeaths": 5388,
+          "totalCases": 43742282,
+          "totalDeaths": 1156037
+        },
+        {
+          "epochMsec": 1603756800000,
+          "dailyCases": 393658,
+          "dailyDeaths": 5121,
+          "totalCases": 44135940,
+          "totalDeaths": 1161158
+        },
+        {
+          "epochMsec": 1603843200000,
+          "dailyCases": 462349,
+          "dailyDeaths": 6197,
+          "totalCases": 44598289,
+          "totalDeaths": 1167355
+        },
+        {
+          "epochMsec": 1603929600000,
+          "dailyCases": 514843,
+          "dailyDeaths": 7246,
+          "totalCases": 45113132,
+          "totalDeaths": 1174601
+        },
+        {
+          "epochMsec": 1604016000000,
+          "dailyCases": 547210,
+          "dailyDeaths": 7349,
+          "totalCases": 45660342,
+          "totalDeaths": 1181950
+        },
+        {
+          "epochMsec": 1604102400000,
+          "dailyCases": 564766,
+          "dailyDeaths": 7478,
+          "totalCases": 46225108,
+          "totalDeaths": 1189428
+        },
+        {
+          "epochMsec": 1604188800000,
+          "dailyCases": 523733,
+          "dailyDeaths": 7095,
+          "totalCases": 46748841,
+          "totalDeaths": 1196523
+        },
+        {
+          "epochMsec": 1604275200000,
+          "dailyCases": 472882,
+          "dailyDeaths": 6220,
+          "totalCases": 47221723,
+          "totalDeaths": 1202743
+        },
+        {
+          "epochMsec": 1604361600000,
+          "dailyCases": 454656,
+          "dailyDeaths": 5871,
+          "totalCases": 47676379,
+          "totalDeaths": 1208614
+        },
+        {
+          "epochMsec": 1604448000000,
+          "dailyCases": 490545,
+          "dailyDeaths": 7559,
+          "totalCases": 48166924,
+          "totalDeaths": 1216173
+        },
+        {
+          "epochMsec": 1604534400000,
+          "dailyCases": 549461,
+          "dailyDeaths": 8676,
+          "totalCases": 48716385,
+          "totalDeaths": 1224849
+        },
+        {
+          "epochMsec": 1604620800000,
+          "dailyCases": 602695,
+          "dailyDeaths": 9214,
+          "totalCases": 49319080,
+          "totalDeaths": 1234063
+        },
+        {
+          "epochMsec": 1604707200000,
+          "dailyCases": 621956,
+          "dailyDeaths": 9175,
+          "totalCases": 49941036,
+          "totalDeaths": 1243238
+        },
+        {
+          "epochMsec": 1604793600000,
+          "dailyCases": 601629,
+          "dailyDeaths": 8069,
+          "totalCases": 50542665,
+          "totalDeaths": 1251307
+        },
+        {
+          "epochMsec": 1604880000000,
+          "dailyCases": 535532,
+          "dailyDeaths": 6777,
+          "totalCases": 51078197,
+          "totalDeaths": 1258084
+        },
+        {
+          "epochMsec": 1604966400000,
+          "dailyCases": 462204,
+          "dailyDeaths": 6842,
+          "totalCases": 51540401,
+          "totalDeaths": 1264926
+        },
+        {
+          "epochMsec": 1605052800000,
+          "dailyCases": 524308,
+          "dailyDeaths": 9061,
+          "totalCases": 52064709,
+          "totalDeaths": 1273987
+        },
+        {
+          "epochMsec": 1605139200000,
+          "dailyCases": 595387,
+          "dailyDeaths": 9948,
+          "totalCases": 52660096,
+          "totalDeaths": 1283935
+        },
+        {
+          "epochMsec": 1605225600000,
+          "dailyCases": 653356,
+          "dailyDeaths": 9604,
+          "totalCases": 53313452,
+          "totalDeaths": 1293539
+        },
+        {
+          "epochMsec": 1605312000000,
+          "dailyCases": 673931,
+          "dailyDeaths": 10021,
+          "totalCases": 53987383,
+          "totalDeaths": 1303560
+        },
+        {
+          "epochMsec": 1605398400000,
+          "dailyCases": 632043,
+          "dailyDeaths": 8864,
+          "totalCases": 54619426,
+          "totalDeaths": 1312424
+        },
+        {
+          "epochMsec": 1605484800000,
+          "dailyCases": 554333,
+          "dailyDeaths": 8519,
+          "totalCases": 55173759,
+          "totalDeaths": 1320943
+        },
+        {
+          "epochMsec": 1605571200000,
+          "dailyCases": 483468,
+          "dailyDeaths": 7412,
+          "totalCases": 55657227,
+          "totalDeaths": 1328355
+        },
+        {
+          "epochMsec": 1605657600000,
+          "dailyCases": 566013,
+          "dailyDeaths": 9635,
+          "totalCases": 56223240,
+          "totalDeaths": 1337990
+        },
+        {
+          "epochMsec": 1605744000000,
+          "dailyCases": 622508,
+          "dailyDeaths": 10564,
+          "totalCases": 56845748,
+          "totalDeaths": 1348554
+        },
+        {
+          "epochMsec": 1605830400000,
+          "dailyCases": 633547,
+          "dailyDeaths": 10837,
+          "totalCases": 57479295,
+          "totalDeaths": 1359391
+        },
+        {
+          "epochMsec": 1605916800000,
+          "dailyCases": 652391,
+          "dailyDeaths": 11892,
+          "totalCases": 58131686,
+          "totalDeaths": 1371283
+        },
+        {
+          "epochMsec": 1606003200000,
+          "dailyCases": 631858,
+          "dailyDeaths": 9837,
+          "totalCases": 58763544,
+          "totalDeaths": 1381120
+        },
+        {
+          "epochMsec": 1606089600000,
+          "dailyCases": 563865,
+          "dailyDeaths": 8315,
+          "totalCases": 59327409,
+          "totalDeaths": 1389435
+        },
+        {
+          "epochMsec": 1606176000000,
+          "dailyCases": 486313,
+          "dailyDeaths": 8208,
+          "totalCases": 59813722,
+          "totalDeaths": 1397643
+        },
+        {
+          "epochMsec": 1606262400000,
+          "dailyCases": 550198,
+          "dailyDeaths": 10299,
+          "totalCases": 60363920,
+          "totalDeaths": 1407942
+        },
+        {
+          "epochMsec": 1606348800000,
+          "dailyCases": 599256,
+          "dailyDeaths": 11626,
+          "totalCases": 60963176,
+          "totalDeaths": 1419568
+        },
+        {
+          "epochMsec": 1606435200000,
+          "dailyCases": 659177,
+          "dailyDeaths": 11910,
+          "totalCases": 61622353,
+          "totalDeaths": 1431478
+        },
+        {
+          "epochMsec": 1606521600000,
+          "dailyCases": 604139,
+          "dailyDeaths": 11392,
+          "totalCases": 62226492,
+          "totalDeaths": 1442870
+        },
+        {
+          "epochMsec": 1606608000000,
+          "dailyCases": 603639,
+          "dailyDeaths": 9529,
+          "totalCases": 62830131,
+          "totalDeaths": 1452399
+        },
+        {
+          "epochMsec": 1606694400000,
+          "dailyCases": 532954,
+          "dailyDeaths": 8209,
+          "totalCases": 63363085,
+          "totalDeaths": 1460608
+        },
+        {
+          "epochMsec": 1606780800000,
+          "dailyCases": 494606,
+          "dailyDeaths": 8238,
+          "totalCases": 63857691,
+          "totalDeaths": 1468846
+        },
+        {
+          "epochMsec": 1606867200000,
+          "dailyCases": 527906,
+          "dailyDeaths": 10408,
+          "totalCases": 64385597,
+          "totalDeaths": 1479254
+        },
+        {
+          "epochMsec": 1606953600000,
+          "dailyCases": 625734,
+          "dailyDeaths": 12005,
+          "totalCases": 65011331,
+          "totalDeaths": 1491259
+        },
+        {
+          "epochMsec": 1607040000000,
+          "dailyCases": 664056,
+          "dailyDeaths": 12532,
+          "totalCases": 65675387,
+          "totalDeaths": 1503791
+        },
+        {
+          "epochMsec": 1607126400000,
+          "dailyCases": 681434,
+          "dailyDeaths": 12440,
+          "totalCases": 66356821,
+          "totalDeaths": 1516231
+        },
+        {
+          "epochMsec": 1607212800000,
+          "dailyCases": 651303,
+          "dailyDeaths": 10802,
+          "totalCases": 67008124,
+          "totalDeaths": 1527033
+        },
+        {
+          "epochMsec": 1607299200000,
+          "dailyCases": 589447,
+          "dailyDeaths": 9242,
+          "totalCases": 67597571,
+          "totalDeaths": 1536275
+        },
+        {
+          "epochMsec": 1607385600000,
+          "dailyCases": 510407,
+          "dailyDeaths": 8095,
+          "totalCases": 68107978,
+          "totalDeaths": 1544370
+        },
+        {
+          "epochMsec": 1607472000000,
+          "dailyCases": 560626,
+          "dailyDeaths": 10545,
+          "totalCases": 68668604,
+          "totalDeaths": 1554915
+        },
+        {
+          "epochMsec": 1607558400000,
+          "dailyCases": 656356,
+          "dailyDeaths": 11644,
+          "totalCases": 69324960,
+          "totalDeaths": 1566559
+        },
+        {
+          "epochMsec": 1607644800000,
+          "dailyCases": 697007,
+          "dailyDeaths": 13202,
+          "totalCases": 70021967,
+          "totalDeaths": 1579761
+        },
+        {
+          "epochMsec": 1607731200000,
+          "dailyCases": 669640,
+          "dailyDeaths": 12200,
+          "totalCases": 70691607,
+          "totalDeaths": 1591961
+        },
+        {
+          "epochMsec": 1607817600000,
+          "dailyCases": 682151,
+          "dailyDeaths": 11424,
+          "totalCases": 71373758,
+          "totalDeaths": 1603385
+        },
+        {
+          "epochMsec": 1607904000000,
+          "dailyCases": 594141,
+          "dailyDeaths": 9217,
+          "totalCases": 71967899,
+          "totalDeaths": 1612602
+        },
+        {
+          "epochMsec": 1607990400000,
+          "dailyCases": 510920,
+          "dailyDeaths": 8848,
+          "totalCases": 72478819,
+          "totalDeaths": 1621450
+        },
+        {
+          "epochMsec": 1608076800000,
+          "dailyCases": 600304,
+          "dailyDeaths": 11795,
+          "totalCases": 73079123,
+          "totalDeaths": 1633245
+        },
+        {
+          "epochMsec": 1608163200000,
+          "dailyCases": 652124,
+          "dailyDeaths": 12703,
+          "totalCases": 73731247,
+          "totalDeaths": 1645948
+        },
+        {
+          "epochMsec": 1608249600000,
+          "dailyCases": 737258,
+          "dailyDeaths": 12956,
+          "totalCases": 74468505,
+          "totalDeaths": 1658904
+        },
+        {
+          "epochMsec": 1608336000000,
+          "dailyCases": 712859,
+          "dailyDeaths": 13578,
+          "totalCases": 75181364,
+          "totalDeaths": 1672482
+        },
+        {
+          "epochMsec": 1608422400000,
+          "dailyCases": 841447,
+          "dailyDeaths": 11059,
+          "totalCases": 76022811,
+          "totalDeaths": 1683541
+        },
+        {
+          "epochMsec": 1608508800000,
+          "dailyCases": 591963,
+          "dailyDeaths": 9640,
+          "totalCases": 76614774,
+          "totalDeaths": 1693181
+        },
+        {
+          "epochMsec": 1608595200000,
+          "dailyCases": 542875,
+          "dailyDeaths": 9203,
+          "totalCases": 77157649,
+          "totalDeaths": 1702384
+        },
+        {
+          "epochMsec": 1608681600000,
+          "dailyCases": 580412,
+          "dailyDeaths": 11716,
+          "totalCases": 77738061,
+          "totalDeaths": 1714100
+        },
+        {
+          "epochMsec": 1608768000000,
+          "dailyCases": 673218,
+          "dailyDeaths": 13274,
+          "totalCases": 78411279,
+          "totalDeaths": 1727374
+        },
+        {
+          "epochMsec": 1608854400000,
+          "dailyCases": 683696,
+          "dailyDeaths": 12069,
+          "totalCases": 79094975,
+          "totalDeaths": 1739443
+        },
+        {
+          "epochMsec": 1608940800000,
+          "dailyCases": 610890,
+          "dailyDeaths": 10484,
+          "totalCases": 79705865,
+          "totalDeaths": 1749927
+        },
+        {
+          "epochMsec": 1609027200000,
+          "dailyCases": 452773,
+          "dailyDeaths": 7989,
+          "totalCases": 80158638,
+          "totalDeaths": 1757916
+        },
+        {
+          "epochMsec": 1609113600000,
+          "dailyCases": 465181,
+          "dailyDeaths": 7512,
+          "totalCases": 80623819,
+          "totalDeaths": 1765428
+        },
+        {
+          "epochMsec": 1609200000000,
+          "dailyCases": 464470,
+          "dailyDeaths": 9470,
+          "totalCases": 81088289,
+          "totalDeaths": 1774898
+        },
+        {
+          "epochMsec": 1609286400000,
+          "dailyCases": 579147,
+          "dailyDeaths": 11985,
+          "totalCases": 81667436,
+          "totalDeaths": 1786883
+        },
+        {
+          "epochMsec": 1609372800000,
+          "dailyCases": 719354,
+          "dailyDeaths": 14209,
+          "totalCases": 82386790,
+          "totalDeaths": 1801092
+        },
+        {
+          "epochMsec": 1609459200000,
+          "dailyCases": 737804,
+          "dailyDeaths": 13843,
+          "totalCases": 83124594,
+          "totalDeaths": 1814935
+        },
+        {
+          "epochMsec": 1609545600000,
+          "dailyCases": 647322,
+          "dailyDeaths": 10782,
+          "totalCases": 83771916,
+          "totalDeaths": 1825717
+        },
+        {
+          "epochMsec": 1609632000000,
+          "dailyCases": 527843,
+          "dailyDeaths": 9817,
+          "totalCases": 84299759,
+          "totalDeaths": 1835534
+        },
+        {
+          "epochMsec": 1609718400000,
+          "dailyCases": 607952,
+          "dailyDeaths": 8436,
+          "totalCases": 84907711,
+          "totalDeaths": 1843970
+        },
+        {
+          "epochMsec": 1609804800000,
+          "dailyCases": 563639,
+          "dailyDeaths": 9004,
+          "totalCases": 85471350,
+          "totalDeaths": 1852974
+        },
+        {
+          "epochMsec": 1609891200000,
+          "dailyCases": 621129,
+          "dailyDeaths": 11980,
+          "totalCases": 86092479,
+          "totalDeaths": 1864954
+        },
+        {
+          "epochMsec": 1609977600000,
+          "dailyCases": 774737,
+          "dailyDeaths": 14275,
+          "totalCases": 86867216,
+          "totalDeaths": 1879229
+        },
+        {
+          "epochMsec": 1610064000000,
+          "dailyCases": 817264,
+          "dailyDeaths": 14444,
+          "totalCases": 87684480,
+          "totalDeaths": 1893673
+        },
+        {
+          "epochMsec": 1610150400000,
+          "dailyCases": 827096,
+          "dailyDeaths": 15705,
+          "totalCases": 88511576,
+          "totalDeaths": 1909378
+        },
+        {
+          "epochMsec": 1610236800000,
+          "dailyCases": 833105,
+          "dailyDeaths": 12963,
+          "totalCases": 89344681,
+          "totalDeaths": 1922341
+        },
+        {
+          "epochMsec": 1610323200000,
+          "dailyCases": 694306,
+          "dailyDeaths": 11480,
+          "totalCases": 90038987,
+          "totalDeaths": 1933821
+        },
+        {
+          "epochMsec": 1610409600000,
+          "dailyCases": 589160,
+          "dailyDeaths": 10720,
+          "totalCases": 90628147,
+          "totalDeaths": 1944541
+        },
+        {
+          "epochMsec": 1610496000000,
+          "dailyCases": 623799,
+          "dailyDeaths": 12694,
+          "totalCases": 91251946,
+          "totalDeaths": 1957235
+        },
+        {
+          "epochMsec": 1610582400000,
+          "dailyCases": 731647,
+          "dailyDeaths": 16228,
+          "totalCases": 91983593,
+          "totalDeaths": 1973463
+        },
+        {
+          "epochMsec": 1610668800000,
+          "dailyCases": 734155,
+          "dailyDeaths": 15726,
+          "totalCases": 92717748,
+          "totalDeaths": 1989189
+        },
+        {
+          "epochMsec": 1610755200000,
+          "dailyCases": 737609,
+          "dailyDeaths": 15123,
+          "totalCases": 93455357,
+          "totalDeaths": 2004312
+        },
+        {
+          "epochMsec": 1610841600000,
+          "dailyCases": 740190,
+          "dailyDeaths": 13458,
+          "totalCases": 94195547,
+          "totalDeaths": 2017770
+        },
+        {
+          "epochMsec": 1610928000000,
+          "dailyCases": 620936,
+          "dailyDeaths": 11606,
+          "totalCases": 94816483,
+          "totalDeaths": 2029376
+        },
+        {
+          "epochMsec": 1611014400000,
+          "dailyCases": 523791,
+          "dailyDeaths": 10644,
+          "totalCases": 95340274,
+          "totalDeaths": 2040020
+        },
+        {
+          "epochMsec": 1611100800000,
+          "dailyCases": 528518,
+          "dailyDeaths": 13298,
+          "totalCases": 95868792,
+          "totalDeaths": 2053318
+        },
+        {
+          "epochMsec": 1611187200000,
+          "dailyCases": 636126,
+          "dailyDeaths": 14894,
+          "totalCases": 96504918,
+          "totalDeaths": 2068212
+        },
+        {
+          "epochMsec": 1611273600000,
+          "dailyCases": 665157,
+          "dailyDeaths": 16573,
+          "totalCases": 97170075,
+          "totalDeaths": 2084785
+        },
+        {
+          "epochMsec": 1611360000000,
+          "dailyCases": 652122,
+          "dailyDeaths": 16333,
+          "totalCases": 97822197,
+          "totalDeaths": 2101118
+        },
+        {
+          "epochMsec": 1611446400000,
+          "dailyCases": 631480,
+          "dailyDeaths": 14277,
+          "totalCases": 98453677,
+          "totalDeaths": 2115395
+        },
+        {
+          "epochMsec": 1611532800000,
+          "dailyCases": 544878,
+          "dailyDeaths": 11855,
+          "totalCases": 98998555,
+          "totalDeaths": 2127250
+        },
+        {
+          "epochMsec": 1611619200000,
+          "dailyCases": 424261,
+          "dailyDeaths": 10637,
+          "totalCases": 99422816,
+          "totalDeaths": 2137887
+        },
+        {
+          "epochMsec": 1611705600000,
+          "dailyCases": 484240,
+          "dailyDeaths": 13032,
+          "totalCases": 99907056,
+          "totalDeaths": 2150919
+        },
+        {
+          "epochMsec": 1611792000000,
+          "dailyCases": 578186,
+          "dailyDeaths": 16331,
+          "totalCases": 100485242,
+          "totalDeaths": 2167250
+        },
+        {
+          "epochMsec": 1611878400000,
+          "dailyCases": 575041,
+          "dailyDeaths": 15782,
+          "totalCases": 101060283,
+          "totalDeaths": 2183032
+        },
+        {
+          "epochMsec": 1611964800000,
+          "dailyCases": 501025,
+          "dailyDeaths": 13918,
+          "totalCases": 101561308,
+          "totalDeaths": 2196950
+        },
+        {
+          "epochMsec": 1612051200000,
+          "dailyCases": 355839,
+          "dailyDeaths": 8565,
+          "totalCases": 101917147,
+          "totalDeaths": 2205515
+        }
+      ]
+    }
+  ],
+  "ttl": 600
+}

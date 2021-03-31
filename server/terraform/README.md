@@ -167,6 +167,7 @@ which are in the list below. The project renaming is still in progress:
 | who-mh-prod-in-dev | Replicates permissions and setup of who-mh-prod project |
 | who-mh-prod        | WHO Production infrastructure, Privacy Policy compliant |
 | who-mh-staging     | CI server updated from GitHub repo                      |
+| who-mh2-dev1       | Development (unstable) environment for v2 backend       |
 
 ### New Project
 
@@ -182,11 +183,13 @@ emacs main.tf
 
 terraform init
 terraform apply
-# Should create all resources without any errors
+# THIS MAY THROW AN ERROR:
+#   Error: googleapi: Error 409: Sink _Default already exists, alreadyExists
+# IF SO, run the following:
+#   terraform import module.myhealth.google_logging_project_sink.default projects/$PROJECT_ID/sinks/_Default
+# ... And then run `terraform apply` again.
 
-# Add server reference in top level terraform to ensure validation
-# server/terraform/main.tf
-# `terraform apply` should not be used here, instead only individual projects
+# Your resources should now exist.
 ```
 
 ### Terraform Apply
@@ -256,6 +259,25 @@ should be moved to terraform if it is supported in the future.
 Production servers must be configured exactly as described here. Changes should
 be made through code and merged before being manually applied. Exceptions to this are
 defined in https://github.com/WorldHealthOrganization/app/blob/master/server/terraform/README.md#Exceptions.
+
+### Create Firestore Database
+
+> **_NOTE_**: ONLY FOR V2 (FIRESTORE NATIVE) BACKENDS
+
+Create the Firestore database by...
+
+- Going to the [Firebase Console](console.firebase.google.com)
+- Selecting your newly created project.
+- Clicking the `Cloud Firestore` item in the menu on the left.
+- Clicking the `Create database` button. Leave the settings on default and click `Next`, then `Enable`.
+
+### Deploy Firebase assets
+
+> **_NOTE_**: ONLY FOR V2 (FIRESTORE NATIVE) BACKENDS
+
+From the `app/server` folder, run:
+
+    firebase deploy --project=YOUR-PROJECT-ID
 
 ### Analytics
 

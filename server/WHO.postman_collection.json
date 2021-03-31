@@ -1,0 +1,174 @@
+{
+  "info": {
+    "_postman_id": "9f74319a-3548-433c-850f-8484d2f3e690",
+    "name": "WHO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "WHO getCaseStats (on hack)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Who-Client-ID",
+            "value": "00000000-0000-0000-0000-000000000000",
+            "type": "text"
+          },
+          {
+            "key": "Who-Platform",
+            "value": "WEB",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"jurisdictions\": [{\n\t\t\"jurisdictionType\": \"GLOBAL\"\n\t}]\n}"
+        },
+        "url": {
+          "raw": "https://hack.whocoronavirus.org/WhoService/getCaseStats",
+          "protocol": "https",
+          "host": [
+            "hack",
+            "whocoronavirus",
+            "org"
+          ],
+          "path": [
+            "WhoService",
+            "getCaseStats"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "WHO putClientSettings (on local)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Who-Client-ID",
+            "value": "00000000-0000-0000-0000-000000000000",
+            "type": "text"
+          },
+          {
+            "key": "Who-Platform",
+            "value": "WEB",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token\": \"abcdefs\",\n  \"isoCountryCode\": \"US\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5001/rjh-who-mh-dev/europe-west6/putClientSettings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "rjh-who-mh-dev",
+            "europe-west6",
+            "putClientSettings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "WHO putClientSettings (on hack)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Who-Client-ID",
+            "type": "text",
+            "value": "00000000-0000-0000-0000-000000000000"
+          },
+          {
+            "key": "Who-Platform",
+            "type": "text",
+            "value": "WEB"
+          },
+          {
+            "key": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token\": \"abcdefs\",\n  \"isoCountryCode\": \"US\"\n}"
+        },
+        "url": {
+          "raw": "https://hack.whocoronavirus.org/WhoService/putClientSettings",
+          "protocol": "https",
+          "host": [
+            "hack",
+            "whocoronavirus",
+            "org"
+          ],
+          "path": [
+            "WhoService",
+            "putClientSettings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "WHO getCaseStats (on local)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Who-Client-ID",
+            "value": "00000000-0000-0000-0000-000000000000",
+            "type": "text"
+          },
+          {
+            "key": "Who-Platform",
+            "value": "WEB",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"jurisdictions\": [{\n\t\t\"jurisdictionType\": \"GLOBAL\"\n\t}]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5001/rjh-who-mh-dev/europe-west6/getCaseStats",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5001",
+          "path": [
+            "rjh-who-mh-dev",
+            "europe-west6",
+            "getCaseStats"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
