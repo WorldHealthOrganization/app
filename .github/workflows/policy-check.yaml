@@ -7,24 +7,6 @@ on:
     branches: [master]
 
 jobs:
-  policy_check:
-    name: Check source code for policy violations
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-      - name: Install dependencies
-        run: |
-          pip install scikit-learn==0.22.2 profanity-check==1.0.3
-      - name: Lint with profanity-check
-        run: |
-          # Every file in the repo that is treated as text
-          FILES2CHECK=$(git ls-files | xargs git grep --name-only -I -e . --)
-
-          python3.8 -W ignore ./tools/policycheck.py 0.5 ./.github/policy-ignored-lines.txt $FILES2CHECK
   formatting:
     # Dart is handled in the client CI
     name: Prettier Formatting

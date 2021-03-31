@@ -1,4 +1,3 @@
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
@@ -7,8 +6,8 @@ import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/schema/advice_content.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/content/schema/index_content.dart';
-import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
+import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -47,7 +46,7 @@ abstract class _ContentStore with Store implements Updateable {
         learnIndex,
         newsIndex,
         questionsAnswered,
-        symptomPoster,
+        symptomChecker,
       ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
 
   @observable
@@ -75,7 +74,7 @@ abstract class _ContentStore with Store implements Updateable {
   QuestionContent questionsAnswered;
 
   @observable
-  PosterContent symptomPoster;
+  SymptomCheckerContent symptomChecker;
 
   Future<void> updateBundle<T extends ContentBase>(String name, T old,
       T Function(ContentBundle) constructor, void Function(T) setter) async {
@@ -131,9 +130,9 @@ abstract class _ContentStore with Store implements Updateable {
             questionsAnswered, (cb) => QuestionContent(cb), (v) {
           questionsAnswered = v;
         }),
-        updateBundle<PosterContent>(
-            'symptom_poster', symptomPoster, (cb) => PosterContent(cb), (v) {
-          symptomPoster = v;
+        updateBundle<SymptomCheckerContent>('symptom_checker', symptomChecker,
+            (cb) => SymptomCheckerContent(cb), (v) {
+          symptomChecker = v;
         })
       ]);
 
@@ -146,9 +145,10 @@ abstract class _ContentStore with Store implements Updateable {
         'ContentStore update finished',
       );
     } catch (e) {
-      unawaited(
-        FirebaseCrashlytics.instance.recordFlutterError(e),
-      );
+      // TODO: This breaks on UnsupportedContentSchema exception
+      // unawaited(
+      //   FirebaseCrashlytics.instance.recordFlutterError(e),
+      // );
       print(
         'ContentStore update failed',
       );

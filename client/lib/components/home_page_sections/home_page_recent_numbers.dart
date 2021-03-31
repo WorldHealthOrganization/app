@@ -116,7 +116,7 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
               // TODO: localize
               title: widget.statsStore.countryStats != null &&
                       widget.statsStore.countryCases >= 0
-                  ? country.name + ' Total Cases'
+                  ? (country?.name ?? '') + ' Total Cases'
                   : '',
             ),
           ),
