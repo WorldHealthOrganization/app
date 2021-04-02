@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>World Health Organization - Corona App</title>
+    <title>WHO COVID-19 Updates</title>
 
     <style media="screen">
       body {
@@ -56,16 +56,22 @@
     <script>
       const GOOGLE_PLAY_STORE_LINK =
         "https://play.google.com/store/apps/details?id=org.who.WHOMyHealth";
-      const APPLE_APP_STORE_LINK = "https://apps.apple.com/app/id1503458183?mt=8";
+      const APPLE_APP_STORE_LINK =
+        "https://apps.apple.com/app/id1503458183?mt=8";
 
-      if (navigator.userAgent.toLowerCase().includes("android")) {
+      const agent = navigator.userAgent.toLowerCase();
+      if (agent.includes("android")) {
         window.location = GOOGLE_PLAY_STORE_LINK;
-      } else {
+      } else if (
+        agent.includes("ipad") ||
+        agent.includes("iphone") ||
+        agent.includes("ipod")
+      ) {
         window.location = APPLE_APP_STORE_LINK;
       }
     </script>
 
-    <!-- Fallback in case JavaScript is disabled. -->
+    <!-- Fallback in case JavaScript is disabled or the user is not on Android/iOS. -->
     <div id="message">
       <img alt="WHO logo" class="logo" src="who_logo.svg" />
       <p>
