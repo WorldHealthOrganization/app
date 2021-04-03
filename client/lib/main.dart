@@ -168,9 +168,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               initialData: UserPreferencesStore.empty(),
             ),
             ProxyProvider(
-                update: (_, Endpoint endpoint, __) => WhoService(
-                      endpoint: endpoint.serviceUrl,
-                    )),
+                update: (_, Endpoint endpoint, __) =>
+                    WhoService(endpoint: endpoint.serviceUrl)),
             ProxyProvider2(
               update: (_, WhoService service, UserPreferencesStore prefs, __) {
                 final ret = Notifications(service: service, prefs: prefs);

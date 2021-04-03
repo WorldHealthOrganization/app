@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1019264280603-ess3r5dam39hur3aehgd3ob6hl6pjuf1.apps.googleusercontent.com</string>
+	<string>782697208208-kkm2vf12l0js9ltphusvlr79c2cmoe6v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1019264280603-ess3r5dam39hur3aehgd3ob6hl6pjuf1</string>
+	<string>com.googleusercontent.apps.782697208208-kkm2vf12l0js9ltphusvlr79c2cmoe6v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyATWv6UdIffm2lQyXvpog_HIESeaMOILjs</string>
+	<string>AIzaSyASZVUTMDzfxud-RdicFbH2nPsMlTL-JvI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1019264280603</string>
+	<string>782697208208</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>int.who.WHOMyHealth</string>
 	<key>PROJECT_ID</key>
-	<string>who-mh-hack</string>
+	<string>who-mh2-dev1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>who-mh-hack.appspot.com</string>
+	<string>who-mh2-dev1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1019264280603:ios:f670199389d1884268b0be</string>
-	<key>DATABASE_URL</key>
-	<string>https://who-mh-hack.firebaseio.com</string>
+	<string>1:782697208208:ios:74fff45695d1a3c2117b15</string>
 </dict>
 </plist>
