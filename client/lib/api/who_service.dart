@@ -12,7 +12,7 @@ import 'package:firebase_performance/firebase_performance.dart';
 class WhoService {
   final String serviceUrl;
 
-  WhoService({@required String endpoint}) : serviceUrl = '$endpoint/WhoService';
+  WhoService({@required String endpoint}) : serviceUrl = endpoint;
 
   final _MetricHttpClient http = _MetricHttpClient(
     Client(),
@@ -105,7 +105,7 @@ class _MetricHttpClient extends BaseClient {
     try {
       response = await _inner.send(request);
       metric
-        ..responsePayloadSize = response.contentLength
+        ..responsePayloadSize = response.contentLength ?? 0
         ..responseContentType = response.headers['Content-Type']
         ..requestPayloadSize = request.contentLength
         ..httpResponseCode = response.statusCode;

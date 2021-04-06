@@ -15,7 +15,7 @@ class ContentService {
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
   ContentService({@required Endpoint endpoint})
-      : baseContentURL = '${endpoint.serviceUrl}/content/bundles';
+      : baseContentURL = '${endpoint.staticContentUrl}/content/bundles';
 
   /// Load a localized content bundle loaded preferentially from the network, falling back
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
