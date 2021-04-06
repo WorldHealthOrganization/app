@@ -9,6 +9,8 @@ import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
+
 
 class CheckUpPosterPage extends StatelessWidget {
   final List<PosterCard> cards;
@@ -66,8 +68,7 @@ class CheckUpPosterPage extends StatelessWidget {
 
     return PageScaffold(
       showBackButton: !inHomePage,
-      // TODO: localize
-      title: 'Check-Up',
+      title: S.of(context).checkUpIntroPageCheckup,
       body: <Widget>[
         logicContext != null
             ? _buildBody()

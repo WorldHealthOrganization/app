@@ -6,6 +6,7 @@ import 'package:who_app/api/display_conditions.dart';
 import 'package:who_app/components/content_widget.dart';
 import 'package:who_app/components/loading_indicator.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
+import 'package:who_app/generated/l10n.dart';
 
 import 'check_up_intro_page.dart';
 import 'check_up_poster_page.dart';
@@ -20,7 +21,7 @@ class CheckUpPage extends ContentWidget<SymptomCheckerContent> {
     if (content == null || logicContext == null) {
       return PageScaffold(
         showBackButton: false,
-        title: 'Check-Up',
+        title: S.of(context).checkUpIntroPageCheckup,
         body: <Widget>[SliverSafeArea(sliver: LoadingIndicator())],
       );
     }

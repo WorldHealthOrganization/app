@@ -1,18 +1,26 @@
 import 'dart:async';
 
-import 'package:firebase_performance/firebase_performance.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:observer_provider/observer_provider.dart';
+import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:who_app/api/alerts.dart';
+import 'package:who_app/api/content/content_loading.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/endpoints.dart';
 import 'package:who_app/api/iso_country.dart';
+import 'package:who_app/api/notifications.dart';
 import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -20,18 +28,9 @@ import 'package:who_app/api/user_preferences_store.dart';
 import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
-import 'package:package_info/package_info.dart';
-import 'package:who_app/api/notifications.dart';
-import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
-
-import 'package:who_app/api/content/content_loading.dart';
+import 'package:who_app/pages/main_pages/routes.dart';
 
 PackageInfo _packageInfo;
 
@@ -147,8 +146,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           S.delegate
         ],
         routes: widget.routes,
-        // FIXME Issue #1012 - disabled supported languages for P0
-        //supportedLocales: S.delegate.supportedLocales,
+        supportedLocales: S.delegate.supportedLocales,
         initialRoute: widget.showOnboarding ? '/onboarding' : '/home',
 
         /// allows routing to work without a [Navigator.defaultRouteName] route
@@ -216,11 +214,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               return [
                 if (!endpoint.isProd)
                   Alert(
-                      null, 'No privacy on server - ${endpoint.projectIdShort}',
+                      null, S.of(context).commonContentNoPrivacyOnServer(endpoint.projectIdShort),
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
-                  Alert('App Update Required',
-                      'This information may be outdated. You must update this app to receive more recent COVID-19 info.'),
+                  Alert(S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
+                      S.of(context).commonContentLoadingDialogUpdateRequiredDetails),
               ];
             }),
           ],

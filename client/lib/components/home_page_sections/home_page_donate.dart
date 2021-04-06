@@ -18,8 +18,7 @@ class HomePageDonate extends StatelessWidget {
             horizontal: 72.0,
           ),
           child: ThemedText(
-            // TODO: localize
-            'Help support the relief effort',
+            S.of(context).homePagePageSupport,
             variant: TypographyVariant.h2,
             style: TextStyle(
               color: Constants.accentTealColor,
@@ -36,8 +35,7 @@ class HomePageDonate extends StatelessWidget {
             backgroundColor: Constants.accentTealColor,
             padding: EdgeInsets.symmetric(horizontal: 88.0, vertical: 12.0),
             child: ThemedText(
-              // TODO: localize
-              'Donate Now',
+              S.of(context).homePagePageDonate,
               variant: TypographyVariant.button,
               style: TextStyle(
                 color: CupertinoColors.white,
@@ -45,7 +43,7 @@ class HomePageDonate extends StatelessWidget {
             ),
             onPressed: () {
               FirebaseAnalytics().logEvent(name: 'Donate');
-              launchUrl(S.of(context).homePagePageSliverListDonateUrl);
+              launchUrl(S.of(context).homePagePageDonateUrl);
             },
           ),
         ),

@@ -191,7 +191,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
       BuildContext context, DataAggregation selectedValue) {
     var valueToDisplayText = {
       // TODO: Localize - need to regenerate translation keys as this string was changed
-      DataAggregation.daily: 'Daily',
+      DataAggregation.daily: S.of(context).latestNumbersPageDaily,
       DataAggregation.total: S.of(context).latestNumbersPageTotalToggle,
     };
     return valueToDisplayText.map((value, displayText) {

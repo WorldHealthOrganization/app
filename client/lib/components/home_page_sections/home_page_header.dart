@@ -6,6 +6,7 @@ import 'package:who_app/components/button.dart';
 import 'package:who_app/components/promo_curved_background.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 class HomePageHeader extends StatelessWidget {
   final IndexPromoType headerType;
@@ -158,8 +159,7 @@ class _LogoRow extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                // TODO: Localize
-                'COVID-19 Response',
+                S.of(context).homePageCovid19Response,
                 style: TextStyle(
                   color: Constants.homeHeaderGreenColor,
                   fontSize: 14,

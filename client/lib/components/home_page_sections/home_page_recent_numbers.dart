@@ -9,6 +9,7 @@ import 'package:who_app/api/stats_store.dart';
 import 'package:who_app/components/button.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
   final StatsStore statsStore;
@@ -113,10 +114,9 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
                       widget.statsStore.countryCases >= 0
                   ? widget.numFmt.format(widget.statsStore.countryCases)
                   : '',
-              // TODO: localize
               title: widget.statsStore.countryStats != null &&
                       widget.statsStore.countryCases >= 0
-                  ? (country?.name ?? '') + ' Total Cases'
+                  ?  S.of(context).homePageCountryTotalCases((country?.name ?? ''))
                   : '',
             ),
           ),
@@ -127,10 +127,9 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
                       widget.statsStore.globalCases > 0
                   ? widget.numFmt.format(widget.statsStore.globalCases)
                   : '',
-              // TODO: localize
               title: widget.statsStore.globalCases != null &&
                       widget.statsStore.globalCases > 0
-                  ? 'Global Total Cases'
+                  ? S.of(context).homePageGlobalTotalCases
                   : '',
             ),
           ),
