@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WHO COVID-19 Updates</title>
+
+    <style media="screen">
+      body {
+        background: #eceff1;
+        color: rgba(0, 0, 0, 0.87);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+      }
+      #message {
+        background: white;
+        max-width: 360px;
+        margin: 100px auto 16px;
+        padding: 32px 24px;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+      #message p {
+        line-height: 140%;
+        margin: 16px 0 24px;
+        font-size: 14px;
+      }
+      #badges {
+        display: flex;
+        justify-content: center;
+      }
+      .badge {
+        height: 40px;
+        margin: 10px;
+      }
+      #logo {
+        width: 100%;
+      }
+      @media (max-width: 599px) {
+        body,
+        #message {
+          margin-top: 0;
+          background: white;
+          box-shadow: none;
+        }
+        body {
+          border-top: 16px solid #008ec9;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const GOOGLE_PLAY_STORE_LINK =
+        "https://play.google.com/store/apps/details?id=org.who.WHOMyHealth";
+      const APPLE_APP_STORE_LINK =
+        "https://apps.apple.com/app/id1503458183?mt=8";
+
+      const agent = navigator.userAgent.toLowerCase();
+      if (agent.includes("android")) {
+        window.location = GOOGLE_PLAY_STORE_LINK;
+      } else if (
+        agent.includes("ipad") ||
+        agent.includes("iphone") ||
+        agent.includes("ipod")
+      ) {
+        window.location = APPLE_APP_STORE_LINK;
+      }
+    </script>
+
+    <!-- Fallback in case JavaScript is disabled or the user is not on Android/iOS. -->
+    <div id="message">
+      <img alt="WHO logo" class="logo" src="who_logo.svg" />
+      <p>
+        If you are not automatically redirected, please click one of the links
+        below.
+      </p>
+      <div id="badges">
+        <a href="https://apps.apple.com/app/id1503458183"
+          ><img
+            alt="Download on the Apple App Store"
+            src="apple-app-store-badge-en.svg"
+            height="40px"
+            class="badge"
+        /></a>
+        <a
+          href="https://play.google.com/store/apps/details?id=org.who.WHOMyHealth"
+          ><img
+            alt="Get it on Google Play"
+            src="google-play-badge-en.png"
+            class="badge"
+        /></a>
+      </div>
+    </div>
+  </body>
+</html>
