@@ -7,12 +7,18 @@ import 'dart:io' as io;
 
 import 'package:who_app/proto/api/who/who.pb.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_performance/firebase_performance.dart';
+
+const CLIENT_COLLECTION = 'Client';
 
 class WhoService {
   final String serviceUrl;
+  final FirebaseFirestore firestore;
 
-  WhoService({@required String endpoint}) : serviceUrl = endpoint;
+  WhoService({@required String endpoint})
+      : serviceUrl = endpoint,
+        firestore = FirebaseFirestore.instance;
 
   final _MetricHttpClient http = _MetricHttpClient(
     Client(),
@@ -20,19 +26,17 @@ class WhoService {
 
   /// Put Client Settings
   Future<bool> putClientSettings({String token, String isoCountryCode}) async {
-    final headers = await _getHeaders();
-    final req = PutClientSettingsRequest.create();
-    if (token != null) {
-      req.token = token;
-    } else {
-      req.clearToken();
-    }
-    req.isoCountryCode = isoCountryCode;
-    final postBody = jsonEncode(req.toProto3Json());
-    final url = '$serviceUrl/putClientSettings';
-    final response = await http.post(url, headers: headers, body: postBody);
-    if (response.statusCode != 200) {
-      throw Exception('Error status code: ${response.statusCode}');
+    var clientId = await UserPreferences().getClientUuid();
+    try {
+      await firestore.collection(CLIENT_COLLECTION).doc(clientId).set({
+        'uuid': clientId,
+        'token': token,
+        'disableNotifications': token == null || token.isEmpty,
+        'platform': _platform,
+        'isoCountryCode': isoCountryCode
+      });
+    } catch (e) {
+      debugPrint('Failed to update FCM token in Firestore: $e');
     }
     return true;
   }

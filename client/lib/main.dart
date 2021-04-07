@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -37,6 +38,10 @@ PackageInfo _packageInfo;
 
 PackageInfo get packageInfo => _packageInfo;
 
+// ATTENTION: never check this in as 'true'! Always set back to 'false' before
+//            sending out your PR. This is verified by `test/firebase_test.dart`.
+const USE_FIREBASE_LOCAL_EMULATORS = false;
+
 void main() async {
   await mainImpl(routes: Routes.map);
 }
@@ -51,6 +56,18 @@ void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
   }
 
   var app = await Firebase.initializeApp();
+
+  if (USE_FIREBASE_LOCAL_EMULATORS) {
+    debugPrint('Will use local 🔥🔥 Firebase 🔥🔥 emulator');
+    // Switch Firebase host based on platform, since iOS and Android
+    // use different ways of contacting localhost.
+    var host = defaultTargetPlatform == TargetPlatform.android
+        ? '10.0.2.2:8080'
+        : 'localhost:8080';
+    FirebaseFirestore.instance.settings =
+        Settings(host: host, sslEnabled: false);
+  }
+
   var projectId = app.options.projectId;
   print('Firebase ProjectID: $projectId');
   var endpoint = Endpoint(projectId);
