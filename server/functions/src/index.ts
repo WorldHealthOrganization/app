@@ -39,69 +39,6 @@ export const getCaseStats = functions
     response.status(200).json(data);
   });
 
-// Implementation of the v1 API"s `putClientSettings` method.
-// TODO: replace with direct Firestore acccess from the client.
-export const putClientSettings = functions
-  .region(SERVING_REGION)
-  .https.onRequest((request, response) => {
-    const whoClientId = request.header("Who-Client-ID");
-    if (whoClientId === undefined || whoClientId == null) {
-      response.status(400).send("Missing Who-Client-ID header");
-      return;
-    }
-    const whoPlatform = request.header("Who-Platform");
-    if (whoPlatform === undefined || whoPlatform == null) {
-      response.status(400).send("Missing Who-Platform header");
-      return;
-    }
-    let platform = Platform.WEB;
-    if (whoPlatform == Platform[Platform.ANDROID]) {
-      platform = Platform.ANDROID;
-    } else if (whoPlatform == Platform[Platform.IOS]) {
-      platform = Platform.IOS;
-    }
-
-    if (request.method != "POST") {
-      response.status(400).send("Call must be POST request");
-      return;
-    }
-    let isoCountryCode = request.body["isoCountryCode"];
-    if (isoCountryCode === undefined || isoCountryCode == null) {
-      isoCountryCode = "";
-    } else if (
-      // Don"t even run a regex on a very long string.
-      isoCountryCode.length != 2 ||
-      !isoCountryCode.match(COUNTRY_CODE)
-    ) {
-      response.status(400).send("Invalid isoCountryCode");
-      return;
-    }
-    let fcmToken = request.body["token"];
-    if (fcmToken === undefined || fcmToken == "null") {
-      fcmToken = "";
-    }
-    if (fcmToken.length > FCM_TOKEN_MAX_LENGTH) {
-      response.status(400).send("Invalid FCM Token");
-      return;
-    }
-    const disableNotifications = fcmToken.length == 0;
-
-    const client = {
-      uuid: whoClientId,
-      token: fcmToken,
-      disableNotifcations: disableNotifications,
-      platform: platform,
-      isoCountryCode: isoCountryCode,
-      subscribedTopics: [], // TODO: fill in.
-    } as Client;
-
-    // This update will trigger the `clientSettingsUpdated` method below,
-    // which will actually register (or deregister) the client for notifications.
-    db.collection("Clients").doc(whoClientId).set(client);
-
-    response.status(200).send({});
-  });
-
 // Method that runs when client settings have been updated, and will make those
 // updated settings take effect.
 export const clientSettingsUpdated = functions

@@ -53,3 +53,25 @@ For example to access the `staging` server (the default), the files are:
 Android: client/android/app/src/<flavor>/google-services.json
 iOS:     client/ios/config/<flavor>/GoogleService-Info.plist
 ```
+
+##### Using the Firebase Emulators
+
+If you'd like to test your app without using a "real" Firebase project, you can use the Firebase Local Emulator Suite as follows.
+
+First, start your local emulators by navigating to your `server/functions` directory and running:
+
+    firebase emulators:start --project=dev
+
+Then, in your `client` directory, update your `main.dart` as follows:
+
+    const USE_FIREBASE_LOCAL_EMULATORS = true;
+
+When working with the iOS client, temporarily disable transport security [as documented here](https://firebase.flutter.dev/docs/installation/ios/#enabling-use-of-firebase-emulator-suite).
+
+Then, run your application in its `hack` flavor:
+
+    flutter run --flavor=hack
+
+Your logs will confirm that you are using the local emulators:
+
+    I/flutter (13491): Will use local 🔥🔥 Firebase 🔥🔥 emulator

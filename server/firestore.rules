@@ -1,10 +1,21 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Currently: do not allow any direct reads or writes.
-    // TODO: this will change as we update the client to do direct reads and writes.
+    // Default: do not allow any direct reads or writes unless otherwise specified.
     match /{document=**} {
       allow read, write: if false;
+    }
+
+    // Allow writes to the "Clients" collection, permitting users to set their FCM
+    // tokens.
+    //
+    // If we were concerned about abuse, we could add constraints around what the user
+    // needs to be writing to be allowed to write. Fortunately since this is write-only,
+    // and since the WHO client ID is a long random string that can't be guessed by others
+    // (preventing others from overwriting your settings) there seems to be little risk
+    // of abuse, and we can suffice with a simple rule.
+    match /Client/{who_client_id} {
+      allow write: if true;
     }
   }
 }

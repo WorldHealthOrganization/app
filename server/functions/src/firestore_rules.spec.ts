@@ -36,7 +36,7 @@ after(() => {
 });
 
 describe("Firebase Rules", () => {
-  it("Should not allow direct access anywhere", async () => {
+  it("Should not allow access in random places", async () => {
     // Random location in the database.
     await firebase.assertFails(
       app
@@ -45,7 +45,8 @@ describe("Firebase Rules", () => {
         .doc("nonexistent-doc")
         .get()
     );
-    // The Client collection.
+  });
+  it("Should only allow write access to the Client collection", async () => {
     await firebase.assertFails(
       app
         .firestore()
@@ -53,6 +54,15 @@ describe("Firebase Rules", () => {
         .doc("00000000-0000-0000-0000-000000000000")
         .get()
     );
-    // Add tests for real-life collections and documents here as we add them to Firestore.
+    await firebase.assertSucceeds(
+      app
+        .firestore()
+        .collection("Client")
+        .doc("00000000-0000-0000-0000-000000000000")
+        .set({
+          foo: "bar",
+        })
+    );
   });
+  // Add further tests for real-life collections and documents here as we add them to Firestore.
 });
