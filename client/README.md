@@ -66,6 +66,8 @@ Then, in your `client` directory, update your `main.dart` as follows:
 
     const USE_FIREBASE_LOCAL_EMULATORS = true;
 
+When working with the iOS client, temporarily disable transport security [as documented here](https://firebase.flutter.dev/docs/installation/ios/#enabling-use-of-firebase-emulator-suite).
+
 Then, run your application in its `hack` flavor:
 
     flutter run --flavor=hack
