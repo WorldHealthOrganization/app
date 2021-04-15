@@ -5,7 +5,7 @@
     "prepare-static-serving": "node prepare-static-serving.js"
   },
   "dependencies": {
-    "js-yaml": "^3.14.1"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "firebase-tools": "^9.1.0",
