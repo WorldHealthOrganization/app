@@ -68,7 +68,7 @@ dependencies {
     implementation 'io.netty:netty-codec-http:4.1.56.Final'
 
     // Newer versions
-    implementation 'com.google.oauth-client:google-oauth-client:1.31.2'
+    implementation 'com.google.oauth-client:google-oauth-client:1.31.5'
     implementation 'commons-codec:commons-codec:1.15'
 
     testCompile 'junit:junit:4.13.1'
