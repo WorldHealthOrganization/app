@@ -101,7 +101,6 @@ class CountrySelectPage extends StatelessWidget {
                     disabledBackgroundColor:
                         Constants.neutralTextLightColor.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(50.0),
-                    // TODO: localize
                     child: Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: 32.0,
@@ -148,7 +147,6 @@ class CountrySelectPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                // TODO: localize
                 child: Padding(
                   padding: EdgeInsets.only(top: 24.0, bottom: 24.0, left: 16.0),
                   child: ThemedText(

@@ -26,7 +26,6 @@ class CheckUpIntroPage extends StatelessWidget {
               sliver: SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(16, 36, 16, 20),
-                  // TODO: localize
                   child: PageHeader.buildTitle(
                     S.of(context).checkUpIntroPageCheckup,
                     textStyle:
@@ -53,7 +52,6 @@ class CheckUpIntroPage extends StatelessWidget {
       ]));
 
   List<Widget> _optionWidgets(BuildContext context) {
-    // TODO: localize everything
     return <Widget>[
       Padding(
           padding: const EdgeInsets.only(
