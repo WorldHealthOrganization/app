@@ -52,14 +52,14 @@ public class NotificationsManager {
       for (String topic : topicsToAdd) {
         TopicManagementResponse resp = fcm.subscribeToTopic(theToken, topic);
         if (resp.getSuccessCount() == 1) {
-          if (!Environment.isProduction()) logger.info(
+          if (Environment.isDevLocal()) logger.info(
             "SUCCESS - Subscribed " + client.token + " to topic " + topic
           );
           client.subscribedTopics.add(topic);
           // If something goes wrong we'll still save the partial update.
           ofy().defer().save().entity(client);
         } else {
-          if (!Environment.isProduction()) {
+          if (Environment.isDevLocal()) {
             logger.info(
               "FAILED - Subscribed " + client.token + " to topic " + topic
             );
@@ -77,14 +77,14 @@ public class NotificationsManager {
           topic
         );
         if (resp.getSuccessCount() == 1) {
-          if (!Environment.isProduction()) logger.info(
+          if (Environment.isDevLocal()) logger.info(
             "SUCCESS - Unsubscribed " + client.token + " from topic " + topic
           );
           client.subscribedTopics.remove(topic);
           // If something goes wrong we'll still save the partial update.
           ofy().defer().save().entity(client);
         } else {
-          if (!Environment.isProduction()) logger.info(
+          if (Environment.isDevLocal()) logger.info(
             "FAILED - Unsubscribed " + client.token + " from topic " + topic
           );
         }

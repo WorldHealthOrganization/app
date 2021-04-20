@@ -20,11 +20,6 @@ public class WhoServletModule extends ServletModule {
     WhoServletModule.class
   );
 
-  @Provides
-  Environment provideEnvironment() {
-    return Environment.current();
-  }
-
   @Override
   protected void configureServlets() {
     install(new FirebaseModule());

@@ -19,13 +19,13 @@ public class WhoRpcFilter extends RpcFilter {
     RpcInterceptorChain chain = new RpcInterceptorChain()
     .add(new ClientInterceptor());
 
-    if (!Environment.isProduction()) {
+    if (Environment.isDevLocal()) {
       chain = chain.add(new LoggingInterceptor());
     }
 
     service(WhoService.class, service, chain);
 
-    if (!Environment.isProduction()) {
+    if (Environment.isDevLocal()) {
       allowHost("localhost");
       allowAll();
     }

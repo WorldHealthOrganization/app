@@ -9,54 +9,11 @@ import present.engine.AppEngine;
 /**
  * Exposes information specific to the current server environment.
  */
-public enum Environment {
-  TEST("http://localhost:3000"),
-  DEV_LOCAL("http://localhost:3000"),
-  DEV_SERVER("https://%s.appspot.com"),
-  STAGING("https://staging.whocoronavirus.org"),
-  HACKER("https://hacker.whocoronavirus.org"),
-  PRODUCTION("https://myhealth.who.int");
+public final class Environment {
 
-  private final String url;
+  private Environment() {}
 
-  Environment(String url) {
-    this.url = url;
-  }
-
-  /** Returns the URL for our server. */
-  public String url() {
-    if (this == DEV_SERVER) {
-      return this.url.format(getApplicationId());
-    }
-    return this.url;
-  }
-
-  /** Returns the current environment. */
-  public static Environment current() {
-    String applicationId = getApplicationId();
-
-    if (applicationId == null) return TEST;
-
-    if (
-      SystemProperty.environment.value() ==
-      SystemProperty.Environment.Value.Development
-    ) {
-      return DEV_LOCAL;
-    }
-
-    switch (applicationId) {
-      case "who-myhealth-staging":
-        return STAGING;
-      case "who-myhealth-hacker":
-        return HACKER;
-      case "myhealthapp-291008":
-        return PRODUCTION;
-      case "test":
-        return TEST;
-      default:
-        return DEV_SERVER;
-    }
-  }
+  private static final String STAGING_PROJECT_ID = "who-mh-staging";
 
   private static String getApplicationId() {
     String applicationId = AppEngine.applicationId();
@@ -70,24 +27,18 @@ public enum Environment {
     return id.getId();
   }
 
-  public String firebaseApplicationId() {
-    switch (this) {
-      case TEST:
-      case DEV_LOCAL:
-        return "who-myhealth-staging";
-      case DEV_SERVER:
-      case STAGING:
-      case HACKER:
-      case PRODUCTION:
-      default:
-        // Firebase and App Engine names should match
-        return getApplicationId();
+  public static String firebaseApplicationId() {
+    if (isDevLocal()) {
+      return STAGING_PROJECT_ID;
     }
+    return getApplicationId();
   }
 
-  /** True if this is the production server. */
-  public static boolean isProduction() {
-    Environment current = current();
-    return current == PRODUCTION || current == HACKER;
+  /** True if this is a development server. */
+  public static boolean isDevLocal() {
+    return (
+      SystemProperty.environment.value() ==
+      SystemProperty.Environment.Value.Development
+    );
   }
 }
