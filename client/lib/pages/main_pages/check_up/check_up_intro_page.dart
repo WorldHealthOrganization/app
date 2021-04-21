@@ -66,8 +66,9 @@ class CheckUpIntroPage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           )),
       _ListItem(
-          title:
-              S.of(context).checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers,
+          title: S
+              .of(context)
+              .checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers,
           iconName: 'safe'),
       _ListItem(
         title:
@@ -75,8 +76,7 @@ class CheckUpIntroPage extends StatelessWidget {
         iconName: 'check',
       ),
       _ListItem(
-        title:
-            S.of(context).checkUpIntroPageNotMedicalAdvise,
+        title: S.of(context).checkUpIntroPageNotMedicalAdvise,
         iconName: 'medical',
         extra: CupertinoButton(
           padding: EdgeInsets.zero,

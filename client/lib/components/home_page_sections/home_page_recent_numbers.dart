@@ -116,7 +116,9 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
                   : '',
               title: widget.statsStore.countryStats != null &&
                       widget.statsStore.countryCases >= 0
-                  ?  S.of(context).homePageCountryTotalCases((country?.name ?? ''))
+                  ? S
+                      .of(context)
+                      .homePageCountryTotalCases((country?.name ?? ''))
                   : '',
             ),
           ),

@@ -11,7 +11,6 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
-
 class CheckUpPosterPage extends StatelessWidget {
   final List<PosterCard> cards;
   final LogicContext logicContext;

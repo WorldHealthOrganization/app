@@ -230,11 +230,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               return [
                 if (!endpoint.isProd)
                   Alert(
-                      null, S.of(context).commonContentNoPrivacyOnServer(endpoint.projectIdShort),
+                      null,
+                      S.of(context).commonContentNoPrivacyOnServer(
+                          endpoint.projectIdShort),
                       dismissable: true),
                 if (content.unsupportedSchemaVersionAvailable)
-                  Alert(S.of(context).commonContentLoadingDialogUpdateRequiredTitle,
-                      S.of(context).commonContentLoadingDialogUpdateRequiredDetails),
+                  Alert(
+                      S
+                          .of(context)
+                          .commonContentLoadingDialogUpdateRequiredTitle,
+                      S
+                          .of(context)
+                          .commonContentLoadingDialogUpdateRequiredDetails),
               ];
             }),
           ],
