@@ -1,0 +1,21 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  items:
+    - item_type: menu_list_tile
+      title: تقارير الحالة
+      subtitle: تقدم تقارير الحالة آخر التحديثات حول انتشار فيروس كورونا الجديد.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/
+    - item_type: menu_list_tile
+      title: تحديثات متجددة
+      subtitle: تحديثات متتالية حول مرض فيروس كورونا (COVID-19) صادرة عن وسائل الإعلام التابعة لمنظمة الصحة العالمية.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen
+    - item_type: menu_list_tile
+      title: مقالات إخبارية
+      subtitle: جميع النشرات الإخبارية والبيانات والملاحظات الخاصة بوسائل الإعلام.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news
+    - item_type: menu_list_tile
+      title: إحاطتان صحفيتان
+      subtitle: جلسات إعلامية بشأن مرض فيروس كورونا (COVID-19) بما في ذلك مقاطع الفيديو والتسجيلات الصوتية والمستنسخة.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings

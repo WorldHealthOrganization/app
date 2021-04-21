@@ -1,0 +1,21 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  items:
+    - item_type: menu_list_tile
+      title: Informes de situación
+      subtitle: Los informes de situación proporcionan las últimas actualizaciones sobre el nuevo brote de coronavirus.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/
+    - item_type: menu_list_tile
+      title: Actualizaciones rodantes
+      subtitle: Actualizaciones constantes sobre la enfermedad de coronavirus (COVID-19) provenientes de todos los medios de la OMS.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen
+    - item_type: menu_list_tile
+      title: Artículos de noticias
+      subtitle: Todos los comunicados de prensa, declaraciones y notas para los medios.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news
+    - item_type: menu_list_tile
+      title: Sesiones informativas para la prensa
+      subtitle: Informes de prensa sobre la enfermedad de Coronavirus (COVID - 19) , incluidos videos, audio y transcripciones.
+      href: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings

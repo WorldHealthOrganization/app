@@ -20,15 +20,22 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'fr';
 
   static m0(copyrightString, versionString) =>
-      "${copyrightString} ${versionString} Développé par le Collectif OMS Application COVID-19.";
+      "${copyrightString} ${versionString} Conçue par l\'application Collective WHO COVID-19.";
 
-  static m1(team) => "Grâce à : ${team}";
+  static m1(team) => "Merci à: ${team}";
 
-  static m2(version, buildNumber) => "Version ${version} (${buildNumber})";
+  static m2(projectIdShort) =>
+      "Aucune confidentialité sur le serveur - ${projectIdShort}";
 
-  static m3(year) => "© ${year} OMS";
+  static m3(version, buildNumber) => "Version ${version} (${buildNumber})";
 
-  static m4(lastUpd) => "Dernière mise à jour ${lastUpd}";
+  static m4(year) => "© ${year} Qui";
+
+  static m5(country) => "${country} Total des cas";
+
+  static m6(lastUpd) => "Dernière mise ${lastUpd} à jour";
+
+  static m7(attribution) => "Source: ${attribution}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function>{
@@ -48,89 +55,139 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("Afficher les licences"),
+        "checkUpIntroPageByUsingThisToolYouAgreeToItsTermsAnd":
+            MessageLookupByLibrary.simpleMessage(
+                "En utilisant cet outil, vous acceptez ses conditions générales et que QUI ne sera pas responsable des dommages liés à votre utilisation."),
+        "checkUpIntroPageCheckup":
+            MessageLookupByLibrary.simpleMessage("Check-Up"),
+        "checkUpIntroPageGetStarted":
+            MessageLookupByLibrary.simpleMessage("Lancez-vous"),
+        "checkUpIntroPageNotMedicalAdvise": MessageLookupByLibrary.simpleMessage(
+            "Les informations fournies par cet outil ne constituent pas des conseils médicaux et ne doivent pas être utilisées pour diagnostiquer ou traiter des troubles médicaux."),
+        "checkUpIntroPageSeeTerms": MessageLookupByLibrary.simpleMessage(
+            "Reportez-vous aux conditions"),
+        "checkUpIntroPageYouShouldKnow":
+            MessageLookupByLibrary.simpleMessage("Vous devez savoir..."),
+        "checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers":
+            MessageLookupByLibrary.simpleMessage(
+                "Vos réponses ne seront pas partagées avec QUI ou d\'autres personnes sans votre permission."),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
-                "Veuillez mettre à jour vers la dernière version de l\'application afin de recevoir les dernières informations et mises à jour."),
+                "Veuillez mettre à jour la dernière version de l\'application afin de recevoir les dernières informations et mises à jour."),
+        "commonContentLoadingDialogUpdateRequiredDetails":
+            MessageLookupByLibrary.simpleMessage(
+                "Ces informations peuvent être dépassées. Vous devez mettre à jour cette application pour recevoir des informations-19 plus récentes."),
         "commonContentLoadingDialogUpdateRequiredTitle":
-            MessageLookupByLibrary.simpleMessage("Mise à jour requise"),
+            MessageLookupByLibrary.simpleMessage(
+                "Mise à jour d\'application requise"),
+        "commonContentNoPrivacyOnServer": m2,
+        "commonDialogButtonNext":
+            MessageLookupByLibrary.simpleMessage("Suivant"),
         "commonDialogButtonOk": MessageLookupByLibrary.simpleMessage("OK"),
         "commonPermissionRequestPageButtonSkip":
-            MessageLookupByLibrary.simpleMessage("Passer à l\'étape suivante"),
+            MessageLookupByLibrary.simpleMessage("Sauter"),
         "commonWhoAppShareIconButtonDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Découvrez l\'application officielle COVID-19 de l\'Organisation mondiale de la Santé https://covid19app.who.int/app"),
+                "Découvrez l\'application officielle COVID-19 de l\'Organisation mondiale de la santé https://covid19app.who.int/app"),
         "commonWorldHealthOrganization": MessageLookupByLibrary.simpleMessage(
-            "Organisation mondiale de la Santé"),
+            "Organisation mondiale de la santé"),
         "commonWorldHealthOrganizationCoronavirusApp":
-            MessageLookupByLibrary.simpleMessage("COVID-19"),
-        "commonWorldHealthOrganizationCoronavirusAppVersion": m2,
-        "commonWorldHealthOrganizationCoronavirusCopyright": m3,
-        "healthCheckTitle": MessageLookupByLibrary.simpleMessage(
-            "Contrôle de l\'état de santé"),
+            MessageLookupByLibrary.simpleMessage("CLIGNOTANT-19"),
+        "commonWorldHealthOrganizationCoronavirusAppVersion": m3,
+        "commonWorldHealthOrganizationCoronavirusCopyright": m4,
+        "countrySelectCountryLabel":
+            MessageLookupByLibrary.simpleMessage("Pays"),
+        "countrySelectPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Sélectionner"),
+        "healthCheckTitle":
+            MessageLookupByLibrary.simpleMessage("Bilan de santé"),
+        "homePageCountryTotalCases": m5,
+        "homePageCovid19Response":
+            MessageLookupByLibrary.simpleMessage("Réponse cordiale-19"),
+        "homePageGlobalTotalCases":
+            MessageLookupByLibrary.simpleMessage("Total total de cas"),
         "homePagePageButtonLatestNumbers":
-            MessageLookupByLibrary.simpleMessage("Les derniers chiffres"),
+            MessageLookupByLibrary.simpleMessage("Derniers chiffres"),
         "homePagePageButtonLatestNumbersUrl":
             MessageLookupByLibrary.simpleMessage("https://who.sprinklr.com"),
         "homePagePageButtonNewsAndPress":
             MessageLookupByLibrary.simpleMessage("Actualités et presse"),
         "homePagePageButtonProtectYourself":
-            MessageLookupByLibrary.simpleMessage("Protégez-vous"),
+            MessageLookupByLibrary.simpleMessage("Se protéger"),
         "homePagePageButtonQuestions":
-            MessageLookupByLibrary.simpleMessage("Questions & Réponses"),
+            MessageLookupByLibrary.simpleMessage("Questions & réponses"),
         "homePagePageButtonTravelAdvice":
-            MessageLookupByLibrary.simpleMessage("Conseils aux voyageurs"),
+            MessageLookupByLibrary.simpleMessage("Conseils de voyage"),
         "homePagePageButtonWHOMythBusters":
-            MessageLookupByLibrary.simpleMessage("Quels sont les faits"),
+            MessageLookupByLibrary.simpleMessage("Obtenir les faits"),
         "homePagePageButtonWHOMythBustersDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Tout savoir sur le COVID-19 et les mesures barrières pour empêcher la propagation du virus"),
+                "Apprenez les faits sur COVID-19 et comment prévenir la propagation"),
         "homePagePageButtonYourQuestionsAnswered":
-            MessageLookupByLibrary.simpleMessage("Questions & Réponses"),
+            MessageLookupByLibrary.simpleMessage("Questions & réponses"),
+        "homePagePageDonate":
+            MessageLookupByLibrary.simpleMessage("Faire un don ici"),
+        "homePagePageDonateUrl": MessageLookupByLibrary.simpleMessage(
+            "https://covid19responsefund.org/"),
         "homePagePageSliverListAboutTheApp":
             MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
         "homePagePageSliverListAboutTheAppDialog":
             MessageLookupByLibrary.simpleMessage(
-                "Application officielle COVID-19 de l\'Organisation mondiale de Santé"),
-        "homePagePageSliverListDonate":
-            MessageLookupByLibrary.simpleMessage("Faire un don ici"),
-        "homePagePageSliverListDonateUrl": MessageLookupByLibrary.simpleMessage(
-            "https://covid19responsefund.org/"),
+                "L\'application - 19 OFFICIELLE de l\'Organisation mondiale de la santé."),
         "homePagePageSliverListProvideFeedback":
             MessageLookupByLibrary.simpleMessage(
-                "Envoyer des commentaires à propos de l\'application"),
+                "Fournir des commentaires sur l\'application"),
         "homePagePageSliverListSettings":
             MessageLookupByLibrary.simpleMessage("Paramètres"),
         "homePagePageSliverListSettingsDataCollection":
             MessageLookupByLibrary.simpleMessage(
-                "Autoriser l\'OMS à collecter des données pour l\'amélioration de l\'application à l\'aide de Google Analytics"),
+                "Permettre à QUI recueillir des analyses pour améliorer les produits à l\'aide de Google analytics"),
         "homePagePageSliverListSettingsHeader1":
-            MessageLookupByLibrary.simpleMessage(
-                "Collecte de données d\'usage"),
+            MessageLookupByLibrary.simpleMessage("Analytique"),
         "homePagePageSliverListSettingsHeader2":
-            MessageLookupByLibrary.simpleMessage("Langues"),
+            MessageLookupByLibrary.simpleMessage("Langue"),
+        "homePagePageSliverListSettingsNotificationsHeader":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "homePagePageSliverListSettingsNotificationsInfo":
+            MessageLookupByLibrary.simpleMessage(
+                "Permettre à QUI vous envoyer des notifications pour vous informer des mises à jour"),
         "homePagePageSliverListShareTheApp":
             MessageLookupByLibrary.simpleMessage("Partager l\'application"),
-        "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
-            "Apporter son soutien au personnel soignant"),
         "homePagePageSubTitle":
-            MessageLookupByLibrary.simpleMessage("Informations & outils"),
-        "homePagePageTitle": MessageLookupByLibrary.simpleMessage("COVID-19"),
+            MessageLookupByLibrary.simpleMessage("Informations et outils"),
+        "homePagePageSupport": MessageLookupByLibrary.simpleMessage(
+            "Aider à soutenir les efforts de secours"),
+        "homePagePageTitle":
+            MessageLookupByLibrary.simpleMessage("CLIGNOTANT-19"),
+        "latestNumbersPageCasesDimension":
+            MessageLookupByLibrary.simpleMessage("Étuis mondiaux"),
+        "latestNumbersPageDaily":
+            MessageLookupByLibrary.simpleMessage("Tous les jours"),
+        "latestNumbersPageDailyToggle":
+            MessageLookupByLibrary.simpleMessage("Nouveau"),
+        "latestNumbersPageDeathsDimension":
+            MessageLookupByLibrary.simpleMessage("Décès dans le monde"),
+        "latestNumbersPageDisclosure": MessageLookupByLibrary.simpleMessage(
+            "Les données peuvent être incomplètes pour le jour ou la semaine en cours."),
         "latestNumbersPageGlobalCasesTitle":
-            MessageLookupByLibrary.simpleMessage("CAS DANS LE MONDE"),
+            MessageLookupByLibrary.simpleMessage("ÉTUIS MONDIAUX"),
         "latestNumbersPageGlobalDeaths":
-            MessageLookupByLibrary.simpleMessage("DÉCÈS DANS LE MONDE"),
-        "latestNumbersPageLastUpdated": m4,
+            MessageLookupByLibrary.simpleMessage("DÉCÈS DANS LE MONDE"),
+        "latestNumbersPageLastUpdated": m6,
+        "latestNumbersPageSourceGlobalStatsAttribution": m7,
         "latestNumbersPageTitle":
-            MessageLookupByLibrary.simpleMessage("Les derniers chiffres"),
+            MessageLookupByLibrary.simpleMessage("Chiffres récents"),
+        "latestNumbersPageTotalToggle":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "latestNumbersPageUpdating":
             MessageLookupByLibrary.simpleMessage("Mise à jour…"),
         "latestNumbersPageViewLiveData": MessageLookupByLibrary.simpleMessage(
             "Afficher les données en direct"),
-        "legalLandingPageAnd": MessageLookupByLibrary.simpleMessage(" et "),
+        "legalLandingPageAnd": MessageLookupByLibrary.simpleMessage("et"),
         "legalLandingPageButtonAgree": MessageLookupByLibrary.simpleMessage(
-            "En poursuivant, vous acceptez nos"),
+            "En procédant, vous acceptez notre"),
         "legalLandingPageButtonGetStarted":
-            MessageLookupByLibrary.simpleMessage("Commencer"),
+            MessageLookupByLibrary.simpleMessage("Lancez-vous"),
         "legalLandingPagePrivacyPolicyLinkText":
             MessageLookupByLibrary.simpleMessage(
                 "Politique de confidentialité"),
@@ -141,33 +198,33 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "https://www.who.int/myhealthapp/terms-of-use"),
         "legalLandingPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Application Officielle COVID-19 de l\'OMS"),
+            "Application D\'Information officielle-19"),
         "locationSharingPageButton": MessageLookupByLibrary.simpleMessage(
-            "Activer le partage de localisation"),
+            "Autoriser le partage de lieux"),
         "locationSharingPageDescription": MessageLookupByLibrary.simpleMessage(
-            "Pour accéder aux actualités et informations locales, activez le partage de localisation."),
+            "Pour obtenir des informations et des actualités locales, sélectionnez votre pays d\'origine."),
         "locationSharingPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Retrouvez toute l\'actualité de votre communauté"),
+            "Recevez les dernières actualités de votre communauté"),
         "newsFeedSliverListNewsFeedItemDescription1":
             MessageLookupByLibrary.simpleMessage(
-                "Les rapports de situation fournissent les dernières mises à jour concernant la nouvelle épidémie de coronavirus."),
+                "Les rapports de Situation fournissent les dernières mises à jour sur la nouvelle épidémie de coronavirus."),
         "newsFeedSliverListNewsFeedItemDescription2":
             MessageLookupByLibrary.simpleMessage(
-                "Mises à jour continues sur la maladie à coronavirus (COVID-19) provenant de tous les médias de l\'OMS."),
+                "Des mises à jour sur la maladie du coronavirus (COVID-19) provenant de tous les médias de l\'Organisation."),
         "newsFeedSliverListNewsFeedItemDescription3":
             MessageLookupByLibrary.simpleMessage(
                 "Tous les communiqués de presse, déclarations et notes pour les médias."),
         "newsFeedSliverListNewsFeedItemDescription4":
             MessageLookupByLibrary.simpleMessage(
-                "Conférences de presse sur la maladie à coronavirus (COVID-19) avec des contenus audio-visuels et des transcriptions."),
+                "Conférences de presse sur la maladie du Coronavirus (COVID-19) comprenant des vidéos, des fichiers audio et des transcriptions."),
         "newsFeedSliverListNewsFeedItemTitle1":
-            MessageLookupByLibrary.simpleMessage("Rapports de situation"),
+            MessageLookupByLibrary.simpleMessage("Rapports de Situation"),
         "newsFeedSliverListNewsFeedItemTitle2":
-            MessageLookupByLibrary.simpleMessage("Mises à jour continues"),
+            MessageLookupByLibrary.simpleMessage("Mises à jour roulantes"),
         "newsFeedSliverListNewsFeedItemTitle3":
-            MessageLookupByLibrary.simpleMessage("Articles de presse"),
+            MessageLookupByLibrary.simpleMessage("Articles d\'actualité"),
         "newsFeedSliverListNewsFeedItemTitle4":
-            MessageLookupByLibrary.simpleMessage("Points presse"),
+            MessageLookupByLibrary.simpleMessage("Points de presse"),
         "newsFeedSliverListNewsFeedItemUrl1": MessageLookupByLibrary.simpleMessage(
             "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/"),
         "newsFeedSliverListNewsFeedItemUrl2": MessageLookupByLibrary.simpleMessage(
@@ -178,98 +235,106 @@ class MessageLookup extends MessageLookupByLibrary {
             "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/press-briefings"),
         "newsFeedTitle":
             MessageLookupByLibrary.simpleMessage("Actualités et presse"),
+        "notificationsEnableDialogHeader":
+            MessageLookupByLibrary.simpleMessage("Activer les notifications"),
+        "notificationsEnableDialogOptionLater":
+            MessageLookupByLibrary.simpleMessage("Peut-être plus tard"),
+        "notificationsEnableDialogOptionOpenSettings":
+            MessageLookupByLibrary.simpleMessage("Ouvrir les paramètres"),
+        "notificationsEnableDialogText": MessageLookupByLibrary.simpleMessage(
+            "Comme vous avez précédemment désactivé les notifications, nous aurons besoin que vous réactivez manuellement les notifications via les paramètres système de l\'application"),
         "notificationsPagePermissionRequestPageButton":
-            MessageLookupByLibrary.simpleMessage("Autoriser les notifications"),
+            MessageLookupByLibrary.simpleMessage("Autoriser les Notifications"),
         "notificationsPagePermissionRequestPageDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Pour rester au fait de l\'actualité sur le COVID-19, activez les notifications de l\'application développée par l\'Organisation mondiale de la Santé."),
+                "Pour rester au courant des dernières actualités de-19, activez les notifications d\'applications de l\'Organisation mondiale de la santé."),
         "notificationsPagePermissionRequestPageTitle":
             MessageLookupByLibrary.simpleMessage(
-                "Restez à jour sur le COVID-19"),
+                "Restez informé (e) sur les mises à jour-19"),
         "protectYourselfHeader":
             MessageLookupByLibrary.simpleMessage("Recommandations générales"),
         "protectYourselfListOfItemsPageListItem1":
             MessageLookupByLibrary.simpleMessage(
-                "*Lavez-vous les mains* avec de l\'eau et du savon pour éviter de tomber malade ou de transmettre des infections"),
+                "*Lavez vos mains* avec du savon et de l\'eau pour éviter de tomber malade et de propager des infections aux autres"),
         "protectYourselfListOfItemsPageListItem2":
             MessageLookupByLibrary.simpleMessage(
-                "*Évitez de vous toucher* les yeux, la bouche et le nez"),
+                "*Évitez de toucher* vos yeux, votre bouche et votre nez"),
         "protectYourselfListOfItemsPageListItem3":
             MessageLookupByLibrary.simpleMessage(
-                "*Couvrez-vous la bouche et le nez* avec le pli du coude ou un mouchoir lorsque vous toussez ou éternuez"),
+                "*Couvrez votre bouche et votre nez* avec votre coude ou votre tissu tordu lorsque vous touchez ou étincelez"),
         "protectYourselfListOfItemsPageListItem4":
             MessageLookupByLibrary.simpleMessage(
-                "*Maintenez une distance* d\'au moins 1 mètre (3 pieds) avec toute personne malade"),
+                "*Restez à plus de* 1 mètre (>3 pieds) d\'une personne malade"),
         "protectYourselfListOfItemsPageListItem5":
             MessageLookupByLibrary.simpleMessage(
-                "Portez un masque uniquement si vous ou la personne dont vous vous occupez souffrez de symptômes du COVID-19 (en particulier la toux)"),
+                "Ne portez un masque que si vous ou une personne que vous prenez soin d\'elle est malade avec des symptômes de-19 (surtout le toughing)"),
         "protectYourselfTitle":
-            MessageLookupByLibrary.simpleMessage("Protégez-vous"),
+            MessageLookupByLibrary.simpleMessage("Se protéger"),
         "travelAdviceContainerText": MessageLookupByLibrary.simpleMessage(
-            "<p>L&#39;OMS continue de <b>conseiller l&#39;application de restrictions de voyage ou commerciales</b> vers les pays connaissant des épidémies de COVID-19.</p> <p><b>It is prudent for travellers who are sick to delay or avoid travel to affected areas</b>, in particular for elderly travellers and people with chronic diseases or underlying health conditions. Les «&nbsp;zones touchées&nbsp;» désignent les pays, provinces, territoires ou villes dans lesquels la transmission du COVID-19 est en cours, contrairement aux zones ne signalant que des cas importés.</p>"),
+            "<p>QUI continue de <b> se prémunir contre l\'application de restrictions </b> commerciales ou de voyages dans les pays SUBISSANT de fortes épidémies de - 19.</p> <p><b>il est prudent pour les voyageurs malades de retarder ou d\'éviter de se rendre dans les </b> zones touchées, en particulier pour les voyageurs âgés et les personnes souffrant de maladies chroniques ou de maladies sous-jacentes. Les « zones touchées» sont considérées comme les pays, les provinces, les territoires ou les villes qui connaissent une transmission continue de-19 élevé, dans le cadre d\'un contrat avec des régions signalant uniquement les cas d\'importation.</p>"),
         "travelAdvicePageButtonGeneralRecommendations":
             MessageLookupByLibrary.simpleMessage("Recommandations générales"),
         "travelAdvicePageButtonGeneralRecommendationsDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Tout savoir sur le COVID-19 et les mesures barrières pour empêcher la propagation du virus"),
+                "Apprenez les faits sur COVID-19 et comment prévenir la propagation"),
         "travelAdvicePageButtonGeneralRecommendationsLink":
             MessageLookupByLibrary.simpleMessage(
                 "https://www.who.int/emergencies/diseases/novel-coronavirus-2019"),
         "travelAdvicePageListItem1Text": MessageLookupByLibrary.simpleMessage(
-            "Surveiller l\'apparition de symptômes pendant 14 jours et respecter les protocoles nationaux des pays d\'accueil."),
+            "Auto-Surveillez les symptômes pendant 14 jours et suivez les protocoles nationaux des pays destinataires."),
         "travelAdvicePageListItem2Text": MessageLookupByLibrary.simpleMessage(
-            "Certains pays peuvent exiger des voyageurs de retour de l\'étranger d\'être placés en quarantaine."),
+            "Certains pays peuvent exiger que les voyageurs retournant chez eux entrent dans la quarantaine."),
         "travelAdvicePageListItem3Text": MessageLookupByLibrary.simpleMessage(
-            "En cas de survenue de symptômes, les voyageurs sont invités à contacter les professionnels de santé locaux, de préférence par téléphone, et de les informer de leurs symptômes et de leur historique de voyage."),
+            "En cas de symptômes, il est conseillé aux voyageurs de contacter les prestataires de soins de santé locaux, de préférence par téléphone, et de les informer de leurs symptômes et de leur historique de voyage."),
         "travelAdvicePageListTitle": MessageLookupByLibrary.simpleMessage(
-            "Les voyageurs revenant des zones touchées doivent :"),
+            "Les voyageurs revenant des zones touchées doivent :"),
         "whoMythBustersListOfItemsPageListItem1":
             MessageLookupByLibrary.simpleMessage(
-                "De nombreuses fausses informations circulent. Voici les faits."),
+                "Il y a beaucoup de fausses informations autour de, ce sont les faits"),
         "whoMythBustersListOfItemsPageListItem10":
             MessageLookupByLibrary.simpleMessage(
-                "Les scanners thermiques PEUVENT détecter si une personne présente de la fièvre, mais NE PEUVENT PAS détecter si une personne est porteuse ou non du coronavirus."),
+                "Les lecteurs thermiques PEUVENT détecter si les gens ont de la fièvre mais ne peuvent pas détecter si quelqu\'un a ou non le coronavirus"),
         "whoMythBustersListOfItemsPageListItem11":
             MessageLookupByLibrary.simpleMessage(
-                "Vaporiser de l\'alcool ou du chlore sur tout le corps NE TUE PAS les virus qui ont déjà pénétré dans votre organisme"),
+                "La pulvérisation d\'alcool ou de chlore sur tout votre corps ne TUERA pas les virus qui sont déjà entrés dans votre corps"),
         "whoMythBustersListOfItemsPageListItem12":
             MessageLookupByLibrary.simpleMessage(
-                "Les vaccins contre la pneumonie, tels que le vaccin contre les infections invasives à pneumocoque ou le vaccin contre l\'Haemophilus influenzae b (Hib), n\'ont AUCUN effet protecteur contre le coronavirus"),
+                "Les vaccins contre la pneumonie, tels que le vaccin pneumococcal et le vaccin contre l\'Haemophilus influenzae de type B (Hib), NE FOURNISSENT PAS de protection contre le coronavirus"),
         "whoMythBustersListOfItemsPageListItem13":
             MessageLookupByLibrary.simpleMessage(
-                "Il n\'existe AUCUNE preuve que le rinçage régulier du nez avec une solution ait protégé des individus contre l\'infection par le coronavirus"),
+                "Il n\'existe aucune preuve que le rinçage régulier du nez avec de la saline a protégé les gens contre l\'infection par le coronavirus"),
         "whoMythBustersListOfItemsPageListItem14":
             MessageLookupByLibrary.simpleMessage(
-                "L\'ail est bon pour la santé, mais il n\'existe AUCUNE preuve que la consommation d\'ail ait protégé des individus du coronavirus au cours de l\'épidémie actuelle"),
+                "L\'ail est sain, mais il n\'y a aucune preuve de l\'épidémie actuelle que manger de l\'ail a protégé les gens du coronavirus"),
         "whoMythBustersListOfItemsPageListItem15":
             MessageLookupByLibrary.simpleMessage(
-                "Les antibiotiques sont SANS EFFET sur les virus. Les antibiotiques agissent uniquement contre les bactéries"),
+                "Les antibiotiques NE FONCTIONNENT PAS contre les virus, les antibiotiques fonctionnent uniquement contre les bactéries"),
         "whoMythBustersListOfItemsPageListItem16":
             MessageLookupByLibrary.simpleMessage(
-                "Il n\'existe à ce jour AUCUNE recommandation de médicament spécifique pour prévenir ou traiter le coronavirus"),
+                "À ce jour, aucun médicament spécifique N\'est recommandé pour prévenir ou traiter le coronavirus"),
         "whoMythBustersListOfItemsPageListItem2":
             MessageLookupByLibrary.simpleMessage(
-                "Quel que soit leur âge, les gens PEUVENT être infectés par le coronavirus. Les personnes âgées, ainsi que celles qui présentent déjà d\'autres maladies (telles que : asthme, diabète, maladies cardiaques) semblent être plus vulnérables face au risque de contracter la maladie liée au virus"),
+                "Les personnes de tous âges PEUVENT être infectées par le coronavirus. Les personnes âgées et les personnes souffrant de troubles médicaux préexistants (comme l\'asthme, le diabète, les maladies cardiaques) semblent plus vulnérables pour tomber gravement malades avec le virus"),
         "whoMythBustersListOfItemsPageListItem3":
             MessageLookupByLibrary.simpleMessage(
-                "Le temps froid et la neige NE PEUVENT PAS vaincre le coronavirus"),
+                "Le froid et la neige ne peuvent pas tuer le coronavirus"),
         "whoMythBustersListOfItemsPageListItem4":
             MessageLookupByLibrary.simpleMessage(
-                "Le coronavirus PEUT se transmettre sous les climats chauds et humides"),
+                "Le coronavirus PEUT être transmis dans des régions aux climats chauds et humides"),
         "whoMythBustersListOfItemsPageListItem5":
             MessageLookupByLibrary.simpleMessage(
-                "Le coronavirus NE PEUT PAS se transmettre par des piqûres de moustique"),
+                "Le coronavirus ne peut pas être transmis par les moustiques"),
         "whoMythBustersListOfItemsPageListItem6":
             MessageLookupByLibrary.simpleMessage(
-                "Il n\'existe AUCUNE preuve que les animaux domestiques tels que les chiens ou chats puissent transmettre le coronavirus"),
+                "RIEN NE prouve que les animaux/animaux domestiques comme les chiens ou les chats puissent transmettre le coronavirus"),
         "whoMythBustersListOfItemsPageListItem7":
             MessageLookupByLibrary.simpleMessage(
-                "Le fait de prendre un bain NE PERMET PAS de se prémunir contre le coronavirus"),
+                "Prendre un bain chaud N\'empêche PAS le coronavirus"),
         "whoMythBustersListOfItemsPageListItem8":
             MessageLookupByLibrary.simpleMessage(
-                "Les sèche-mains NE SONT PAS efficaces pour détruire le coronavirus"),
+                "Les sèche-mains ne sont pas efficaces pour tuer le coronavirus"),
         "whoMythBustersListOfItemsPageListItem9":
             MessageLookupByLibrary.simpleMessage(
-                "Les ultraviolets NE DOIVENT PAS être utilisés pour la stérilisation et ils peuvent provoquer des irritations cutanées")
+                "La lumière ultraviolette NE DOIT PAS être utilisée pour la stérilisation et peut provoquer une irritation cutanée")
       };
 }

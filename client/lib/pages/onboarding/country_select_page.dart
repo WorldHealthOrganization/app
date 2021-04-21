@@ -87,7 +87,7 @@ class CountrySelectPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                _buildOpenListRow(),
+                _buildOpenListRow(context),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                     24.0,
@@ -101,14 +101,13 @@ class CountrySelectPage extends StatelessWidget {
                     disabledBackgroundColor:
                         Constants.neutralTextLightColor.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(50.0),
-                    // TODO: localize
                     child: Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: 32.0,
                         vertical: 12.0,
                       ),
                       child: ThemedText(
-                        'Next',
+                        S.of(context).commonDialogButtonNext,
                         variant: TypographyVariant.button,
                         style: TextStyle(
                           color: CupertinoColors.white,
@@ -126,7 +125,7 @@ class CountrySelectPage extends StatelessWidget {
     );
   }
 
-  Widget _buildOpenListRow() {
+  Widget _buildOpenListRow(BuildContext context) {
     return Material(
       color: CupertinoColors.white,
       child: InkWell(
@@ -148,11 +147,10 @@ class CountrySelectPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                // TODO: localize
                 child: Padding(
                   padding: EdgeInsets.only(top: 24.0, bottom: 24.0, left: 16.0),
                   child: ThemedText(
-                    'Country',
+                    S.of(context).countrySelectCountryLabel,
                     variant: TypographyVariant.button,
                     style: TextStyle(
                       color: Constants.neutralTextColor,
@@ -171,7 +169,7 @@ class CountrySelectPage extends StatelessWidget {
                   ),
                   // TODO: localize
                   child: ThemedText(
-                    countryName ?? 'Select',
+                    countryName ?? S.of(context).countrySelectPlaceholder,
                     variant: TypographyVariant.body,
                     style: TextStyle(
                       color: countryName != null

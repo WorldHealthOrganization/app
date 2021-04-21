@@ -1,0 +1,80 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: fact
+  items:
+    - title_html: |
+        炎热和潮湿的气候 <b><u>不会让 COVALD-19 更容易传播。</u></b>
+      body_html: |
+        <p>COVALD-19 可以在任何气候下传播，无论温度是热、潮湿还是冷和干燥。</p>
+        <p>无论你住在哪里，保护自己不受科戴德-19 的最好方法都是经常洗手。 洗手有助于消除病毒，从而防止在触摸眼睛、口腔或鼻子时发生感染。</p>
+      image_name: streamline-gtf-hot-climates
+    - title_html: |
+        COVID-19 <b><u>不是由西红人传送的。</u></b>
+      body_html: |
+        <p>没有证据表明人们可以从西红柿或家用宠物那里获取病毒。</p>
+        <p>COVALD-19 是一种呼吸病毒，通过感染者将或耦合器喷入空气中的少量液体扩散。 为了保护自己，应避免与粘结或喷嚏的任何人接触。</p>
+      image_name: streamline-gtf-mosquito
+    - title_html: |
+        寒冷的天气 <b><u>不会杀死科维德-19 或其他疾病。</u></b>
+      body_html: |
+        无论外面的温度如何，要保护自己不受 CODAD-19 的影响，最好的方法是经常洗手。 洗手有助于消除病毒，从而防止在触摸眼睛、口腔或鼻子时发生感染。
+      image_name: streamline-gtf-cold-weather
+    - title_html: |
+        热水澡 <b><u>不</u></b> 能阻止人们得到-19。
+      body_html: |
+        <p>热水浴不能预防疾病，如果水温足以燃烧皮肤，它甚至可能有害。</p>
+        <p>保护自己不受 CODAD-19 保护的最佳方法是经常洗手。 洗手有助于消除病毒，从而防止在触摸眼睛、口腔或鼻子时发生感染。</p>
+      image_name: streamline-gtf-bath
+    - title_html: |
+        手动干燥器 <b><u>不会杀死新的 coronavis。</u></b>
+      body_html: |
+        保护自己不受 CODAD-19 保护的最佳方法是经常洗手。 洗手有助于消除病毒，从而防止在触摸眼睛、口腔或鼻子时发生感染。
+      image_name: streamline-gtf-hand-dryer
+    - title_html: |
+        <b><u>紫外线 (UV) 灯不应用于消毒双手或皮肤的其他部位。</u></b>
+      body_html: |
+        UV 辐射会导致皮肤刺激并损坏眼睛。<p>用酒精洗手或用肥皂和水洗手是消除病毒的最有效方法。
+      image_name: streamline-gtf-uv-lamp
+    - title_html: |
+        在身体上喷洒酒精或 <b><u>氯气不</u></b> 会杀死新的玉米病毒。
+      body_html: |
+        酒精和氯气可以用来清洁表面，但用它喷出身体不会预防病毒，如果已经在身体中，也不会杀死病毒。 酒精和氯气在身体上喷射时会伤害你的眼睛和口腔以及衣服。
+      image_name: streamline-gtf-spray
+    - title_html: |
+        肺癌疫苗 <b><u>不能抵御新的 coronavis。</u></b>
+      body_html: |
+        <p>目前尚无新的 coronavic 疫苗。 谁支持目前正在研发新的病毒疫苗的研究人员。</p>
+        <p>虽然防刺疫苗不能预防或保护人们免受新的 coronavic 的伤害，但我们强烈建议使用这些疫苗来治疗其他呼吸系统疾病。</p>
+      image_name: streamline-gtf-pneumonia-vaccine
+    - title_html: |
+        用盐水吹起鼻子 <b><u>不会妨碍人们获得科维德-19。</u></b>
+      body_html: |
+        有证据表明，经常用盐水呼气可以帮助人们更快地从常见的寒冷状态中恢复，但这不能防止科当德-19 或其他呼吸系统感染。
+      image_name: streamline-gtf-nose-rinse
+    - title_html: |
+        吃大蒜 <b><u>并不能阻止人们去吃 COVID-19。</u></b>
+      body_html: |
+        虽然大蒜是一种健康食品，但没有证据表明吃大蒜可以保护人们免受新的玉米病毒的影响。
+      image_name: streamline-gtf-garlic-2
+    - title_html: |
+        热扫描仪 <b><u>在</u></b> 没有发热的情况下无法检测是否有人感染了 COVID-19。
+      body_html: |
+        <p>热扫描仪可以读取体温，以确定一个人是否有发烧，这是 COVID-19 的症状。</p>
+        <p>当患者感染但没有发热时，热扫描仪无法检测 CODAD-19。 这可能需要 2-10 天才能让被感染的人生病并发烧。</p>
+      image_name: streamline-gtf-thermal-scanner
+    - title_html: |
+        新的玉米病毒会影响 <b><u>到</u></b> 所有年龄的人。
+      body_html: |
+        不同年龄的人，而不仅仅是老人，都可能感染新的玉米病毒，并且应该注意自我保护。 老年人和任何患有疾病（哮喘、糖尿病、心脏病等）的人都可能更容易受到伤害。
+      image_name: streamline-gtf-elderly
+    - title_html: |
+        抗生素 <b><u>不会阻止或治疗 CODAD-19。</u></b>
+      body_html: |
+        COVALD-19 是一种病毒，不能用抗生素杀死。 抗生素可以抵御细菌，不应用于预防病毒。
+      image_name: streamline-gtf-antibiotics
+    - title_html: |
+        目前 <b><u>，</u></b> 没有推荐用于预防或治疗新的玉米病毒的药物。
+      body_html: |
+        感染病毒的人应该得到对其症状的治疗，但治疗 COVID-19 的药物和疫苗尚未开发。 谁在与研究人员和合作伙伴合作开发新的治疗方法。
+      image_name: streamline-gtf-medicines

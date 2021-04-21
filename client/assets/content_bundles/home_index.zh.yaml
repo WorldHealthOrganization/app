@@ -1,0 +1,24 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: index
+  promos:
+    - promo_type: protect_yourself
+      title: 保护自己
+      subtitle: 学习如何在这种传染病中保持自己的安全。
+      button_text: 了解详情
+      href: /protect-yourself
+      image_name: undraw-home-promo-symptoms
+  items:
+    - item_type: recent_numbers
+      title: 最近数字
+      href: /recent-numbers
+    - item_type: protect_yourself
+      title: 保护自己
+      href: /protect-yourself
+    - item_type: information_card
+      title: 了解事实
+      subtitle: 在身体上喷洒酒精或氯气不会杀死新的玉米病毒。
+      href: /get-the-facts
+      button_text: 了解详情
+      image_name: streamline-gtf-spray

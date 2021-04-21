@@ -1,0 +1,24 @@
+schema_version: 1
+content_version: 5
+contents:
+  type: index
+  promos:
+    - promo_type: protect_yourself
+      title: Защитите себя
+      subtitle: Узнайте о том, как обеспечить себя в полной безопасности во время этой катастрофы.
+      button_text: Подробнее
+      href: /protect-yourself
+      image_name: undraw-home-promo-symptoms
+  items:
+    - item_type: recent_numbers
+      title: Последние цифры →
+      href: /recent-numbers
+    - item_type: protect_yourself
+      title: Защитите себя →
+      href: /protect-yourself
+    - item_type: information_card
+      title: Узнать факты
+      subtitle: Распыление спирта или хлора по всему телу не убивает нового коронавируса.
+      href: /get-the-facts
+      button_text: Подробнее
+      image_name: streamline-gtf-spray

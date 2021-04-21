@@ -1,0 +1,23 @@
+schema_version: 1
+content_version: 3
+contents:
+  type: index
+  promos:
+    - title: Узнать факты
+      subtitle: Раздувание мифов о компании COVID-19
+      button_text: Просмотреть
+      href: /get-the-facts
+      image_name: undraw-learn-promo
+  items:
+    - title: Советы по путешествиям
+      href: /travel-advice
+      image_name: undraw-learn-travel-advice
+    - title: Защитите себя
+      href: /protect-yourself
+      image_name: undraw-learn-protect-yourself
+    - title: Вопросы и ответы
+      href: /qa
+      image_name: undraw-learn-qa
+    - title: Новости и пресса
+      href: /news
+      image_name: undraw-learn-news-press

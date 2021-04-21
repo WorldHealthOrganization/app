@@ -24,13 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(team) => "Thanks to: ${team}";
 
-  static m2(version, buildNumber) => "Version ${version} (${buildNumber})";
+  static m2(projectIdShort) => "No privacy on server - ${projectIdShort}";
 
-  static m3(year) => "© ${year} WHO";
+  static m3(version, buildNumber) => "Version ${version} (${buildNumber})";
 
-  static m4(lastUpd) => "Last updated ${lastUpd}";
+  static m4(year) => "© ${year} WHO";
 
-  static m5(attribution) => "Source: ${attribution}";
+  static m5(country) => "${country} Total Cases";
+
+  static m6(lastUpd) => "Last updated ${lastUpd}";
+
+  static m7(attribution) => "Source: ${attribution}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function>{
@@ -49,11 +53,32 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutPageTitle": MessageLookupByLibrary.simpleMessage("About the App"),
         "aboutPageViewLicensesLinkText":
             MessageLookupByLibrary.simpleMessage("View Licenses"),
+        "checkUpIntroPageByUsingThisToolYouAgreeToItsTermsAnd":
+            MessageLookupByLibrary.simpleMessage(
+                "By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use."),
+        "checkUpIntroPageCheckup":
+            MessageLookupByLibrary.simpleMessage("Check-Up"),
+        "checkUpIntroPageGetStarted":
+            MessageLookupByLibrary.simpleMessage("Get Started"),
+        "checkUpIntroPageNotMedicalAdvise": MessageLookupByLibrary.simpleMessage(
+            "Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions."),
+        "checkUpIntroPageSeeTerms":
+            MessageLookupByLibrary.simpleMessage("See terms ›"),
+        "checkUpIntroPageYouShouldKnow":
+            MessageLookupByLibrary.simpleMessage("You should know..."),
+        "checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers":
+            MessageLookupByLibrary.simpleMessage(
+                "Your answers will not be shared with WHO or others without your permission."),
         "commonContentLoadingDialogUpdateRequiredBodyText":
             MessageLookupByLibrary.simpleMessage(
                 "Please update to the latest version of the app in order to receive the latest information and updates."),
+        "commonContentLoadingDialogUpdateRequiredDetails":
+            MessageLookupByLibrary.simpleMessage(
+                "This information may be outdated. You must update this app to receive more recent COVID-19 info."),
         "commonContentLoadingDialogUpdateRequiredTitle":
             MessageLookupByLibrary.simpleMessage("App Update Required"),
+        "commonContentNoPrivacyOnServer": m2,
+        "commonDialogButtonNext": MessageLookupByLibrary.simpleMessage("Next"),
         "commonDialogButtonOk": MessageLookupByLibrary.simpleMessage("OK"),
         "commonPermissionRequestPageButtonSkip":
             MessageLookupByLibrary.simpleMessage("Skip"),
@@ -64,10 +89,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("World Health Organization"),
         "commonWorldHealthOrganizationCoronavirusApp":
             MessageLookupByLibrary.simpleMessage("COVID-19"),
-        "commonWorldHealthOrganizationCoronavirusAppVersion": m2,
-        "commonWorldHealthOrganizationCoronavirusCopyright": m3,
+        "commonWorldHealthOrganizationCoronavirusAppVersion": m3,
+        "commonWorldHealthOrganizationCoronavirusCopyright": m4,
+        "countrySelectCountryLabel":
+            MessageLookupByLibrary.simpleMessage("Country"),
+        "countrySelectPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Select"),
         "healthCheckTitle":
             MessageLookupByLibrary.simpleMessage("Health Check"),
+        "homePageCountryTotalCases": m5,
+        "homePageCovid19Response":
+            MessageLookupByLibrary.simpleMessage("COVID-19 Response"),
+        "homePageGlobalTotalCases":
+            MessageLookupByLibrary.simpleMessage("Global Total Cases"),
         "homePagePageButtonLatestNumbers":
             MessageLookupByLibrary.simpleMessage("Latest Numbers"),
         "homePagePageButtonLatestNumbersUrl":
@@ -87,15 +121,15 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Learn the facts about COVID-19 and how to prevent the spread"),
         "homePagePageButtonYourQuestionsAnswered":
             MessageLookupByLibrary.simpleMessage("Questions & Answers"),
+        "homePagePageDonate":
+            MessageLookupByLibrary.simpleMessage("Donate Here"),
+        "homePagePageDonateUrl": MessageLookupByLibrary.simpleMessage(
+            "https://covid19responsefund.org/"),
         "homePagePageSliverListAboutTheApp":
             MessageLookupByLibrary.simpleMessage("About the app"),
         "homePagePageSliverListAboutTheAppDialog":
             MessageLookupByLibrary.simpleMessage(
                 "The official World Health Organization COVID-19 App."),
-        "homePagePageSliverListDonate":
-            MessageLookupByLibrary.simpleMessage("Donate Here"),
-        "homePagePageSliverListDonateUrl": MessageLookupByLibrary.simpleMessage(
-            "https://covid19responsefund.org/"),
         "homePagePageSliverListProvideFeedback":
             MessageLookupByLibrary.simpleMessage("Provide App Feedback"),
         "homePagePageSliverListSettings":
@@ -114,13 +148,14 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Allow WHO to send you notifications to inform you of updates"),
         "homePagePageSliverListShareTheApp":
             MessageLookupByLibrary.simpleMessage("Share the app"),
-        "homePagePageSliverListSupport": MessageLookupByLibrary.simpleMessage(
-            "Help support the\nrelief effort"),
         "homePagePageSubTitle":
             MessageLookupByLibrary.simpleMessage("Information & tools"),
+        "homePagePageSupport": MessageLookupByLibrary.simpleMessage(
+            "Help support the relief effort"),
         "homePagePageTitle": MessageLookupByLibrary.simpleMessage("COVID-19"),
         "latestNumbersPageCasesDimension":
             MessageLookupByLibrary.simpleMessage("Global Cases"),
+        "latestNumbersPageDaily": MessageLookupByLibrary.simpleMessage("Daily"),
         "latestNumbersPageDailyToggle":
             MessageLookupByLibrary.simpleMessage("New"),
         "latestNumbersPageDeathsDimension":
@@ -131,8 +166,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("GLOBAL CASES"),
         "latestNumbersPageGlobalDeaths":
             MessageLookupByLibrary.simpleMessage("GLOBAL DEATHS"),
-        "latestNumbersPageLastUpdated": m4,
-        "latestNumbersPageSourceGlobalStatsAttribution": m5,
+        "latestNumbersPageLastUpdated": m6,
+        "latestNumbersPageSourceGlobalStatsAttribution": m7,
         "latestNumbersPageTitle":
             MessageLookupByLibrary.simpleMessage("Recent Numbers"),
         "latestNumbersPageTotalToggle":

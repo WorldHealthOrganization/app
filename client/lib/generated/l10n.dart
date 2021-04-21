@@ -107,6 +107,16 @@ class S {
     );
   }
 
+  /// `Next`
+  String get commonDialogButtonNext {
+    return Intl.message(
+      'Next',
+      name: 'commonDialogButtonNext',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `App Update Required`
   String get commonContentLoadingDialogUpdateRequiredTitle {
     return Intl.message(
@@ -114,6 +124,26 @@ class S {
       name: 'commonContentLoadingDialogUpdateRequiredTitle',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `This information may be outdated. You must update this app to receive more recent COVID-19 info.`
+  String get commonContentLoadingDialogUpdateRequiredDetails {
+    return Intl.message(
+      'This information may be outdated. You must update this app to receive more recent COVID-19 info.',
+      name: 'commonContentLoadingDialogUpdateRequiredDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No privacy on server - {projectIdShort}`
+  String commonContentNoPrivacyOnServer(Object projectIdShort) {
+    return Intl.message(
+      'No privacy on server - $projectIdShort',
+      name: 'commonContentNoPrivacyOnServer',
+      desc: '',
+      args: [projectIdShort],
     );
   }
 
@@ -467,31 +497,41 @@ class S {
     );
   }
 
-  /// `Help support the\nrelief effort`
-  String get homePagePageSliverListSupport {
+  /// `Help support the relief effort`
+  String get homePagePageSupport {
     return Intl.message(
-      'Help support the\nrelief effort',
-      name: 'homePagePageSliverListSupport',
+      'Help support the relief effort',
+      name: 'homePagePageSupport',
       desc: '',
       args: [],
     );
   }
 
   /// `Donate Here`
-  String get homePagePageSliverListDonate {
+  String get homePagePageDonate {
     return Intl.message(
       'Donate Here',
-      name: 'homePagePageSliverListDonate',
+      name: 'homePagePageDonate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COVID-19 Response`
+  String get homePageCovid19Response {
+    return Intl.message(
+      'COVID-19 Response',
+      name: 'homePageCovid19Response',
       desc: '',
       args: [],
     );
   }
 
   /// `https://covid19responsefund.org/`
-  String get homePagePageSliverListDonateUrl {
+  String get homePagePageDonateUrl {
     return Intl.message(
       'https://covid19responsefund.org/',
-      name: 'homePagePageSliverListDonateUrl',
+      name: 'homePagePageDonateUrl',
       desc: '',
       args: [],
     );
@@ -502,6 +542,26 @@ class S {
     return Intl.message(
       'https://who.sprinklr.com',
       name: 'homePagePageButtonLatestNumbersUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{country} Total Cases`
+  String homePageCountryTotalCases(Object country) {
+    return Intl.message(
+      '$country Total Cases',
+      name: 'homePageCountryTotalCases',
+      desc: '',
+      args: [country],
+    );
+  }
+
+  /// `Global Total Cases`
+  String get homePageGlobalTotalCases {
+    return Intl.message(
+      'Global Total Cases',
+      name: 'homePageGlobalTotalCases',
       desc: '',
       args: [],
     );
@@ -1058,6 +1118,16 @@ class S {
     );
   }
 
+  /// `Daily`
+  String get latestNumbersPageDaily {
+    return Intl.message(
+      'Daily',
+      name: 'latestNumbersPageDaily',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `New`
   String get latestNumbersPageDailyToggle {
     return Intl.message(
@@ -1197,6 +1267,96 @@ class S {
       args: [],
     );
   }
+
+  /// `You should know...`
+  String get checkUpIntroPageYouShouldKnow {
+    return Intl.message(
+      'You should know...',
+      name: 'checkUpIntroPageYouShouldKnow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your answers will not be shared with WHO or others without your permission.`
+  String get checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers {
+    return Intl.message(
+      'Your answers will not be shared with WHO or others without your permission.',
+      name: 'checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.`
+  String get checkUpIntroPageByUsingThisToolYouAgreeToItsTermsAnd {
+    return Intl.message(
+      'By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.',
+      name: 'checkUpIntroPageByUsingThisToolYouAgreeToItsTermsAnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check-Up`
+  String get checkUpIntroPageCheckup {
+    return Intl.message(
+      'Check-Up',
+      name: 'checkUpIntroPageCheckup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.`
+  String get checkUpIntroPageNotMedicalAdvise {
+    return Intl.message(
+      'Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.',
+      name: 'checkUpIntroPageNotMedicalAdvise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See terms ›`
+  String get checkUpIntroPageSeeTerms {
+    return Intl.message(
+      'See terms ›',
+      name: 'checkUpIntroPageSeeTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get checkUpIntroPageGetStarted {
+    return Intl.message(
+      'Get Started',
+      name: 'checkUpIntroPageGetStarted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get countrySelectCountryLabel {
+    return Intl.message(
+      'Country',
+      name: 'countrySelectCountryLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select`
+  String get countrySelectPlaceholder {
+    return Intl.message(
+      'Select',
+      name: 'countrySelectPlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1205,9 +1365,19 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
+      Locale.fromSubtags(languageCode: 'ar', countryCode: 'SA'),
       Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'es'),
+      Locale.fromSubtags(languageCode: 'es', countryCode: 'ES'),
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'fr', countryCode: 'FR'),
+      Locale.fromSubtags(languageCode: 'pt'),
+      Locale.fromSubtags(languageCode: 'pt', countryCode: 'PT'),
+      Locale.fromSubtags(languageCode: 'ru'),
+      Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'),
+      Locale.fromSubtags(languageCode: 'zh'),
+      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

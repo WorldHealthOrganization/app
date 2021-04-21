@@ -6,6 +6,7 @@ import 'package:who_app/components/page_scaffold/page_header.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
+import 'package:who_app/generated/l10n.dart';
 
 import '../../about_page.dart';
 
@@ -25,9 +26,8 @@ class CheckUpIntroPage extends StatelessWidget {
               sliver: SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(16, 36, 16, 20),
-                  // TODO: localize
                   child: PageHeader.buildTitle(
-                    'Check-Up',
+                    S.of(context).checkUpIntroPageCheckup,
                     textStyle:
                         ThemedText.styleForVariant(TypographyVariant.title)
                             .merge(
@@ -52,7 +52,6 @@ class CheckUpIntroPage extends StatelessWidget {
       ]));
 
   List<Widget> _optionWidgets(BuildContext context) {
-    // TODO: localize everything
     return <Widget>[
       Padding(
           padding: const EdgeInsets.only(
@@ -62,27 +61,27 @@ class CheckUpIntroPage extends StatelessWidget {
             top: 0,
           ),
           child: ThemedText(
-            'You should know...',
+            S.of(context).checkUpIntroPageYouShouldKnow,
             variant: TypographyVariant.body,
             style: TextStyle(fontWeight: FontWeight.bold),
           )),
       _ListItem(
-          title:
-              'Your answers will not be shared with WHO or others without your permission.',
+          title: S
+              .of(context)
+              .checkUpIntroPageYourAnswersWillNotBeSharedWithWhoOrOthers,
           iconName: 'safe'),
       _ListItem(
         title:
-            'By using this tool, you agree to its terms and that WHO will not be liable for any harm relating to your use.',
+            S.of(context).checkUpIntroPageByUsingThisToolYouAgreeToItsTermsAnd,
         iconName: 'check',
       ),
       _ListItem(
-        title:
-            'Information provided by this tool does not constitute medical advise and should not be used to diagnose or treat medical conditions.',
+        title: S.of(context).checkUpIntroPageNotMedicalAdvise,
         iconName: 'medical',
         extra: CupertinoButton(
           padding: EdgeInsets.zero,
           child: ThemedText(
-            'See terms ›',
+            S.of(context).checkUpIntroPageSeeTerms,
             variant: TypographyVariant.body,
             style: TextStyle(
               color: Constants.whoBackgroundBlueColor,
@@ -106,7 +105,7 @@ class CheckUpIntroPage extends StatelessWidget {
       ),
       child: PageButton(
         Constants.whoBackgroundBlueColor,
-        'Get Started',
+        S.of(context).checkUpIntroPageGetStarted,
         () => Navigator.of(context, rootNavigator: true)
             .pushNamed('/symptom-checker-survey'),
         crossAxisAlignment: CrossAxisAlignment.center,
