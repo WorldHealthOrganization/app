@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:flutter/foundation.dart';
 import 'package:yaml/yaml.dart';
 
 /// A localized YAML file loaded preferentially from the network, falling back
@@ -16,7 +15,7 @@ class ContentBundle {
   /// Construct a bundle from utf-8 bytes containing YAML
   ContentBundle.fromBytes(Uint8List bytes,
       {bool unsupportedSchemaVersionAvailable = false}) {
-    var yamlString = Encoding.getByName('utf-8').decode(bytes);
+    var yamlString = Encoding.getByName('utf-8')!.decode(bytes);
     _init(yamlString,
         unsupportedSchemaVersionAvailable: unsupportedSchemaVersionAvailable);
   }
@@ -32,20 +31,20 @@ class ContentBundle {
       {bool unsupportedSchemaVersionAvailable = false}) {
     yaml = loadYaml(yamlString);
     unsupportedSchemaVersionAvailable = unsupportedSchemaVersionAvailable;
-    if (schemaVersion > maxSupportedSchemaVersion) {
+    if (schemaVersion! > maxSupportedSchemaVersion) {
       throw ContentBundleSchemaVersionException();
     }
   }
 
-  int get schemaVersion {
+  int? get schemaVersion {
     return getInt('schema_version');
   }
 
-  int get contentVersion {
+  int? get contentVersion {
     return getInt('content_version');
   }
 
-  String get contentType {
+  String? get contentType {
     try {
       return yaml['contents']['type'];
     } catch (err) {
@@ -54,7 +53,7 @@ class ContentBundle {
   }
 
   /// For content types containing a primary list of items, return the items.
-  YamlList get contentItems {
+  YamlList? get contentItems {
     try {
       return yaml['contents']['items'];
     } catch (err) {
@@ -62,7 +61,7 @@ class ContentBundle {
     }
   }
 
-  YamlList get contentResults {
+  YamlList? get contentResults {
     try {
       return yaml['contents']['results'];
     } catch (err) {
@@ -70,7 +69,7 @@ class ContentBundle {
     }
   }
 
-  YamlList get contentCards {
+  YamlList? get contentCards {
     try {
       return yaml['contents']['results_cards'];
     } catch (err) {
@@ -78,7 +77,7 @@ class ContentBundle {
     }
   }
 
-  YamlList get contentPromos {
+  YamlList? get contentPromos {
     try {
       return yaml['contents']['promos'];
     } catch (err) {
@@ -86,7 +85,7 @@ class ContentBundle {
     }
   }
 
-  YamlList get contentPoster {
+  YamlList? get contentPoster {
     try {
       return yaml['contents']['poster'];
     } catch (err) {
@@ -94,7 +93,7 @@ class ContentBundle {
     }
   }
 
-  String getString(String key) {
+  String? getString(String key) {
     try {
       return (yaml['contents'][key]).trim();
     } catch (err) {
@@ -102,7 +101,7 @@ class ContentBundle {
     }
   }
 
-  int getInt(String key, {int orDefault = -1}) {
+  int? getInt(String key, {int orDefault = -1}) {
     try {
       return yaml[key];
     } catch (err) {
@@ -116,7 +115,7 @@ class ContentBundle {
 class ContentBase {
   ContentBundle bundle;
 
-  ContentBase(this.bundle, {@required String schemaName}) {
+  ContentBase(this.bundle, {required String schemaName}) {
     if (bundle.contentType != schemaName) {
       throw Exception('Unsupported content type: ${bundle.contentType}');
     }

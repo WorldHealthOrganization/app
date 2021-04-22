@@ -15,13 +15,13 @@ class PermissionRequestPage extends StatelessWidget {
   final VoidCallback onSkip;
 
   const PermissionRequestPage(
-      {Key key,
-      @required this.pageTitle,
+      {Key? key,
+      required this.pageTitle,
       this.pageDescription = '',
-      @required this.buttonTitle,
-      @required this.onGrantPermission,
-      @required this.onSkip,
-      @required this.backgroundImageSrc})
+      required this.buttonTitle,
+      required this.onGrantPermission,
+      required this.onSkip,
+      required this.backgroundImageSrc})
       : super(key: key);
 
   @override
@@ -98,7 +98,7 @@ class PermissionRequestPage extends StatelessWidget {
                           verticalPadding: 12,
                           borderRadius: 35,
                           titleStyle: ThemedText.styleForVariant(
-                                  TypographyVariant.button)
+                                  TypographyVariant.button)!
                               .merge(TextStyle(color: CupertinoColors.white))),
                       Button(
                         padding: EdgeInsets.all(16),

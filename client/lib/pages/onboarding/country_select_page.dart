@@ -7,15 +7,15 @@ import 'package:who_app/constants.dart';
 import 'package:who_app/generated/l10n.dart';
 
 class CountrySelectPage extends StatelessWidget {
-  final String countryName;
+  final String? countryName;
   final Function onOpenCountryList;
   final Function onNext;
 
   const CountrySelectPage({
-    @required this.onOpenCountryList,
-    @required this.onNext,
+    required this.onOpenCountryList,
+    required this.onNext,
     this.countryName,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -96,7 +96,7 @@ class CountrySelectPage extends StatelessWidget {
                     12.0,
                   ),
                   child: Button(
-                    onPressed: countryName != null ? onNext : null,
+                    onPressed: countryName != null ? onNext as void Function()? : null,
                     backgroundColor: Constants.whoBackgroundBlueColor,
                     disabledBackgroundColor:
                         Constants.neutralTextLightColor.withOpacity(0.3),
@@ -130,7 +130,7 @@ class CountrySelectPage extends StatelessWidget {
     return Material(
       color: CupertinoColors.white,
       child: InkWell(
-        onTap: onOpenCountryList,
+        onTap: onOpenCountryList as void Function()?,
         child: Container(
           decoration: BoxDecoration(
               border: Border(

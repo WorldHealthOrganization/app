@@ -17,7 +17,7 @@ class UserPreferencesStore extends _UserPreferencesStore
     return ret;
   }
 
-  static Future<String> _getCountryIsoCode() async {
+  static Future<String?> _getCountryIsoCode() async {
     return (await SharedPreferences.getInstance())
         .getString(UserPreferenceKey.CountryISOCode.toString());
   }
@@ -28,9 +28,9 @@ abstract class _UserPreferencesStore with Store {
 
   @observable
   @protected
-  String obsCountryIsoCode;
+  String? obsCountryIsoCode;
 
-  String get countryIsoCode {
+  String? get countryIsoCode {
     return obsCountryIsoCode;
   }
 

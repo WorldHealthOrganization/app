@@ -3,7 +3,6 @@ import 'package:who_app/api/content/content_bundle.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 import 'package:who_app/api/linking.dart';
 import 'dart:ui';
-import 'package:meta/meta.dart';
 
 typedef IndexDataSource = Future<IndexContent> Function(Locale);
 
@@ -11,14 +10,14 @@ typedef IndexDataSource = Future<IndexContent> Function(Locale);
 /// Index data contains a series of title and optional subtitle pairs each with an associated
 /// link.
 class IndexContent extends ContentBase {
-  List<IndexItem> items;
-  List<IndexPromo> promos;
+  List<IndexItem>? items;
+  List<IndexPromo>? promos;
 
   IndexContent(ContentBundle bundle) : super(bundle, schemaName: 'index') {
     try {
       final yamlPromos = bundle.contentPromos;
       if (yamlPromos != null) {
-        promos = bundle.contentPromos
+        promos = bundle.contentPromos!
             .map((yamlPromo) => IndexPromo(
                   promoType: yamlPromo['promo_type'],
                   buttonText: yamlPromo['button_text'],
@@ -30,7 +29,7 @@ class IndexContent extends ContentBase {
                 ))
             .toList();
       }
-      items = bundle.contentItems
+      items = bundle.contentItems!
           .map((item) => IndexItem(
                 itemType: item['item_type'],
                 title: item['title'],
@@ -51,20 +50,20 @@ class IndexContent extends ContentBase {
 enum IndexPromoType { CheckYourSymptoms, ProtectYourself, DefaultType }
 
 class IndexPromo with ConditionalItem {
-  final String promoType;
-  final String title;
-  final String subtitle;
+  final String? promoType;
+  final String? title;
+  final String? subtitle;
   final RouteLink link;
-  final String buttonText;
-  final String imageName;
+  final String? buttonText;
+  final String? imageName;
   @override
-  final String displayCondition;
+  final String? displayCondition;
 
   IndexPromo({
-    @required this.title,
-    @required this.subtitle,
-    @required this.link,
-    @required this.buttonText,
+    required this.title,
+    required this.subtitle,
+    required this.link,
+    required this.buttonText,
     this.imageName,
     this.promoType,
     this.displayCondition,
@@ -90,14 +89,14 @@ enum IndexItemType {
 }
 
 class IndexItem with ConditionalItem {
-  final String itemType;
-  final String title;
-  final String subtitle;
-  final RouteLink link;
-  final String buttonText;
-  final String imageName;
+  final String? itemType;
+  final String? title;
+  final String? subtitle;
+  final RouteLink? link;
+  final String? buttonText;
+  final String? imageName;
   @override
-  final String displayCondition;
+  final String? displayCondition;
 
   IndexItem({
     this.itemType,

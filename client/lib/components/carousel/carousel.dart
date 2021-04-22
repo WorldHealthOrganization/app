@@ -1,21 +1,19 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:who_app/components/carousel/carousel_slide.dart';
-import 'package:who_app/constants.dart';
 import 'package:flutter/rendering.dart';
-import 'package:page_view_indicator/page_view_indicator.dart';
 import 'package:flutter/cupertino.dart';
 
 class CarouselView extends StatelessWidget {
   final List<CarouselSlide> items;
   final FirebaseAnalytics analytics = FirebaseAnalytics();
 
-  CarouselView({@required this.items});
+  CarouselView({required this.items});
 
   final pageIndexNotifier = ValueNotifier<int>(0);
 
   final PageController pageController = PageController();
 
-  Widget _animatedVisibility({@required Widget child, @required bool visible}) {
+  Widget _animatedVisibility({required Widget child, required bool visible}) {
     return ExcludeSemantics(
       excluding: !visible,
       child: AnimatedOpacity(
@@ -58,8 +56,7 @@ class CarouselView extends StatelessWidget {
             child: ValueListenableBuilder(
               valueListenable: pageIndexNotifier,
               // Anything not effected by the value of the notifier
-              child: _buildPageViewIndicator(context),
-              builder: (context, index, child) {
+              builder: (context, dynamic index, _) {
                 final isFirstPage = index == 0;
                 final isLastPage = index + 1 == items.length;
                 return Row(
@@ -73,7 +70,6 @@ class CarouselView extends StatelessWidget {
                         onPressed: goToPreviousPage,
                       ),
                     ),
-                    child,
                     _animatedVisibility(
                       visible: !isLastPage,
                       child: CupertinoButton(
@@ -113,43 +109,5 @@ class CarouselView extends StatelessWidget {
     analytics.logEvent(name: 'CarouselPreviousPage');
     return pageController.previousPage(
         duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
-  }
-
-  Widget _buildPageViewIndicator(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              constraints: BoxConstraints(maxWidth: width * 0.5),
-              child: FittedBox(
-                child: PageViewIndicator(
-                  pageIndexNotifier: pageIndexNotifier,
-                  length: items.length,
-                  normalBuilder: (animationController, index) => Circle(
-                    size: 20.0,
-                    color: Constants.neutralTextLightColor.withOpacity(0.2),
-                  ),
-                  highlightedBuilder: (animationController, index) =>
-                      ScaleTransition(
-                    scale: CurvedAnimation(
-                      parent: animationController,
-                      curve: Curves.ease,
-                    ),
-                    child: Circle(
-                      size: 24.0,
-                      color: Constants.primaryDarkColor,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
   }
 }

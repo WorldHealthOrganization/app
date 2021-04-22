@@ -4,11 +4,11 @@ import 'package:who_app/api/content/content_bundle.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/display_conditions.dart';
 
-abstract class ContentWidget<T extends ContentBase> extends StatelessWidget {
+abstract class ContentWidget<T extends ContentBase?> extends StatelessWidget {
   @protected
   final ContentStore dataSource;
 
-  ContentWidget({Key key, @required this.dataSource}) : super(key: key);
+  ContentWidget({Key? key, required this.dataSource}) : super(key: key);
 
   @protected
   T getContent();
@@ -27,5 +27,5 @@ abstract class ContentWidget<T extends ContentBase> extends StatelessWidget {
   }
 
   @protected
-  Widget buildImpl(BuildContext context, T content, LogicContext logicContext);
+  Widget buildImpl(BuildContext context, T content, LogicContext? logicContext);
 }

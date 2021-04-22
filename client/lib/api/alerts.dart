@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Alert {
-  final String title;
+  final String? title;
   final String body;
   final Color color;
   final bool dismissable;

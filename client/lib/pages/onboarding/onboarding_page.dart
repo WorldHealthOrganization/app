@@ -12,7 +12,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({Key key, @required this.service, @required this.prefs})
+  const OnboardingPage({Key? key, required this.service, required this.prefs})
       : super(key: key);
 
   final WhoService service;
@@ -28,7 +28,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   final PageController _pageController = PageController();
 
-  IsoCountry _selectedCountry;
+  IsoCountry? _selectedCountry;
   bool _showCountryListPage = true;
 
   @override
@@ -40,7 +40,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       //setupCountries();
     });
   }
@@ -54,7 +54,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       final currentCountryCode = Localizations.localeOf(context).countryCode;
       if (mounted) {
         setState(() {
-          _selectedCountry = countryList.countries[currentCountryCode];
+          _selectedCountry = countryList.countries[currentCountryCode!];
         });
       }
     }
@@ -67,7 +67,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return WillPopScope(
       onWillPop: () async {
         // If a previous page exists
-        if (_pageController.hasClients && _pageController.page > 0) {
+        if (_pageController.hasClients && _pageController.page! > 0) {
           await _pageController.previousPage(
             duration: _animationDuration,
             curve: _animationCurve,
@@ -85,7 +85,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           LegalLandingPage(onNext: () => _onLegalDone(store)),
           CountrySelectPage(
             onOpenCountryList: () async {
-              await setState(() {
+              setState(() {
                 _showCountryListPage = true;
               });
               await _toNextPage();
@@ -108,20 +108,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   void _selectCountry(IsoCountry country) async {
     _selectedCountry = country;
-    await setState(() {});
+    setState(() {});
     await _toPreviousPage();
   }
 
   Future<void> _onChooseCountry() async {
-    await widget.prefs.setCountryIsoCode(_selectedCountry.alpha2Code);
-    await setState(() {
+    await widget.prefs.setCountryIsoCode(_selectedCountry!.alpha2Code);
+    setState(() {
       _showCountryListPage = false;
     });
     await _toNextPage();
     var fcmToken = await UserPreferences().getFirebaseToken();
     try {
       await widget.service.putClientSettings(
-          token: fcmToken, isoCountryCode: _selectedCountry.alpha2Code);
+          token: fcmToken, isoCountryCode: _selectedCountry!.alpha2Code);
     } catch (error) {
       print('Error sending client settings to API: $error');
     }

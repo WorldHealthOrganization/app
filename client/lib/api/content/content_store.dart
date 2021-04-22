@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 import 'package:who_app/api/content/content_bundle.dart';
@@ -18,23 +17,23 @@ part 'content_store.g.dart';
 
 class ContentStore extends _ContentStore with _$ContentStore {
   ContentStore(
-      {@required ContentService service,
-      @required Locale locale,
-      @required String countryIsoCode})
+      {required ContentService service,
+      required Locale locale,
+      required String? countryIsoCode})
       : super(service: service, locale: locale, countryIsoCode: countryIsoCode);
 }
 
 abstract class _ContentStore with Store implements Updateable {
   final Locale locale;
   final ContentService service;
-  final String countryIsoCode;
+  final String? countryIsoCode;
 
   _ContentStore(
-      {@required this.service,
-      @required this.locale,
-      @required this.countryIsoCode});
+      {required this.service,
+      required this.locale,
+      required this.countryIsoCode});
 
-  bool _unsupportedSchemaVersionAvailable(ContentBase cb) =>
+  bool _unsupportedSchemaVersionAvailable(ContentBase? cb) =>
       cb?.bundle?.unsupportedSchemaVersionAvailable ?? false;
 
   @computed
@@ -50,34 +49,34 @@ abstract class _ContentStore with Store implements Updateable {
       ].map(_unsupportedSchemaVersionAvailable).reduce((a, b) => a || b);
 
   @observable
-  LogicContext logicContext;
+  LogicContext? logicContext;
 
   @observable
-  AdviceContent travelAdvice;
+  AdviceContent? travelAdvice;
 
   @observable
-  FactContent getTheFacts;
+  FactContent? getTheFacts;
 
   @observable
-  FactContent protectYourself;
+  FactContent? protectYourself;
 
   @observable
-  IndexContent homeIndex;
+  IndexContent? homeIndex;
 
   @observable
-  IndexContent learnIndex;
+  IndexContent? learnIndex;
 
   @observable
-  IndexContent newsIndex;
+  IndexContent? newsIndex;
 
   @observable
-  QuestionContent questionsAnswered;
+  QuestionContent? questionsAnswered;
 
   @observable
-  SymptomCheckerContent symptomChecker;
+  SymptomCheckerContent? symptomChecker;
 
-  Future<void> updateBundle<T extends ContentBase>(String name, T old,
-      T Function(ContentBundle) constructor, void Function(T) setter) async {
+  Future<void> updateBundle<T extends ContentBase?>(String name, T old,
+      T Function(ContentBundle?) constructor, void Function(T) setter) async {
     final newValue =
         constructor(await service.load(locale, countryIsoCode, name));
     if ((newValue?.bundle?.contentVersion ?? 0) >
@@ -102,36 +101,36 @@ abstract class _ContentStore with Store implements Updateable {
     // the *cache* must be enforced elsewhere.
     try {
       await Future.wait([
-        updateBundle<IndexContent>(
-            'home_index', homeIndex, (cb) => IndexContent(cb), (v) {
+        updateBundle<IndexContent?>(
+            'home_index', homeIndex, (cb) => IndexContent(cb!), (v) {
           homeIndex = v;
         }),
-        updateBundle<AdviceContent>(
-            'travel_advice', travelAdvice, (cb) => AdviceContent(cb), (v) {
+        updateBundle<AdviceContent?>(
+            'travel_advice', travelAdvice, (cb) => AdviceContent(cb!), (v) {
           travelAdvice = v;
         }),
-        updateBundle<FactContent>(
-            'get_the_facts', getTheFacts, (cb) => FactContent(cb), (v) {
+        updateBundle<FactContent?>(
+            'get_the_facts', getTheFacts, (cb) => FactContent(cb!), (v) {
           getTheFacts = v;
         }),
-        updateBundle<FactContent>(
-            'protect_yourself', protectYourself, (cb) => FactContent(cb), (v) {
+        updateBundle<FactContent?>(
+            'protect_yourself', protectYourself, (cb) => FactContent(cb!), (v) {
           protectYourself = v;
         }),
-        updateBundle<IndexContent>(
-            'learn_index', learnIndex, (cb) => IndexContent(cb), (v) {
+        updateBundle<IndexContent?>(
+            'learn_index', learnIndex, (cb) => IndexContent(cb!), (v) {
           learnIndex = v;
         }),
-        updateBundle<IndexContent>(
-            'news_index', newsIndex, (cb) => IndexContent(cb), (v) {
+        updateBundle<IndexContent?>(
+            'news_index', newsIndex, (cb) => IndexContent(cb!), (v) {
           newsIndex = v;
         }),
-        updateBundle<QuestionContent>('your_questions_answered',
-            questionsAnswered, (cb) => QuestionContent(cb), (v) {
+        updateBundle<QuestionContent?>('your_questions_answered',
+            questionsAnswered, (cb) => QuestionContent(cb!), (v) {
           questionsAnswered = v;
         }),
-        updateBundle<SymptomCheckerContent>('symptom_checker', symptomChecker,
-            (cb) => SymptomCheckerContent(cb), (v) {
+        updateBundle<SymptomCheckerContent?>('symptom_checker', symptomChecker,
+            (cb) => SymptomCheckerContent(cb!), (v) {
           symptomChecker = v;
         })
       ]);

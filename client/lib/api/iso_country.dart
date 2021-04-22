@@ -1,6 +1,5 @@
 import 'dart:core';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 import 'package:yaml/yaml.dart';
 
 class IsoCountryList {
@@ -41,7 +40,7 @@ class IsoCountryList {
 }
 
 class IsoCountry {
-  final String name;
+  final String? name;
   final String alpha2Code;
 
   // https://en.wikipedia.org/wiki/Regional_indicator_symbol
@@ -54,7 +53,7 @@ class IsoCountry {
   static final alpha2CodeRe = RegExp('^[A-Z][A-Z]\$');
 
   IsoCountry({
-    @required this.name,
-    @required this.alpha2Code,
+    required this.name,
+    required this.alpha2Code,
   }) : assert(alpha2CodeRe.hasMatch(alpha2Code));
 }

@@ -14,19 +14,19 @@ class ContentService {
   static final Duration networkTimeout = Duration(seconds: 30);
   static final String baseAssetPath = 'assets/content_bundles'; // no trailing
 
-  ContentService({@required Endpoint endpoint})
+  ContentService({required Endpoint endpoint})
       : baseContentURL = '${endpoint.staticContentUrl}/content/bundles';
 
   /// Load a localized content bundle loaded preferentially from the network, falling back
   /// to a local asset.  If no bundle can be found with the specified name an exception is thrown.
-  Future<ContentBundle> load(
-      Locale locale, String countryIsoCode, String name) async {
+  Future<ContentBundle?> load(
+      Locale locale, String? countryIsoCode, String name) async {
     final languageCode = locale.languageCode;
     final countryCode = countryIsoCode ?? locale.countryCode;
     final languageAndCountry = '${languageCode}_${countryCode}';
     var unsupportedSchemaVersionAvailable = false;
 
-    ContentBundle networkBundle;
+    ContentBundle? networkBundle;
 
     // Attempt to load the full language and country path from the network.
     // The content server contains linked / duplicated paths as needed such that
@@ -62,7 +62,7 @@ class ContentService {
     }
   }
 
-  Future<ContentBundle> _loadFromAssetsWithFallback(
+  Future<ContentBundle?> _loadFromAssetsWithFallback(
       String name,
       String languageAndCountry,
       bool unsupportedSchemaVersionAvailable,

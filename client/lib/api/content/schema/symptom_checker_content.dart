@@ -1,5 +1,4 @@
 import 'package:who_app/api/content/content_bundle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 import 'package:who_app/api/content/schema/poster_content.dart';
 import 'package:who_app/api/linking.dart';
@@ -9,10 +8,10 @@ import 'package:who_app/api/linking.dart';
 /// and optional gating conditions determining which questions and answer options
 /// are to be presented.
 class SymptomCheckerContent extends ContentBase {
-  List<SymptomCheckerQuestion> questions;
-  List<SymptomCheckerResult> results;
-  Map<String, SymptomCheckerResultCard> cards;
-  List<PosterCard> poster;
+  late List<SymptomCheckerQuestion> questions;
+  late List<SymptomCheckerResult> results;
+  late Map<String?, SymptomCheckerResultCard> cards;
+  List<PosterCard>? poster;
 
   SymptomCheckerContent(ContentBundle bundle)
       : super(bundle, schemaName: 'symptom_checker') {
@@ -21,11 +20,11 @@ class SymptomCheckerContent extends ContentBase {
       poster = bundle.contentPoster?.map(PosterCard.cardFromContent)?.toList();
 
       // Primary symptom checker content
-      questions = bundle.contentItems.map(_questionFromContent).toList();
+      questions = bundle.contentItems!.map(_questionFromContent).toList();
       cards = {
-        for (var v in bundle.contentCards.map(_cardFromContent)) v.id: v
+        for (var v in bundle.contentCards!.map(_cardFromContent)) v.id: v
       };
-      results = bundle.contentResults.map(_resultFromContent).toList();
+      results = bundle.contentResults!.map(_resultFromContent).toList();
     } catch (err) {
       print('Error loading symptom checker data: $err');
       throw ContentBundleDataException();
@@ -55,7 +54,7 @@ class SymptomCheckerContent extends ContentBase {
   }
 
   SymptomCheckerResult _resultFromContent(dynamic item) {
-    SymptomCheckerResultSeverity severity;
+    SymptomCheckerResultSeverity? severity;
     if (item['severity'] != null) {
       switch (item['severity']) {
         case 'covid19_symptoms':
@@ -105,7 +104,7 @@ class SymptomCheckerContent extends ContentBase {
     );
   }
 
-  List<SymptomCheckerAnswer> _answersFromContent(dynamic item) {
+  List<SymptomCheckerAnswer>? _answersFromContent(dynamic item) {
     var answers = item['answers'];
     if (answers == null) {
       return null;
@@ -138,21 +137,21 @@ class SymptomCheckerQuestion {
   final SymptomCheckerQuestionType type;
 
   /// A globally unique id for the question.
-  final String id;
+  final String? id;
 
   /// The question.
-  final String title;
+  final String? title;
 
-  final String bodyHtml;
+  final String? bodyHtml;
 
   /// An optional image to be displayed with the question.
-  final String imageName;
+  final String? imageName;
 
   /// An expression indicating whether the question should be presented.
-  final String displayCondition;
+  final String? displayCondition;
 
   /// The list of possible answers.
-  final List<SymptomCheckerAnswer> answers;
+  final List<SymptomCheckerAnswer>? answers;
 
   bool get allowsMultipleSelection {
     switch (type) {
@@ -165,12 +164,12 @@ class SymptomCheckerQuestion {
   }
 
   SymptomCheckerQuestion({
-    @required this.type,
-    @required this.id,
-    @required this.title,
+    required this.type,
+    required this.id,
+    required this.title,
     this.bodyHtml,
     this.imageName,
-    @required this.displayCondition,
+    required this.displayCondition,
     this.answers,
   });
 }
@@ -184,24 +183,24 @@ enum SymptomCheckerResultSeverity {
 
 class SymptomCheckerResult {
   /// A globally unique id for the result.
-  final String id;
+  final String? id;
 
   /// The summary/title.
-  final String title;
+  final String? title;
 
   /// The summary/title.
-  final SymptomCheckerResultSeverity severity;
+  final SymptomCheckerResultSeverity? severity;
 
   /// An expression indicating whether the question should be presented.
-  final String displayCondition;
+  final String? displayCondition;
 
   /// The list of possible answers.
-  final List<SymptomCheckerResultCard> cards;
+  final List<SymptomCheckerResultCard>? cards;
 
   SymptomCheckerResult({
-    @required this.id,
+    required this.id,
     this.title,
-    @required this.displayCondition,
+    required this.displayCondition,
     this.severity,
     this.cards,
   });
@@ -209,24 +208,24 @@ class SymptomCheckerResult {
 
 class SymptomCheckerResultCard {
   /// The title
-  final String id;
+  final String? id;
 
   /// The title
-  final String title;
+  final String? title;
 
   /// The answer
-  final String bodyHtml;
+  final String? bodyHtml;
 
   /// An icon to display with the answer
-  final String iconName;
+  final String? iconName;
 
-  final RouteLink titleLink;
+  final RouteLink? titleLink;
 
-  final List<SymptomCheckerResultLink> links;
+  final List<SymptomCheckerResultLink>? links;
 
   SymptomCheckerResultCard({
-    @required this.id,
-    @required this.title,
+    required this.id,
+    required this.title,
     this.bodyHtml,
     this.iconName,
     this.titleLink,
@@ -235,34 +234,34 @@ class SymptomCheckerResultCard {
 }
 
 class SymptomCheckerResultLink {
-  final String title;
+  final String? title;
 
   final RouteLink link;
 
   SymptomCheckerResultLink({
-    @required this.title,
-    @required this.link,
+    required this.title,
+    required this.link,
   });
 }
 
 class SymptomCheckerAnswer with ConditionalItem {
   /// An id for the answer that is unique within its question context.
-  final String id;
+  final String? id;
 
   /// An expression indicating whether the question should be presented.
   @override
-  final String displayCondition;
+  final String? displayCondition;
 
   /// The answer
-  final String title;
+  final String? title;
 
   /// An icon to display with the answer
-  final String iconName;
+  final String? iconName;
 
   SymptomCheckerAnswer({
-    @required this.id,
+    required this.id,
     this.displayCondition,
-    @required this.title,
+    required this.title,
     this.iconName,
   });
 }

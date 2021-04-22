@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_html/style.dart';
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/question_content.dart';
 import 'package:who_app/api/linking.dart';
@@ -10,15 +11,14 @@ import 'package:who_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:who_app/pages/main_pages/routes.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
-class QuestionIndexPage extends ContentWidget<QuestionContent> {
+class QuestionIndexPage extends ContentWidget<QuestionContent?> {
   final String title;
 
   QuestionIndexPage(
-      {Key key, @required this.title, @required ContentStore dataSource})
+      {Key? key, required this.title, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -40,7 +40,8 @@ class QuestionIndexPage extends ContentWidget<QuestionContent> {
         heroTag: HeroTags.learn,
         body: [
           items.isNotEmpty
-              ? SliverList(delegate: SliverChildListDelegate(items))
+              ? SliverList(
+                  delegate: SliverChildListDelegate(items as List<Widget>))
               : LoadingIndicator(),
         ],
         title: title,
@@ -51,15 +52,15 @@ class QuestionIndexPage extends ContentWidget<QuestionContent> {
   }
 
   @override
-  QuestionContent getContent() {
+  QuestionContent? getContent() {
     return dataSource.questionsAnswered;
   }
 }
 
 class QuestionTile extends StatefulWidget {
   const QuestionTile({
-    @required this.questionItem,
-    @required this.index,
+    required this.questionItem,
+    required this.index,
   });
 
   final QuestionItem questionItem;
@@ -72,9 +73,9 @@ class QuestionTile extends StatefulWidget {
 
 class _QuestionTileState extends State<QuestionTile>
     with TickerProviderStateMixin {
-  AnimationController rotationController;
+  late AnimationController rotationController;
 
-  Color titleColor;
+  Color? titleColor;
 
   @override
   void initState() {
@@ -110,7 +111,7 @@ class _QuestionTileState extends State<QuestionTile>
                 rotationController.reverse();
               }
             },
-            key: PageStorageKey<String>(widget.questionItem.title),
+            key: PageStorageKey<String?>(widget.questionItem.title),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -130,16 +131,20 @@ class _QuestionTileState extends State<QuestionTile>
             title: Padding(
               padding: EdgeInsets.symmetric(vertical: 12),
               child: Html(
-                data: widget.questionItem.title,
-                defaultTextStyle: _titleStyle.copyWith(
-                  fontSize: 18 * MediaQuery.of(context).textScaleFactor,
-                ),
+                data: widget.questionItem.title!,
+                style: {
+                  '*': Style.fromTextStyle(
+                    _titleStyle.copyWith(
+                      fontSize: 18 * MediaQuery.of(context).textScaleFactor,
+                    ),
+                  ),
+                },
               ),
             ),
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
-                child: html(widget.questionItem.body),
+                child: html(widget.questionItem.body!),
               )
             ],
           ),
@@ -154,43 +159,44 @@ class _QuestionTileState extends State<QuestionTile>
 
     return Html(
       data: html,
-      defaultTextStyle: TextStyle(fontSize: 16 * textScaleFactor),
-      linkStyle: const TextStyle(
-        color: Colors.deepPurple,
-      ),
-      onLinkTap: (url) {
-        launchUrl(url);
+      style: {
+        '*': Style.fromTextStyle(
+          TextStyle(fontSize: 16 * textScaleFactor),
+        ),
+        'a': Style.fromTextStyle(
+          const TextStyle(
+            color: Colors.deepPurple,
+          ),
+        ),
+        'p': Style(
+          margin: EdgeInsets.only(bottom: 8),
+        ),
       },
-      onImageTap: (src) {},
-      // This is our css :)
-      customEdgeInsets: (dom.Node node) {
-        if (node is dom.Element) {
-          switch (node.localName) {
-            case 'p':
-              return EdgeInsets.only(bottom: 8);
-              break;
-            default:
-              return EdgeInsets.zero;
-          }
-        } else {
-          return EdgeInsets.zero;
-        }
-      },
-      customTextStyle: (dom.Node node, TextStyle baseStyle) {
-        if (node is dom.Element) {
-          switch (node.localName) {
-            case 'h2':
-              return baseStyle.merge(TextStyle(
-                  fontSize: 20,
-                  color: Color(0xff3C4245),
-                  fontWeight: FontWeight.w500));
-            case 'b':
-              return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
-          }
-        }
-        return baseStyle.merge(_bodyStyle);
+      onLinkTap: (url, _, _2, _3) {
+        launchUrl(url!);
       },
     );
+    //   onLinkTap: (url) {
+    //     launchUrl(url);
+    //   },
+
+    //   // This is our css :)
+
+    //   customTextStyle: (dom.Node node, TextStyle baseStyle) {
+    //     if (node is dom.Element) {
+    //       switch (node.localName) {
+    //         case 'h2':
+    //           return baseStyle.merge(TextStyle(
+    //               fontSize: 20,
+    //               color: Color(0xff3C4245),
+    //               fontWeight: FontWeight.w500));
+    //         case 'b':
+    //           return baseStyle.merge(TextStyle(fontWeight: FontWeight.bold));
+    //       }
+    //     }
+    //     return baseStyle.merge(_bodyStyle);
+    //   },
+    // );
   }
 
   final _bodyStyle = TextStyle(

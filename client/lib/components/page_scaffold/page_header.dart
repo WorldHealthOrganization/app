@@ -6,25 +6,25 @@ import 'package:who_app/constants.dart';
 
 class PageHeader extends StatelessWidget {
   ///Overrides headerWidget parameter
-  final String title;
+  final String? title;
 
   /// passing a widget into the header
-  final Widget headerWidget;
+  final Widget? headerWidget;
 
   /// A unique tag to animate a header between pages.
-  final String heroTag;
+  final String? heroTag;
   final Color borderColor;
-  final TextStyle titleStyle;
-  final Color appBarColor;
-  final Brightness appBarBrightness;
+  final TextStyle? titleStyle;
+  final Color? appBarColor;
+  final Brightness? appBarBrightness;
 
   /// Whether this header must be wrapped in a sliver
   final bool inSliver;
 
   /// An extra widget to show on the trailing side of the header
-  final Widget trailing;
+  final Widget? trailing;
 
-  final Widget appBarBottom;
+  final Widget? appBarBottom;
 
   final bool showBackButton;
 
@@ -52,15 +52,15 @@ class PageHeader extends StatelessWidget {
           children: [
             title != null
                 ? Text(
-                    title,
+                    title!,
                     style: TextStyle(color: Constants.accentNavyColor),
                   )
-                : headerWidget,
+                : headerWidget!,
           ],
         ));
     final leading = showBackButton ? BackButton() : null;
     final iconThemeData = IconThemeData(color: Constants.accentNavyColor);
-    final actions = <Widget>[if (trailing != null) trailing];
+    final actions = <Widget?>[if (trailing != null) trailing];
     final bgColor = appBarColor ?? Colors.transparent;
     final bottomBorder = Border(
         bottom:
@@ -74,12 +74,12 @@ class PageHeader extends StatelessWidget {
             title: titleWrapper,
             backgroundColor: bgColor,
             brightness: appBarBrightness,
-            actions: actions,
+            actions: actions as List<Widget>?,
             shape: bottomBorder,
             elevation: 0,
             pinned: true,
             primary: true,
-            bottom: appBarBottom,
+            bottom: appBarBottom as PreferredSizeWidget?,
           )
         : AppBar(
             centerTitle: false,
@@ -89,16 +89,16 @@ class PageHeader extends StatelessWidget {
             title: titleWrapper,
             backgroundColor: bgColor,
             brightness: appBarBrightness,
-            actions: actions,
+            actions: actions as List<Widget>?,
             shape: bottomBorder,
             elevation: 0,
             primary: true,
-            bottom: appBarBottom,
+            bottom: appBarBottom as PreferredSizeWidget?,
           );
   }
 
   static Widget buildTitle(String title,
-      {TextStyle textStyle,
+      {TextStyle? textStyle,
       TypographyVariant variant = TypographyVariant.header}) {
     return Semantics(
       header: true,

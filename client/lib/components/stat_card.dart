@@ -8,8 +8,8 @@ class StatCard extends StatelessWidget {
   final String title;
 
   const StatCard({
-    @required this.stat,
-    @required this.title,
+    required this.stat,
+    required this.title,
   });
 
   @override

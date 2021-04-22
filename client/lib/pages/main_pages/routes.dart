@@ -50,7 +50,7 @@ class Routes {
         ),
     '/symptom-checker-results': (context) => SymptomCheckerResultsPage(
         model:
-            ModalRoute.of(context).settings.arguments as SymptomCheckerModel),
+            ModalRoute.of(context)!.settings.arguments as SymptomCheckerModel?),
     '/news': (context) => NewsIndexPage(
           dataSource: Provider.of<ContentStore>(context),
         ),

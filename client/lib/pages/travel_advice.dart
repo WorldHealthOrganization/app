@@ -10,10 +10,10 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class TravelAdvice extends ContentWidget<AdviceContent> {
+class TravelAdvice extends ContentWidget<AdviceContent?> {
   TravelAdvice({
-    Key key,
-    @required ContentStore dataSource,
+    Key? key,
+    required ContentStore dataSource,
   }) : super(key: key, dataSource: dataSource);
 
   @override
@@ -22,7 +22,7 @@ class TravelAdvice extends ContentWidget<AdviceContent> {
       return (content?.items ?? [])
           .where((element) => element.isDisplayed(logicContext))
           .map((item) {
-        return item.isBanner
+        return item.isBanner!
             ? _Banner(title: item.title, body: item.body)
             : _TravelAdviceListItem(
                 title: item.title ?? '', description: item.body ?? '');
@@ -48,16 +48,16 @@ class TravelAdvice extends ContentWidget<AdviceContent> {
   }
 
   @override
-  AdviceContent getContent() {
+  AdviceContent? getContent() {
     return dataSource.travelAdvice;
   }
 }
 
 class _Banner extends StatelessWidget {
-  final String title;
-  final String body;
+  final String? title;
+  final String? body;
 
-  _Banner({@required this.title, @required this.body});
+  _Banner({required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +110,7 @@ class _TravelAdviceListItem extends StatelessWidget {
   final String title;
   final String description;
 
-  _TravelAdviceListItem({@required this.title, @required this.description});
+  _TravelAdviceListItem({required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {

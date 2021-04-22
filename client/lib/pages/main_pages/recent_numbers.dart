@@ -16,7 +16,7 @@ enum DataAggregation { daily, total }
 enum DataDimension { cases, deaths }
 
 extension StatSnapshotSlicing on StatSnapshot {
-  int valueBy(DataAggregation agg, DataDimension dim) {
+  int valueBy(DataAggregation? agg, DataDimension dim) {
     switch (agg) {
       case DataAggregation.daily:
         switch (dim) {
@@ -40,7 +40,7 @@ extension StatSnapshotSlicing on StatSnapshot {
 }
 
 extension CaseStatsSlicing on CaseStats {
-  int valueBy(DataDimension dim) {
+  int? valueBy(DataDimension dim) {
     switch (dim) {
       case DataDimension.cases:
         return hasCases() ? cases.toInt() : null;
@@ -55,14 +55,14 @@ class RecentNumbersPage extends StatefulWidget {
   final FirebaseAnalytics analytics = FirebaseAnalytics();
   final StatsStore statsStore;
 
-  RecentNumbersPage({Key key, @required this.statsStore}) : super(key: key);
+  RecentNumbersPage({Key? key, required this.statsStore}) : super(key: key);
 
   @override
   _RecentNumbersPageState createState() => _RecentNumbersPageState();
 }
 
 class _RecentNumbersPageState extends State<RecentNumbersPage> {
-  var aggregation = DataAggregation.daily;
+  DataAggregation? aggregation = DataAggregation.daily;
   var dimension = DataDimension.cases;
 
   @override
@@ -78,7 +78,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     return Observer(
       builder: (context) => PageScaffold(
         appBarColor: Constants.backgroundColor,
-        showBackButton: ModalRoute.of(context).canPop ?? false,
+        showBackButton: ModalRoute.of(context)!.canPop ?? false,
         appBarBottom: PreferredSize(
           preferredSize: Size(200, 66),
           child: Padding(
@@ -95,10 +95,10 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                   backgroundColor: Color(0xffEFEFEF),
                   children: _buildSegmentControlChildren(context, aggregation),
                   groupValue: aggregation,
-                  onValueChanged: (value) {
+                  onValueChanged: (dynamic value) {
                     widget.analytics.logEvent(
                         name: 'RecentNumberAggregation',
-                        parameters: {'index': aggregation.index});
+                        parameters: {'index': aggregation!.index});
                     setState(
                       () {
                         aggregation = value;
@@ -188,7 +188,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
   }
 
   Map<DataAggregation, Widget> _buildSegmentControlChildren(
-      BuildContext context, DataAggregation selectedValue) {
+      BuildContext context, DataAggregation? selectedValue) {
     var valueToDisplayText = {
       // TODO: Localize - need to regenerate translation keys as this string was changed
       DataAggregation.daily: 'Daily',
@@ -217,16 +217,16 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
 
 class _JurisdictionStats extends StatelessWidget {
   const _JurisdictionStats({
-    Key key,
-    @required this.name,
-    @required this.emoji,
-    @required this.aggregation,
-    @required this.stats,
+    Key? key,
+    required this.name,
+    required this.emoji,
+    required this.aggregation,
+    required this.stats,
   }) : super(key: key);
 
-  final DataAggregation aggregation;
+  final DataAggregation? aggregation;
   final String name, emoji;
-  final CaseStats stats;
+  final CaseStats? stats;
 
   @override
   Widget build(BuildContext context) {
@@ -264,8 +264,8 @@ class RegionText extends StatelessWidget {
   final String emoji;
 
   const RegionText({
-    @required this.country,
-    @required this.emoji,
+    required this.country,
+    required this.emoji,
   });
   @override
   Widget build(BuildContext context) {

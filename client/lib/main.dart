@@ -8,7 +8,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:observer_provider/observer_provider.dart';
+import 'package:who_app/api/observer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:who_app/api/alerts.dart';
 import 'package:who_app/api/content/content_store.dart';
@@ -34,19 +34,19 @@ import 'package:who_app/generated/l10n.dart';
 
 import 'package:who_app/api/content/content_loading.dart';
 
-PackageInfo _packageInfo;
+PackageInfo? _packageInfo;
 
-PackageInfo get packageInfo => _packageInfo;
+PackageInfo? get packageInfo => _packageInfo;
 
 // ATTENTION: never check this in as 'true'! Always set back to 'false' before
 //            sending out your PR. This is verified by `test/firebase_test.dart`.
 const USE_FIREBASE_LOCAL_EMULATORS = false;
 
-void main() async {
-  await mainImpl(routes: Routes.map);
+void main() {
+  mainImpl(routes: Routes.map);
 }
 
-void mainImpl({@required Map<String, WidgetBuilder> routes}) async {
+void mainImpl({required Map<String, WidgetBuilder> routes}) async {
   // Asyncronous code that runs before the splash screen is hidden goes before
   // runApp()
   if (!kIsWeb) {
@@ -112,10 +112,10 @@ Future<void> _onError(Object error, StackTrace stack) async {
 
 class MyApp extends StatefulWidget {
   const MyApp(
-      {Key key,
-      @required this.showOnboarding,
-      @required this.endpoint,
-      @required this.routes})
+      {Key? key,
+      required this.showOnboarding,
+      required this.endpoint,
+      required this.routes})
       : super(key: key);
   final bool showOnboarding;
   final Endpoint endpoint;
@@ -173,7 +173,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           providers: [
             ProxyProvider0(
               lazy: false,
-              update: (ctx, _) => Localizations.localeOf(ctx),
+              update: (ctx, dynamic _) => Localizations.localeOf(ctx),
             ),
             Provider(create: (_) => endpoint),
             FutureProvider(
@@ -185,10 +185,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               initialData: UserPreferencesStore.empty(),
             ),
             ProxyProvider(
-                update: (_, Endpoint endpoint, __) =>
+                update: (_, Endpoint endpoint, dynamic __) =>
                     WhoService(endpoint: endpoint.serviceUrl)),
             ProxyProvider2(
-              update: (_, WhoService service, UserPreferencesStore prefs, __) {
+              update: (_, WhoService service, UserPreferencesStore prefs,
+                  dynamic __) {
                 final ret = Notifications(service: service, prefs: prefs);
                 ret.configure();
                 ret.updateFirebaseToken();
@@ -209,7 +210,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             }),
             PeriodicUpdater.asProvider<StatsStore>(),
             ProxyProvider(
-                update: (_, Endpoint endpoint, __) => ContentService(
+                update: (_, Endpoint endpoint, dynamic __) => ContentService(
                       endpoint: endpoint,
                     )),
             ObserverProvider3(observerFn: (
@@ -240,11 +241,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               ];
             }),
           ],
-          child: child,
           builder: (ctx, child) {
             final alerts = Provider.of<List<Alert>>(ctx);
-            return AlertsWrapper(alerts: alerts, child: child);
+            return AlertsWrapper(alerts: alerts, child: child!);
           },
+          child: child,
         ),
         navigatorObservers: <NavigatorObserver>[observer],
         theme: ThemeData(

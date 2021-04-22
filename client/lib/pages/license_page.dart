@@ -49,7 +49,7 @@ class _LicensePageState extends State<LicensePage> {
         return true;
       }());
       final paragraphs =
-          await SchedulerBinding.instance.scheduleTask<List<LicenseParagraph>>(
+          await SchedulerBinding.instance!.scheduleTask<List<LicenseParagraph>>(
         license.paragraphs.toList,
         Priority.animation,
         debugLabel: 'License',

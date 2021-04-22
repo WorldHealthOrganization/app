@@ -8,17 +8,17 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 class CountryListPage extends StatefulWidget {
-  final String selectedCountryCode;
+  final String? selectedCountryCode;
   final Function onBack;
   final Function onCountrySelected;
   final Map<String, IsoCountry> countries;
 
   const CountryListPage({
-    @required this.onBack,
-    @required this.onCountrySelected,
-    @required this.countries,
+    required this.onBack,
+    required this.onCountrySelected,
+    required this.countries,
     this.selectedCountryCode,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -26,8 +26,8 @@ class CountryListPage extends StatefulWidget {
 }
 
 class _CountryListPageState extends State<CountryListPage> {
-  String selectedCountryCode;
-  List<IsoCountry> selectedCountries;
+  String? selectedCountryCode;
+  late List<IsoCountry> selectedCountries;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _CountryListPageState extends State<CountryListPage> {
               return nameMatch || selectedCountryCode == element.alpha2Code;
             }).toList();
             setState(() {
-              selectedCountries = filtered;
+              selectedCountries = filtered as List<IsoCountry>;
             });
           }),
       color: Constants.backgroundColor,

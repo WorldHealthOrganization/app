@@ -1,12 +1,12 @@
 import 'package:who_app/api/content/schema/conditional_content.dart';
 
 class PosterCard with ConditionalItem {
-  final String title;
-  final String bodyHtml;
-  final String iconName;
+  final String? title;
+  final String? bodyHtml;
+  final String? iconName;
   @override
-  final String displayCondition;
-  final bool severe;
+  final String? displayCondition;
+  final bool? severe;
 
   PosterCard({
     this.title,

@@ -8,7 +8,7 @@ class WhoCacheManager extends BaseCacheManager {
   // Change this key when the cache database becomes incompatible with the prior cache.
   static const key = 'whoCache2';
 
-  static WhoCacheManager _instance;
+  static WhoCacheManager? _instance;
 
   // If you don't have a network connection for >10 years, you don't update
   // the app, or we have more than 10000 content bundles, you might get old content.
@@ -22,13 +22,13 @@ class WhoCacheManager extends BaseCacheManager {
 
   factory WhoCacheManager() {
     _instance ??= WhoCacheManager._init();
-    return _instance;
+    return _instance!;
   }
 
   // This changes the behavior of the base method to wait for an update of the
   // expired file before returning, rather than favoring the cached version.
   @override
-  Future<File> getSingleFile(String url, {Map<String, String> headers}) async {
+  Future<File?> getSingleFile(String url, {Map<String, String>? headers}) async {
     final cacheFile = await getFileFromCache(url);
     if (cacheFile != null) {
       if (cacheFile.validTill.isBefore(DateTime.now())) {
@@ -41,7 +41,7 @@ class WhoCacheManager extends BaseCacheManager {
             throw Exception(
                 'No internet connectivity - will not attempt download');
           }
-          return (await webHelper.downloadFile(url, authHeaders: headers)).file;
+          return (await webHelper.downloadFile(url, authHeaders: headers!)).file;
         } catch (err) {
           print(
               'Error refreshing expired file, returning cached version: $url');
@@ -57,7 +57,7 @@ class WhoCacheManager extends BaseCacheManager {
         throw Exception('No internet connectivity - will not attempt download');
       }
       print('Downloading file: $url');
-      final download = await webHelper.downloadFile(url, authHeaders: headers);
+      final download = await webHelper.downloadFile(url, authHeaders: headers!);
       return download.file;
     } catch (e) {
       print('Error downloading file: $url, $e');

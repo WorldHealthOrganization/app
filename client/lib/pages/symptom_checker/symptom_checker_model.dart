@@ -19,7 +19,7 @@ class SymptomCheckerModel with ChangeNotifier {
   }
 
   /// Non-null when the question series is complete and ready for analysis.
-  List<SymptomCheckerResult> results;
+  List<SymptomCheckerResult>? results;
 
   /// True if the symptom checker cannot continue functioning.
   bool isFatalError = false;
@@ -37,7 +37,7 @@ class SymptomCheckerModel with ChangeNotifier {
   /// needed. If additional questions remain the next page will be added to
   /// the pages list. If the series is complete the results will be set.
   /// In both cases the change notifier will fire to indicate the update.
-  void answerQuestion(Set<String> answerIds) {
+  void answerQuestion(Set<String?> answerIds) {
     isFatalError = true;
     try {
       results = _answerQuestionImpl(answerIds);
@@ -50,7 +50,7 @@ class SymptomCheckerModel with ChangeNotifier {
     notifyListeners();
   }
 
-  List<SymptomCheckerResult> _answerQuestionImpl(Set<String> answerIds) {
+  List<SymptomCheckerResult>? _answerQuestionImpl(Set<String?> answerIds) {
     pages[pages.length - 1] = currentPage.withAnswers(answerIds);
 
     var nextPageFound = false;
@@ -61,7 +61,7 @@ class SymptomCheckerModel with ChangeNotifier {
       nextPageFound = logic.evaluateCondition(
           condition: _content.questions[i].displayCondition,
           previousPages: pages,
-          context: _logicContext);
+          context: _logicContext)!;
       if (nextPageFound) {
         pages.add(SymptomCheckerPageModel(
             question: _content.questions[i],
@@ -77,7 +77,7 @@ class SymptomCheckerModel with ChangeNotifier {
         logic.evaluateCondition(
             condition: r.displayCondition,
             previousPages: pages,
-            context: _logicContext)));
+            context: _logicContext)!));
   }
 
   /// Indicate that the user has driven the UI back to the previous page or
@@ -102,16 +102,16 @@ class SymptomCheckerPageModel {
   final int questionIndex;
 
   /// The set of selected answers or an empty set if no selection has been made.
-  final Set<String> selectedAnswers;
+  final Set<String?> selectedAnswers;
 
   SymptomCheckerPageModel({
-    @required this.question,
-    @required this.questionCount,
-    @required this.questionIndex,
+    required this.question,
+    required this.questionCount,
+    required this.questionIndex,
     this.selectedAnswers = const {},
   });
 
-  SymptomCheckerPageModel withAnswers(Set<String> answerIds) {
+  SymptomCheckerPageModel withAnswers(Set<String?> answerIds) {
     return SymptomCheckerPageModel(
         question: question,
         selectedAnswers: answerIds,
@@ -124,7 +124,7 @@ class SymptomCheckerPageModel {
 /// The UI applies these results to the model and observe the changes.
 abstract class SymptomCheckerPageDelegate {
   // Provide answers for the current page.
-  void answerQuestion(Set<String> answerIds);
+  void answerQuestion(Set<String?> answerIds);
 
   // Indicate that the user wishes to go back to the previous page using an
   // affordance on the page.

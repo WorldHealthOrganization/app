@@ -13,18 +13,18 @@ const Duration defaultSwapDuration = Duration(
 );
 
 class RecentNumbersBarGraph extends StatefulWidget {
-  final DataAggregation aggregation;
+  final DataAggregation? aggregation;
   final DataDimension dimension;
   final Color graphColor;
   const RecentNumbersBarGraph({
-    Key key,
-    @required this.timeseries,
-    @required this.aggregation,
-    @required this.dimension,
-    @required this.graphColor,
+    Key? key,
+    required this.timeseries,
+    required this.aggregation,
+    required this.dimension,
+    required this.graphColor,
   }) : super(key: key);
 
-  final List<StatSnapshot> timeseries;
+  final List<StatSnapshot>? timeseries;
 
   @override
   _RecentNumbersBarGraphState createState() => _RecentNumbersBarGraphState();
@@ -32,9 +32,9 @@ class RecentNumbersBarGraph extends StatefulWidget {
 
 class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   final startDate = DateTime.utc(2020, 1, 1);
-  List<BarChartRodData> rods;
-  int selectedIndex;
-  Duration swapDuration;
+  List<BarChartRodData>? rods;
+  int? selectedIndex;
+  late Duration swapDuration;
 
   @override
   void initState() {
@@ -61,7 +61,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
               if (touchResponse.spot != null &&
                   touchResponse.touchInput is! FlPanEnd &&
                   touchResponse.touchInput is! FlLongPressEnd) {
-                selectedIndex = touchResponse.spot.touchedRodDataIndex;
+                selectedIndex = touchResponse.spot!.touchedRodDataIndex;
               } else {
                 selectedIndex = null;
                 swapDuration = defaultSwapDuration;
@@ -73,7 +73,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
             fitInsideVertically: true,
             getTooltipItem: (barChartGroupData, _, barRodData, index) {
               final date = DateTime.fromMillisecondsSinceEpoch(
-                  widget.timeseries[index].epochMsec.toInt());
+                  widget.timeseries![index].epochMsec.toInt());
               // Abbr to fit on single line: e.g. "Oct 18, 2020"
               final formattedDate = DateFormat.yMMMd().format(date);
 
@@ -103,7 +103,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 
   double _buildSpace(double cardWidth) {
     if (widget.timeseries != null) {
-      return cardWidth * 3 / (widget.timeseries.length * 5);
+      return cardWidth * 3 / (widget.timeseries!.length * 5);
     } else {
       return cardWidth *
           3 /
@@ -114,20 +114,22 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
   List<BarChartRodData> _buildRods(double cardWidth) {
     var bars = <BarChartRodData>[];
 
-    if (widget.timeseries != null && widget.timeseries.isNotEmpty) {
-      for (var snapshot in widget.timeseries) {
+    if (widget.timeseries != null && widget.timeseries!.isNotEmpty) {
+      for (var snapshot in widget.timeseries!) {
         try {
           final yAxis =
               snapshot.valueBy(widget.aggregation, widget.dimension).toDouble();
           bars.add(
             BarChartRodData(
               y: yAxis,
-              color: selectedIndex == bars.length
-                  ? widget.graphColor
-                  : Constants.textColor.withOpacity(
-                      .3,
-                    ),
-              width: cardWidth / (widget.timeseries.length * 3),
+              colors: [
+                selectedIndex == bars.length
+                    ? widget.graphColor
+                    : Constants.textColor.withOpacity(
+                        .3,
+                      ),
+              ],
+              width: cardWidth / (widget.timeseries!.length * 3),
             ),
           );
         } catch (e) {
@@ -141,7 +143,9 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
         bars.add(
           BarChartRodData(
             y: 0,
-            color: Constants.textColor.withOpacity(.3),
+            colors: [
+              Constants.textColor.withOpacity(.3),
+            ],
             width: cardWidth / (daysSinceStart * 3),
           ),
         );
@@ -152,15 +156,15 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
 }
 
 class RecentNumbersGraph extends StatefulWidget {
-  final DataAggregation aggregation;
+  final DataAggregation? aggregation;
   final DataDimension dimension;
-  final List<StatSnapshot> timeseries;
+  final List<StatSnapshot>? timeseries;
 
   const RecentNumbersGraph({
-    Key key,
-    @required this.aggregation,
-    @required this.timeseries,
-    @required this.dimension,
+    Key? key,
+    required this.aggregation,
+    required this.timeseries,
+    required this.dimension,
   }) : super(key: key);
 
   @override
@@ -168,9 +172,9 @@ class RecentNumbersGraph extends StatefulWidget {
 }
 
 class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
-  Widget graph;
+  Widget? graph;
   final numFmt = NumberFormat.decimalPattern();
-  int titleData;
+  int? titleData;
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +186,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
     );
     try {
       titleData =
-          widget.timeseries.last.valueBy(widget.aggregation, widget.dimension);
+          widget.timeseries!.last.valueBy(widget.aggregation, widget.dimension);
     } catch (e) {
       titleData = 0;
     }

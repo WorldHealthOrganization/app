@@ -16,7 +16,7 @@ import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 class SymptomCheckerView extends StatefulWidget {
   final ContentStore dataSource;
 
-  const SymptomCheckerView({Key key, @required this.dataSource})
+  const SymptomCheckerView({Key? key, required this.dataSource})
       : super(key: key);
 
   @override
@@ -26,8 +26,8 @@ class SymptomCheckerView extends StatefulWidget {
 class _SymptomCheckerViewState extends State<SymptomCheckerView>
     implements SymptomCheckerPageDelegate {
   final PageController _controller = PageController();
-  SymptomCheckerModel _model;
-  List<Widget> _pages;
+  SymptomCheckerModel? _model;
+  List<Widget>? _pages;
   bool inTransition = false;
 
   @override
@@ -53,13 +53,13 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
           await LogicContext.generate(isoCountryCode: countryIsoCode);
       final store = widget.dataSource;
       await store.update();
-      var content = store.symptomChecker;
+      var content = store.symptomChecker!;
       await Dialogs.showUpgradeDialogIfNeededFor(context, content);
       _model = SymptomCheckerModel(content, logicContext);
     } catch (err, stacktrace) {
       print('Error loading content: $err\n$stacktrace');
     }
-    _model.addListener(_modelChanged);
+    _model!.addListener(_modelChanged);
     if (!mounted) return;
     setState(() {});
   }
@@ -112,7 +112,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     if (_model == null) {
       return _buildMessage('Loading...', loading: true);
     }
-    if (_model.isFatalError) {
+    if (_model!.isFatalError) {
       FirebaseAnalytics().logEvent(name: 'SymptomCheckerModelError');
       return _buildMessage(
           'Unfortunately the symptom checker encountered an error.  If this is an emergency, please call for help immediately.',
@@ -160,7 +160,7 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
       return;
     }
     setState(() {
-      _pages = _model.pages.map(_viewForPageModel).toList();
+      _pages = _model!.pages.map(_viewForPageModel).toList();
     });
     _nextPage();
   }
@@ -169,9 +169,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     if (!_controller.hasClients) {
       return;
     }
-    if (_controller.page < _model.pages.length) {
+    if (_controller.page! < _model!.pages.length) {
       inTransition = true;
-      await _controller.animateToPage(_model.pages.length - 1,
+      await _controller.animateToPage(_model!.pages.length - 1,
           duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
       inTransition = false;
     }
@@ -182,9 +182,9 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
 
   /// Receive answers from the page and update the model.
   @override
-  void answerQuestion(Set<String> answerIds) {
-    _model.answerQuestion(answerIds);
-    if (!_model.isFatalError && _model.results != null) {
+  void answerQuestion(Set<String?> answerIds) {
+    _model!.answerQuestion(answerIds);
+    if (!_model!.isFatalError && _model!.results != null) {
       Navigator.of(context)
           .pushNamed('/symptom-checker-results', arguments: _model);
       return;
@@ -197,6 +197,6 @@ class _SymptomCheckerViewState extends State<SymptomCheckerView>
     inTransition = true;
     await _previousPage();
     inTransition = false;
-    _model.previousQuestion();
+    _model!.previousQuestion();
   }
 }

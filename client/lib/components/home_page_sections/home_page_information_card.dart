@@ -7,22 +7,22 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
 class HomePageInformationCard extends StatelessWidget {
-  final String buttonText;
-  final RouteLink link;
-  final String subtitle;
-  final String title;
-  final String imageName;
+  final String? buttonText;
+  final RouteLink? link;
+  final String? subtitle;
+  final String? title;
+  final String? imageName;
 
-  String get assetName =>
+  String? get assetName =>
       imageName != null ? 'assets/svg/${imageName}.svg' : null;
 
   const HomePageInformationCard({
-    @required this.buttonText,
-    @required this.link,
-    @required this.subtitle,
-    @required this.title,
+    required this.buttonText,
+    required this.link,
+    required this.subtitle,
+    required this.title,
     this.imageName,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -43,7 +43,7 @@ class HomePageInformationCard extends StatelessWidget {
               Positioned(
                 right: 28.0,
                 child:
-                    Container(height: 96, child: SvgPicture.asset(assetName)),
+                    Container(height: 96, child: SvgPicture.asset(assetName!)),
               )
             ],
           )
@@ -52,16 +52,16 @@ class HomePageInformationCard extends StatelessWidget {
 }
 
 class _HomePageInformationCardInner extends StatelessWidget {
-  final String buttonText;
-  final RouteLink link;
-  final String subtitle;
-  final String title;
+  final String? buttonText;
+  final RouteLink? link;
+  final String? subtitle;
+  final String? title;
 
   const _HomePageInformationCardInner({
-    @required this.buttonText,
-    @required this.link,
-    @required this.subtitle,
-    @required this.title,
+    required this.buttonText,
+    required this.link,
+    required this.subtitle,
+    required this.title,
   });
 
   @override
@@ -71,7 +71,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
       child: Button(
         backgroundColor: Constants.illustrationBlue1Color,
         onPressed: () {
-          return link.open(context);
+          link!.open(context);
         },
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
@@ -115,7 +115,7 @@ class _HomePageInformationCardInner extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      return link.open(context);
+                      link!.open(context);
                     },
                   )
                 ],

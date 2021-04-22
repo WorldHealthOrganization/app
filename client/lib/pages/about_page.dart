@@ -25,7 +25,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final versionString = packageInfo != null
         ? S.of(context).commonWorldHealthOrganizationCoronavirusAppVersion(
-            packageInfo.version, packageInfo.buildNumber)
+            packageInfo!.version, packageInfo!.buildNumber)
         : null;
 
     final copyrightString = S
@@ -76,7 +76,7 @@ class AboutPage extends StatelessWidget {
                 child: ThemedText(
                   S.of(context).aboutPageBuiltByCreditText(
                         copyrightString,
-                        versionString,
+                        versionString!,
                       ),
                   variant: TypographyVariant.body,
                 ),
@@ -88,8 +88,8 @@ class AboutPage extends StatelessWidget {
                   future: DefaultAssetBundle.of(context)
                       .loadString('assets/credits.yaml'),
                   builder: (context, snapshot) {
-                    dynamic yaml =
-                        loadYaml(snapshot.data ?? 'team: []\nsupporters: []');
+                    dynamic yaml = loadYaml(snapshot.data?.toString() ??
+                        'team: []\nsupporters: []');
                     var team = List<String>.from(yaml['team'] as YamlList);
                     // Sort order is random A-Z or Z-A.
                     final orderSign = Random.secure().nextBool() ? 1 : -1;
@@ -131,14 +131,14 @@ class AboutPage extends StatelessWidget {
                                     horizontal: 24,
                                     vertical: 24,
                                   ),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.copy,
-                                    size: 14,
-                                  ),
                                   onPressed: () {
                                     Clipboard.setData(ClipboardData(
                                         text: _buildInfoText(context)));
                                   },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.copy,
+                                    size: 14,
+                                  ),
                                 ),
                                 ThemedText(
                                   _buildInfoText(context),

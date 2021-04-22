@@ -4,9 +4,9 @@ import 'package:who_app/constants.dart';
 
 class MenuListTile extends StatelessWidget {
   const MenuListTile({
-    Key key,
-    @required this.title,
-    @required this.onTap,
+    Key? key,
+    required this.title,
+    required this.onTap,
     this.subtitle,
     this.contentPadding =
         const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
@@ -14,12 +14,12 @@ class MenuListTile extends StatelessWidget {
     this.titleStyle,
   }) : super(key: key);
 
-  final String title;
-  final String subtitle;
+  final String? title;
+  final String? subtitle;
   final EdgeInsets contentPadding;
   final VoidCallback onTap;
   final bool hasArrow;
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,10 @@
 import 'package:expressions/expressions.dart';
-import 'package:meta/meta.dart';
-import 'package:flutter/material.dart';
 import 'package:who_app/api/user_preferences.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
 class LogicContext {
   /// alpha-2 code
-  final String isoCountryCode;
+  final String? isoCountryCode;
 
   /// Consistent value in [0-100) for experiment arms
   final int cohort;
@@ -18,15 +16,15 @@ class LogicContext {
   final int localDays;
 
   LogicContext(
-      {@required this.isoCountryCode,
-      @required this.cohort,
-      @required this.isoDateTimeUTC,
-      @required this.localDays});
+      {required this.isoCountryCode,
+      required this.cohort,
+      required this.isoDateTimeUTC,
+      required this.localDays});
 
   static final _refDate = DateTime(2020);
 
   static Future<LogicContext> generate(
-      {@required String isoCountryCode}) async {
+      {required String? isoCountryCode}) async {
     final now = DateTime.now().toUtc();
     final diff = now.toLocal().difference(_refDate).inDays;
     return LogicContext(
@@ -53,9 +51,9 @@ class LogicContext {
 }
 
 class Logic {
-  bool evaluateCondition(
-      {@required String condition,
-      LogicContext context,
+  bool? evaluateCondition(
+      {required String? condition,
+      LogicContext? context,
       Map<String, dynamic> extra = const {}}) {
     if (condition == null) {
       // Most things have no display condition!
@@ -66,8 +64,8 @@ class Logic {
     return ExpressionEvaluator().eval(Expression.parse(condition), ctx);
   }
 
-  bool evaluateConditionWithMap(
-      {@required String condition, @required Map<String, dynamic> ctx}) {
+  bool? evaluateConditionWithMap(
+      {required String condition, required Map<String, dynamic> ctx}) {
     return ExpressionEvaluator().eval(Expression.parse(condition), ctx);
   }
 }
@@ -95,9 +93,9 @@ class Logic {
 ///
 class SymptomLogic {
   Map<String, dynamic> _pageToContext(SymptomCheckerPageModel m) {
-    final ret = <String, dynamic>{};
+    final ret = <String?, dynamic>{};
     ret[m.question.id] = <String, bool>{};
-    m.question.answers.forEach((answer) {
+    m.question.answers!.forEach((answer) {
       ret[m.question.id][answer.id] = m.selectedAnswers.contains(answer.id);
     });
     return Map.unmodifiable(ret);
@@ -121,10 +119,10 @@ class SymptomLogic {
     return Map.unmodifiable(ret);
   }
 
-  bool evaluateCondition(
-      {@required String condition,
-      @required LogicContext context,
-      @required List<SymptomCheckerPageModel> previousPages}) {
+  bool? evaluateCondition(
+      {required String? condition,
+      required LogicContext context,
+      required List<SymptomCheckerPageModel> previousPages}) {
     final pagesContext = pagesToContext(previousPages);
     return Logic().evaluateCondition(
         condition: condition, context: context, extra: pagesContext);

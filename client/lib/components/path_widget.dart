@@ -13,8 +13,8 @@ class PathWidget extends LeafRenderObjectWidget {
   final Offset nudge;
 
   const PathWidget({
-    @required this.path,
-    @required this.paint,
+    required this.path,
+    required this.paint,
     this.nudge = Offset.zero,
   });
 
@@ -37,23 +37,23 @@ class PathWidget extends LeafRenderObjectWidget {
 }
 
 class _PathRenderObject extends RenderBox {
-  Path _path;
-  Rect _bounds;
-  Paint _paint;
-  Offset _nudge;
+  Path? _path;
+  late Rect _bounds;
+  Paint? _paint;
+  Offset? _nudge;
 
-  Path get path => _path;
-  set path(Path value) {
+  Path? get path => _path;
+  set path(Path? value) {
     if (_path == value) {
       return;
     }
     _path = value;
-    _bounds = value.getBounds();
+    _bounds = value!.getBounds();
     markNeedsPaint();
   }
 
-  Offset get nudge => _nudge;
-  set nudge(Offset value) {
+  Offset? get nudge => _nudge;
+  set nudge(Offset? value) {
     if (_nudge == value) {
       return;
     }
@@ -61,8 +61,8 @@ class _PathRenderObject extends RenderBox {
     markNeedsPaint();
   }
 
-  Paint get pathPaint => _paint;
-  set pathPaint(Paint value) {
+  Paint? get pathPaint => _paint;
+  set pathPaint(Paint? value) {
     if (_paint == value) {
       return;
     }
@@ -79,9 +79,9 @@ class _PathRenderObject extends RenderBox {
   void paint(PaintingContext context, Offset offset) {
     var canvas = context.canvas;
     canvas.save();
-    canvas.translate(offset.dx.roundToDouble() + nudge.dx - _bounds.left,
-        offset.dy.roundToDouble() + nudge.dy - _bounds.top);
-    canvas.drawPath(path, pathPaint);
+    canvas.translate(offset.dx.roundToDouble() + nudge!.dx - _bounds.left,
+        offset.dy.roundToDouble() + nudge!.dy - _bounds.top);
+    canvas.drawPath(path!, pathPaint!);
     canvas.restore();
   }
 }

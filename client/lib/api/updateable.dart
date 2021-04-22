@@ -10,15 +10,15 @@ abstract class Updateable {
 
 class PeriodicUpdater with WidgetsBindingObserver {
   final Updateable updateable;
-  final WidgetsBinding binding;
+  final WidgetsBinding? binding;
   final bool updateOnAppSwitch;
   final bool updateOnConnectivityChange;
 
-  StreamSubscription<ConnectivityResult> connectivitySub;
+  StreamSubscription<ConnectivityResult>? connectivitySub;
 
   PeriodicUpdater({
-    @required this.updateable,
-    @required this.binding,
+    required this.updateable,
+    required this.binding,
     bool installImmediately = false,
     this.updateOnAppSwitch = true,
     this.updateOnConnectivityChange = true,
@@ -31,7 +31,7 @@ class PeriodicUpdater with WidgetsBindingObserver {
   void install() {
     print('installing $this');
     if (updateOnAppSwitch) {
-      binding.addObserver(this);
+      binding!.addObserver(this);
     }
 
     if (updateOnConnectivityChange) {
@@ -47,11 +47,11 @@ class PeriodicUpdater with WidgetsBindingObserver {
   void dispose() {
     print('disposing $this');
     if (updateOnAppSwitch) {
-      binding.removeObserver(this);
+      binding!.removeObserver(this);
     }
 
     if (connectivitySub != null) {
-      connectivitySub.cancel();
+      connectivitySub!.cancel();
       connectivitySub = null;
     }
   }

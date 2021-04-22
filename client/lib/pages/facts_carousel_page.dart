@@ -9,11 +9,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 /// A Data driven series of questions and answers using HTML fragments.
-abstract class FactsCarouselPage extends ContentWidget<FactContent> {
+abstract class FactsCarouselPage extends ContentWidget<FactContent?> {
   final String title;
 
   FactsCarouselPage(
-      {Key key, @required this.title, @required ContentStore dataSource})
+      {Key? key, required this.title, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -41,7 +41,7 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
           PageHeader(inSliver: false, title: 'Get the Facts'),
           Expanded(
             child: items.isNotEmpty //
-                ? CarouselView(items: items)
+                ? CarouselView(items: items as List<CarouselSlide>)
                 : Container(),
           ),
         ],
@@ -49,7 +49,7 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
     );
   }
 
-  SvgPicture _getSVG(String imageName) {
+  SvgPicture? _getSVG(String? imageName) {
     return imageName != null
         ? SvgPicture.asset('assets/svg/${imageName}.svg')
         : null;
@@ -58,11 +58,11 @@ abstract class FactsCarouselPage extends ContentWidget<FactContent> {
 
 class GetTheFactsPage extends FactsCarouselPage {
   GetTheFactsPage(
-      {Key key, @required String title, @required ContentStore dataSource})
+      {Key? key, required String title, required ContentStore dataSource})
       : super(key: key, title: title, dataSource: dataSource);
 
   @override
-  FactContent getContent() {
+  FactContent? getContent() {
     return dataSource.getTheFacts;
   }
 }

@@ -69,9 +69,7 @@ class AppTabRouter extends StatelessWidget {
   final ContentStore dataSource;
 
   AppTabRouter(
-      {@required this.dataSource,
-      @required this.tabs,
-      @required this.navItems});
+      {required this.dataSource, required this.tabs, required this.navItems});
 
   CupertinoTabView wrapTabView(Widget Function(BuildContext) builder) {
     return CupertinoTabView(
@@ -87,7 +85,7 @@ class AppTabRouter extends StatelessWidget {
         if (index < tabs.length) {
           return wrapTabView(tabs[index]);
         }
-        return null;
+        return Container();
       },
       tabBar: CupertinoTabBar(
         inactiveColor: CupertinoColors.black,
@@ -98,7 +96,7 @@ class AppTabRouter extends StatelessWidget {
   }
 
   static BottomNavigationBarItem _buildSvgNavItem(
-      {String iconName, String title, Color activeColor}) {
+      {String? iconName, String? title, required Color activeColor}) {
     final assetName = 'assets/svg/${iconName}.svg';
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(assetName),

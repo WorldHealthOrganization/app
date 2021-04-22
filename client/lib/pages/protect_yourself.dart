@@ -9,8 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:who_app/generated/l10n.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class ProtectYourself extends ContentWidget<FactContent> {
-  ProtectYourself({Key key, @required ContentStore dataSource})
+class ProtectYourself extends ContentWidget<FactContent?> {
+  ProtectYourself({Key? key, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   final whoBlue = Color(0xFF3D8BCC);
@@ -48,7 +48,7 @@ class ProtectYourself extends ContentWidget<FactContent> {
   }
 
   @override
-  FactContent getContent() {
+  FactContent? getContent() {
     return dataSource.protectYourself;
   }
 }

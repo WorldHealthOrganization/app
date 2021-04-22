@@ -1,6 +1,5 @@
 import 'package:who_app/api/content/content_bundle.dart';
 import 'dart:ui';
-import 'package:meta/meta.dart';
 import 'package:who_app/api/content/schema/conditional_content.dart';
 
 typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
@@ -9,11 +8,11 @@ typedef AdviceDataSource = Future<AdviceContent> Function(Locale);
 /// Advice data contains banner text, a recommendation link and text,
 /// and a series of advice items comprising text and image pairs.
 class AdviceContent extends ContentBase {
-  List<AdviceItem> items;
+  List<AdviceItem>? items;
 
   AdviceContent(ContentBundle bundle) : super(bundle, schemaName: 'advice') {
     try {
-      items = bundle.contentItems
+      items = bundle.contentItems!
           .map((item) => AdviceItem(
                 isBanner: item['is_banner'] ?? false,
                 title: (item['title'] ?? '').trim(),
@@ -30,15 +29,15 @@ class AdviceContent extends ContentBase {
 
 /// Advice ('advice' schema) items including title and body text.
 class AdviceItem with ConditionalItem {
-  final String title;
-  final String body;
+  final String? title;
+  final String? body;
   @override
-  final String displayCondition;
-  final bool isBanner;
+  final String? displayCondition;
+  final bool? isBanner;
 
   AdviceItem({
-    @required this.title,
-    @required this.body,
+    required this.title,
+    required this.body,
     this.isBanner,
     this.displayCondition,
   });

@@ -9,14 +9,14 @@ class Notifications {
   final WhoService service;
   final UserPreferencesStore prefs;
 
-  Notifications({@required this.service, @required this.prefs});
+  Notifications({required this.service, required this.prefs});
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   final UserPreferences _userPrefs = UserPreferences();
 
-  Future<bool> attemptEnableNotifications(
-      {BuildContext context,
-      Function({@required Function showSettings}) showSettingsPrompt}) async {
+  Future<bool?> attemptEnableNotifications(
+      {BuildContext? context,
+      Function({required Function showSettings})? showSettingsPrompt}) async {
     var permissionStatus =
         await NotificationPermissions.getNotificationPermissionStatus();
     var granted;
@@ -102,13 +102,13 @@ class Notifications {
     await setFirebaseToken(tokenToSet);
   }
 
-  Future setFirebaseToken(String newToken) async {
+  Future setFirebaseToken(String? newToken) async {
     var existingToken = await _userPrefs.getFirebaseToken();
     var countryCode = await prefs.countryIsoCode;
     if (existingToken != newToken) {
       await service.putClientSettings(
           token: newToken, isoCountryCode: countryCode);
-      await _userPrefs.setFirebaseToken(newToken);
+      await _userPrefs.setFirebaseToken(newToken!);
     }
   }
 }

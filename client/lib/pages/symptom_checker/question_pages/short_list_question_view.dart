@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:who_app/components/forms.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/pages/symptom_checker/question_pages/next_button.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
-import 'package:html/dom.dart' as dom;
 
 // A short list question supporting either single or multiple selection modes.
 class ShortListQuestionView extends StatefulWidget {
@@ -16,9 +16,9 @@ class ShortListQuestionView extends StatefulWidget {
   final SymptomCheckerPageModel pageModel;
 
   const ShortListQuestionView({
-    Key key,
-    @required this.pageDelegate,
-    @required this.pageModel,
+    Key? key,
+    required this.pageDelegate,
+    required this.pageModel,
   }) : super(key: key);
 
   @override
@@ -27,8 +27,8 @@ class ShortListQuestionView extends StatefulWidget {
 
 class _ShortListQuestionViewState extends State<ShortListQuestionView>
     with AutomaticKeepAliveClientMixin {
-  String _singleSelection;
-  Set<String> _multipleSelections = {};
+  String? _singleSelection;
+  Set<String?> _multipleSelections = {};
   bool _noneOfTheAboveSelected = false;
 
   // Prevents the widget's state from being lost when it is no longer the
@@ -60,7 +60,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
     final group = _allowsMultipleSelection
         ? PickOneOrMoreOptionGroup(
             items: [
-              ...answers.map((a) => MultiSelectOptionItem(
+              ...answers!.map((a) => MultiSelectOptionItem(
                     title: a.title,
                     selected: _multipleSelections.contains(a.id),
                   )),
@@ -85,7 +85,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
             },
           )
         : PickOneOptionGroup(
-            items: widget.pageModel.question.answers
+            items: widget.pageModel.question.answers!
                 .map((a) => OptionItem(
                       title: a.title,
                       selected: _singleSelection == a.id,
@@ -96,7 +96,7 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
                 _singleSelection = null;
                 final idx = sel.indexWhere((e) => e.selected);
                 if (idx >= 0) {
-                  _singleSelection = answers[idx].id;
+                  _singleSelection = answers![idx].id;
                 } else {
                   _singleSelection = null;
                 }
@@ -129,19 +129,13 @@ class _ShortListQuestionViewState extends State<ShortListQuestionView>
                       ),
                       if (widget.pageModel.question.bodyHtml != null)
                         Html(
-                          customEdgeInsets: (_) => EdgeInsets.zero,
-                          data: widget.pageModel.question.bodyHtml,
-                          defaultTextStyle: defaultTextStyle,
-                          customTextStyle:
-                              (dom.Node node, TextStyle baseStyle) {
-                            if (node is dom.Element) {
-                              switch (node.localName) {
-                                case 'b':
-                                  return baseStyle.merge(boldTextStyle);
-                              }
-                            }
-                            return baseStyle.merge(defaultTextStyle);
+                          style: {
+                            '*': Style.fromTextStyle(defaultTextStyle),
+                            'b': Style.fromTextStyle(
+                              defaultTextStyle.merge(boldTextStyle),
+                            ),
                           },
+                          data: widget.pageModel.question.bodyHtml!,
                         )
                     ],
                   )),

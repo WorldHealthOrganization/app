@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:who_app/api/updateable.dart';
 import 'package:who_app/api/user_preferences.dart';
@@ -11,8 +10,7 @@ import 'package:who_app/proto/api/who/who.pb.dart';
 part 'stats_store.g.dart';
 
 class StatsStore extends _StatsStore with _$StatsStore {
-  StatsStore(
-      {@required WhoService service, @required UserPreferencesStore prefs})
+  StatsStore({required WhoService service, required UserPreferencesStore prefs})
       : super(service: service, prefs: prefs);
 }
 
@@ -20,47 +18,47 @@ abstract class _StatsStore with Store implements Updateable {
   final WhoService service;
   final UserPreferencesStore prefs;
 
-  _StatsStore({@required this.service, @required this.prefs});
+  _StatsStore({required this.service, required this.prefs});
 
   @observable
-  GetCaseStatsResponse caseStatsResponse;
+  GetCaseStatsResponse? caseStatsResponse;
 
   // Last update millisecondsSinceEpoch.
   int _lastUpdateTimestamp = 0;
   // Last seen user preference.
-  String countryIsoCode;
+  String? countryIsoCode;
 
   // One hour cache.
   static int statsUpdateFrequency = 60 * 60 * 1000;
 
   @computed
-  CaseStats get globalStats {
+  CaseStats? get globalStats {
     final statsList = caseStatsResponse?.jurisdictionStats ?? [];
     return statsList.isEmpty ? null : statsList.first;
   }
 
   @computed
-  int get globalCases {
+  int? get globalCases {
     return globalStats?.cases?.toInt();
   }
 
   @computed
-  CaseStats get countryStats {
+  CaseStats? get countryStats {
     final statsList = caseStatsResponse?.jurisdictionStats ?? [];
     return statsList.isEmpty ? null : statsList.last;
   }
 
   @computed
-  int get countryCases {
+  int? get countryCases {
     return countryStats?.cases?.toInt();
   }
 
   @computed
-  int get countryDailyCases =>
+  int? get countryDailyCases =>
       countryStats?.timeseries?.last?.dailyCases?.toInt();
 
   @computed
-  int get globalDailyCases =>
+  int? get globalDailyCases =>
       globalStats?.timeseries?.last?.dailyCases?.toInt();
 
   @action
