@@ -58,7 +58,7 @@ jobs:
       - run: echo PHASE 2 - Ensure auto-gened protocol buffers
       - run: sudo apt install -y protobuf-compiler
       - run: protoc --version
-      - run: flutter pub global activate protoc_plugin ^19.0.1
+      - run: flutter pub global activate protoc_plugin ^20.0.0
         working-directory: ./client
       - run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
       - run: ./tools/gen-client-protos.sh
