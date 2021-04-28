@@ -3,10 +3,12 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
-    "test": "firebase --project=$GCLOUD_PROJECT emulators:exec \"mocha -r ts-node/register src/**/*.spec.ts\"",
+    "test_rules": "firebase --project=mblain-13nov2020 emulators:exec \"mocha -r ts-node/register src/**/*.spec.ts\"",
+    "test": "mocha -r ts-node/register --reporter spec",
     "check-location": "./check_location.sh",
-    "serve": "npm run build && firebase emulators:start",
-    "shell": "npm run build && firebase functions:shell",
+    "preserve": "tsc",
+    "serve": "firebase emulators:start --project=mblain-13nov2020",
+    "shell": "npm run build np&& firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
