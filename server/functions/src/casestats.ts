@@ -40,9 +40,11 @@ interface StoredCaseStats {
   timeseries: StoredStatSnapshot[];
 }
 
-const WHO_CASE_STATS_URL =
+let WHO_CASE_STATS_URL =
   "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
 // WHO_CASE_STATS_URL = "http://localhost:8888/arcgisdataElided.txt";
+WHO_CASE_STATS_URL = "http://localhost:8000/arcgisdataElided.txt";
+//WHO_CASE_STATS_URL = "http://localhost:8000/x.txt";
 
 // Peek or push last entry from timeseries.
 function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
@@ -50,7 +52,7 @@ function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
     let snapshot = data.timeseries[data.timeseries.length - 1];
     if (snapshot.epochMsec > timestamp) {
       throw new Error(
-        "Unsorted country data found at ${timestamp} for {data.jurisdictionType} {data.jurisdiction}."
+        `Unsorted country data found at ${timestamp} for {data.jurisdictionType} {data.jurisdiction}.`
       );
     }
     if (snapshot.epochMsec == timestamp) {
@@ -61,7 +63,7 @@ function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
         // Note that when the bad results are doubled/trebled/etc, they have
         // also been missing data, so ignoring duplicates is not safe.
         throw new Error(
-          "Duplicate country data found at ${timestamp} for {data.jurisdictionType} {data.jurisdiction}."
+          `Duplicate country data found at ${timestamp} for {data.jurisdictionType} {data.jurisdiction}.`
         );
       }
       return snapshot;
@@ -183,7 +185,7 @@ function processWhoStats(
   }
 }
 
-function processCaseStats(data: ArcGISResponse) {
+async function processCaseStats(baseUrl: string) {
   let countryData: Map<string, StoredCaseStats> = new Map<
     string,
     StoredCaseStats
@@ -199,14 +201,36 @@ function processCaseStats(data: ArcGISResponse) {
     timeseries: [],
   } as StoredCaseStats;
 
+  let offset = 0;
+  let moreData = true;
+  while (moreData) {
+    let url = `${baseUrl}&offset=${offset}`;
+    console.log(`Fetching ${url}...`);
+    await axios
+      .get(url)
+      .then(function (remoteResponse) {
+        let data = remoteResponse.data as ArcGISResponse;
+        let features = data.features;
+        if (features == undefined || features.length == 0) {
+          console.log(`No features found at ${url}.`);
+          moreData = false;
+        } else {
+          offset += features.length;
+          console.log(`Processing ${url} with ${features.length} features...`);
+          processWhoStats(features, countryData, globalData);
+        }
+      })
+      .catch(function (error) {
+        moreData = false;
+        console.log(error);
+        throw new Error(`Failed HTTP request to ${url}.`);
+        return;
+      });
+  }
 
-  let features = data.features;
-
-  console.log("0 GlobalData: " + globalData);
-  console.log("0 CountryData: " + countryData);
-
-  processWhoStats(features, countryData, globalData);
-  //console.log("P GlobalData", globalData);
+  console.log(
+    `Found ${countryData.size} countries and ${globalData.timeseries.length} time points.`
+  );
 
   return countryData.get("NG");
 
@@ -221,20 +245,20 @@ function processCaseStats(data: ArcGISResponse) {
 export const refreshCaseStats = functions
   .region(SERVING_REGION)
   .https.onRequest((request, response) => {
-    // TODO: Call server until data exhausted.
-    axios
-      .get(WHO_CASE_STATS_URL)
-      .then(function (remoteResponse) {
-        let ng = processCaseStats(remoteResponse.data);
+    processCaseStats(WHO_CASE_STATS_URL)
+      .then(function (ng) {
+        if (ng == undefined) {
+          console.log("ng undefined");
+          response.status(500).send("Error"); // How to get the system to backoff/retry? What text to use?
+          return;
+        }
 
-        console.log(updateData); // DELETEME  -- queiting compiler while commeinting out unfinished code
-        //response.status(200).send("OK"); // What should we return? Anything useful for debug?
         response.status(200).json(ng);
       })
       .catch(function (error) {
-        // Note that this includes both connection errors and processing errors.
         console.log(error);
         response.status(500).send("Error"); // How to get the system to backoff/retry? What text to use?
+        return;
       });
   });
 
