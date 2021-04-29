@@ -289,7 +289,7 @@ packages:
     source: hosted
     version: "1.0.0"
   file:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: file
       url: "https://pub.dartlang.org"

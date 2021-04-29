@@ -30,6 +30,7 @@ dependencies:
   connectivity: ^3.0.3
   cupertino_icons: ^1.0.2
   expressions: 0.2.2
+  file: ^6.1.0
   firebase_analytics: ^8.0.1
   firebase_core: ^1.0.4
   firebase_crashlytics: ^2.0.1
