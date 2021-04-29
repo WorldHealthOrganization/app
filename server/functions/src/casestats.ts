@@ -2,6 +2,7 @@ import axios from "axios";
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 import { SERVING_REGION } from "./config";
+import * as who from "./who";
 
 // THis seems wrong to initializeApp both here and index.ts?
 //admin.initializeApp();
@@ -16,11 +17,9 @@ export function setDb(newDb: admin.firestore.Firestore) {
   db = newDb;
 }
 
-
-
-
 //const axios = require('axios').default;
 
+/*
 // Datastore record structure for Case Stats Data time series.
 interface StoredStatSnapshot {
   epochMsec: number;
@@ -35,7 +34,7 @@ interface StoredStatSnapshot {
 }
 
 // Note: This is defined in who.proto. Should we use that? Or get rid of this enum entirely? Some parts of the old system use the text label name as well.
-enum JurisdictionType {
+export enum JurisdictionType {
   GLOBAL = 0,
   WHO_REGION = 1,
   COUNTRY = 2,
@@ -52,6 +51,7 @@ interface StoredCaseStats {
   attribution: string;
   timeseries: StoredStatSnapshot[];
 }
+*/
 
 let WHO_CASE_STATS_URL =
   "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
@@ -60,7 +60,7 @@ let WHO_CASE_STATS_URL =
 //WHO_CASE_STATS_URL = "http://localhost:8000/x.txt";
 
 // Peek or push last entry from timeseries.
-function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
+function getSnapshotForTimestamp(data: who.CaseStats, timestamp: number) {
   if (data.timeseries.length != 0) {
     let snapshot = data.timeseries[data.timeseries.length - 1];
     if (snapshot.epochMsec > timestamp) {
@@ -69,7 +69,7 @@ function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
       );
     }
     if (snapshot.epochMsec == timestamp) {
-      if (data.jurisdictionType != JurisdictionType.GLOBAL) {
+      if (data.jurisdictionType != who.JurisdictionType.GLOBAL) {
         // For individual jurisdictions, we should NOT see the same timestamp
         // more than once.
         // Fail and hope that the next run of the cron job succeeds.
@@ -93,14 +93,14 @@ function getSnapshotForTimestamp(data: StoredCaseStats, timestamp: number) {
     totalCases: 0,
     totalDeaths: 0,
     totalRecoveries: -1,
-  } as StoredStatSnapshot;
+  } as who.StatSnapshot;
 
   data.timeseries.push(snapshot);
   return snapshot;
 }
 
 function updateData(
-  data: StoredCaseStats,
+  data: who.CaseStats,
   timestamp: number,
   dailyDeaths: number,
   totalDeaths: number,
@@ -155,8 +155,8 @@ interface ArcGISResponse {
 
 function processWhoStats(
   features: Feature[],
-  countryData: Map<string, StoredCaseStats>,
-  globalData: StoredCaseStats
+  countryData: Map<string, who.CaseStats>,
+  globalData: who.CaseStats
 ) {
   for (let feature of features) {
     let attributes = feature.attributes;
@@ -173,7 +173,7 @@ function processWhoStats(
     if (isoCode) {
       if (!countryData.has(isoCode)) {
         let data = {
-          jurisdictionType: JurisdictionType.COUNTRY,
+          jurisdictionType: who.JurisdictionType.COUNTRY,
           jurisdiction: isoCode,
           lastUpdated: 0,
           cases: 0,
@@ -181,7 +181,7 @@ function processWhoStats(
           recoveries: 0,
           attribution: "WHO",
           timeseries: [],
-        } as StoredCaseStats;
+        } as who.CaseStats;
 
         countryData.set(isoCode, data);
       }
@@ -199,12 +199,12 @@ function processWhoStats(
 }
 
 async function processCaseStats(baseUrl: string) {
-  let countryData: Map<string, StoredCaseStats> = new Map<
+  let countryData: Map<string, who.CaseStats> = new Map<
     string,
-    StoredCaseStats
+    who.CaseStats
   >();
   let globalData = {
-    jurisdictionType: JurisdictionType.GLOBAL,
+    jurisdictionType: who.JurisdictionType.GLOBAL,
     jurisdiction: "",
     lastUpdated: 0,
     cases: 0,
@@ -212,7 +212,7 @@ async function processCaseStats(baseUrl: string) {
     recoveries: 0,
     attribution: "WHO",
     timeseries: [],
-  } as StoredCaseStats;
+  } as who.CaseStats;
 
   let offset = 0;
   let moreData = true;
@@ -259,8 +259,8 @@ async function processCaseStats(baseUrl: string) {
  * See https://github.com/WorldHealthOrganization/app/issues/1724
  */
 function fixPartialLastDayAll(
-  globalData: StoredCaseStats,
-  countryData: Map<string, StoredCaseStats>
+  globalData: who.CaseStats,
+  countryData: Map<string, who.CaseStats>
 ) {
   // Global last snapshot
   // Last day snapshot daily cases and deaths may remain as partial
@@ -297,55 +297,82 @@ function fixPartialLastDayAll(
   console.log("Countries last day removed: " + countriesLastDayRemoved);
 }
 
-function caseStatsDocName(stat: StoredCaseStats) {
+function caseStatsDocName(stat: who.CaseStats) {
   // Datastore key name. E.g. '0:' (globaldata) or '2:US' (countryData).
   return `${stat.jurisdictionType}:${stat.jurisdiction}`;
 }
 
 // Save case stats after doing a bit of validation and cleanup.
 async function saveCaseStats(
-  globalData: StoredCaseStats,
-  countryData: Map<string, StoredCaseStats>
+  globalData: who.CaseStats,
+  countryData: Map<string, who.CaseStats>
 ) {
   fixPartialLastDayAll(globalData, countryData);
 
   // TODO: Implement this!
   /*
     // Reject unexpected changes in case stats, e.g. too large an increase
-    CaseStats oldCaseStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+    CaseStats oldCaseStats = StoredCaseStats.load(who.JurisdictionType.GLOBAL, "");
     if (oldCaseStats != null) {
       totalCasesDeltaCheck(oldCaseStats.cases, globalData.totalCases);
     }
     */
 
-  await db.collection("StoredCaseStats")
+  console.log("Storing to datastore...");
+
+  await db
+    .collection("StoredCaseStats")
     .doc(caseStatsDocName(globalData))
     .set(globalData);
 
+  let promises = [];
   for (let countryStat of countryData.values()) {
-    await db.collection("StoredCaseStats")
-      .doc(caseStatsDocName(countryStat))
-      .set(countryStat);
+    promises.push(
+      db
+        .collection("StoredCaseStats")
+        .doc(caseStatsDocName(countryStat))
+        .set(countryStat)
+    );
   }
+  console.log("Awaiting datastore... " + promises.length);
+  await Promise.all(promises);
+  console.log("Datastore set complete.");
 }
+
+async function refreshCaseStatsAsync() {
+  let countryData = await processCaseStats(WHO_CASE_STATS_URL);
+  let globalData = countryData.get("");
+  if (globalData == undefined) {
+    // Should be impossible!
+    return false;
+  }
+  countryData.delete("");
+  try {
+    await saveCaseStats(globalData, countryData);
+  } catch (Error) {
+    console.log("Error saving case stats: " + Error.message);
+    return false;
+  }
+  return true;
+}
+
+const runtimeOpts = {
+  timeoutSeconds: 300,
+};
 
 // Refresh case statistics from data published by WHO on ArcGIS.
 // TODO: Secure so not just anyone can hit it.
 // TODO: ??? Rename to be 'internal' somehow? Use 'background functions'.
 export const refreshCaseStats = functions
   .region(SERVING_REGION)
+  .runWith(runtimeOpts)
   .https.onRequest((request, response) => {
-    processCaseStats(WHO_CASE_STATS_URL)
-      .then(function (countryData) {
-        let globalData = countryData.get("");
-        if (globalData == undefined) {
-          // Should be impossible!
+    refreshCaseStatsAsync()
+      .then(function (ok) {
+        if (!ok) {
           response.status(500).send("Error");
           return;
         }
-        countryData.delete("");
-        saveCaseStats(globalData, countryData);
-
         response.status(200).send("OK");
       })
       .catch(function (error) {

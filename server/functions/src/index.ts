@@ -1,12 +1,11 @@
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
-import * as fs from "fs";
 import { SERVING_REGION } from "./config";
 import * as casestats from "./casestats"; // Is this right?
+import * as who from "./who";
 
 admin.initializeApp();
 const db = admin.firestore();
-
 
 const COUNTRY_CODE = /^[A-Z][A-Z]$/; // Literal regex for immediate compilation.
 
@@ -14,34 +13,57 @@ const COUNTRY_CODE = /^[A-Z][A-Z]$/; // Literal regex for immediate compilation.
 // https://stackoverflow.com/a/12502351/1509221
 const FCM_TOKEN_MAX_LENGTH = 4096;
 
-enum Platform {
-  IOS = 0,
-  ANDROID = 1,
-  WEB = 2,
-}
 
 interface Client {
   uuid: string;
   token: string;
   disableNotifcations: boolean;
-  platform: Platform;
+  platform: who.Platform;
   isoCountryCode: string;
   subscribedTopics: string[];
 }
 
-casestats.setDb(db);  /// This seems wrong???????????????????????????????????????????????????????????
+casestats.setDb(db); /// This seems wrong???????????????????????????????????????????????????????????
 export const refreshCaseStats = casestats.refreshCaseStats;
+
+async function getCaseStatsAsync(req: who.GetCaseStatsRequest) {
+  let jurisdictions = req.jurisdictions;
+  if (jurisdictions == undefined) {
+    throw Error("Bad request.");
+  }
+  let resp = {
+    globalStats: undefined,
+    jurisdictionStats: [],
+    ttl: 0,
+  } as who.GetCaseStatsResponse;
+
+  for (let jurisdiction of jurisdictions) {
+    let key = `${who.jurisdictionTypeFromJSON(jurisdiction.jurisdictionType)}:${
+      jurisdiction.code
+    }`;
+    console.log(`Loading data for ${key}`);
+    let loadedData = await db.collection("StoredCaseStats").doc(key).get();
+    let jurisdictionData = loadedData.data() as who.CaseStats;
+    resp.jurisdictionStats.push(jurisdictionData);
+  }
+
+  return resp;
+}
 
 // Implementation of the v1 API"s `getCaseStats` method.
 // TODO: replace with direct Firestore access from the client.
 export const getCaseStats = functions
   .region(SERVING_REGION)
   .https.onRequest((request, response) => {
-    // A "fake" of the v1 API: we're just going to return a static file that we
-    // happen to have on disk.
-    // TODO: replace this with actual statistics in Firestore.
-    const data = JSON.parse(fs.readFileSync("casestats.json", "utf8"));
-    response.status(200).json(data);
+    getCaseStatsAsync(request.body)
+      .then(function (resp) {
+        response.status(200).json(resp);
+      })
+      .catch(function (error) {
+        console.log(error);
+        response.status(400).send("Error"); // distinguish 400 and 500?
+        return;
+      });
   });
 
 // Implementation of the v1 API"s `putClientSettings` method.
@@ -59,12 +81,7 @@ export const putClientSettings = functions
       response.status(400).send("Missing Who-Platform header");
       return;
     }
-    let platform = Platform.WEB;
-    if (whoPlatform == Platform[Platform.ANDROID]) {
-      platform = Platform.ANDROID;
-    } else if (whoPlatform == Platform[Platform.IOS]) {
-      platform = Platform.IOS;
-    }
+    let platform = who.platformFromJSON(whoPlatform);
 
     if (request.method != "POST") {
       response.status(400).send("Call must be POST request");
