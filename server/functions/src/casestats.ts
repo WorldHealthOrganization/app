@@ -1,10 +1,23 @@
 import axios from "axios";
-//import * as admin from "firebase-admin";
+import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 import { SERVING_REGION } from "./config";
 
+// THis seems wrong to initializeApp both here and index.ts?
 //admin.initializeApp();
 //const db = admin.firestore();
+// The following line causes the Firebase emulator to say:
+//  "It appears your code is written in Typescript, which must be compiled before emulation."
+//const db = admin.firestore();
+// This crazy mess makes it work.
+
+var db: admin.firestore.Firestore;
+export function setDb(newDb: admin.firestore.Firestore) {
+  db = newDb;
+}
+
+
+
 
 //const axios = require('axios').default;
 
@@ -43,7 +56,7 @@ interface StoredCaseStats {
 let WHO_CASE_STATS_URL =
   "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
 // WHO_CASE_STATS_URL = "http://localhost:8888/arcgisdataElided.txt";
-WHO_CASE_STATS_URL = "http://localhost:8000/arcgisdataElided.txt";
+//WHO_CASE_STATS_URL = "http://localhost:8000/arcgisdataElided.txt";
 //WHO_CASE_STATS_URL = "http://localhost:8000/x.txt";
 
 // Peek or push last entry from timeseries.
@@ -204,7 +217,7 @@ async function processCaseStats(baseUrl: string) {
   let offset = 0;
   let moreData = true;
   while (moreData) {
-    let url = `${baseUrl}&offset=${offset}`;
+    let url = `${baseUrl}&resultOffset=${offset}`;
     console.log(`Fetching ${url}...`);
     await axios
       .get(url)
@@ -232,11 +245,88 @@ async function processCaseStats(baseUrl: string) {
     `Found ${countryData.size} countries and ${globalData.timeseries.length} time points.`
   );
 
-  return countryData.get("NG");
+  // add globalData to countryData since from now on it'll be similar...
+  countryData.set("", globalData);
+  return countryData;
+}
 
-  //db.collection("StoredCaseStats").doc("0:").set(globalData);
-  // iterate over every country and add it with jurisdictionType : data.
-  // Or do it as a sub-collection... but why bother...
+/**
+ * Correct partial last day
+ *
+ * CountryData last day dropped if likely "No Data Reported"
+ * GlobalData totals to use all data, not sum of possible incomplete countries
+ *
+ * See https://github.com/WorldHealthOrganization/app/issues/1724
+ */
+function fixPartialLastDayAll(
+  globalData: StoredCaseStats,
+  countryData: Map<string, StoredCaseStats>
+) {
+  // Global last snapshot
+  // Last day snapshot daily cases and deaths may remain as partial
+  let snapshot = globalData.timeseries[globalData.timeseries.length - 1];
+  snapshot.totalCases = globalData.cases;
+  snapshot.totalDeaths = globalData.deaths;
+
+  // ArcGIS data can distinguish between "Zero Cases" and "No Data Reported"
+  // but appears to often report the former when it means the latter
+  //
+  // Heuristic:
+  //   if lastDayNumbers > 0 => assume up to date
+  //   if lastDayNumbers == 0 && priorDayNumbers > 0 => assume "No Data Reported" and delete
+  let countriesLastDayRemoved = [];
+  for (let [countryName, countryStat] of countryData) {
+    let timeseries = countryStat.timeseries;
+    if (timeseries.length < 2) {
+      continue;
+    }
+
+    let lastSnapshot = timeseries[timeseries.length - 1];
+    let priorSnapshot = timeseries[timeseries.length - 2];
+
+    // Consider removing last day
+    if (lastSnapshot.dailyCases == 0 && lastSnapshot.dailyDeaths == 0) {
+      if (priorSnapshot.dailyCases > 0 || priorSnapshot.dailyDeaths > 0) {
+        // Likely "No Data Reported"
+        timeseries.pop();
+        countryStat.lastUpdated = priorSnapshot.epochMsec;
+        countriesLastDayRemoved.push(countryName);
+      }
+    }
+  }
+  console.log("Countries last day removed: " + countriesLastDayRemoved);
+}
+
+function caseStatsDocName(stat: StoredCaseStats) {
+  // Datastore key name. E.g. '0:' (globaldata) or '2:US' (countryData).
+  return `${stat.jurisdictionType}:${stat.jurisdiction}`;
+}
+
+// Save case stats after doing a bit of validation and cleanup.
+async function saveCaseStats(
+  globalData: StoredCaseStats,
+  countryData: Map<string, StoredCaseStats>
+) {
+  fixPartialLastDayAll(globalData, countryData);
+
+  // TODO: Implement this!
+  /*
+    // Reject unexpected changes in case stats, e.g. too large an increase
+    CaseStats oldCaseStats = StoredCaseStats.load(JurisdictionType.GLOBAL, "");
+    if (oldCaseStats != null) {
+      totalCasesDeltaCheck(oldCaseStats.cases, globalData.totalCases);
+    }
+    */
+
+  await db.collection("StoredCaseStats")
+    .doc(caseStatsDocName(globalData))
+    .set(globalData);
+
+  for (let countryStat of countryData.values()) {
+    await db.collection("StoredCaseStats")
+      .doc(caseStatsDocName(countryStat))
+      .set(countryStat);
+  }
 }
 
 // Refresh case statistics from data published by WHO on ArcGIS.
@@ -246,14 +336,17 @@ export const refreshCaseStats = functions
   .region(SERVING_REGION)
   .https.onRequest((request, response) => {
     processCaseStats(WHO_CASE_STATS_URL)
-      .then(function (ng) {
-        if (ng == undefined) {
-          console.log("ng undefined");
-          response.status(500).send("Error"); // How to get the system to backoff/retry? What text to use?
+      .then(function (countryData) {
+        let globalData = countryData.get("");
+        if (globalData == undefined) {
+          // Should be impossible!
+          response.status(500).send("Error");
           return;
         }
+        countryData.delete("");
+        saveCaseStats(globalData, countryData);
 
-        response.status(200).json(ng);
+        response.status(200).send("OK");
       })
       .catch(function (error) {
         console.log(error);
