@@ -8,7 +8,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:who_app/api/observer_provider.dart';
+import 'package:observer_provider/observer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:who_app/api/alerts.dart';
 import 'package:who_app/api/content/content_store.dart';

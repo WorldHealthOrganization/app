@@ -595,6 +595,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.0"
+  observer_provider:
+    dependency: "direct main"
+    description:
+      name: observer_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2-nullsafety.0"
   package_config:
     dependency: transitive
     description:

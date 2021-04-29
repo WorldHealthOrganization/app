@@ -47,7 +47,7 @@ dependencies:
   http: ^0.13.1
   mobx: ^2.0.1
   notification_permissions: ^0.5.0
-  # observer_provider: 0.0.1+2
+  observer_provider: ^0.0.2-nullsafety.0
   package_info: "2.0.0"
   # page_view_indicator: ^2.0.4
   path_drawing: ^0.5.0
