@@ -54,7 +54,6 @@ dependencies:
   path_provider: ^2.0.1
   protobuf: ^2.0.0
   provider: ^5.0.0
-  # TODO: upgrade to ^0.6.5+2, build warning treated as error
   share: 2.0.1
   shared_preferences: ^2.0.5
   url_launcher: ^6.0.3
