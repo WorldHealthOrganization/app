@@ -58,9 +58,7 @@ class _RecentNumbersBarGraphState extends State<RecentNumbersBarGraph> {
           touchCallback: (touchResponse) {
             setState(() {
               swapDuration = Duration(microseconds: 1);
-              if (touchResponse.spot != null &&
-                  touchResponse.touchInput is! FlPanEnd &&
-                  touchResponse.touchInput is! FlLongPressEnd) {
+              if (touchResponse.spot != null && touchResponse.touchInput.down) {
                 selectedIndex = touchResponse.spot!.touchedRodDataIndex;
               } else {
                 selectedIndex = null;
