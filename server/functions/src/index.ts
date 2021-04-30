@@ -13,7 +13,6 @@ const COUNTRY_CODE = /^[A-Z][A-Z]$/; // Literal regex for immediate compilation.
 // https://stackoverflow.com/a/12502351/1509221
 const FCM_TOKEN_MAX_LENGTH = 4096;
 
-
 interface Client {
   uuid: string;
   token: string;

@@ -17,45 +17,15 @@ export function setDb(newDb: admin.firestore.Firestore) {
   db = newDb;
 }
 
-//const axios = require('axios').default;
-
-/*
-// Datastore record structure for Case Stats Data time series.
-interface StoredStatSnapshot {
-  epochMsec: number;
-
-  dailyCases: number;
-  dailyDeaths: number;
-  dailyRecoveries: number;
-
-  totalCases: number;
-  totalDeaths: number;
-  totalRecoveries: number;
-}
-
-// Note: This is defined in who.proto. Should we use that? Or get rid of this enum entirely? Some parts of the old system use the text label name as well.
-export enum JurisdictionType {
-  GLOBAL = 0,
-  WHO_REGION = 1,
-  COUNTRY = 2,
-}
-
-// Datastore record structure for Case Stats Data per jurisdiction.
-interface StoredCaseStats {
-  jurisdictionType: JurisdictionType;
-  jurisdiction: string;
-  lastUpdated: number;
-  cases: number;
-  deaths: number;
-  recoveries: number;
-  attribution: string;
-  timeseries: StoredStatSnapshot[];
-}
-*/
+// Triggers to reject case stats update for unexpectedly large increase
+// Tuned to only trigger a handful of time in early pandemic and never since April 1st
+// Largest Cases Stats increase was 15.2% on March 24th
+// Triggers are cumulative rather than triggered separately
+const TOTAL_CASES_MAX_DAILY_INCREASE_FACTOR = 1.05;
+const TOTAL_CASES_MAX_DAILY_INCREASE_ABS = 30000;
 
 let WHO_CASE_STATS_URL =
   "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
-// WHO_CASE_STATS_URL = "http://localhost:8888/arcgisdataElided.txt";
 //WHO_CASE_STATS_URL = "http://localhost:8000/arcgisdataElided.txt";
 //WHO_CASE_STATS_URL = "http://localhost:8000/x.txt";
 
@@ -148,7 +118,7 @@ interface Feature {
   attributes: Attributes;
 }
 
-// The ARCGISResponse contains far more than this, but all we need are the features.
+// The ARCGISResponse contains more than this, but all we need are the features.
 interface ArcGISResponse {
   features: Feature[];
 }
@@ -219,26 +189,17 @@ async function processCaseStats(baseUrl: string) {
   while (moreData) {
     let url = `${baseUrl}&resultOffset=${offset}`;
     console.log(`Fetching ${url}...`);
-    await axios
-      .get(url)
-      .then(function (remoteResponse) {
-        let data = remoteResponse.data as ArcGISResponse;
-        let features = data.features;
-        if (features == undefined || features.length == 0) {
-          console.log(`No features found at ${url}.`);
-          moreData = false;
-        } else {
-          offset += features.length;
-          console.log(`Processing ${url} with ${features.length} features...`);
-          processWhoStats(features, countryData, globalData);
-        }
-      })
-      .catch(function (error) {
-        moreData = false;
-        console.log(error);
-        throw new Error(`Failed HTTP request to ${url}.`);
-        return;
-      });
+    let remoteResponse = await axios.get(url);
+    let data = remoteResponse.data as ArcGISResponse;
+    let features = data.features;
+    if (features == undefined || features.length == 0) {
+      console.log(`No features found at ${url}.`);
+      moreData = false;
+    } else {
+      offset += features.length;
+      console.log(`Processing ${url} with ${features.length} features...`);
+      processWhoStats(features, countryData, globalData);
+    }
   }
 
   console.log(
@@ -297,8 +258,20 @@ function fixPartialLastDayAll(
   console.log("Countries last day removed: " + countriesLastDayRemoved);
 }
 
+function totalCasesDeltaCheck(oldTotalCases: number, newTotalCases: number) {
+  let thresholdTotalCases =
+    oldTotalCases * TOTAL_CASES_MAX_DAILY_INCREASE_FACTOR +
+    TOTAL_CASES_MAX_DAILY_INCREASE_ABS;
+  if (newTotalCases > thresholdTotalCases || newTotalCases < oldTotalCases) {
+    console.log(
+      `Unexpected delta in global cases. Old total: ${oldTotalCases}, New total: ${newTotalCases}`
+    );
+    throw new Error("Unexpected delta in global cases.");
+  }
+}
+
 function caseStatsDocName(stat: who.CaseStats) {
-  // Datastore key name. E.g. '0:' (globaldata) or '2:US' (countryData).
+  // Datastore key name. E.g. '0:' (globalData) or '2:US' (countryData).
   return `${stat.jurisdictionType}:${stat.jurisdiction}`;
 }
 
@@ -309,14 +282,17 @@ async function saveCaseStats(
 ) {
   fixPartialLastDayAll(globalData, countryData);
 
-  // TODO: Implement this!
-  /*
-    // Reject unexpected changes in case stats, e.g. too large an increase
-    CaseStats oldCaseStats = StoredCaseStats.load(who.JurisdictionType.GLOBAL, "");
-    if (oldCaseStats != null) {
-      totalCasesDeltaCheck(oldCaseStats.cases, globalData.totalCases);
+  // Reject unexpected changes in case stats, e.g. too large an increase
+  let loadedData = await db
+    .collection("StoredCaseStats")
+    .doc(caseStatsDocName(globalData))
+    .get();
+  if (loadedData != undefined) {
+    let oldGlobalData = loadedData.data() as who.CaseStats;
+    if (oldGlobalData != null) {
+      totalCasesDeltaCheck(oldGlobalData.cases, globalData.cases);
     }
-    */
+  }
 
   console.log("Storing to datastore...");
 
