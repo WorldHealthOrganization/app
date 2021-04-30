@@ -17,7 +17,7 @@ class SymptomCheckerContent extends ContentBase {
       : super(bundle, schemaName: 'symptom_checker') {
     try {
       // Optional poster items
-      poster = bundle.contentPoster?.map(PosterCard.cardFromContent)?.toList();
+      poster = bundle.contentPoster?.map(PosterCard.cardFromContent).toList();
 
       // Primary symptom checker content
       questions = bundle.contentItems!.map(_questionFromContent).toList();
@@ -160,7 +160,6 @@ class SymptomCheckerQuestion {
       case SymptomCheckerQuestionType.MultipleSelection:
         return true;
     }
-    throw Exception('should be unreachable');
   }
 
   SymptomCheckerQuestion({

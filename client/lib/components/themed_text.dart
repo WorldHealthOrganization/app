@@ -137,12 +137,14 @@ class ThemedText extends StatelessWidget {
         );
         break;
     }
-    return style?.merge(overrides);
+    return style.merge(overrides);
   }
 
   static TextStyle htmlStyleForVariant(TypographyVariant variant,
-      {required double textScaleFactor, TextStyle overrides = const TextStyle()}) {
-    final baseStyle = ThemedText.styleForVariant(variant, overrides: overrides)!;
+      {required double textScaleFactor,
+      TextStyle overrides = const TextStyle()}) {
+    final baseStyle =
+        ThemedText.styleForVariant(variant, overrides: overrides)!;
     return baseStyle
         .merge(TextStyle(fontSize: baseStyle.fontSize! * textScaleFactor));
   }

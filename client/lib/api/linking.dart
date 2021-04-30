@@ -34,7 +34,7 @@ class RouteLink {
 
   RouteLink.fromUri(String uri) {
     _url = Uri.parse(uri);
-    route = _url!.path;
-    args = _url!.queryParameters ?? {};
+    route = _url?.path;
+    args = _url?.queryParameters ?? {};
   }
 }

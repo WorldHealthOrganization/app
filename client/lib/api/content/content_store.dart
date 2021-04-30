@@ -34,7 +34,7 @@ abstract class _ContentStore with Store implements Updateable {
       required this.countryIsoCode});
 
   bool _unsupportedSchemaVersionAvailable(ContentBase? cb) =>
-      cb?.bundle?.unsupportedSchemaVersionAvailable ?? false;
+      cb?.bundle.unsupportedSchemaVersionAvailable ?? false;
 
   @computed
   bool get unsupportedSchemaVersionAvailable => [
@@ -79,8 +79,8 @@ abstract class _ContentStore with Store implements Updateable {
       T Function(ContentBundle?) constructor, void Function(T) setter) async {
     final newValue =
         constructor(await service.load(locale, countryIsoCode, name));
-    if ((newValue?.bundle?.contentVersion ?? 0) >
-        (old?.bundle?.contentVersion ?? 0)) {
+    if ((newValue?.bundle.contentVersion ?? 0) >
+        (old?.bundle.contentVersion ?? 0)) {
       setter(newValue);
     }
   }

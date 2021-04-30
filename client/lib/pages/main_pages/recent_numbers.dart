@@ -24,8 +24,9 @@ extension StatSnapshotSlicing on StatSnapshot {
             return dailyCases.toInt();
           case DataDimension.deaths:
             return dailyDeaths.toInt();
+          default:
+            throw UnsupportedError('Unknown dimension');
         }
-        throw UnsupportedError('Unknown dimension');
       case DataAggregation.total:
         switch (dim) {
           case DataDimension.cases:
@@ -33,9 +34,9 @@ extension StatSnapshotSlicing on StatSnapshot {
           case DataDimension.deaths:
             return totalDeaths.toInt();
         }
-        throw UnsupportedError('Unknown dimension');
+      default:
+        throw UnsupportedError('Unknown aggregation');
     }
-    throw UnsupportedError('Unknown aggregation');
   }
 }
 
@@ -47,7 +48,6 @@ extension CaseStatsSlicing on CaseStats {
       case DataDimension.deaths:
         return hasDeaths() ? deaths.toInt() : null;
     }
-    throw UnsupportedError('Unknown dimension');
   }
 }
 
@@ -78,7 +78,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
     return Observer(
       builder: (context) => PageScaffold(
         appBarColor: Constants.backgroundColor,
-        showBackButton: ModalRoute.of(context)!.canPop ?? false,
+        showBackButton: ModalRoute.of(context)!.canPop,
         appBarBottom: PreferredSize(
           preferredSize: Size(200, 66),
           child: Padding(
@@ -123,13 +123,11 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                           child: Icon(CupertinoIcons.down_arrow,
                               color: CupertinoColors.systemGrey))
                       : Container();
-                  break;
                 case RefreshIndicatorMode.refresh:
                 case RefreshIndicatorMode.armed:
                   return Padding(
                       padding: EdgeInsets.only(top: topPadding),
                       child: CupertinoActivityIndicator());
-                  break;
                 default:
                   return Container();
               }
@@ -146,6 +144,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
               [
                 Container(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       if (countryCode != null) ...[
                         _JurisdictionStats(
@@ -175,7 +174,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                         textAlign: TextAlign.center,
                       ),
                     ],
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                   ),
                 ),
               ],
@@ -198,6 +196,7 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
       return MapEntry<DataAggregation, Widget>(
           value,
           Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
             child: Text(
               displayText,
               style: TextStyle(
@@ -209,7 +208,6 @@ class _RecentNumbersPageState extends State<RecentNumbersPage> {
                 height: 1.222,
               ),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           ));
     });
   }
@@ -231,30 +229,30 @@ class _JurisdictionStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         RegionText(
           country: name,
           emoji: emoji,
         ),
         ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 224.0),
           child: RecentNumbersGraph(
             aggregation: aggregation,
             timeseries: stats?.timeseries,
             dimension: DataDimension.cases,
           ),
-          constraints: BoxConstraints(maxHeight: 224.0),
         ),
         Container(height: 24.0),
         ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 224.0),
           child: RecentNumbersGraph(
             aggregation: aggregation,
             timeseries: stats?.timeseries,
             dimension: DataDimension.deaths,
           ),
-          constraints: BoxConstraints(maxHeight: 224.0),
         ),
       ],
-      crossAxisAlignment: CrossAxisAlignment.stretch,
     );
   }
 }

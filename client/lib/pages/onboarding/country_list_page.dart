@@ -33,7 +33,7 @@ class _CountryListPageState extends State<CountryListPage> {
   void initState() {
     super.initState();
     selectedCountryCode = widget.selectedCountryCode;
-    selectedCountries = (widget.countries?.values?.toList() ?? []);
+    selectedCountries = (widget.countries.values.toList());
   }
 
   @override
@@ -45,7 +45,7 @@ class _CountryListPageState extends State<CountryListPage> {
           decoration: InputDecoration(
               border: InputBorder.none, hintText: 'Enter your country'),
           onChanged: (String value) async {
-            List filtered = (widget.countries?.values ?? []).where((element) {
+            List filtered = (widget.countries.values).where((element) {
               var nameMatch = element.name
                   .toString()
                   .toUpperCase()
@@ -62,7 +62,7 @@ class _CountryListPageState extends State<CountryListPage> {
   }
 
   List<Widget> _buildCountries() {
-    if (widget.countries == null || widget.countries.isEmpty) {
+    if (widget.countries.isEmpty) {
       return [LoadingIndicator()];
     }
     return selectedCountries

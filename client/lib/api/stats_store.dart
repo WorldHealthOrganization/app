@@ -39,7 +39,7 @@ abstract class _StatsStore with Store implements Updateable {
 
   @computed
   int? get globalCases {
-    return globalStats?.cases?.toInt();
+    return globalStats?.cases.toInt();
   }
 
   @computed
@@ -50,16 +50,15 @@ abstract class _StatsStore with Store implements Updateable {
 
   @computed
   int? get countryCases {
-    return countryStats?.cases?.toInt();
+    return countryStats?.cases.toInt();
   }
 
   @computed
   int? get countryDailyCases =>
-      countryStats?.timeseries?.last?.dailyCases?.toInt();
+      countryStats?.timeseries.last.dailyCases.toInt();
 
   @computed
-  int? get globalDailyCases =>
-      globalStats?.timeseries?.last?.dailyCases?.toInt();
+  int? get globalDailyCases => globalStats?.timeseries.last.dailyCases.toInt();
 
   @action
   @override

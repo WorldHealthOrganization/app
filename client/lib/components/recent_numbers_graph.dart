@@ -198,7 +198,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
         child: Container(
           color: CupertinoColors.white,
           child: Stack(
-            overflow: Overflow.clip,
+            clipBehavior: Clip.hardEdge,
             fit: StackFit.expand,
             children: [
               Align(
@@ -267,7 +267,7 @@ class _RecentNumbersGraphState extends State<RecentNumbersGraph> {
   }
 
   String get lastUpdated {
-    var epochsMilliseconds = widget?.timeseries?.last?.epochMsec?.toInt();
+    var epochsMilliseconds = widget.timeseries?.last.epochMsec.toInt();
     if (epochsMilliseconds == null) {
       return '';
     } else {
