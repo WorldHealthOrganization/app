@@ -97,7 +97,6 @@ function updateData(
   snapshot.totalDeaths += totalDeaths;
 }
 
-
 // Description of the JSON data returned by the ArcGIS Server
 interface Attributes {
   ISO_2_CODE: string;
@@ -117,7 +116,6 @@ interface Feature {
 interface ArcGISResponse {
   features: Feature[];
 }
-
 
 /**
  * Process the JSON data returned by the ArcGIS server.
@@ -345,20 +343,19 @@ const runtimeOpts = {
 export const refreshCaseStats = functions
   .region(SERVING_REGION)
   .runWith(runtimeOpts)
-  .https.onRequest((request, response) => {
-    refreshCaseStatsAsync()
-      .then(function (ok) {
-        if (!ok) {
-          response.status(500).send("Error");
-          return;
-        }
-        response.status(200).send("OK");
-      })
-      .catch(function (error) {
-        console.log(error);
-        response.status(500).send("Error"); // How to get the system to backoff/retry? What text to use?
+  .https.onRequest(async (request, response) => {
+    try {
+      let ok = await refreshCaseStatsAsync();
+      if (!ok) {
+        response.status(500).send("Error");
         return;
-      });
+      }
+      response.status(200).send("OK");
+    } catch (error) {
+      console.log(error);
+      response.status(500).send("Error"); // How to get the system to backoff/retry? What text to use?
+      return;
+    }
   });
 
 // TODO: How do we specify which region this should run in? This data is public,

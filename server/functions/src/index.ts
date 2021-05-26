@@ -34,14 +34,17 @@ async function getCaseStatsAsync(req: who.GetCaseStatsRequest) {
     globalStats: undefined,
     jurisdictionStats: [],
     ttl: 0,
-  }
+  };
 
   for (let jurisdiction of jurisdictions) {
     let key = `${who.jurisdictionTypeFromJSON(jurisdiction.jurisdictionType)}:${
       jurisdiction.code
     }`;
     console.log(`Loading data for ${key}`);
-    let loadedData = await db.collection(refreshcasestats.CASE_STATS_COLLECTION).doc(key).get();
+    let loadedData = await db
+      .collection(refreshcasestats.CASE_STATS_COLLECTION)
+      .doc(key)
+      .get();
     let jurisdictionData = loadedData.data() as who.CaseStats;
     resp.jurisdictionStats.push(jurisdictionData);
   }
@@ -53,15 +56,15 @@ async function getCaseStatsAsync(req: who.GetCaseStatsRequest) {
 // TODO: replace with direct Firestore access from the client.
 export const getCaseStats = functions
   .region(SERVING_REGION)
-  .https.onRequest((request, response) => {
-    getCaseStatsAsync(request.body)
-      .then(resp => {
-        response.status(200).json(resp);
-      })
-      .catch(error => {
-        console.log(error);
-        response.status(400).send("Error"); // distinguish 400 and 500?
-      });
+  .https.onRequest(async (request, response) => {
+    try {
+      let resp = await getCaseStatsAsync(request.body);
+
+      response.status(200).json(resp);
+    } catch (error) {
+      console.log(error);
+      response.status(400).send("Error"); // distinguish 400 and 500?
+    }
   });
 
 // Implementation of the v1 API"s `putClientSettings` method.
