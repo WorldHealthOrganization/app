@@ -30,18 +30,18 @@ async function getCaseStatsAsync(req: who.GetCaseStatsRequest) {
   if (jurisdictions == undefined) {
     throw Error("Bad request.");
   }
-  let resp = {
+  let resp: who.GetCaseStatsResponse = {
     globalStats: undefined,
     jurisdictionStats: [],
     ttl: 0,
-  } as who.GetCaseStatsResponse;
+  }
 
   for (let jurisdiction of jurisdictions) {
     let key = `${who.jurisdictionTypeFromJSON(jurisdiction.jurisdictionType)}:${
       jurisdiction.code
     }`;
     console.log(`Loading data for ${key}`);
-    let loadedData = await db.collection("StoredCaseStats").doc(key).get();
+    let loadedData = await db.collection(refreshcasestats.CASE_STATS_COLLECTION).doc(key).get();
     let jurisdictionData = loadedData.data() as who.CaseStats;
     resp.jurisdictionStats.push(jurisdictionData);
   }
@@ -55,13 +55,12 @@ export const getCaseStats = functions
   .region(SERVING_REGION)
   .https.onRequest((request, response) => {
     getCaseStatsAsync(request.body)
-      .then(function (resp) {
+      .then(resp => {
         response.status(200).json(resp);
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
         response.status(400).send("Error"); // distinguish 400 and 500?
-        return;
       });
   });
 

@@ -17,12 +17,14 @@ export function setDb(newDb: admin.firestore.Firestore) {
   db = newDb;
 }
 
-// Triggers to reject case stats update for unexpectedly large increase
-// Tuned to only trigger a handful of time in early pandemic and never since April 1st
+// Thresholds to reject case stats update for unexpectedly large increase
+// Tuned to only trip a handful of time in early pandemic and never since April 1st
 // Largest Cases Stats increase was 15.2% on March 24th
-// Triggers are cumulative rather than triggered separately
+// Thresholds are cumulative rather than triggered separately
 const TOTAL_CASES_MAX_DAILY_INCREASE_FACTOR = 1.05;
 const TOTAL_CASES_MAX_DAILY_INCREASE_ABS = 30000;
+
+export const CASE_STATS_COLLECTION = "StoredCaseStats";
 
 let WHO_CASE_STATS_URL =
   "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/COVID_19_Historic_cases_by_country_pt_v7_view/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=ISO_2_CODE%2Cdate_epicrv%2CNewCase%2CCumCase%2CNewDeath%2CCumDeath%2C+ADM0_NAME&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&groupByFieldsForStatistics=&outStatistics=&having=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&orderByFields=date_epicrv&token=";
@@ -95,13 +97,6 @@ function updateData(
   snapshot.totalDeaths += totalDeaths;
 }
 
-/**
- * Process the JSON data returned by the ArcGIS server.
- *
- * @param features        JSON features from ArcGIS server
- * @param countryData Accumulated data for each country.
- * @param globalData  Accumulated data, sum of all countries.
- */
 
 // Description of the JSON data returned by the ArcGIS Server
 interface Attributes {
@@ -123,6 +118,14 @@ interface ArcGISResponse {
   features: Feature[];
 }
 
+
+/**
+ * Process the JSON data returned by the ArcGIS server.
+ *
+ * @param features        JSON features from ArcGIS server
+ * @param countryData Accumulated data for each country.
+ * @param globalData  Accumulated data, sum of all countries.
+ */
 function processWhoStats(
   features: Feature[],
   countryData: Map<string, who.CaseStats>,
@@ -284,7 +287,7 @@ async function saveCaseStats(
 
   // Reject unexpected changes in case stats, e.g. too large an increase
   let loadedData = await db
-    .collection("StoredCaseStats")
+    .collection(CASE_STATS_COLLECTION)
     .doc(caseStatsDocName(globalData))
     .get();
   if (loadedData != undefined) {
@@ -297,7 +300,7 @@ async function saveCaseStats(
   console.log("Storing to datastore...");
 
   await db
-    .collection("StoredCaseStats")
+    .collection(CASE_STATS_COLLECTION)
     .doc(caseStatsDocName(globalData))
     .set(globalData);
 
@@ -305,7 +308,7 @@ async function saveCaseStats(
   for (let countryStat of countryData.values()) {
     promises.push(
       db
-        .collection("StoredCaseStats")
+        .collection(CASE_STATS_COLLECTION)
         .doc(caseStatsDocName(countryStat))
         .set(countryStat)
     );
