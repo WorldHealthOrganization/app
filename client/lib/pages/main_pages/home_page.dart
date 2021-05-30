@@ -56,14 +56,49 @@ class HomePage extends ContentWidget<IndexContent> {
       ];
     }
 
-    return PageScaffold(
-      showHeader: false,
-      // For background scroll bleed only - white background set on _HomePageSection widgets
-      color: content?.items != null
-          ? Constants.primaryDarkColor
-          : CupertinoColors.white,
-      beforeHeader: _buildPromo(),
-      body: _buildBody(context),
+    return WillPopScope(
+      child: PageScaffold(
+        showHeader: false,
+        // For background scroll bleed only - white background set on _HomePageSection widgets
+        color: content?.items != null
+            ? Constants.primaryDarkColor
+            : CupertinoColors.white,
+        beforeHeader: _buildPromo(),
+        body: _buildBody(context),
+      ),
+      onWillPop: () async {
+        bool willPop;
+        await showCupertinoDialog(
+          context: context,
+          builder: (context) => CupertinoAlertDialog(
+            title: Text('Trying to exit?'),
+            content: Text('Are you sure you want to exit the app?'),
+            actions: [
+              CupertinoDialogAction(
+                child: Text(
+                  'Exit',
+                ),
+                onPressed: () {
+                  willPop = true;
+                  Navigator.pop(context);
+                },
+              ),
+              CupertinoDialogAction(
+                child: Text(
+                  'Cancel',
+                ),
+                onPressed: () {
+                  willPop = false;
+                  Navigator.pop(context);
+                },
+                isDefaultAction: true,
+              ),
+            ],
+          ),
+        );
+
+        return willPop;
+      },
     );
   }
 
