@@ -153,9 +153,9 @@ class _ListItem extends StatelessWidget {
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget?>[
+              children: <Widget>[
                 ThemedText(title, variant: TypographyVariant.body),
-                if (extra != null) extra,
+                if (extra != null) extra!,
               ] as List<Widget>,
             ),
           )

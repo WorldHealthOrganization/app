@@ -112,7 +112,7 @@ class _MetricHttpClient extends BaseClient {
       response = await _inner.send(request);
       metric
         ..responsePayloadSize = response.contentLength ?? 0
-        ..responseContentType = response.headers['Content-Type']!
+        ..responseContentType = response.headers['Content-Type']
         ..requestPayloadSize = request.contentLength
         ..httpResponseCode = response.statusCode;
     } finally {

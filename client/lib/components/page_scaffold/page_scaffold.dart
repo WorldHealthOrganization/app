@@ -72,7 +72,7 @@ class PageScaffold extends StatelessWidget {
                         appBarBottom: appBarBottom,
                         trailing: trailing,
                       )),
-                ...body as Iterable<Widget>,
+                ...body.whereType<Widget>(),
                 SliverToBoxAdapter(
                   child: SizedBox(height: 170),
                 ),

@@ -96,7 +96,9 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
   Widget build(BuildContext context) {
     final countryList = Provider.of<IsoCountryList>(context);
     final currentCountryCode = widget.statsStore.countryIsoCode;
-    final country = countryList.countries[currentCountryCode!];
+    var country;
+    if (currentCountryCode != null)
+      country = countryList.countries[currentCountryCode];
 
     return Button(
         borderRadius: BorderRadius.all(Radius.circular(12.0)),

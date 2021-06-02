@@ -60,7 +60,7 @@ class PageHeader extends StatelessWidget {
         ));
     final leading = showBackButton ? BackButton() : null;
     final iconThemeData = IconThemeData(color: Constants.accentNavyColor);
-    final actions = <Widget?>[if (trailing != null) trailing];
+    final actions = <Widget>[if (trailing != null) trailing!];
     final bgColor = appBarColor ?? Colors.transparent;
     final bottomBorder = Border(
         bottom:
@@ -89,7 +89,7 @@ class PageHeader extends StatelessWidget {
             title: titleWrapper,
             backgroundColor: bgColor,
             brightness: appBarBrightness,
-            actions: actions as List<Widget>?,
+            actions: actions as List<Widget>,
             shape: bottomBorder,
             elevation: 0,
             primary: true,

@@ -156,7 +156,7 @@ class _HomePageSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children:
-              (<Widget?>[if (header != null) header, content]) as List<Widget>,
+              (<Widget>[if (header != null) header!, content]) as List<Widget>,
         ),
       ),
     );
