@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:who_app/api/content/schema/symptom_checker_content.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 import 'package:who_app/pages/symptom_checker/symptom_checker_model.dart';
 
 /// Show the results.
 class SymptomCheckerResultsPage extends StatelessWidget {
-  final SymptomCheckerModel model;
+  final SymptomCheckerModel? model;
 
-  const SymptomCheckerResultsPage({Key key, this.model}) : super(key: key);
+  const SymptomCheckerResultsPage({Key? key, this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
     ]));
   }
 
-  Color _severityColor(SymptomCheckerResultSeverity s) {
+  Color? _severityColor(SymptomCheckerResultSeverity? s) {
     if (s == null) {
       return null;
     }
@@ -69,7 +69,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
   }
 
   List<Widget> _getCards(BuildContext context) {
-    return model.results
+    return model!.results!
         .map((result) => Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -86,7 +86,7 @@ class SymptomCheckerResultsPage extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                ...result.cards
+                ...result.cards!
                     .map((c) => _Card(
                           content: c,
                           iconColor: _severityColor(result.severity),
@@ -100,15 +100,15 @@ class SymptomCheckerResultsPage extends StatelessWidget {
 
 class _Card extends StatelessWidget {
   final SymptomCheckerResultCard content;
-  final Color iconColor;
+  final Color? iconColor;
 
-  String get assetName {
+  String? get assetName {
     return content.iconName != null
         ? 'assets/svg/streamline-sc-${content.iconName}.svg'
         : null;
   }
 
-  _Card({@required this.content, this.iconColor});
+  _Card({required this.content, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -132,8 +132,8 @@ class _Card extends StatelessWidget {
                       Container(
                         alignment: Alignment.center,
                         child: SvgPicture.asset(
-                          assetName,
-                          color: iconColor,
+                          assetName!,
+                          color: iconColor!,
                           width: iconSize,
                           height: iconSize,
                         ),
@@ -175,8 +175,8 @@ class _Card extends StatelessWidget {
         ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             CupertinoButton(
               padding: EdgeInsets.zero,
+              onPressed: () => content.titleLink!.open(context),
               child: title,
-              onPressed: () => content.titleLink.open(context),
             )
           ])
         : title;
@@ -195,22 +195,15 @@ class _Card extends StatelessWidget {
             padding: EdgeInsets.only(
                 right: 12, bottom: content.links != null ? 12 : 0),
             child: Html(
-              customEdgeInsets: (_) => EdgeInsets.zero,
-              data: content.bodyHtml,
-              defaultTextStyle: defaultTextStyle,
-              customTextStyle: (dom.Node node, TextStyle baseStyle) {
-                if (node is dom.Element) {
-                  switch (node.localName) {
-                    case 'b':
-                      return baseStyle.merge(boldTextStyle);
-                  }
-                }
-                return baseStyle.merge(defaultTextStyle);
+              data: content.bodyHtml!,
+              style: {
+                '*': Style.fromTextStyle(defaultTextStyle),
+                'b': Style.fromTextStyle(defaultTextStyle.merge(boldTextStyle))
               },
             ),
           ),
         if (content.links != null)
-          ...(content.links
+          ...(content.links!
               .map((e) => Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.start,

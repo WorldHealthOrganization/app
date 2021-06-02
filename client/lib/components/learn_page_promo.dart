@@ -21,18 +21,18 @@ const opaqueShadow = <Shadow>[
 ];
 
 class LearnPagePromo extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String buttonText;
-  final RouteLink link;
-  final String imageName;
+  final String? title;
+  final String? subtitle;
+  final String? buttonText;
+  final RouteLink? link;
+  final String? imageName;
 
-  String get assetName {
+  String? get assetName {
     return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
   const LearnPagePromo(
-      {Key key,
+      {Key? key,
       this.title,
       this.subtitle,
       this.buttonText,
@@ -51,7 +51,8 @@ class LearnPagePromo extends StatelessWidget {
           ),
         ),
         if (assetName != null)
-          Positioned.fill(child: FittedBox(child: SvgPicture.asset(assetName))),
+          Positioned.fill(
+              child: FittedBox(child: SvgPicture.asset(assetName!))),
         SafeArea(
             bottom: false,
             child: Container(
@@ -96,7 +97,7 @@ class LearnPagePromo extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    return link.open(context);
+                    link!.open(context);
                   },
                 ),
                 SizedBox(

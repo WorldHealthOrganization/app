@@ -12,10 +12,10 @@ import 'package:who_app/constants.dart';
 
 class HomePageRecentNumbers extends StatefulWidget {
   final StatsStore statsStore;
-  final RouteLink link;
+  final RouteLink? link;
 
   const HomePageRecentNumbers(
-      {Key key, @required this.statsStore, @required this.link})
+      {Key? key, required this.statsStore, required this.link})
       : super(key: key);
 
   @override
@@ -51,15 +51,15 @@ class _HomePageRecentNumbersState extends State<HomePageRecentNumbers> {
 
 class _HomeStatsFader extends StatefulWidget {
   const _HomeStatsFader({
-    Key key,
-    @required this.statsStore,
-    @required this.numFmt,
-    @required this.link,
+    Key? key,
+    required this.statsStore,
+    required this.numFmt,
+    required this.link,
   }) : super(key: key);
 
   final NumberFormat numFmt;
   final StatsStore statsStore;
-  final RouteLink link;
+  final RouteLink? link;
 
   @override
   __HomeStatsFaderState createState() => __HomeStatsFaderState();
@@ -69,7 +69,7 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
     with SingleTickerProviderStateMixin {
   bool fadeState = true;
 
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -96,13 +96,15 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
   Widget build(BuildContext context) {
     final countryList = Provider.of<IsoCountryList>(context);
     final currentCountryCode = widget.statsStore.countryIsoCode;
-    final country = countryList.countries[currentCountryCode];
+    var country;
+    if (currentCountryCode != null)
+      country = countryList.countries[currentCountryCode];
 
     return Button(
         borderRadius: BorderRadius.all(Radius.circular(12.0)),
         onPressed: widget.link != null
             ? () {
-                return widget.link.open(context);
+                widget.link!.open(context);
               }
             : null,
         padding: EdgeInsets.zero,
@@ -110,12 +112,12 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
           firstChild: Observer(
             builder: (_) => _HomeStatCard(
               stat: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryCases >= 0
+                      widget.statsStore.countryCases! >= 0
                   ? widget.numFmt.format(widget.statsStore.countryCases)
                   : '',
               // TODO: localize
               title: widget.statsStore.countryStats != null &&
-                      widget.statsStore.countryCases >= 0
+                      widget.statsStore.countryCases! >= 0
                   ? (country?.name ?? '') + ' Total Cases'
                   : '',
             ),
@@ -124,12 +126,12 @@ class __HomeStatsFaderState extends State<_HomeStatsFader>
           secondChild: Observer(
             builder: (_) => _HomeStatCard(
               stat: widget.statsStore.globalCases != null &&
-                      widget.statsStore.globalCases > 0
+                      widget.statsStore.globalCases! > 0
                   ? widget.numFmt.format(widget.statsStore.globalCases)
                   : '',
               // TODO: localize
               title: widget.statsStore.globalCases != null &&
-                      widget.statsStore.globalCases > 0
+                      widget.statsStore.globalCases! > 0
                   ? 'Global Total Cases'
                   : '',
             ),
@@ -145,8 +147,8 @@ class _HomeStatCard extends StatelessWidget {
   final String title;
 
   const _HomeStatCard({
-    @required this.stat,
-    @required this.title,
+    required this.stat,
+    required this.title,
   });
 
   @override

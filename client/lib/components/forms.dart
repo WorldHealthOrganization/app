@@ -6,17 +6,17 @@ import 'package:who_app/constants.dart';
 typedef OptionGroupCallback = void Function(int idx, List<OptionItem> items);
 
 class OptionItem {
-  final String title;
+  final String? title;
   bool selected;
 
-  OptionItem({@required this.title, this.selected = false});
+  OptionItem({required this.title, this.selected = false});
 }
 
 class MultiSelectOptionItem extends OptionItem {
   final bool noneOfTheAbove;
 
   MultiSelectOptionItem(
-      {@required String title,
+      {required String? title,
       bool selected = false,
       this.noneOfTheAbove = false})
       : super(title: title, selected: selected);
@@ -27,8 +27,8 @@ class PickOneOptionGroup extends StatefulWidget {
   final List<OptionItem> items;
 
   const PickOneOptionGroup({
-    @required this.onPressed,
-    @required this.items,
+    required this.onPressed,
+    required this.items,
   });
 
   @override
@@ -40,7 +40,7 @@ class _PickOneOptionGroupState extends State<PickOneOptionGroup> {
   final OptionGroupCallback onPressed;
   final List<OptionItem> items;
 
-  _PickOneOptionGroupState({@required this.onPressed, @required this.items});
+  _PickOneOptionGroupState({required this.onPressed, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,8 @@ class PickOneOrMoreOptionGroup extends StatefulWidget {
   final List<MultiSelectOptionItem> items;
 
   const PickOneOrMoreOptionGroup({
-    @required this.onPressed,
-    @required this.items,
+    required this.onPressed,
+    required this.items,
   });
 
   @override
@@ -83,8 +83,8 @@ class _PickOneOrMoreOptionGroupState extends State<PickOneOrMoreOptionGroup> {
   final List<MultiSelectOptionItem> items;
 
   _PickOneOrMoreOptionGroupState({
-    @required this.onPressed,
-    @required this.items,
+    required this.onPressed,
+    required this.items,
   });
 
   @override
@@ -121,8 +121,8 @@ class OptionGroup<T extends OptionItem> extends StatelessWidget {
   final List<T> items;
 
   const OptionGroup({
-    @required this.onPressed,
-    @required this.items,
+    required this.onPressed,
+    required this.items,
   });
 
   @override
@@ -143,16 +143,16 @@ class OptionGroup<T extends OptionItem> extends StatelessWidget {
 
 class ToggleOption extends StatelessWidget {
   const ToggleOption({
-    @required this.title,
-    @required this.color,
+    required this.title,
+    required this.color,
     this.value,
     this.onPressed,
   });
 
-  final String title;
+  final String? title;
   final Color color;
-  final bool value;
-  final VoidCallback onPressed;
+  final bool? value;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +164,7 @@ class ToggleOption extends StatelessWidget {
         shape: RoundedRectangleBorder(
           side: BorderSide(
             width: 1.5,
-            color: value
+            color: value!
                 ? Constants.whoBackgroundBlueColor
                 : Constants.itemBorderColor,
           ),
@@ -175,7 +175,7 @@ class ToggleOption extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
         onPressed: () {
           if (onPressed != null) {
-            onPressed();
+            onPressed!();
           }
         },
         child: Row(

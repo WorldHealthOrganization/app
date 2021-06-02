@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -26,13 +27,13 @@ class UserPreferences {
   Future<String> getLastRunVersion() async {
     return (await SharedPreferences.getInstance())
             .getString(UserPreferenceKey.LastRunVersion.toString()) ??
-        false;
+        false as FutureOr<String>;
   }
 
   Future<bool> setLastRunVersion() async {
     return (await SharedPreferences.getInstance()).setString(
         UserPreferenceKey.LastRunVersion.toString(),
-        '${packageInfo.version}+${packageInfo.buildNumber}');
+        '${packageInfo!.version}+${packageInfo!.buildNumber}');
   }
 
   /// Was the user shown the introductory pages as part of onboarding
@@ -141,9 +142,10 @@ class UserPreferences {
     await FirebaseMessaging.instance.setAutoInitEnabled(firebase_auto_init);
   }
 
-  Future<String> getFirebaseToken() async {
-    return (await SharedPreferences.getInstance())
-        .getString(UserPreferenceKey.FirebaseToken.toString());
+  Future<String?> getFirebaseToken() async {
+    return (await SharedPreferences.getInstance()).getString(
+      UserPreferenceKey.FirebaseToken.toString(),
+    );
   }
 
   // Firebase
@@ -176,7 +178,7 @@ class UserPreferences {
     return cohort;
   }
 
-  Future<int> getLastUpdatedContent() async {
+  Future<int?> getLastUpdatedContent() async {
     final prefs = await SharedPreferences.getInstance();
     final lastUpdatedContent =
         prefs.getInt(UserPreferenceKey.LastUpdatedContent.toString());

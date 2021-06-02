@@ -14,8 +14,8 @@ import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class LearnPage extends ContentWidget<IndexContent> {
-  LearnPage({Key key, @required ContentStore dataSource})
+class LearnPage extends ContentWidget<IndexContent?> {
+  LearnPage({Key? key, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   final header =
@@ -108,27 +108,27 @@ class LearnPage extends ContentWidget<IndexContent> {
   }
 
   @override
-  IndexContent getContent() => dataSource.learnIndex;
+  IndexContent? getContent() => dataSource.learnIndex;
 }
 
 class _MenuItem extends StatelessWidget {
   const _MenuItem({
-    @required this.title,
-    @required this.link,
-    @required this.subtitle,
-    @required this.color,
-    @required this.textColor,
+    required this.title,
+    required this.link,
+    required this.subtitle,
+    required this.color,
+    required this.textColor,
     this.imageName,
   });
 
-  final String title;
-  final RouteLink link;
-  final String subtitle;
+  final String? title;
+  final RouteLink? link;
+  final String? subtitle;
   final Color color;
   final Color textColor;
-  final String imageName;
+  final String? imageName;
 
-  String get assetName {
+  String? get assetName {
     return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
@@ -138,7 +138,7 @@ class _MenuItem extends StatelessWidget {
       constraints: BoxConstraints(minHeight: 64, minWidth: double.infinity),
       margin: const EdgeInsets.only(top: 18.0, left: 24.0, right: 24.0),
       child: Button(
-        onPressed: () => link.open(context),
+        onPressed: () => link!.open(context),
         padding: EdgeInsets.zero,
         backgroundColor: color,
         borderRadius: BorderRadius.circular(8),
@@ -152,7 +152,7 @@ class _MenuItem extends StatelessWidget {
                   right: 0,
                   top: 0,
                   bottom: 0,
-                  child: SvgPicture.asset(assetName, fit: BoxFit.fitHeight),
+                  child: SvgPicture.asset(assetName!, fit: BoxFit.fitHeight),
                 ),
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -175,18 +175,18 @@ class _MenuItem extends StatelessWidget {
 
 class _PromoItem extends StatelessWidget {
   const _PromoItem({
-    @required this.title,
-    @required this.link,
-    @required this.subtitle,
-    @required this.buttonText,
+    required this.title,
+    required this.link,
+    required this.subtitle,
+    required this.buttonText,
     this.imageName,
   });
 
-  final String title;
+  final String? title;
   final RouteLink link;
-  final String subtitle;
-  final String buttonText;
-  final String imageName;
+  final String? subtitle;
+  final String? buttonText;
+  final String? imageName;
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +205,7 @@ class _MenuItemTheme {
   final Color textColor;
 
   const _MenuItemTheme({
-    @required this.backgroundColor,
-    @required this.textColor,
+    required this.backgroundColor,
+    required this.textColor,
   });
 }

@@ -7,9 +7,9 @@ import 'package:who_app/pages/about_page.dart';
 
 void main() {
   final TestWidgetsFlutterBinding binding =
-      TestWidgetsFlutterBinding.ensureInitialized();
+      TestWidgetsFlutterBinding.ensureInitialized() as TestWidgetsFlutterBinding;
 
-  Widget testableWidget({Widget child}) {
+  Widget testableWidget({Widget? child}) {
     return CupertinoApp(
       title: 'WHO',
       localizationsDelegates: [

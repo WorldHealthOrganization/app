@@ -16,7 +16,7 @@ class WhoService {
   final String serviceUrl;
   final FirebaseFirestore firestore;
 
-  WhoService({@required String endpoint})
+  WhoService({required String endpoint})
       : serviceUrl = endpoint,
         firestore = FirebaseFirestore.instance;
 
@@ -25,7 +25,8 @@ class WhoService {
   );
 
   /// Put Client Settings
-  Future<bool> putClientSettings({String token, String isoCountryCode}) async {
+  Future<bool> putClientSettings(
+      {String? token, String? isoCountryCode}) async {
     var clientId = await UserPreferences().getClientUuid();
     try {
       await firestore.collection(CLIENT_COLLECTION).doc(clientId).set({
@@ -41,7 +42,7 @@ class WhoService {
     return true;
   }
 
-  Future<GetCaseStatsResponse> getCaseStats({String isoCountryCode}) async {
+  Future<GetCaseStatsResponse> getCaseStats({String? isoCountryCode}) async {
     final headers = await _getHeaders();
     final req = GetCaseStatsRequest.create();
     final global = JurisdictionId.create();
@@ -55,7 +56,8 @@ class WhoService {
     }
     final postBody = jsonEncode(req.toProto3Json());
     final url = '$serviceUrl/getCaseStats';
-    final response = await http.post(url, headers: headers, body: postBody);
+    final response =
+        await http.post(Uri.parse(url), headers: headers, body: postBody);
     if (response.statusCode != 200) {
       throw Exception('Error status code: ${response.statusCode}');
     }
@@ -77,7 +79,7 @@ class WhoService {
   }
 
   static String get userAgent {
-    return 'WHO-App/${_platform}/${packageInfo != null ? packageInfo.version : ''}/${packageInfo != null ? packageInfo.buildNumber : ''} (gzip)';
+    return 'WHO-App/${_platform}/${packageInfo != null ? packageInfo!.version : ''}/${packageInfo != null ? packageInfo!.buildNumber : ''} (gzip)';
   }
 
   static String get _platform {

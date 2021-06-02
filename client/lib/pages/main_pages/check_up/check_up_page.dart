@@ -10,13 +10,13 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'check_up_intro_page.dart';
 import 'check_up_poster_page.dart';
 
-class CheckUpPage extends ContentWidget<SymptomCheckerContent> {
-  CheckUpPage({Key key, @required ContentStore dataSource})
+class CheckUpPage extends ContentWidget<SymptomCheckerContent?> {
+  CheckUpPage({Key? key, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   @override
-  Widget buildImpl(BuildContext context, SymptomCheckerContent content,
-      LogicContext logicContext) {
+  Widget buildImpl(BuildContext context, SymptomCheckerContent? content,
+      LogicContext? logicContext) {
     if (content == null || logicContext == null) {
       return PageScaffold(
         showBackButton: false,
@@ -25,10 +25,10 @@ class CheckUpPage extends ContentWidget<SymptomCheckerContent> {
       );
     }
     return content.poster != null
-        ? CheckUpPosterPage(getContent().poster, logicContext)
+        ? CheckUpPosterPage(getContent()!.poster, logicContext)
         : CheckUpIntroPage();
   }
 
   @override
-  SymptomCheckerContent getContent() => dataSource.symptomChecker;
+  SymptomCheckerContent? getContent() => dataSource.symptomChecker;
 }

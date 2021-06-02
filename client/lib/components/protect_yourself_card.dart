@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/constants.dart';
 
@@ -11,10 +11,10 @@ class ProtectYourselfCard extends StatelessWidget {
   final BorderRadius borderRadius;
 
   const ProtectYourselfCard({
-    @required this.child,
-    @required this.message,
+    required this.child,
+    required this.message,
     this.borderRadius = const BorderRadius.all(Radius.circular(16.0)),
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   static ProtectYourselfCard fromFact(FactItem fact,
@@ -36,15 +36,11 @@ class ProtectYourselfCard extends StatelessWidget {
       ),
       message: Html(
         data: fact.body ?? '',
-        defaultTextStyle: defaultTextStyle,
-        customTextStyle: (dom.Node node, TextStyle baseStyle) {
-          if (node is dom.Element) {
-            switch (node.localName) {
-              case 'b':
-                return baseStyle.merge(boldTextStyle);
-            }
-          }
-          return baseStyle.merge(defaultTextStyle);
+        style: {
+          '*': Style.fromTextStyle(defaultTextStyle),
+          'b': Style.fromTextStyle(
+            defaultTextStyle.merge(boldTextStyle),
+          ),
         },
       ),
       borderRadius: borderRadius,

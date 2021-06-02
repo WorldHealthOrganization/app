@@ -15,8 +15,8 @@ import 'package:who_app/components/page_scaffold/page_scaffold.dart';
 import 'package:who_app/components/themed_text.dart';
 import 'package:who_app/constants.dart';
 
-class HomePage extends ContentWidget<IndexContent> {
-  HomePage({@required ContentStore dataSource, Key key})
+class HomePage extends ContentWidget<IndexContent?> {
+  HomePage({required ContentStore dataSource, Key? key})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -40,7 +40,7 @@ class HomePage extends ContentWidget<IndexContent> {
       return preHeader;
     }
 
-    List<Widget> _buildBody(BuildContext ctx) {
+    List<Widget?> _buildBody(BuildContext ctx) {
       var items = content?.items;
       if (items == null) {
         return [LoadingIndicator()];
@@ -67,7 +67,7 @@ class HomePage extends ContentWidget<IndexContent> {
     );
   }
 
-  Widget _buildItem(BuildContext ctx, IndexItem item) {
+  Widget? _buildItem(BuildContext ctx, IndexItem item) {
     switch (item.type) {
       case IndexItemType.information_card:
         return _buildInfoCard(item);
@@ -131,18 +131,18 @@ class HomePage extends ContentWidget<IndexContent> {
   }
 
   @override
-  IndexContent getContent() {
+  IndexContent? getContent() {
     return dataSource.homeIndex;
   }
 }
 
 class _HomePageSection extends StatelessWidget {
   final Widget content;
-  final Widget header;
+  final Widget? header;
   final EdgeInsets padding;
 
   const _HomePageSection({
-    @required this.content,
+    required this.content,
     this.header,
     this.padding = EdgeInsets.zero,
   });
@@ -155,7 +155,8 @@ class _HomePageSection extends StatelessWidget {
         padding: padding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[if (header != null) header, content],
+          children:
+              (<Widget>[if (header != null) header!, content]) as List<Widget>,
         ),
       ),
     );
@@ -163,12 +164,12 @@ class _HomePageSection extends StatelessWidget {
 }
 
 class _HomePageSectionHeader extends StatelessWidget {
-  final String title;
-  final RouteLink link;
+  final String? title;
+  final RouteLink? link;
 
   const _HomePageSectionHeader({
-    @required this.title,
-    @required this.link,
+    required this.title,
+    required this.link,
   });
 
   @override
@@ -182,6 +183,9 @@ class _HomePageSectionHeader extends StatelessWidget {
         children: <Widget>[
           CupertinoButton(
             padding: EdgeInsets.zero,
+            onPressed: () {
+              link!.open(context);
+            },
             child: ThemedText(
               title,
               variant: TypographyVariant.h3,
@@ -189,9 +193,6 @@ class _HomePageSectionHeader extends StatelessWidget {
                 color: Constants.neutralTextLightColor,
               ),
             ),
-            onPressed: () {
-              return link.open(context);
-            },
           ),
         ],
       ),

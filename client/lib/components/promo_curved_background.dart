@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class PromoCurvedBackground extends StatelessWidget {
   final Color color;
 
-  const PromoCurvedBackground({@required this.color, Key key})
+  const PromoCurvedBackground({required this.color, Key? key})
       : super(key: key);
 
   @override

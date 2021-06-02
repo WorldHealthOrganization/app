@@ -7,11 +7,11 @@ class PageButton extends StatefulWidget {
   final String title;
   final String description;
   final double borderRadius;
-  final Function onPressed;
+  final Function? onPressed;
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
-  final TextStyle titleStyle;
-  final Color descriptionColor;
+  final TextStyle? titleStyle;
+  final Color? descriptionColor;
 
   /// The amount of time elapsed before subsequent taps are recorded. Can be
   /// increased for actions that take a long time to complete.
@@ -45,7 +45,7 @@ class _PageButtonState extends State<PageButton> {
 
   void _onPressed() {
     if (!enabled) return;
-    widget.onPressed();
+    widget.onPressed!();
     _debounce();
   }
 

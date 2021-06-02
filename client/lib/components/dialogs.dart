@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class Dialogs {
   static Future<void> showAppDialog({
-    @required BuildContext context,
-    @required String title,
-    String bodyText,
-    Widget body,
+    required BuildContext context,
+    required String title,
+    String? bodyText,
+    Widget? body,
   }) {
     return showDialog(
       context: context,
@@ -16,7 +16,7 @@ class Dialogs {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0))),
           title: Text(title),
-          content: body ?? Text(bodyText),
+          content: body ?? Text(bodyText!),
           actions: <Widget>[
             FlatButton(
               // TODO: Localize
@@ -48,7 +48,7 @@ class Dialogs {
   }
 
   static Future<void> showDialogToLaunchNotificationSettings(
-      BuildContext context, Function requestNotificationPermissions) async {
+      BuildContext context, Function? requestNotificationPermissions) async {
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -71,7 +71,7 @@ class Dialogs {
               child: Text(
                   S.of(context).notificationsEnableDialogOptionOpenSettings),
               onPressed: () {
-                requestNotificationPermissions();
+                requestNotificationPermissions!();
                 Navigator.pop(context);
               },
             ),

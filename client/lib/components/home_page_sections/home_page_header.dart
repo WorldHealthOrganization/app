@@ -9,22 +9,22 @@ import 'package:who_app/constants.dart';
 
 class HomePageHeader extends StatelessWidget {
   final IndexPromoType headerType;
-  final String title;
-  final String subtitle;
-  final String buttonText;
+  final String? title;
+  final String? subtitle;
+  final String? buttonText;
   final RouteLink link;
-  final String imageName;
+  final String? imageName;
 
   const HomePageHeader({
-    @required this.headerType,
-    @required this.title,
-    @required this.subtitle,
-    @required this.buttonText,
-    @required this.link,
+    required this.headerType,
+    required this.title,
+    required this.subtitle,
+    required this.buttonText,
+    required this.link,
     this.imageName,
   });
 
-  String get svgAssetName {
+  String? get svgAssetName {
     return imageName != null ? 'assets/svg/${imageName}.svg' : null;
   }
 
@@ -67,7 +67,7 @@ class HomePageHeader extends StatelessWidget {
                       bottom: 0.0,
                       right: 0.0,
                       child: svgAssetName != null
-                          ? SvgPicture.asset(svgAssetName)
+                          ? SvgPicture.asset(svgAssetName!)
                           : Container(),
                     ),
                     Container(
@@ -116,7 +116,7 @@ class HomePageHeader extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                return link.open(context);
+                                link.open(context);
                               },
                             ),
                           ),

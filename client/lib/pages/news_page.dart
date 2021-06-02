@@ -12,8 +12,8 @@ import 'package:who_app/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:who_app/pages/main_pages/routes.dart';
 
-class NewsIndexPage extends ContentWidget<IndexContent> {
-  NewsIndexPage({Key key, @required ContentStore dataSource})
+class NewsIndexPage extends ContentWidget<IndexContent?> {
+  NewsIndexPage({Key? key, required ContentStore dataSource})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -37,7 +37,7 @@ class NewsIndexPage extends ContentWidget<IndexContent> {
               subtitle: item.subtitle,
               contentPadding: EdgeInsets.all(24.0),
               onTap: () async {
-                return item.link.open(context);
+                return item.link!.open(context);
               },
             ),
             divider,
@@ -61,7 +61,7 @@ class NewsIndexPage extends ContentWidget<IndexContent> {
   }
 
   @override
-  IndexContent getContent() {
+  IndexContent? getContent() {
     return dataSource.newsIndex;
   }
 }

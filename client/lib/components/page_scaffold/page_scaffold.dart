@@ -7,27 +7,27 @@ import 'package:who_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
-  final String title;
-  final Widget headerWidget;
-  final String heroTag;
-  final List<Widget> body;
+  final String? title;
+  final Widget? headerWidget;
+  final String? heroTag;
+  final List<Widget?> body;
   final List<Widget> beforeHeader;
   final Color color;
-  final Color appBarColor;
+  final Color? appBarColor;
   final Brightness appBarBrightness;
   final Color headingBorderColor;
   final bool showBackButton;
-  final TextStyle headerTitleStyle;
-  final Widget header;
-  final Widget trailing;
-  final Widget appBarBottom;
+  final TextStyle? headerTitleStyle;
+  final Widget? header;
+  final Widget? trailing;
+  final Widget? appBarBottom;
 
   final bool showHeader;
 
   final EdgeInsets padding;
 
   PageScaffold({
-    @required this.body,
+    required this.body,
     this.title,
     this.headerWidget,
     this.heroTag,
@@ -72,7 +72,7 @@ class PageScaffold extends StatelessWidget {
                         appBarBottom: appBarBottom,
                         trailing: trailing,
                       )),
-                ...body,
+                ...body.whereType<Widget>(),
                 SliverToBoxAdapter(
                   child: SizedBox(height: 170),
                 ),
@@ -87,9 +87,9 @@ class PageScaffold extends StatelessWidget {
 
 class AlertsWrapper extends StatefulWidget {
   const AlertsWrapper({
-    Key key,
-    @required this.alerts,
-    @required this.child,
+    Key? key,
+    required this.alerts,
+    required this.child,
   }) : super(key: key);
 
   final List<Alert> alerts;
@@ -162,13 +162,13 @@ class _AlertsWrapperState extends State<AlertsWrapper>
 
 class _Alert extends StatelessWidget {
   const _Alert({
-    Key key,
+    Key? key,
     this.topPadding,
-    @required this.alert,
-    @required this.controller,
+    required this.alert,
+    required this.controller,
   }) : super(key: key);
 
-  final bool topPadding;
+  final bool? topPadding;
   final Alert alert;
   final AlertController controller;
   @override
@@ -179,7 +179,7 @@ class _Alert extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         maintainBottomViewPadding: false,
-        top: topPadding,
+        top: topPadding!,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,

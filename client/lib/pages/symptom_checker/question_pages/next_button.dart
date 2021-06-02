@@ -9,9 +9,9 @@ class NextButton extends StatelessWidget {
   final VoidCallback onNext;
 
   const NextButton({
-    Key key,
-    @required this.enabled,
-    @required this.onNext,
+    Key? key,
+    required this.enabled,
+    required this.onNext,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class NextButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       verticalPadding: 12,
       borderRadius: 500,
-      titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
+      titleStyle: ThemedText.styleForVariant(TypographyVariant.button)!
           .merge(TextStyle(color: CupertinoColors.white)),
     );
   }

@@ -16,25 +16,25 @@ enum TypographyVariant {
 }
 
 class ThemedText extends StatelessWidget {
-  final String data;
+  final String? data;
   final TypographyVariant variant;
 
-  final Locale locale;
-  final int maxLines;
-  final TextOverflow overflow;
-  final String semanticsLabel;
-  final bool softWrap;
-  final StrutStyle strutStyle;
-  final TextStyle style;
-  final TextAlign textAlign;
-  final TextDirection textDirection;
-  final double textScaleFactor;
-  final TextWidthBasis textWidthBasis;
+  final Locale? locale;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
 
   ThemedText(
     this.data, {
-    @required this.variant,
-    Key key,
+    required this.variant,
+    Key? key,
     this.locale,
     this.maxLines,
     this.overflow,
@@ -48,9 +48,9 @@ class ThemedText extends StatelessWidget {
     this.textWidthBasis,
   }) : super(key: key);
 
-  static TextStyle styleForVariant(TypographyVariant variant,
+  static TextStyle? styleForVariant(TypographyVariant variant,
       {TextStyle overrides = const TextStyle()}) {
-    TextStyle style;
+    TextStyle? style;
     switch (variant) {
       case TypographyVariant.title:
         style = TextStyle(
@@ -137,21 +137,23 @@ class ThemedText extends StatelessWidget {
         );
         break;
     }
-    return style?.merge(overrides);
+    return style.merge(overrides);
   }
 
   static TextStyle htmlStyleForVariant(TypographyVariant variant,
-      {double textScaleFactor, TextStyle overrides = const TextStyle()}) {
-    final baseStyle = ThemedText.styleForVariant(variant, overrides: overrides);
+      {required double textScaleFactor,
+      TextStyle overrides = const TextStyle()}) {
+    final baseStyle =
+        ThemedText.styleForVariant(variant, overrides: overrides)!;
     return baseStyle
-        .merge(TextStyle(fontSize: baseStyle.fontSize * textScaleFactor));
+        .merge(TextStyle(fontSize: baseStyle.fontSize! * textScaleFactor));
   }
 
   @override
   Widget build(BuildContext context) {
-    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
+    final styleVariant = ThemedText.styleForVariant(variant)!.merge(style);
     return Text(
-      data,
+      data!,
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,
@@ -168,33 +170,33 @@ class ThemedText extends StatelessWidget {
 }
 
 class AutoSizeThemedText extends StatelessWidget {
-  final String data;
+  final String? data;
   final TypographyVariant variant;
 
-  final AutoSizeGroup group;
-  final Locale locale;
+  final AutoSizeGroup? group;
+  final Locale? locale;
 
   final double maxFontSize;
-  final int maxLines;
+  final int? maxLines;
   final double minFontSize;
-  final TextOverflow overflow;
-  final Widget overflowReplacement;
-  final List<double> presetFontSizes;
-  final String semanticsLabel;
-  final bool softWrap;
+  final TextOverflow? overflow;
+  final Widget? overflowReplacement;
+  final List<double>? presetFontSizes;
+  final String? semanticsLabel;
+  final bool? softWrap;
   final double stepGranularity;
-  final StrutStyle strutStyle;
-  final TextStyle style;
-  final TextAlign textAlign;
-  final TextDirection textDirection;
-  final Key textKey;
-  final double textScaleFactor;
+  final StrutStyle? strutStyle;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final Key? textKey;
+  final double? textScaleFactor;
   final bool wrapWords;
 
   AutoSizeThemedText(
     this.data, {
-    @required this.variant,
-    Key key,
+    required this.variant,
+    Key? key,
     this.group,
     this.locale,
     this.maxFontSize = double.infinity,
@@ -217,9 +219,9 @@ class AutoSizeThemedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styleVariant = ThemedText.styleForVariant(variant).merge(style);
+    final styleVariant = ThemedText.styleForVariant(variant)!.merge(style);
     return AutoSizeText(
-      data,
+      data!,
       group: group,
       locale: locale,
       maxFontSize: maxFontSize,

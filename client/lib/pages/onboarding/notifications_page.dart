@@ -11,7 +11,7 @@ import 'package:who_app/generated/l10n.dart';
 class NotificationsPage extends StatelessWidget {
   final VoidCallback onNext;
 
-  const NotificationsPage({@required this.onNext}) : assert(onNext != null);
+  const NotificationsPage({required this.onNext}) : assert(onNext != null);
 
   @override
   Widget build(BuildContext context) {

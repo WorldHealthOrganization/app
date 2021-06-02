@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class ListItem extends StatelessWidget {
-  final Widget titleWidget;
+  final Widget? titleWidget;
   final String message;
 
   ListItem({this.titleWidget, this.message = ''});

@@ -31,10 +31,10 @@ class SettingsPage extends StatefulWidget {
   final WhoService service;
 
   const SettingsPage({
-    Key key,
-    @required this.notifications,
-    @required this.prefs,
-    @required this.service,
+    Key? key,
+    required this.notifications,
+    required this.prefs,
+    required this.service,
   }) : super(key: key);
 
   @override
@@ -43,16 +43,16 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage>
     with WidgetsBindingObserver {
-  bool _analyticsEnabled;
-  bool _notificationsEnabled;
+  bool? _analyticsEnabled;
+  bool? _notificationsEnabled;
   bool _attemptEnableNotificationsOnResume = false;
 
-  IsoCountry _selectedCountry;
+  IsoCountry? _selectedCountry;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
     if (_analyticsEnabled == null || _notificationsEnabled == null) {
       _init();
     }
@@ -66,7 +66,7 @@ class _SettingsPageState extends State<SettingsPage>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
 
@@ -82,7 +82,7 @@ class _SettingsPageState extends State<SettingsPage>
     if (setEnabled) {
       enabled = await widget.notifications.attemptEnableNotifications(
           context: context,
-          showSettingsPrompt: ({showSettings}) => {
+          showSettingsPrompt: ({required showSettings}) => {
                 Dialogs.showDialogToLaunchNotificationSettings(
                     context, showSettings)
               });
@@ -191,7 +191,7 @@ class _SettingsPageState extends State<SettingsPage>
 
     final countryList = Provider.of<IsoCountryList>(context);
     final currentCountryCode = widget.prefs.countryIsoCode;
-    _selectedCountry = countryList.countries[currentCountryCode];
+    _selectedCountry = countryList.countries[currentCountryCode!];
     return Column(children: <Widget>[
       divider,
       //TODO: LOCALIZE
@@ -220,7 +220,7 @@ class _SettingsPageState extends State<SettingsPage>
         title: S.of(context).homePagePageSliverListShareTheApp,
         onTap: () {
           FirebaseAnalytics().logShare(
-              contentType: 'App', itemId: null, method: 'Website link');
+              contentType: 'App', itemId: '0', method: 'Website link');
           Share.share(
             S.of(context).commonWhoAppShareIconButtonDescription,
             sharePositionOrigin:
@@ -240,7 +240,7 @@ class _SettingsPageState extends State<SettingsPage>
       MenuListTile(
         title: S.of(context).homePagePageSliverListAboutTheApp,
         onTap: () {
-          return Navigator.of(context, rootNavigator: true).pushNamed('/about');
+          Navigator.of(context, rootNavigator: true).pushNamed('/about');
         },
       ),
       divider,
@@ -248,32 +248,32 @@ class _SettingsPageState extends State<SettingsPage>
   }
 
   Future<void> setCountry(IsoCountry country) async {
-    await setState(() {
+    setState(() {
       _selectedCountry = country;
     });
-    await widget.prefs.setCountryIsoCode(_selectedCountry.alpha2Code);
+    await widget.prefs.setCountryIsoCode(_selectedCountry!.alpha2Code);
     var fcmToken = await UserPreferences().getFirebaseToken();
 
     try {
       await widget.service.putClientSettings(
-          token: fcmToken, isoCountryCode: _selectedCountry.alpha2Code);
+          token: fcmToken, isoCountryCode: _selectedCountry!.alpha2Code);
     } catch (error) {
       print('Error sending location to API: $error');
     }
   }
 
   Widget switchItem(
-      {BuildContext context,
-      String header,
-      String info,
-      bool isToggled,
-      Function(bool) onToggle}) {
+      {BuildContext? context,
+      String? header,
+      String? info,
+      required bool isToggled,
+      Function(bool)? onToggle}) {
     return Semantics(
       toggled: isToggled,
       child: Material(
         color: Constants.greyBackgroundColor,
         child: InkWell(
-          onTap: () => onToggle(!isToggled),
+          onTap: () => onToggle!(!isToggled),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 24,

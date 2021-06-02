@@ -12,7 +12,7 @@ import '../../about_page.dart';
 class CheckUpIntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final inHomePage = !ModalRoute.of(context).canPop;
+    final inHomePage = !ModalRoute.of(context)!.canPop;
     return PageScaffold(
       showBackButton: !inHomePage,
       color: CupertinoColors.white,
@@ -29,7 +29,7 @@ class CheckUpIntroPage extends StatelessWidget {
                   child: PageHeader.buildTitle(
                     'Check-Up',
                     textStyle:
-                        ThemedText.styleForVariant(TypographyVariant.title)
+                        ThemedText.styleForVariant(TypographyVariant.title)!
                             .merge(
                       TextStyle(color: Constants.primaryDarkColor),
                     ),
@@ -81,6 +81,9 @@ class CheckUpIntroPage extends StatelessWidget {
         iconName: 'medical',
         extra: CupertinoButton(
           padding: EdgeInsets.zero,
+          onPressed: () {
+            AboutPage.openTermsOfService(context);
+          },
           child: ThemedText(
             'See terms ›',
             variant: TypographyVariant.body,
@@ -88,9 +91,6 @@ class CheckUpIntroPage extends StatelessWidget {
               color: Constants.whoBackgroundBlueColor,
             ),
           ),
-          onPressed: () {
-            return AboutPage.openTermsOfService(context);
-          },
         ),
       ),
     ];
@@ -113,7 +113,7 @@ class CheckUpIntroPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         verticalPadding: 12,
         borderRadius: 500,
-        titleStyle: ThemedText.styleForVariant(TypographyVariant.button)
+        titleStyle: ThemedText.styleForVariant(TypographyVariant.button)!
             .merge(TextStyle(color: CupertinoColors.white)),
       ),
     );
@@ -122,15 +122,12 @@ class CheckUpIntroPage extends StatelessWidget {
 
 class _ListItem extends StatelessWidget {
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final String iconName;
-  final Widget extra;
+  final Widget? extra;
 
   _ListItem(
-      {@required this.title,
-      @required this.iconName,
-      this.subtitle,
-      this.extra});
+      {required this.title, required this.iconName, this.subtitle, this.extra});
 
   @override
   Widget build(BuildContext context) {
@@ -154,12 +151,14 @@ class _ListItem extends StatelessWidget {
             width: 12,
           ),
           Flexible(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
                 ThemedText(title, variant: TypographyVariant.body),
-                if (extra != null) extra,
-              ]))
+                if (extra != null) extra!,
+              ] as List<Widget>,
+            ),
+          )
         ],
       ),
     );

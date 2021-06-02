@@ -8,14 +8,14 @@ class PlatformWidget extends StatelessWidget {
   final Widget cupertino;
 
   const PlatformWidget({
-    Key key,
-    @required this.material,
-    @required this.cupertino,
+    Key? key,
+    required this.material,
+    required this.cupertino,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget widget;
+    late Widget widget;
     switch (Theme.of(context).platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:

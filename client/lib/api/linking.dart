@@ -6,9 +6,9 @@ Future<bool> launchUrl(String url) async {
 }
 
 class RouteLink {
-  Uri _url;
-  String route;
-  Map<String, String> args;
+  Uri? _url;
+  String? route;
+  Map<String, String>? args;
 
   bool get isExternal {
     try {
@@ -18,23 +18,23 @@ class RouteLink {
     }
   }
 
-  String get url => _url?.toString();
+  String? get url => _url?.toString();
 
   RouteLink({
-    @required this.route,
-    @required this.args,
+    required this.route,
+    required this.args,
   });
 
   Future open(BuildContext context) {
     return isExternal
-        ? launchUrl(url)
+        ? launchUrl(url!)
         : Navigator.of(context, rootNavigator: true)
-            .pushNamed(route, arguments: args);
+            .pushNamed(route!, arguments: args);
   }
 
   RouteLink.fromUri(String uri) {
     _url = Uri.parse(uri);
-    route = _url.path;
-    args = _url.queryParameters ?? {};
+    route = _url?.path;
+    args = _url?.queryParameters ?? {};
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:who_app/api/content/content_store.dart';
 import 'package:who_app/api/content/schema/fact_content.dart';
 import 'package:who_app/api/linking.dart';
@@ -17,10 +17,10 @@ import 'package:who_app/constants.dart';
 ///   3. Navigate to Protect Yourself page on tap of card, scrolled to tapped card
 ///=========================================================
 
-class HomePageProtectYourself extends ContentWidget<FactContent> {
-  final RouteLink link;
+class HomePageProtectYourself extends ContentWidget<FactContent?> {
+  final RouteLink? link;
   HomePageProtectYourself(
-      {Key key, @required ContentStore dataSource, @required this.link})
+      {Key? key, required ContentStore dataSource, required this.link})
       : super(key: key, dataSource: dataSource);
 
   @override
@@ -63,19 +63,19 @@ class HomePageProtectYourself extends ContentWidget<FactContent> {
   }
 
   @override
-  FactContent getContent() {
+  FactContent? getContent() {
     return dataSource.protectYourself;
   }
 }
 
 class _HomeProtectYourselfCard extends StatelessWidget {
   final FactItem fact;
-  final RouteLink link;
+  final RouteLink? link;
 
   const _HomeProtectYourselfCard({
-    @required this.fact,
-    @required this.link,
-    Key key,
+    required this.fact,
+    required this.link,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -83,7 +83,7 @@ class _HomeProtectYourselfCard extends StatelessWidget {
     return Button(
       onPressed: link != null
           ? () {
-              link.open(context);
+              link!.open(context);
             }
           : null,
       borderRadius: BorderRadius.circular(16.0),
@@ -114,7 +114,7 @@ class _HomeProtectYourselfCard extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context, String body) {
+  Widget _buildBody(BuildContext context, String? body) {
     final defaultTextStyle = ThemedText.htmlStyleForVariant(
         TypographyVariant.body,
         textScaleFactor: MediaQuery.textScaleFactorOf(context),
@@ -124,15 +124,11 @@ class _HomeProtectYourselfCard extends StatelessWidget {
         defaultTextStyle.copyWith(fontWeight: FontWeight.w700);
     return Html(
       data: fact.body ?? '',
-      defaultTextStyle: defaultTextStyle,
-      customTextStyle: (dom.Node node, TextStyle baseStyle) {
-        if (node is dom.Element) {
-          switch (node.localName) {
-            case 'b':
-              return baseStyle.merge(boldTextStyle);
-          }
-        }
-        return baseStyle.merge(defaultTextStyle);
+      style: {
+        '*': Style.fromTextStyle(defaultTextStyle),
+        'b': Style.fromTextStyle(
+          defaultTextStyle.merge(boldTextStyle),
+        ),
       },
     );
   }

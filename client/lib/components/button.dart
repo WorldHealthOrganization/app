@@ -3,18 +3,18 @@ import 'package:who_app/constants.dart';
 
 class Button extends StatelessWidget {
   final Color backgroundColor;
-  final Color disabledBackgroundColor;
+  final Color? disabledBackgroundColor;
   final Color foregroundColor;
   final Color disabledForegroundColor;
   final BorderRadius borderRadius;
-  final EdgeInsetsGeometry padding;
-  final Widget child;
-  final VoidCallback onPressed;
+  final EdgeInsetsGeometry? padding;
+  final Widget? child;
+  final VoidCallback? onPressed;
   final Duration debounceDuration;
   final ButtonType buttonType;
 
   const Button({
-    Key key,
+    Key? key,
     this.backgroundColor = Constants.backgroundColor,
     this.disabledBackgroundColor,
     this.foregroundColor = Colors.black,
@@ -43,13 +43,13 @@ class Button extends StatelessWidget {
           case ButtonType.Text:
             return TextButton(
               style: style,
-              child: child,
+              child: child!,
               onPressed: callback,
             );
           case ButtonType.Outline:
             return OutlinedButton(
               style: style,
-              child: child,
+              child: child!,
               onPressed: callback,
             );
           default:
@@ -104,14 +104,14 @@ typedef DebounceBuilder = Widget Function(
 
 class _Debouncer extends StatefulWidget {
   const _Debouncer({
-    Key key,
-    @required this.builder,
-    @required this.onCallback,
-    @required this.debounceDuration,
+    Key? key,
+    required this.builder,
+    required this.onCallback,
+    required this.debounceDuration,
   }) : super(key: key);
 
   final Duration debounceDuration;
-  final VoidCallback onCallback;
+  final VoidCallback? onCallback;
   final DebounceBuilder builder;
 
   @override
@@ -124,7 +124,7 @@ class __DebouncerState extends State<_Debouncer> {
   void _onPressed() {
     if (!enabled) return;
 
-    widget.onCallback();
+    widget.onCallback!();
 
     _debounce();
   }

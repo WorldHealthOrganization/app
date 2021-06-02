@@ -13,13 +13,13 @@ mixin _$UserPreferencesStore on _UserPreferencesStore, Store {
       Atom(name: '_UserPreferencesStore.obsCountryIsoCode');
 
   @override
-  String get obsCountryIsoCode {
+  String? get obsCountryIsoCode {
     _$obsCountryIsoCodeAtom.reportRead();
     return super.obsCountryIsoCode;
   }
 
   @override
-  set obsCountryIsoCode(String value) {
+  set obsCountryIsoCode(String? value) {
     _$obsCountryIsoCodeAtom.reportWrite(value, super.obsCountryIsoCode, () {
       super.obsCountryIsoCode = value;
     });
