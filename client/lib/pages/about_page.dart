@@ -2,11 +2,14 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:who_app/api/linking.dart';
+import 'package:who_app/api/who_service.dart';
 import 'package:who_app/components/button.dart';
 import 'package:who_app/components/menu_list_tile.dart';
 import 'package:who_app/components/page_scaffold/page_scaffold.dart';
@@ -119,32 +122,49 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                  color: CupertinoColors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  child: StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) =>
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Button(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 24,
-                                    vertical: 24,
-                                  ),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.copy,
-                                    size: 14,
-                                  ),
-                                  onPressed: () {
-                                    Clipboard.setData(ClipboardData(
-                                        text: _buildInfoText(context)));
-                                  },
-                                ),
-                                ThemedText(
-                                  _buildInfoText(context),
-                                  variant: TypographyVariant.bodySmall,
-                                )
-                              ])))
+                color: CupertinoColors.white,
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) =>
+                      Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (!kReleaseMode)
+                        ...[
+                          Button(
+                            child: Text('Crash'),
+                            onPressed: () => FirebaseCrashlytics.instance.crash(),
+                          ),
+                          Button(
+                            child: Text('Get Notification'),
+                            onPressed: () {
+                              WhoService(endpoint: null).sendNotification();
+                              
+                            },
+                          ),
+                        ],
+                      Button(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 24,
+                        ),
+                        child: FaIcon(
+                          FontAwesomeIcons.copy,
+                          size: 14,
+                        ),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: _buildInfoText(context)));
+                        },
+                      ),
+                      ThemedText(
+                        _buildInfoText(context),
+                        variant: TypographyVariant.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

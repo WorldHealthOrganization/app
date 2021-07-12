@@ -13,6 +13,8 @@ service WhoService {
   rpc putClientSettings(PutClientSettingsRequest) returns (Void);
 
   rpc getCaseStats(GetCaseStatsRequest) returns (GetCaseStatsResponse);
+
+  rpc sendTestNotification(SendTestNotificationRequest) returns (Void);
 }
 
 message PutClientSettingsRequest {
@@ -34,6 +36,10 @@ message JurisdictionId {
 message GetCaseStatsRequest {
   // Request any jurisdictions (including global, if desired)
   repeated JurisdictionId jurisdictions = 1;
+}
+
+message SendTestNotificationRequest {
+  string token = 1;
 }
 
 message GetCaseStatsResponse {

@@ -13,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import present.rpc.ClientException;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
+
 public class WhoServiceImpl implements WhoService {
 
   // FCM documentation doesn't specify standard but usually up to 162 chars
@@ -111,4 +114,18 @@ public class WhoServiceImpl implements WhoService {
       .ttl(STATS_TTL_SECONDS)
       .build();
   }
+
+  @Override
+  public Void sendTestNotification(SendTestNotificationRequest request) throws IOException {    
+    Message message = Message.builder()
+    .putData("test", "test")
+    .setToken(request.token)
+    .build();
+    
+    String response = FirebaseMessaging.getInstance().send(message);
+    // Response is a message ID string.
+    System.out.println("Successfully sent message: " + response);
+
+  }
+
 }

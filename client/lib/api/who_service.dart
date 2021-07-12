@@ -76,6 +76,10 @@ class WhoService {
     return headers;
   }
 
+  Future<bool> sendNotification(){
+    
+  }
+
   static String get userAgent {
     return 'WHO-App/${_platform}/${packageInfo != null ? packageInfo.version : ''}/${packageInfo != null ? packageInfo.buildNumber : ''} (gzip)';
   }
