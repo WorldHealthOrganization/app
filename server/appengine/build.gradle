@@ -41,7 +41,7 @@ dependencies {
     implementation deps.slf4j.jdk14
 
     // Force newer version
-    implementation 'com.google.http-client:google-http-client:1.38.0'
+    implementation 'com.google.http-client:google-http-client:1.42.1'
 
     implementation deps.guava
     implementation 'co.present.rpc:server:0.2-SNAPSHOT'
