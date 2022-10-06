@@ -8,7 +8,7 @@
     "js-yaml": "^3.14.1"
   },
   "devDependencies": {
-    "firebase-tools": "^9.1.0",
+    "firebase-tools": "^11.14.0",
     "husky": "^5.0.6",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
